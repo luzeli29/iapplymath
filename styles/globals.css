@@ -1,16 +1,70 @@
+/*----------------------- General -----------------------*/
+
 html,
 body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* TODO: select font for text */
+  background-color: #EDBFC6;
+  color: #190933;
+}
+
+.container {
+  margin: auto;
+  width: 35%;
+  height: 450px;
+  text-align: center;
 }
 
 a {
-  color: inherit;
+  color: #190933;
   text-decoration: none;
+  padding: 5px;
+}
+
+a:hover {
+  /*TODO: Color is hard to see, maybe change colors*/
+  color: #F5E852;
+  text-decoration: underline;
 }
 
 * {
   box-sizing: border-box;
+}
+
+/*----------------------- HEADER -----------------------*/
+
+.header-container {
+  width: 100%;
+  text-align: center;
+}
+
+.header-title {
+  font-size: 50px;
+}
+
+/*----------------------- Language Select -----------------------*/
+
+.language-select {
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.language-select table {
+  text-align: center;
+  width: 26%;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+.language-select td {
+  width: 50px;
+}
+
+.language-select button {
+  background: none;
+  border: none;
 }
