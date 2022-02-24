@@ -17,7 +17,7 @@ export default function Error(props) {
           //ENGLISH
           <>
             <h2>Oh No! Page not found.</h2>
-            <p>Click <Link href="/"><a><b>here</b></a></Link> to return to home.</p>
+            <p>Click <Link href="/"><a><b>here</b></a></Link> to go back.</p>
           </>
         }
       </main>
