@@ -1,25 +1,14 @@
+import React, { useContext } from 'react';
+import AppContext from '../comps/context'
 import Link from "next/link"
-import React from "react"
 
-export default function Error(props) {
-    //FIXME: for some reason, going to the error page sets langage to english
+export default function Error() {
+  const value = useContext(AppContext);
+  const { oh_no,page_not_found,click,here,to_return_home } = value.state.translations;
     return (
       <main className='container'>
-        {props.lang == 'es' ? 
-          //Spanish
-          <>
-            {/* TODO: Translate this */}
-            <h2>Oh No! Page not found. -es</h2>
-            <p>Click <Link href="/"><a><b>here</b></a></Link> to return to home.</p>
-          </>
-            : 
-
-          //ENGLISH
-          <>
-            <h2>Oh No! Page not found.</h2>
-            <p>Click <Link href="/"><a><b>here</b></a></Link> to go back.</p>
-          </>
-        }
+            <h2>{oh_no + " " + page_not_found + "."}</h2>
+            <p>{click} <Link href="/"><a><b>{here.toUpperCase()}</b></a></Link> {to_return_home.toLowerCase()}.</p>
       </main>
     )
   }
