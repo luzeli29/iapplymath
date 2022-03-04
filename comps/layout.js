@@ -1,10 +1,13 @@
 import Header from "./header";
-
 const Layout = ({ children }) => {
     return ( 
         <>
             <Header/>
-            { children }
+                <div className="game_view">
+                    <div className="game_container">
+                        { children }
+                    </div>
+                </div>
         </>
      );
 }
