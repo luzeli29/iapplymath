@@ -18,35 +18,39 @@ body {
   color: var(--font-color);
 }
 
-.page_container {
-  margin: auto;
-  width: 800px;
-  height: 600px;
-  text-align: center;
-  border: solid var(--font-color) 2px;
+* {
+  box-sizing: border-box;
 }
 
-.container{
+.game_view {
+  position:relative;
+  margin-right: auto;
+  margin-left: auto;
+  width: 512px;
+  height: 512px;
+  text-align: center;
+  border: solid var(--font-color) 1px;
+}
+
+.game_container{
   width: 100%;
   height: 100%;
-
 }
 
-button {
+button,
+a,
+p {
   background: none;
   border: none;
   font-size: medium;
   color: var(--font-color);
+  text-decoration: none;
 }
 
-button:hover {
+button:hover,
+a:hover {
   color: var(--button-hover-color);
   text-decoration: underline;
-}
-
-
-* {
-  box-sizing: border-box;
 }
 
 /*----------------------- HEADER -----------------------*/
@@ -79,4 +83,53 @@ button:hover {
   width: 50px;
 }
 
+/*------------------------------------------------------*/
+/*---------------------- Game Page ---------------------*/
+
+.tool_bar{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 45px;
+  background-color: burlywood;
+}
+/*Map Page*/
+.map{
+  width: 100%;
+  height: 100%;
+  background-image: URL("/img/map/tempMap.png");
+}
+
+.icon {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+}
+
+.icon:hover {
+  transform:scale(1.5) ;
+  background-size:cover;
+}
+
+#aunt {
+  background-image: URL("/img/map/tempRest.png");
+  border: solid cyan 1px;
+  top: 80px;
+  left: 350px;
+}
+
+#resturant {
+  top: 350px;
+  left: 350px;
+  background-image: URL("/img/map/tempRest.png");
+  border: solid brown 1px;
+}
+
+.mini_game_container {
+  margin-top: 45px;
+  width: 100%;
+  height: 467px;
+  border: solid brown 1px;
+
+}
 /*------------------------------------------------------*/
