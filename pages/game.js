@@ -3,6 +3,7 @@ import ToolBar from "../comps/game/tool_bar";
 import MapIcon from '../comps/game/map_icon';
 import Resturant from '../comps/game/resturant';
 import Aunt from '../comps/game/aunt';
+
 export default function Game() {
 
     const [state, setState] = useState("map");

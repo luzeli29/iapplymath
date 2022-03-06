@@ -1,5 +1,6 @@
 import React, {} from 'react';
 import GameLayout from './game_layout'
+
 const Aunt = () => {
 
     return (
