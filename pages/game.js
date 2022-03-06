@@ -8,12 +8,7 @@ export default function Game() {
 
     const [state, setState] = useState("map");
 
-    const debugBackButton = () => {
-        console.log("BACK")
-    }
-
     const changeGameState = (newState) => {
-        console.log(newState)
         setState(newState)
     }
     
@@ -22,7 +17,7 @@ export default function Game() {
             case "map" :
                 return (
                     <>
-                        <ToolBar backClick={debugBackButton} isLink="true"/>
+                        <ToolBar isLink="true"/>
                         <div className="map">
                             <MapIcon onClick={changeGameState} icon="aunt"/>
                             <MapIcon onClick={changeGameState} icon="resturant"/>
@@ -45,6 +40,7 @@ export default function Game() {
                 )
         }
     }
+    
     return (
         <>
             {render()}
