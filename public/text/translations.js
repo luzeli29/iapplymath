@@ -1,4 +1,4 @@
-let translations = {
+const translations = {
     en: {
         symbol: "en",
         start: "Start",
