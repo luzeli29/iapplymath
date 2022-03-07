@@ -25,9 +25,7 @@ const dialog = {
         //dialog_tags[0] - image tag
         //dialog_tags[1] - function tag
         intro_page: {
-            0: ["HAPPY","TEST"],
             4: ["","TO_AVATAR"],
-
         }
     }
   };
