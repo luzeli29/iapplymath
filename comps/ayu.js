@@ -10,7 +10,7 @@ export default function Ayu({size,dialogId}) {
 
     const nextLine = () => {
         //Last Line of Dialog
-        if(lineNum != dialog.length-1) {
+        if(lineNum != dialog.length) {
             setLineNum(lineNum + 1);
         }
 
@@ -42,17 +42,17 @@ export default function Ayu({size,dialogId}) {
 
     const render = () => {
         
-        const line = dialog[lineNum]
+        const line = lineNum < dialog.length ? dialog[lineNum] : null;
         
         return (
             <>
+                <button className="ayu_speech_button" onClick={() => nextLine()}><a className="ayu_speech">{line}</a></button>
+
                 <img 
+                    className="ayu"
                     src={getAyuSrc()}
                     style={{ width: size + 'px'}, {height: size + 'px'}}
                 />
-                <p>{line}</p>
-                <button onClick={() => nextLine()}> NEXT LINE</button>
-
             </>
         );
     }

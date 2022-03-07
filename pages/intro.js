@@ -9,10 +9,9 @@ export default function Intro() {
     const { start } = value.state.translations;
     return (
       <>
-        <p><b>Ayu Intro</b></p>
+        <Ayu size="256" dialogId="intro_page"/>
         <Link href={'/'}><a><b>-Back-</b></a></Link>
         <Link href={'/creator'}><a><b>-Creator-</b></a></Link>
-        <Ayu size="256" dialogId="intro_page"/>
       </>
   
     )
