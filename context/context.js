@@ -1,5 +1,6 @@
 import React, { useState,createContext, useContext } from 'react';
 import translationBank from '../public/text/translations'
+import ayuDialogBank from '../public/text/ayu_dialog'
 
 const ContextWrapper = createContext();
 
@@ -11,6 +12,8 @@ export function contextWrapper({ children }) {
     let value = {
         state: {
             translations: translationBank[lang],
+            ayuDialog: ayuDialogBank[lang],
+            ayuDialogTags: ayuDialogBank["tags"],
             lang: "en",
             name: name,
             avatar: avatar,

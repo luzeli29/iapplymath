@@ -1,6 +1,7 @@
 import React, {} from 'react';
 import {useWrapperContext} from '../context/context'
 import Link from "next/link";
+import Ayu from '../comps/ayu';
 
 export default function Intro() {
 
@@ -11,6 +12,7 @@ export default function Intro() {
         <p><b>Ayu Intro</b></p>
         <Link href={'/'}><a><b>-Back-</b></a></Link>
         <Link href={'/creator'}><a><b>-Creator-</b></a></Link>
+        <Ayu size="256" dialogId="intro_page"/>
       </>
   
     )
