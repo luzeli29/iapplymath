@@ -2,8 +2,7 @@
 const dialog = {
     en: {
         intro_page: [
-            "Hi, my name is Ayu!",
-            "Click or press enter to advance.",
+            "Hi, my name is Ayu! Click or press enter to advance.",
             "You can hover over me if you need help or encouragement.",
             //TODO: add fullscreen or remove dialog
             "For all math questions, just type your answer with your keyboard. And if you ever want to exit full screen, hit the escape key.",
@@ -13,8 +12,7 @@ const dialog = {
     },
     es: {
         intro_page: [
-            "Hola, mi nombre es Ayu y estoy aquí para ayudarte!",
-            "Por favor haga clic o presione la tecla Enter para avanzar en el juego",
+            "Hola, mi nombre es Ayu y estoy aquí para ayudarte! Por favor haga clic o presione la tecla Enter para avanzar en el juego",
             "Puedes mover el cursor sobre mí si necesitas ayuda o apoyo.",
             "Para todas las preguntas de matemáticas, simplemente escribe tu respuesta usando el teclado. Y si quieres salir de la pantalla por completo, presiona la tecla Escape.",
             "En cualquier momento durante el juego, puedes presionar el botón SALIR en la esquina superior derecha para volver al menú principal.",
@@ -25,7 +23,7 @@ const dialog = {
         //dialog_tags[0] - image tag
         //dialog_tags[1] - function tag
         intro_page: {
-            4: ["","TO_AVATAR"],
+            3: ["","TO_AVATAR"],
         }
     }
   };

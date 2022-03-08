@@ -55,17 +55,24 @@ a:hover {
 }
 
 #ayu_speech_bubble {
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 10%;
+  margin-right: 10%;
   margin-top: 15%;
   position: relative;
   background-color: var(--menu-background-color);
   padding-left: 5%;
   padding-right: 5%;
   padding-top: 2px;
-
   padding-bottom: 10px;
   border-radius: 25px;
+}
+
+#ayu_blank_bubble {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 15%;
+  position: relative;
+
 }
 
 #ayu_button {
