@@ -45,15 +45,25 @@ export default function Ayu({size,dialogId}) {
         const line = lineNum < dialog.length ? dialog[lineNum] : null;
         
         return (
-            <>
-                <button className="ayu_speech_button" onClick={() => nextLine()}><a className="ayu_speech">{line}</a></button>
-
+            <div
+                id="ayu_container" 
+            >
+                <div
+                    id="ayu_speech_bubble" 
+                    style={{width: size + 'px'}, {height: size/2 + 'px'}}
+                >
+                    <p>
+                       {line}
+                    </p>
+                    <button id="ayu_button" onClick={() => nextLine()}>
+                    </button>
+                </div>
                 <img 
-                    className="ayu"
+                    id="ayu"
                     src={getAyuSrc()}
                     style={{ width: size + 'px'}, {height: size + 'px'}}
                 />
-            </>
+            </div>
         );
     }
 
