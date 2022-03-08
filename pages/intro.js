@@ -10,8 +10,6 @@ export default function Intro() {
     return (
       <>
         <Ayu size="256" dialogId="intro_page"/>
-        <Link href={'/'}><a><b>-Back-</b></a></Link>
-        <Link href={'/creator'}><a><b>-Creator-</b></a></Link>
       </>
   
     )
