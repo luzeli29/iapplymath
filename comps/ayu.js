@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useWrapperContext} from '../context/context'
+import { useRouter } from 'next/router'
 
 export default function Ayu({size,dialogId}) {
     const value = useWrapperContext();
@@ -7,6 +8,8 @@ export default function Ayu({size,dialogId}) {
     const dialog_tags = value.state.ayuDialogTags[dialogId];
 
     const [lineNum, setLineNum] = useState(0);
+
+    const router = useRouter()
 
     const nextLine = () => {
         //Last Line of Dialog
@@ -21,6 +24,7 @@ export default function Ayu({size,dialogId}) {
                     break;
                 case "TO_AVATAR" :
                     console.log("SHOULD GO TO AVATARS")
+                    router.push("/creator")
                     break;
                 default:
                     break;
@@ -48,16 +52,23 @@ export default function Ayu({size,dialogId}) {
             <div
                 id="ayu_container" 
             >
-                <div
+                {line != null ? 
+                    <div
                     id="ayu_speech_bubble" 
                     style={{width: size + 'px'}, {height: size/2 + 'px'}}
-                >
-                    <p>
-                       {line}
-                    </p>
-                    <button id="ayu_button" onClick={() => nextLine()}>
-                    </button>
-                </div>
+                    >
+                        <p>
+                        {line}
+                        </p>
+                        <button id="ayu_button" onClick={() => nextLine()}/>
+                    </div>
+                : 
+                    <div
+                    id="ayu_blank_bubble"
+                    style={{width: size + 'px'}, {height: size/2 + 'px'}}
+                    />
+                }
+                
                 <img 
                     id="ayu"
                     src={getAyuSrc()}
