@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import ToolBar from "../comps/game/tool_bar";
-import MapIcon from '../comps/game/map_icon';
-import Resturant from '../comps/game/resturant';
-import Aunt from '../comps/game/aunt';
+import Resturant from '../comps/game/rest/resturant';
+import Aunt from '../comps/game/aunt/aunt';
+import Map from '../comps/game/map/map'
+import style from './game.module.css'
 
 export default function Game() {
 
@@ -17,24 +17,18 @@ export default function Game() {
             case "map" :
                 return (
                     <>
-                        <ToolBar isLink="true"/>
-                        <div className="map">
-                            <MapIcon onClick={changeGameState} icon="aunt"/>
-                            <MapIcon onClick={changeGameState} icon="resturant"/>
-                        </div>
+                        <Map handleSelect={changeGameState}/>
                     </>
                 )
             case "aunt" :
                 return (
                     <>
-                        <ToolBar backClick={changeGameState} isLink={false}/>
                         <Aunt/>
                     </>
                 )
             case "resturant" :
                 return (
                     <>
-                        <ToolBar backClick={changeGameState} isLink={false}/>
                         <Resturant/>
                     </>
                 )
@@ -42,9 +36,11 @@ export default function Game() {
     }
     
     return (
-        <>
+        //TODO: Change container to fixed resolution
+        //TODO: Add back button???
+        <div className={style.game_container}>
             {render()}
-        </>
+        </div>
     );
 }
  

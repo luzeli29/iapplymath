@@ -1,4 +1,3 @@
-/*----------------------- General -----------------------*/
 :root {
   --page-color: #EDBFC6;
   --font-color:#190933;
@@ -23,23 +22,23 @@ body {
   box-sizing: border-box;
 }
 
-.game_view {
-  position:relative;
-  margin-right: auto;
-  margin-left: auto;
-  width: 512px;
-  height: 512px;
-  text-align: center;
-  border: solid var(--font-color) 1px;
-}
 
-.game_container{
-  width: 100%;
-  height: 100%;
+.view_container {
+  position: relative;
+  margin: auto;
+  width: 75%;
+  height: 75vh;
 }
 
 button,
-a,
+a {
+  background: none;
+  border: none;
+  font-size: medium;
+  color: var(--font-color);
+  text-decoration: none;
+}
+
 p {
   background: none;
   border: none;
@@ -54,126 +53,8 @@ a:hover {
   text-decoration: underline;
 }
 
-#ayu_speech_bubble {
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 15%;
-  position: relative;
-  background-color: var(--menu-background-color);
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-top: 2px;
-  padding-bottom: 10px;
-  border-radius: 25px;
-}
-
-#ayu_blank_bubble {
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-top: 15%;
-  position: relative;
-
-}
-
-#ayu_button {
-  position: absolute;
+.game_container {
   width: 100%;
   height: 100%;
-  right: 0;
-  bottom: 0;
-}
-
-#ayu_button:hover {
-  text-decoration: none;
-  color: var(--font-color);
-}
-
-#ayu {
-  position: relative;
-}
-
-#ayu_container {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  justify-content: center;
-}
-
-/*----------------------- HEADER -----------------------*/
-
-.header-container {
-  width: 100%;
-  height: fit-content;
-  text-align: center;
-}
-
-.header-title {
-  font-size: 50px;
-}
-
-/*Language Select*/
-
-.language-select {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.language-select table {
-  text-align: center;
-  width: 26%;
-  margin-right: auto;
-  margin-left: auto;
-
-}
-.language-select td {
-  width: 50px;
-}
-
-/*---------------------- Game Page ---------------------*/
-
-.tool_bar{
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 30px;
-  background-color: burlywood;
-}
-/*Map Page*/
-.map{
-  width: 100%;
-  height: 100%;
-  background-image: URL("/img/map/tempMap.png");
-}
-
-.icon {
-  position: absolute;
-  width: 128px;
-  height: 128px;
-}
-
-.icon:hover {
-  transform:scale(1.5) ;
-  background-size:cover;
-}
-
-#aunt {
-  background-image: URL("/img/map/tempRest.png");
-  border: solid cyan 1px;
-  top: 80px;
-  left: 350px;
-}
-
-#resturant {
-  top: 350px;
-  left: 350px;
-  background-image: URL("/img/map/tempRest.png");
   border: solid brown 1px;
-}
-
-.mini_game_container {
-  margin-top: 30px;
-  width: 100%;
-  height: 482px;
-  border: solid brown 1px;
-
 }
