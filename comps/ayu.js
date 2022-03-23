@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useWrapperContext} from '../context/context'
 import { useRouter } from 'next/router'
+import style from './ayu.module.css'
 
 export default function Ayu({size,dialogId}) {
     const value = useWrapperContext();
@@ -50,29 +51,31 @@ export default function Ayu({size,dialogId}) {
         
         return (
             <div
-                id="ayu_container" 
+                className={style.container} 
             >
                 {line != null ? 
                     <div
-                    id="ayu_speech_bubble" 
+                    className={style.speech_bubble}
                     style={{width: size + 'px'}, {height: size/2 + 'px'}}
                     >
-                        <p>
-                        {line}
+                        <p className={style.text}>
+                            <b>
+                                {line}
+                            </b>
                         </p>
-                        <button id="ayu_button" onClick={() => nextLine()}/>
+                        <button className={style.button} onClick={() => nextLine()}/>
                     </div>
                 : 
                     <div
-                    id="ayu_blank_bubble"
+                    className={style.speech_bubble}
                     style={{width: size + 'px'}, {height: size/2 + 'px'}}
                     />
                 }
                 
                 <img 
-                    id="ayu"
+                    className={style.ayu_image}
                     src={getAyuSrc()}
-                    style={{ width: size + 'px'}, {height: size + 'px'}}
+                    style={{ width: size*1.5 + 'px'}, {height: size*1.5 + 'px'}}
                 />
             </div>
         );

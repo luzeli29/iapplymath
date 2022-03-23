@@ -1,5 +1,5 @@
 import React, {} from 'react';
-import GameLayout from './game_layout'
+import GameLayout from '../game_layout'
 
 const Resturant = () => {
 

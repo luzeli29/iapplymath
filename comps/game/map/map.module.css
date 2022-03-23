@@ -1,0 +1,28 @@
+.map{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: URL("/img/map/tempMap.png");
+}
+
+.icon {
+    position: absolute;
+    width: 128px;
+    height: 128px;
+}
+
+.icon:hover {
+    transform:scale(1.5) ;
+    background-size:cover;
+}
+
+#aunt {
+    background-image: URL("/img/map/tempRest.png");
+    border: solid cyan 1px;
+    position: relative;
+}
+
+#resturant {
+    background-image: URL("/img/map/tempRest.png");
+    border: solid brown 1px;
+}

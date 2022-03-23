@@ -3,11 +3,9 @@ const Layout = ({ children }) => {
     return ( 
         <>
             <Header/>
-                <div className="game_view">
-                    <div className="game_container">
-                        { children }
-                    </div>
-                </div>
+            <div className="view_container">
+                { children }
+            </div>
         </>
      );
 }
