@@ -1,4 +1,4 @@
-
+//TODO: rename to just dialog
 const dialog = {
     en: {
         intro_page: [

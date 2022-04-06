@@ -23,7 +23,8 @@ export default function Game() {
             case "aunt" :
                 return (
                     <>
-                        <Aunt/>
+                        <Aunt   
+                        backToMap={() => setState("map")}/>
                     </>
                 )
             case "resturant" :

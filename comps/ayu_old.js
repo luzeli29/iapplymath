@@ -3,7 +3,7 @@ import {useWrapperContext} from '../context/context'
 import { useRouter } from 'next/router'
 import style from './ayu.module.css'
 
-export default function Ayu({size,dialogId}) {
+export default function AyuOld({size,dialogId}) {
     const value = useWrapperContext();
     const dialog = value.state.ayuDialog[dialogId];
     const dialog_tags = value.state.ayuDialogTags[dialogId];
