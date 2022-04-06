@@ -1,11 +1,10 @@
 import React, {} from 'react';
-import Ayu from '../comps/ayu';
+import AyuOld from '../comps/ayu_old';
 
 export default function Index() {
     
     return (
       <>
-        <Ayu size="256" dialogId="intro_page"/>
       </>
   
     )

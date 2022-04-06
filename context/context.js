@@ -2,37 +2,52 @@ import React, { useState,createContext, useContext } from 'react';
 import translationBank from '../public/text/translations'
 import ayuDialogBank from '../public/text/ayu_dialog'
 
-const ContextWrapper = createContext();
+const Context = createContext();
 
-export function contextWrapper({ children }) {
+export default function ContextWrapper({ children }) {
     const [lang, setLang] = useState("en");
-    const [name, setName] = useState("nameless");
-    const [avatar, setAvatar] = useState();
+    const [questionNum, setQuestionNum] = useState(0);
+    const [incorrectNum, setIncorrectNum] = useState(0);
+
+    const onNext = () => {
+      setQuestionNum(questionNum+1)
+      setIncorrectNum(0)
+    }
+
+    const onIncorrect = () => {
+      setIncorrectNum(incorrectNum+1)
+    }
+
+    const onFinishQuestions = () => {
+      setQuestionNum(0)
+      setIncorrectNum(0)
+    }
 
     let value = {
         state: {
             translations: translationBank[lang],
-            ayuDialog: ayuDialogBank[lang],
-            ayuDialogTags: ayuDialogBank["tags"],
-            lang: "en",
-            name: name,
-            avatar: avatar,
+            lang: lang,
+            questionNum: questionNum,
+            incorrectNum: incorrectNum,
         },
-        setLang: setLang,
+        setLang: (newLang) => setLang(newLang),
+        onNext: () => onNext(),
+        onIncorrect: () => onIncorrect(),
+        onFinishQuestions:() =>  onFinishQuestions(),
+
     }
 
     
   
     return (
-      <ContextWrapper.Provider value={value}>
+      <Context.Provider value={value}>
         {children}
-      </ContextWrapper.Provider>
+      </Context.Provider>
     );
   }
   
 export function useWrapperContext() {
-    return useContext(ContextWrapper);
+    return useContext(Context);
 }
   
 
-export default contextWrapper;
