@@ -41,6 +41,7 @@ export default function Dialog ({stage, script, onEnd}) {
 
     //Renders the speaker screen if Ayu is the one speaking
     const AyuSpeaker = () => {
+        //TODO: Make Ayu image look better
         return (
             <div className={style.ayu_img_container}>
                 <Image
