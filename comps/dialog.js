@@ -84,7 +84,7 @@ export default function Dialog ({stage, script, onEnd}) {
                         <div className={style.speech_bubble_triangle_ayu}></div> :   
                         <></>
                     }
-                    {script[lineNum].player_speaking ? 
+                    {script[lineNum].player_speaking  && stage != "ayu"? 
                     <div className={style.speech_bubble_triangle_player}></div>:
                     <div className={style.speech_bubble_triangle_speaker}></div>}
                 </div>
