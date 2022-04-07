@@ -3,15 +3,16 @@ import {useWrapperContext} from '../context/context'
 import Link from "next/link"
 
 export default function Error() {
-  const context = useWrapperContext();
-  const { oh_no,page_not_found,click,here,to_return_home } = context.state.translations;
+  const lang = useWrapperContext().state.lang;
 
-
-    return (
-      <>
-            <h2>{oh_no + " " + page_not_found + "."}</h2>
-            <p>{click} <Link href="/"><a><b>{here.toUpperCase()}</b></a></Link> {to_return_home.toLowerCase()}.</p>
-      </>
-    )
+  return (
+    <>
+          <h2>{lang == "en" ? "Oh No! Page not found": ""}</h2>
+          <p>{lang == "en" ?  
+            "Click " + <Link href="/"><a><b>Here</b></a></Link> + " to return home": 
+            "Haz clic " + <Link href="/"><a><b>Aquí</b></a></Link> + " para regresar"}
+          </p>
+    </>
+  )
   }
   

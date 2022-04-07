@@ -1,6 +1,4 @@
 import React, { useState,createContext, useContext } from 'react';
-import translationBank from '../public/text/translations'
-import ayuDialogBank from '../public/text/ayu_dialog'
 
 const Context = createContext();
 
@@ -8,14 +6,16 @@ export default function ContextWrapper({ children }) {
     const [lang, setLang] = useState("en");
     const [questionNum, setQuestionNum] = useState(0);
     const [incorrectNum, setIncorrectNum] = useState(0);
+    const [lineNum, setLineNum] = useState(0);
+    const [gamelayoutState, setGamelayoutState] = useState("questions");
 
-    const onNext = () => {
-      setQuestionNum(questionNum+1)
+    const onNextQuestion = () => {
+      setQuestionNum(questionNum + 1)
       setIncorrectNum(0)
     }
 
-    const onIncorrect = () => {
-      setIncorrectNum(incorrectNum+1)
+    const onIncorrectQuestion = () => {
+      setIncorrectNum(incorrectNum + 1)
     }
 
     const onFinishQuestions = () => {
@@ -23,18 +23,29 @@ export default function ContextWrapper({ children }) {
       setIncorrectNum(0)
     }
 
+    const nextLine = () => {
+      setLineNum(lineNum + 1)
+    }
+
+    const endDialog = () => {
+      setLineNum(0)
+    }
+
     let value = {
         state: {
-            translations: translationBank[lang],
             lang: lang,
             questionNum: questionNum,
             incorrectNum: incorrectNum,
+            lineNum: lineNum,
+            gamelayoutState:gamelayoutState,
         },
         setLang: (newLang) => setLang(newLang),
-        onNext: () => onNext(),
-        onIncorrect: () => onIncorrect(),
+        onNextQuestion: () => onNextQuestion(),
+        onIncorrectQuestion: () => onIncorrectQuestion(),
         onFinishQuestions:() =>  onFinishQuestions(),
-
+        nextLine:() => nextLine(),
+        endDialog: () => endDialog(),
+        setGamelayoutState: (newState) => setGamelayoutState(newState),
     }
 
     
