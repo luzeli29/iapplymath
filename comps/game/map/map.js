@@ -3,7 +3,7 @@ import style from './map.module.css'
 import Image from 'next/image'
 
 export default function Map({handleSelect}) {
-
+    //TODO: faster loading for map
     return (
         <>
             <div className={style.map}>
