@@ -59,8 +59,7 @@ export default function Dialog ({stage, script, onEnd}) {
             </>
         )
     }
-
-    return ( 
+    return (    
         <>
             <button className={style.dialog_button}
                     onClick={() => handleNextLine()}>
@@ -70,7 +69,7 @@ export default function Dialog ({stage, script, onEnd}) {
                     : 
                     <Image
                         layout={"fill"}
-                        src={"/img/" + stage + "/" + + stage + "_bg.png"}/>
+                        src={"/img/aunt_house/aunt_house_bg.png"}/>
                 }
                 <div className={style.dialog_speech_container}>
                     <div className={style.speech_bubble}>
@@ -81,13 +80,15 @@ export default function Dialog ({stage, script, onEnd}) {
                         }
                         
                     </div>
+
+
                     {stage == "ayu" ? 
-                        <div className={style.speech_bubble_triangle_ayu}></div> :   
-                        <></>
+                        <div className={style.speech_bubble_triangle_ayu}></div> : 
+                        script[lineNum].player_speaking ? 
+                            <div className={style.speech_bubble_triangle_player}></div>:
+                            <div className={style.speech_bubble_triangle_speaker}></div>
                     }
-                    {script[lineNum].player_speaking  && stage != "ayu"? 
-                    <div className={style.speech_bubble_triangle_player}></div>:
-                    <div className={style.speech_bubble_triangle_speaker}></div>}
+                    
                 </div>
                 <div className={style.dialog_speaker_container}>
                     {stage == "ayu" ? <AyuSpeaker/> : <PersonSpeaker/>}

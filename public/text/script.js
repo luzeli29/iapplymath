@@ -43,8 +43,11 @@ const script = {
     ayu_relaxation: [
         [
             {
-                en:"Let’s take three big belly breaths.\nBreathe in slowly for 4, 3, 2, 1\nBreathe in slowly for 5, 4, 3, 2, 1",
+                en:"Let’s take three big belly breaths.",
                 es:"Tomemos tres respiraciones profundas.\nInhala lentamente por 4, 3, 2, 1\nInhala lentamente por 5, 4, 3, 2, 1"
+            }, {
+                en:"Breathe in slowly for 4, 3, 2, 1\nBreathe in slowly for 5, 4, 3, 2, 1",
+                es:"Inhala lentamente por 4, 3, 2, 1\nInhala lentamente por 5, 4, 3, 2, 1"
             },{
                 en:"Breathe in slowly for 5, 4, 3, 2, 1\nBreathe in slowly for 6, 5, 4, 3, 2, 1",
                 es:"Inhala lentamente por 5, 4, 3, 2, 1\nInhala lentamente por 6, 5, 4, 3, 2, 1"
@@ -59,10 +62,10 @@ const script = {
                 es:"Estiremos nuestros músculos como un gato después de una siesta relajante."
             }, {
                 en:"Slowly bring your shoulders up towards your head and push your head down into your shoulders 5, 4, 3, 2, 1.",
-                es:"Levante lentamente los hombros hacia la cabeza y empuje la cabeza hacia abajo contra los hombros 5, 4, 3, 2, 1."
+                es:"Levante lentamente los hombros hacia la cabeza y empuje la cabeza hacia abajo contra los hombros 5, 4, 3, 2, 1.",
             },{
                 en:"Now slowly let your shoulders relax and come down and back 5, 4, 3, 2, 1 and arch your back to stretch like a cat, 5, 4, 3, 2, 1.",
-                es:"Ahora deja que tus hombros se relajen lentamente y baje y retroceda 5, 4, 3, 2, 1 y arquee la espalda para estirarse como un gato, 5, 4, 3, 2, 1."
+                es:"Ahora deja que tus hombros se relajen lentamente y baje y retroceda 5, 4, 3, 2, 1 y arquee la espalda para estirarse como un gato, 5, 4, 3, 2, 1.",
             },{
                 en:"Imagine you have two juicy lemons in both your hands. Begin to squeeze all the juice out of the lemon with your hands, your arms, your legs, your toes, and even your face. Squeeze and tense up every muscle in your body for 3…2…1…",
                 es:"Imagina que tienes dos limones jugosos en ambas manos. Comienza a exprimir todo el jugo del limón con las manos, los brazos, las piernas, los dedos de los pies e incluso con la cara. Aprieta y tensiona los músculos en tu cuerpo por 3…2…1…"

@@ -26,8 +26,8 @@ body {
 .view_container {
   position: relative;
   margin: auto;
-  width: 75%;
-  height: 75vh;
+  width: 1024px;
+  height: 600px;
   border: solid black 4px;
 }
 

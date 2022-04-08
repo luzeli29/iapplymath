@@ -54,12 +54,11 @@ export default function GameLayout ({children, questions, onFinish}) {
             hintText=questions[questionNum].hint[incorrectNum-2][lang]
          }
       }
-      
+
       return (
          <>
             <p>{questions[questionNum][lang]}</p>
             <p>{hintText}</p>
-            <p>{questions[questionNum].answer}</p>
          </>
       );   
    }
@@ -123,17 +122,12 @@ export default function GameLayout ({children, questions, onFinish}) {
    }
 
    const AyuHelp = () => {
-      //Change to dialog
-      const random = Math.floor(Math.random() * script.ayu_relaxation.length)
-      console.log(random)
-      console.log(script.ayu_relaxation)
-      console.log(script.ayu_relaxation[random])
-
+      //TODO: Change to dialog randomly
       return (
          <>
             <Dialog
                stage={"ayu"} 
-               script={script.ayu_relaxation[random]} 
+               script={script.ayu_relaxation[0]} 
                onEnd={() => context.setGamelayoutState("questions")}
                />
          </>
