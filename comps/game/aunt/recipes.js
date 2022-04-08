@@ -149,12 +149,12 @@ const recipes = [
         },
         serving_of: {
             singular: {
-                en: "enchilada",
-                es: "enchilada"
+                en: "",
+                es: "",
             },
             plural: {
-                en: "enchiladas",
-                es: "enchiladas",
+                en: "people to each eat 2",
+                es: "personas para que cada una coma 2",
             }
         },
         ingredients: [

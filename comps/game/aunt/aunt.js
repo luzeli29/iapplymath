@@ -53,7 +53,7 @@ export default function Aunt ({backToMap}) {
         //TODO: possibly make simpler by only having 1 question text but change when [lang]
         return {
             en: ing.question.en  + " do we need for " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"][lang] + " " + recipe.name[lang].toLowerCase() + "?",
-            es: "¿" + ing.question.es + " necesitamos para " + " " + num + recipe.serving_of[num == 1 ? "singular" : "plural"][lang] + " " + recipe.name[lang].toLowerCase() + "?",
+            es: "¿" + ing.question.es + " necesitamos para " + " " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"][lang] + " " + recipe.name[lang].toLowerCase() + "?",
         }
     }
 
@@ -85,7 +85,7 @@ export default function Aunt ({backToMap}) {
             //TODO: remove red border from small_recipe_card_container when done
             <div className={style.small_recipe_card_container}>
                 {/* TODO: Make small recipe card look nice */}
-                <p>{recipe.name[lang]}</p>
+                <p>{recipe.name[lang] + " (" + recipe.serving_amount[lang] + ")"}</p>
                 {recipe.ingredients.map((ing) => {
                                 return(
                                     <p key={ing[lang]}>{ing.amount + " " + ing[lang]}</p>
@@ -122,9 +122,8 @@ export default function Aunt ({backToMap}) {
                         <tr>
                     {recipes.map((x) => {
                         return(
-                            <td className={style.recipe_select_box}>
+                            <td key={x.name.en} className={style.recipe_select_box}>
                                 <button 
-                                    key={x.name.en}
                                     onClick={() => {
                                         setRecipe(x);
                                         setState("recipe_card");
@@ -195,11 +194,10 @@ export default function Aunt ({backToMap}) {
     //Component where user imputs how many members in their family
     const FamileSelect = () => {
         var question = [{
-            t: {
-                en: "How many people should we cook for?",
-                es: "¿Para cuántas personas vamos a cocinar?",
-            },
+            en: "How many people should we cook for?",
+            es: "¿Para cuántas personas vamos a cocinar?",
             
+            //TODO: replace with hint component
             hint: [{
                 t: {
                     en: "Please enter a number between 1-15",
@@ -293,22 +291,16 @@ export default function Aunt ({backToMap}) {
 //TODO: move to game layout and not have it included in the questions
 const feedback = [ 
     {
-        t: {
-            en: "Excellent!",
-            es:"¡Muy bien!",
-        },
+        en: "Excellent!",
+        es:"¡Muy bien!",   
         answer: ""
     },{
-        t: {
-            en: "Correct!",
-            es:"¡Correcto!",
-        },
+        en: "Correct!",
+        es:"¡Correcto!",
         answer: ""
     },{
-        t: {
-            en: "Great Job!",
-            es:"¡Excelente trabajo!",
-        },
+        en: "Great Job!",
+        es:"¡Excelente trabajo!",
         answer: ""
     },
 ]
