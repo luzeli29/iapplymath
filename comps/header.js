@@ -8,7 +8,7 @@ export default function Header() {
     return (
         <div className={style.container}>
             <div className={style.title_container}>
-                <h1 className={style.title}>I AM in my World</h1>
+                <h1 className={style.title}>I Apply Math in my World</h1>
             </div>
 
             {/* Langauge Selector */}
