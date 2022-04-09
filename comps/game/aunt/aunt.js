@@ -7,6 +7,7 @@ import Image from 'next/image'
 import script from '../../../public/text/script';
 import recipes from './recipes';
 import SimplifyFraction from '../../simplify_fraction';
+
 //Main Aunt game
 export default function Aunt ({backToMap}) {
     //get context and lang
@@ -23,7 +24,7 @@ export default function Aunt ({backToMap}) {
 
     //generates the propper question JS object to be read by GameLayout
     //TODO: Sometimes is wrong s:(
-    const generateQuestion = (ing, num) => {
+    const generateMultiQuestion = (ing, num) => {
         var answer
         if(isNaN(ing.amount)) {
             //ing.amount is not a number
@@ -33,28 +34,20 @@ export default function Aunt ({backToMap}) {
             //ing.amount is a number
             answer = SimplifyFraction((ing.amount * num),recipe.serving_size)
         }
-        var questionText = generateQuestionText(ing,num)
         return ([{
-            en: questionText.en,
-            es: questionText.es,
+            en: ing.question.en  + " do we need for " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"][lang] + " " + recipe.name[lang].toLowerCase() + "?",
+            es: "¿" + ing.question.es + " necesitamos para " + " " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"][lang] + " " + recipe.name[lang].toLowerCase() + "?",
             answer:answer,
             //TODO: Generate hint, convert hints to array of components :(
             hint: [{
-                en: "equation",
-                es: "equation"
+                en: "(" + ing.amount + ") x (" + SimplifyFraction(num,recipe.serving_size) + ") = ???",
+                es: "(" + ing.amount + ") x (" + SimplifyFraction(num,recipe.serving_size) + ") = ???",
             },{
-                en: "equation with answer",
-                es: "equation with answer",
+                en: "(" + ing.amount + ") x (" + SimplifyFraction(num,recipe.serving_size) + ") = " + answer,
+                es: "(" + ing.amount + ") x (" + SimplifyFraction(num,recipe.serving_size) + ") = " + answer,
             }],
         }].concat(feedback[Math.floor(Math.random() * feedback.length)]))
-    }
-
-    const generateQuestionText = (ing, num) => {
-        //TODO: possibly make simpler by only having 1 question text but change when [lang]
-        return {
-            en: ing.question.en  + " do we need for " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"][lang] + " " + recipe.name[lang].toLowerCase() + "?",
-            es: "¿" + ing.question.es + " necesitamos para " + " " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"][lang] + " " + recipe.name[lang].toLowerCase() + "?",
-        }
+        //TODO: fix random due to functionality
     }
 
     //Recipe card component for recipe card screen
@@ -100,41 +93,38 @@ export default function Aunt ({backToMap}) {
     const RecipeSelect = () => {
         return(
             <>
-                <button className={style.back_to_map}onClick={() => backToMap()}><b>{lang == "en" ? 
+                <button className={style.rs_map_button}onClick={() => backToMap()}><b>{lang == "en" ? 
                     "Back to map" : 
                     "Volver al mapa"
                 }</b></button>
-                <p className={style.recipe_select_text}><b>{lang == "en" ? 
-                    "Welcome to Tía María kitchen!" : 
-                    "¡Bienvenidos a la cocina de Tía María!"
-                }</b></p>
-                <p className={style.recipe_select_text}><b>{lang == "en" ? 
-                    "Let’s go over a couple instructions on how to create a delicious meal for you and our family!" : 
-                    "¡Repasemos un par de instrucciones sobre cómo crear una comida deliciosa para ti y nuestra familia!"
-                }</b></p>
-                <p className={style.recipe_select_text}><b>{lang == "en" ? 
-                    "Choose the recipe you’d like to try making" : 
-                    "Elige la receta que te gustaría intentar hacer:"
-                }</b></p>
 
-                <table className={style.recipe_select_table}>
+                <div className={style.rs_text_container}>
+                    <p className={style.rs_text}><b>{lang == "en" ? 
+                        "Welcome to Tía María kitchen!" : 
+                        "¡Bienvenidos a la cocina de Tía María!"
+                    }</b></p>
+                    <p className={style.rs_text}><b>{lang == "en" ? 
+                        "Choose the recipe you’d like to try making" : 
+                        "Elige la receta que te gustaría intentar hacer:"
+                    }</b></p>
+                </div>
+
+                <table className={style.rs_table}>
                     <tbody>
                         <tr>
                     {recipes.map((x) => {
                         return(
-                            <td key={x.name.en} className={style.recipe_select_box}>
+                            <td key={x.name.en} className={style.rs_col}>
                                 <button 
                                     onClick={() => {
                                         setRecipe(x);
                                         setState("recipe_card");
                                     }}>
-                                        <div className={style.center}>
-                                        <Image
-                                            height={150}
-                                            width={150}
-
-                                            src="/img/aunt/tempRecipe.png"
-                                        />
+                                        <div className={style.rs_image}>
+                                            <Image
+                                                layout="fill"
+                                                src={"/img/aunt_house/recipes/"+x.path+ ".png"}
+                                            />
                                         </div>
                                 </button>
                                 </td>
@@ -149,30 +139,32 @@ export default function Aunt ({backToMap}) {
     const GameScreen = ({questionType,onFinish}) => {
         //Generate questions to asked
         var questions = [];
+        //TODO: add basic ing count question
         if(questionType == "basic") {
             //basic questions
             recipe.set_questions.map((x) => {
                 if(x[0] == -1) {
                     //do question on every ingredient with given multiple
                     recipe.ingredients.map((ing) => {
-                        questions = questions.concat(generateQuestion(ing, x[1]))
+                        questions = questions.concat(generateMultiQuestion(ing, x[1]))
                     })
                 } else {
                     //do question with given ing and multiple
-                    questions = questions.concat(generateQuestion(recipe.ingredients[x[0]], x[1]))
+                    questions = questions.concat(generateMultiQuestion(recipe.ingredients[x[0]], x[1]))
                 }
                 //goes through every ingredient for every multiple
             })
         } else {
+            //TODO: remove this if statement and make better
             //family questions
             recipe.family_questions.map((x) => {
                 if(x == -1) {
                     //do question on every ingredient
                     recipe.ingredients.map((ing) => {
-                        questions = questions.concat(generateQuestion(ing, familySize))
+                        questions = questions.concat(generateMultiQuestion(ing, familySize))
                     })
                 } else {
-                    questions = questions.concat(generateQuestion(recipe.ingredients[x], familySize))
+                    questions = questions.concat(generateMultiQuestion(recipe.ingredients[x], familySize))
 
                 }
             })
@@ -280,7 +272,7 @@ export default function Aunt ({backToMap}) {
             return(
                 <Dialog 
                     stage={"aunt_house"} 
-                    scriptId={"aunt_outro"} 
+                    script={script.aunt_outro} 
                     onEnd={() => setState("end_choice")}/>)
                     
         case "end_choice" : //Screen where user can continue to play aunt or go to map

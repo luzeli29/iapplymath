@@ -3,12 +3,12 @@
     margin: auto;
     width: 100%;
     height: 100%;
-    background-image: URL("/img/map/MapBackground.png");
+    background-color: #6B937D;
 }
 
 .icon {
-    width: 175px;
-    height: 175px;
+    width: 150px;
+    height: 150px;
     position: relative;
 }
 

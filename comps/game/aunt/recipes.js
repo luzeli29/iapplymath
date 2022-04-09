@@ -4,6 +4,7 @@ const recipes = [
             en: "Carrot-Orange Juice",
             es: "Jugo de zanahoria y naranja"
         },
+        path: "o_c_juice",
         instructions: {
             en:"Blend the oranges and the carrots in a blender.",
             es:"Mezcle las naranjas y las zanahorias en la licuadora.",
@@ -15,11 +16,11 @@ const recipes = [
         },
         serving_of: {
             singular: {
-                en: "cup",
+                en: "cup of",
                 es: "vaso"
             },
             plural: {
-                en: "cups",
+                en: "cups of",
                 es: "vasosc",
             }
         },
@@ -51,6 +52,7 @@ const recipes = [
             en: "Tomatillo sauce and tortilla chips",
             es: "Salsa de tomatillo con chips de tortilla",
         },
+        path:"tomatillo_chips",
         instructions: {
             en:"Put ingredients for the sauce in a blender. Pour the tomatillo sauce in a bowl with tortilla chips.",
             es:"Ponga todos los ingredientes para la salsa en una licuadora.",
@@ -62,11 +64,11 @@ const recipes = [
         },
         serving_of: {
             singular: {
-                en: "serving",
+                en: "serving of",
                 es: "porcione"
             },
             plural: {
-                en: "servings",
+                en: "servings of",
                 es: "porciones",
             }
         },
@@ -138,6 +140,7 @@ const recipes = [
             en: "Black bean and Sweet Potato Enchilada",
             es: "Enchilada de Frijol Negro y Camote para Hacer",
         },
+        path: "enchilada",
         instructions: {
             en:"Fill the tortillas with mashed black beans and sweet potatoes then roll up each tortilla into a singular tube. Pour the tomatillo sauce on top of the tortillas and then bake for 30 minutes at 350 degrees.",
             es:"Rellene las tortillas con puré de frijoles negros y batatas, luego enrolle cada tortilla en forma de tubito. Póngale la salsa de tomatillo encima de las tortillas y luego hornee por 30 minutos a 350 grados.",
@@ -210,6 +213,7 @@ const recipes = [
             en: "Fruit Salad",
             es: "Ensalada de Frutas",
         },
+        path:"fruit_salad",
         instructions: {
             en:"Cut the fruit into small pieces and serve in a bowl.",
             es:"Cortar la fruta en pedazos pequeños y servir en un bol.",

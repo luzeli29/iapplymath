@@ -1,17 +1,19 @@
-.recipe_select_table {
+.rs_table {
     margin: auto;
     justify-content: center;
     align-items: center;
 }
 
-.recipe_select_box {
-    width: 170px;
-    height: 170px;
+.rs_col {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100px;
+    height: 100px;
     justify-content: center;
     align-items: center;
 }
 
-.back_to_map {
+.rs_map_button {
     width: 100%;
     height: 10%;
 }
@@ -21,17 +23,25 @@
     text-align: center;
 }
 
-.recipe_select_box:hover {
+.rs_col:hover {
     transform:scale(1.2) ;
     background-size:cover;
 }
 
-.center{
-    margin: 10px;
-    width: 150px;
-    height: 150px;
-    position: relative;
+.rs_text_container {
+    padding-top: 10%;
+    padding-bottom: 10%;
 
+    width: 100%;
+    text-align: center;
+}
+
+.rs_image{
+
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    position: relative;
 }
 
 .small_recipe_card_container {

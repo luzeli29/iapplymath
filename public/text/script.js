@@ -44,16 +44,16 @@ const script = {
         [
             {
                 en:"Let’s take three big belly breaths.",
-                es:"Tomemos tres respiraciones profundas.\nInhala lentamente por 4, 3, 2, 1\nInhala lentamente por 5, 4, 3, 2, 1"
+                es:"Tomemos tres respiraciones profundas."
             }, {
-                en:"Breathe in slowly for 4, 3, 2, 1\nBreathe in slowly for 5, 4, 3, 2, 1",
-                es:"Inhala lentamente por 4, 3, 2, 1\nInhala lentamente por 5, 4, 3, 2, 1"
+                en:"Breathe in slowly for 4, 3, 2, 1\nBreathe out slowly for 5, 4, 3, 2, 1",
+                es:"Inhala lentamente por 4, 3, 2, 1\Exhala lentamente por 5, 4, 3, 2, 1"
             },{
-                en:"Breathe in slowly for 5, 4, 3, 2, 1\nBreathe in slowly for 6, 5, 4, 3, 2, 1",
-                es:"Inhala lentamente por 5, 4, 3, 2, 1\nInhala lentamente por 6, 5, 4, 3, 2, 1"
+                en:"Breathe in slowly for 5, 4, 3, 2, 1\nBreathe out slowly for 6, 5, 4, 3, 2, 1",
+                es:"Inhala lentamente por 5, 4, 3, 2, 1\Exhala lentamente por 6, 5, 4, 3, 2, 1"
             },{
-                en:"Breathe in slowly for 6, 5, 4, 3, 2, 1\nBreathe in slowly for 7, 6, 5, 4, 3, 2, 1",
-                es:"Inhala lentamente por 6, 5, 4, 3, 2, 1\nInhala lentamente por 7, 6, 5, 4, 3, 2, 1"
+                en:"Breathe in slowly for 6, 5, 4, 3, 2, 1\nBreathe out slowly for 7, 6, 5, 4, 3, 2, 1",
+                es:"Inhala lentamente por 6, 5, 4, 3, 2, 1\Exhala lentamente por 7, 6, 5, 4, 3, 2, 1"
             }
         ],
         [

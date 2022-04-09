@@ -5,21 +5,10 @@ import style from './game_layout.module.css'
 import Image from 'next/image'
 import Dialog from '../dialog';
 import script from '../../public/text/script';
-/*
-Things GameLayout should get
--Game data 
-   - game component recipe, interactive menu)
-   - question
-   - how many wrong
-   - stage
--onChange -> how the game changed when submiting number
-Things GameLayout should show
--game component
--Ayu
--Number Pad
--Question 
-*/
+
 export default function GameLayout ({children, questions, onFinish}) {
+   //TODO: Handle edge cases
+
    //get context
    const context = useWrapperContext()
    //get needed data from context

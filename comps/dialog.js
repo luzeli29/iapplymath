@@ -4,6 +4,8 @@ import {useWrapperContext} from '../context/context'
 import Image from 'next/image'
 
 export default function Dialog ({stage, script, onEnd}) {
+    //TODO: HANDLE EDGE CASES
+
     //get context, lang and line number from context
     const context = useWrapperContext()
     const lang = context.state.lang
@@ -55,8 +57,20 @@ export default function Dialog ({stage, script, onEnd}) {
     //TODO: FINISH SPEAKER GRAPHIC
     const PersonSpeaker = () => {
         return (
-            <>
-            </>
+            <div className={style.speaker_img_container}>
+                <div className={style.player_img}>
+                    <Image
+                        priority={"true"}
+                        layout={"fill"}
+                        src={"/img/aunt_house/aunt.png"}/> 
+                </div>
+                <div className={style.speaker_img}>
+                    <Image
+                        priority={"true"}
+                        layout={"fill"}
+                        src={"/img/aunt_house/aunt.png"}/> 
+                </div>
+            </div>
         )
     }
     return (    

@@ -9,8 +9,7 @@ export default function Index() {
       <Dialog
         stage={"ayu"}
         script={Script.game_intro}
-        //TODO: push to /creator when ready to show off more website
-        onEnd={() => router.push('/') }/>
+        onEnd={() => router.push('/creator') }/>
     </>
 
   )
