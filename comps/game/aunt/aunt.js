@@ -139,7 +139,12 @@ export default function Aunt ({backToMap}) {
     const GameScreen = ({questionType,onFinish}) => {
         //Generate questions to asked
         var questions = [];
-        //TODO: add basic ing count question
+        questions[0] = {
+            en:"How many ingredients do we need to make " +  recipe.name.en.toLowerCase() + "?",
+            es:"¿Cuántos ingredientes necesitamos para hacer " +  recipe.name.es.toLowerCase() + "?",
+            answer: recipe.ingredients.length
+        }
+        questions[1] = feedback[0]
         if(questionType == "basic") {
             //basic questions
             recipe.set_questions.map((x) => {
