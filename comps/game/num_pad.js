@@ -97,7 +97,7 @@ export default function NumPad ({question}) {
 
       if (correctAnswer == "") {
          return (
-         <button 
+         <button
             onClick={() => handleButtonPress("✓")}
             className={style.continue_button}>
             {lang == "en" ? "Continue" : "Continuar"}

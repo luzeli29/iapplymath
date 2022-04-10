@@ -4,7 +4,7 @@ import Image from 'next/image'
 import {useWrapperContext} from '../../../context/context'
 
 export default function Map({handleSelect}) {
-    const context = useWrapperContext()
+    const lang = useWrapperContext().state.lang
     const [hoveringOn, setHoveringOn] = useState("");
 
     const onMouseEnter = (state) => {
@@ -13,10 +13,13 @@ export default function Map({handleSelect}) {
   
     const onMouseLeave = () => setHoveringOn("");
   
+    //Tag to show nametag of building player is hovering on
+    //TODO: Finish nametag
     const nameTag = () => {
-        console.log(buildings[hoveringOn][context.state.lang])
         return (
-            <p>{buildings[hoveringOn][context.state.lang]}</p>
+            <>
+                {/*<p>{buildings[hoveringOn][lang]}</p>*/}
+            </>
         )
     }
 
@@ -24,20 +27,44 @@ export default function Map({handleSelect}) {
         <>
             <div className={style.map}>
                 {hoveringOn == "" ? <></> : nameTag()}
-                <button onClick={() => handleSelect("aunt")} 
-                        className={style.icon} id={style.aunt}
+
+                <button onClick={() => handleSelect("aunt_house")} 
+                        className={style.icon_button} id={style.aunt_house}
                         onMouseEnter={() => onMouseEnter("aunt_house")}
                         onMouseLeave={() => onMouseLeave()}> 
                     <Image 
                         layout={"fill"}
-                        src={"/img/map/AuntHouse.png"}/> 
+                        priority={true}
+                        src={"/img/map/aunt_house.png"}/> 
                 </button>
 
-                <button onClick={() => handleSelect("resturant")} className={style.icon} id={style.resturant}> 
+                <button onClick={() => handleSelect("resturant")} 
+                        className={style.icon_button} 
+                        id={style.resturant}
+                        onMouseEnter={() => onMouseEnter("resturant")}
+                        onMouseLeave={() => onMouseLeave()}>
                     <Image 
-                            layout={"fill"}
-                            src={"/img/map/Restaurant.png"}/> 
+                        layout={"fill"}
+                        priority={true}
+                        src={"/img/map/resturant.png"}/> 
                 </button>
+
+                <div
+                    className={style.icon} 
+                    id={style.home}>
+                        <Image 
+                        layout={"fill"}
+                        priority={true}
+                        src={"/img/map/home.png"}/>
+                </div>
+                <div
+                    className={style.icon} 
+                    id={style.grocery_store}>
+                        <Image 
+                        layout={"fill"}
+                        priority={true}
+                        src={"/img/map/grocery_store.png"}/>
+                </div>
             </div>
         </>
     );
@@ -46,6 +73,6 @@ export default function Map({handleSelect}) {
 const buildings = {
     aunt_house: {
         en: "Aunt's House",
-        es: "La casa de la tía"}
+        es: "La Casa de la Tía"}
 }
  

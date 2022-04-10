@@ -47,7 +47,7 @@ export default function Dialog ({stage, script, onEnd}) {
         return (
             <div className={style.ayu_img_container}>
                 <Image
-                    priority={"true"}
+                    priority={true}
                     layout={"fill"}
                     src={"/img/ayu/ayu.png"}/> 
             </div>
@@ -60,13 +60,13 @@ export default function Dialog ({stage, script, onEnd}) {
             <div className={style.speaker_img_container}>
                 <div className={style.player_img}>
                     <Image
-                        priority={"true"}
+                        priority={true}
                         layout={"fill"}
                         src={"/img/aunt_house/aunt.png"}/> 
                 </div>
                 <div className={style.speaker_img}>
                     <Image
-                        priority={"true"}
+                        priority={true}
                         layout={"fill"}
                         src={"/img/aunt_house/aunt.png"}/> 
                 </div>
@@ -82,6 +82,7 @@ export default function Dialog ({stage, script, onEnd}) {
                     </>
                     : 
                     <Image
+                        priority={true}
                         layout={"fill"}
                         src={"/img/aunt_house/aunt_house_bg.png"}/>
                 }

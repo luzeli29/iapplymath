@@ -122,6 +122,7 @@ export default function Aunt ({backToMap}) {
                                     }}>
                                         <div className={style.rs_image}>
                                             <Image
+                                                priority={true}
                                                 layout="fill"
                                                 src={"/img/aunt_house/recipes/"+x.path+ ".png"}
                                             />
@@ -227,7 +228,13 @@ export default function Aunt ({backToMap}) {
                 onFinish={() => {
                     setState("family_game")
                     return(<></>)}}>
-                {/*TODO: Create Aunt component */}
+                <div className={style.fs_aunt_container}>
+                    <Image
+                        priority={true}
+                        layout="fill"
+                        src={"/img/aunt_house/aunt.png"}
+                    />
+                </div>
             </GameLayout>
             
         )
