@@ -10,6 +10,13 @@
     border: solid black 1px;
 }
 
+.question_text_container {
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    height: 70%;
+}
+
 .numpad_container {
     width: 55%;
     height: 45%;

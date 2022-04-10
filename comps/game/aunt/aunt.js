@@ -142,7 +142,13 @@ export default function Aunt ({backToMap}) {
         questions[0] = {
             en:"How many ingredients do we need to make " +  recipe.name.en.toLowerCase() + "?",
             es:"¿Cuántos ingredientes necesitamos para hacer " +  recipe.name.es.toLowerCase() + "?",
-            answer: recipe.ingredients.length
+            answer: recipe.ingredients.length,
+            hints: [
+                {
+                    en: "Count all the ingredients.",
+                    es: "Cuenta todos los ingredientes",
+                }
+            ]
         }
         questions[1] = feedback[0]
         if(questionType == "basic") {
