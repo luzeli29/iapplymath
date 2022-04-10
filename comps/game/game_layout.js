@@ -54,23 +54,25 @@ export default function GameLayout ({children, questions, onFinish}) {
 
    const Ayu = () => {
       return (
-         <> 
-            <div className={style.ayu_speech_bubble}>
+         <div className={style.ayu_container}> 
+            <div className={style.ayu_speech_bubble_container}>
                {isHovering ? 
-                  <>
+                  <div className={style.ayu_speech_bubble}>
+                     <div className={style.ayu_speech_bubble_triangle} > </div>
                      <p className={style.speech_bubble_text}>{script.ayu_affermations[random][lang]}</p>
-                  </> : <></>}
+                  </div> : <></>}
             </div>
             
             <div className={style.ayu_image_container}>
                <button onClick={() => {context.setGamelayoutState("ayu")}}>
                   <Image
+                     priority={true}
                      layout={"fill"}
                      src={"/img/ayu/ayu.png"}/>
                </button>
             </div>
              
-         </>
+         </div>
      )
    }
 
@@ -98,7 +100,7 @@ export default function GameLayout ({children, questions, onFinish}) {
                      />
                   </td>
 
-                  <td className={style.ayu_container}
+                  <td className={style.ayu_block}
                      onMouseEnter={onMouseEnter}
                      onMouseLeave={onMouseLeave}>
                      <Ayu/>  

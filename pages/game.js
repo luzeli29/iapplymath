@@ -20,7 +20,7 @@ export default function Game() {
                         <Map handleSelect={changeGameState}/>
                     </>
                 )
-            case "aunt" :
+            case "aunt_house" :
                 return (
                     <>
                         <Aunt   
