@@ -1,7 +1,6 @@
-import Head from "next/head";
+import React, {useState} from 'react';
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { useState } from 'react'
 
 
 const data = [
@@ -18,7 +17,8 @@ const data = [
 ];
 
 
-export default function creator() {
+export default function Creator() {
+
   const [num, setNum] = useState(0)
   function handleClick() {
     setNum(num + 1)
