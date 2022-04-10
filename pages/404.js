@@ -6,6 +6,7 @@ export default function Error() {
   const lang = useWrapperContext().state.lang;
 
   return (
+    //TODO: Fix Link
     <>
           <h2>{lang == "en" ? "Oh No! Page not found": ""}</h2>
           <p>{lang == "en" ?  
