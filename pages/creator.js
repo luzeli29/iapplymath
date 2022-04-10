@@ -8,12 +8,12 @@ const data = [
   {
     id: "1",
     key: "1",
-    img: "/hair1.png"
+    img: "/img/hair1.png"
   },
   {
     id: "2",
     key: "2",
-    img: "/hair2.png"
+    img: "/img/hair2.png"
   }
 ];
 
@@ -28,7 +28,7 @@ export default function creator() {
     <div className={styles.container}>
       <div className={styles.overlapGrid}>
         <Image className = {styles.face}
-          src={"/face.png"}
+          src={"/img/face.png"}
           layout="responsive"
           id = "face"
           width = {50}
