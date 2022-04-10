@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-
+import {useWrapperContext} from '../context/context'
+import { useRouter } from 'next/router'
 
 const data = [
   {
@@ -18,10 +19,22 @@ const data = [
 
 
 export default function Creator() {
+  //get the site context and lang
+  const context = useWrapperContext()
+  const lang = context.state.lang
+
+  const router = useRouter();
 
   const [num, setNum] = useState(0)
+
   function handleClick() {
     setNum(num + 1)
+  }
+
+  //This is called when the player is done creating
+  //Should handle anything to be done in order to use avatar in game
+  const handleFinishAvatar = () => {
+    router.push('/game')
   }
 
   return (
@@ -45,6 +58,8 @@ export default function Creator() {
       </div>
       <button className = {styles.button} onClick={handleClick}>Hair Style ({num%2})</button>
 
+      {/* TODO: Translate buttons */}
+      <button onClick={() => handleFinishAvatar()}>Done</button>
       
     </div>
   );
