@@ -45,10 +45,10 @@ export default function GameLayout ({children, questions, onFinish}) {
       }
 
       return (
-         <>
+         <div className={style.question_text_container}>
             <p>{questions[questionNum][lang]}</p>
             <p>{hintText}</p>
-         </>
+         </div>
       );   
    }
 
