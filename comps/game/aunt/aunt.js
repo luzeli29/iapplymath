@@ -113,7 +113,7 @@ export default function Aunt ({backToMap}) {
                         "¡Bienvenidos a la cocina de Tía María!"
                     }</b></p>
                     <p className={style.rs_text}><b>{lang == "en" ? 
-                        "Choose the recipe you’d like to try making" : 
+                        "Choose the recipe you’d like to try making:" : 
                         "Elige la receta que te gustaría intentar hacer:"
                     }</b></p>
                 </div>
