@@ -36,8 +36,9 @@ export default function Map({handleSelect}) {
                         layout={"fill"}
                         priority={true}
                         src={"/img/map/aunt_house.png"}/> 
-                </button>
 
+                </button>
+                
                 <button onClick={() => handleSelect("resturant")} 
                         className={style.icon_button} 
                         id={style.resturant}
@@ -54,12 +55,12 @@ export default function Map({handleSelect}) {
                     id={style.home}>
                         <img className={style.icon} 
                     id={style.grocery_store}
-                    src={"/img/map/home.png"}/>
+                    src={"img/map/home.png"}/>
                 </div>
                 
                 <img className={style.icon} 
                     id={style.grocery_store}
-                    src={"/img/map/grocery_store.png"}/>
+                    src={"img/map/grocery_store.png"}/>
                 
             </div>
         </>
