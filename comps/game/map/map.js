@@ -35,7 +35,7 @@ export default function Map({handleSelect}) {
                     <Image 
                         layout={"fill"}
                         priority={true}
-                        src={"/img/map/aunt_house.png"}/> 
+                        src={"/img/map/home.png"}/> 
 
                 </button>
                 
@@ -55,7 +55,7 @@ export default function Map({handleSelect}) {
                     id={style.home}>
                         <img className={style.icon} 
                     id={style.grocery_store}
-                    src={"/img/map/resturant.png"}/>
+                    src={"/img/map/home.png"}/>
                 </div>
                 
                 <img className={style.icon} 
