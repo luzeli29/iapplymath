@@ -8,11 +8,8 @@ const script = {
             en:"You can hover over me if you need help or encouragement.",
             es:"Puedes mover el cursor sobre mí si necesitas ayuda o apoyo.",
         },{
-            en:"For all math questions, just type your answer with your keyboard. And if you ever want to exit full screen, hit the escape key.",
-            es:"Para todas las preguntas de matemáticas, simplemente escribe tu respuesta usando el teclado. Y si quieres salir de la pantalla por completo, presiona la tecla Escape.",
-        },{
-            en:"At any time during the game, press the QUIT button in the top right corner to return to the Main Menu.",
-            es:"En cualquier momento durante el juego, puedes presionar el botón SALIR en la esquina superior derecha para volver al menú principal.",
+            en:"For all math questions, just type your answer with your keyboard.",
+            es:"Para todas las preguntas de matemáticas, simplemente escribe tu respuesta usando el teclado.",
         },
     ],
 
