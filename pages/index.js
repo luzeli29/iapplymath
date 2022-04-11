@@ -13,7 +13,7 @@ export default function Index() {
       <Dialog
         stage={"ayu"}
         script={Script.game_intro}
-        onEnd={() => router.push('/creator') }/>
+        onEnd={() => router.push('/avatar_select') }/>
     </>
 
   )
