@@ -52,19 +52,15 @@ export default function Map({handleSelect}) {
                 <div
                     className={style.icon} 
                     id={style.home}>
-                        <Image 
-                        layout={"fill"}
-                        priority={true}
-                        src={"/img/map/home.png"}/>
+                        <img className={style.icon} 
+                    id={style.grocery_store}
+                    src={"/img/map/home.png"}/>
                 </div>
-                <div
-                    className={style.icon} 
-                    id={style.grocery_store}>
-                        <Image 
-                        layout={"fill"}
-                        priority={true}
-                        src={"/img/map/grocery_store.png"}/>
-                </div>
+                
+                <img className={style.icon} 
+                    id={style.grocery_store}
+                    src={"/img/map/grocery_store.png"}/>
+                
             </div>
         </>
     );
