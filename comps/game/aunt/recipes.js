@@ -114,11 +114,11 @@ const recipes = [
                     es: "Cuántas cucharadas de jugo de limón"
                 },
                 amount: 1 
-            },{
+            },/*{
                 en: "Jalapeño or serrano peppers for spice (you can use whole for more heat if you want)",
                 es: "Chiles jalapeños o serranos para especias (dependiendo de qué tan picante lo deseas)",
                 amount: "1-2" 
-            },{
+            },*/{
                 en: "bag of tortilla chips",
                 es: "bolsa de chips de tortilla ",
                 question: {
@@ -126,11 +126,11 @@ const recipes = [
                     es: "Cuántas bolsas de chips de tortilla"
                 },
                 amount: 1 
-            },{
+            },/*{
                 en: "Salt and spices to taste",
                 es: "Sal y especias al gusto",
                 amount: "" 
-            }
+            }*/
             
         ],
         set_questions: [[3,6],[3,3],[1,3],[4,3],[2,3]],
