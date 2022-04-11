@@ -92,7 +92,7 @@ export default function Aunt ({backToMap}) {
     //Recipe selection component... allows user to select which recipe they want
     const RecipeSelect = () => {
         return(
-            <>
+            <>  
                 <button className={style.rs_map_button}onClick={() => backToMap()}><b>{lang == "en" ? 
                     "Back to map" : 
                     "Volver al mapa"

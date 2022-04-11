@@ -62,7 +62,7 @@ export default function Dialog ({stage, script, onEnd}) {
                     <Image
                         priority={true}
                         layout={"fill"}
-                        src={"/img/aunt_house/aunt.png"}/> 
+                        src={"/img/avatar/pre_made/A" + context.state.avatar + "_back.png"}/> 
                 </div>
                 <div className={style.speaker_img}>
                     <Image

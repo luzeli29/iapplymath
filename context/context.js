@@ -4,6 +4,8 @@ const Context = createContext();
 
 export default function ContextWrapper({ children }) {
     const [lang, setLang] = useState("en");
+    const [avatar, setAvatar] = useState("1");
+
     const [questionNum, setQuestionNum] = useState(0);
     const [incorrectNum, setIncorrectNum] = useState(0);
     const [lineNum, setLineNum] = useState(0);
@@ -38,8 +40,10 @@ export default function ContextWrapper({ children }) {
             incorrectNum: incorrectNum,
             lineNum: lineNum,
             gamelayoutState:gamelayoutState,
+            avatar:avatar,
         },
         setLang: (newLang) => setLang(newLang),
+        setAvatar: (newAvatar) => setAvatar(newAvatar),
         onNextQuestion: () => onNextQuestion(),
         onIncorrectQuestion: () => onIncorrectQuestion(),
         onFinishQuestions:() =>  onFinishQuestions(),
