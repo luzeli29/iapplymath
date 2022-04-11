@@ -49,7 +49,7 @@ export default function Map({handleSelect}) {
                         priority={true}
                         src={"/img/map/resturant.png"}/> 
                 </button>
-
+                {/*
                 <div
                     className={style.icon} 
                     id={style.home}>
@@ -60,7 +60,7 @@ export default function Map({handleSelect}) {
                 
                 <img className={style.icon} 
                     id={style.grocery_store}
-                    src={"/img/map/grocery_store.png"}/>
+                    src={"/img/map/grocery_store.png"}/> */}
             </div>
         </>
     );
