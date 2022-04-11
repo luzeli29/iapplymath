@@ -149,19 +149,20 @@ export default function Aunt ({backToMap}) {
     const GameScreen = ({questionType,onFinish}) => {
         //Generate questions to asked
         var questions = [];
-        questions[0] = {
-            en:"How many ingredients do we need to make " +  recipe.name.en.toLowerCase() + "?",
-            es:"¿Cuántos ingredientes necesitamos para hacer " +  recipe.name.es.toLowerCase() + "?",
-            answer: recipe.ingredients.length,
-            hints: [
-                {
-                    en: "Count all the ingredients.",
-                    es: "Cuenta todos los ingredientes",
-                }
-            ]
-        }
-        questions[1] = feedback[0]
+        
         if(questionType == "basic") {
+            questions[0] = {
+                en:"How many ingredients do we need to make " +  recipe.name.en.toLowerCase() + "?",
+                es:"¿Cuántos ingredientes necesitamos para hacer " +  recipe.name.es.toLowerCase() + "?",
+                answer: recipe.ingredients.length,
+                hints: [
+                    {
+                        en: "Count all the ingredients.",
+                        es: "Cuenta todos los ingredientes",
+                    }
+                ]
+            }
+            questions[1] = feedback[0]
             //basic questions
             recipe.set_questions.map((x) => {
                 if(x[0] == -1) {
@@ -253,12 +254,13 @@ export default function Aunt ({backToMap}) {
     const EndChoice = () => {
         return (
             <>
-                <table>
-                    <tbody>
-                        <tr>
+                <img className={style.background_image} src="/img/aunt_house/aunt_house_bg.png"/>
+                <table className={style.end_container}>
+                    <tbody >
+                        <tr >
                             <td>
-                                <button onClick={() => backToMap()}>Map</button>
-                                <button onClick={() => setState("recipe_select")}>Recipe Select</button>
+                                <button className={style.end_button} onClick={() => backToMap()}>Map</button>
+                                <button className={style.end_button} onClick={() => setState("recipe_select")}>Recipe Select</button>
                             </td>
                         </tr>
                     </tbody>
