@@ -53,20 +53,21 @@ export default function Aunt ({backToMap}) {
     //Recipe card component for recipe card screen
     const RecipeCard = () => {
         return(
-            //TODO: remove red border from recipe_card_container when done
             <div className={style.recipe_card_container}>
+                <img className={style.recipe_card_img}src="/img/aunt_house/recipe_card.png"/>
 
-                {/* TODO: Make small recipe card look nice */}
-                <p>{recipe.name[lang]}</p>
-                <p>{lang == "en" ?"Instructions: " : "Instrucciones: "}{recipe.instructions[lang]}</p>
-                {recipe.ingredients.map((ing) => {
-                    return(
-                    <p key={ing[lang]}>
-                        {ing.amount == "" ? ing[lang] : ing.amount + " " + ing[lang]}
-                    </p>);})}
-
-                {/* TODO: Translate Cook in spanish */}
-                <button onClick={() => setState("basic_game")}>{lang == "en" ? "Cook!" : "Cook! but in spanish"}</button>
+                <div className={style.recipe_card_text_container}>
+                    <p className={style.recipe_card_text} >{recipe.name[lang] + " - " + recipe.serving_amount[lang]}</p>
+                    {recipe.ingredients.map((ing) => {
+                        return(
+                        <p key={ing[lang]} className={style.recipe_card_text}>
+                            {ing.amount == "" ? ing[lang] : ing.amount + " " + ing[lang]}
+                        </p>);})}
+                </div>
+                <button 
+                    onClick={() => setState("basic_game")}
+                    className={style.recipe_card_button}> <b>
+                    {lang == "en" ? "Cook!" : "¡Cocinar!"}</b></button>
 
             </div>
         )
@@ -75,15 +76,22 @@ export default function Aunt ({backToMap}) {
     //Small recipe card component to be shown in GameLayout
     const SmallRecipeCard = () => {
         return(
+
             //TODO: remove red border from small_recipe_card_container when done
             <div className={style.small_recipe_card_container}>
-                {/* TODO: Make small recipe card look nice */}
-                <p>{recipe.name[lang] + " (" + recipe.serving_amount[lang] + ")"}</p>
-                {recipe.ingredients.map((ing) => {
-                                return(
-                                    <p key={ing[lang]}>{ing.amount + " " + ing[lang]}</p>
-                                );
-                })}
+                <img className={style.small_recipe_card_img}src="/img/aunt_house/recipe_card.png"/>
+                <div className={style.small_recipe_card_text_container}>
+                    {/* TODO: Make small recipe card look nice */}
+                    <p className={style.small_recipe_card_text}>{recipe.name[lang]}</p>
+                    <p className={style.small_recipe_card_text}>{"(" + recipe.serving_amount[lang] + ")"}</p>
+
+                    {recipe.ingredients.map((ing) => {
+                                    return(
+                                        <p className={style.small_recipe_card_text} key={ing[lang]}>{ing.amount + " " + ing[lang]}</p>
+                                    );
+                    })}
+                </div>
+                
 
             </div>
         )
@@ -92,7 +100,8 @@ export default function Aunt ({backToMap}) {
     //Recipe selection component... allows user to select which recipe they want
     const RecipeSelect = () => {
         return(
-            <>  
+            <div className={style.recipe_select_container}>  
+                <img className={style.background_image} src="/img/aunt_house/aunt_house_bg.png"/>
                 <button className={style.rs_map_button}onClick={() => backToMap()}><b>{lang == "en" ? 
                     "Back to map" : 
                     "Volver al mapa"
@@ -123,7 +132,8 @@ export default function Aunt ({backToMap}) {
                                         <div className={style.rs_image}>
                                             <Image
                                                 priority={true}
-                                                layout="fill"
+                                                width={80}
+                                                height={80}
                                                 src={"/img/aunt_house/recipes/"+x.path+ ".png"}
                                             />
                                         </div>
@@ -133,8 +143,7 @@ export default function Aunt ({backToMap}) {
                             </tr>
                     </tbody>
                 </table>
-                
-            </>)}
+            </div>)}
 
     //Renders game screen with given recipe, multiples to test and function when finished with questions
     const GameScreen = ({questionType,onFinish}) => {

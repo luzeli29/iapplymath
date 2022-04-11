@@ -1,4 +1,8 @@
 .rs_table {
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    position: absolute;
     margin: auto;
     justify-content: center;
     align-items: center;
@@ -14,10 +18,12 @@
 }
 
 .rs_map_button {
+    position: absolute;
     width: 100%;
     height: 10%;
 }
 .recipe_select_text {
+    
     width: 100%;
     height: 5%;
     text-align: center;
@@ -29,31 +35,34 @@
 }
 
 .rs_text_container {
-    padding-top: 10%;
-    padding-bottom: 10%;
-
-    width: 100%;
+    top: 20%;
+    left: 30%;
+    right: 30%;
+    position: absolute;
+  
+    background-color: #F6CA64;
+    border-radius: 20px;
+    width: 40%;
     text-align: center;
 }
 
 .rs_image{
-
+    background-color: #F6CA64;
     margin: auto;
     width: 100px;
     height: 100px;
     position: relative;
+    border-radius: 35px;
 }
 
 .small_recipe_card_container {
     width: 100%;
     height: 100%;
-    border: solid red 1px;
 }
 
 .recipe_card_container {
     width: 100%;
     height: 100%;
-    border: solid red 1px;
 }
 
 .fs_aunt_container {
@@ -62,3 +71,62 @@
     height: 330px;
     position: relative;
 }
+
+.background_image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
+.recipe_card_img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.recipe_card_button {
+    position: absolute;
+    left: 43%;
+    right: 40%;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    bottom: 3%;
+    background-color: #F6CA64;
+}
+
+.recipe_card_text_container {
+    position: absolute;
+    left:11%;
+    right:11%;
+    top: 12%;
+    bottom: 12%;
+}
+
+.recipe_card_text{ 
+    left: 10px;
+    font-size: x-large;
+    position: relative;
+}
+
+.small_recipe_card_img {
+    position: relative;
+    width: 100%;
+    height: 100%;   
+}
+
+.small_recipe_card_text_container {
+    position: absolute;
+    left:8%;
+    right:11%;
+    top: 8%;
+    bottom:0%;
+}
+
+.small_recipe_card_text{ 
+    padding-bottom: 9px;
+    margin: 0;
+    font-size: medium;
+    position: relative;
+} 
