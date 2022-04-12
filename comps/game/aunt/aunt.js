@@ -117,9 +117,8 @@ export default function Aunt ({backToMap}) {
                     }</b></p>
                 </div>
 
-                <table className={style.rs_table}>
-                    <tbody>
-                        <tr>
+                <div className={style.rs_button_grid}>
+
                     {recipes.map((x) => {
                         return(
                             <td key={x.name.en} className={style.rs_col}>
@@ -129,6 +128,7 @@ export default function Aunt ({backToMap}) {
                                         setState("recipe_card");
                                     }}>
                                         <div className={style.rs_image}>
+                                        <p className={style.rs_image_text}>{x.name[lang]}</p>
                                             <Image
                                                 priority={true}
                                                 width={80}
@@ -139,9 +139,8 @@ export default function Aunt ({backToMap}) {
                                 </button>
                                 </td>
                             )})}
-                            </tr>
-                    </tbody>
-                </table>
+                </div>
+
             </div>)}
 
     //Renders game screen with given recipe, multiples to test and function when finished with questions
