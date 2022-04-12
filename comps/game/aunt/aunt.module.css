@@ -32,14 +32,16 @@
 }
 
 .rs_button_grid {
+    position: absolute;
     font-size: x;
     margin: auto;
-    padding-top: 190px;
     width: 60%;
+    top:35%;
+    left: 20%;
+    right:50%;
     grid-auto-flow: column;
     align-items: center;
     justify-items: center;
-    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
