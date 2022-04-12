@@ -118,6 +118,8 @@
 
 .small_recipe_card_text_container {
     position: absolute;
+    width: 300px;
+    height: 250px;
     left:8%;
     right:11%;
     top: 8%;

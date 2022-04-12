@@ -37,8 +37,7 @@ export default function Aunt ({backToMap}) {
         return ([{
             en: ing.question.en  + " do we need for " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"][lang] + " " + recipe.name[lang].toLowerCase() + "?",
             es: "¿" + ing.question.es + " necesitamos para " + " " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"][lang] + " " + recipe.name[lang].toLowerCase() + "?",
-            answer:answer,
-            //TODO: Generate hint, convert hints to array of components :(
+            answer: answer,
             hint: [{
                 en: "(" + ing.amount + ") x (" + SimplifyFraction(num,recipe.serving_size) + ") = ???",
                 es: "(" + ing.amount + ") x (" + SimplifyFraction(num,recipe.serving_size) + ") = ???",
@@ -151,18 +150,20 @@ export default function Aunt ({backToMap}) {
         var questions = [];
         
         if(questionType == "basic") {
-            questions[0] = {
-                en:"How many ingredients do we need to make " +  recipe.name.en.toLowerCase() + "?",
-                es:"¿Cuántos ingredientes necesitamos para hacer " +  recipe.name.es.toLowerCase() + "?",
-                answer: recipe.ingredients.length,
-                hints: [
-                    {
-                        en: "Count all the ingredients.",
-                        es: "Cuenta todos los ingredientes",
-                    }
-                ]
+            if(recipe.ingredients.length == 4) {
+                questions[0] = {
+                    en:"How many different fruits do we need for our fruit salad?",
+                    es:"¿Cuántas frutas diferentes necesitamos para nuestra ensalada de frutas?",
+                    answer: 4,
+                    hints: [
+                        {
+                            en: "Count all the ingredients.",
+                            es: "Cuenta todos los ingredientes",
+                        }
+                    ]
+                }
+                questions[1] = feedback[0]
             }
-            questions[1] = feedback[0]
             //basic questions
             recipe.set_questions.map((x) => {
                 if(x[0] == -1) {
