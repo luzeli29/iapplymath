@@ -9,10 +9,7 @@
 }
 
 .rs_col {
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 100px;
-    height: 100px;
+    padding: 10px;
     justify-content: center;
     align-items: center;
 }
@@ -34,12 +31,24 @@
     background-size:cover;
 }
 
+.rs_button_grid {
+    font-size: x;
+    margin: auto;
+    padding-top: 190px;
+    width: 60%;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
 .rs_text_container {
-    top: 20%;
-    left: 30%;
+    top: 15%;
     right: 30%;
     position: absolute;
-  
     background-color: #F6CA64;
     border-radius: 20px;
     width: 40%;
@@ -47,12 +56,18 @@
 }
 
 .rs_image{
+    font-size: small;
+    padding-top: 10px;
+    padding-bottom: 20px;
     background-color: #F6CA64;
     margin: auto;
-    width: 100px;
-    height: 100px;
-    position: relative;
-    border-radius: 35px;
+    width: 180px;
+    height: 125px;
+    border-radius: 20px;
+}
+
+.rs_image_text {
+    margin: auto;
 }
 
 .small_recipe_card_container {
