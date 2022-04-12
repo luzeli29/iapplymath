@@ -27,7 +27,7 @@ export default function Map({handleSelect}) {
         <>
             <div className={style.map}>
                 {hoveringOn == "" ? <></> : nameTag()}
-
+                
                 <button onClick={() => handleSelect("aunt_house")} 
                         className={style.icon_button} id={style.aunt_house}
                         onMouseEnter={() => onMouseEnter("aunt_house")}
@@ -48,19 +48,18 @@ export default function Map({handleSelect}) {
                         layout={"fill"}
                         priority={true}
                         src={"/img/map/resturant.png"}/> 
-                </button>
-                {/*
+                </button> 
                 <div
                     className={style.icon} 
                     id={style.home}>
                         <img className={style.icon} 
                     id={style.grocery_store}
-                    src={"/img/map/home.png"}/>
+                    src={"/img/map/Home.png"}/>
                 </div>
                 
                 <img className={style.icon} 
                     id={style.grocery_store}
-                    src={"/img/map/grocery_store.png"}/> */}
+                    src={"/img/map/Grocery_Store.png"}/>
             </div>
         </>
     );
