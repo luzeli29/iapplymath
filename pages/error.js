@@ -1,7 +1,10 @@
+import React, {} from 'react'
 import Link from 'next/link'
+import {useWrapperContext} from '../context/context'
 
 
 export default function Error({message}) {
+    const lang = useWrapperContext().state.lang
     return (
         <>
             <p>Error: {message}</p>
