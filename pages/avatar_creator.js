@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Image from "next/image";
-import style from './avatar_creator.module.css'
+import style from '../styles/avatar_creator.module.css'
 import {useWrapperContext} from '../context/context'
 import { useRouter } from 'next/router'
 
