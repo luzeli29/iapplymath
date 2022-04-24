@@ -86,6 +86,22 @@ const dialog_scripts = {
             },
         ],
     },
+
+    resturant_intro: {
+        stage: "resturnant",
+        lines: [
+            {
+                en: "Hey, I am so happy to see you here!",
+                es: "¡Hola, estoy muy feliz de verte por aquí!"
+            },{
+                en: "Thanks for coming! Comida con Amor is my favorite restaurant!",
+                es: "Gracias por venir! Comida con Amor es mi restaurante favorito!"
+            },{
+                en: "All right, let’s order some food!",
+                es: "Vamos pedir algo para comer!"
+            },
+        ]
+    }
     
 }
 
