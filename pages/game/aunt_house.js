@@ -1,19 +1,20 @@
-import React, {useState} from 'react';
-import Dialog from '../../dialog';
-import {useWrapperContext} from '../../../context/context'
-import GameLayout from '../game_layout'
-import style from './aunt.module.css'
+import React, {useState} from 'react'
+import Dialog from '../../comps/dialog'
+import {useWrapperContext} from '../../context/context'
+import GameLayout from '../../comps/game_layout'
+import style from '../../styles/aunt_house.module.css'
 import Image from 'next/image'
-import script from '../../../public/text/script';
-import recipes from './recipes';
-import SimplifyFraction from '../../simplify_fraction';
+import recipes from '../../public/text/aunt_house_recipes'
+import SimplifyFraction from '../../comps/simplify_fraction'
+import {useRouter} from 'next/router'
 
 //Main Aunt game
-export default function Aunt ({backToMap}) {
+export default function AuntHouse () {
     //get context and lang
     const context = useWrapperContext();
     const lang = context.state.lang;
-
+    const router = useRouter()
+    
     //State to keep track where the player is
     const [state, setState] = useState("intro_dialog");
     //Current recipe
@@ -23,7 +24,6 @@ export default function Aunt ({backToMap}) {
 
 
     //generates the propper question JS object to be read by GameLayout
-    //TODO: Sometimes is wrong s:(
     const generateMultiQuestion = (ing, num) => {
         var answer
         if(isNaN(ing.amount)) {
@@ -101,7 +101,7 @@ export default function Aunt ({backToMap}) {
         return(
             <div className={style.recipe_select_container}>  
                 <img className={style.background_image} src="/img/aunt_house/aunt_house_bg.png"/>
-                <button className={style.rs_map_button}onClick={() => backToMap()}><b>{lang == "en" ? 
+                <button className={style.rs_map_button}onClick={() => router.push('/game')}><b>{lang == "en" ? 
                     "Back to map" : 
                     "Volver al mapa"
                 }</b></button>
@@ -207,7 +207,8 @@ export default function Aunt ({backToMap}) {
 
     //Component where user imputs how many members in their family
     const FamileSelect = () => {
-        var question = [{
+        var inputAnswer = 5 //default is 5
+        var questions = [{
             en: "How many people should we cook for?",
             es: "¿Para cuántas personas vamos a cocinar?",
             
@@ -234,7 +235,7 @@ export default function Aunt ({backToMap}) {
 
         return(
             <GameLayout
-                questions={question}
+                questions={questions}
                 onFinish={() => {
                     setState("family_game")
                     return(<></>)}}>
@@ -259,7 +260,7 @@ export default function Aunt ({backToMap}) {
                     <tbody >
                         <tr >
                             <td>
-                                <button className={style.end_button} onClick={() => backToMap()}>Map</button>
+                                <button className={style.end_button} onClick={() => router.push('/game')}>Map</button>
                                 <button className={style.end_button} onClick={() => setState("recipe_select")}>Recipe Select</button>
                             </td>
                         </tr>
@@ -269,13 +270,13 @@ export default function Aunt ({backToMap}) {
         )
     }
 
+    
     //Renders screen depending on the state in quick Aunt is in
     switch(state) {
         case "intro_dialog" : //Intro dialog that introduces user to aunt game
             return (
                 <Dialog 
-                    stage={"aunt_house"} 
-                    script={script.aunt_intro} 
+                    scriptId={"aunt_intro"} 
                     onEnd={() => setState("recipe_select")}/>)
 
         case "recipe_select" : //Recipe selection screen
@@ -300,8 +301,7 @@ export default function Aunt ({backToMap}) {
         case "finished_recipe" : //Dialog when all questions for a recipe finished
             return(
                 <Dialog 
-                    stage={"aunt_house"} 
-                    script={script.aunt_outro} 
+                    scriptId={"aunt_outro"} 
                     onEnd={() => setState("end_choice")}/>)
                     
         case "end_choice" : //Screen where user can continue to play aunt or go to map
