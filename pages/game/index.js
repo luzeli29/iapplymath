@@ -9,13 +9,14 @@ export default function Map() {
     const router = useRouter()
 
     const handleClick = (page) => {
+    
         router.push('game/aunt_house')
     }
 
     return (
         <>
             <div className={style.map}>                
-                <button onClick={() => handleClick("aunt_house")} 
+                <button onClick={() => router.push('game/aunt_house')} 
                         className={style.icon_button} id={style.aunt_house}> 
                     <Image 
                         layout={"fill"}
@@ -24,7 +25,7 @@ export default function Map() {
 
                 </button>
                 
-                <button onClick={() => handleClick("resturant")} 
+                <button onClick={() => router.push('game/resturant')} 
                         className={style.icon_button} 
                         id={style.resturant}>
                     <Image 
