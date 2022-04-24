@@ -4,7 +4,7 @@ import {useWrapperContext} from '../../context/context'
 import Link from 'next/link'
 
 
-//Main Aunt game
+//Main Resturant game
 export default function Resturant () {
     //get context and lang
     const context = useWrapperContext()
