@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import {useWrapperContext} from '../context/context'
 import { useRouter } from 'next/router'
+import style from '../styles/avatar.module.css'
 
 export default function Creator() {
     //get the site context and lang
@@ -25,7 +25,7 @@ export default function Creator() {
         return (
             <button
                 onClick={() => setAvatar(index)}
-                className="avatar_select_button">
+                className={style.avatar_select_button}>
                 <Image
                         priority={true}
                         layout={"fill"}
@@ -38,14 +38,14 @@ export default function Creator() {
 
     return (
         <>
-            <h1 className="as_title_container">{lang == "en" ? "Pick an Avatar" : "Elige un Avatar" }</h1>
-            <div className="button_bar">
+            <h1 className={style.as_title_container}>{lang == "en" ? "Pick an Avatar" : "Elige un Avatar" }</h1>
+            <div className={style.button_bar}>
                 {Array.apply(0, Array(8)).map((x,i) => {
                     return <AvatarButton index={i + 1} key={i} />;
                 })}
             </div>
             <button 
-                className="as_title_container"
+                className={style.as_title_container}
                 onClick={() => handleFinishAvatar()}>{lang == "en" ? "Continue" : "Continuar" }</button>
         </>
     )

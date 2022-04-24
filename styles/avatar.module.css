@@ -1,0 +1,38 @@
+.avatar_select_button {
+    height: 100px;
+    width: 100px;
+    position: relative;
+}
+  
+.button_bar {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 4px;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.as_title_container{
+    width: 100%;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.hoverable {
+    position: relative;
+}
+
+.hoverable:hover {
+    position: absolute;
+    content: attr(title);
+    display: inline-block;
+    left: 0px;
+    top: 0px;
+    padding: 5px;
+    background-color: black;
+    color: white;
+}

@@ -65,7 +65,7 @@ const recipes = [
         serving_of: {
             singular: {
                 en: "serving of",
-                es: "porcione"
+                es: "porción"
             },
             plural: {
                 en: "servings of",

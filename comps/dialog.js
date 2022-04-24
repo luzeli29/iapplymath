@@ -1,27 +1,35 @@
-import React, {useState,useCallback,useEffect} from 'react';
-import style from './dialog.module.css'
+import React, {useState,useRef,useCallback,useEffect} from 'react';
+import style from '../styles/dialog.module.css'
 import {useWrapperContext} from '../context/context'
 import Image from 'next/image'
+import scripts from '../public/text/dialog_scripts'
 
-export default function Dialog ({stage, script, onEnd}) {
-    //TODO: HANDLE EDGE CASES
+export default function Dialog ({scriptId, onEnd}) {
+    if(!scripts[scriptId]) {
+        return <Error message={"ScriptId not found in dialog_script.js"}/>
+    } else if (!scripts[scriptId].stage) {
 
-    //get context, lang and line number from context
-    const context = useWrapperContext()
-    const lang = context.state.lang
-    const lineNum = context.state.lineNum
+    } else if (!scripts[scriptId].line) {
+
+    } else if (!onEnd) {
+
+    }
+
+    //get lang from context
+    const lang = useWrapperContext().state.lang
+    const avatar = useWrapperContext().state.avatar
+
+    const stage = scripts[scriptId].stage
+    const script = scripts[scriptId].lines
+
+    const [lineNum,setLineNum]= useState(0);
 
     //handle click of screen or keypress
     const handleNextLine = () => {
-        //Check if script is found
-        if(!script) {
-            context.endDialog()
-            onEnd()
-        } else if(lineNum == script.length-1) {
-            context.endDialog()
+        if(lineNum == script.length-1) {
             onEnd()
         } else {
-            context.nextLine()
+            setLineNum(lineNum + 1)
         }
     }
 
@@ -30,20 +38,33 @@ export default function Dialog ({stage, script, onEnd}) {
         if(event.key == "Enter") {
             handleNextLine();
         }
-     };
+    };
   
-     useEffect(() => {
+    useEffect(() => {
         document.addEventListener("keydown", handleKeyPress);
     
         return () => {
           document.removeEventListener("keydown", handleKeyPress);
         };
-     }, [handleKeyPress]);
+    }, [handleKeyPress]);
   
+    return (
+        <>
+            <DialogScreen 
+                stage={stage} 
+                line={script[lineNum][lang]}
+                playerSpeaking={script[lineNum].player_speaking}
+                avatar={avatar}
+                handleNextLine={()=>handleNextLine()}/>
+        </>
+    )
+    
+} 
+
+function DialogScreen({stage,line,handleNextLine,avatar,playerSpeaking}) {
 
     //Renders the speaker screen if Ayu is the one speaking
     const AyuSpeaker = () => {
-        //TODO: Make Ayu image look better
         return (
             <div className={style.ayu_img_container}>
                 <Image
@@ -54,7 +75,6 @@ export default function Dialog ({stage, script, onEnd}) {
         )
     }
 
-    //TODO: FINISH SPEAKER GRAPHIC
     const PersonSpeaker = () => {
         return (
             <div className={style.speaker_img_container}>
@@ -62,7 +82,7 @@ export default function Dialog ({stage, script, onEnd}) {
                     <Image
                         priority={true}
                         layout={"fill"}
-                        src={"/img/avatar/pre_made/A" + context.state.avatar + "_back.png"}/> 
+                        src={"/img/avatar/pre_made/A" + avatar + "_back.png"}/> 
                 </div>
                 <div className={style.speaker_img}>
                     <Image
@@ -72,7 +92,7 @@ export default function Dialog ({stage, script, onEnd}) {
                 </div>
             </div>
         )
-    }
+        }
     return (    
         <>
             <button className={style.dialog_button}
@@ -88,8 +108,8 @@ export default function Dialog ({stage, script, onEnd}) {
                 }
                 <div className={style.dialog_speech_container}>
                     <div className={style.speech_bubble}>
-                        {script ? 
-                            <p className={style.speech_bubble_text}>{script[lineNum][lang]}</p>
+                        {line ? 
+                            <p className={style.speech_bubble_text}>{line}</p>
                             : 
                             <p className={style.speech_bubble_text}>LINE NOT FOUND</p>
                         }
@@ -99,7 +119,7 @@ export default function Dialog ({stage, script, onEnd}) {
 
                     {stage == "ayu" ? 
                         <div className={style.speech_bubble_triangle_ayu}></div> : 
-                        script[lineNum].player_speaking ? 
+                        playerSpeaking ? 
                             <div className={style.speech_bubble_triangle_player}></div>:
                             <div className={style.speech_bubble_triangle_speaker}></div>
                     }
@@ -112,4 +132,4 @@ export default function Dialog ({stage, script, onEnd}) {
             <input className="key_listener" autoFocus={true} onBlur={({ target }) => {target.focus()}}/>
         </>
     );
-} 
+}

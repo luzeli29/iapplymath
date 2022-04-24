@@ -1,6 +1,6 @@
 import React, {} from 'react';
 import {useWrapperContext} from '../context/context'
-import style from './header.module.css'
+import style from '../styles/header.module.css'
 
 
 export default function Header() {

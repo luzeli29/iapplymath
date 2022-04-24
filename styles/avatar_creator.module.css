@@ -1,0 +1,33 @@
+.overlapGrid {
+    display: grid;
+    grid-template-areas: "overlay";
+    margin:auto;
+    border: red solid 10px;
+    position: relative;
+    width: 40%;
+    height:40%;
+  }
+  
+  .overlapGrid > span {
+    grid-area: overlay;
+  }
+  .overlapGrid > div {
+    grid-area: overlay;
+  }
+  
+  .button{
+      position: fixed;
+      left: 500px;
+      down: 10px;
+      border-radius: 4px;
+      border: medium solid #000000;
+      background-color:rgb(92, 250, 246);
+      font-family: "Arial", Impact, Charcoal, sans-serif;
+      font-weight: bold;
+      font-size:20px;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px black;
+      padding: 5px 30px;
+      margin:8px 70px;
+  }
+  
