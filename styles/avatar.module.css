@@ -36,3 +36,16 @@
     background-color: black;
     color: white;
 }
+
+.continue_button {
+    position: absolute;
+    top: 82%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: x-large;
+    background-color: var(--button-background-color);
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    box-shadow: 2px 2px #190933;
+  }

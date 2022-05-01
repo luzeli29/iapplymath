@@ -45,24 +45,24 @@ export default function AuntHouse () {
                 en: "(" + ing.amount + ") x (" + SimplifyFraction(num,recipe.serving_size) + ") = " + answer,
                 es: "(" + ing.amount + ") x (" + SimplifyFraction(num,recipe.serving_size) + ") = " + answer,
             }],
-        }].concat(feedback[Math.floor(Math.random() * feedback.length)]))
-        //TODO: fix random due to functionality
+        }])
     }
 
     //Recipe card component for recipe card screen
     const RecipeCard = () => {
         return(
             <div className={style.recipe_card_container}>
-                <img className={style.recipe_card_img}src="/img/aunt_house/recipe_card.png"/>
-
-                <div className={style.recipe_card_text_container}>
-                    <p className={style.recipe_card_text} >{recipe.name[lang] + " - " + recipe.serving_amount[lang]}</p>
+                <div className={style.recipe_card_title_container}>
+                    <p className={style.recipe_card_title}><b>{recipe.name[lang] + " - " + recipe.serving_amount[lang]}</b></p>
+                </div>
+                <div className={style.recipe_card_ing_container}>
                     {recipe.ingredients.map((ing) => {
                         return(
-                        <p key={ing[lang]} className={style.recipe_card_text}>
+                        <p key={ing[lang]} className={style.recipe_card_ing}>
                             {ing.amount == "" ? ing[lang] : ing.amount + " " + ing[lang]}
                         </p>);})}
                 </div>
+                
                 <button 
                     onClick={() => setState("basic_game")}
                     className={style.recipe_card_button}> <b>
@@ -75,21 +75,18 @@ export default function AuntHouse () {
     //Small recipe card component to be shown in GameLayout
     const SmallRecipeCard = () => {
         return(
-
-            //TODO: remove red border from small_recipe_card_container when done
-            <div className={style.small_recipe_card_container}>
-                <img className={style.small_recipe_card_img}src="/img/aunt_house/recipe_card.png"/>
-                <div className={style.small_recipe_card_text_container}>
-                    {/* TODO: Make small recipe card look nice */}
-                    <p className={style.small_recipe_card_text}>{recipe.name[lang]}</p>
-                    <p className={style.small_recipe_card_text}>{"(" + recipe.serving_amount[lang] + ")"}</p>
-
-                    {recipe.ingredients.map((ing) => {
-                                    return(
-                                        <p className={style.small_recipe_card_text} key={ing[lang]}>{ing.amount + " " + ing[lang]}</p>
-                                    );
-                    })}
+            <div className={style.recipe_card_container}>
+                <div className={style.small_recipe_card_title_container}>
+                    <p className={style.small_recipe_card_title}><b>{recipe.name[lang] + " - " + recipe.serving_amount[lang]}</b></p>
                 </div>
+                <div className={style.small_recipe_card_ing_container}>
+                    {recipe.ingredients.map((ing) => {
+                                        return(
+                                            <p className={style.small_recipe_card_ing} key={ing[lang]}>{ing.amount + " " + ing[lang]}</p>
+                                        );
+                        })}
+                </div>
+                    
                 
 
             </div>
@@ -177,7 +174,6 @@ export default function AuntHouse () {
                 //goes through every ingredient for every multiple
             })
         } else {
-            //TODO: remove this if statement and make better
             //family questions
             recipe.family_questions.map((x) => {
                 if(x == -1) {
@@ -212,7 +208,6 @@ export default function AuntHouse () {
             en: "How many people should we cook for?",
             es: "¿Para cuántas personas vamos a cocinar?",
             
-            //TODO: replace with hint component
             hint: [{
                 t: {
                     en: "Please enter a number between 1-15",
@@ -308,20 +303,3 @@ export default function AuntHouse () {
             return(<EndChoice/>);
     }    
 } 
-
-//TODO: move to game layout and not have it included in the questions
-const feedback = [ 
-    {
-        en: "Excellent!",
-        es:"¡Muy bien!",   
-        answer: ""
-    },{
-        en: "Correct!",
-        es:"¡Correcto!",
-        answer: ""
-    },{
-        en: "Great Job!",
-        es:"¡Excelente trabajo!",
-        answer: ""
-    },
-]

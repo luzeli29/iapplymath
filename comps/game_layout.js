@@ -9,12 +9,16 @@ import SimplifyFraction from './simplify_fraction'
 export default function GameLayout ({children, questions, onFinish}) {
    const context = useWrapperContext()
    //TODO: Check if questions and onFinish is good
+
+   
    const questionNum = context.state.questionNum
    const [incorrectNum, setIncorrectNum] = useState(0);
    const [state, setState] = useState("questions")
    //get context
    //get needed data from context
    const lang = context.state.lang
+
+   questions = addFeedback({questions})
 
    const handleAnswer = (answer) => {
       switch(questions[questionNum].answer) {
@@ -245,11 +249,14 @@ const NumPad = ({question,handleAnswer}) => {
 
       if (correctAnswer == "") {
          return (
-         <button
-            onClick={() => handleButtonPress("✓")}
-            className={style.continue_button}>
-            {lang == "en" ? "Continue" : "Continuar"}
-         </button>
+            <div className={style.continue_button_container}>
+            <button
+               onClick={() => handleButtonPress("✓")}
+               className={style.continue_button}>
+                  {lang == "en" ? "Continue" : "Continuar"}
+               </button>
+            </div>
+         
          )
       } else {
          return (
@@ -299,7 +306,35 @@ const SimplifyAnswer = (answer) => {
    }
 }
 
+const addFeedback = ({questions}) => {
+   var newQuestions = []
+  
+   questions.map(question => {
+      newQuestions[newQuestions.length] = question
+      newQuestions[newQuestions.length] = feedback[Math.floor(Math.random() * feedback.length)]
+
+   })
+
+   return newQuestions
+}
+
 const emptyHint = {
    en:"Please put in an answer.",
    es:"Por favor, ponga una respuesta.",
 }
+
+const feedback = [ 
+   {
+       en: "Excellent!",
+       es:"¡Muy bien!",   
+       answer: ""
+   },{
+       en: "Correct!",
+       es:"¡Correcto!",
+       answer: ""
+   },{
+       en: "Great Job!",
+       es:"¡Excelente trabajo!",
+       answer: ""
+   },
+]

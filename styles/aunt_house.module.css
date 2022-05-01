@@ -1,3 +1,5 @@
+/* ----- RECEPE SELECT CSS -----*/
+
 .rs_table {
     top: 50%;
     left: 10%;
@@ -16,8 +18,15 @@
 
 .rs_map_button {
     position: absolute;
-    width: 100%;
-    height: 10%;
+    top: 3%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    font-size: x-large;
+    background-color: var(--button-background-color);
+    width: 220px;
+    height: 40px;
+    border-radius: 15px;
+    box-shadow: 2px 2px #190933;
 }
 .recipe_select_text {
     
@@ -36,9 +45,9 @@
     font-size: x;
     margin: auto;
     width: 60%;
-    top:35%;
+    top: 35%;
     left: 20%;
-    right:50%;
+    right: 50%;
     grid-auto-flow: column;
     align-items: center;
     justify-items: center;
@@ -49,11 +58,12 @@
 
 .rs_text_container {
     top: 15%;
-    right: 30%;
+    left: 50%;
+    transform: translate(-50%, 0%);
     position: absolute;
     background-color: #F6CA64;
     border-radius: 20px;
-    width: 40%;
+    width: 50%;
     text-align: center;
 }
 
@@ -72,15 +82,116 @@
     margin: auto;
 }
 
-.small_recipe_card_container {
-    width: 100%;
-    height: 100%;
+.recipe_card_button {
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    font-size: x-large;
+    background-color: var(--button-background-color);
+    width: 220px;
+    height: 40px;
+    border-radius: 15px;
+    box-shadow: 2px 2px #190933;
 }
 
+/* ----- BIG RECIPE CARD CSS -----*/
+
 .recipe_card_container {
+    position: relative;
     width: 100%;
     height: 100%;
+    background-color: #f6ca65;
+    border-radius: 15px;
+
 }
+
+.recipe_card_title_container {
+    position: relative;
+    width: 75%;
+    height: 12%;
+    text-align: center;
+    border: solid #190933 1px;
+    border-bottom: solid #190933 4px;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: #F6EFDD;
+}
+
+.recipe_card_title {
+    margin-left: 20px;
+    position: relative;
+    font-size: large;
+}
+.recipe_card_ing_container {
+    border: solid #190933 1px;
+    width: 75%;
+    height: 70%;
+    position: absolute;
+    top: 17%;
+    left: 50%;
+    padding-left: 30px;
+    padding-right: 30px;
+    transform: translate(-50%, 0%);
+    background-color: #F6EFDD;
+}
+.recipe_card_ing {
+    position: static;
+    height: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-bottom: solid #190933 2px;
+    font-size: medium;
+}
+
+/* ----- SMALL RECIPE CARD CSS -----*/
+
+.small_recipe_card_title_container {
+    position: relative;
+    width: 90%;
+    height: 12%;
+    text-align: center;
+    border: solid #190933 1px;
+    border-bottom: solid #190933 2px;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: #F6EFDD;
+}
+
+.small_recipe_card_title {
+    margin: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    font-size: small;
+}
+
+.small_recipe_card_ing_container {
+    border: solid #190933 1px;
+    width: 90%;
+    height: 77%;
+    position: absolute;
+    top: 17%;
+    left: 50%;
+    padding-left: 20px;
+    padding-right: 20px;
+    transform: translate(-50%, 0%);
+    background-color: #F6EFDD;
+}
+
+.small_recipe_card_ing {
+    position: relative;
+    height: 15px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom: solid #190933 2px;
+    font-size: small;
+}
+
+/* ----- FAMILY SELCECT CSS -----*/
 
 .fs_aunt_container {
     margin: auto;
@@ -95,60 +206,8 @@
     height: 100%;
 }
 
+/* ----- END SCREEN CSS -----*/
 
-.recipe_card_img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.recipe_card_button {
-    position: absolute;
-    left: 43%;
-    right: 40%;
-    width: 100px;
-    height: 30px;
-    border-radius: 10px;
-    bottom: 3%;
-    background-color: #F6CA64;
-}
-
-.recipe_card_text_container {
-    position: absolute;
-    left:11%;
-    right:11%;
-    top: 12%;
-    bottom: 12%;
-}
-
-.recipe_card_text{ 
-    left: 10px;
-    font-size: x-large;
-    position: relative;
-}
-
-.small_recipe_card_img {
-    position: relative;
-    width: 100%;
-    height: 100%;   
-}
-
-.small_recipe_card_text_container {
-    position: absolute;
-    width: 300px;
-    height: 250px;
-    left:8%;
-    right:11%;
-    top: 8%;
-    bottom:0%;
-}
-
-.small_recipe_card_text{ 
-    padding-bottom: 9px;
-    margin: 0;
-    font-size: medium;
-    position: relative;
-} 
 
 .end_container {
     width: 100%;
