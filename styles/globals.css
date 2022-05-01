@@ -1,9 +1,9 @@
 :root {
   --page-color: #EDBFC6;
   --font-color:#190933;
-    /*TODO: Color is hard to see, maybe change colors*/
   --button-hover-color: #F5E852; 
   --menu-background-color: #F6CA64;
+  --button-background-color: #7B6DBC; 
 }
 
 html,
@@ -13,7 +13,7 @@ body {
   overflow: hidden;
   padding: 0;
   margin: 0;
-  /* TODO: select font for text */
+  font-family: Verdana, sans-serif;
   background-color: var(--page-color);
   color: var(--font-color);
 }
@@ -22,14 +22,6 @@ body {
   box-sizing: border-box;
 }
 
-
-.view_container {
-  position: relative;
-  margin: auto;
-  width: 720px;
-  height: 550px;
-  border: solid black 4px;
-}
 
 button,
 a {
@@ -59,6 +51,46 @@ a:hover {
   text-decoration: underline;
 }
 
+
+.header_container {
+  position: fixed;
+  width: 100vw;
+  top: 0px;
+  height: 20vh;
+}
+
+.body_container {
+  position: fixed;
+  top: 20vh;
+  width: 100vw;
+  height: 80vh;
+}
+
+.view_container {
+  position: absolute;
+  margin: auto;
+  width: 720px;
+  height: 550px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  border-radius: 15px;
+  border: solid var(--font-color) 2px;
+  box-shadow: 2px 2px #190933;
+}
+
 .key_listener {
   display: none;
+}
+
+.start_button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: x-large;
+  background-color: var(--button-background-color);
+  width: 200px;
+  height: 80px;
+  border-radius: 15px;
+  box-shadow: 2px 2px #190933;
 }

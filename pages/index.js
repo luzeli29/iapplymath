@@ -10,9 +10,6 @@ export default function Index() {
   const router = useRouter()
 
   return (
-    //TODO: Make pretty
-    //<button onClick={() => router.push('/intro') }>{translations.start[lang]}</button>
-
-    <Dialog scriptId="game_intro" onEnd={() => router.push('/avatar_select')}/>
+    <button className="start_button" onClick={() => router.push('/intro') }>{translations.start[lang]}</button>
   )
 }

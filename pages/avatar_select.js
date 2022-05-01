@@ -45,7 +45,7 @@ export default function Creator() {
                 })}
             </div>
             <button 
-                className={style.as_title_container}
+                className={style.continue_button}
                 onClick={() => handleFinishAvatar()}>{lang == "en" ? "Continue" : "Continuar" }</button>
         </>
     )
