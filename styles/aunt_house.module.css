@@ -16,18 +16,6 @@
     align-items: center;
 }
 
-.rs_map_button {
-    position: absolute;
-    top: 3%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    font-size: x-large;
-    background-color: var(--button-background-color);
-    width: 220px;
-    height: 40px;
-    border-radius: 15px;
-    box-shadow: 2px 2px #190933;
-}
 .recipe_select_text {
     
     width: 100%;
@@ -198,30 +186,4 @@
     width: 100px;
     height: 270px;
     position: relative;
-}
-
-.background_image {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-/* ----- END SCREEN CSS -----*/
-
-
-.end_container {
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-}
-
-.end_button {
-    position: relative;
-    left: 21%;
-    margin-left: 40px;
-    right: 50%;
-    width: 20%;
-    height: 40px;
-    background-color: #F6CA64;
-    border-radius: 20px;
 }

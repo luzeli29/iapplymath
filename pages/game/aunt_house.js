@@ -34,6 +34,7 @@ export default function AuntHouse () {
             //ing.amount is a number
             answer = SimplifyFraction((ing.amount * num),recipe.serving_size)
         }
+        //TODO: potencially change if other langs were added
         return ([{
             en: ing.question.en  + " do we need for " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"][lang] + " " + recipe.name[lang].toLowerCase() + "?",
             es: "¿" + ing.question.es + " necesitamos para " + " " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"][lang] + " " + recipe.name[lang].toLowerCase() + "?",
@@ -66,6 +67,7 @@ export default function AuntHouse () {
                 <button 
                     onClick={() => setState("basic_game")}
                     className={style.recipe_card_button}> <b>
+                    {/*TODO: potencially change if other langs were added*/}
                     {lang == "en" ? "Cook!" : "¡Cocinar!"}</b></button>
 
             </div>
@@ -97,12 +99,13 @@ export default function AuntHouse () {
     const RecipeSelect = () => {
         return(
             <div className={style.recipe_select_container}>  
-                <img className={style.background_image} src="/img/aunt_house/aunt_house_bg.png"/>
-                <button className={style.rs_map_button}onClick={() => router.push('/game')}><b>{lang == "en" ? 
+                <img className="view_background_image_container" src="/img/aunt_house/aunt_house_bg.png"/>
+                {/*TODO: potencially change if other langs were added*/}
+                <button className="back_to_map_button"onClick={() => router.push('/game')}><b>{lang == "en" ? 
                     "Back to map" : 
                     "Volver al mapa"
                 }</b></button>
-
+                {/*TODO: potencially change if other langs were added*/}
                 <div className={style.rs_text_container}>
                     <p className={style.rs_text}><b>{lang == "en" ? 
                         "Welcome to Tía María kitchen!" : 
@@ -118,7 +121,7 @@ export default function AuntHouse () {
 
                     {recipes.map((x) => {
                         return(
-                            <td key={x.name.en} className={style.rs_col}>
+                            <div key={x.name.en} className={style.rs_col}>
                                 <button 
                                     onClick={() => {
                                         setRecipe(x);
@@ -130,11 +133,11 @@ export default function AuntHouse () {
                                                 priority={true}
                                                 width={80}
                                                 height={80}
-                                                src={"/img/aunt_house/recipes/"+x.path+ ".png"}
+                                                src={"/img/food/"+x.path+ ".png"}
                                             />
                                         </div>
                                 </button>
-                                </td>
+                            </div>
                             )})}
                 </div>
 
@@ -147,6 +150,7 @@ export default function AuntHouse () {
         
         if(questionType == "basic") {
             if(recipe.ingredients.length == 4) {
+                /*TODO: potencially change if other langs were added*/
                 questions[0] = {
                     en:"How many different fruits do we need for our fruit salad?",
                     es:"¿Cuántas frutas diferentes necesitamos para nuestra ensalada de frutas?",
@@ -158,7 +162,6 @@ export default function AuntHouse () {
                         }
                     ]
                 }
-                questions[1] = feedback[0]
             }
             //basic questions
             recipe.set_questions.map((x) => {
@@ -193,8 +196,7 @@ export default function AuntHouse () {
                 <GameLayout
                     questions={questions}
                     onFinish={() => {
-                        onFinish()
-                        return(<></>)}}> 
+                        onFinish()}}> 
                     <SmallRecipeCard/>
                 </GameLayout>
             </>
@@ -203,7 +205,7 @@ export default function AuntHouse () {
 
     //Component where user imputs how many members in their family
     const FamileSelect = () => {
-        var inputAnswer = 5 //default is 5
+        /*TODO: potencially change if other langs were added*/
         var questions = [{
             en: "How many people should we cook for?",
             es: "¿Para cuántas personas vamos a cocinar?",
@@ -250,17 +252,11 @@ export default function AuntHouse () {
     const EndChoice = () => {
         return (
             <>
-                <img className={style.background_image} src="/img/aunt_house/aunt_house_bg.png"/>
-                <table className={style.end_container}>
-                    <tbody >
-                        <tr >
-                            <td>
-                                <button className={style.end_button} onClick={() => router.push('/game')}>Map</button>
-                                <button className={style.end_button} onClick={() => setState("recipe_select")}>Recipe Select</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <img className="view_background_image_container" src="/img/aunt_house/aunt_house_bg.png"/>
+                <div className="end_container">
+                    <button className="end_button" onClick={() => router.push('/game')}>{lang == "en" ? "Map" : "Mapa"}</button>
+                    <button className="end_button" onClick={() => setState("recipe_select")}>{lang == "en" ? "Recipe Select" : "Seleccionar Receta"}</button>
+                </div>
             </>
         )
     }

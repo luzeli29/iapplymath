@@ -2,6 +2,7 @@ import React from 'react';
 import {useWrapperContext} from '../context/context'
 import Link from "next/link"
 
+//404 page if user goes to page not found
 export default function Error() {
   const lang = useWrapperContext().state.lang;
 

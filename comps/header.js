@@ -4,7 +4,9 @@ import style from '../styles/header.module.css'
 
 
 export default function Header() {
+    //get current context
     const context = useWrapperContext();
+    
     return (
         <div className={style.container}>
             <div className={style.title_container}>

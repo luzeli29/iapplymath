@@ -1,5 +1,8 @@
 import Header from "./header";
-const Layout = ({ children }) => {
+export default function Layout({ children }) {
+    //standard layout of every page
+    //has a header with title and lang select,
+    //then the children displayed in the box of the view container
     return ( 
         <>
             <div className="header_container">
@@ -13,14 +16,3 @@ const Layout = ({ children }) => {
         </>
      );
 }
- 
-export default Layout;
-
-/* 
-<>
-            <Header/>
-            <div className="view_container">
-                { children }
-            </div>
-        </>
-*/

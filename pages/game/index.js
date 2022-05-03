@@ -5,13 +5,12 @@ import {useRouter} from 'next/router'
 import {useWrapperContext} from '../../context/context'
 
 export default function Map() {
+    //get lang from context
     const lang = useWrapperContext().state.lang
     const router = useRouter()
 
-    const handleClick = (page) => {
-    
-        router.push('game/aunt_house')
-    }
+    //TODO: Add text to appear when hovering over playable house
+    //TODO: Recreate map from previous game
 
     return (
         <>
@@ -20,16 +19,18 @@ export default function Map() {
                         className={style.icon_button} id={style.aunt_house}> 
                     <Image 
                         layout={"fill"}
+                        quality={100}
                         priority={true}
                         src={"/img/map/aunt_house.png"}/> 
 
                 </button>
                 
-                <button onClick={() => router.push('game/resturant')} 
+                <button onClick={() => router.push('game/restaurant')} 
                         className={style.icon_button} 
                         id={style.resturant}>
                     <Image 
                         layout={"fill"}
+                        quality={100}
                         priority={true}
                         src={"/img/map/resturant.png"}/> 
                 </button> 
@@ -48,10 +49,3 @@ export default function Map() {
         </>
     );
 }
-
-const buildings = {
-    aunt_house: {
-        en: "Aunt's House",
-        es: "La Casa de la Tía"}
-}
- 

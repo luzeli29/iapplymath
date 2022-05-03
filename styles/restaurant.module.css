@@ -1,0 +1,161 @@
+.ms_map_button {
+    position: relative;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    font-size: x-large;
+    background-color: var(--button-background-color);
+    width: 220px;
+    height: 40px;
+    border-radius: 15px;
+    box-shadow: 2px
+}
+
+.ms_container {
+    position: relative;
+    width: 78%;
+    height: 70%;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+}
+
+.menu_grid {
+    position: relative;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 100%;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-items: center;
+    background-color: #F6EFDD;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2);
+    border: solid black 2px;
+}
+
+.five_grid{
+    position: relative;
+    grid-auto-flow: column;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.three_grid{
+    position: relative;
+    grid-auto-flow: column;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.menu_button {
+    margin: 7px;
+    width: 60px;
+    height: 60px;
+    border: solid black 1px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.menu_titles {
+    border-bottom: solid black 2px;
+}
+
+.decription_container {
+    background-color: #F6EFDD;
+    position: absolute;
+    text-align: center;
+    display: block;
+    top: 0%;
+    left: 90%;
+    transform: translate(-50%, 0%);
+    width: 30%;
+    height: 50%;
+    border: solid black 2px;
+}
+
+.ms_order_container {
+    position: relative;
+    display: block;
+    top: 0%;
+    left: 90%;
+    transform: translate(-50%, -100%);
+    width: 30%;
+    height: 50%;
+    border: solid black 2px;
+    background-color: #F6EFDD;
+}
+
+.background_image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.menu_select_order_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #F6EFDD;
+}
+
+.order_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background-color: #F6EFDD;
+}
+
+.ms_order_button {
+    position: absolute;
+    top: 101%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    font-size: x-large;
+    background-color: var(--button-background-color);
+    width: 220px;
+    height: 40px;
+    border-radius: 15px;
+    box-shadow: 2px
+}
+
+.desc_img_container {
+    position: relative;
+    margin: auto;
+    width: auto;
+    height: 100px;
+}
+
+
+.desc_font {
+    margin: 0px;
+    font-size: small;
+}
+
+.ms_order_button_img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.ms_instructions {
+    position: relative;
+    margin:auto;
+    background-color: #F6CA64;
+    margin-top: 20px;
+    width: 80%;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.order_text {
+    margin:0px;
+}
