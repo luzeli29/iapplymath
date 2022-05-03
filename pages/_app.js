@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {} from 'react';
 import Head from 'next/head'
 import Layout from '../comps/layout'
 import '../styles/globals.css'
@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>I AM In My World</title>
+        <title>I Apply Math in my World</title>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
       </Head>
       <ContextWrapper>

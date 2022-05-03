@@ -4,7 +4,7 @@ const recipes = [
             en: "Carrot-Orange Juice",
             es: "Jugo de zanahoria y naranja"
         },
-        path: "o_c_juice",
+        path: "orange_carrot_juice",
         instructions: {
             en:"Blend the oranges and the carrots in a blender.",
             es:"Mezcle las naranjas y las zanahorias en la licuadora.",
@@ -140,7 +140,8 @@ const recipes = [
             en: "Black bean and Sweet Potato Enchilada",
             es: "Enchilada de Frijol Negro y Camote para Hacer",
         },
-        path: "enchilada",
+        //TODO: make a enchilada image to replace burrito
+        path: "burritos",
         instructions: {
             en:"Fill the tortillas with mashed black beans and sweet potatoes then roll up each tortilla into a singular tube. Pour the tomatillo sauce on top of the tortillas and then bake for 30 minutes at 350 degrees.",
             es:"Rellene las tortillas con puré de frijoles negros y batatas, luego enrolle cada tortilla en forma de tubito. Póngale la salsa de tomatillo encima de las tortillas y luego hornee por 30 minutos a 350 grados.",

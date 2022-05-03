@@ -2,6 +2,7 @@ import React from 'react';
 import Dialog from '../comps/dialog';
 import {useRouter} from 'next/router'
 
+//Ayu introduction
 export default function Intro() {
   const router = useRouter()
 

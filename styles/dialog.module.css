@@ -1,32 +1,20 @@
-.dialog_container {
-    width: 100%;
-    height: 100%;
-}
-
-.dialog_button {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
 .dialog_speech_container {
+    position: relative;
+    top: 0px;
     width: 100%;
     height: 30%;
-    position: relative;
 
 }
 
 .speech_bubble {
-    margin: auto;
+    position: absolute;
     width: 70%;
     height: 80%;
     background-color: white;
     border-radius: 35px;
-    position: absolute;
-    top:50%;
-    bottom: 50%;
-    left:10%;
-    right:10%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .speech_bubble_text {
@@ -41,41 +29,6 @@
     right:10%;
 }
 
-.speech_bubble_triangle_ayu {
-    width: 0; 
-    height: 0; 
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid white;   
-    position: absolute;
-    right: 50%;
-    left: 50%;
-    bottom: 0;
-}
-
-.speech_bubble_triangle_speaker {
-    width: 0; 
-    height: 0; 
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid white;  
-    position: absolute;
-    right: 25%;
-    left: 75%;
-    bottom: 0;
-}
-
-.speech_bubble_triangle_player {
-    width: 0; 
-    height: 0; 
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid white;  
-    position: absolute;
-    right: 75%;
-    left: 25%;
-    bottom: 0;
-}
 
 .dialog_speaker_container {
     width: 100%;
@@ -83,10 +36,10 @@
 }
 
 .ayu_img_container{ 
+    position: relative;
     margin: auto;
     width: 50%;
-    height: 100%;
-    position: relative;
+    height: 70%;
 }
 
 .speaker_img_container{ 
@@ -107,6 +60,31 @@
     width: 200px;
     height: 200px;
     left: 14%;
-    bottom: 58px;
+    bottom: 55px;
     position: absolute;
+}
+
+.speech_bubble_triangle {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid white;   
+    position: absolute;
+    bottom: 0;
+}
+
+#left {
+    right: 75%;
+    left: 25%;
+}
+
+#center { 
+    right: 50%;
+    left: 50%;
+}
+
+#right {
+    right: 25%;
+    left: 75%;
 }

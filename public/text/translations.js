@@ -1,8 +1,40 @@
+//Translations done this way to allow for more languges later
 const translations = {
     start: {
         en: "Start",
         es: "Comienzo"
     },
+
+    back_to_menu: {
+        en: "",
+        es: "",
+    },
+
+    continue: {
+        en: "Continue",
+        es: "Continuar",
+    },
+
+    empty_hint: {
+        en:"Please put in an answer.",
+        es:"Por favor, ponga una respuesta.",
+    },
+
+    question_feedback: [ 
+        {
+            en: "Excellent!",
+            es:"¡Muy bien!",   
+            answer: ""
+        },{
+            en: "Correct!",
+            es:"¡Correcto!",
+            answer: ""
+        },{
+            en: "Great Job!",
+            es:"¡Excelente trabajo!",
+            answer: ""
+        },
+    ],
 
     ayu_affermations: [
         {

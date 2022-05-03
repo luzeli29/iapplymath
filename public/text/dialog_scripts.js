@@ -1,4 +1,14 @@
 const dialog_scripts = {
+    error: {
+        stage: "ayu",
+        lines: [
+            {
+                en:"Hi, if you're seeing this there was an error with the website's code. Click or press enter to go to the index page.",
+                es:"Hola, please switch to english!",
+            },
+        ],
+    },
+
     game_intro: {
         stage: "ayu",
         lines: [
@@ -88,7 +98,8 @@ const dialog_scripts = {
     },
 
     resturant_intro: {
-        stage: "resturnant",
+        stage: "restaurant",
+        no_speaker: true,
         lines: [
             {
                 en: "Hey, I am so happy to see you here!",
@@ -100,6 +111,28 @@ const dialog_scripts = {
                 en: "All right, let’s order some food!",
                 es: "Vamos pedir algo para comer!"
             },
+        ]
+    },
+
+    resturant_outro: {
+        stage: "restaurant",
+        no_speaker: true,
+        lines: [
+            {
+                en: "Wow, I’m so full!",
+                es: "Guau, estoy muy satisfecha!"
+            },{
+                en: "The food was really good!",
+                es: "Si, la comida estaba muy buena!",
+                player_speaking: true,
+            },{
+                en: "It was! Let’s come again soon.",
+                es: "Sí siempre, cuando quieras volvemos!"
+            },{
+                en: "Sure! I’ll see you later!",
+                es: "¡Claro, nos vemos luego!",
+                player_speaking: true,
+            }
         ]
     }
     
