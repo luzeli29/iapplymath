@@ -21,7 +21,7 @@ export default function Creator() {
     }
 
     const AvatarButton = ({index}) => {
-        const path = "/img/avatar/pre_made/icons/A"
+        const path = "/img/avatar/pre_made/A"
         return (
             <button
                 onClick={() => setAvatar(index)}
