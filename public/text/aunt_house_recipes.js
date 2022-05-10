@@ -21,7 +21,7 @@ const recipes = [
             },
             plural: {
                 en: "cups of",
-                es: "vasosc",
+                es: "vasos",
             }
         },
         ingredients: [
