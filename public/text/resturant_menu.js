@@ -4,7 +4,7 @@ const menu = {
         {
             type: "entree",
             en: "Huevos Rancheros",
-            es: "Huevos Ranchoros",
+            es: "Huevos Rancheros",
             img: "huevos_rancheros.png",
             price: 8,
         },{
@@ -12,7 +12,7 @@ const menu = {
             en: "Burritos",
             es: "Burritos",
             img: "burritos.png",
-            price: 8,
+            price: 9,
         },{
             type: "entree",
             en: "Rice with Chicken",
@@ -27,8 +27,8 @@ const menu = {
             price: 5
         },{
             type: "entree",
-            en: "Caesar Salad",
-            es: "Ensalada César",
+            en: "Salad",
+            es: "Ensalada",
             img: "ceasar_salad.png",
             price: 6,
 
@@ -43,24 +43,24 @@ const menu = {
             price: 0,
         },{
             type: "drink",
-            en: "Mango Pineapple Frescas",
-            es: "Frescas De Mango Piña",
+            en: "Mango Pineapple Juice",
+            es: "Jugo de Mango y Piña",
             img: "mango_pineapple_frescas.png",
 
             price: 3,
         },{
             type: "drink",
-            en: "Lavender Lemonade",
-            es: "Limonada de Lavanda",
+            en: "Lemonade",
+            es: "Limonada",
             img: "lavendar_lemonade.png",
-            price: 3,
+            price: 2,
         }
     ],
     desert: [
         {
             type: "desert",
-            en: "Natilla",
-            es: "Natilla",
+            en: "Rice Pudding",
+            es: "Arroz con Leche",
             img: "natilla.png",
             price: 2,
         },{
@@ -73,7 +73,7 @@ const menu = {
         },{
             type: "desert",
             en: "Brownie",
-            es: "Bizcocho de Chocolate y Nueces",
+            es: "Postre de Chocolate",
             img: "brownie.png",
             price: 5,
         }
