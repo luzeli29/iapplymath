@@ -4,7 +4,7 @@ const menu = {
         {
             type: "entree",
             en: "Huevos Rancheros",
-            es: "Huevos de Rancho",
+            es: "Huevos Ranchoros",
             img: "huevos_rancheros.png",
             price: 8,
         },{
