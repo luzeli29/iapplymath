@@ -132,7 +132,7 @@ const QuestionBox = ({lang,question_data, incorrectNum}) => {
    //Check for need of hints
    if (incorrectNum > 0) {
       if (incorrectNum == 1 || (!question_data.hint && incorrectNum != 0)) { //check for basic hint
-         hintText = lang == "en" ? "Try again" : "Inténtalo de nuevo" 
+         hintText = translations.try_again[lang]
       } else if(question_data.hint) { //question has hints
           
          if (incorrectNum-2 >= question_data.hint.length) {

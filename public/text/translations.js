@@ -2,7 +2,7 @@
 const translations = {
     start: {
         en: "Start",
-        es: "Comienzo"
+        es: "Comienzo",
     },
 
     back_to_menu: {
@@ -10,9 +10,38 @@ const translations = {
         es: "",
     },
 
+    try_again: {
+        en: "Try again",
+        es: "Inténtalo de nuevo",
+    },
+
+    page_not_found: {
+        en: "Oh No! Page not found",
+        es: "¡Oh no! Página no encontrada",
+    },
+
+    // TODO: maybe find a better way to do this for 404 page
+    click: {
+        en:"Click",
+        es:"Haz clic",
+    },
+    here: {
+        en: "Here",
+        es: "Aquí",
+    },
+    to_return_home: {
+        en: "to return home",
+        es: "para regresar",
+    },
+
     continue: {
         en: "Continue",
         es: "Continuar",
+    },
+
+    pick_avatar: {
+        en: "Pick an Avatar",
+        es: "Elige un Avatar",
     },
 
     empty_hint: {
