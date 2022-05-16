@@ -1,13 +1,47 @@
 //Translations done this way to allow for more languges later
 const translations = {
+
+    // ----- Aunt House Translations -----
+    recipe_select: {
+        en: "Recipe Select",
+        es: "Seleccionar Receta",
+    },
+    aunt_welcome: {
+        en: "Welcome to Tía María kitchen! Choose the recipe you’d like to try making.",
+        es: "¡Bienvenidos a la cocina de Tía María! Elige la receta que te gustaría intentar hacer.",
+    },
+
+    cook: {
+        en: "Cook!",
+        es: "¡Cocinar!",
+    },
+    // ----- Resturant Translations -----
+    menu_select_instructions: {
+        en: "Choose one entree, one drink, and one dessert. The total price of the items you select must be less than or equal to that budget.",
+        es: "Elija un plato principal, una bebida y un postre. Tenga en cuenta el dinero que tiene para pagar!",
+    },
+
+    order: {
+        en: "Order",
+        es: "Pedido",
+    },
+
+    menu_select: {
+        en: "Menu Select",
+        es: "Selección de Menú",
+    },
+
+    // ----- General Translations -----
     start: {
         en: "Start",
         es: "Comienzo",
     },
 
-    back_to_menu: {
-        en: "",
-        es: "",
+    
+
+    back_to_map: {
+        en: "Back to Map",
+        es: "Volver al Mapa",
     },
 
     try_again: {

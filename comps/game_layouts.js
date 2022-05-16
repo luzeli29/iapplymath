@@ -4,10 +4,11 @@ import style from '../styles/game_layout.module.css'
 import Image from 'next/image'
 import Dialog from './dialog';
 import translations from '../public/text/translations';
-import SimplifyFraction from './simplify_fraction'
 import {useRouter} from 'next/router'
 
-export default function GameLayout ({children, questions, onFinish}) {
+
+//TODO: Put all question helper functions into QuestionLayout
+export function QuestionLayout ({children, questions, onFinish}) {
    //get current context and other context variables
    const context = useWrapperContext()
    const questionNum = context.state.questionNum
@@ -348,4 +349,50 @@ const addFeedback = ({questions}) => {
       }
    })
    return newQuestions
+}
+
+export function FinishScreen ({lang,game_name,restart_text,handleRestart}) {
+   //get router for Next.js
+   const router = useRouter()
+   return (
+      <>
+          <img className="view_background_image_container" src={"/img/" + game_name + "/" + game_name + "_bg.png"}/>
+          <div className="end_container">
+              <button className="end_button" onClick={() => router.push('/game')}>{translations.back_to_map[lang]}</button>
+              <button className="end_button" onClick={() => handleRestart()}>{translations[restart_text][lang]}</button>
+          </div>
+      </>
+  )
+}
+
+//FixMe: is there a way to reduce paramaters?
+export function BasicGameLayout ({lang, game_name,instruction_text, submit_text, handleSubmit, children}) {
+   //get router for Next.js
+   const router = useRouter()
+   return(
+      <div className={style.basic_game_container}>  
+         <img className="view_background_image_container" src={"/img/" + game_name + "/" + game_name + "_bg.png"}/>
+         <button className="basic_button" id={style.back_to_map_button} onClick={() => router.push('/game')}>{translations.back_to_map[lang]}</button>
+
+         <div className={style.basic_game_instructions_text_container}>
+            <p className={style.basic_game_instructions_text}>{translations[instruction_text][lang]}</p>
+         </div>
+         <div className={style.basic_game_child_container}>
+            {children}
+         </div>
+         <button className="basic_button" id={style.submit_button} onClick={() => handleSubmit()}>{translations[submit_text][lang]}</button>
+      </div>)
+}
+
+//Helper function to simplify fractions
+export function SimplifyFraction (number,denomin) {
+   if((number/denomin)% 1 == 0) {
+       return number/denomin
+   } else {
+       var gcd = function gcd(a,b){
+           return b ? gcd(b, a%b) : a;
+         };
+         gcd = gcd(number,denomin);
+         return number/gcd + "/" + denomin/gcd;
+   }
 }
