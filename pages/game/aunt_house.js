@@ -99,7 +99,6 @@ export default function AuntHouse () {
     const RecipeSelect = () => {
         
         function handleRecipeClick (recipe_object) {
-            console.log(recipe)
             if(recipe == recipe_object) {
                 setRecipe(null)
             } else {
@@ -109,9 +108,7 @@ export default function AuntHouse () {
 
         function handleSubmit () {
             //check if a recipe was selected
-            if(!recipe) {
-                console.log("no recipe was selected")
-            } else {
+            if(recipe) {
                 setState("recipe_card")
             }
         }

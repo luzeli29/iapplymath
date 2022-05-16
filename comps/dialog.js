@@ -97,6 +97,7 @@ const DialogScreen = ({stage,line,handleNextLine,context}) => {
             </>
         )
     } else { //Creates 2 speaker stage
+        //FIXME: warning created due to css
         return (
             <>
                 <button 
