@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect,useCallback} from 'react';
 import {useWrapperContext} from '../context/context'
 import style from '../styles/game_layout.module.css'
 import Image from 'next/image'
@@ -168,16 +168,16 @@ export function QuestionLayout ({children, questions, onFinish}) {
          ["/",0,'←']
       ];
 
-      //TODO: fix keypress to stop memory leak
-      function handleKeyPress() {
+      const handleKeyPress = useCallback(event => {
          if (event.key == "Backspace") { //backspace pressed
-            //handleButtonPress("←")
+            handleButtonPress("←")
          } else if (event.key == "Enter") { //enter pressed
+            //TODO: fix it so this doesnt cause a memory leak
             //handleButtonPress("✓")
          } else if((event.keyCode >= 48 && event.keyCode <= 57) || event.key =="/") { //0-9 pressed
-            //handleButtonPress(event.key)
+            handleButtonPress(event.key)
          } 
-      }
+      },[answer])
 
       //useEffect to allow for keypress to be registered
       useEffect(() => {
@@ -187,7 +187,7 @@ export function QuestionLayout ({children, questions, onFinish}) {
          return () => {
             document.removeEventListener("keydown", handleKeyPress);
          };
-      }, []);
+      }, [handleKeyPress]);
 
       
       //handles a button press or keypress
