@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import Dialog from '../../comps/dialog'
 import {useWrapperContext} from '../../context/context'
-import GameLayout from '../../comps/game_layout'
 import style from '../../styles/aunt_house.module.css'
 import Image from 'next/image'
 import recipes from '../../public/text/aunt_house_recipes'
-import SimplifyFraction from '../../comps/simplify_fraction'
+import {SimplifyFraction,QuestionLayout,FinishScreen,BasicGameLayout} from '../../comps/game_layouts'
 import {useRouter} from 'next/router'
+import translations from '../../public/text/translations'
 
 //Main Aunt game
 export default function AuntHouse () {
@@ -23,7 +23,7 @@ export default function AuntHouse () {
     const [familySize, setFamilySize] = useState("null");
 
 
-    //generates the propper question JS object to be read by GameLayout
+    //generates the propper question JS object to be read by QuestionLayout
     const generateMultiQuestion = (ing, num) => {
         var answer
         if(isNaN(ing.amount)) {
@@ -68,13 +68,13 @@ export default function AuntHouse () {
                     onClick={() => setState("basic_game")}
                     className={style.recipe_card_button}> <b>
                     {/*TODO: potencially change if other langs were added*/}
-                    {lang == "en" ? "Cook!" : "¡Cocinar!"}</b></button>
+                    {translations.cook[lang]}</b></button>
 
             </div>
         )
     }
 
-    //Small recipe card component to be shown in GameLayout
+    //Small recipe card component to be shown in QuestionLayout
     const SmallRecipeCard = () => {
         return(
             <div className={style.recipe_card_container}>
@@ -97,38 +97,42 @@ export default function AuntHouse () {
 
     //Recipe selection component... allows user to select which recipe they want
     const RecipeSelect = () => {
-        return(
-            <div className={style.recipe_select_container}>  
-                <img className="view_background_image_container" src="/img/aunt_house/aunt_house_bg.png"/>
-                {/*TODO: potencially change if other langs were added*/}
-                <button className="back_to_map_button"onClick={() => router.push('/game')}><b>{lang == "en" ? 
-                    "Back to map" : 
-                    "Volver al mapa"
-                }</b></button>
-                {/*TODO: potencially change if other langs were added*/}
-                <div className={style.rs_text_container}>
-                    <p className={style.rs_text}><b>{lang == "en" ? 
-                        "Welcome to Tía María kitchen!" : 
-                        "¡Bienvenidos a la cocina de Tía María!"
-                    }</b></p>
-                    <p className={style.rs_text}><b>{lang == "en" ? 
-                        "Choose the recipe you’d like to try making:" : 
-                        "Elige la receta que te gustaría intentar hacer:"
-                    }</b></p>
-                </div>
+        
+        function handleRecipeClick (recipe_object) {
+            console.log(recipe)
+            if(recipe == recipe_object) {
+                setRecipe(null)
+            } else {
+                setRecipe(recipe_object)
+            }
+        }
 
-                <div className={style.rs_button_grid}>
+        function handleSubmit () {
+            //check if a recipe was selected
+            if(!recipe) {
+                console.log("no recipe was selected")
+            } else {
+                setState("recipe_card")
+            }
+        }
 
+        return (
+            <BasicGameLayout
+                lang={lang}
+                game_name={"aunt_house"}
+                instruction_text={"aunt_welcome"}
+                submit_text={"cook"}
+                handleSubmit={() => handleSubmit()}>
+                <div className={style.recipe_select_button_grid}>
                     {recipes.map((x) => {
                         return(
-                            <div key={x.name.en} className={style.rs_col}>
+                            <div key={x.name.en} className={style.recipe_select_button_container}>
                                 <button 
                                     onClick={() => {
-                                        setRecipe(x);
-                                        setState("recipe_card");
+                                        handleRecipeClick(x)
                                     }}>
-                                        <div className={style.rs_image}>
-                                        <p className={style.rs_image_text}>{x.name[lang]}</p>
+                                        <div className={x == recipe ? style.recipe_select_box_container_selected : style.recipe_select_box_container}>
+                                        <p className={style.recipe_select_box_text}>{x.name[lang]}</p>
                                             <Image
                                                 priority={true}
                                                 width={80}
@@ -140,8 +144,9 @@ export default function AuntHouse () {
                             </div>
                             )})}
                 </div>
-
-            </div>)}
+            </BasicGameLayout>
+        )
+    }
 
     //Renders game screen with given recipe, multiples to test and function when finished with questions
     const GameScreen = ({questionType,onFinish}) => {
@@ -193,12 +198,12 @@ export default function AuntHouse () {
         
         return (
             <>
-                <GameLayout
+                <QuestionLayout
                     questions={questions}
                     onFinish={() => {
                         onFinish()}}> 
                     <SmallRecipeCard/>
-                </GameLayout>
+                </QuestionLayout>
             </>
         );}
 
@@ -231,7 +236,7 @@ export default function AuntHouse () {
             }},]
 
         return(
-            <GameLayout
+            <QuestionLayout
                 questions={questions}
                 onFinish={() => {
                     setState("family_game")
@@ -240,24 +245,11 @@ export default function AuntHouse () {
                     <Image
                         priority={true}
                         layout="fill"
-                        src={"/img/aunt_house/aunt.png"}
+                        src={"/img/aunt_house/aunt_house_speaker.png"}
                     />
                 </div>
-            </GameLayout>
+            </QuestionLayout>
             
-        )
-    }
-
-    //Component where user can continue playing aunts or go to map
-    const EndChoice = () => {
-        return (
-            <>
-                <img className="view_background_image_container" src="/img/aunt_house/aunt_house_bg.png"/>
-                <div className="end_container">
-                    <button className="end_button" onClick={() => router.push('/game')}>{lang == "en" ? "Map" : "Mapa"}</button>
-                    <button className="end_button" onClick={() => setState("recipe_select")}>{lang == "en" ? "Recipe Select" : "Seleccionar Receta"}</button>
-                </div>
-            </>
         )
     }
 
@@ -296,6 +288,11 @@ export default function AuntHouse () {
                     onEnd={() => setState("end_choice")}/>)
                     
         case "end_choice" : //Screen where user can continue to play aunt or go to map
-            return(<EndChoice/>);
+            return(
+                <FinishScreen
+                    lang={lang}
+                    game_name={"aunt_house"}
+                    restart_text={"recipe_select"}
+                    handleRestart={() => setState("recipe_select")}/>);
     }    
 } 

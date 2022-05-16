@@ -5,7 +5,16 @@ import Image from 'next/image'
 import Scripts from '../public/text/dialog_scripts'
 import {useRouter} from 'next/router'
 
-export default function Dialog ({scriptId, onEnd}) {
+
+/*
+Creates a dialog screen to be shown in a game view
+
+scriptId - the id in which to get the script from txt object
+onEnd - what the dialog should do on end, default is to return to index.js
+onInput - function in what we should do when there is an input required
+
+*/
+export default function Dialog ({scriptId, onEnd, onInput}) {
     //Get current context
     const context =  useWrapperContext()
 
