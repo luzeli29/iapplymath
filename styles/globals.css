@@ -22,6 +22,14 @@ body {
   box-sizing: border-box;
 }
 
+.basic_button {
+  font-size: x-large;
+  background-color: var(--button-background-color);
+  width: 220px;
+  height: 40px;
+  border-radius: 15px;
+  box-shadow: 2px 2px #190933;
+}
 
 button,
 a {
@@ -135,19 +143,6 @@ a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.back_to_map_button {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0%);
-  top: 10px;
-  font-size: x-large;
-  background-color: var(--button-background-color);
-  width: 220px;
-  height: 40px;
-  border-radius: 15px;
-  box-shadow: 2px 2px #190933;
 }
 
 .fill_container {

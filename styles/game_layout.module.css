@@ -132,3 +132,46 @@
     border-radius: 15px;
     box-shadow: 2px 2px #190933;
 }
+
+#back_to_map_button {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    top: 10px;
+}
+
+#submit_button {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    bottom: 10px;
+}
+
+.basic_game_instructions_text_container {
+    position: relative;
+    margin:auto;
+    background-color: #F6CA64;
+    margin-top: 20px;
+    width: 60%;
+    height: 70px;
+    text-align: center;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.basic_game_instructions_text {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.basic_game_child_container {
+    position: relative;
+    width: 550px;
+    height: 350px;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}

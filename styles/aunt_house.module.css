@@ -1,41 +1,22 @@
 /* ----- RECEPE SELECT CSS -----*/
-
-.rs_table {
-    top: 50%;
-    left: 10%;
-    right: 10%;
-    position: absolute;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-}
-
-.rs_col {
+.recipe_select_button_container {
     padding: 10px;
     justify-content: center;
     align-items: center;
 }
 
-.recipe_select_text {
-    
-    width: 100%;
-    height: 5%;
-    text-align: center;
-}
-
-.rs_col:hover {
+.recipe_select_button_container:hover {
     transform:scale(1.2) ;
     background-size:cover;
 }
 
-.rs_button_grid {
+.recipe_select_button_grid {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: x;
     margin: auto;
-    width: 60%;
-    top: 35%;
-    left: 20%;
-    right: 50%;
     grid-auto-flow: column;
     align-items: center;
     justify-items: center;
@@ -44,18 +25,7 @@
     grid-template-rows: repeat(2, 1fr);
 }
 
-.rs_text_container {
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    position: absolute;
-    background-color: #F6CA64;
-    border-radius: 20px;
-    width: 50%;
-    text-align: center;
-}
-
-.rs_image{
+.recipe_select_box_container{
     font-size: small;
     padding-top: 10px;
     padding-bottom: 20px;
@@ -66,7 +36,18 @@
     border-radius: 20px;
 }
 
-.rs_image_text {
+.recipe_select_box_container_selected{
+    font-size: small;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background-color: #EDBFC6;
+    margin: auto;
+    width: 180px;
+    height: 125px;
+    border-radius: 20px;
+}
+
+.recipe_select_box_text {
     margin: auto;
 }
 

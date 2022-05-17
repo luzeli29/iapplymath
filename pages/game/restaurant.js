@@ -4,7 +4,7 @@ import {useWrapperContext} from '../../context/context'
 import style from '../../styles/restaurant.module.css'
 import Menu from '../../public/text/resturant_menu'
 import {useRouter} from 'next/router'
-import GameLayout from '../../comps/game_layout'
+import {BasicGameLayout, FinishScreen, QuestionLayout} from '../../comps/game_layouts'
 
 
 //Main Resturant game
@@ -69,13 +69,12 @@ export default function Restaurant () {
     //Component where user can continue playing aunts or go to map
     const EndChoice = () => {
         return (
-            <>
-                <img className="view_background_image_container" src="/img/restaurant/restaurant_bg.png"/>
-                <div className="end_container">
-                    <button className="end_button" onClick={() => router.push('/game')}>{lang == "en" ? "Map" : "Mapa"}</button>
-                    <button className="end_button" onClick={() => handleRestartGame()}>{lang == "en" ? "Menu Select" : "Selección de Menú"}</button>
-                </div>
-            </>
+            <FinishScreen 
+                lang={lang}
+                game_name="restaurant"
+                restart_text="menu_select"
+                handleRestart={() => handleRestartGame()}>
+            </FinishScreen>
         )
     }
 
@@ -107,13 +106,13 @@ export default function Restaurant () {
                 budget={budget}/>)
         case "game" : 
             return (
-                <GameLayout
+                <QuestionLayout
                     questions={generateOrderQuestions()}
                     onFinish={() => {
                         setState("outro_dialog")
                         return(<></>)}}> 
                     <Order order={order}/>
-                </GameLayout>
+                </QuestionLayout>
             )
         case "outro_dialog" :
             return (<Dialog
@@ -167,14 +166,13 @@ const MenuSelect = ({handleOrderComplete,budget,order,setOrder}) => {
     }
 
     return (
-        <>
-            <button className="back_to_map_button" onClick={() => router.push('/game')}><b>{lang == "en" ?   
-                "Back to map" : 
-                "Volver al mapa"
-            }</b></button>
-            <p className={style.ms_instructions}>{lang =="en" ? 
-                "Choose one entree, one drink, and one dessert. The total price of the items you select must be less than or equal to that budget." 
-                : "Elija un plato principal, una bebida y un postre. Tenga en cuenta el dinero que tiene para pagar!"}</p>
+        <BasicGameLayout
+            lang={lang}
+            game_name={"restaurant"}
+            instruction_text={"menu_select_instructions"}
+            submit_text={"order"}
+            handleSubmit={() => handleOrderComplete()}>
+        
             <div className={style.ms_container}>
                 <div className={style.menu_grid}>
                     <p className={style.menu_titles}><b>Entrees</b></p>
@@ -226,13 +224,8 @@ const MenuSelect = ({handleOrderComplete,budget,order,setOrder}) => {
                         order={order}
                         budget={budget}/>
                 </div>
-                {/*TODO: TRANSLATE */}
-                <button className={style.ms_order_button}onClick={() => handleOrderComplete()}><b>{lang == "en" ?   
-                    "Order" : 
-                    "Pedido"}</b>
-                </button>
             </div>
-        </>
+        </BasicGameLayout>
     )
 }
 
@@ -259,7 +252,7 @@ const ItemDescription = ({hovering,budget}) => {
 }
 
 //order component that shows what the user has ordered
-//used both in GameLayout and in MenuSelect
+//used both in QuestionLayout and in MenuSelect
 const Order = ({order,budget}) => {
     const lang = useWrapperContext().state.lang
 
