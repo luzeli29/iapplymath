@@ -34,7 +34,7 @@ const translations = {
     // ----- General Translations -----
     start: {
         en: "Start",
-        es: "Comienzo",
+        es: "Comenzar"
     },
 
     
@@ -101,38 +101,38 @@ const translations = {
 
     ayu_affermations: [
         {
-            en: "Working out math problems is fun.",
-            es: "Resolver problemas de matemáticas es divertido.",
+            en: "Repeat after me: Working out math problems is fun.",
+            es: "Repite después de mi: Resolver problemas de matemáticas es divertido.",
         },{
-            en: "I’m capable of learning math.",
-            es: "Soy capaz de aprender matemáticas.",
+            en: "Repeat after me: I’m capable of learning math.",
+            es: "Repite después de mi: Soy capaz de aprender matemáticas.",
         },{
-            en: "I have good abilities in math.",
-            es: "Tengo buenas habilidades en matemáticas.",
+            en: "Repeat after me: I have good abilities in math.",
+            es: "Repite después de mi: Tengo buenas habilidades en matemáticas.",
         },{
-            en: "I am relaxed, calm, alert, and confident in math.",
-            es: "Estoy tranquilo/a, alerta y seguro/a en matemáticas.",
+            en: "Repeat after me: I am relaxed, calm, alert, and confident in math.",
+            es: "Repite después de mi: Estoy tranquilo/a, alerta y seguro/a en matemáticas.",
         },{
-            en: "My math skills improve every day when I practice.",
-            es: "Mis habilidades matemáticas mejoran cada día cuando practico.",
+            en: "Repeat after me: My math skills improve every day when I practice.",
+            es: "Repite después de mi: Mis habilidades matemáticas mejoran cada día cuando practico.",
         },{
-            en: "I like math because it’s useful in everyday life.",
-            es: "Me gustan las matemáticas porque son útiles en mi día a día.",
+            en: "Repeat after me: I like math because it’s useful in everyday life.",
+            es: "Repite después de mi: Me gustan las matemáticas porque son útiles en mi día a día.",
         },{
-            en: "With more practice it will get easier!",
-            es: "¡Con más práctica será más fácil!",
+            en: "Practice saying this: With more practice it will get easier!",
+            es: "Practica diciendo esto: ¡Con más práctica será más fácil!",
         },{
-            en: "I’m still learning and I will keep trying!",
-            es: "¡Todavía estoy aprendiendo y seguiré intentando!",
+            en: "Practice saying this: I’m still learning and I will keep trying!",
+            es: "Practica diciendo esto: ¡Todavía estoy aprendiendo y seguiré intentando!",
         },{
-            en: "I can do great things",
-            es: "Puedo hacer cosas grandiosas",
+            en: "Practice saying this: I can do great things",
+            es: "Practica diciendo esto: Puedo hacer cosas grandiosas",
         },{
-            en: "I’m intelligent in many ways.",
-            es: "Soy inteligente de muchas maneras.",
+            en: "Practice saying this: I’m intelligent in many ways.",
+            es: "Practica diciendo esto: Soy inteligente de muchas maneras.",
         },{
-            en: "I can learn whatever I put my mind to.",
-            es: "Puedo aprender lo que me proponga.",
+            en: "Practice saying this: I can learn whatever I put my mind to.",
+            es: "Practica diciendo esto: Puedo aprender lo que me proponga.",
         },
     ],
 }
