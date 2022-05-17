@@ -7,7 +7,7 @@ const recipes = [
         path: "orange_carrot_juice",
         instructions: {
             en:"Blend the oranges and the carrots in a blender.",
-            es:"Mezcle las naranjas y las zanahorias en la licuadora.",
+            es:"Mezcla las naranjas y las zanahorias en la licuadora.",
         },
         serving_size: 1,
         serving_amount: {
@@ -17,11 +17,11 @@ const recipes = [
         serving_of: {
             singular: {
                 en: "cup of",
-                es: "vaso"
+                es: "vaso de"
             },
             plural: {
                 en: "cups of",
-                es: "vasos",
+                es: "vasos de",
             }
         },
         ingredients: [
@@ -65,11 +65,11 @@ const recipes = [
         serving_of: {
             singular: {
                 en: "serving of",
-                es: "porción"
+                es: "porción de"
             },
             plural: {
                 en: "servings of",
-                es: "porciones",
+                es: "porciones de",
             }
         },
         ingredients: [
@@ -90,11 +90,11 @@ const recipes = [
                 },
                 amount: "1/2" 
             },{
-                en: "cup chopped cilantro leaves and stems",
+                en: "cup chopped cilantro",
                 es: "taza de cilantro picado",
                 question: {
-                    en: "How many cups of chopped cilantro leaves and stems",
-                    es: "Cuántas tazas de hojas y tallos de cilantro picados"
+                    en: "How many cups of chopped cilantro",
+                    es: "Cuántas tazas de cilantro picado"
                 },
                 amount: "1/2" 
             }, 
@@ -138,13 +138,13 @@ const recipes = [
     },{
         name: {
             en: "Black bean and Sweet Potato Enchilada",
-            es: "Enchilada de Frijol Negro y Camote para Hacer",
+            es: "Enchilada de Frijol Negro y Papa Dulce",
         },
         //TODO: make a enchilada image to replace burrito
         path: "burritos",
         instructions: {
             en:"Fill the tortillas with mashed black beans and sweet potatoes then roll up each tortilla into a singular tube. Pour the tomatillo sauce on top of the tortillas and then bake for 30 minutes at 350 degrees.",
-            es:"Rellene las tortillas con puré de frijoles negros y batatas, luego enrolle cada tortilla en forma de tubito. Póngale la salsa de tomatillo encima de las tortillas y luego hornee por 30 minutos a 350 grados.",
+            es:"Rellene las tortillas con puré de frijoles negros y papa dulce, luego enrolle cada tortilla en forma de tubito. Póngale la salsa de tomatillo encima de las tortillas y luego hornee por 30 minutos a 350 grados.",
         },
         serving_size: 2,
         serving_amount: {
@@ -180,10 +180,10 @@ const recipes = [
                 amount: "1/2"
             },{ 
                 en: "cup of mashed sweet potato",
-                es: "taza de puré de camote",
+                es: "taza de puré de papa dulce",
                 question: {
                     en: "How many cups of mashed sweet potato",
-                    es: "Cuántas tazas de puré de camote",
+                    es: "Cuántas tazas de puré de papa dulce",
                 },
                 amount: 1
             },{ 
@@ -216,22 +216,22 @@ const recipes = [
         },
         path:"fruit_salad",
         instructions: {
-            en:"Cut the fruit into small pieces and serve in a bowl.",
-            es:"Cortar la fruta en pedazos pequeños y servir en un bol.",
+            en:"Cut the fruit into small pieces and serve on a plate.",
+            es:"Corte la fruta en pedazos pequeños y servir en un plato.",
         },
         serving_size: 1,
         serving_amount: {
-            en: "1 Bowl",
-            es: "1 Tazón",
+            en: "1 plate",
+            es: "1 plato",
         },
         serving_of: {
             singular: {
-                en: "bowl of",
-                es: "tazón de"
+                en: "plate of",
+                es: "plato de"
             },
             plural: {
-                en: "bowls of",
-                es:"tazones de",
+                en: "plates of",
+                es:"platos de",
             }
         },
         ingredients: [

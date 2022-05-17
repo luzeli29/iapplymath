@@ -9,8 +9,8 @@ const menu = {
             price: 8,
         },{
             type: "entree",
-            en: "Burritos",
-            es: "Burritos",
+            en: "Enchiladas",
+            es: "Enchiladas",
             img: "burritos.png",
             price: 9,
         },{
