@@ -13,8 +13,8 @@
 
 .ms_container {
     position: relative;
-    width: 78%;
-    height: 70%;
+    width: 100%;
+    height: 100%;
     top: 2%;
     left: 50%;
     transform: translate(-50%, 0%);
@@ -56,8 +56,8 @@
 
 .menu_button {
     margin: 7px;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border: solid black 1px;
     background-color: white;
     border-radius: 15px;
@@ -92,12 +92,6 @@
     background-color: #F6EFDD;
 }
 
-.background_image {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
 .menu_select_order_container {
     position: relative;
     width: 100%;
@@ -130,7 +124,7 @@
     position: relative;
     margin: auto;
     width: auto;
-    height: 100px;
+    height: 70px;
 }
 
 
@@ -144,16 +138,6 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-}
-
-.ms_instructions {
-    position: relative;
-    margin:auto;
-    background-color: #F6CA64;
-    margin-top: 20px;
-    width: 80%;
-    text-align: center;
-    border-radius: 15px;
 }
 
 .order_text {

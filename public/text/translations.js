@@ -1,18 +1,81 @@
 //Translations done this way to allow for more languges later
 const translations = {
+
+    // ----- Aunt House Translations -----
+    recipe_select: {
+        en: "Recipe Select",
+        es: "Seleccionar Receta",
+    },
+    aunt_welcome: {
+        en: "Welcome to Tía María kitchen! Choose the recipe you’d like to try making.",
+        es: "¡Bienvenidos a la cocina de Tía María! Elige la receta que te gustaría intentar hacer.",
+    },
+
+    cook: {
+        en: "Cook!",
+        es: "¡Cocinar!",
+    },
+    // ----- Resturant Translations -----
+    menu_select_instructions: {
+        en: "Choose one entree, one drink, and one dessert. The total price of the items you select must be less than or equal to that budget.",
+        es: "Elija un plato principal, una bebida y un postre. Tenga en cuenta el dinero que tiene para pagar!",
+    },
+
+    order: {
+        en: "Order",
+        es: "Pedido",
+    },
+
+    menu_select: {
+        en: "Menu Select",
+        es: "Selección de Menú",
+    },
+
+    // ----- General Translations -----
     start: {
         en: "Start",
         es: "Comenzar"
     },
 
-    back_to_menu: {
-        en: "",
-        es: "",
+    
+
+    back_to_map: {
+        en: "Back to Map",
+        es: "Volver al Mapa",
+    },
+
+    try_again: {
+        en: "Try again",
+        es: "Inténtalo de nuevo",
+    },
+
+    page_not_found: {
+        en: "Oh No! Page not found",
+        es: "¡Oh no! Página no encontrada",
+    },
+
+    // TODO: maybe find a better way to do this for 404 page
+    click: {
+        en:"Click",
+        es:"Haz clic",
+    },
+    here: {
+        en: "Here",
+        es: "Aquí",
+    },
+    to_return_home: {
+        en: "to return home",
+        es: "para regresar",
     },
 
     continue: {
         en: "Continue",
         es: "Continuar",
+    },
+
+    pick_avatar: {
+        en: "Pick an Avatar",
+        es: "Elige un Avatar",
     },
 
     empty_hint: {
