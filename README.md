@@ -7,5 +7,10 @@ In order to clone code and work on it yourself you need to follow the following 
 
 With this done you can use the following commands...
 
-npm run dev //will run a version of the site locally
-npm run build //will build the site
+npm run dev 
+//will run a version of the site locally
+
+npm run build 
+//will build the site
+
+Make sure you're on the dev branch if you're making changes! (Email John if your having trouble with this)
