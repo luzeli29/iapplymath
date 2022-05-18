@@ -15,7 +15,7 @@ const menu = {
             price: 9,
         },{
             type: "entree",
-            en: "Rice with Chicken",
+            en: "Chicken and Rice",
             es: "Arroz con pollo",
             img: "rice_with_chicken.png",
             price: 7,
