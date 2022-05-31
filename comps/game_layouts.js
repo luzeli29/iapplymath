@@ -9,7 +9,6 @@ import {useRouter} from 'next/router'
 //TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
 export function QuestionLayout ({children, questions, onFinish}) {
-   console.log("rerender ql")
    //get current context and other context variables
    const context = useWrapperContext()
    const questionNum = context.state.questionNum
@@ -24,8 +23,6 @@ export function QuestionLayout ({children, questions, onFinish}) {
 
    //adds positive feedback after a question was answered correctly
    var _questions = []
-   console.log(_questions)
-   console.log(questions)
 
    if(questions) {
       for(var i = 0; i < questions.length; i ++) {
@@ -33,7 +30,6 @@ export function QuestionLayout ({children, questions, onFinish}) {
          _questions[_questions.length] = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
       }
    }
-   console.log(_questions)
    //create two states
    //State keeps track of where the page is in terms of the game
    const [state, setState] = useState("questions")
@@ -74,7 +70,6 @@ export function QuestionLayout ({children, questions, onFinish}) {
 
    //Box that shows user the question, feedback after answering, and hint if there are incorrect guesses
    const QuestionBox = ({question_data, incorrectNum}) => {
-      console.log("rerender qb")
 
       var hintText = "";
 
@@ -103,7 +98,6 @@ export function QuestionLayout ({children, questions, onFinish}) {
    
    //Ayu component that is found on the bottom right box of GameLayout
    function Ayu ({}) {
-      console.log("rerender ayu")
 
       //get lang from context
       //potencially have context as a parm since useWrapperContext() might be adding unessisary stress
@@ -151,7 +145,6 @@ export function QuestionLayout ({children, questions, onFinish}) {
 
    //NumPad is the numberpad found in the bottom left of GameLayout
    function NumPad() {
-      console.log("rerender num")
 
       const question = _questions[questionNum]
 
