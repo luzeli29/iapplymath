@@ -88,6 +88,7 @@ const translations = {
             en: "Excellent!",
             es:"¡Muy bien!",   
             answer: ""
+
         },{
             en: "Correct!",
             es:"¡Correcto!",
