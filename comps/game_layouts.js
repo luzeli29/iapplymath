@@ -6,7 +6,7 @@ import Dialog from './dialog';
 import translations from '../public/text/translations';
 import {useRouter} from 'next/router'
 
-
+//TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
 export function QuestionLayout ({children, questions, onFinish}) {
    console.log("rerender ql")
@@ -15,6 +15,7 @@ export function QuestionLayout ({children, questions, onFinish}) {
    const questionNum = context.state.questionNum
    const lang = context.state.lang
 
+
    //get router for Next.js
    const router = useRouter()
 
@@ -22,18 +23,17 @@ export function QuestionLayout ({children, questions, onFinish}) {
    const _onFinish = onFinish ? onFinish : () => router.push('/')
 
    //adds positive feedback after a question was answered correctly
-   var _questions = questions
+   var _questions = []
+   console.log(_questions)
+   console.log(questions)
 
    if(questions) {
-      questions.map(question => {
-         _questions[_questions.length] = question
-         //no need to give positive feedback when question is a fill in
-         if(question.answer != "fill_in") {
-            _questions[_questions.length] = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
-         }
-      })}
-      
-
+      for(var i = 0; i < questions.length; i ++) {
+         _questions[_questions.length] = questions[i]
+         _questions[_questions.length] = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
+      }
+   }
+   console.log(_questions)
    //create two states
    //State keeps track of where the page is in terms of the game
    const [state, setState] = useState("questions")
@@ -211,7 +211,7 @@ export function QuestionLayout ({children, questions, onFinish}) {
          } else {
             //adding a number to the current answer value
             //Makes sure answer is less then 7 char
-            setAnswer(answer.toString().length < 7 ? answer + value : answer);
+            setAnswer(AnswerFormater(_questions[questionNum].answer_format,answer).toString().length < 7 ? answer + value : answer);
          }
       }
 
@@ -256,7 +256,7 @@ export function QuestionLayout ({children, questions, onFinish}) {
                            })}  
                         </td>
                         <td className={style.num_pad_left_box}>
-                           <p className={style.num_pad_answer}> <b className={style.num_pad_answer_text}>{answer} </b></p>
+                           <p className={style.num_pad_answer}> <b className={style.num_pad_answer_text}>{AnswerFormater(_questions[questionNum].answer_format,answer)} </b></p>
                         </td>
                         <td className={style.num_pad_left_box}>
                            {renderButton("✓")}
@@ -380,3 +380,16 @@ export function SimplifyFraction (number,denomin) {
          return number/gcd + "/" + denomin/gcd;
    }
 }
+
+const AnswerFormater = (format, value) => {
+   switch(format) {
+      case "money":
+         if(value) {
+            return "$" + value + ".00"
+         } else {
+            return "$0.00"
+         }
+      default:
+         return value
+   }
+} 
