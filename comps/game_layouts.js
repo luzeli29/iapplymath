@@ -8,7 +8,7 @@ import {useRouter} from 'next/router'
 
 //TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
-export function QuestionLayout ({children, questions, onFinish}) {
+export function QuestionLayout ({children, questions, onBack, onFinish}) {
    //get current context and other context variables
    const context = useWrapperContext()
    const questionNum = context.state.questionNum
@@ -270,34 +270,39 @@ export function QuestionLayout ({children, questions, onFinish}) {
          //Return the view to answer questions
          //It would be good to potencially replace <table> with a css grid
          return (
-             <table className="fill_container">
-                 <tbody>
+            <>
+               <div className="back_button_container">
+                  <button className="basic_button" id={style.back_button} onClick={() => onBack()}>{translations.back[lang]}</button>
+               </div>
+               <table className="fill_container">
+                  <tbody>
                      <tr>
-     
-                         <td className={style.child_container}>
-                             {children}
-                         </td>
-                         <td className={style.question_container}>
-                             <QuestionBox 
+      
+                           <td className={style.child_container}>
+                              {children}
+                           </td>
+                           <td className={style.question_container}>
+                              <QuestionBox 
                                  className={style.question_box}
                                  question_data={_questions[questionNum]}
                                  incorrectNum={incorrectNum}/>   
-                         </td>
+                           </td>
                      </tr>
-     
+      
                      <tr>
-     
+      
                      <td className={style.numpad_container}>
-                         <NumPad/>
+                           <NumPad/>
                      </td>
-     
+      
                      <td className={style.ayu_block}>
-                             <Ayu/>  
-                         </td>
-     
+                              <Ayu/>  
+                           </td>
+      
                      </tr>
-                 </tbody>
-             </table>                  
+                  </tbody>
+               </table>     
+            </>             
          )
       } else {
          //User has answered all the questions, call onFinish and return a blank view
