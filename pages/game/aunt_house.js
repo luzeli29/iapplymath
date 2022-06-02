@@ -196,6 +196,7 @@ export default function AuntHouse () {
         return (
             <>
                 <QuestionLayout
+                    onBack={() => setState("recipe_select")}
                     questions={questions}
                     onFinish={() => {
                         onFinish()}}> 
@@ -234,6 +235,7 @@ export default function AuntHouse () {
 
         return(
             <QuestionLayout
+                onBack={() => setState("recipe_select")}
                 questions={questions}
                 onFinish={() => {
                     setState("family_game")
