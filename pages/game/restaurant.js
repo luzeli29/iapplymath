@@ -112,6 +112,7 @@ export default function Restaurant () {
             return (
                 <QuestionLayout
                     questions={generateOrderQuestions()}
+                    onBack={() => setState("menu_select")}
                     onFinish={() => {
                         setState("outro_dialog")
                         return(<></>)}}> 

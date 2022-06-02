@@ -25,7 +25,6 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
 
     //set all needed params with id given, and check if they actually exist
     const dialog = Scripts[scriptId] ? Scripts[scriptId] : Scripts["error"]
-    const stage = dialog.stage ? dialog.stage : Scripts["error"].stage
     const script = dialog.lines ? dialog.lines : Scripts["error"].lines
     //if no onEnd function found, return to index
     const _onEnd = onEnd ? onEnd : () => router.push('/')
@@ -60,7 +59,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
     return (
         <>
             <DialogScreen 
-                stage={stage} 
+                dialog={dialog} 
                 line={script[lineNum]}
                 handleNextLine={()=>handleNextLine()}
                 context={context}/>
@@ -70,9 +69,12 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
 } 
 
 //This is the component that makes up what is seen on the page
-const DialogScreen = ({stage,line,handleNextLine,context}) => {
+const DialogScreen = ({dialog,line,handleNextLine,context}) => {
     //get avatar from context
     const avatar = context.state.avatar
+
+    const stage = dialog.stage ? dialog.stage : Scripts["error"].stage
+
       
     //Creates the view depending on what stage it si
     if(stage == "ayu") { //Creates Ayu Screen
@@ -123,10 +125,11 @@ const DialogScreen = ({stage,line,handleNextLine,context}) => {
                                 src={"/img/avatar/pre_made/A" + avatar + "_back.png"}/> 
                         </div>
                         <div className={style.speaker_img}>
-                            {stage.no_speaker ?
+                            {dialog.no_speaker ?
                                 <>
                                 </> 
                             : 
+                                
                                 <Image
                                     priority={true}
                                     layout={"fill"}

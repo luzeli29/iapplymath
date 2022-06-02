@@ -1,40 +1,48 @@
 .question_container {
     border-radius: 15px;
     width: 45%;
-    height: 55%;
+    height: 46.5%;
+    top: 20px;
+    position: absolute;
+    left: 55%;
     border: solid black 1px;
+}
+.numpad_container {
+    top: 59%;
+    width: 55%;
+    position: absolute;
+    height: 36.25%;
+    border-radius: 15px;
+    border: solid black 1px;
+}
+
+.child_container {
+    top: 20px;
+    width: 55%;
+    position: absolute;
+    height: 55%;
+    border-radius: 15px;
+    border: solid black 1px;
+}
+
+.ayu_block {
+    width: 45%;
+    position: absolute;
+    left: 55%;
+    height: 45%;
+    border-radius: 15px;
+    border: solid black 1px;
+    position: absolute;
 }
 
 .question_text_container {
     text-align: center;
     font-size: 30px;
     margin: auto;
-    width: 90%;
+    width: 100%;
     height: 70%;
 }
 
-.numpad_container {
-    width: 55%;
-    height: 45%;
-    border-radius: 15px;
-    border: solid black 1px;
-}
-
-.child_container {
-    width: 55%;
-    height: 55%;
-    border-radius: 15px;
-    position: absolute;
-    border: solid black 1px;
-}
-
-.ayu_block {
-    width: 45%;
-    height: 45%;
-    border-radius: 15px;
-    border: solid black 1px;
-    position: relative;
-}
 
 .ayu_image_container {
     margin: auto;
@@ -48,14 +56,14 @@
     margin-right: auto;
     height: 80%;
     background-color: white;
-    border-radius: 35px;
+    border-radius: 20px;
     position: relative;
 }
 
 .ayu_speech_bubble_container {
     padding-top: 10px;
     margin: auto;
-    width: 70%;
+    width: 90%;
     height: 40%;
 }
 
@@ -69,6 +77,7 @@
     padding-right: 10%;
     margin: auto;
     position: relative;
+    font-size: small;
 }
 
 .num_pad_container {
@@ -115,7 +124,7 @@
     border-top: 20px solid white;  
     position: absolute;
     right: 50%;
-    left: 40%;
+    left: 42%;
     bottom: 40%;
     top: 100%
 }
@@ -134,6 +143,19 @@
 }
 
 #back_to_map_button {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    top: 10px;
+}
+
+#back_button {
+    background-color: var(--button-background-color);
+    width: 110px;
+    height: 20px;
+    border-radius: 15px;
+    box-shadow: 2px 2px #190933;
+    font-size: small;
     position: relative;
     left: 50%;
     transform: translate(-50%, 0%);
