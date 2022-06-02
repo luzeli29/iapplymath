@@ -38,6 +38,10 @@ const translations = {
     },
 
     
+    back: {
+        en: "Back",
+        es: "Retroceso"
+    },
 
     back_to_map: {
         en: "Back to Map",
