@@ -25,23 +25,33 @@
 }
 
 #home {
-    top: 8%;
+    position: absolute;
+    top: 19%;
     left: 36%;
     right: 40%;
 }
 
 #resturant {
-    top: 10%;
-    right:0%;
-    left:50%;
+    position: absolute;
+    top: 60%;
+    right: 0%;
+    left: 67%;
 }
 
 #aunt_house {
+    position: absolute;
     top: 10%;
     left: 10%;
 }
 
 #grocery_store {
-    top: 10%;
+    position: absolute;
+    top: 60%;
     left: 10%;
+}
+
+#school {
+    position: absolute;
+    top: 10%;
+    left: 55%;
 }
