@@ -3,6 +3,7 @@ import style from '../../styles/map.module.css'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
 import {useWrapperContext} from '../../context/context'
+import translations from '../../public/text/translations';
 
 export default function Map() {
     //get lang from context
@@ -33,13 +34,23 @@ export default function Map() {
                         quality={100}
                         priority={true}
                         src={"/img/map/resturant.png"}/> 
+                    <p>{translations.restaurant[lang]}</p>
+
                 </button> 
                 <div
                     className={style.icon} 
                     id={style.home}>
                         <img className={style.icon} 
-                    id={style.grocery_store}
-                    src={"/img/map/Home.png"}/>
+                            id={style.grocery_store}
+                            src={"/img/map/Home.png"}/>
+                </div>
+
+                <div
+                    className={style.icon} 
+                    id={style.school}>
+                        <img className={style.icon} 
+                            id={style.school}
+                            src={"/img/map/school.png"}/>
                 </div>
                 
                 <img className={style.icon} 
