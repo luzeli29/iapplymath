@@ -2,7 +2,7 @@ import React, {useState,useReducer} from 'react'
 import Dialog from '../../comps/dialog'
 import {useWrapperContext} from '../../context/context'
 import style from '../../styles/restaurant.module.css'
-import Menu from '../../public/text/resturant_menu'
+import getMenu from '../../comps/resturant_menu'
 import {useRouter} from 'next/router'
 import {BasicGameLayout, FinishScreen, QuestionLayout} from '../../comps/game_layouts'
 
@@ -107,7 +107,8 @@ export default function Restaurant () {
                 order={order}
                 setOrder={(newOrder) => setOrder(newOrder)}
                 handleOrderComplete={() => handleOrderComplete()}
-                budget={budget}/>)
+                budget={budget}
+                menu={getMenu()}/>)
         case "game" : 
             return (
                 <QuestionLayout
@@ -131,12 +132,11 @@ export default function Restaurant () {
 }
 
 //menu select screen
-const MenuSelect = ({handleOrderComplete,budget,order,setOrder}) => {
+const MenuSelect = ({handleOrderComplete,budget,order,setOrder, menu}) => {
     //get lang from context
     const lang = useWrapperContext().state.lang
     //get menu from public
-    const menu = Menu
-    
+
     //remembers what dish player is hovering on, or nothing
     const [hovering, setHovering] = useState("")
     //used to route back to map
@@ -169,6 +169,7 @@ const MenuSelect = ({handleOrderComplete,budget,order,setOrder}) => {
         //forces an update
         forceUpdate();
     }
+
 
     return (
         <BasicGameLayout
