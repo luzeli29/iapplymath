@@ -1,6 +1,25 @@
 //Translations done this way to allow for more languges later
 const translations = {
 
+    // ----- Map Translations -----
+
+    aunt_house: {
+        en:"Aunt House",
+        es:"Casa de la Tia"
+    },school: {
+        en:"School",
+        es:"Escuela"
+    },restaurant: {
+        en:"Restaurant",
+        es:"Restaurante"
+    },my_house: {
+        en:"My House",
+        es:"Mi Casa"
+    },grocery_store: {
+        en:"Grocery Store",
+        es:"Tienda de Comestibles"
+    },
+    
     // ----- Aunt House Translations -----
     recipe_select: {
         en: "Recipe Select",
@@ -38,6 +57,10 @@ const translations = {
     },
 
     
+    back: {
+        en: "Back",
+        es: "Retroceso"
+    },
 
     back_to_map: {
         en: "Back to Map",
@@ -88,6 +111,7 @@ const translations = {
             en: "Excellent!",
             es:"¡Muy bien!",   
             answer: ""
+
         },{
             en: "Correct!",
             es:"¡Correcto!",
