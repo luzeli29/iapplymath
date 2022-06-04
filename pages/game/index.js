@@ -15,9 +15,13 @@ export default function Map() {
 
     return (
         <>
-            <div className={style.map}>                
+            <div className={style.map}>               
+            
+            <p className={style.aunt_house_text}>{translations.aunt_house[lang]}</p>
+
+                <p className={style.restaurant_text}>{translations.restaurant[lang]}</p> 
                 <button onClick={() => router.push('game/aunt_house')} 
-                        className={style.icon_button} id={style.aunt_house}> 
+                        className={style.icon_button_small} id={style.aunt_house}> 
                     <Image 
                         layout={"fill"}
                         quality={100}
@@ -26,6 +30,15 @@ export default function Map() {
 
                 </button>
                 
+
+                <img className={style.icon_small} 
+                    id={style.house_1}
+                    src={"/img/map/aunt_house.png"}/>
+
+                <img className={style.icon_small} 
+                    id={style.house_2}
+                    src={"/img/map/aunt_house.png"}/>
+
                 <button onClick={() => router.push('game/restaurant')} 
                         className={style.icon_button} 
                         id={style.resturant}>

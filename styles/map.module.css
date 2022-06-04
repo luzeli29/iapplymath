@@ -10,18 +10,47 @@
 .icon {
     width: 150px;
     height: 150px;
-    position: relative;
+    position: absolute;
+}
+
+.icon_small {
+    width: 75px;
+    height: 75px;
+    position: absolute;
 }
 
 .icon_button {
     width: 150px;
     height: 150px;
-    position: relative;
+    position: absolute;
+}
+
+.icon_button_small {
+    width: 75px;
+    height: 75px;
+    position: absolute;
+}
+
+.icon_button_small:hover {
+    transform:scale(1.5) ;
+    background-size:cover;
 }
 
 .icon_button:hover {
     transform:scale(1.5) ;
     background-size:cover;
+}
+
+.aunt_house_text {
+    position: absolute;
+    left: 10%;
+    margin-left: 10px;
+}
+
+.restaurant_text {
+    position: absolute;
+    left: 85%;
+    top:60%;
 }
 
 #home {
@@ -31,9 +60,20 @@
     right: 40%;
 }
 
+#house_1 {
+    top: 18%;
+    left: 5%;
+}
+
+#house_2 {
+    top: 10%;
+    left: 25%;
+    transform: scaleX(-1);
+}
+
 #resturant {
     position: absolute;
-    top: 60%;
+    top: 65%;
     right: 0%;
     left: 67%;
 }
@@ -41,17 +81,17 @@
 #aunt_house {
     position: absolute;
     top: 10%;
-    left: 10%;
+    left: 14%;
 }
 
 #grocery_store {
     position: absolute;
-    top: 60%;
+    top: 65%;
     left: 10%;
 }
 
 #school {
     position: absolute;
-    top: 10%;
+    top: 8%;
     left: 55%;
 }
