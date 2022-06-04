@@ -32,7 +32,8 @@ const recipes = [
                     en: "How many carrots",
                     es: "Cuántas zanahorias"
                 },
-                amount: 3
+                amount: 3,
+                img: "carrots.png",
             },
             { 
                 en: "oranges",
@@ -41,7 +42,9 @@ const recipes = [
                     en: "How many oranges",
                     es: "Cuántas naranjas"
                 },
-                amount: 2
+                amount: 2,
+                img: "oranges.png",
+
             },
 
         ],
@@ -80,7 +83,8 @@ const recipes = [
                     en: "How many pounds of tomatillos",
                     es: "Cuántas libras de tomatillos"
                 },
-                amount: 1
+                amount: 1,
+                img: "tomatillo.png"
             },{ 
                 en: "cup of chopped white onion",
                 es: "taza de cebolla blanca picada",
@@ -88,7 +92,8 @@ const recipes = [
                     en: "How many cups of chopped white onion",
                     es: "Cuántas tazas de cebolla blanca picada"
                 },
-                amount: "1/2" 
+                amount: "1/2",
+                img: "onions.png"
             },{
                 en: "cup chopped cilantro",
                 es: "taza de cilantro picado",
@@ -96,7 +101,8 @@ const recipes = [
                     en: "How many cups of chopped cilantro",
                     es: "Cuántas tazas de cilantro picado"
                 },
-                amount: "1/2" 
+                amount: "1/2",
+                img: "cilantro.png"
             }, 
             {
                 en: "cloves of garlic",
@@ -105,7 +111,8 @@ const recipes = [
                     en: "How many cloves of garlic",
                     es: "Cuántos dientes de ajo"
                 },
-                amount: 2
+                amount: 2,
+                img: "garlic.png"
             },{
                 en: "tablespoon of fresh lime juice",
                 es: "cucharada de jugo de limón",
@@ -113,7 +120,8 @@ const recipes = [
                     en: "How many tablespoons of fresh lime juice",
                     es: "Cuántas cucharadas de jugo de limón"
                 },
-                amount: 1 
+                amount: 1,
+                img: "lime.png"
             },/*{
                 en: "Jalapeño or serrano peppers for spice (you can use whole for more heat if you want)",
                 es: "Chiles jalapeños o serranos para especias (dependiendo de qué tan picante lo deseas)",
@@ -125,7 +133,9 @@ const recipes = [
                     en: "How many bags of tortilla chips",
                     es: "Cuántas bolsas de chips de tortilla"
                 },
-                amount: 1 
+                amount: 1,
+                img: "tortillas.png"
+
             },/*{
                 en: "Salt and spices to taste",
                 es: "Sal y especias al gusto",
@@ -169,7 +179,9 @@ const recipes = [
                     en: "How many cups of mashed black beans",
                     es: "Cuántas tazas de puré de frijoles negros"
                 },
-                amount: 1
+                amount: 1,
+                img: "black_beans.png"
+
             },{ 
                 en:"onion",
                 es:"cebolla",
@@ -177,7 +189,9 @@ const recipes = [
                     en: "How much onions",
                     es: "Cuánta cebollas"
                 },
-                amount: "1/2"
+                amount: "1/2",
+                img: "onions.png"
+
             },{ 
                 en: "cup of mashed sweet potato",
                 es: "taza de puré de papa dulce",
@@ -185,7 +199,9 @@ const recipes = [
                     en: "How many cups of mashed sweet potato",
                     es: "Cuántas tazas de puré de papa dulce",
                 },
-                amount: 1
+                amount: 1,
+                img: "mashed_sweet_potato.png"
+
             },{ 
                 en: "tortillas",
                 es: "tortillas",
@@ -193,7 +209,9 @@ const recipes = [
                     en: "How many tortillas",
                     es: "Cuántas tortillas",
                 },
-                amount: 4
+                amount: 4,
+                img: "tortillas.png"
+
             },{ 
                 en: "cup of tomatillo sauce",
                 es: "taza de salsa de tomatillo",
@@ -201,11 +219,13 @@ const recipes = [
                     en: "How many cups of tomatillo sauce",
                     es: "Cuántas tazas de salsa de tomatillo"
                 },
-                amount: "1/4"
+                amount: "1/4",
+                img: "tomatillo_sauce.png",
             },{ 
                 en: "Salt and spices to taste",
                 es: "Sal y especias al gusto",
-                amount: ""
+                amount: "",
+                img: "salt_pepper.png"
             },],
         set_questions: [[1,4],[0,4],[1,8],[1,2],[0,4]],
         family_questions: [3,0]
@@ -242,7 +262,8 @@ const recipes = [
                     en: "How much papaya",
                     es: "Cuánta papayas"
                 },
-                amount: "1/4"
+                amount: "1/4",
+                img: "papaya.png",
             },{ 
                 en: "mango",
                 es: "mango",
@@ -250,7 +271,8 @@ const recipes = [
                     en: "How much mango",
                     es: "Cuánto mango"
                 },
-                amount: "1/4"
+                amount: "1/4",
+                img: "strawberry.png",
             },{ 
                 en: "cup of strawberries",
                 es: "taza de fresas",
@@ -258,7 +280,8 @@ const recipes = [
                     en: "How many cups of strawberries",
                     es: "Cuántas tazas de fresas",
                 },
-                amount: "1/3"
+                amount: "1/3",
+                img: "strawberry.png",
             },{ 
                 en: "kiwi",
                 es: "kiwi",
@@ -266,7 +289,8 @@ const recipes = [
                     en: "How much kiwi",
                     es: "Cuánto kiwi"
                 },
-                amount: "1/2"
+                amount: "1/2",
+                img: "strawberry.png",
             },
         ],
         set_questions: [[3,1],[1,1],[2,2],[0,2],[3,2],[1,4]],
