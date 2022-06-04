@@ -66,6 +66,11 @@
 
 /* ----- BIG RECIPE CARD CSS -----*/
 
+.ing_image {
+    position: relative;
+    width: 25px;
+    height: 25px;
+}
 .recipe_card_container {
     position: relative;
     width: 100%;
@@ -105,9 +110,15 @@
     transform: translate(-50%, 0%);
     background-color: #F6EFDD;
 }
+
+.ing_image_small {
+    position: relative;
+    width: 15px;
+    height: 15px;
+}
 .recipe_card_ing {
     position: static;
-    height: 25px;
+    height: 30px;
     padding-left: 30px;
     padding-right: 30px;
     border-bottom: solid #190933 2px;
@@ -153,10 +164,10 @@
 .small_recipe_card_ing {
     position: relative;
     height: 15px;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     padding-left: 5px;
     padding-right: 5px;
-    border-bottom: solid #190933 2px;
+    border-bottom: solid #190933 1px;
     font-size: small;
 }
 

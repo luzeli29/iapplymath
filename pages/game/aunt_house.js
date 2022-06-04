@@ -59,9 +59,18 @@ export default function AuntHouse () {
                 <div className={style.recipe_card_ing_container}>
                     {recipe.ingredients.map((ing) => {
                         return(
-                        <p key={ing[lang]} className={style.recipe_card_ing}>
-                            {ing.amount == "" ? ing[lang] : ing.amount + " " + ing[lang]}
-                        </p>);})}
+                            <>
+                            <p key={ing[lang]} className={style.recipe_card_ing}>
+                                <img 
+                                    src={"/img/ing/" + ing.img} 
+                                    className={style.ing_image}/>
+                                {ing.amount == "" ? ing[lang] : ing.amount + " " + ing[lang]}
+                                
+                            </p>
+                            
+                        </>
+                        );})}
+                        
                 </div>
                 
                 <button 
@@ -84,7 +93,12 @@ export default function AuntHouse () {
                 <div className={style.small_recipe_card_ing_container}>
                     {recipe.ingredients.map((ing) => {
                                         return(
-                                            <p className={style.small_recipe_card_ing} key={ing[lang]}>{ing.amount + " " + ing[lang]}</p>
+                                            <p className={style.small_recipe_card_ing} key={ing[lang]}>
+                                                <img 
+                                                    src={"/img/ing/" + ing.img} 
+                                                    className={style.ing_image_small}/>
+                                                {ing.amount + " " + ing[lang]}
+                                            </p>
                                         );
                         })}
                 </div>
@@ -196,6 +210,7 @@ export default function AuntHouse () {
         return (
             <>
                 <QuestionLayout
+                    onBack={() => setState("recipe_select")}
                     questions={questions}
                     onFinish={() => {
                         onFinish()}}> 
@@ -234,6 +249,7 @@ export default function AuntHouse () {
 
         return(
             <QuestionLayout
+                onBack={() => setState("recipe_select")}
                 questions={questions}
                 onFinish={() => {
                     setState("family_game")

@@ -3,6 +3,7 @@ import style from '../../styles/map.module.css'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
 import {useWrapperContext} from '../../context/context'
+import translations from '../../public/text/translations';
 
 export default function Map() {
     //get lang from context
@@ -14,9 +15,13 @@ export default function Map() {
 
     return (
         <>
-            <div className={style.map}>                
+            <div className={style.map}>               
+            
+            <p className={style.aunt_house_text}>{translations.aunt_house[lang]}</p>
+
+                <p className={style.restaurant_text}>{translations.restaurant[lang]}</p> 
                 <button onClick={() => router.push('game/aunt_house')} 
-                        className={style.icon_button} id={style.aunt_house}> 
+                        className={style.icon_button_small} id={style.aunt_house}> 
                     <Image 
                         layout={"fill"}
                         quality={100}
@@ -25,6 +30,15 @@ export default function Map() {
 
                 </button>
                 
+
+                <img className={style.icon_small} 
+                    id={style.house_1}
+                    src={"/img/map/aunt_house.png"}/>
+
+                <img className={style.icon_small} 
+                    id={style.house_2}
+                    src={"/img/map/aunt_house.png"}/>
+
                 <button onClick={() => router.push('game/restaurant')} 
                         className={style.icon_button} 
                         id={style.resturant}>
@@ -33,13 +47,23 @@ export default function Map() {
                         quality={100}
                         priority={true}
                         src={"/img/map/resturant.png"}/> 
+                    <p>{translations.restaurant[lang]}</p>
+
                 </button> 
                 <div
                     className={style.icon} 
                     id={style.home}>
                         <img className={style.icon} 
-                    id={style.grocery_store}
-                    src={"/img/map/Home.png"}/>
+                            id={style.grocery_store}
+                            src={"/img/map/Home.png"}/>
+                </div>
+
+                <div
+                    className={style.icon} 
+                    id={style.school}>
+                        <img className={style.icon} 
+                            id={style.school}
+                            src={"/img/map/school.png"}/>
                 </div>
                 
                 <img className={style.icon} 

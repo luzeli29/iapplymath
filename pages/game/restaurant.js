@@ -2,7 +2,7 @@ import React, {useState,useReducer} from 'react'
 import Dialog from '../../comps/dialog'
 import {useWrapperContext} from '../../context/context'
 import style from '../../styles/restaurant.module.css'
-import Menu from '../../public/text/resturant_menu'
+import getMenu from '../../comps/resturant_menu'
 import {useRouter} from 'next/router'
 import {BasicGameLayout, FinishScreen, QuestionLayout} from '../../comps/game_layouts'
 
@@ -34,7 +34,7 @@ export default function Restaurant () {
     const handleOrderComplete = () => {
         if(order.dishes.entree == "" || order.dishes.drink == "" || order.dishes.desert == "" || order.total > budget) {
             //Order was bad, do nothing
-            //TODO: add player feedback?
+            //TODO: add player feedback
         } else {
             //switch states to start game
             setState("game")
@@ -49,19 +49,23 @@ export default function Restaurant () {
             en:"How much was your order?",
             es:"¿Cuánto es el total?",
             answer: order.total,
+            answer_format: "money",
         }
 
         questions[1] = {
             en:"How much is the total if you remove the most expensive item?",
             es:"¿Cuánto es el total si no compras el plato más caro?",
             answer: order.total - Math.max.apply(Math, Object.values(order.dishes).map(function(dish) {return dish.price;})),
+            answer_format: "money",
         }
 
         questions[2] = {
             en:"How much is your total if you remove the least expensive item?",
             es:"¿Cuánto es el total si no compras el plato más barato?",
             answer: order.total - Math.min.apply(Math, Object.values(order.dishes).map(function(dish) {return dish.price;})),
+            answer_format: "money",
         }
+        //TODO add more questions?
 
         return questions
     }
@@ -103,11 +107,13 @@ export default function Restaurant () {
                 order={order}
                 setOrder={(newOrder) => setOrder(newOrder)}
                 handleOrderComplete={() => handleOrderComplete()}
-                budget={budget}/>)
+                budget={budget}
+                menu={getMenu()}/>)
         case "game" : 
             return (
                 <QuestionLayout
                     questions={generateOrderQuestions()}
+                    onBack={() => setState("menu_select")}
                     onFinish={() => {
                         setState("outro_dialog")
                         return(<></>)}}> 
@@ -126,12 +132,11 @@ export default function Restaurant () {
 }
 
 //menu select screen
-const MenuSelect = ({handleOrderComplete,budget,order,setOrder}) => {
+const MenuSelect = ({handleOrderComplete,budget,order,setOrder, menu}) => {
     //get lang from context
     const lang = useWrapperContext().state.lang
     //get menu from public
-    const menu = Menu
-    
+
     //remembers what dish player is hovering on, or nothing
     const [hovering, setHovering] = useState("")
     //used to route back to map
@@ -164,6 +169,7 @@ const MenuSelect = ({handleOrderComplete,budget,order,setOrder}) => {
         //forces an update
         forceUpdate();
     }
+
 
     return (
         <BasicGameLayout
