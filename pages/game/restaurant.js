@@ -34,7 +34,7 @@ export default function Restaurant () {
     const handleOrderComplete = () => {
         if(order.dishes.entree == "" || order.dishes.drink == "" || order.dishes.desert == "" || order.total > budget) {
             //Order was bad, do nothing
-            //TODO: add player feedback?
+            //TODO: add player feedback
         } else {
             //switch states to start game
             setState("game")
