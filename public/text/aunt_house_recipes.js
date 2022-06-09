@@ -272,7 +272,7 @@ const recipes = [
                     es: "Cuánto mango"
                 },
                 amount: "1/4",
-                img: "strawberry.png",
+                img: "mango.png",
             },{ 
                 en: "cup of strawberries",
                 es: "taza de fresas",
@@ -290,7 +290,7 @@ const recipes = [
                     es: "Cuánto kiwi"
                 },
                 amount: "1/2",
-                img: "strawberry.png",
+                img: "kiwi.png",
             },
         ],
         set_questions: [[3,1],[1,1],[2,2],[0,2],[3,2],[1,4]],
