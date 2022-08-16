@@ -1,10 +1,14 @@
 import React, {useState} from 'react'
-import Dialog from '../../comps/dialog'
+import Dialog from '../../comps/dialog/dialog'
 import {useWrapperContext} from '../../context/context'
 import style from '../../styles/aunt_house.module.css'
 import Image from 'next/image'
 import recipes from '../../public/text/aunt_house_recipes'
-import {SimplifyFraction,QuestionLayout,FinishScreen,BasicGameLayout} from '../../comps/game_layouts'
+
+import SimplifyFraction from '../../comps/game/simplify_fraction'
+import BasicGameLayout from '../../comps/game/basic_game_layout'
+import QuestionLayout from '../../comps/game/question_layout'
+import FinishScreen from '../../comps/game/finish_layout'
 import {useRouter} from 'next/router'
 import translations from '../../public/text/translations'
 
@@ -129,11 +133,12 @@ export default function AuntHouse () {
 
         return (
             <BasicGameLayout
-                lang={lang}
-                game_name={"aunt_house"}
-                instruction_text={"aunt_welcome"}
-                submit_text={"cook"}
-                handleSubmit={() => handleSubmit()}>
+                    lang={lang}
+                    game_name={"aunt_house"}
+                    instruction_text={"aunt_welcome"}
+                    submit_text={"cook"}
+                    handleSubmit={() => handleSubmit()}>
+                        
                 <div className={style.recipe_select_button_grid}>
                     {recipes.map((x) => {
                         return(
