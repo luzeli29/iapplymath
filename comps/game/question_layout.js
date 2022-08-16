@@ -1,14 +1,15 @@
 import React, {useState, useEffect,useCallback} from 'react';
-import {useWrapperContext} from '../context/context'
-import style from '../styles/game_layout.module.css'
+import {useWrapperContext} from '../../context/context'
+import style from '../../styles/game_layout.module.css'
 import Image from 'next/image'
-import Dialog from './dialog';
-import translations from '../public/text/translations';
+import Dialog from '../dialog/dialog';
+import translations from '../../public/text/translations';
 import {useRouter} from 'next/router'
-
+import AnswerFormater from './answer_formater'
+import SimplifyAnswer from './simplify_answer';
 //TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
-export function QuestionLayout ({children, questions, onBack, onFinish}) {
+export default function QuestionLayout ({children, questions, onBack, onFinish}) {
    //get current context and other context variables
    const context = useWrapperContext()
    const questionNum = context.state.questionNum
@@ -321,73 +322,3 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
    }
     
 }
-
-//simplifys answer given to allow for correct but different fractions
-const SimplifyAnswer = (answer) => {
-   if(isNaN(answer)) { //answer contains fraction 
-      var numer = answer.split("/")[0]
-      var dinomi = answer.split("/")[1]
-      return SimplifyFraction(numer,dinomi)
-   } else {
-      return answer //if no fraction, answer is simple as it gets
-   }
-}
-
-export function FinishScreen ({lang,game_name,restart_text,handleRestart}) {
-   //get router for Next.js
-   const router = useRouter()
-   return (
-      <>
-          <img className="view_background_image_container" src={"/img/" + game_name + "/" + game_name + "_bg.png"}/>
-          <div className="end_container">
-              <button className="end_button" onClick={() => router.push('/game')}>{translations.back_to_map[lang]}</button>
-              <button className="end_button" onClick={() => handleRestart()}>{translations[restart_text][lang]}</button>
-          </div>
-      </>
-  )
-}
-
-//FixMe: is there a way to reduce paramaters?
-export function BasicGameLayout ({lang, game_name,instruction_text, submit_text, handleSubmit, children}) {
-   //get router for Next.js
-   const router = useRouter()
-   return(
-      <div className={style.basic_game_container}>  
-         <img className="view_background_image_container" src={"/img/" + game_name + "/" + game_name + "_bg.png"}/>
-         <button className="basic_button" id={style.back_to_map_button} onClick={() => router.push('/game')}>{translations.back_to_map[lang]}</button>
-
-         <div className={style.basic_game_instructions_text_container}>
-            <p className={style.basic_game_instructions_text}>{translations[instruction_text][lang]}</p>
-         </div>
-         <div className={style.basic_game_child_container}>
-            {children}
-         </div>
-         <button className="basic_button" id={style.submit_button} onClick={() => handleSubmit()}>{translations[submit_text][lang]}</button>
-      </div>)
-}
-
-//Helper function to simplify fractions
-export function SimplifyFraction (number,denomin) {
-   if((number/denomin)% 1 == 0) {
-       return number/denomin
-   } else {
-       var gcd = function gcd(a,b){
-           return b ? gcd(b, a%b) : a;
-         };
-         gcd = gcd(number,denomin);
-         return number/gcd + "/" + denomin/gcd;
-   }
-}
-
-const AnswerFormater = (format, value) => {
-   switch(format) {
-      case "money":
-         if(value) {
-            return "$" + value + ".00"
-         } else {
-            return "$0.00"
-         }
-      default:
-         return value
-   }
-} 
