@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from 'react';
-import style from '../styles/dialog.module.css'
-import {useWrapperContext} from '../context/context'
+import style from '../../styles/dialog.module.css'
+import {useWrapperContext} from '../../context/context'
 import Image from 'next/image'
-import Scripts from '../public/text/dialog_scripts'
+import Scripts from '../../public/text/dialog_scripts'
 import {useRouter} from 'next/router'
 
 

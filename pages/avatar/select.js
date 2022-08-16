@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import Image from "next/image";
-import {useWrapperContext} from '../context/context'
+import {useWrapperContext} from '../../context/context'
 import { useRouter } from 'next/router'
-import style from '../styles/avatar.module.css'
-import translations from '../public/text/translations';
+import style from '../../styles/avatar.module.css'
+import translations from '../../public/text/translations';
 
 export default function Creator() {
     //get the site context and lang
