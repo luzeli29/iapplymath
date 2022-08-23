@@ -5,6 +5,8 @@ import translations from '../public/text/translations'
 import Image from 'next/image'
 import style from '../styles/other.module.css'
 
+//test
+
 //Index with start button to go to intro dialog
 export default function Index() {
   //get lang from context
