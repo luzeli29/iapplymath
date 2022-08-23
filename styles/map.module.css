@@ -53,6 +53,27 @@
     top:60%;
 }
 
+.home_text {
+    position: absolute;
+    left: 40%;
+    top:30%;
+    color: white;
+}
+
+.school_text {
+    position: absolute;
+    left: 83%;
+    top:10%;
+    color: white;
+}
+
+.grocery_store_text {
+    position: absolute;
+    left: 10%;
+    top:57%;
+    color: white;
+}
+
 #home {
     position: absolute;
     top: 19%;
@@ -88,10 +109,12 @@
     position: absolute;
     top: 65%;
     left: 10%;
+    opacity: 50%;
 }
 
 #school {
     position: absolute;
     top: 8%;
     left: 55%;
+    opacity: 50%;
 }

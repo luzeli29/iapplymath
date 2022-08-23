@@ -50,6 +50,8 @@ export default function Map() {
                     <p>{translations.restaurant[lang]}</p>
 
                 </button> 
+
+                <p className={style.home_text}>{translations.coming_soon[lang]}</p>
                 <div
                     className={style.icon} 
                     id={style.home}>
@@ -58,6 +60,7 @@ export default function Map() {
                             src={"/img/map/Home.png"}/>
                 </div>
 
+                <p className={style.school_text}>{translations.coming_soon[lang]}</p>
                 <div
                     className={style.icon} 
                     id={style.school}>
@@ -65,7 +68,8 @@ export default function Map() {
                             id={style.school}
                             src={"/img/map/School.png"}/>
                 </div>
-                
+
+                <p className={style.grocery_store_text}>{translations.coming_soon[lang]}</p>
                 <img className={style.icon} 
                     id={style.grocery_store}
                     src={"/img/map/Grocery_Store.png"}/>

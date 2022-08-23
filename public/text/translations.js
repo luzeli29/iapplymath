@@ -18,6 +18,9 @@ const translations = {
     },grocery_store: {
         en:"Grocery Store",
         es:"Tienda de Comestibles"
+    },coming_soon: {
+        en:"Coming Soon!",
+        es:"Proximamente!"
     },
     
     // ----- Aunt House Translations -----
