@@ -76,9 +76,9 @@
 
 #home {
     position: absolute;
-    top: 19%;
-    left: 36%;
-    right: 40%;
+    top: 30%;
+    left: 32%;
+    opacity: 50%;
 }
 
 #house_1 {
@@ -109,7 +109,7 @@
     position: absolute;
     top: 65%;
     left: 10%;
-    opacity: 50%;
+    opacity: 30%;
 }
 
 #school {
