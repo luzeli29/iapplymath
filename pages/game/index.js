@@ -56,7 +56,7 @@ export default function Map() {
                     className={style.icon} 
                     id={style.home}>
                         <img className={style.icon} 
-                            id={style.grocery_store}
+                            id={style.home}
                             src={"/img/map/Home.png"}/>
                 </div>
 
