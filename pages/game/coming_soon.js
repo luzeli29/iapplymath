@@ -8,14 +8,18 @@ export default function ComingSoon() {
     //init router
     const router = useRouter()
   return (
-    <>
-        <h1 className="text-center">
-            {translations.coming_soon[lang]}
+    <div className="text-center mt-5">
+      <div>
+        <h1 className="py-5">
+              {translations.coming_soon[lang] + "..."}
         </h1>
-        <button className="basic_button center" onClick={() => router.push('/game')}>
-            {translations.back_to_map[lang]}
+      </div>
+      <div className="pt-5">
+        <button className="basic_button" onClick={() => router.push('/game')}>
+              {translations.back_to_map[lang]}
         </button>
-    </>
+      </div>
+    </div>
   )
 }
   
