@@ -1,12 +1,12 @@
 import React, {useState,useReducer} from 'react'
-import Dialog from '../../comps/dialog/dialog'
-import {useWrapperContext} from '../../context/context'
+import Dialog from '../../../comps/dialog/dialog'
+import {useWrapperContext} from '../../../context/context'
 import style from '../../styles/restaurant.module.css'
-import getMenu from '../../comps/game/resturant_menu'
+import getMenu from '../../../comps/game/resturant_menu'
 import {useRouter} from 'next/router'
-import BasicGameLayout from '../../comps/game/basic_game_layout'
-import QuestionLayout from '../../comps/game/question_layout'
-import FinishScreen from '../../comps/game/finish_layout'
+import BasicGameLayout from '../../../comps/game/basic_game_layout'
+import QuestionLayout from '../../../comps/game/question_layout'
+import FinishScreen from '../../../comps/game/finish_layout'
 
 //Main Resturant game
 export default function Restaurant () {

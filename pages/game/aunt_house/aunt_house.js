@@ -1,16 +1,16 @@
 import React, {useState} from 'react'
-import Dialog from '../../comps/dialog/dialog'
-import {useWrapperContext} from '../../context/context'
+import Dialog from '../../../comps/dialog/dialog'
+import {useWrapperContext} from '../../../context/context'
 import style from '../../styles/aunt_house.module.css'
 import Image from 'next/image'
-import recipes from '../../public/text/aunt_house_recipes'
+import recipes from '../../../public/text/aunt_house_recipes'
 
-import SimplifyFraction from '../../comps/game/simplify_fraction'
-import BasicGameLayout from '../../comps/game/basic_game_layout'
-import QuestionLayout from '../../comps/game/question_layout'
-import FinishScreen from '../../comps/game/finish_layout'
+import SimplifyFraction from '../../../comps/game/simplify_fraction'
+import BasicGameLayout from '../../../comps/game/basic_game_layout'
+import QuestionLayout from '../../../comps/game/question_layout'
+import FinishScreen from '../../../comps/game/finish_layout'
 import {useRouter} from 'next/router'
-import translations from '../../public/text/translations'
+import translations from '../../../public/text/translations'
 
 //Main Aunt game
 export default function AuntHouse () {

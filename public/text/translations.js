@@ -85,8 +85,8 @@ const translations = {
     },
 
     coming_soon: {
-        en: "Coming soon",
-        es: "Próximamente, en breve, pronto"
+        en: "Coming soon!",
+        es: "Próximamente!"
     },
     // TODO: maybe find a better way to do this for 404 page
     click: {

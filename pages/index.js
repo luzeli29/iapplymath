@@ -15,7 +15,6 @@ export default function Index() {
   return (
     <div>
       <div className="pt-5 text-center">
-        <h1>{translations.i_apply_full_title[lang]}</h1>
         <Image
           width = {"300px"}
           height = {"280px"}

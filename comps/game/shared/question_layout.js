@@ -1,9 +1,9 @@
 import React, {useState, useEffect,useCallback} from 'react';
-import {useWrapperContext} from '../../context/context'
+import {useWrapperContext} from '../../../context/context'
 import style from '../../styles/game_layout.module.css'
 import Image from 'next/image'
-import Dialog from '../dialog/dialog';
-import translations from '../../public/text/translations';
+import Dialog from '../../dialog/dialog';
+import translations from '../../../public/text/translations';
 import {useRouter} from 'next/router'
 import AnswerFormater from './answer_formater'
 import SimplifyAnswer from './simplify_answer';
