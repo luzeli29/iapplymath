@@ -6,7 +6,7 @@ const Context = createContext();
 export default function ContextWrapper({ children }) {
   //creating the context states
   //lang is the current langage needed to show
-  const [lang, setLang] = useState("es");
+  const [lang, setLang] = useState("en");
 
   useEffect(() => {
     //init lang on refresh

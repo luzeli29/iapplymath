@@ -1,6 +1,6 @@
 import React, {useState, useEffect,useCallback} from 'react';
 import style from '../../styles/game_layout.module.css'
-import translations from '../../public/text/translations';
+import translations from '../../../public/text/translations';
 import {useRouter} from 'next/router'
 
 //FixMe: is there a way to reduce paramaters?

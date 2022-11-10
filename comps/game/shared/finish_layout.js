@@ -1,5 +1,5 @@
 import React from 'react';
-import translations from '../../public/text/translations';
+import translations from '../../../public/text/translations';
 import {useRouter} from 'next/router'
 
 export default function FinishLayout ({lang,game_name,restart_text,handleRestart}) {
