@@ -7,6 +7,7 @@ import recipes from '../../public/text/aunt_house_recipes'
 import {SimplifyFraction,QuestionLayout,FinishScreen,BasicGameLayout} from '../../comps/game_layouts'
 import {useRouter} from 'next/router'
 import translations from '../../public/text/translations'
+import Confetti from 'react-confetti'
 
 //Main Aunt game
 export default function AuntHouse () {
@@ -14,7 +15,7 @@ export default function AuntHouse () {
     const context = useWrapperContext();
     const lang = context.state.lang;
     const router = useRouter()
-    
+
     //State to keep track where the player is
     const [state, setState] = useState("intro_dialog");
     //Current recipe
@@ -60,6 +61,7 @@ export default function AuntHouse () {
                     {recipe.ingredients.map((ing) => {
                         return(
                             <>
+
                             <p key={ing[lang]} className={style.recipe_card_ing}>
                                 <img 
                                     src={"/img/ing/" + ing.img} 
@@ -78,7 +80,6 @@ export default function AuntHouse () {
                     className={style.recipe_card_button}> <b>
                     {/*TODO: potencially change if other langs were added*/}
                     {translations.cook[lang]}</b></button>
-
             </div>
         )
     }
