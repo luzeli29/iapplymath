@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Dialog from './dialog';
 import translations from '../public/text/translations';
 import {useRouter} from 'next/router'
+import Confetti from 'react-confetti'
 
 //TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
@@ -93,7 +94,7 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
             <p>{question_data[lang]}</p>
             <p>{hintText}</p>
          </div>
-      );   
+      );
    }
    
    //Ayu component that is found on the bottom right box of GameLayout
@@ -125,7 +126,7 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
             <div className={style.ayu_speech_bubble_container}>
                {isHovering ? 
                   <div className={style.ayu_speech_bubble}>
-                     <div className={style.ayu_speech_bubble_triangle} > </div>
+                     <div className={style.ayu_speech_bubble_triangle} ></div>
                      <p className={style.speech_bubble_text}>{translations.ayu_affermations[afNum][lang]}</p>
                   </div> : <></>}
             </div>
@@ -228,7 +229,18 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
                   className={style.continue_button}>
                      {translations.continue[lang]}
                </button>
+                <>
+                    <div  className="confetti_start">
+                        <Confetti
+                            confettiSource = {{x: 0, y:0, w: 650, h:600}}
+                            friction = {0.96}
+                        />
+                    </div>
+
+                </>
+
             </div>
+
          
          )
       } else {
@@ -285,7 +297,7 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
                               <QuestionBox 
                                  className={style.question_box}
                                  question_data={_questions[questionNum]}
-                                 incorrectNum={incorrectNum}/>   
+                                 incorrectNum={incorrectNum}/>
                            </td>
                      </tr>
       
