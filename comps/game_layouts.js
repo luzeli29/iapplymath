@@ -5,6 +5,11 @@ import Image from 'next/image'
 import Dialog from './dialog';
 import translations from '../public/text/translations';
 import {useRouter} from 'next/router'
+import { Calculator } from 'react-mac-calculator'
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import calcIcon from '/public/img/other/calcicon.png'
+import ImageButton from 'react-image-button';
 
 //TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
@@ -50,7 +55,7 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
                break;
          case "fill_in" : //Question requires value from user to be later used
                //if filled in answer is good onAnswer returns true and we move on
-               if (_questions[questionNum].onAnswer(answer)) { 
+               if (_questions[questionNum].onAnswer(answer)) {
                   context.setQuestionNum(questionNum + 1)
                   setIncorrectNum(0)
                } else { //Filled in answer is not accepted
@@ -78,7 +83,7 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
          if (incorrectNum == 1 || (!question_data.hint && incorrectNum != 0)) { //check for basic hint
             hintText = translations.try_again[lang]
          } else if(question_data.hint) { //question has hints
-            
+
             if (incorrectNum-2 >= question_data.hint.length) {
                //more incorrect then hints, show last hint
                hintText = question_data.hint[question_data.hint.length-1][lang]
@@ -91,11 +96,11 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
       return (
          <div className={style.question_text_container}>
             <p>{question_data[lang]}</p>
-            <p>{hintText}</p>
+            <p className="incorrect_answer">{hintText}</p>
          </div>
-      );   
+      );
    }
-   
+
    //Ayu component that is found on the bottom right box of GameLayout
    function Ayu ({}) {
 
@@ -121,15 +126,15 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
       return (
          <div className="fill_container"
                onMouseEnter={onMouseEnter}
-               onMouseLeave={onMouseLeave}> 
+               onMouseLeave={onMouseLeave}>
             <div className={style.ayu_speech_bubble_container}>
-               {isHovering ? 
+               {isHovering ?
                   <div className={style.ayu_speech_bubble}>
                      <div className={style.ayu_speech_bubble_triangle} > </div>
                      <p className={style.speech_bubble_text}>{translations.ayu_affermations[afNum][lang]}</p>
                   </div> : <></>}
             </div>
-            
+
             <div className={style.ayu_image_container}>
                <button onClick={() => setState("ayu")}>
                   <Image
@@ -138,7 +143,7 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
                      src={"/img/ayu/ayu.png"}/>
                </button>
             </div>
-            
+
          </div>
       )
    }
@@ -154,12 +159,12 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
       const [showEmptyHint, setShowEmptyHint] = useState(false);
 
       //buttons of numPad
-      const btn_values = [
-         [ 1, 2, 3],
-         [ 4, 5, 6],
-         [ 7, 8, 9],
-         ["/",0,'←']
-      ];
+      // const btn_values = [
+      //    [ 1, 2, 3],
+      //    [ 4, 5, 6],
+      //    [ 7, 8, 9],
+      //    ["/",0,'←']
+      // ];
 
       const handleKeyPress = useCallback(event => {
          if (event.key == "Backspace") { //backspace pressed
@@ -169,25 +174,25 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
             //handleButtonPress("✓")
          } else if((event.keyCode >= 48 && event.keyCode <= 57) || event.key =="/") { //0-9 pressed
             handleButtonPress(event.key)
-         } 
+         }
       },[answer])
 
       //useEffect to allow for keypress to be registered
       useEffect(() => {
          //handles keypress
          document.addEventListener("keydown", handleKeyPress);
-   
+
          return () => {
             document.removeEventListener("keydown", handleKeyPress);
          };
       }, [handleKeyPress]);
 
-      
+
       //handles a button press or keypress
       function handleButtonPress(value) {
          if(value == "←") {
             //removes the rightmost char
-            setAnswer(answer.slice(0,answer.length - 1)); 
+            setAnswer(answer.slice(0,answer.length - 1));
          } else if (value == "✓") {
             //submits answer
             if (answer) {
@@ -215,7 +220,7 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
                {value}
             </button>
          );
-         
+
       }
 
       //switches numPad depending and what the answer should be
@@ -229,24 +234,24 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
                      {translations.continue[lang]}
                </button>
             </div>
-         
+
          )
       } else {
          //there is a needed answer
          return (
          //TODO: replace table with better <div> method using css
             <div>
-               {showEmptyHint ? 
+               {showEmptyHint ?
                <p>{translations.empty_hint[lang]}</p> : <></>}
                <table className={style.num_pad_container}>
                   <tbody>
                      <tr>
                         <td className={style.num_pad_button_box}>
-                           {btn_values.flat().map((btn) => {
-                              return (
-                                 renderButton(btn)
-                              );
-                           })}  
+                           {/*{btn_values.flat().map((btn) => {*/}
+                           {/*   return (*/}
+                           {/*      renderButton(btn)*/}
+                           {/*   );*/}
+                           {/*})}  */}
                         </td>
                         <td className={style.num_pad_left_box}>
                            <p className={style.num_pad_answer}> <b className={style.num_pad_answer_text}>{AnswerFormater(_questions[questionNum].answer_format,answer)} </b></p>
@@ -277,32 +282,39 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
                <table className="fill_container">
                   <tbody>
                      <tr>
-      
+
                            <td className={style.child_container}>
                               {children}
                            </td>
                            <td className={style.question_container}>
-                              <QuestionBox 
+                              <QuestionBox
                                  className={style.question_box}
                                  question_data={_questions[questionNum]}
-                                 incorrectNum={incorrectNum}/>   
+                                 incorrectNum={incorrectNum}/>
                            </td>
                      </tr>
-      
+
                      <tr>
-      
+
                      <td className={style.numpad_container}>
-                           <NumPad/>
+                         <Popup trigger={<button isHovering={true} style={{marginTop:"10px", marginLeft:"10px"}}> <Image width={30} height={50} src={"/img/other/calcicon.png"}/></button>}
+                                closeOnDocumentClick={false} position="left center" offsetX={150} offsetY={-100}>
+                             <div className="app">
+                                 <Calculator/>
+                             </div>
+                         </Popup>
+                         <h4>Type answer here:</h4>
+                         <NumPad/>
                      </td>
-      
+
                      <td className={style.ayu_block}>
-                              <Ayu/>  
+                              <Ayu/>
                            </td>
-      
+
                      </tr>
                   </tbody>
-               </table>     
-            </>             
+               </table>
+            </>
          )
       } else {
          //User has answered all the questions, call onFinish and return a blank view
@@ -315,16 +327,16 @@ export function QuestionLayout ({children, questions, onBack, onFinish}) {
       //TODO: switch dialog randomly in order to have different ayu relaxations
       return (
             <Dialog
-               scriptId={"ayu_relaxation_0"} 
+               scriptId={"ayu_relaxation_0"}
                onEnd={() => setState("questions")}
-               />)     
+               />)
    }
-    
+
 }
 
 //simplifys answer given to allow for correct but different fractions
 const SimplifyAnswer = (answer) => {
-   if(isNaN(answer)) { //answer contains fraction 
+   if(isNaN(answer)) { //answer contains fraction
       var numer = answer.split("/")[0]
       var dinomi = answer.split("/")[1]
       return SimplifyFraction(numer,dinomi)
@@ -352,7 +364,7 @@ export function BasicGameLayout ({lang, game_name,instruction_text, submit_text,
    //get router for Next.js
    const router = useRouter()
    return(
-      <div className={style.basic_game_container}>  
+      <div className={style.basic_game_container}>
          <img className="view_background_image_container" src={"/img/" + game_name + "/" + game_name + "_bg.png"}/>
          <button className="basic_button" id={style.back_to_map_button} onClick={() => router.push('/game')}>{translations.back_to_map[lang]}</button>
 
