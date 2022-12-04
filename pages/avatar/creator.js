@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Image from "next/image";
-import {useWrapperContext} from '../context/context'
+import {useWrapperContext} from '../../context/context'
 import { useRouter } from 'next/router'
 
 //TODO: Finish avatar creator
@@ -39,28 +39,7 @@ export default function AvatarCreator() {
 
   return (
     <div>
-      <div >
-        <Image 
-          src={"/img/face.png"}
-          layout="responsive"
-          id = "face"
-          width = {50}
-          height = {50}
-
-        />
-        <Image
-          src={data[num%2].img}
-          layout="responsive"
-          id = "hairs"
-          width = {50}
-          height = {50}
-        />
-      </div>
-      <button onClick={handleClick}>Hair Style ({num%2})</button>
-
-      {/* TODO: Translate buttons */}
-      <button onClick={() => handleFinishAvatar()}>Done</button>
-      
+      <h1>Creator</h1>
     </div>
   );
 }
