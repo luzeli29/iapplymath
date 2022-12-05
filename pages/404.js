@@ -15,7 +15,7 @@ export default function Error() {
         {translations.click[lang] + " "}
           <Link href="/"><a><b>{translations.here[lang]}</b></a></Link> 
         {" " + translations.to_return_home[lang]}
-      </p>: 
+      </p>
     </>
   )
   }

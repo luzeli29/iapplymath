@@ -1,7 +1,7 @@
 import React, {} from 'react';
-import {useWrapperContext} from '../../context/context'
+import {useWrapperContext} from '../../../context/context'
 import style from '../../styles/map.module.css'
-import translations from '../../public/text/translations'
+import translations from '../../../public/text/translations'
 import {useRouter} from 'next/router'
 import Image from 'next/image'
 

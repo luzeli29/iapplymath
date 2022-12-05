@@ -1,13 +1,12 @@
 import React, {useState, useEffect,useCallback} from 'react';
-import {useWrapperContext} from '../../context/context'
-import style from '../../styles/game_layout.module.css'
+import {useWrapperContext} from '../../../context/context'
+import style from '../../../styles/game_layout.module.css'
 import Image from 'next/image'
-import Dialog from '../dialog/dialog';
-import translations from '../../public/text/translations';
+import Dialog from '../../dialog/dialog';
+import translations from '../../../public/text/translations';
 import {useRouter} from 'next/router'
 import Confetti from 'react-confetti'
-import AnswerFormater from './answer_formater'
-import SimplifyAnswer from './simplify_answer';
+import {AnswerFormater,SimplifyAnswer} from '../questions-utils'
 
 //TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
