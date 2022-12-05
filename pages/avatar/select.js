@@ -18,7 +18,7 @@ export default function Creator() {
     //Should handle anything to be done in order to use avatar in game
     const handleFinishAvatar = () => {
         context.setAvatar(avatar)
-        router.push('/game')
+        router.push('/game/map')
     }
 
     const AvatarButton = ({index}) => {
