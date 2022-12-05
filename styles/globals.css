@@ -69,6 +69,13 @@ a:hover {
   height: 20vh;
 }
 
+.confetti_start{
+  position: fixed;
+  top: -78px;
+  height: 1px;
+}
+
+
 .body_container {
   position: fixed;
   top: 20vh;
@@ -172,8 +179,11 @@ a:hover {
 }
 .right {
   right:0%;
+<<<<<<< HEAD
 }
 
 .white {
   color: white;
+=======
+>>>>>>> 7dea0f6
 }
