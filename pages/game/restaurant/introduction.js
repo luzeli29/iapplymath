@@ -1,9 +1,9 @@
 import React from 'react'
 import Dialog from '../../../comps/dialog/dialog'
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 
-export default function introduction() {
-  const router = useRouter()
+export default function Introduction() {
+  const router = useRouter();
     return (
         <Dialog
         scriptId={"resturant_intro"}
