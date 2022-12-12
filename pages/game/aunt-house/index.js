@@ -19,7 +19,6 @@ export default function RecipeSelect() {
         setRecipe(recipe_object)
     }
 }
-
 return (
     <GameIndexLayout
             lang={lang}

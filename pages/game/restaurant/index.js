@@ -12,7 +12,6 @@ import Order from '../../../comps/game/restuarant/Order'
 export default function Restaurant () {
     //get context and lang
     const context = useWrapperContext()
-    const lang = context.state.lang
 
     //get router to switch pages
     const router = useRouter()
@@ -28,15 +27,15 @@ export default function Restaurant () {
         total: 0,
     })
     
-
     //handle completing order
     const handleOrderComplete = () => {
         if(order.dishes.entree == "" || order.dishes.drink == "" || order.dishes.desert == "" || order.total > budget) {
             //Order was bad, do nothing
             //TODO: add player feedback
         } else {
+            console.log(order)
+
             context.setOrder(order)
-            console.log(context.state.order)
             router.push('/game/restaurant/questions')        
         }
 

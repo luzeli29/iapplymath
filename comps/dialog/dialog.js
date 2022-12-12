@@ -3,6 +3,8 @@ import style from '../../styles/dialog.module.css'
 import {useWrapperContext} from '../../context/context'
 import Image from 'next/image'
 import Scripts from '../../public/text/dialog_scripts'
+import { AiFillCaretRight,AiFillCaretLeft } from "react-icons/ai";
+
 import {useRouter} from 'next/router'
 
 
@@ -17,7 +19,7 @@ onInput - function in what we should do when there is an input required
 export default function Dialog ({scriptId, onEnd, onInput}) {
     //Get current context
     const context =  useWrapperContext()
-
+    const lang = context.state.lang;
     const router = useRouter()
 
     //keeps track of which line user is on, allows for rerender due to useState
@@ -40,10 +42,25 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
         }
     }
 
+    const handlePrevLine = () => {
+        if(lineNum > 0) {
+            setLineNum(lineNum - 1)
+        } 
+    }
+
     //Handles keypress
     const handleKeyPress = () => {
-        if(event.key == "Enter") {
-            handleNextLine();
+        switch(event.keyCode){
+            case 39:
+                handleNextLine();
+                break;
+            case 13:
+                handleNextLine();
+                break;
+            case 37:
+                handlePrevLine();
+                break;
+            
         }
     };
 
@@ -56,124 +73,96 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
         };
     }, [handleKeyPress]);
   
-    return (
-        <>
-            <DialogScreen 
-                dialog={dialog} 
-                line={script[lineNum]}
-                handleNextLine={()=>handleNextLine()}
-                context={context}/>
-        </>
-    )
-    
-} 
-
-//This is the component that makes up what is seen on the page
-const DialogScreen = ({dialog,line,handleNextLine,context}) => {
     //get avatar from context
     const avatar = context.state.avatar
 
     const stage = dialog.stage ? dialog.stage : Scripts["error"].stage
+    const backgroundImgSrc = stage == "ayu" ? "/img/ayu/ayu.png" : "/img/" + stage + "/" + stage + "_bg.png";
+    const hasCharacters = (stage == "aunt_house" || stage == "restaurant")
 
-      
-    //Creates the view depending on what stage it si
-    if(stage == "ayu") { //Creates Ayu Screen
-        return (
-            <>
-                <button 
-                    className="fill_container"
-                    onClick={() => handleNextLine()}>
-                    <SpeechBubble
-                        stage={stage}
-                        line={line}
-                        context={context}/>
-                    <div className={style.ayu_img_container}>
+    var speechTriangle = "end";
+
+    if(stage == "ayu") {
+        speechTriangle = "center"
+    } else if (script[lineNum].playerSpeaking) {
+        speechTriangle = "start"
+    }
+
+    return (
+        <div className="fluid-container h-100 p-3">
+            <div className="h-25 container  justify-content-center">
+                <div className="card w-75 text-center mx-auto">
+                    <div className="card-body"
+                        onClick={() => handleNextLine()}>
+                        <p className="card-text pt-2 px-4">{script[lineNum][lang]}</p>
+                    </div>
+                    <div className="card-subtitle mb-2 text-muted">
+                        <div className="row align-items-center">
+                            <div className="col">
+                                {lineNum > 0 ? 
+                                    <button onClick={() => handlePrevLine()}><AiFillCaretLeft/></button>
+                                :
+                                    <></>
+                                }
+                            </div>
+                            <div className="col">
+                                <small>{(lineNum + 1)+ "/" + (script.length)}</small>
+                            </div>
+                            <div className="col">
+                                {lineNum != (script.length - 1)? 
+                                    <button onClick={() => handleNextLine()}><AiFillCaretRight/></button>
+                                :
+                                    <button onClick={() => handleNextLine()}>Continue</button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={" px-5 mx-auto w-75 d-flex justify-content-" + speechTriangle}>
+                <div className={style.speech_bubble_triangle}></div>     
+                </div>
+            </div>
+            <div className="d-flex justify-content-center container h-75 w-75">
+                {
+                    hasCharacters ?
+                    <>
                         <Image
                             priority={true}
-                            layout={"fill"}
+                            width={650}
+                            height={375}
                             quality={100}
-                            src={"/img/ayu/ayu.png"}/> 
-                    </div>
-                </button>
-                <input className="key_listener" autoFocus={true} onBlur={({ target }) => {target.focus()}}/>
-            </>
-        )
-    } else { //Creates 2 speaker stage
-        //FIXME: warning created due to css
-        return (
-            <>
-                <button 
-                    className="fill_container"
-                    onClick={() => handleNextLine()}>
-                    <div className="view_background_image_container">
-                        <Image
-                                priority={true}
-                                layout={"fill"}
-                                quality={100}
-                                src={"/img/" + stage + "/" + stage + "_bg.png"}/>
-                    </div>
-                    <SpeechBubble
-                            stage={stage}
-                            line={line}
-                            context={context}/>
-                    <div className={style.speaker_img_container}>
+                            src={backgroundImgSrc}/>
                         <div className={style.player_img}>
+                            <Image
+                                    priority={true}
+                                    layout={"fill"}
+                                    quality={100}
+                                    src={"/img/avatar/pre_made/A" + avatar + "_back.png"}/> 
+                        </div>
+                        <div className={style.speaker_img}>
+                        {dialog.no_speaker ?
+                            <>
+                            </> 
+                        : 
+                            
                             <Image
                                 priority={true}
                                 layout={"fill"}
                                 quality={100}
-                                src={"/img/avatar/pre_made/A" + avatar + "_back.png"}/> 
+                                src={"/img/" + stage + "/" + stage + "_speaker.png"}/>
+                        }
                         </div>
-                        <div className={style.speaker_img}>
-                            {dialog.no_speaker ?
-                                <>
-                                </> 
-                            : 
-                                
-                                <Image
-                                    priority={true}
-                                    layout={"fill"}
-                                    quality={100}
-                                    src={"/img/" + stage + "/" + stage + "_speaker.png"}/>
-                            }
-                        </div>
-                    </div>
-                </button>
-                <input className="key_listener" autoFocus={true} onBlur={({ target }) => {target.focus()}}/>
-            </>
-        )
-    }
-}
-
-//Speech bubble component, displays text and is rerendered when line changes
-const SpeechBubble = ({line,stage,context}) => {
-    //get lang from context
-    const lang = context.state.lang
-
-    //returns speech bubble arrow in the correct location
-    const Arrow = () => {    
-        if(stage == "ayu") {
-            return (
-                <div className={style.speech_bubble_triangle} id={style.center}></div>  
-            )
-        } else if (line.player_speaking) {
-            return (
-                <div className={style.speech_bubble_triangle} id={style.left}></div>  
-            )        
-        } else {
-            return (
-                <div className={style.speech_bubble_triangle} id={style.right}></div>  
-            )
-        }
-    }
-
-    return (
-        <div className={style.dialog_speech_container}>
-            <div className={style.speech_bubble}>
-                <p className={style.speech_bubble_text}>{line[lang]}</p>
+                    </>
+                    :
+                    <Image
+                        priority={true}
+                        width={375}
+                        height={375}
+                        quality={100}
+                        src={backgroundImgSrc}/>
+                }
             </div>
-            <Arrow/> 
+            <input className="key_listener" autoFocus={true} onBlur={({ target }) => {target.focus()}}/>
         </div>
-    )
-}
-
+    )  
+} 

@@ -1,10 +1,6 @@
 .map_table {
     position: relative;
-<<<<<<< HEAD
     width: 90%;
-=======
-    width: 75%;
->>>>>>> 7dea0f6
     height: 80%;
     top: 50%;
     left: 50%;
@@ -19,19 +15,12 @@
 
 .map_icon_image_box {
     position: relative;
-
-<<<<<<< HEAD
-    width: 144px;
-    height: 144px;
-=======
     width: 125px;
     height: 125px;
->>>>>>> 7dea0f6
     top: 50%;
     left: 50%;
     transform: translate(-50%, -0%);
 }
-<<<<<<< HEAD
 
 .map_icon_image {
     position: relative;
@@ -46,13 +35,6 @@
     position: relative;
     width: 120px;
     height: 120px;
-=======
-.map_icon_image {
-    position: relative;
-
-    width: 100px;
-    height: 100px;
->>>>>>> 7dea0f6
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -61,13 +43,8 @@
 .map_icon_image:hover{
     transform:scale(1.2) ;
     background-size:cover;
-<<<<<<< HEAD
     top: 8%;
     left: 8%;
-=======
-    top: 9%;
-    left: 9%;
->>>>>>> 7dea0f6
 }
 
 .map_push_buttom {

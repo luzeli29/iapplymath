@@ -19,7 +19,7 @@ export default function Index() {
           width = {"300px"}
           height = {"280px"}
           quantity = {100}
-          priorityv = {true}
+          priority = {true}
           src={"/img/other/global.png"}/>
       </div>
       <div className="text-center">
