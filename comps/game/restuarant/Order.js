@@ -5,6 +5,13 @@ import {useWrapperContext} from '../../../context/context'
 //used both in QuestionLayout and in MenuSelect
 function Order({order,budget}) {
     const lang = useWrapperContext().state.lang
+    if(order ==  null) {
+        return (
+            <div class="container">
+                <p>BAD ORDER</p>
+            </div>
+        )
+    }
     return (
         <div className={style.order_container}>    
             <p className={style.order_text}>Order:</p>

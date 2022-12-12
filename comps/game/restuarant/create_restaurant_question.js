@@ -1,7 +1,14 @@
 //Generate questions with the order state
 function createOrderQuestions(order) {
-    console.log(order)
     var questions = [];
+    if(order == null) {
+        questions[0] = {
+            en:"BAD ORDER INPUT ANSWER IS 42",
+            es:"BAD ORDER INPUT ANSWER IS 42",
+            answer: 42,
+        }
+        return questions;
+    }
     questions[0] = {
         en:"How much was your order?",
         es:"¿Cuánto es el total?",
