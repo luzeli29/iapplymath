@@ -2,7 +2,7 @@ import React, {} from 'react';
 import {useWrapperContext} from '../context/context'
 import {useRouter} from 'next/router'
 import { BsMapFill,BsFillPersonFill } from "react-icons/bs";
-import { FaCog } from "react-icons/Fa";
+import { FaCog } from "react-icons/fa";
 
 export default function Header() {
     const context = useWrapperContext();
