@@ -82,10 +82,13 @@ a:hover {
   width: 100vw;
   height: 80vh;
 }
-
 .view_container {
+  position: absolute;
+  margin: auto;
   width: 720px;
   height: 550px;
+  left: 50%;
+  transform: translate(-50%, 0%);
   border-radius: 15px;
   border: solid var(--font-color) 2px;
   box-shadow: 2px 2px #190933;
