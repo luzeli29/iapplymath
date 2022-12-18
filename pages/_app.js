@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Layout from '../comps/layout'
 import '../styles/globals.css'
 import ContextWrapper from '../context/context'
+import 'bootstrap/dist/css/bootstrap.css';
 
 function MyApp({ Component, pageProps }) {
   return (

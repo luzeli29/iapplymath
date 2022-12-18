@@ -54,12 +54,16 @@ const translations = {
     },
 
     // ----- General Translations -----
+    i_apply_full_title: {
+        en: "I Apply Math In My World",
+        es: "Aplico las Matemáticas En Mi Mundo"
+    },
+
     start: {
         en: "Start",
         es: "Comenzar"
     },
 
-    
     back: {
         en: "Back",
         es: "Retroceso"
@@ -80,6 +84,10 @@ const translations = {
         es: "¡Oh no! Página no encontrada",
     },
 
+    coming_soon: {
+        en: "Coming soon",
+        es: "Proximamente!",
+    },
     // TODO: maybe find a better way to do this for 404 page
     click: {
         en:"Click",
