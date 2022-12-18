@@ -3,7 +3,6 @@ import {useRouter} from 'next/router'
 import {useWrapperContext} from '../context/context'
 import translations from '../public/text/translations'
 import Image from 'next/image'
-import style from '../styles/other.module.css'
 
 //test
 
@@ -15,16 +14,18 @@ export default function Index() {
 
   return (
     <div>
-      <div id={style.global} >
+      <div className="pt-5 text-center">
         <Image
-        width = {"300px"}
-        height = {"280px"}
-        quantity = {100}
-        priorityv = {true}
-        src={"/img/other/global.png"}/>
+          width = {"300px"}
+          height = {"280px"}
+          quantity = {100}
+          priority = {true}
+          src={"/img/other/global.png"}/>
       </div>
-      <div>
-        <button className="start_button" onClick={() => router.push('/intro') }>{translations.start[lang]}</button>
+      <div className="text-center">
+        <button className="basic_button" onClick={() => router.push('/intro') }>
+          {translations.start[lang]}
+          </button>
       </div>    
     </div>  
   )

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import Image from "next/image";
-import {useWrapperContext} from '../context/context'
+import {useWrapperContext} from '../../context/context'
 import { useRouter } from 'next/router'
-import style from '../styles/avatar.module.css'
-import translations from '../public/text/translations';
+import style from '../../styles/avatar.module.css'
+import translations from '../../public/text/translations';
 
 export default function Creator() {
     //get the site context and lang
@@ -12,25 +12,25 @@ export default function Creator() {
 
     const router = useRouter();
 
-    const [avatar, setAvatar] = useState("")
-
     //This is called when the player is done creating
     //Should handle anything to be done in order to use avatar in game
     const handleFinishAvatar = () => {
-        context.setAvatar(avatar)
-        router.push('/game')
+        if(context.state.avatar === '') {
+            return;
+        }
+        router.push('/game/map')
     }
 
     const AvatarButton = ({index}) => {
         const path = "/img/avatar/pre_made/A"
         return (
             <button
-                onClick={() => setAvatar(index)}
+                onClick={() => context.setAvatarID(index)}
                 className={style.avatar_select_button}>
                 <Image
                         priority={true}
                         layout={"fill"}
-                        src={avatar == index ? path + index + "_selected.png" : path + index + ".png"}/> 
+                        src={context.state.avatarID == index ? path + index + "_selected.png" : path + index + ".png"}/> 
             
             </button>
         )
