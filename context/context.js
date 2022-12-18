@@ -8,6 +8,8 @@ export default function ContextWrapper({ children }) {
   //lang is the current langage needed to show
   const [lang, setLang] = useState("en");
 
+  const [userID, setUserID] = useState();
+
   useEffect(() => {
     //init lang on refresh
     const langState = window.localStorage.getItem('LANG_STATE');
@@ -19,12 +21,18 @@ export default function ContextWrapper({ children }) {
     }
 
     //init avatar on refresh
-    const avatarState = window.localStorage.getItem('AVATAR_STATE');
-    if ( avatarState === null) {
-      window.localStorage.setItem('AVATAR_STATE','1')
-      setAvatar("1")
+    const avatarIDLocal = window.localStorage.getItem('AVATAR_ID');
+    if ( avatarIDLocal === null) {
+      window.localStorage.setItem('AVATAR_ID','')
+      setAvatarID("")
     } else {
-      setAvatar(window.localStorage.getItem('AVATAR_STATE'))
+      setAvatarID(window.localStorage.getItem('AVATAR_ID'))
+    }
+
+    const userIDLocal = window.localStorage.getItem('USER_ID');
+    if (userIDLocal) {
+      console.log('UserID is not null')
+      setUserID(userIDLocal)
     }
   });
 
@@ -38,7 +46,7 @@ export default function ContextWrapper({ children }) {
   })
 
   //avatar keeps track of what avatar to show
-  const [avatar, setAvatar] = useState("1");
+  const [avatarID, setAvatarID] = useState("1");
   //questionNum remebers which question number a user was on even if there is a lang switch
   const [questionNum, setQuestionNum] = useState(0);
   //this is what is stored in the context
@@ -46,19 +54,24 @@ export default function ContextWrapper({ children }) {
       state: {
           lang: lang,
           questionNum: questionNum,
-          avatar:avatar,
+          avatarID:avatarID,
           order:order,
+          userID: userID,
       },
       setLang: (newLang) => {
         window.localStorage.setItem('LANG_STATE',newLang)
         setLang(newLang)
       },
-      setAvatar: (newAvatar) => {
-        window.localStorage.setItem('AVATAR_STATE',newAvatar)
-        setAvatar(newAvatar)
+      setAvatarID: (newAvatarID) => {
+        window.localStorage.setItem('AVATAR_ID',newAvatarID)
+        setAvatarID(newAvatarID)
       },
       setQuestionNum: (newNum) => setQuestionNum(newNum),
       setOrder: (newOrder) => setOrder(newOrder),
+      setUserID: (userID) => {
+        window.localStorage.setItem('USER_ID',userID)
+        setUserID(userID)
+      },
   }
 
   return (

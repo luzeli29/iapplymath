@@ -20,11 +20,18 @@ export default function Header() {
                 <div className="col col-lg-2">
                     <button onClick={() => router.push('/avatar/select')}><BsFillPersonFill/></button>
                     <button onClick={() => router.push('/game/map')}><BsMapFill/></button>
-                    <button onClick={() => router.push('/settings')}><FaCog/></button>
+                    <button onClick={() => router.push('/settings')} disabled><FaCog/></button>
                 </div>
                 <div className="col col-lg-1">
                     <button onClick={() => context.setLang('en')}><strong>English</strong></button>
                 </div>
+            </div>
+            <div className="row py-2">
+                {context.state.userID?
+                    <p>USER ID: {context.state.userID}</p>
+                :
+                    <button onClick={() => router.push('/login')}>Login</button>
+                }
             </div>
         </div>
     );

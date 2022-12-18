@@ -270,7 +270,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                      </tr>
                   </tbody>
                </table>
-               <input className="key_listener" autoFocus={true} onBlur={({ target }) => target.focus()}/>
+               <input className="d-none" autoFocus={true} onBlur={({ target }) => target.focus()}/>
             </div>
          )
       }
