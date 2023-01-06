@@ -1,6 +1,6 @@
 import React from 'react'
 import {useRouter} from 'next/router'
-import {generateBasicQuestions,generateFamilyQuestions} from '@utils/game/aunt_house/generate_aunt_house_questions'
+import {generateAuntHouseQuestions,generateFamilyQuestions} from '@utils/game/aunt_house/generate_aunt_house_questions'
 import {GameQuestionLayout} from '@common_imports'
 import SmallRecipeCard from '@components/game/aunt-house/SmallRecipeCard'
 
