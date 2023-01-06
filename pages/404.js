@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from "next/link"
 import {useWrapperContext, getCommonText} from '@common_imports'
-import translations from '@translations';
 
 //404 page if user goes to page not found
 export default function Error() {
