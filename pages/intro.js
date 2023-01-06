@@ -1,6 +1,6 @@
 import React from 'react';
-import Dialog from '../comps/dialog/dialog';
 import {useRouter} from 'next/router'
+import {Dialog} from '@common_imports';
 
 //Ayu introduction
 export default function Intro() {

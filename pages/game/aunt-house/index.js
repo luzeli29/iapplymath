@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
-import GameIndexLayout from '../../../comps/game/layouts/game_index_layout'
-import {useWrapperContext} from '../../../context/context'
-import style from '../../../styles/aunt_house.module.css'
-import recipes from '../../../public/text/aunt_house_recipes'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
+import {GameIndexLayout,useWrapperContext} from '@common_imports'
+import style from '@styles/aunt_house.module.css'
+import recipes from '@public/text/aunt_house_recipes'
 
 export default function RecipeSelect() {
   const lang = useWrapperContext().state.lang;

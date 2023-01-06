@@ -22,6 +22,7 @@
     "tween-functions": "^1.2.0"
   },
   "devDependencies": {
+    "@welldone-software/why-did-you-render": "^7.0.1",
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0"
   }

@@ -1,9 +1,11 @@
+import '@utils/debug/wdyr'; // <--- first import
+
 import React, {} from 'react';
 import Head from 'next/head'
-import Layout from '../comps/layout'
-import '../styles/globals.css'
-import ContextWrapper from '../context/context'
 import 'bootstrap/dist/css/bootstrap.css';
+import '@styles/globals.css'
+import Layout from '@layouts/core/core_layout'
+import ContextWrapper from '@components/context/context'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -20,5 +22,6 @@ function MyApp({ Component, pageProps }) {
     </>
   )
 }
+
 
 export default MyApp

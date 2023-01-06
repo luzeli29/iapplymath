@@ -1,7 +1,7 @@
 import React from 'react'
 import {useRouter} from 'next/router'
-import QuestionLayout from '../../../../comps/game/layouts/question_layout'
-import style from '../../../../styles/aunt_house.module.css'
+import {GameQuestionLayout} from '@common_imports'
+import style from '@styles/aunt_house.module.css'
 import Image from 'next/image'
 
 export default function FamilySelect() {
@@ -24,7 +24,7 @@ export default function FamilySelect() {
         if(isNaN(answer)) {
             return false;
         } else if(answer > 1 && answer <= 12) {
-            window.localStorage.setItem('FAMILY_SIZE',answer)
+            window.sessionStorage.setItem('FAMILY_SIZE',answer)
             return true;
         } else {
             //Incorrect, shows hint
@@ -33,7 +33,7 @@ export default function FamilySelect() {
     }},]
 
     return(
-        <QuestionLayout
+        <GameQuestionLayout
             onBack={() => router.push('/game/aunt-house')}
             questions={questions}
             onFinish={() => {
@@ -46,5 +46,5 @@ export default function FamilySelect() {
                     src={"/img/aunt_house/aunt-house_speaker.png"}
                 />
             </div>
-        </QuestionLayout>)
+        </GameQuestionLayout>)
 }

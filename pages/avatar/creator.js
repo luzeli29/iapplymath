@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Image from "next/image";
-import {useWrapperContext} from '../../context/context'
 import { useRouter } from 'next/router'
+import {useWrapperContext} from '@common_imports'
 
 //TODO: Finish avatar creator
 const data = [

@@ -1,15 +1,13 @@
 import React from 'react';
 import {useRouter} from 'next/router'
-import {useWrapperContext} from '../context/context'
-import translations from '../public/text/translations'
 import Image from 'next/image'
+import {getCommonText} from '@common_imports' 
 
 //test
 
 //Index with start button to go to intro dialog
-export default function Index() {
+const Index = () => {
   //get lang from context
-  const lang = useWrapperContext().state.lang
   const router = useRouter()
 
   return (
@@ -24,9 +22,14 @@ export default function Index() {
       </div>
       <div className="text-center">
         <button className="basic_button" onClick={() => router.push('/intro') }>
-          {translations.start[lang]}
+          {getCommonText('start')}
           </button>
       </div>    
     </div>  
   )
 }
+
+Index.whyDidYouRender = true
+
+export default Index
+
