@@ -1,5 +1,5 @@
 import React from 'react'
-import Dialog from '../../../comps/dialog/dialog'
+import {Dialog} from '@common_imports'
 import {useRouter} from 'next/router'
 
 export default function Introduction() {

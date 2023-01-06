@@ -1,6 +1,6 @@
 import React from 'react'
-import Dialog from '../../../comps/dialog/dialog'
 import {useRouter} from 'next/router'
+import {Dialog} from '@common_imports'
 
 export default function Outro() {
     const router = useRouter()

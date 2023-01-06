@@ -1,12 +1,11 @@
 import React, {useState,useReducer} from 'react'
-import {useWrapperContext} from '../../../context/context'
 import {useRouter} from 'next/router'
-import GameIndexLayout from '../../../comps/game/layouts/game_index_layout'
-import style from '../../../styles/restaurant.module.css'
-import getMenu from '../../../comps/game/restuarant/get_menu'
-import MenuButton from '../../../comps/game/restuarant/MenuButton'
-import ItemDescription from '../../../comps/game/restuarant/ItemDescription'
-import Order from '../../../comps/game/restuarant/Order'
+import {useWrapperContext,GameIndexLayout} from '@common_imports'
+import style from '@styles/restaurant.module.css'
+import getMenu from '@utils/game/restaurant/get_menu'
+import MenuButton from '@components/game/restuarant/MenuButton'
+import ItemDescription from '@components/game/restuarant/ItemDescription'
+import Order from '@components/game/restuarant/Order'
 
 //Main Resturant game
 export default function Restaurant () {
@@ -102,7 +101,7 @@ const MenuSelect = ({handleOrderComplete,budget,order,setOrder, menu}) => {
         
             <div className={style.ms_container}>
                 <div className={style.menu_grid}>
-                    <p className={style.menu_titles}><b>Entrees</b></p>
+                    <p className={style.menu_titles}><strong>Entrees</strong></p>
                     <div className={style.five_grid}>
                         {menu.entre.map((dish) => {
                             return (
@@ -115,7 +114,7 @@ const MenuSelect = ({handleOrderComplete,budget,order,setOrder, menu}) => {
                                     
                         )})}
                     </div>
-                    <p className={style.menu_titles}><b>Drinks</b></p>
+                    <p className={style.menu_titles}><strong>Drinks</strong></p>
                     <div className={style.three_grid}>
 
                         {menu.drink.map((dish) => {
@@ -129,7 +128,7 @@ const MenuSelect = ({handleOrderComplete,budget,order,setOrder, menu}) => {
                                 )
                         })}
                     </div>
-                    <p className={style.menu_titles}><b>Desert</b></p>
+                    <p className={style.menu_titles}><strong>Desert</strong></p>
                     <div className={style.three_grid}>
                         {menu.desert.map((dish) => {
                                 return (

@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            // Imports to files
+            "@common_imports": ["utils/imports/common_imports"],
+
+            // Imports to folders
+            "@public/*": ["public/*"],
+            "@components/*": ["components/*"],
+            "@layouts/*": ["layouts/*"],
+            "@utils/*": ["utils/*"],
+            "@styles/*": ["styles/*"],
+            "@hooks/*": ["hooks/*"],
+
+            //Used while switching to translator, will be deleted
+            "@translations": ["public/text/translations"],
+        }
+    },
+  }

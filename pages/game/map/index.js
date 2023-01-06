@@ -1,9 +1,9 @@
 import React from 'react';
-import style from '../../../styles/map.module.css'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
-import {useWrapperContext} from '../../../context/context'
-import translations from '../../../public/text/translations';
+import style from '@styles/map.module.css'
+import {useWrapperContext} from '@common_imports'
+import translations from '@translations';
 
 export default function Map() {
     //get lang from context

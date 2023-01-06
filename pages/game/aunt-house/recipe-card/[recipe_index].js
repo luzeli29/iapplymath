@@ -1,9 +1,9 @@
 import React from 'react'
 import {useRouter} from 'next/router'
-import style from '../../../../styles/aunt_house.module.css'
-import recipes from '../../../../public/text/aunt_house_recipes'
-import {useWrapperContext} from '../../../../context/context'
-import translations from '../../../../public/text/translations'
+import style from '@styles/aunt_house.module.css'
+import recipes from '@public/text/aunt_house_recipes'
+import {useWrapperContext} from '@common_imports'
+import translations from '@translations'
 
 export default function RecipeCard() {
     const lang = useWrapperContext().state.lang;
@@ -21,7 +21,7 @@ export default function RecipeCard() {
     return(
         <div className={style.recipe_card_container}>
             <div className={style.recipe_card_title_container}>
-                <p className={style.recipe_card_title}><b>{recipe.name[lang] + " - " + recipe.serving_amount[lang]}</b></p>
+                <p className={style.recipe_card_title}><strong>{recipe.name[lang] + " - " + recipe.serving_amount[lang]}</strong></p>
             </div>
             <div className={style.recipe_card_ing_container}>
                 {recipe.ingredients.map((ing) => {
@@ -43,9 +43,9 @@ export default function RecipeCard() {
             
             <button 
                 onClick={() => router.push('/game/aunt-house/questions/basic/' + recipe_index)}
-                className={style.recipe_card_button}> <b>
+                className={style.recipe_card_button}> <strong>
                {/*TODO: potencially change if other langs were added*/}
-               {translations.cook[lang]}</b></button>
+               {translations.cook[lang]}</strong></button>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import {useWrapperContext} from '../context/context'
+import {useWrapperContext} from '@common_imports'
 
 export default function Login() {
   const context = useWrapperContext();

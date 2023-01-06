@@ -1,7 +1,7 @@
 import React from 'react';
-import {useWrapperContext} from '../context/context'
-import translations from '../public/text/translations';
 import Link from "next/link"
+import {useWrapperContext, getCommonText} from '@common_imports'
+import translations from '@translations';
 
 //404 page if user goes to page not found
 export default function Error() {
@@ -10,11 +10,11 @@ export default function Error() {
   return (
     //TODO: Make pretty
     <>
-      <h2>{translations.page_not_found[lang]}</h2>
+      <h2>{getCommonText('page_not_found')}</h2>
       <p>
-        {translations.click[lang] + " "}
-          <Link href="/"><a><b>{translations.here[lang]}</b></a></Link> 
-        {" " + translations.to_return_home[lang]}
+        {getCommonText('click') + " "}
+          <Link href="/"><a><strong>{getCommonText('here')}</strong></a></Link> 
+        {" " + getCommonText('to_return_home')}
       </p>
     </>
   )
