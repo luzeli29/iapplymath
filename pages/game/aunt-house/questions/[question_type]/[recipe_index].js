@@ -23,7 +23,7 @@ export default function AuntHouseQuestions() {
             finishRoute = '/game/aunt-house/finished';
             break;
         default:
-            questions = generateBasicQuestions(recipe_index)
+            questions = generateAuntHouseQuestions(recipe_index)
             finishRoute = '/game/aunt-house/family-members/' + recipe_index;
             break;
     }

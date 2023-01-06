@@ -1,7 +1,7 @@
 import recipes from '@public/text/aunt_house_recipes'
-import {implifyFraction} from '@common_imports'
+import {simplifyFraction} from '@common_imports'
 
-export function generateBasicQuestions(recipeIndex) {
+export function generateAuntHouseQuestions(recipeIndex) {
     const recipe = recipes[recipeIndex]
     var questions = [];
     //TODO: This is bad, relook at this during recipe rework
