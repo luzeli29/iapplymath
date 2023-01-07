@@ -13,7 +13,7 @@ export default function UserTest() {
           <h1>API Debug Page</h1>
           <form autoComplete="off" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="UserID">UserID</label>
+              <label htmlFor="UserId">UserId</label>
               <input
                 id="user_id"
                 type="text"

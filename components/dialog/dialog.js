@@ -73,7 +73,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
     }, [handleKeyPress]);
   
     //get avatar from context
-    const avatarID = context.state.avatarID
+    const avatarId = context.state.avatarId
 
     const stage = dialog.stage ? dialog.stage : Scripts["error"].stage
     const backgroundImgSrc = stage == "ayu" ? "/img/ayu/ayu.png" : "/img/" + stage + "/" + stage + "_bg.png";
@@ -136,7 +136,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                                     priority={true}
                                     layout={"fill"}
                                     quality={100}
-                                    src={"/img/avatar/pre_made/A" + avatarID + "_back.png"}/> 
+                                    src={"/img/avatar/pre_made/A" + avatarId + "_back.png"}/> 
                         </div>
                         <div className={style.speaker_img}>
                         {dialog.no_speaker ?

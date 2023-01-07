@@ -8,7 +8,7 @@ export default function ContextWrapper({ children }) {
   //lang is the current langage needed to show
   const [lang, setLang] = useState("en");
 
-  const [userID, setUserID] = useState();
+  const [userId, setUserId] = useState();
 
   useEffect(() => {
     //init lang on refresh
@@ -21,32 +21,33 @@ export default function ContextWrapper({ children }) {
     }
 
     //init avatar on refresh
-    const avatarIDLocal = window.sessionStorage.getItem('AVATAR_ID');
-    if ( avatarIDLocal === null) {
+    const avatarIdLocal = window.sessionStorage.getItem('AVATAR_ID');
+    if ( avatarIdLocal === null) {
       window.sessionStorage.setItem('AVATAR_ID','')
-      setAvatarID("")
+      setAvatarId("")
     } else {
-      setAvatarID(window.sessionStorage.getItem('AVATAR_ID'))
+      setAvatarId(window.sessionStorage.getItem('AVATAR_ID'))
     }
 
-    const userIDLocal = window.sessionStorage.getItem('USER_ID');
-    if (userIDLocal) {
-      console.log('UserID is not null')
-      setUserID(userIDLocal)
+    const userIdLocal = window.sessionStorage.getItem('USER_ID');
+    if (userIdLocal) {
+      setUserId(userIdLocal)
     }
   });
 
-  const [order, setOrder] = useState({
-    dishes: {
-        entree: "",
-        drink: "",
-        desert: "",
-    },
-    total: 0,
-  })
+  const clearData = () => {
+    setUserId("");
+    window.sessionStorage.removeItem('USER_ID')
+
+    setLang("en");
+    window.sessionStorage.removeItem('LANG_STATE')
+    
+    setAvatarId("")
+    setAvatarId(window.sessionStorage.getItem('AVATAR_ID'))
+  }
 
   //avatar keeps track of what avatar to show
-  const [avatarID, setAvatarID] = useState("1");
+  const [avatarId, setAvatarId] = useState("1");
   //questionNum remebers which question number a user was on even if there is a lang switch
   const [questionNum, setQuestionNum] = useState(0);
   //this is what is stored in the context
@@ -54,24 +55,24 @@ export default function ContextWrapper({ children }) {
       state: {
           lang: lang,
           questionNum: questionNum,
-          avatarID:avatarID,
-          order:order,
-          userID: userID,
+          avatarId:avatarId,
+          userId: userId,
       },
       setLang: (newLang) => {
         window.sessionStorage.setItem('LANG_STATE',newLang)
         setLang(newLang)
       },
-      setAvatarID: (newAvatarID) => {
-        window.sessionStorage.setItem('AVATAR_ID',newAvatarID)
-        setAvatarID(newAvatarID)
+      setAvatarId: (newAvatarId) => {
+        window.sessionStorage.setItem('AVATAR_ID',newAvatarId)
+        setAvatarId(newAvatarId)
       },
       setQuestionNum: (newNum) => setQuestionNum(newNum),
       setOrder: (newOrder) => setOrder(newOrder),
-      setUserID: (userID) => {
-        window.sessionStorage.setItem('USER_ID',userID)
-        setUserID(userID)
+      setUserId: (userId) => {
+        window.sessionStorage.setItem('USER_ID',userId)
+        setUserId(userId)
       },
+      clearData: () => clearData(),
   }
 
   return (
