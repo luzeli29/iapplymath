@@ -32,17 +32,22 @@ export default function Login() {
     const result = await response.json()
 
     if (result.code === 200) {
+
+      context.setUserId(result.data.userId);
+      context.setUserLongId(result.data._id);
+
       if(result.data.avatarId) {
-        context.setUserId(result.data.userId);
         context.setAvatarId(result.data.avatarId);
         router.push("/game/")
       } else {
-        context.setUserId(event.target.user_id.value);
         router.push("/avatar/select")
       }
+
     } else {
+
       throwError("Account login did not return 200. " + result.message)
       setErrorMessage(result.message);
+      
     }
   }
 

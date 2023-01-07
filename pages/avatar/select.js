@@ -8,7 +8,8 @@ export default function Creator() {
     //get the site context and lang
     const context = useWrapperContext()
     const avatarId = context.state.avatarId
-
+    const userId = context.state.userId
+    
     const router = useRouter();
 
     //This is called when the player is done creating
@@ -60,18 +61,17 @@ export default function Creator() {
                     return <AvatarButton index={i + 1} key={i} />;
                 })}
             </div>
-            {avatarId == "" ? 
-            <>
-                <p>
-                    {getCommonText('please_select_avatar')}
-                </p>
-            </>
+            {avatarId && userId ? 
+                <button 
+                        className={style.continue_button}
+                        onClick={() => handleSaveAvatar()}>
+            {       getCommonText('save') + userId}
+                </button>
             :
-            <button 
-                    className={style.continue_button}
-                    onClick={() => handleSaveAvatar()}>
-                {getCommonText('save')}
-            </button> 
+                <>
+                    <p>
+                    </p>
+                </>
             }
         </>
     )

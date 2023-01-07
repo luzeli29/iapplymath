@@ -34,9 +34,10 @@ export default async function handler(req, res) {
       let findResponse = await db.collection("users").findOne(bodyObject)
         
       if(findResponse) {
+        console.log(findResponse)
         res.json({
           code: 200,
-          message: "Found correct user.",
+          message: "Loging into user " + findResponse._id + ".",
           data: findResponse,
         });
       } else {
