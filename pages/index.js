@@ -32,9 +32,9 @@ const Index = () => {
         :
         // User is not logged in
         <>
-        <button className="basic_button" onClick={() => router.push('/account') }>
-          {getCommonText('login')}
-        </button>
+          <button className="basic_button" onClick={() => router.push('/account') }>
+            {getCommonText('login')}
+          </button>
         </>
         }
       </div>    

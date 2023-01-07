@@ -9,6 +9,7 @@ export default function ContextWrapper({ children }) {
   const [lang, setLang] = useState("en");
 
   const [userId, setUserId] = useState();
+  const [userLongId, setUserLongId] = useState();
 
   useEffect(() => {
     //init lang on refresh
@@ -33,6 +34,11 @@ export default function ContextWrapper({ children }) {
     if (userIdLocal) {
       setUserId(userIdLocal)
     }
+
+    const userLongIdLocal = window.sessionStorage.getItem('USER_LONG_ID');
+    if (userLongIdLocal) {
+      setUserLongId(userLongIdLocal)
+    }
   });
 
   const clearData = () => {
@@ -44,6 +50,9 @@ export default function ContextWrapper({ children }) {
     
     setAvatarId("")
     setAvatarId(window.sessionStorage.getItem('AVATAR_ID'))
+
+    setUserLongId("");
+    window.sessionStorage.removeItem('USER_LONG_ID')
   }
 
   //avatar keeps track of what avatar to show
@@ -57,6 +66,7 @@ export default function ContextWrapper({ children }) {
           questionNum: questionNum,
           avatarId:avatarId,
           userId: userId,
+          userLongId: userLongId,
       },
       setLang: (newLang) => {
         window.sessionStorage.setItem('LANG_STATE',newLang)
@@ -71,6 +81,10 @@ export default function ContextWrapper({ children }) {
       setUserId: (userId) => {
         window.sessionStorage.setItem('USER_ID',userId)
         setUserId(userId)
+      },
+      setUserLongId: (userLongId) => {
+        window.sessionStorage.setItem('USER_LONG_ID',userLongId)
+        setUserLongId(userLongId)
       },
       clearData: () => clearData(),
   }
