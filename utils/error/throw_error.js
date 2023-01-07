@@ -1,4 +1,4 @@
-export default function throwError({errorText}) {
+export default function throwError(errorText) {
     console.error('Error: ' + errorText);
 }
 

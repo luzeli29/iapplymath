@@ -9,18 +9,18 @@ export default function getCommonText(textId) {
         return "Error"
     }
 
-    const text = translations[textId]
+    const textObject = translations[textId]
 
-    if(!text) {
+    if(!textObject) {
         throwError("No text found under given Id " + textId)
-        return "Error"
+        return "textId: " + textId;
     }
 
-    const translation = text[lang]
+    const translation = textObject[lang]
 
     if(!translation) {
         throwError("No translation for text found for Id " + textId + " and lang " + lang)
-        return "Error"
+        return "textId: " + textId + "[" + lang + "]";
     }
 
     return translation;

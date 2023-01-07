@@ -7,16 +7,32 @@ import {useWrapperContext,getCommonText} from '@common_imports'
 export default function Creator() {
     //get the site context and lang
     const context = useWrapperContext()
-    const avatarID = context.state.avatarID
+    const avatarId = context.state.avatarId
 
     const router = useRouter();
 
     //This is called when the player is done creating
     //Should handle anything to be done in order to use avatar in game
-    const handleFinishAvatar = () => {
-        if(context.state.avatar === '') {
-            return;
+    const handleSaveAvatar = async() => {
+        const data = {
+            userId: context.state.userId,
+            avatarId: context.state.avatarId
         }
+
+        const JSONdata = JSON.stringify(data)
+
+        const endpoint = '/api/avatarId'
+
+        const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSONdata,
+        }
+        const response = await fetch(endpoint, options)
+        //const result = await response.json()
+
         router.push('/game/map')
     }
 
@@ -24,12 +40,12 @@ export default function Creator() {
         const path = "/img/avatar/pre_made/A"
         return (
             <button
-                onClick={() => context.setAvatarID(index)}
+                onClick={() => context.setAvatarId(index)}
                 className={style.avatar_select_button}>
                 <Image
                         priority={true}
                         layout={"fill"}
-                        src={context.state.avatarID == index ? path + index + "_selected.png" : path + index + ".png"}/> 
+                        src={context.state.avatarId == index ? path + index + "_selected.png" : path + index + ".png"}/> 
             
             </button>
         )
@@ -44,18 +60,17 @@ export default function Creator() {
                     return <AvatarButton index={i + 1} key={i} />;
                 })}
             </div>
-            {avatarID == "" ? 
-            <button 
-                    className={style.continue_button}
-                    onClick={() => handleFinishAvatar()}
-                    disabled>
-                {getCommonText('continue')}
-            </button> 
+            {avatarId == "" ? 
+            <>
+                <p>
+                    {getCommonText('please_select_avatar')}
+                </p>
+            </>
             :
             <button 
                     className={style.continue_button}
-                    onClick={() => handleFinishAvatar()}>
-                {getCommonText('continue')}
+                    onClick={() => handleSaveAvatar()}>
+                {getCommonText('save')}
             </button> 
             }
         </>

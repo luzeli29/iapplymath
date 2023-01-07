@@ -11,7 +11,7 @@ export default function Header() {
     return (
         <div className="container text-center">
             <div className="row pt-2">
-                <h1>I Apply Math in my World</h1>
+                <h1 onClick={() => router.push('/')}>I Apply Math in my World</h1>
             </div>
             <div className="row justify-content-lg-center pt-1">
                 <div className="col col-lg-1">
@@ -26,11 +26,11 @@ export default function Header() {
                     <button onClick={() => context.setLang('en')}><strong>English</strong></button>
                 </div>
             </div>
-            <div className="row py-2">
-                {context.state.userID?
-                    <p>USER ID: {context.state.userID}</p>
+            <div className="row justify-content-lg-center">
+                {context.state.userId?
+                    <p>USER ID: {context.state.userId}</p>
                 :
-                    <button onClick={() => router.push('/login')}>Login</button>
+                    <p className="red pt-2">User is not logged in (Data will not be collected)</p>
                 }
             </div>
         </div>
