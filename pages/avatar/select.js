@@ -2,11 +2,12 @@ import React from 'react';
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import style from '@styles/avatar.module.css'
-import {useWrapperContext,getCommonText} from '@common_imports'
+import {useWrapperContext,getText} from '@common_imports'
 
 export default function Creator() {
     //get the site context and lang
     const context = useWrapperContext()
+    const lang = context.state.lang
     const avatarId = context.state.avatarId
     const userId = context.state.userId
     
@@ -55,7 +56,7 @@ export default function Creator() {
 
     return (
         <>
-            <h1 className={style.as_title_container}>{getCommonText('pick_avatar')}</h1>
+            <h1 className={style.as_title_container}>{getText('pick_avatar',lang)}</h1>
             <div className={style.button_bar}>
                 {Array.apply(0, Array(8)).map((x,i) => {
                     return <AvatarButton index={i + 1} key={i} />;
@@ -65,7 +66,7 @@ export default function Creator() {
                 <button 
                         className={style.continue_button}
                         onClick={() => handleSaveAvatar()}>
-            {       getCommonText('save') + userId}
+            {       getText('save',lang) + userId}
                 </button>
             :
                 <>

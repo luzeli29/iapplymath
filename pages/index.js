@@ -1,15 +1,16 @@
 import React from 'react';
 import {useRouter} from 'next/router'
 import Image from 'next/image'
-import {getCommonText, useWrapperContext} from '@common_imports' 
+import {getText, useWrapperContext} from '@common_imports' 
 
 //test
 
 //Index with start button to go to intro dialog
 const Index = () => {
-  const context = useWrapperContext();
-  const userId = context.state.userId;
-  const router = useRouter();
+  const context = useWrapperContext()
+  const lang = context.state.lang
+  const userId = context.state.userId
+  const router = useRouter()
 
   return (
     <div>
@@ -26,14 +27,14 @@ const Index = () => {
         // User is logged in
         <>
         <button className="basic_button" onClick={() => router.push('/intro') }>
-          {getCommonText('start')}
+          {getText('start',lang)}
         </button>
         </>
         :
         // User is not logged in
         <>
-          <button className="basic_button" onClick={() => router.push('/account') }>
-            {getCommonText('login')}
+          <button className="basic_button" onClick={() => router.push('/login/') }>
+            {getText('login',lang)}
           </button>
         </>
         }

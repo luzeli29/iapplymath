@@ -1,13 +1,13 @@
 import React from 'react'
-import { useWrapperContext, getCommonText } from '@common_imports'
+import { useWrapperContext, getText } from '@common_imports'
 import { useRouter } from 'next/router'
 
 export default function Index() {
   const context = useWrapperContext();
-  const router = useRouter();
-
+  const lang = context.state.lang  
   const userId = context.state.userId
   const userLongId = context.state.userLongId
+  const router = useRouter();
 
   const handleLogout = () => {
     context.clearData();
@@ -31,8 +31,8 @@ export default function Index() {
       /* User is not logged in */
       <>
         <p>User is not logged in (Data will not be collected)</p>
-        <button className="basic_button" onClick={() => router.push('/account') }>
-              {getCommonText('login')}
+        <button className="basic_button" onClick={() => router.push('/login/') }>
+              {getText('login',lang)}
         </button>
       </>
     }

@@ -30,7 +30,7 @@ export default function Header() {
                 {context.state.userId?
                     <p>USER ID: {context.state.userId}</p>
                 :
-                    <p className="red pt-2">User is not logged in (Data will not be collected)</p>
+                    <p className="red pt-2">User is not logged in</p>
                 }
             </div>
         </div>

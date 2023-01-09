@@ -32,8 +32,6 @@ export default function Restaurant () {
             //Order was bad, do nothing
             //TODO: add player feedback
         } else {
-            console.log(order)
-
             context.setOrder(order)
             router.push('/game/restaurant/questions')        
         }
