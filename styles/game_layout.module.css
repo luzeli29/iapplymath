@@ -5,6 +5,7 @@
     top: 20px;
     position: absolute;
     left: 55%;
+    border: solid black 1px;
 }
 .numpad_container {
     top: 59%;
@@ -12,6 +13,7 @@
     position: absolute;
     height: 36.25%;
     border-radius: 15px;
+    border: solid black 1px;
 }
 
 .child_container {
@@ -20,14 +22,15 @@
     position: absolute;
     height: 55%;
     border-radius: 15px;
+    border: solid black 1px;
 }
 
 .ayu_block {
     width: 45%;
-    position: absolute;
     left: 55%;
     height: 45%;
     border-radius: 15px;
+    border: solid black 1px;
     position: absolute;
 }
 
@@ -36,7 +39,7 @@
     font-size: 30px;
     margin: auto;
     width: 90%;
-    height: 70%;
+    height: 40%;
 }
 
 
@@ -77,10 +80,8 @@
 }
 
 .num_pad_container {
-    padding-left: 20px;
     width: 100%;
     height: 100%;
-    justify-content: center;
 }
 
 .num_pad_button_box {
@@ -100,12 +101,12 @@
 }
 
 .num_pad_left_box {
-    width: 25%;
+    width: 35%;
 }
 
 .num_pad_answer {
     width: 100%;
-    height: 15%;
+    height: 70%;
     background-color: #F6CA64;
     border: solid black 2px;
     margin: auto;    
@@ -127,7 +128,7 @@
 
 .continue_button {
     position: relative;
-    top: 50%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: x-large;

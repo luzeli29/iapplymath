@@ -5,6 +5,9 @@ import Confetti from 'react-confetti'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
 import {useWrapperContext,Dialog,formatAnswer,simplifyAnswer} from '@common_imports'
+import { Calculator } from 'react-mac-calculator'
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 //TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
@@ -91,7 +94,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       return (
          <div className={style.question_text_container}>
             <p>{question_data[lang]}</p>
-            <p>{hintText}</p>
+            <p className="incorrect_answer">{hintText}</p>
          </div>
       );
    }
@@ -152,14 +155,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       const [answer, setAnswer] = useState("");
       //keeps track if view should show the empty hint within the numpad
       const [showEmptyHint, setShowEmptyHint] = useState(false);
-
-      //buttons of numPad
-      const btn_values = [
-         [ 1, 2, 3],
-         [ 4, 5, 6],
-         [ 7, 8, 9],
-         ["/",0,'←']
-      ];
 
       const handleKeyPress = useCallback(event => {
          if (event.key == "Backspace") { //backspace pressed
@@ -253,11 +248,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                   <tbody>
                      <tr>
                         <td className={style.num_pad_button_box}>
-                           {btn_values.flat().map((btn) => {
-                              return (
-                                 renderButton(btn)
-                              );
-                           })}  
+                        
                         </td>
                         <td className={style.num_pad_left_box}>
                            <p className={style.num_pad_answer}> <b className={style.num_pad_answer_text}>{formatAnswer(_questions[questionNum].answer_format,answer)} </b></p>
@@ -303,13 +294,21 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                      <tr>
       
                      <td className={style.numpad_container}>
-                           <NumPad/>
+                        <Popup trigger={
+                           <button isHovering={true} style={{marginTop:"10px", marginLeft:"10px"}}> 
+                              <Image width={30} height={50} src={"/img/other/calcicon.png"}/>
+                           </button>}
+                           closeOnDocumentClick={false} position="left center" offsetX={150} offsetY={-100}>
+                           <div className="app">
+                              <Calculator/>
+                           </div>
+                         </Popup>
+                         <h4>Type answer here:</h4>
+                         <NumPad/>
                      </td>
-      
-                     <td className={style.ayu_block}>
-                              <Ayu/>  
-                           </td>
-      
+                        <td className={style.ayu_block}>
+                           <Ayu/>  
+                        </td>
                      </tr>
                   </tbody>
                </table>     

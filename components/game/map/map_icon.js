@@ -9,7 +9,6 @@ import Image from 'next/image'
 export default function MapIcon({game_page_id}) {
     //get current lang
     const lang = useWrapperContext().state.lang;
-    console.log(game_page_id)
     //init router
     const router = useRouter()
     //set src

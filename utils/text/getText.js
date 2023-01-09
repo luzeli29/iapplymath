@@ -1,8 +1,7 @@
 import translations from '@public/text/translations'
-import {throwError,useWrapperContext} from '@common_imports' 
+import {throwError} from '@common_imports' 
 
-export default function getCommonText(textId) {
-    const lang = useWrapperContext().state.lang
+export default function getText(textId,lang) {
 
     if(!lang) {
         throwError("Lang is null")

@@ -1,19 +1,20 @@
 import React from 'react';
 import Link from "next/link"
-import {useWrapperContext, getCommonText} from '@common_imports'
+import {useWrapperContext, getText} from '@common_imports'
 
 //404 page if user goes to page not found
 export default function Error() {
-  const lang = useWrapperContext().state.lang;
+  const context = useWrapperContext()
+  const lang = context.state.lang
 
   return (
     //TODO: Make pretty
     <>
-      <h2>{getCommonText('page_not_found')}</h2>
+      <h2>{getText('page_not_found',lang)}</h2>
       <p>
-        {getCommonText('click') + " "}
-          <Link href="/"><a><strong>{getCommonText('here')}</strong></a></Link> 
-        {" " + getCommonText('to_return_home')}
+        {getText('click',lang) + " "}
+          <Link href="/"><a><strong>{getText('here',lang)}</strong></a></Link> 
+        {" " + getText('to_return_home',lang)}
       </p>
     </>
   )

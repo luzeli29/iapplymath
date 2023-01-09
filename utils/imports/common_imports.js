@@ -1,6 +1,6 @@
 import Dialog from '@components/dialog/dialog';
 import GameQuestionLayout from '@layouts/game_layouts/game_question_layout';
-import getCommonText from '@utils/text/getCommonText';
+import getText from '@utils/text/getText';
 import throwError from '@utils/error/throw_error';
 import formatAnswer from '@utils/game/format_answer'
 import simplifyAnswer from '@utils/game/simplify_answer'
@@ -13,7 +13,7 @@ export {
   // Components
   Dialog,
   // Functions
-  getCommonText,
+  getText,
   throwError,
   formatAnswer,
   simplifyAnswer,
