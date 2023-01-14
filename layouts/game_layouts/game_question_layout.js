@@ -138,7 +138,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                   <Image
                      priority={true}
                      layout={"fill"}
-                     src={"/img/ayu/ayu.png"}/>
+                     src={"/img/ayu/ayu_idle.gif"}/>
                </button>
             </div>
             
