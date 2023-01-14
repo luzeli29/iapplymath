@@ -64,12 +64,12 @@ export default function Map() {
 
                 <button onClick={() => handleRestaurant}
                         className={style.icon_button} 
-                        id={style.resturant}>
+                        id={style.restaurant}>
                     <Image 
                         layout={"fill"}
                         quality={100}
                         priority={true}
-                        src={"/img/map/resturant.png"}/> 
+                        src={"/img/map/restaurant.png"}/>
                     <p>{translations.restaurant[lang]}</p>
 
                 </button> 
