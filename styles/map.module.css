@@ -60,6 +60,13 @@
     background-color: #6B937D;
 }
 
+.player_img {
+    width: 75px;
+    height: 75px;
+    position: relative;
+    visibility: visible;
+}
+
 .icon {
     width: 150px;
     height: 150px;
