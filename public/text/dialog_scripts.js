@@ -74,6 +74,25 @@ const dialog_scripts = {
             }
         ],
     },
+
+    ayu_relaxation_0_1: {
+        stage: "ayu",
+        lines:   [
+            {
+                en:"Slowly, let’s take three big belly breaths.",
+                es:"Lentamente, tomemos tres respiraciones profundas."
+            },
+        ],
+    },
+    ayu_relaxation_0_2: {
+        stage: "ayuDeepBreathIn",
+        lines:   [
+            {
+                en:"Breathe in slowly through your nose for 4, 3, 2, 1",
+                es:"Inhala lentamente por tu nariz 4, 3, 2, 1"
+            },
+        ],
+    },
     
     ayu_relaxation_1: {
             stage: "ayu",

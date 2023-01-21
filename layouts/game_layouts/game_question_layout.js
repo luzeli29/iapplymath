@@ -17,7 +17,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    const questionNum = context.state.questionNum
    const lang = context.state.lang
 
-
    //get router for Next.js
    const router = useRouter()
 
@@ -73,28 +72,18 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
 
    //Box that shows user the question, feedback after answering, and hint if there are incorrect guesses
    const QuestionBox = ({question_data, incorrectNum}) => {
-
-      var hintText = "";
-
-      //Check for need of hints
-      if (incorrectNum > 0) {
-         if (incorrectNum == 1 || (!question_data.hint && incorrectNum != 0)) { //check for basic hint
-            hintText = translations.try_again[lang]
-         } else if(question_data.hint) { //question has hints
-            
-            if (incorrectNum-2 >= question_data.hint.length) {
-               //more incorrect then hints, show last hint
-               hintText = question_data.hint[question_data.hint.length-1][lang]
-            } else if (incorrectNum != 0) {
-               //show hint at given incorrect index
-               hintText = question_data.hint[incorrectNum-2][lang]
-            }
-         }
-      }
       return (
          <div className={style.question_text_container}>
             <p>{question_data[lang]}</p>
-            <p className="incorrect_answer">{hintText}</p>
+            {incorrectNum > 0 ? 
+               <p className="incorrect_answer">
+                  { (incorrectNum) > question_data.hints.length ? 
+                     question_data.hints.at(-1)[lang]
+                     :
+                     question_data.hints[incorrectNum-1][lang]}</p>
+               :
+               <></>
+            }
          </div>
       );
    }
@@ -323,11 +312,11 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    } else {
       //Shows a Ayu dialog to help relax user
       //TODO: switch dialog randomly in order to have different ayu relaxations
-      return (
-            <Dialog
-               scriptId={"ayu_relaxation_0"} 
-               onEnd={() => setState("questions")}
-               />)     
+       //Dialog ({scriptId, onEnd, onInput})
+       return (
+            <Dialog scriptId={"ayu_relaxation_0_1"} onEnd={() => setState("questions")}/>,
+            <Dialog scriptId={"ayu_relaxation_0_2"} onEnd={() => setState("questions")}/>
+       )
    }
     
 }
