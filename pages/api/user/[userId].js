@@ -49,3 +49,13 @@ export default async function handler(req, res) {
       return;
   }
 }
+
+function userGet(params) {
+  
+}
+function userPut(params) {
+  
+}
+function userPost(params) {
+  
+}
