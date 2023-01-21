@@ -76,12 +76,16 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
     const avatarId = context.state.avatarId
 
     const stage = dialog.stage ? dialog.stage : Scripts["error"].stage
-    const backgroundImgSrc = stage == "ayu" ? "/img/ayu/ayu_idle.gif" : "/img/" + stage + "/" + stage + "_bg.png";
+    const backgroundImgSrc = stage == "ayu" ? "/img/ayu/ayu_idle.gif"
+                                        : stage == "ayuDeepBreathIn" ? "/img/ayu/ayu_breathingIn.gif"
+                                        : stage == "ayuDeepBreathHold" ? "/img/ayu/ayu_fullBreathIn.png"
+                                        : stage == "ayuDeepBreathOut" ? "/img/ayu/ayu_breathingOut.gif"
+                                        : "/img/" + stage + "/" + stage + "_bg.png";
     const hasCharacters = (stage == "aunt_house" || stage == "restaurant")
 
     var speechTriangle = "end";
 
-    if(stage == "ayu") {
+    if(stage == "ayu" || stage == "ayuDeepBreathIn" || stage == "ayuDeepBreathHold" || stage == "ayuDeepBreathOut") {
         speechTriangle = "center"
     } else if (script[lineNum].playerSpeaking) {
         speechTriangle = "start"
