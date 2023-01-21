@@ -76,7 +76,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
     const avatarId = context.state.avatarId
 
     const stage = dialog.stage ? dialog.stage : Scripts["error"].stage
-    const backgroundImgSrc = stage == "ayu" ? "/img/ayu/ayu.png" : "/img/" + stage + "/" + stage + "_bg.png";
+    const backgroundImgSrc = stage == "ayu" ? "/img/ayu/ayu_idle.gif" : "/img/" + stage + "/" + stage + "_bg.png";
     const hasCharacters = (stage == "aunt_house" || stage == "restaurant")
 
     var speechTriangle = "end";

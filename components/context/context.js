@@ -9,6 +9,7 @@ export default function ContextWrapper({ children }) {
   const [lang, setLang] = useState("en");
 
   const [userId, setUserId] = useState();
+  const [mapLocation, setMapLocation] = useState("Base");
   const [userLongId, setUserLongId] = useState();
   const [order, setOrder] = useState();
 
@@ -68,7 +69,8 @@ export default function ContextWrapper({ children }) {
           avatarId:avatarId,
           userId: userId,
           userLongId: userLongId,
-          order: order
+          order: order,
+          mapLocation: mapLocation,
       },
       setLang: (newLang) => {
         window.sessionStorage.setItem('LANG_STATE',newLang)
@@ -88,6 +90,7 @@ export default function ContextWrapper({ children }) {
         window.sessionStorage.setItem('USER_LONG_ID',userLongId)
         setUserLongId(userLongId)
       },
+      setMapLocation: (newMapLocation) => setMapLocation(newMapLocation),
       clearData: () => clearData(),
       setOrder: (newOrder) => setOrder(newOrder),
   }
