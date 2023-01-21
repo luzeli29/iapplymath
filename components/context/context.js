@@ -11,6 +11,7 @@ export default function ContextWrapper({ children }) {
   const [userId, setUserId] = useState();
   const [mapLocation, setMapLocation] = useState("Base");
   const [userLongId, setUserLongId] = useState();
+  const [order, setOrder] = useState();
 
   useEffect(() => {
     //init lang on refresh
@@ -68,6 +69,7 @@ export default function ContextWrapper({ children }) {
           avatarId:avatarId,
           userId: userId,
           userLongId: userLongId,
+          order: order,
           mapLocation: mapLocation,
       },
       setLang: (newLang) => {
@@ -90,6 +92,7 @@ export default function ContextWrapper({ children }) {
       },
       setMapLocation: (newMapLocation) => setMapLocation(newMapLocation),
       clearData: () => clearData(),
+      setOrder: (newOrder) => setOrder(newOrder),
   }
 
   return (

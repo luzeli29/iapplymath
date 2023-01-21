@@ -66,7 +66,7 @@ export default function Creator() {
                 <button 
                         className={style.continue_button}
                         onClick={() => handleSaveAvatar()}>
-            {       getText('save',lang) + userId}
+                    {getText('save',lang)}
                 </button>
             :
                 <>

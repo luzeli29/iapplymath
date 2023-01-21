@@ -42,7 +42,12 @@ const translations = {
         en: "Choose one entree, one drink, and one dessert. The total price of the items you select must be less than or equal to that budget.",
         es: "Elija un plato principal, una bebida y un postre. Tenga en cuenta el dinero que tiene para pagar!",
     },
-
+    too_expensive_order_instructions:{
+        en: "Too expensive :(",
+    },
+    missing_item_instructions:{
+        en: "Missing item :(",
+    },
     order: {
         en: "Order",
         es: "Pedido",
@@ -54,6 +59,15 @@ const translations = {
     },
 
     // ----- General Translations -----
+
+    login: {
+        en: "Login",
+        es: "Login"
+    },
+    save: {
+        en: "Save",
+        es: "Save",
+    },
     i_apply_full_title: {
         en: "I Apply Math In My World",
         es: "Aplico las Matemáticas En Mi Mundo"
