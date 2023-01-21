@@ -1,36 +1,49 @@
 //Generate questions with the order state
+import createGameQuestion from '@utils/game/create_game_question.js'
+
 function generateOrderQuestions(order) {
     var questions = [];
-    if(order == null) {
-        questions[0] = {
-            en:"BAD ORDER INPUT ANSWER IS 42",
-            es:"BAD ORDER INPUT ANSWER IS 42",
-            answer: 42,
-        }
-        return questions;
-    }
-    questions[0] = {
-        en:"How much was your order?",
-        es:"¿Cuánto es el total?",
-        answer: order.total,
-        answer_format: "money",
+    if(!order) {
+        return [createGameQuestion()];
     }
 
-    questions[1] = {
-        en:"How much is the total if you remove the most expensive item?",
-        es:"¿Cuánto es el total si no compras el plato más caro?",
-        answer: order.total - Math.max.apply(Math, Object.values(order.dishes).map(function(dish) {return dish.price;})),
-        answer_format: "money",
-    }
+    const total = order.entree.price + order.drink.price + order.dessert.price
 
-    questions[2] = {
-        en:"How much is your total if you remove the least expensive item?",
-        es:"¿Cuánto es el total si no compras el plato más barato?",
-        answer: order.total - Math.min.apply(Math, Object.values(order.dishes).map(function(dish) {return dish.price;})),
-        answer_format: "money",
-    }
-    //TODO add more questions?
+    const sortedOrder = Object.values(order).sort(
+       (p1, p2) => (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0);
+    
+    console.log(sortedOrder)
+    
+    questions[0] = createGameQuestion(
+                        {
+                            en:"How much was your order?",
+                            es:"¿Cuánto es el total?",
+                        },
+                        total,
+                        [],
+                        "money"
+                    )
+    
 
+    questions[1] = createGameQuestion(
+                        {
+                            en:"How much is the total if you remove the most expensive item?",
+                            es:"¿Cuánto es el total si no compras el plato más caro?",
+                        },
+                        total - sortedOrder[0].price,
+                        [],
+                        "money"
+                    )
+    questions[2] = createGameQuestion(
+        {
+            en:"How much is your total if you remove the least expensive item?",
+            es:"¿Cuánto es el total si no compras el plato más barato?",
+        },
+        total - sortedOrder[2].price,
+        [],
+        "money"
+    )
+    
     return questions
 }
 

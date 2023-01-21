@@ -5,19 +5,21 @@ import {useWrapperContext} from '@common_imports'
 //used both in QuestionLayout and in MenuSelect
 function Order({order,budget}) {
     const lang = useWrapperContext().state.lang
-    if(order ==  null) {
+    
+    if(!order) {
         return (
             <div className="container">
                 <p>BAD ORDER</p>
             </div>
         )
     }
+
     return (
         <div className={style.order_container}>    
             <p className={style.order_text}>Order:</p>
-            {order.dishes.entree[lang] ? <p className={style.order_text}>{order.dishes.entree[lang]} - ${order.dishes.entree.price}.00</p> : <></>}
-            {order.dishes.drink[lang] ? <p className={style.order_text}>{order.dishes.drink[lang]} - ${order.dishes.drink.price}.00</p> : <></>}
-            {order.dishes.desert[lang] ? <p className={style.order_text}>{order.dishes.desert[lang]} - ${order.dishes.desert.price}.00</p> : <></>}
+            {order.entree ? <p className={style.order_text}>{order.entree[lang]} - ${order.entree.price}.00</p> : <></>}
+            {order.drink ? <p className={style.order_text}>{order.drink[lang]} - ${order.drink.price}.00</p> : <></>}
+            {order.dessert ? <p className={style.order_text}>{order.dessert[lang]} - ${order.dessert.price}.00</p> : <></>}
             
             {/* Re-add if you want to show total or keep it hidden
             !budget ? 
