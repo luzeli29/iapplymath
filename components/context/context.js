@@ -10,6 +10,7 @@ export default function ContextWrapper({ children }) {
 
   const [userId, setUserId] = useState();
   const [userLongId, setUserLongId] = useState();
+  const [order, setOrder] = useState();
 
   useEffect(() => {
     //init lang on refresh
@@ -67,6 +68,7 @@ export default function ContextWrapper({ children }) {
           avatarId:avatarId,
           userId: userId,
           userLongId: userLongId,
+          order: order
       },
       setLang: (newLang) => {
         window.sessionStorage.setItem('LANG_STATE',newLang)
@@ -87,6 +89,7 @@ export default function ContextWrapper({ children }) {
         setUserLongId(userLongId)
       },
       clearData: () => clearData(),
+      setOrder: (newOrder) => setOrder(newOrder),
   }
 
   return (
