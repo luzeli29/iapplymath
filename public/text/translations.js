@@ -59,6 +59,15 @@ const translations = {
     },
 
     // ----- General Translations -----
+
+    login: {
+        en: "Login",
+        es: "Login"
+    },
+    save: {
+        en: "Save",
+        es: "Save",
+    },
     i_apply_full_title: {
         en: "I Apply Math In My World",
         es: "Aplico las Matemáticas En Mi Mundo"
