@@ -22,7 +22,7 @@ export default function Header() {
                     <button onClick={() => router.push('/avatar/select')}><BsFillPersonFill/></button>
                     <button onClick={() => router.push('/game/map')}><BsMapFill/></button>
                     <button onClick={() => router.push('/settings')}><FaCog/></button>
-                    <button onClick={() => router.push('/checkin')}><RiChatHeartLine/></button>
+                    <button onClick={() => router.push('/settings')}><RiChatHeartLine/></button>
                 </div>
                 <div className="col col-lg-1">
                     <button onClick={() => context.setLang('en')}><strong>English</strong></button>
