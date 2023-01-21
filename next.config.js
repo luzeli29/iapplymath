@@ -2,7 +2,7 @@
 const path = require('path');
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   webpack(config, { dev, isServer }) {
     if (dev && !isServer) {
       const originalEntry = config.entry
