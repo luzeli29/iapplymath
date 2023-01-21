@@ -1,8 +1,9 @@
 import React, {} from 'react';
 import {useWrapperContext} from '@common_imports' 
 import {useRouter} from 'next/router'
-import { BsMapFill,BsFillPersonFill } from "react-icons/bs";
+import { BsMapFill,BsFillPersonFill} from "react-icons/bs";
 import { FaCog } from "react-icons/fa";
+import {RiChatHeartLine} from "react-icons/ri";
 
 export default function Header() {
     const context = useWrapperContext();
@@ -21,6 +22,7 @@ export default function Header() {
                     <button onClick={() => router.push('/avatar/select')}><BsFillPersonFill/></button>
                     <button onClick={() => router.push('/game/map')}><BsMapFill/></button>
                     <button onClick={() => router.push('/settings')}><FaCog/></button>
+                    <button onClick={() => router.push('/settings')}><RiChatHeartLine/></button>
                 </div>
                 <div className="col col-lg-1">
                     <button onClick={() => context.setLang('en')}><strong>English</strong></button>
