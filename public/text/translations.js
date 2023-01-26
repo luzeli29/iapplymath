@@ -102,6 +102,10 @@ const translations = {
         en: "Coming soon",
         es: "Proximamente!",
     },
+    check_in: {
+        en: "How are you feeling?",
+        es: "Como te sientes?",
+    },
     // TODO: maybe find a better way to do this for 404 page
     click: {
         en:"Click",
