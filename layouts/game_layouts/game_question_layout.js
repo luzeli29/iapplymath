@@ -206,23 +206,21 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       if (!question.answer) {
          //returns when there is no needed answer
          return (
-            <div className="fill_container">
-               <button
-                  onClick={() => handleButtonPress("✓")}
-                  className={style.continue_button}>
+            <><>
+               <div className="header_container">
+                  <Confetti
+                     confettiSource={{ x: 0, y: -100, w: 650, h: 600 }}
+                     friction={0.96} />
+               </div>
+
+            </><div className="fill_container">
+                  <button
+                     onClick={() => handleButtonPress("✓")}
+                     className={style.continue_button}>
                      {translations.continue[lang]}
-               </button>
-                <>
-                    <div  className="confetti_start">
-                        <Confetti
-                            confettiSource = {{x: 0, y:0, w: 650, h:600}}
-                            friction = {0.96}
-                        />
-                    </div>
+                  </button>
 
-                </>
-
-            </div>
+               </div></>
 
          
          )
