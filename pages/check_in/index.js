@@ -4,6 +4,7 @@ import {useWrapperContext} from '@common_imports'
 import { useRouter } from 'next/router'
 import style from '../../styles/check_in.module.css'
 import translations from '../../public/text/translations';
+import { motion } from "framer-motion"
 
 export default function Creator() {
     //get the site context and lang
@@ -36,13 +37,13 @@ export default function Creator() {
         )
     }
 
-
     return (
         <>
             <h1 className={style.as_title_container}>{translations.check_in[lang]}</h1>
             <div className={style.feeling_buttons}>
                 {Array.apply(0, Array(5)).map((x,i) => {
-                    return <FeelingButton index={i + 1} key={i} />;
+                    return <motion.div whileHover={{scale: 0.8}} whileTap={{backgroundColor: "#000000", borderRadius:100}}> <FeelingButton index={i + 1} key={i} /> </motion.div>
+                    ;
                 })}
             </div>
             <button
