@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a71d341c-3588-4d4b-93eb-81c85cb4cf0d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/dialog/dialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dialog/dialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/game_layouts/game_question_layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/game_layouts/game_question_layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/text/dialog_scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/text/dialog_scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/ayu/ayu_breathingIn.gif" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/ayu/ayu_breathingIn.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/ayu/ayu_breathingOut.gif" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/ayu/ayu_breathingOut.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/ayu/ayu_idle.gif" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/ayu/ayu_idle.gif" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,31 +91,26 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/dialog/dialog.js</url>
           <line>27</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/dialog/dialog.js</url>
           <line>28</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/dialog/dialog.js</url>
           <line>81</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/dialog/dialog.js</url>
           <line>79</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/text/dialog_scripts.js</url>
           <line>68</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
