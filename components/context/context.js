@@ -32,6 +32,14 @@ export default function ContextWrapper({ children }) {
       setAvatarId(window.sessionStorage.getItem('AVATAR_ID'))
     }
 
+    const petIdLocal = window.sessionStorage.getItem('PET_ID');
+    if ( petIdLocal === null) {
+      window.sessionStorage.setItem('PET_ID','')
+      setPetId("")
+    } else {
+      setPetId(window.sessionStorage.getItem('PET_ID'))
+    }
+
     const userIdLocal = window.sessionStorage.getItem('USER_ID');
     if (userIdLocal) {
       setUserId(userIdLocal)
@@ -53,12 +61,16 @@ export default function ContextWrapper({ children }) {
     setAvatarId("")
     setAvatarId(window.sessionStorage.getItem('AVATAR_ID'))
 
+    setPetId("")
+    setPetId(window.sessionStorage.getItem('PET_ID'))
+
     setUserLongId("");
     window.sessionStorage.removeItem('USER_LONG_ID')
   }
 
   //avatar keeps track of what avatar to show
   const [avatarId, setAvatarId] = useState("1");
+  const [petId, setPetId] = useState("1");
   //questionNum remebers which question number a user was on even if there is a lang switch
   const [questionNum, setQuestionNum] = useState(0);
   //this is what is stored in the context
@@ -79,6 +91,10 @@ export default function ContextWrapper({ children }) {
       setAvatarId: (newAvatarId) => {
         window.sessionStorage.setItem('AVATAR_ID',newAvatarId)
         setAvatarId(newAvatarId)
+      },
+      setPetId: (newPetId) => {
+        window.sessionStorage.setItem('PET_ID',newPetId)
+        setPetId(newPetId)
       },
       setQuestionNum: (newNum) => setQuestionNum(newNum),
       setOrder: (newOrder) => setOrder(newOrder),
