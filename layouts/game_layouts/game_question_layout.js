@@ -312,8 +312,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       //TODO: switch dialog randomly in order to have different ayu relaxations
        //Dialog ({scriptId, onEnd, onInput})
        return (
-            <Dialog scriptId={"ayu_relaxation_0_1"} onEnd={() => setState("questions")}/>,
-            <Dialog scriptId={"ayu_relaxation_0_2"} onEnd={() => setState("questions")}/>
+            <Dialog scriptId={"ayu_relaxation_0_1"} onEnd={() => setState("questions")}/>
        )
    }
     
