@@ -22,7 +22,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
     const router = useRouter()
 
     //keeps track of which line user is on, allows for rerender due to useState
-    const [lineNum,setLineNum]= useState(0);
+    const [lineNum, setLineNum]= useState(0);
 
     //set all needed params with id given, and check if they actually exist
     const dialog = Scripts[scriptId] ? Scripts[scriptId] : Scripts["error"]
@@ -76,11 +76,10 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
     const avatarId = context.state.avatarId
 
     const stage = dialog.stage ? dialog.stage : Scripts["error"].stage
-    const backgroundImgSrc = stage == "ayu" ? "/img/ayu/ayu_idle.gif"
-                                        : stage == "ayuDeepBreathIn" ? "/img/ayu/ayu_breathingIn.gif"
-                                        : stage == "ayuDeepBreathHold" ? "/img/ayu/ayu_fullBreathIn.png"
-                                        : stage == "ayuDeepBreathOut" ? "/img/ayu/ayu_breathingOut.gif"
-                                        : "/img/" + stage + "/" + stage + "_bg.png";
+    const ayuImg = script[lineNum].stg ? script[lineNum].stg : dialog.stage;
+    const backgroundImgSrc = changeBackgroundImgSrc(ayuImg);
+    //
+    console.log("script[lineNum] value: " + script[lineNum].stg);
     const hasCharacters = (stage == "aunt_house" || stage == "restaurant")
 
     var speechTriangle = "end";
@@ -168,4 +167,19 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
             <input className="d-none" autoFocus={true} onBlur={({ target }) => {target.focus()}}/>
         </div>
     )  
-} 
+}
+
+function changeBackgroundImgSrc(stage){
+    switch (stage){
+        case "ayu":
+            return "/img/ayu/ayu_idle.gif";
+        case "ayuDeepBreathIn":
+            return "/img/ayu/ayu_breathingIn.gif";
+        case "ayuDeepBreathInHold":
+            return "/img/ayu/ayu_fullbreathIn.png";
+        case "ayuDeepBreathOut":
+            return "/img/ayu/ayu_breathingOut.gif";
+        default:
+            return "/img/" + stage + "/" + stage + "_bg.png";
+    }
+}
