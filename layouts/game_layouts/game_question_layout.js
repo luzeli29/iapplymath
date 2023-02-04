@@ -8,6 +8,7 @@ import {useWrapperContext,Dialog,formatAnswer,simplifyAnswer} from '@common_impo
 import { Calculator } from 'react-mac-calculator'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import TextReader from '@components/accessibility/text_reader';
 
 //TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
@@ -73,18 +74,32 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
 
    //Box that shows user the question, feedback after answering, and hint if there are incorrect guesses
    const QuestionBox = ({question_data, incorrectNum}) => {
+      const hintText = incorrectNum > 0 ? 
+                           (incorrectNum) > question_data.hints.length ? 
+                              question_data.hints.at(-1)[lang] 
+                              : question_data.hints[incorrectNum-1][lang] 
+                           : "";
       return (
          <div className={style.question_text_container}>
-            <p>{question_data[lang]}</p>
-            {incorrectNum > 0 ? 
-               <p className="incorrect_answer">
-                  { (incorrectNum) > question_data.hints.length ? 
-                     question_data.hints.at(-1)[lang]
-                     :
-                     question_data.hints[incorrectNum-1][lang]}</p>
-               :
-               <></>
-            }
+            <div className="row">
+               <div className="col-lg-2">
+                  <TextReader text={question_data[lang]}/>
+               </div>
+               <div className="col-lg-10">
+                  <p>{question_data[lang]}</p>
+               </div>
+            </div>
+            {hintText ? 
+            <div className="row">
+               <div className="col-lg-2">
+                  <TextReader text={hintText}/>
+               </div>
+               <div className="col-lg-10">
+                  <p>{hintText}</p>
+               </div>
+            </div> 
+            :
+            <></>}
          </div>
       );
    }
@@ -122,8 +137,9 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                      <div className={style.ayu_speech_bubble_triangle} ></div>
                      <p className={style.speech_bubble_text}>{translations.ayu_affermations[afNum][lang]}</p>
                   </div> : <></>}
-            </div>                   
-            <div className={style.ayu_image_container}>   
+            </div>
+            
+            <div className={style.ayu_image_container}>
                <button onClick={() => setState("ayu")}>
                   <Image
                      priority={true}
