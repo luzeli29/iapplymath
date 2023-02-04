@@ -5,7 +5,7 @@ import { AiFillCaretRight,AiFillCaretLeft } from "react-icons/ai";
 import style from '@styles/dialog.module.css'
 import {useWrapperContext} from '@common_imports'
 import Scripts from '@public/text/dialog_scripts'
-
+import TextReader from '@components/accessibility/text_reader';
 
 /*
 Creates a dialog screen to be shown in a game view
