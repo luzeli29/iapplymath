@@ -8,7 +8,6 @@ import {useWrapperContext,Dialog,formatAnswer,simplifyAnswer} from '@common_impo
 import { Calculator } from 'react-mac-calculator'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import TextReader from '@components/accessibility/text_reader';
 
 //TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
@@ -83,7 +82,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          <div className={style.question_text_container}>
             <div className="row">
                <div className="col-lg-2">
-                  <TextReader text={question_data[lang]}/>
                </div>
                <div className="col-lg-10">
                   <p>{question_data[lang]}</p>
@@ -92,7 +90,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
             {hintText ? 
             <div className="row">
                <div className="col-lg-2">
-                  <TextReader text={hintText}/>
                </div>
                <div className="col-lg-10">
                   <p>{hintText}</p>
