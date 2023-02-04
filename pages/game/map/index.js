@@ -40,7 +40,7 @@ export default function Map() {
                             }}
                 />
             
-            <p className={style.aunt_house_text}>{translations.aunt_house[lang]}</p>
+                <p className={style.aunt_house_text}>{translations.aunt_house[lang]}</p>
 
                 <p className={style.restaurant_text}>{translations.restaurant[lang]}</p> 
                 <button onClick={() => handleAuntsHouse()}
@@ -62,7 +62,7 @@ export default function Map() {
                     id={style.house_2}
                     src={"/img/map/aunt_house.png"}/>
 
-                <button onClick={() => handleRestaurant}
+                <button onClick={() => handleRestaurant()}
                         className={style.icon_button} 
                         id={style.restaurant}>
                     <Image 
