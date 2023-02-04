@@ -5,7 +5,7 @@ import { AiFillCaretRight,AiFillCaretLeft } from "react-icons/ai";
 import style from '@styles/dialog.module.css'
 import {useWrapperContext} from '@common_imports'
 import Scripts from '@public/text/dialog_scripts'
-
+import TextReader from '@components/accessibility/text_reader';
 
 /*
 Creates a dialog screen to be shown in a game view
@@ -97,6 +97,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                     <div className="card-body ">
                         <div className="row">
                             <div className="col-lg-1">
+                                <TextReader text={script[lineNum][lang]} reader={stage}/>
                             </div>
                             <div className="col-lg-11">
                                 <p className="card-text pt-2 me-1 pe-5">{script[lineNum][lang]}</p>
