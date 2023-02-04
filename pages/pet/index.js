@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from "next/image";
 import { useRouter } from 'next/router'
-import style from '@styles/avatar.module.css'
+import style from '@styles/pet.module.css'
 import {useWrapperContext,getText} from '@common_imports'
 import { motion } from "framer-motion"
 
@@ -45,7 +45,7 @@ export default function Creator() {
         return (
             <button
                 onClick={() => context.setPetId(index)}
-                className={style.avatar_select_button}>
+                className={style.pet_select_button}>
                 <Image
                         priority={true}
                         layout={"fill"}
@@ -61,8 +61,7 @@ export default function Creator() {
             <h1 className={style.as_title_container}>{getText('pet_select',lang)}</h1>
             <div className={style.button_bar}>
                 {Array.apply(0, Array(4)).map((x,i) => {
-                    return <motion.div whileHover={{scale: 0.8}} whileTap={{backgroundColor: "#000000", borderRadius:100}} index={i + 1} key={i}> <PetButton /> </motion.div>
-                    ;
+                    return <PetButton index={i + 1} key={i} />;
                 })}
             </div>
             {petId && userId ? 

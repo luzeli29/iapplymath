@@ -79,6 +79,7 @@ export default function ContextWrapper({ children }) {
           lang: lang,
           questionNum: questionNum,
           avatarId:avatarId,
+          petId: petId,
           userId: userId,
           userLongId: userLongId,
           order: order,

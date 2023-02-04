@@ -1,0 +1,49 @@
+.pet_select_button {
+    height: 100px;
+    width: 100px;
+    position: relative;
+}
+  
+.button_bar {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 4px;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+}
+
+.as_title_container{
+    width: 100%;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.hoverable {
+    position: relative;
+}
+
+.hoverable:hover {
+    position: absolute;
+    content: attr(title);
+    display: inline-block;
+    left: 0px;
+    top: 0px;
+    padding: 5px;
+    background-color: black;
+    color: white;
+}
+
+.continue_button {
+    position: absolute;
+    top: 82%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: x-large;
+    background-color: var(--button-background-color);
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    box-shadow: 2px 2px #190933;
+  }

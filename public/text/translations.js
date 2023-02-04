@@ -107,7 +107,7 @@ const translations = {
         es: "Como te sientes?",
     },
     pet_select: {
-        en: "Select your pet",
+        en: "Pick your pet",
         es: "Elige tu mascota",
     },
     // TODO: maybe find a better way to do this for 404 page
