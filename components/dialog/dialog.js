@@ -5,6 +5,7 @@ import { AiFillCaretRight,AiFillCaretLeft } from "react-icons/ai";
 import style from '@styles/dialog.module.css'
 import {useWrapperContext} from '@common_imports'
 import Scripts from '@public/text/dialog_scripts'
+import TextReader from '@components/accessibility/text_reader';
 
 
 /*
@@ -91,12 +92,18 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
     }
 
     return (
-        <div className="fluid-container h-100 p-3">
+        <div className="container-fluid h-100 p-3">
             <div className="h-25 container  justify-content-center">
-                <div className="card w-75 text-center mx-auto">
-                    <div className="card-body"
-                        onClick={() => handleNextLine()}>
-                        <p className="card-text pt-2 px-4">{script[lineNum][lang]}</p>
+                <div className="card w-85 text-center mx-auto">
+                    <div className="card-body ">
+                        <div className="row">
+                            <div className="col-lg-1">
+                                <TextReader text={script[lineNum][lang]}/>
+                            </div>
+                            <div className="col-lg-11">
+                                <p className="card-text pt-2 me-1 pe-5">{script[lineNum][lang]}</p>
+                            </div>
+                        </div>
                     </div>
                     <div className="card-subtitle mb-2 text-muted">
                         <div className="row align-items-center">
