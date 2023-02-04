@@ -35,7 +35,7 @@ export default function Creator() {
         const response = await fetch(endpoint, options)
         //const result = await response.json()
 
-        router.push('/game/map')
+        router.push('/pet')
     }
 
     const AvatarButton = ({index}) => {

@@ -46,6 +46,11 @@
     position: relative;
 }
 
+.pet_img {
+    position:relative;
+    top: 15%
+}
+
 .ayu_speech_bubble {
     margin-left: auto;
     margin-right: auto;
@@ -78,6 +83,7 @@
 .num_pad_container {
     width: 100%;
     height: 100%;
+    margin-top: -40px;
 }
 
 .num_pad_button_box {
@@ -124,7 +130,7 @@
 
 .continue_button {
     position: relative;
-    top: 20%;
+    top: -10%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: x-large;
@@ -133,6 +139,7 @@
     height: 40px;
     border-radius: 15px;
     box-shadow: 2px 2px #190933;
+    margin-top: -60px;
 }
 
 #back_to_map_button {
