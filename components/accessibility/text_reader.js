@@ -1,27 +1,57 @@
 import { useWrapperContext } from '@common_imports';
-import React from 'react'
+import {React, useState, useEffect} from 'react'
 import {MdHearing} from "react-icons/md";
-import { useSpeechSynthesis } from "react-speech-kit";
 
-export default function TextReader({text}) {
-    const { speak , voices, speaking } = useSpeechSynthesis();
+export default function TextReader({text, reader}) {
     const context = useWrapperContext();
     const lang = context.state.lang;
 
+    var synth;
+    var utterance;
+
+    if (typeof window !== "undefined") {
+        synth = window.speechSynthesis;
+        utterance = new SpeechSynthesisUtterance(text);
+
+        setUtteranceByReader(reader, utterance, synth, lang);
+    }
+
     const handleClick = () => {
-        console.log("Reading text: " + text)
-        const voiceIndex = lang == "en" ? 33 : 52
-        const pitch = lang == "en" ? 2 : 2
-        const rate = lang == "en" ? .8 : .8
-        speak({ text: text,  voice: voices[voiceIndex], pitch: pitch, rate: rate})
+        if(!synth.speaking) {
+            console.log("Reading text: " + text)
+            speechSynthesis.speak(utterance);
+        }
     }
 
     return (
         <div className="justify-content-center">
             <button className="btn border border-2 p-0 px-1 border-primary" onClick={() => handleClick()} 
-                disabled={!text}>
+                disabled={synth ? synth.speaking : false}>
                 <MdHearing/>
             </button>
         </div>
     )
+}
+
+function setUtteranceByReader(reader, utterance, synth, lang) {
+    const voices = synth.getVoices();
+    console.log(voices)
+
+    switch(reader) {
+        case "restaurant":
+            utterance.voice = voices[lang == "en" ? 33 : 29]
+            utterance.pitch = lang == "en" ? 2 : 2
+            utterance.rate = lang == "en" ? .8 : .7
+            break;
+        case "aunt_house":
+            utterance.voice = voices[lang == "en" ? 33 : 29]
+            utterance.pitch = lang == "en" ? 1.4 : 1.5
+            utterance.rate = lang == "en" ? .8 : .7
+            break;
+        default:
+            utterance.voice = voices[lang == "en" ? 33 : 52]
+            utterance.pitch = lang == "en" ? 2 : 2
+            utterance.rate = lang == "en" ? .8 : .8
+            break;
+    }
 }
