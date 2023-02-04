@@ -12,6 +12,7 @@ export default function Map() {
     const lang = context.state.lang
     const router = useRouter()
     const avatarId = context.state.avatarId
+    const petId = context.state.petId
     const loadingState = context.state.loadingState
     const mapLocation = context.state.mapLocation
 

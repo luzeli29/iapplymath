@@ -80,7 +80,48 @@ const dialog_scripts = {
         lines:   [
             {
                 en:"Slowly, let’s take three big belly breaths.",
-                es:"Lentamente, tomemos tres respiraciones profundas."
+                es:"Lentamente, tomemos tres respiraciones profundas.",
+                stg: "ayu"
+            },
+            {
+                en:"Breathe in slowly through your nose for 4, 3, 2, 1",
+                es:"Inhala lentamente por tu nariz 4, 3, 2, 1",
+                stg: "ayuDeepBreathIn"
+            },
+            {
+                en:"Breathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
+                es:"Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
+                stg: "ayuDeepBreathOut"
+            },
+            {
+                en:"Breathe in slowly through your nose for 4, 3, 2, 1",
+                es:"Inhala lentamente por tu nariz 4, 3, 2, 1",
+                stg: "ayuDeepBreathIn"
+            },
+            {
+                en:"Breathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
+                es:"Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
+                stg: "ayuDeepBreathOut"
+            },
+            {
+                en:"Breathe in slowly through your nose for 4, 3, 2, 1",
+                es:"Inhala lentamente por tu nariz 4, 3, 2, 1",
+                stg: "ayuDeepBreathIn"
+            },
+            {
+                en:"Breathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
+                es:"Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
+                stg: "ayuDeepBreathOut"
+            },
+            {
+                en:"Breathe in slowly through your nose for 4, 3, 2, 1",
+                es:"Inhala lentamente por tu nariz 4, 3, 2, 1",
+                stg: "ayuDeepBreathIn"
+            },
+            {
+                en:"Breathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
+                es:"Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
+                stg: "ayuDeepBreathOut"
             },
         ],
     },

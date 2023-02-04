@@ -1,5 +1,5 @@
 import { useWrapperContext } from '@common_imports';
-import {React, useState, useEffect} from 'react'
+import {React} from 'react'
 import {MdHearing} from "react-icons/md";
 
 export default function TextReader({text, reader}) {
