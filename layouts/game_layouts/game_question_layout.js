@@ -8,6 +8,7 @@ import {useWrapperContext,Dialog,formatAnswer,simplifyAnswer} from '@common_impo
 import { Calculator } from 'react-mac-calculator'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import {motion} from 'framer-motion';
 
 //TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
@@ -305,10 +306,11 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                            </div>
                          </Popup>
                          <h4>Type answer here:</h4>
-                         <Image className={style.pet_img}
+                         <motion.img className={style.pet_img}
+                           initial={{ x: 0, y: -100, opacity: 0, scale: 0.2 }}
+
                            src = {"/img/pets/pet" + petId + ".png"}
-                           width = {60}
-                           height = {60}
+
                         /> 
                          <NumPad/>
                      </td>

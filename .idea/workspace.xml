@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a71d341c-3588-4d4b-93eb-81c85cb4cf0d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/core/core_layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/core/core_layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/game_layouts/game_index_layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/game_layouts/game_index_layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/game/aunt-house/introduction.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/game/aunt-house/introduction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/game/map/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/game/map/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/game_layouts/game_question_layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/game_layouts/game_question_layout.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +66,7 @@
       <workItem from="1674324737548" duration="138000" />
       <workItem from="1674324878379" duration="203000" />
       <workItem from="1674325140127" duration="420000" />
-      <workItem from="1675449548001" duration="10582000" />
+      <workItem from="1675449548001" duration="13382000" />
     </task>
     <servers />
   </component>
@@ -94,22 +89,22 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/dialog/dialog.js</url>
-          <line>28</line>
+          <line>27</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/dialog/dialog.js</url>
-          <line>29</line>
+          <line>28</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/dialog/dialog.js</url>
-          <line>82</line>
+          <line>81</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/dialog/dialog.js</url>
-          <line>80</line>
+          <line>79</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
