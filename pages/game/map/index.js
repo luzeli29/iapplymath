@@ -1,4 +1,4 @@
-import React from 'react';
+import ReactHowler from 'react-howler'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
 import style from '@styles/map.module.css'
@@ -24,8 +24,10 @@ export default function Map() {
         context.setMapLocation("AuntsHouse");
         router.push('/game/aunt-house/introduction');
     }
+
     return (
         <>
+
             <div className={style.map}>
                 <motion.img className={style.player_img}
                             id = {style.player_img}

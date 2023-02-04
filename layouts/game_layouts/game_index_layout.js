@@ -2,6 +2,7 @@ import React from 'react';
 import {useRouter} from 'next/router'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
+import ReactHowler from "react-howler";
 
 //FixMe: is there a way to reduce paramaters?
 export default function GameIndexLayout ({lang, game_name,instruction_text, submit_text, handleSubmit, children}) {
@@ -18,5 +19,7 @@ export default function GameIndexLayout ({lang, game_name,instruction_text, subm
             {children}
          </div>
          <button className="basic_button" id={style.submit_button} onClick={() => handleSubmit()}>{translations[submit_text][lang]}</button>
-      </div>)
+      </div>
+    )
+
 }
