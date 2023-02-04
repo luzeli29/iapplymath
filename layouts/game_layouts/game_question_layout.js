@@ -8,7 +8,6 @@ import {useWrapperContext,Dialog,formatAnswer,simplifyAnswer} from '@common_impo
 import { Calculator } from 'react-mac-calculator'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import TextReader from '@components/accessibility/text_reader';
 
 //TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
@@ -17,6 +16,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    const context = useWrapperContext()
    const questionNum = context.state.questionNum
    const lang = context.state.lang
+   const petId = context.state.petId
 
    //get router for Next.js
    const router = useRouter()
@@ -82,7 +82,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          <div className={style.question_text_container}>
             <div className="row">
                <div className="col-lg-2">
-                  <TextReader text={question_data[lang]}/>
                </div>
                <div className="col-lg-10">
                   <p>{question_data[lang]}</p>
@@ -91,7 +90,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
             {hintText ? 
             <div className="row">
                <div className="col-lg-2">
-                  <TextReader text={hintText}/>
                </div>
                <div className="col-lg-10">
                   <p>{hintText}</p>
@@ -130,22 +128,12 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                onMouseEnter={onMouseEnter}
                onMouseLeave={onMouseLeave}> 
             <div className={style.ayu_speech_bubble_container}>
+               
                {isHovering ? 
                   <div className={style.ayu_speech_bubble}>
-                     <div className={style.ayu_speech_bubble_triangle} >
-
-                     </div>
-                        <div className={style.speech_bubble_text}>
-                           <div className="row">
-                              <div className="col-lg-2">
-                                 <TextReader text={translations.ayu_affermations[afNum][lang]}/>
-                              </div>
-                              <div className="col-lg-10">
-                                 <p>{translations.ayu_affermations[afNum][lang]}</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div> : <></>}
+                     <div className={style.ayu_speech_bubble_triangle} ></div>
+                     <p className={style.speech_bubble_text}>{translations.ayu_affermations[afNum][lang]}</p>
+                  </div> : <></>}
             </div>
             
             <div className={style.ayu_image_container}>
@@ -317,11 +305,17 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                            </div>
                          </Popup>
                          <h4>Type answer here:</h4>
+                         <Image className={style.pet_img}
+                           src = {"/img/pets/pet" + petId + ".png"}
+                           width = {60}
+                           height = {60}
+                        /> 
                          <NumPad/>
                      </td>
                         <td className={style.ayu_block}>
                            <Ayu/>  
                         </td>
+                        
                      </tr>
                   </tbody>
                </table>     
