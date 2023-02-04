@@ -42,7 +42,7 @@ export default function Creator() {
             <h1 className={style.as_title_container}>{translations.check_in[lang]}</h1>
             <div className={style.feeling_buttons}>
                 {Array.apply(0, Array(5)).map((x,i) => {
-                    return <motion.div whileHover={{scale: 0.8}} whileTap={{backgroundColor: "#000000", borderRadius:100}} index={i + 1} key={i} > <FeelingButton/> </motion.div>
+                    return <motion.div whileHover={{scale: 0.8}} whileTap={{backgroundColor: "#000000", borderRadius:100}} index={i + 1} key={i} > <FeelingButton index={i + 1} key={i}/> </motion.div>
                     ;
                 })}
             </div>
