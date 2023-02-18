@@ -181,8 +181,8 @@ function changeBackgroundImgSrc(stage){
             return "/img/ayu/ayu_idle.gif";
         case "ayuDeepBreathIn":
             return "/img/ayu/ayu_breathingIn.gif";
-        case "ayuDeepBreathInHold":
-            return "/img/ayu/ayu_fullbreathIn.png";
+        case "ayuDeepBreathContinuous":
+            return "/img/ayu/ayu_deepBreathing.gif";
         case "ayuDeepBreathOut":
             return "/img/ayu/ayu_breathingOut.gif";
         default:

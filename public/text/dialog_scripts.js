@@ -61,10 +61,11 @@ const dialog_scripts = {
         
             {
                 en:"Slowly, let’s take three big belly breaths.",
-                es:"Lentamente, tomemos tres respiraciones profundas."
+                es:"Lentamente, tomemos tres respiraciones profundas.",
             }, {
                 en:"Breathe in slowly through your nose for 4, 3, 2, 1\nBreathe out slowly through your mouth for 5, 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 4, 3, 2, 1\Exhala lentamente por tu boca 5, 4, 3, 2, 1"
+                es:"Inhala lentamente por tu nariz 4, 3, 2, 1\Exhala lentamente por tu boca 5, 4, 3, 2, 1",
+                stg: "ayuDeepBreathContinuous"
             },{
                 en:"Breathe in slowly through your nose for 5, 4, 3, 2, 1\nBreathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
                 es:"Inhala lentamente por tu nariz 5, 4, 3, 2, 1\Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1"
@@ -72,66 +73,6 @@ const dialog_scripts = {
                 en:"Breathe in slowly through your nose for 6, 5, 4, 3, 2, 1\nBreathe out slowly through your mouth for 7, 6, 5, 4, 3, 2, 1",
                 es:"Inhala lentamente por tu nariz 6, 5, 4, 3, 2, 1\Exhala lentamente por tu boca 7, 6, 5, 4, 3, 2, 1"
             }
-        ],
-    },
-
-    ayu_relaxation_0_1: {
-        stage: "ayu",
-        lines:   [
-            {
-                en:"Slowly, let’s take three big belly breaths.",
-                es:"Lentamente, tomemos tres respiraciones profundas.",
-                stg: "ayu"
-            },
-            {
-                en:"Breathe in slowly through your nose for 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 4, 3, 2, 1",
-                stg: "ayuDeepBreathIn"
-            },
-            {
-                en:"Breathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
-                es:"Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
-                stg: "ayuDeepBreathOut"
-            },
-            {
-                en:"Breathe in slowly through your nose for 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 4, 3, 2, 1",
-                stg: "ayuDeepBreathIn"
-            },
-            {
-                en:"Breathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
-                es:"Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
-                stg: "ayuDeepBreathOut"
-            },
-            {
-                en:"Breathe in slowly through your nose for 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 4, 3, 2, 1",
-                stg: "ayuDeepBreathIn"
-            },
-            {
-                en:"Breathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
-                es:"Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
-                stg: "ayuDeepBreathOut"
-            },
-            {
-                en:"Breathe in slowly through your nose for 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 4, 3, 2, 1",
-                stg: "ayuDeepBreathIn"
-            },
-            {
-                en:"Breathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
-                es:"Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
-                stg: "ayuDeepBreathOut"
-            },
-        ],
-    },
-    ayu_relaxation_0_2: {
-        stage: "ayuDeepBreathIn",
-        lines:   [
-            {
-                en:"Breathe in slowly through your nose for 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 4, 3, 2, 1"
-            },
         ],
     },
     
