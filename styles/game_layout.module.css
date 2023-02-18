@@ -40,17 +40,50 @@
     height: 40%;
 }
 
+.pet {
+    position:relative;
+    margin-left: 150px;
+    text-align: center;
+    z-index: -1;
+}
+
+.pet_me{
+    font-size: smaller;
+    background-color: #F6CA64;
+    border-radius: 5px;
+    width: 40%;
+    margin-left: 90%;
+    z-index: 5;
+}
+
+.ayu_btn{
+    transition: transform 250ms;
+
+}
+.ayu_btn:hover{
+    transform: translateY(-10px);
+}
+
+.breathe{
+    color: #7B6DBC;
+    margin-top: 60px;
+    margin-inline-end: 100px;
+    font-size: larger;
+    z-index: 5;
+    background-color: white;
+    border-radius: 7px;
+}
+.breathe:hover{
+    color: #F6CA64;
+}
 
 .ayu_image_container {
     margin: auto;
     width: 45%;
     height: 60%;
     position: relative;
-}
-
-.pet_img {
-    position:relative;
-    top: 15%
+    margin-right: 50%;
+    text-align: center;
 }
 
 .ayu_speech_bubble {
@@ -60,6 +93,8 @@
     background-color: white;
     border-radius: 20px;
     position: relative;
+    margin-left: 150px
+
 }
 
 .ayu_speech_bubble_container {
