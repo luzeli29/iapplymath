@@ -306,12 +306,8 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                            </div>
                          </Popup>
                          <h4>Type answer here:</h4>
-                         <motion.img className={style.pet_img}
-                           initial={{ x: 0, y: -100, opacity: 0, scale: 0.2 }}
-
-                           src = {"/img/pets/pet" + petId + ".png"}
-
-                        /> 
+                         <br></br>
+                         <br></br>
                          <NumPad/>
                      </td>
                         <td className={style.ayu_block}>
