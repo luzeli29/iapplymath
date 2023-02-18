@@ -8,7 +8,7 @@ import {useWrapperContext,Dialog,formatAnswer,simplifyAnswer} from '@common_impo
 import { Calculator } from 'react-mac-calculator'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import {motion} from 'framer-motion';
+import {GiYarn, GiHand} from "react-icons/gi";
 
 //TODO: fix confusing parm names such as answer vs question answer
 //TODO: fix params of helper functions
@@ -124,26 +124,55 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       //Handles mouse leaving Ayu
       const onMouseLeave = () => setIsHovered(false);
 
+      const bounceTransition = {
+         y: {
+           duration: 0.4,
+           yoyo: Infinity,
+           ease: "easeOut",
+         },
+         backgroundColor: {
+           duration: 0,
+           yoyo: Infinity,
+           ease: "easeOut",
+           repeatDelay: 0.8,
+         },
+       }
       return (
          <div className="fill_container"
                onMouseEnter={onMouseEnter}
                onMouseLeave={onMouseLeave}> 
             <div className={style.ayu_speech_bubble_container}>
-               
                {isHovering ? 
                   <div className={style.ayu_speech_bubble}>
                      <div className={style.ayu_speech_bubble_triangle} ></div>
                      <p className={style.speech_bubble_text}>{translations.ayu_affermations[afNum][lang]}</p>
                   </div> : <></>}
             </div>
-            
+
             <div className={style.ayu_image_container}>
+               
                <button onClick={() => setState("ayu")}>
+                  {/* <p className={style.breathe}>Click me!</p> */}
+                  <GiHand className={style.breathe} ></GiHand>
                   <Image
                      priority={true}
                      layout={"fill"}
+                     style={{zIndex:-1}}
                      src={"/img/ayu/ayu_idle.gif"}/>
                </button>
+
+               <div>              
+                  {/* <p className={style.pet_me}>Pet me!</p> */}
+                  {/* <GiHand className={style.pet_me}></GiHand> */}
+                  
+                  <Image
+                     className={style.pet}
+                     priority={true}
+                     layout={"fill"}
+                     src = {"/img/pets/pet" + petId + ".png"}/>
+               </div>
+
+
             </div>
             
          </div>
@@ -271,6 +300,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    if(state == "questions") { //Question state is the standard state where user needs to answer questions
       //check if user has completed every question
       if(questionNum < _questions.length) {
+         
          //Return the view to answer questions
          //It would be good to potencially replace <table> with a css grid
          return (
