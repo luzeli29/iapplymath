@@ -169,7 +169,8 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                      className={style.pet}
                      priority={true}
                      layout={"fill"}
-                     src = {"/img/pets/pet" + petId + ".png"}/>
+                     src = {"/img/pets/pet" + petId + ".png"}
+                     alt = {"You haven't selected your pet!"}/>
                </div>
 
 
