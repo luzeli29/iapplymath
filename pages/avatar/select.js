@@ -9,7 +9,7 @@ export default function Creator() {
     const context = useWrapperContext()
     const lang = context.state.lang
     const avatarId = context.state.avatarId
-    const userName = context.state.userName
+    const username = context.state.username
     
     const router = useRouter();
 
@@ -17,7 +17,7 @@ export default function Creator() {
     //Should handle anything to be done in order to use avatar in game
     const handleSaveAvatar = async() => {
         const data = {
-            userName: context.state.userName,
+            username: context.state.username,
             avatarId: context.state.avatarId
         }
 
@@ -62,7 +62,7 @@ export default function Creator() {
                     return <AvatarButton index={i + 1} key={i} />;
                 })}
             </div>
-            {avatarId && userName ? 
+            {avatarId && username ? 
                 <button 
                         className={style.continue_button}
                         onClick={() => handleSaveAvatar()}>
