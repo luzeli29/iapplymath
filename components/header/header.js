@@ -13,6 +13,8 @@ export default function Header() {
         context.clearData();
         router.push('/')
     }
+    const username = context.state.username
+    const userId = context.state.userId
 
     return (
         <div className="container text-center">
@@ -36,10 +38,15 @@ export default function Header() {
                 </div>
             </div>
             <div className="row justify-content-lg-center">
-                {context.state.userId?
-                    <p>USER ID: {context.state.userId}</p>
+                {context.state.username?
+                    <p>Username: {context.state.username}</p>
                 :
                     <p className="red pt-2">User is not logged in</p>
+                }
+                {process.env.NODE_ENV === 'development' ? 
+                <p>
+                    {username + ' - ' + userId}
+                </p>: <></>
                 }
             </div>
         </div>
