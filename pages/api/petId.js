@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     switch (req.method) {
         case "POST":
             // create a filter for a movie to update
-            const filter = { userId: bodyObject.userId };
+            const filter = { username: bodyObject.username };
             
             // create a document that sets the plot of the movie
             const updateDoc = {

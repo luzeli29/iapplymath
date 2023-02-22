@@ -11,9 +11,7 @@ function generateOrderQuestions(order) {
 
     const sortedOrder = Object.values(order).sort(
        (p1, p2) => (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0);
-    
-    console.log(sortedOrder)
-    
+        
     questions[0] = createGameQuestion(
                         {
                             en:"How much was your order?",

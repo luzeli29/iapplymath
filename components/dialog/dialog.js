@@ -78,8 +78,6 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
     const stage = dialog.stage ? dialog.stage : Scripts["error"].stage
     const ayuImg = script[lineNum].stg ? script[lineNum].stg : dialog.stage;
     const backgroundImgSrc = changeBackgroundImgSrc(ayuImg);
-    //
-    console.log("script[lineNum] value: " + script[lineNum].stg);
     const hasCharacters = (stage == "aunt_house" || stage == "restaurant")
 
     var speechTriangle = "end";

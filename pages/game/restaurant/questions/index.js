@@ -10,7 +10,6 @@ export default function RestaurantQuestions() {
     const context = useWrapperContext();
     const router = useRouter();
     const order = context.state.order;
-    console.log(order)
     const question = generateOrderQuestions(order)
     return (
         order ? 
