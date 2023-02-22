@@ -8,11 +8,9 @@ export default async function handler(req, res) {
   const db = client.db(process.env.DB_NAME);
   switch (req.method) {
     case "POST":
-      userPost(username,db,res)
-      break;
+      return await userPost(username,db,res)
     case "GET":
-      userGet(username,db,res)
-      break;
+      return await userGet(username,db,res)
   }
 }
 
@@ -21,13 +19,13 @@ async function userGet(username,db,res) {
   let findResponse = await db.collection("users").findOne(bodyObject)
     
   if(findResponse) {
-    res.json({
+    return res.json({
       code: 200,
       message: "Loging into user " + findResponse._id + ".",
       data: findResponse,
     });
   } else {
-    res.json({
+    return res.json({
       code: 400,
       message: "User not in database.",
       data: {},
@@ -42,7 +40,7 @@ async function userPost(username, db,res) {
     }
     let findResponse = await db.collection("users").findOne(bodyObject)
     if(findResponse) {
-      res.json({
+      return res.json({
         code: 400,
         message: "User already in database.",
         data: {},
@@ -51,10 +49,10 @@ async function userPost(username, db,res) {
       const insertObject = {
         username: username,
         dateCreated: new Date(),
-        sessions: []
+        sessions: [],
       }
       const insertResult = await db.collection("users").insertOne(insertObject);
-      res.json({
+      return res.json({
         code: 200,
         message: "Created user.",
         data: insertResult,

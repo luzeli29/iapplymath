@@ -9,7 +9,7 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   
   const handleSessionStart = async (username) => {
-    const endpoint = '/api/session/start/' + username
+    const endpoint = '/api/session/' + username
 
     const options = {
       method: 'POST',
@@ -20,7 +20,7 @@ export default function Login() {
 
     const response = await fetch(endpoint, options)
     const result = await response.json()
-    console.log(result)
+    
     if (result.code === 200) {
       context.setSessionId(result.data._id)
       return true
@@ -114,6 +114,7 @@ export default function Login() {
             id="username"
             type="text"
             name="username"
+            pattern="[a-zA-Z0-9]*"
           />
         </div>
         <div className="row">

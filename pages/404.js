@@ -13,7 +13,7 @@ export default function Error() {
       <h2>{getText('page_not_found',lang)}</h2>
       <p>
         {getText('click',lang) + " "}
-          <Link href="/"><a><strong>{getText('here',lang)}</strong></a></Link> 
+          <Link href="/"><strong>{getText('here',lang)}</strong></Link> 
         {" " + getText('to_return_home',lang)}
       </p>
     </>
