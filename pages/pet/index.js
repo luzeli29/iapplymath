@@ -19,7 +19,7 @@ export default function Creator() {
     //Should handle anything to be done in order to use avatar in game
     const handleSavePet = async() => {
         const data = {
-            userId: context.state.userId,
+            username: context.state.username,
             petId: context.state.petId
         }
 

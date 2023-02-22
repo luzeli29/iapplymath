@@ -115,6 +115,30 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       //isHovering keeps track of if the user is hovering on Ayu
       const [isHovering, setIsHovered] = useState(false);
 
+      async function handleAPICall() {
+         const endpoint = '/api/session/increment_ayu/' + context.state.username
+
+         const options = {
+            method: 'PUT',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+         }
+
+         const response = await fetch(endpoint, options)
+         const result = await response.json()
+         console.log(result)
+         if (result.code !== 200) {
+            throwError("Could not increment ayu interact. " + result.message)
+            setErrorMessage(result.message);
+         }
+      }
+
+      function handleClick() {
+         handleAPICall();
+         setState("ayu")
+      }
+
       //Handles mouse over Ayu
       const onMouseEnter = () => {
          setIsHovered(true);
@@ -149,9 +173,8 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                   </div> : <></>}
             </div>
 
-            <div className={style.ayu_image_container}>
-               
-               <button onClick={() => setState("ayu")}>
+            <div className={style.ayu_image_container}>               
+               <button onClick={() => handleClick()}>
                   {/* <p className={style.breathe}>Click me!</p> */}
                   <GiHand className={style.breathe} ></GiHand>
                   <Image

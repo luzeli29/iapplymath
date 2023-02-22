@@ -9,10 +9,29 @@ import {TbLogout} from "react-icons/tb";
 export default function Header() {
     const context = useWrapperContext();
     const router = useRouter()
-    const handleLogout = () => {
-        context.clearData();
-        router.push('/')
+    async function handleLogout() {
+        const endpoint = '/api/session/' + username
+
+        const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        }
+
+        const response = await fetch(endpoint, options)
+        const result = await response.json()
+        
+        if (result.code === 200) {
+            context.clearData();
+            router.push('/')
+        } else {
+            throwError("Could not end session. " + result.message)
+        return false
+        }
     }
+    const username = context.state.username
+    const userId = context.state.userId
 
     if (context.state.userId == null){
         return(
@@ -29,10 +48,15 @@ export default function Header() {
                 </div>
             </div>
             <div className="row justify-content-lg-center">
-                {context.state.userId?
-                    <p>USER ID: {context.state.userId}</p>
+                {context.state.username?
+                    <p>Username: {context.state.username}</p>
                 :
                     <p className="red pt-2">User is not logged in</p>
+                }
+                {process.env.NODE_ENV === 'development' ? 
+                <p>
+                    {username + ' - ' + userId}
+                </p>: <></>
                 }
             </div>
         </div>
