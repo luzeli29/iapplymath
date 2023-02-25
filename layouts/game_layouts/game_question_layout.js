@@ -213,7 +213,7 @@ function cleanQuestions(questions) {
        if(question.answer == "") return;
        if(question.answer == "fill_in") return;
        if(!(question.incorrectNum >= 0)) {
-         question.incorrectNum = "Not Answered"
+         question.incorrectNum = "not_answered"
        }
        cleanedQuestions[cleanedQuestions.length] = {
          question_text: question.en,
