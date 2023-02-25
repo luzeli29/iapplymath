@@ -1,31 +1,49 @@
 import React from 'react';
 import {useRouter} from 'next/router'
-import {useWrapperContext} from '../context/context'
-import translations from '../public/text/translations'
 import Image from 'next/image'
-import style from '../styles/other.module.css'
+import {getText, useWrapperContext} from '@common_imports' 
 
 //test
 
 //Index with start button to go to intro dialog
-export default function Index() {
-  //get lang from context
-  const lang = useWrapperContext().state.lang
+const Index = () => {
+  const context = useWrapperContext()
+  const lang = context.state.lang
+  const userId = context.state.userId
   const router = useRouter()
 
   return (
     <div>
-      <div id={style.global} >
+      <div className="pt-5 text-center">
         <Image
-        width = {"300px"}
-        height = {"280px"}
-        quantity = {100}
-        priorityv = {true}
-        src={"/img/other/global.png"}/>
+          width = {300}
+          height = {280}
+          quantity = {100}
+          priority = {true}
+          src={"/img/other/global.png"}/>
       </div>
-      <div>
-        <button className="start_button" onClick={() => router.push('/intro') }>{translations.start[lang]}</button>
+      <div className="text-center">
+        {userId ?
+        // User is logged in
+        <>
+        <button className="basic_button" onClick={() => router.push('/intro') }>
+          {getText('start',lang)}
+        </button>
+        </>
+        :
+        // User is not logged in
+        <>
+          <button className="basic_button" onClick={() => router.push('/login/') }>
+            {getText('login',lang)}
+          </button>
+        </>
+        }
       </div>    
     </div>  
   )
 }
+
+Index.whyDidYouRender = true
+
+export default Index
+
