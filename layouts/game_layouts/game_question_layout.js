@@ -166,7 +166,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          } else if (event.key == "Enter") { //enter pressed
             //TODO: fix it so this doesnt cause a memory leak
             //handleButtonPress("✓")
-         } else if((event.keyCode >= 48 && event.keyCode <= 57) || event.key =="/") { //0-9 pressed
+         } else if((event.keyCode >= 48 && event.keyCode <= 57) || event.key =="/" || event.key == ".") { //0-9 pressed
             handleButtonPress(event.key)
          } 
       },[answer])
@@ -186,7 +186,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       function handleButtonPress(value) {
          if(value == "←") {
             //removes the rightmost char
-            setAnswer(answer.slice(0,answer.length - 1)); 
+            setAnswer(answer.slice(0, answer.length - 1));
          } else if (value == "✓") {
             //submits answer
             if (answer) {
@@ -203,7 +203,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          } else {
             //adding a number to the current answer value
             //Makes sure answer is less then 7 char
-            setAnswer(formatAnswer(_questions[questionNum].answer_format,answer).toString().length < 7 ? answer + value : answer);
+            setAnswer(formatAnswer(_questions[questionNum].answer_format, answer).toString().length < 7 ? answer + value : answer);
          }
       }
 

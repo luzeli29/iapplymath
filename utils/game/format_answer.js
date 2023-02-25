@@ -2,7 +2,7 @@ export default function formatAnswer(format, value) {
     switch(format) {
        case "money":
           if(value) {
-             return "$" + value + ".00"
+             return "$" + Number(value).toFixed(2)
           } else {
              return "$0.00"
           }
