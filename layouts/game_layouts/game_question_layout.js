@@ -168,7 +168,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                   <tbody>
                      <tr>
                         <td className={style.child_container}>
-                           <p>{time}</p>
                            {children}
                         </td>
                         <td className={style.question_container}>
