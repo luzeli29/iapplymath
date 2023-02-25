@@ -12,13 +12,12 @@ export default function FamilySelect() {
     en: "How many people should we cook for?",
     es: "¿Para cuántas personas vamos a cocinar?",
 
-    hint: [{
-        t: {
+    hints: [{
             en: "Please enter a number between 1 - 13",
             //TODO: Translate
             es: "NOT TRANSLATED YET!",
         },
-    }],
+    ],
     answer: "fill_in",
     onAnswer: (answer) => {
         if(isNaN(answer)) {
