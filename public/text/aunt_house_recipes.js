@@ -48,7 +48,7 @@ const recipes = [
             },
 
         ],
-        set_questions: [[-1,1],[-1,2]],
+        set_questions: [[0,1]],
         family_questions: [-1],
     }, {
         name: {

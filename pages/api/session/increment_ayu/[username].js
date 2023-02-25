@@ -8,11 +8,11 @@ export default async function handler(req, res) {
   const db = client.db(process.env.DB_NAME);
   switch (req.method) {
     case "PUT":
-      return await handlePost(username,db,res);
+      return await handlePut(username,db,res);
   }
 }
 
-async function handlePost(username,db,res) {
+async function handlePut(username,db,res) {
   try {
 
     //TODO: Handle if you dont find user
@@ -23,7 +23,7 @@ async function handlePost(username,db,res) {
         username : username,
     }
 
-    const incText = "sessions." + index + ".timesTalkedToAyu"
+    const incText = "sessions." + index + ".times_talked_to_ayu"
 
     const updateResult = await db.collection("users").findOneAndUpdate(
       filter,

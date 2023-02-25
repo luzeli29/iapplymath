@@ -13,7 +13,7 @@ export default async function handler(req, res) {
             // create a document that sets the plot of the movie
             const updateDoc = {
             $set: {
-                petId: bodyObject.petId
+                pet_id: bodyObject.petId
             },
             };
             try{

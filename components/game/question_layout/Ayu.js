@@ -1,16 +1,11 @@
-import React, {useState, useEffect,useCallback} from 'react';
+import React, {useState} from 'react';
 import Image from 'next/image'
-import {useRouter} from 'next/router'
-import Confetti from 'react-confetti'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
-import {useWrapperContext,Dialog,formatAnswer,simplifyAnswer} from '@common_imports'
-import { Calculator } from 'react-mac-calculator'
-import Popup from 'reactjs-popup';
+import {useWrapperContext} from '@common_imports'
 import 'reactjs-popup/dist/index.css';
-import {motion} from 'framer-motion';
 //Ayu component that is found on the bottom right box of GameLayout
-export default function Ayu ({changeGameState}) {
+export default function Ayu ({handleAyuClick}) {
     //get lang from context
     const context = useWrapperContext()
     const lang = context.state.lang
@@ -32,7 +27,6 @@ export default function Ayu ({changeGameState}) {
 
        const response = await fetch(endpoint, options)
        const result = await response.json()
-       console.log(result)
        if (result.code !== 200) {
           throwError("Could not increment ayu interact. " + result.message)
           setErrorMessage(result.message);
@@ -41,7 +35,7 @@ export default function Ayu ({changeGameState}) {
 
     function handleClick() {
        handleAPICall();
-       changeGameState()
+       handleAyuClick()
     }
 
     //Handles mouse over Ayu
