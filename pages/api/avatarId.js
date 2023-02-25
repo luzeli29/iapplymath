@@ -7,13 +7,11 @@ export default async function handler(req, res) {
     const bodyObject = req.body;
     switch (req.method) {
         case "POST":
-            // create a filter for a movie to update
-            const filter = { userId: bodyObject.userId };
-            
-            // create a document that sets the plot of the movie
+            const filter = { username: bodyObject.username };
+
             const updateDoc = {
             $set: {
-                avatarId: bodyObject.avatarId
+                avatar_id: bodyObject.avatarId
             },
             };
             try{

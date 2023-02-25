@@ -5,7 +5,7 @@ import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css';
 import '@styles/globals.css'
 import Layout from '@layouts/core/core_layout'
-import ContextWrapper from '@components/context/context'
+import ContextWrapper from '@hooks/useContext'
 
 function MyApp({ Component, session, ...pageProps }) {
   return (

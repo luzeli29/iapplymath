@@ -7,7 +7,30 @@ export default function Login() {
   const context = useWrapperContext();
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState("");
+  
+  const handleSessionStart = async (username) => {
+    const endpoint = '/api/session/' + username
 
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+
+    const response = await fetch(endpoint, options)
+    const result = await response.json()
+    
+    if (result.code === 200) {
+      context.setSessionId(result.data._id)
+      return true
+    } else {
+      throwError("Could not create session. " + result.message)
+      setErrorMessage(result.message);
+      return false
+    }
+  }
+  
   const handleLogin = async (username) => {
     const endpoint = '/api/user/' + username
 
@@ -22,11 +45,12 @@ export default function Login() {
     const result = await response.json()
 
     if (result.code === 200) {
-      context.setUserId(result.data.userId);
-      context.setUserLongId(result.data._id);
+      if(!handleSessionStart(username)) return; 
+      context.setUsername(result.data.username);
+      context.setUserId(result.data._id);
 
-      if(result.data.avatarId) {
-        context.setAvatarId(result.data.avatarId);
+      if(result.data.avatar_id) {
+        context.setAvatarId(result.data.avatar_id);
         router.push("/game/map")
       } else {
         router.push("/avatar/select")
@@ -51,7 +75,9 @@ export default function Login() {
     const result = await response.json()
 
     if(result.code === 200) {
-      context.setUserId(username);
+      if(!handleSessionStart(username)) return; 
+      context.setUsername(username);
+      context.setUserId(result.data.insertedId);
       router.push("/avatar/select")
     } else {
       throwError("Account creation did not return 200. " + result.message)
@@ -63,7 +89,7 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const submitType = event.nativeEvent.submitter.value;
-    const username = event.target.user_id.value
+    const username = event.target.username.value
     switch (submitType) {
       case "login":
         handleLogin(username)
@@ -82,11 +108,12 @@ export default function Login() {
       <p className="red">{errorMessage}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="UserId">UserId</label>
+          <label htmlFor="UserId">Username</label>
           <input
-            id="user_id"
+            id="username"
             type="text"
-            name="user_id"
+            name="username"
+            pattern="[a-zA-Z0-9]*"
           />
         </div>
         <div className="row">

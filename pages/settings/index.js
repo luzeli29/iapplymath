@@ -5,8 +5,8 @@ import { useRouter } from 'next/router'
 export default function Index() {
   const context = useWrapperContext();
   const lang = context.state.lang  
+  const userName = context.state.userName
   const userId = context.state.userId
-  const userLongId = context.state.userLongId
   const router = useRouter();
 
   const handleLogout = () => {
@@ -22,7 +22,7 @@ export default function Index() {
       userId ? 
       /* User is logged in */
       <>
-      <p>Given User Id: {userId}</p>
+      <p>UserName: {j}</p>
       <p>True User Id: {userLongId}</p>
 
       <button onClick={() => handleLogout()}>Logout</button>

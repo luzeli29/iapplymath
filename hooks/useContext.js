@@ -8,9 +8,11 @@ export default function ContextWrapper({ children }) {
   //lang is the current langage needed to show
   const [lang, setLang] = useState("en");
 
-  const [userId, setUserId] = useState();
+  const [username, setUsername] = useState();
+  const [sessionId, setSessionId] = useState();
+
   const [mapLocation, setMapLocation] = useState("Base");
-  const [userLongId, setUserLongId] = useState();
+  const [userId, setUserId] = useState();
   const [order, setOrder] = useState();
 
   useEffect(() => {
@@ -40,20 +42,26 @@ export default function ContextWrapper({ children }) {
       setPetId(window.sessionStorage.getItem('PET_ID'))
     }
 
+    const usernameLocal = window.sessionStorage.getItem('USERNAME');
+    if (usernameLocal) {
+      setUsername(usernameLocal)
+    }
+
     const userIdLocal = window.sessionStorage.getItem('USER_ID');
     if (userIdLocal) {
       setUserId(userIdLocal)
     }
 
-    const userLongIdLocal = window.sessionStorage.getItem('USER_LONG_ID');
-    if (userLongIdLocal) {
-      setUserLongId(userLongIdLocal)
+    const sessionIdLocal = window.sessionStorage.getItem('SESSION_ID');
+    if (sessionIdLocal) {
+      setSessionId(sessionIdLocal)
     }
+
   });
 
   const clearData = () => {
-    setUserId("");
-    window.sessionStorage.removeItem('USER_ID')
+    setUsername("");
+    window.sessionStorage.removeItem('USERNAME')
 
     setLang("en");
     window.sessionStorage.removeItem('LANG_STATE')
@@ -64,8 +72,12 @@ export default function ContextWrapper({ children }) {
     setPetId("")
     setPetId(window.sessionStorage.getItem('PET_ID'))
 
-    setUserLongId("");
-    window.sessionStorage.removeItem('USER_LONG_ID')
+    setUserId("");
+    window.sessionStorage.removeItem('USER_ID')
+
+    setSessionId('')
+    window.sessionStorage.removeItem('SESSION_ID')
+
   }
 
   //avatar keeps track of what avatar to show
@@ -81,9 +93,10 @@ export default function ContextWrapper({ children }) {
           avatarId:avatarId,
           petId: petId,
           userId: userId,
-          userLongId: userLongId,
+          username: username,
           order: order,
           mapLocation: mapLocation,
+          sessionId: sessionId,
       },
       setLang: (newLang) => {
         window.sessionStorage.setItem('LANG_STATE',newLang)
@@ -99,13 +112,17 @@ export default function ContextWrapper({ children }) {
       },
       setQuestionNum: (newNum) => setQuestionNum(newNum),
       setOrder: (newOrder) => setOrder(newOrder),
+      setUsername: (username) => {
+        window.sessionStorage.setItem('USERNAME',username)
+        setUsername(username)
+      },
       setUserId: (userId) => {
         window.sessionStorage.setItem('USER_ID',userId)
         setUserId(userId)
       },
-      setUserLongId: (userLongId) => {
-        window.sessionStorage.setItem('USER_LONG_ID',userLongId)
-        setUserLongId(userLongId)
+      setSessionId: (sessionId) => {
+        window.sessionStorage.setItem('SESSION_ID',sessionId)
+        setSessionId(sessionId)
       },
       setMapLocation: (newMapLocation) => setMapLocation(newMapLocation),
       clearData: () => clearData(),
@@ -123,5 +140,3 @@ export default function ContextWrapper({ children }) {
 export function useWrapperContext() {
     return useContext(Context);
 }
-  
-
