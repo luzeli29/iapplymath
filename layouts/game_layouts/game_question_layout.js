@@ -1,29 +1,98 @@
-import React, {useState, useEffect,useCallback} from 'react';
-import Image from 'next/image'
+import React, {useState} from 'react';
 import {useRouter} from 'next/router'
-import Confetti from 'react-confetti'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
-import {useWrapperContext,Dialog,formatAnswer,simplifyAnswer} from '@common_imports'
-import { Calculator } from 'react-mac-calculator'
-import Popup from 'reactjs-popup';
+import {useWrapperContext,Dialog,simplifyAnswer, throwError} from '@common_imports'
 import 'reactjs-popup/dist/index.css';
-import {motion} from 'framer-motion';
+import Ayu from '@components/game/question_layout/Ayu';
+import AnswerBox from '@components/game/question_layout/AnswerBox';
+import QuestionBox from '@components/game/question_layout/QuestionBox';
+import { useStopWatch } from '@hooks/useStopWatch';
 
-//TODO: fix confusing parm names such as answer vs question answer
-//TODO: fix params of helper functions
+
 export default function QuestionLayout ({children, questions, onBack, onFinish}) {
    //get current context and other context variables
    const context = useWrapperContext()
    const questionNum = context.state.questionNum
    const lang = context.state.lang
    const petId = context.state.petId
+   const {start,stop,reset,isRunning,time} = useStopWatch()
 
    //get router for Next.js
    const router = useRouter()
 
-   //if no onFinish, route to index
-   const _onFinish = onFinish ? onFinish : () => router.push('/')
+   function handleAyuClick() {
+      //stop()
+      setState("ayu")
+   }
+
+   function handleAyuReturn() {
+      setState("questions")
+      //start()
+   }
+
+   function handleFinish() {
+      if(onFinish) {
+         onFinish()
+      } else {
+         router.push('/game')
+      }
+   }
+
+   function handleBack() {
+      if(onBack) {
+         onBack()
+      } else {
+         router.push('/game')
+      }
+   }
+
+   async function handleExit(exitType) {
+      context.setQuestionNum(0)
+      const cleanedQuestions = cleanQuestions(_questions)
+
+      if(cleanedQuestions.length > 0) {
+
+         const gameType = router.pathname.split("/")[2]
+
+         let questionData = {
+            questions: cleanedQuestions,
+            username: context.state.username,
+            gameType: gameType,
+         }
+
+         if(gameType == "restaurant") {
+            questionData.order = cleanOrder(context.state.order)
+         }
+
+         const endpoint = '/api/session/saveQuestions'
+
+         const JSONdata = JSON.stringify(questionData)
+
+         const options = {
+         method: 'POST',
+         headers: {
+               'Content-Type': 'application/json',
+         },
+         body: JSONdata,
+         }
+         const response = await fetch(endpoint, options)
+         const result = await response.json()
+      
+         if(result.code != 200)    {
+            throwError("Error when trying to save question data in game_question_layout.js")
+         }    
+      }  
+
+      switch(exitType) {
+         case "FINISHED":
+            handleFinish()
+            break;
+         case "BACK":
+            handleBack()
+            break;
+      }
+   }
 
    //adds positive feedback after a question was answered correctly
    var _questions = []
@@ -41,7 +110,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    const [incorrectNum, setIncorrectNum] = useState(0);
 
    //handles when the user submites their answer
-   const handleAnswer = (answer) => {
+   const handleSubmitAnswer = (answer) => {
       //figures out what type of question the user is answering
       switch(_questions[questionNum].answer) {
          case "" : // No Correct answer, blank number pad (usually for feedback questions)
@@ -64,6 +133,10 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          default :
                //Test if input is correct
                if(simplifyAnswer(answer) == _questions[questionNum].answer) { //Answer is correct
+                  //stop()
+                  //_questions[questionNum].timeTaken = time
+                  _questions[questionNum].incorrectNum = incorrectNum
+                  //reset()
                   context.setQuestionNum(questionNum + 1)
                   setIncorrectNum(0)
                } else { //Answer is incorrect
@@ -73,247 +146,48 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    }
 
    //Box that shows user the question, feedback after answering, and hint if there are incorrect guesses
-   const QuestionBox = ({question_data, incorrectNum}) => {
-      const hintText = incorrectNum > 0 ? 
-                           (incorrectNum) > question_data.hints.length ? 
-                              question_data.hints.at(-1)[lang] 
-                              : question_data.hints[incorrectNum-1][lang] 
-                           : "";
-      return (
-         <div className={style.question_text_container}>
-            <div className="row">
-               <div className="col-lg-2">
-               </div>
-               <div className="col-lg-10">
-                  <p>{question_data[lang]}</p>
-               </div>
-            </div>
-            {hintText ? 
-            <div className="row">
-               <div className="col-lg-2">
-               </div>
-               <div className="col-lg-10">
-                  <p>{hintText}</p>
-               </div>
-            </div> 
-            :
-            <></>}
-         </div>
-      );
-   }
-   
-   //Ayu component that is found on the bottom right box of GameLayout
-   function Ayu ({}) {
-
-      //get lang from context
-      //potencially have context as a parm since useWrapperContext() might be adding unessisary stress
-      const context = useWrapperContext()
-      const lang = context.state.lang
-
-      //afNum is the affermation that should be shown if user hovers on Ayu
-      const [afNum, setAyuAfNum] = useState(0);
-      //isHovering keeps track of if the user is hovering on Ayu
-      const [isHovering, setIsHovered] = useState(false);
-
-      //Handles mouse over Ayu
-      const onMouseEnter = () => {
-         setIsHovered(true);
-         setAyuAfNum(Math.floor(Math.random() * 11));
-      }
-
-      //Handles mouse leaving Ayu
-      const onMouseLeave = () => setIsHovered(false);
-
-      return (
-         <div className="fill_container"
-               onMouseEnter={onMouseEnter}
-               onMouseLeave={onMouseLeave}> 
-            <div className={style.ayu_speech_bubble_container}>
-               
-               {isHovering ? 
-                  <div className={style.ayu_speech_bubble}>
-                     <div className={style.ayu_speech_bubble_triangle} ></div>
-                     <p className={style.speech_bubble_text}>{translations.ayu_affermations[afNum][lang]}</p>
-                  </div> : <></>}
-            </div>
-            
-            <div className={style.ayu_image_container}>
-               <button onClick={() => setState("ayu")}>
-                  <Image
-                     priority={true}
-                     layout={"fill"}
-                     src={"/img/ayu/ayu_idle.gif"}/>
-               </button>
-            </div>
-            
-         </div>
-      )
-   }
-
-   //NumPad is the numberpad found in the bottom left of GameLayout
-   function NumPad() {
-
-      const question = _questions[questionNum]
-
-      //answer is the current answer in the numpad before submitting
-      const [answer, setAnswer] = useState("");
-      //keeps track if view should show the empty hint within the numpad
-      const [showEmptyHint, setShowEmptyHint] = useState(false);
-
-      const handleKeyPress = useCallback(event => {
-         if (event.key == "Backspace") { //backspace pressed
-            handleButtonPress("←")
-         } else if (event.key == "Enter") { //enter pressed
-            //TODO: fix it so this doesnt cause a memory leak
-            //handleButtonPress("✓")
-         } else if((event.keyCode >= 48 && event.keyCode <= 57) || event.key =="/" || event.key == ".") { //0-9 pressed
-            handleButtonPress(event.key)
-         } 
-      },[answer])
-
-      //useEffect to allow for keypress to be registered
-      useEffect(() => {
-         //handles keypress
-         document.addEventListener("keydown", handleKeyPress);
-   
-         return () => {
-            document.removeEventListener("keydown", handleKeyPress);
-         };
-      }, [handleKeyPress]);
-
-      
-      //handles a button press or keypress
-      function handleButtonPress(value) {
-         if(value == "←") {
-            //removes the rightmost char
-            setAnswer(answer.slice(0, answer.length - 1));
-         } else if (value == "✓") {
-            //submits answer
-            if (answer) {
-               //answer is not empty and needs to be not empty (answering a normal question)
-               //makes sure empty hint is removed
-               handleAnswer(answer)
-            } else if (question.answer == "") {
-               //answer is supposed to be blank
-               handleAnswer(answer)
-            } else {
-               //answer was blank but was not supposed to be blank
-               setShowEmptyHint(true)
-            }
-         } else {
-            //adding a number to the current answer value
-            //Makes sure answer is less then 7 char
-            setAnswer(formatAnswer(_questions[questionNum].answer_format, answer).toString().length < 7 ? answer + value : answer);
-         }
-      }
-
-      //standard numpad button
-      const renderButton = (value) => {
-         return (
-            <button key={value} onClick={() => handleButtonPress(value)} className={style.num_pad_button}>
-               {value}
-            </button>
-         );
-         
-      }
-
-      //switches numPad depending and what the answer should be
-      if (!question.answer) {
-         //returns when there is no needed answer
-         return (
-            <><>
-               <div className="header_container">
-                  <Confetti
-                     confettiSource={{ x: 0, y: -100, w: 650, h: 600 }}
-                     friction={0.96} />
-               </div>
-
-            </><div className="fill_container">
-                  <button
-                     onClick={() => handleButtonPress("✓")}
-                     className={style.continue_button}>
-                     {translations.continue[lang]}
-                  </button>
-
-               </div></>
-
-         
-         )
-      } else {
-         //there is a needed answer
-         return (
-         //TODO: replace table with better <div> method using css
-            <div>
-               {showEmptyHint ? 
-               <p>{translations.empty_hint[lang]}</p> : <></>}
-               <table className={style.num_pad_container}>
-                  <tbody>
-                     <tr>
-                        <td className={style.num_pad_button_box}>
-                        
-                        </td>
-                        <td className={style.num_pad_left_box}>
-                           <p className={style.num_pad_answer}> <b className={style.num_pad_answer_text}>{formatAnswer(_questions[questionNum].answer_format,answer)} </b></p>
-                        </td>
-                        <td className={style.num_pad_left_box}>
-                           {renderButton("✓")}
-                        </td>
-                     </tr>
-                  </tbody>
-               </table>
-               <input className="d-none" autoFocus={true} onBlur={({ target }) => target.focus()}/>
-            </div>
-         )
-      }
-   }
-
    //switches view depending on what state GameLayout is in
    if(state == "questions") { //Question state is the standard state where user needs to answer questions
       //check if user has completed every question
       if(questionNum < _questions.length) {
+         const correctAnswer = _questions[questionNum].answer;
+         const answerFormat = _questions[questionNum].answerFormat;
+         if(!isRunning 
+               && correctAnswer != "fill_in"
+                  && correctAnswer) {
+            //start()
+         }
          //Return the view to answer questions
          //It would be good to potencially replace <table> with a css grid
          return (
             <>
                <div className="back_button_container">
-                  <button className="basic_button" id={style.back_button} onClick={() => onBack()}>{translations.back[lang]}</button>
+                  <button className="basic_button" id={style.back_button} onClick={() => handleExit("BACK")}>{translations.back[lang]}</button>
                </div>
                <table className="fill_container">
                   <tbody>
                      <tr>
-      
-                           <td className={style.child_container}>
-                              {children}
-                           </td>
-                           <td className={style.question_container}>
-                              <QuestionBox 
-                                 className={style.question_box}
-                                 question_data={_questions[questionNum]}
-                                 incorrectNum={incorrectNum}/>
-                           </td>
-                     </tr>
-      
-                     <tr>
-      
-                     <td className={style.numpad_container}>
-                        <Popup trigger={
-                           <button isHovering={true} style={{marginTop:"10px", marginLeft:"10px"}}> 
-                              <Image width={30} height={50} src={"/img/other/calcicon.png"}/>
-                           </button>}
-                           closeOnDocumentClick={false} position="left center" offsetX={150} offsetY={-100}>
-                           <div className="app">
-                              <Calculator/>
-                           </div>
-                         </Popup>
-                         <h4>Type answer here:</h4>
-                         <br></br>
-                         <br></br>
-                         <NumPad/>
-                     </td>
-                        <td className={style.ayu_block}>
-                           <Ayu/>  
+                        <td className={style.child_container}>
+                           <p>{}</p>
+                           {children}
                         </td>
-                        
+                        <td className={style.question_container}>
+                           <QuestionBox 
+                              className={style.question_box}
+                              questionData={_questions[questionNum]}
+                              incorrectNum={incorrectNum}/>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td className={style.numpad_container}>
+                              <AnswerBox
+                                 correctAnswer={correctAnswer}
+                                 answerFormat={answerFormat}
+                                 handleSubmitAnswer={handleSubmitAnswer}/>
+                        </td>
+                        <td className={style.ayu_block}>
+                           <Ayu handleAyuClick={() => handleAyuClick()}/>  
+                        </td>
                      </tr>
                   </tbody>
                </table>     
@@ -321,8 +195,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          )
       } else {
          //User has answered all the questions, call onFinish and return a blank view
-         context.setQuestionNum(0)
-         _onFinish()
+         handleExit("FINISHED")
          return (<></>)
       }
    } else {
@@ -330,8 +203,30 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       //TODO: switch dialog randomly in order to have different ayu relaxations
        //Dialog ({scriptId, onEnd, onInput})
        return (
-            <Dialog scriptId={"ayu_relaxation_0"} onEnd={() => setState("questions")}/>
+            <Dialog scriptId={"ayu_relaxation_0"} onEnd={() => handleAyuReturn()}/>
        )
    }
-    
+}
+
+function cleanQuestions(questions) {
+   let cleanedQuestions = []
+   questions.map((question) =>{
+       if(question.answer == "") return;
+       if(question.answer == "fill_in") return;
+       cleanedQuestions[cleanedQuestions.length] = {
+         question_text: question.en,
+         question_answer: question.answer,
+         incorrect_num: question.incorrectNum
+       }
+   })
+   return cleanedQuestions
+}
+
+function cleanOrder(order) {
+   let cleanedOrder = {
+      entree : order.entree.en + " - $" + order.entree.price,
+      drink : order.drink.en + " - $" + order.drink.price,
+      dessert : order.dessert.en + " - $" + order.dessert.price
+   }
+   return cleanedOrder
 }

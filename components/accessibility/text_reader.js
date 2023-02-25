@@ -18,7 +18,6 @@ export default function TextReader({text, reader}) {
 
     const handleClick = () => {
         if(!synth.speaking) {
-            console.log("Reading text: " + text)
             speechSynthesis.speak(utterance);
         }
     }
@@ -35,8 +34,6 @@ export default function TextReader({text, reader}) {
 
 function setUtteranceByReader(reader, utterance, synth, lang) {
     const voices = synth.getVoices();
-    console.log(voices)
-
     switch(reader) {
         case "restaurant":
             utterance.voice = voices[lang == "en" ? 33 : 29]
