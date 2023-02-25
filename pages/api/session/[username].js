@@ -1,4 +1,5 @@
 import clientPromise from "@utils/database/mongodb";
+import {useRouter} from 'next/router'
 import {throwError} from '@common_imports'
 import GetCurrentSessionIndex from '@utils/database/get_current_session'
 
@@ -35,7 +36,6 @@ async function endSession(username,db,res) {
     
     //TODO: Handle if you dont find user
     //TODO: Handle if user has no active session
-
     const index = await GetCurrentSessionIndex(username)
 
     const endDate = "sessions." + index + ".end_date"

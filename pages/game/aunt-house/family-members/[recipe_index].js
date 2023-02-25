@@ -43,7 +43,7 @@ export default function FamilySelect() {
                 <Image
                     priority={true}
                     layout="fill"
-                    src={"/img/aunt_house/aunt-house_speaker.png"}
+                    src={"/img/aunt_house/aunt_house_speaker.png"}
                 />
             </div>
         </GameQuestionLayout>)
