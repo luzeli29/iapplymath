@@ -8,7 +8,7 @@ import Ayu from '@components/game/question_layout/Ayu';
 import AnswerBox from '@components/game/question_layout/AnswerBox';
 import QuestionBox from '@components/game/question_layout/QuestionBox';
 import { useStopWatch } from '@hooks/useStopWatch';
-import ReactHowler from 'react-howler';
+
 
 export default function QuestionLayout ({children, questions, onBack, onFinish}) {
    //get current context and other context variables
@@ -16,20 +16,19 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    const questionNum = context.state.questionNum
    const lang = context.state.lang
    const petId = context.state.petId
-   const {start,stop,reset,isRunning,time} = useStopWatch();
-   const [playSound, setPlaySound] = useState(false);
+   const {start,stop,reset,isRunning,time} = useStopWatch()
 
    //get router for Next.js
    const router = useRouter()
 
    function handleAyuClick() {
-      //stop()
+      stop()
       setState("ayu")
    }
 
    function handleAyuReturn() {
       setState("questions")
-      //start()
+      start()
    }
 
    function handleFinish() {
@@ -134,11 +133,10 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          default :
                //Test if input is correct
                if(simplifyAnswer(answer) == _questions[questionNum].answer) { //Answer is correct
-                  //stop()
-                  //_questions[questionNum].timeTaken = time
-                  _questions[questionNum].incorrectNum = incorrectNum;
-                  setPlaySound(true);
-                  //reset()
+                  stop()
+                  _questions[questionNum].timeTaken = time
+                  _questions[questionNum].incorrectNum = incorrectNum
+                  reset()
                   context.setQuestionNum(questionNum + 1)
                   setIncorrectNum(0)
                } else { //Answer is incorrect
@@ -157,19 +155,12 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          if(!isRunning 
                && correctAnswer != "fill_in"
                   && correctAnswer) {
-            //start()
+            start()
          }
          //Return the view to answer questions
          //It would be good to potencially replace <table> with a css grid
          return (
             <>
-               {playSound && (
-                   <ReactHowler
-                       src="sound/success.mp3"
-                       playing={true}
-                       onEnd={() => setPlaySound(false)}
-                   />
-               )}
                <div className="back_button_container">
                   <button className="basic_button" id={style.back_button} onClick={() => handleExit("BACK")}>{translations.back[lang]}</button>
                </div>
@@ -177,7 +168,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                   <tbody>
                      <tr>
                         <td className={style.child_container}>
-                           <p>{}</p>
                            {children}
                         </td>
                         <td className={style.question_container}>
@@ -222,10 +212,14 @@ function cleanQuestions(questions) {
    questions.map((question) =>{
        if(question.answer == "") return;
        if(question.answer == "fill_in") return;
+       if(!(question.incorrectNum >= 0)) {
+         question.incorrectNum = "not_answered"
+       }
        cleanedQuestions[cleanedQuestions.length] = {
          question_text: question.en,
          question_answer: question.answer,
-         incorrect_num: question.incorrectNum
+         incorrect_num: question.incorrectNum,
+         time_taken: question.timeTaken
        }
    })
    return cleanedQuestions
