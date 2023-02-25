@@ -8,15 +8,19 @@ export default function Layout({ children }) {
     //has a header with title and lang select,
     //then the children displayed in the box of the view container
     const context = useWrapperContext();
-    const mapLocation = context.state.mapLocation
-    const [musicSrc, setMusicSrc] = useState("null.mp3");
+    const mute = context.state.mute;
+    const mapLocation = context.state.mapLocation;
+    const [musicSrc, setMusicSrc] = useState("/sound/null.mp3");
 
     useEffect(() => {
-        if (mapLocation === "AuntsHouse") {
-            setMusicSrc("/sound/salsa_bg.mp3");
-        } else if (mapLocation === "Restaurant") {
-            setMusicSrc("/sound/salsa2_bg.mp3");
+            if (mapLocation === "AuntsHouse") {
+                setMusicSrc("/sound/salsa_bg.mp3");
+            }
+            else if (mapLocation === "Restaurant") {
+                setMusicSrc("/sound/salsa2_bg.mp3");
+
         }
+        console.log(musicSrc);
     }, [mapLocation]);
 
     return (
@@ -25,6 +29,7 @@ export default function Layout({ children }) {
                 src = {musicSrc}
                 playing ={true}
                 loop = {true}
+                preload = {true}
             />
 
             <div className="header_container">
@@ -37,5 +42,5 @@ export default function Layout({ children }) {
                 </div>
             </div>
         </>
-     );
+    );
 }
