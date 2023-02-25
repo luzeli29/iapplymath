@@ -49,8 +49,8 @@ export default function Login() {
       context.setUsername(result.data.username);
       context.setUserId(result.data._id);
 
-      if(result.data.avatarId) {
-        context.setAvatarId(result.data.avatarId);
+      if(result.data.avatar_id) {
+        context.setAvatarId(result.data.avatar_id);
         router.push("/game/map")
       } else {
         router.push("/avatar/select")
@@ -73,7 +73,6 @@ export default function Login() {
 
     const response = await fetch(endpoint, options)
     const result = await response.json()
-    console.log(result)
 
     if(result.code === 200) {
       if(!handleSessionStart(username)) return; 

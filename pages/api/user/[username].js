@@ -48,7 +48,7 @@ async function userPost(username, db,res) {
     } else {
       const insertObject = {
         username: username,
-        dateCreated: new Date(),
+        date_created: new Date(),
         sessions: [],
       }
       const insertResult = await db.collection("users").insertOne(insertObject);

@@ -32,13 +32,13 @@ async function getSessions(username,db,res) {
 async function endSession(username,db,res) {
   try {
     const filter = {username: username}
-
+    
     //TODO: Handle if you dont find user
     //TODO: Handle if user has no active session
 
     const index = await GetCurrentSessionIndex(username)
 
-    const endDate = "sessions." + index + ".endDate"
+    const endDate = "sessions." + index + ".end_date"
 
     const updateResult = await db.collection("users").findOneAndUpdate(
       filter,
@@ -71,8 +71,8 @@ async function startSession(username,db,res) {
 
     const sessionObject = {
       sessions: {
-        startDate: new Date(),
-        timesTalkedToAyu: 0
+        start_date: new Date(),
+        times_talked_to_ayu: 0
       }
     };
 
