@@ -212,6 +212,9 @@ function cleanQuestions(questions) {
    questions.map((question) =>{
        if(question.answer == "") return;
        if(question.answer == "fill_in") return;
+       if(!(question.incorrectNum >= 0)) {
+         question.incorrectNum = "Not Answered"
+       }
        cleanedQuestions[cleanedQuestions.length] = {
          question_text: question.en,
          question_answer: question.answer,
