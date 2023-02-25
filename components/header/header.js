@@ -4,7 +4,7 @@ import {useRouter} from 'next/router'
 import { BsMapFill,BsFillPersonFill} from "react-icons/bs";
 import { FaCog } from "react-icons/fa";
 import {RiChatHeartLine} from "react-icons/ri";
-import {TbLogout} from "react-icons/tb";
+import {TbLogout, TbMusic} from "react-icons/tb";
 
 export default function Header() {
     const context = useWrapperContext();
@@ -32,6 +32,7 @@ export default function Header() {
     }
     const username = context.state.username
     const userId = context.state.userId
+    const mute = context.state.mute
 
     if (context.state.userId == null){
         return(
@@ -77,6 +78,7 @@ export default function Header() {
                         <button onClick={() => router.push('/game/map')}><BsMapFill/></button>
                         {/* <button onClick={() => router.push('/settings')}><FaCog/></button> */}
                         <button onClick={() => router.push('/check_in')}><RiChatHeartLine/></button>
+                        <button onClick={() => context.mute ? context.setMute("f") : context.setMute("t")}><TbMusic/></button>
                         {/* <button onClick={() => router.push('/pet')}><MdPets/></button> */}
                         <button onClick={() => handleLogout()}><TbLogout/></button>
                     </div>

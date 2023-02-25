@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a71d341c-3588-4d4b-93eb-81c85cb4cf0d" name="Changes" comment="Added decimal &amp; sound &amp; questions">
-      <change afterPath="$PROJECT_DIR$/public/sound/null.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_25_2023_1_39_PM_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_25_2023_1_39_PM_[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_25_2023_1_39_PM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_25_2023_1_39_PM__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/core/core_layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/core/core_layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/game_layouts/game_question_layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/game_layouts/game_question_layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/game/format_answer.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/game/format_answer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/game/restaurant/generate_restaurant_question.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/game/restaurant/generate_restaurant_question.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +37,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2GzWbM60gExPZNiBeUnrOuYYe52" />
   <component name="ProjectLevelVcsManager">

@@ -8,7 +8,7 @@ import Ayu from '@components/game/question_layout/Ayu';
 import AnswerBox from '@components/game/question_layout/AnswerBox';
 import QuestionBox from '@components/game/question_layout/QuestionBox';
 import { useStopWatch } from '@hooks/useStopWatch';
-
+import ReactHowler from 'react-howler';
 
 export default function QuestionLayout ({children, questions, onBack, onFinish}) {
    //get current context and other context variables
@@ -16,7 +16,8 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    const questionNum = context.state.questionNum
    const lang = context.state.lang
    const petId = context.state.petId
-   const {start,stop,reset,isRunning,time} = useStopWatch()
+   const {start,stop,reset,isRunning,time} = useStopWatch();
+   const [playSound, setPlaySound] = useState(false);
 
    //get router for Next.js
    const router = useRouter()
@@ -135,7 +136,8 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                if(simplifyAnswer(answer) == _questions[questionNum].answer) { //Answer is correct
                   //stop()
                   //_questions[questionNum].timeTaken = time
-                  _questions[questionNum].incorrectNum = incorrectNum
+                  _questions[questionNum].incorrectNum = incorrectNum;
+                  setPlaySound(true);
                   //reset()
                   context.setQuestionNum(questionNum + 1)
                   setIncorrectNum(0)
@@ -161,6 +163,13 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          //It would be good to potencially replace <table> with a css grid
          return (
             <>
+               {playSound && (
+                   <ReactHowler
+                       src="sound/success.mp3"
+                       playing={true}
+                       onEnd={() => setPlaySound(false)}
+                   />
+               )}
                <div className="back_button_container">
                   <button className="basic_button" id={style.back_button} onClick={() => handleExit("BACK")}>{translations.back[lang]}</button>
                </div>

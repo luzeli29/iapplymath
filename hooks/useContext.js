@@ -5,7 +5,7 @@ const Context = createContext();
 
 export default function ContextWrapper({ children }) {
   //creating the context states
-  //lang is the current langage needed to show
+  //lang is the current language needed to show
   const [lang, setLang] = useState("en");
 
   const [username, setUsername] = useState();
@@ -14,6 +14,7 @@ export default function ContextWrapper({ children }) {
   const [mapLocation, setMapLocation] = useState("Base");
   const [userId, setUserId] = useState();
   const [order, setOrder] = useState();
+  const [mute, setMute] = useState("f"); //t is muted
 
   useEffect(() => {
     //init lang on refresh
@@ -57,6 +58,11 @@ export default function ContextWrapper({ children }) {
       setSessionId(sessionIdLocal)
     }
 
+    const soundMutedLocal = window.sessionStorage.getItem('SOUND_MUTE');
+    if (soundMutedLocal) {
+        setMute(soundMutedLocal);
+    }
+
   });
 
   const clearData = () => {
@@ -78,6 +84,9 @@ export default function ContextWrapper({ children }) {
     setSessionId('')
     window.sessionStorage.removeItem('SESSION_ID')
 
+    setSessionId('')
+    window.sessionStorage.removeItem('SOUND_MUTE')
+
   }
 
   //avatar keeps track of what avatar to show
@@ -97,6 +106,7 @@ export default function ContextWrapper({ children }) {
           order: order,
           mapLocation: mapLocation,
           sessionId: sessionId,
+          mute: mute,
       },
       setLang: (newLang) => {
         window.sessionStorage.setItem('LANG_STATE',newLang)
@@ -123,6 +133,10 @@ export default function ContextWrapper({ children }) {
       setSessionId: (sessionId) => {
         window.sessionStorage.setItem('SESSION_ID',sessionId)
         setSessionId(sessionId)
+      },
+      setMute: (mute) => {
+          window.sessionStorage.setItem('SOUND_MUTE', mute)
+          setSessionId(mute)
       },
       setMapLocation: (newMapLocation) => setMapLocation(newMapLocation),
       clearData: () => clearData(),
