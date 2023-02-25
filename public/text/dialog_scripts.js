@@ -68,10 +68,12 @@ const dialog_scripts = {
                 stg: "ayuDeepBreathContinuous"
             },{
                 en:"Breathe in slowly through your nose for 5, 4, 3, 2, 1\nBreathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 5, 4, 3, 2, 1\Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1"
+                es:"Inhala lentamente por tu nariz 5, 4, 3, 2, 1\Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
+                stg: "ayuDeepBreathContinuous"
             },{
                 en:"Breathe in slowly through your nose for 6, 5, 4, 3, 2, 1\nBreathe out slowly through your mouth for 7, 6, 5, 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 6, 5, 4, 3, 2, 1\Exhala lentamente por tu boca 7, 6, 5, 4, 3, 2, 1"
+                es:"Inhala lentamente por tu nariz 6, 5, 4, 3, 2, 1\Exhala lentamente por tu boca 7, 6, 5, 4, 3, 2, 1",
+                stg: "ayuDeepBreathContinuous"
             }
         ],
     },
