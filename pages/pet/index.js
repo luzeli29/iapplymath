@@ -34,8 +34,6 @@ export default function Creator() {
         },
         body: JSONdata,
         }
-        const response = await fetch(endpoint, options)
-        //const result = await response.json()
 
         router.push('/game/map')
     }
