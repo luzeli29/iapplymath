@@ -15,6 +15,8 @@ export default function ContextWrapper({ children }) {
   const [userId, setUserId] = useState();
   const [order, setOrder] = useState();
 
+  const [background, setBackgroundColor] = useState();
+
   useEffect(() => {
     //init lang on refresh
     const langState = window.sessionStorage.getItem('LANG_STATE');
@@ -56,6 +58,16 @@ export default function ContextWrapper({ children }) {
     if (sessionIdLocal) {
       setSessionId(sessionIdLocal)
     }
+
+    const backgroundLocal = window.sessionStorage.getItem('BACKGROUND');
+    if (backgroundLocal) {
+      setBackgroundColor(backgroundLocal);
+    }
+    else {
+      setBackgroundColor("#EDBFC6");
+    }
+    var r = document.querySelector(':root');
+    r.style.setProperty('--page-color', background ? background : "#EDBFC6");
 
   });
 
@@ -123,6 +135,10 @@ export default function ContextWrapper({ children }) {
       setSessionId: (sessionId) => {
         window.sessionStorage.setItem('SESSION_ID',sessionId)
         setSessionId(sessionId)
+      },
+      setBackgroundColor: (background) => {
+        window.sessionStorage.setItem('BACKGROUND',background)
+        setBackgroundColor(background)
       },
       setMapLocation: (newMapLocation) => setMapLocation(newMapLocation),
       clearData: () => clearData(),
