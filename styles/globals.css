@@ -173,3 +173,7 @@ h4{
 .w-85{
   width: 85%;
 }
+
+.popup-content{
+  padding: 0px !important;
+}

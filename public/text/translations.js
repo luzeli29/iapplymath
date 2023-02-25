@@ -110,6 +110,11 @@ const translations = {
         en: "Pick your pet",
         es: "Elige tu mascota",
     },
+    background_select: {
+        en: "Pick your background color",
+        es: "Elige el color de fondo de la pagina"
+    },
+
     // TODO: maybe find a better way to do this for 404 page
     click: {
         en:"Click",
