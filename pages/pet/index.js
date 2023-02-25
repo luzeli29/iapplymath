@@ -35,7 +35,7 @@ export default function Creator() {
         body: JSONdata,
         }
 
-        router.push('/game/map')
+        router.push('/background')
     }
 
     const PetButton = ({index}) => {

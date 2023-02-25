@@ -1,3 +1,5 @@
+import { throwError } from "@common_imports";
+
 export default async function GetCurrentSessionIndex(username) {
     //TODO: CHANGE THIS TO NOT STATIC
     const endpoint = 'http://localhost:3000/api/session/' + username
@@ -21,6 +23,5 @@ export default async function GetCurrentSessionIndex(username) {
       return index;
     } else {
       throwError("Could not create session. " + result.message)
-      setErrorMessage(result.message);
       return null
     }}
