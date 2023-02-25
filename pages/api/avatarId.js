@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
             const updateDoc = {
             $set: {
-                avatarId: bodyObject.avatarId
+                avatar_id: bodyObject.avatarId
             },
             };
             try{
