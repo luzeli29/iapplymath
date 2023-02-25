@@ -24,7 +24,7 @@ export default function Creator() {
 
 
     const AvatarButton = ({index}) => {
-        const path = "/img/background_colors/color"
+        const path = "/img/background/color"
         return (
             <button
                 onClick={() => setBackgroundColor(colors[index])}
