@@ -4,6 +4,8 @@ import style from '@styles/game_layout.module.css'
 import translations from '@translations';
 import {useWrapperContext} from '@common_imports'
 import 'reactjs-popup/dist/index.css';
+import {GiYarn, GiHand} from "react-icons/gi";
+
 //Ayu component that is found on the bottom right box of GameLayout
 export default function Ayu ({handleAyuClick}) {
     //get lang from context
@@ -62,11 +64,24 @@ export default function Ayu ({handleAyuClick}) {
           
           <div className={style.ayu_image_container}>
              <button onClick={() => handleClick()}>
+             <GiHand className={style.breathe} ></GiHand>
                 <Image
                    priority={true}
+                   style={{zIndex:-1}}
                    layout={"fill"}
                    src={"/img/ayu/ayu_idle.gif"}/>
              </button>
+             <div>              
+                  {/* <p className={style.pet_me}>Pet me!</p> */}
+                  {/* <GiHand className={style.pet_me}></GiHand> */}
+                  
+                  <Image
+                     className={style.pet}
+                     priority={true}
+                     layout={"fill"}
+                     src = {"/img/pets/pet" + context.state.petId + ".png"}
+                     alt = {"You haven't selected your pet!"}/>
+               </div>
           </div>
           
        </div>
