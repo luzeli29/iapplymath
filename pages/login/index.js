@@ -22,7 +22,6 @@ export default function Login() {
     const result = await response.json()
     
     if (result.code === 200) {
-      context.setSessionId(result.data._id)
       return true
     } else {
       throwError("Could not create session. " + result.message)
@@ -44,7 +43,7 @@ export default function Login() {
     const response = await fetch(endpoint, options)
     const result = await response.json()
 
-    if (result.code === 200) {
+    if (result && result.code === 200) {
       if(!handleSessionStart(username)) return; 
       context.setUsername(result.data.username);
       context.setUserId(result.data._id);
