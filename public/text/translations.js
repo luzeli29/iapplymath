@@ -42,7 +42,12 @@ const translations = {
         en: "Choose one entree, one drink, and one dessert. The total price of the items you select must be less than or equal to that budget.",
         es: "Elija un plato principal, una bebida y un postre. Tenga en cuenta el dinero que tiene para pagar!",
     },
-
+    too_expensive_order_instructions:{
+        en: "Too expensive :(",
+    },
+    missing_item_instructions:{
+        en: "Missing item :(",
+    },
     order: {
         en: "Order",
         es: "Pedido",
@@ -54,12 +59,25 @@ const translations = {
     },
 
     // ----- General Translations -----
+
+    login: {
+        en: "Login",
+        es: "Login"
+    },
+    save: {
+        en: "Save",
+        es: "Save",
+    },
+    i_apply_full_title: {
+        en: "I Apply Math In My World",
+        es: "Aplico las Matemáticas En Mi Mundo"
+    },
+
     start: {
         en: "Start",
         es: "Comenzar"
     },
 
-    
     back: {
         en: "Back",
         es: "Retroceso"
@@ -78,6 +96,23 @@ const translations = {
     page_not_found: {
         en: "Oh No! Page not found",
         es: "¡Oh no! Página no encontrada",
+    },
+
+    coming_soon: {
+        en: "Coming soon",
+        es: "Proximamente!",
+    },
+    check_in: {
+        en: "How are you feeling?",
+        es: "Como te sientes?",
+    },
+    pet_select: {
+        en: "Pick your pet",
+        es: "Elige tu mascota",
+    },
+    background_select: {
+        en: "Pick your background color",
+        es: "Elige el color de fondo de la pagina"
     },
 
     // TODO: maybe find a better way to do this for 404 page
