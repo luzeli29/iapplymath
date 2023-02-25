@@ -22,13 +22,13 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    const router = useRouter()
 
    function handleAyuClick() {
-      //stop()
+      stop()
       setState("ayu")
    }
 
    function handleAyuReturn() {
       setState("questions")
-      //start()
+      start()
    }
 
    function handleFinish() {
@@ -133,10 +133,10 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          default :
                //Test if input is correct
                if(simplifyAnswer(answer) == _questions[questionNum].answer) { //Answer is correct
-                  //stop()
-                  //_questions[questionNum].timeTaken = time
+                  stop()
+                  _questions[questionNum].timeTaken = time
                   _questions[questionNum].incorrectNum = incorrectNum
-                  //reset()
+                  reset()
                   context.setQuestionNum(questionNum + 1)
                   setIncorrectNum(0)
                } else { //Answer is incorrect
@@ -155,7 +155,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          if(!isRunning 
                && correctAnswer != "fill_in"
                   && correctAnswer) {
-            //start()
+            start()
          }
          //Return the view to answer questions
          //It would be good to potencially replace <table> with a css grid
@@ -168,7 +168,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                   <tbody>
                      <tr>
                         <td className={style.child_container}>
-                           <p>{}</p>
+                           <p>{time}</p>
                            {children}
                         </td>
                         <td className={style.question_container}>
@@ -216,7 +216,8 @@ function cleanQuestions(questions) {
        cleanedQuestions[cleanedQuestions.length] = {
          question_text: question.en,
          question_answer: question.answer,
-         incorrect_num: question.incorrectNum
+         incorrect_num: question.incorrectNum,
+         time_taken: question.timeTaken
        }
    })
    return cleanedQuestions
