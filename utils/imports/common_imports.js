@@ -5,7 +5,7 @@ import throwError from '@utils/error/throw_error';
 import formatAnswer from '@utils/game/format_answer'
 import simplifyAnswer from '@utils/game/simplify_answer'
 import simplifyFraction from '@utils/game/simplify_fraction'
-import {useWrapperContext} from '@components/context/context'
+import {useWrapperContext} from '@hooks/useContext'
 import GameFinishLayout from '@layouts/game_layouts/game_finish_layout';
 import GameIndexLayout from '@layouts/game_layouts/game_index_layout';
 

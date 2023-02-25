@@ -57,16 +57,6 @@ export default function ContextWrapper({ children }) {
       setSessionId(sessionIdLocal)
     }
 
-    if (process.env.NODE_ENV === 'development') {
-      console.log("---Showing context---")
-      console.log("lang - " + lang)
-      console.log("username - " + username)
-      console.log("sessionId - " + sessionId)
-      console.log("mapLocation - " + mapLocation)
-      console.log("userId - " + userId)
-      console.log("order - " + order)
-    }
-
   });
 
   const clearData = () => {
