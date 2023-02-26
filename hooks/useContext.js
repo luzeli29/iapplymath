@@ -14,6 +14,7 @@ export default function ContextWrapper({ children }) {
   const [mapLocation, setMapLocation] = useState("Base");
   const [userId, setUserId] = useState();
   const [order, setOrder] = useState();
+  const [mute, setMute] = useState("No");
 
   const [background, setBackgroundColor] = useState();
 
@@ -66,6 +67,15 @@ export default function ContextWrapper({ children }) {
     else {
       setBackgroundColor("#EDBFC6");
     }
+
+    const muteLocal = window.sessionStorage.getItem('MUTE');
+    if (muteLocal) {
+        setSessionId(muteLocal)
+    }
+    else{
+        setMute("F");
+    }
+
     var r = document.querySelector(':root');
     r.style.setProperty('--page-color', background ? background : "#EDBFC6");
 
@@ -90,6 +100,9 @@ export default function ContextWrapper({ children }) {
     setSessionId('')
     window.sessionStorage.removeItem('SESSION_ID')
 
+    setSessionId('')
+    window.sessionStorage.removeItem('MUTE')
+
   }
 
   //avatar keeps track of what avatar to show
@@ -109,6 +122,7 @@ export default function ContextWrapper({ children }) {
           order: order,
           mapLocation: mapLocation,
           sessionId: sessionId,
+          mute: mute,
       },
       setLang: (newLang) => {
         window.sessionStorage.setItem('LANG_STATE',newLang)
@@ -139,6 +153,10 @@ export default function ContextWrapper({ children }) {
       setBackgroundColor: (background) => {
         window.sessionStorage.setItem('BACKGROUND',background)
         setBackgroundColor(background)
+      },
+      setMute: (mute) => {
+          window.sessionStorage.setItem('MUTE',mute)
+          setMute(mute)
       },
       setMapLocation: (newMapLocation) => setMapLocation(newMapLocation),
       clearData: () => clearData(),
