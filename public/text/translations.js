@@ -4,7 +4,7 @@ const translations = {
     // ----- Map Translations -----
 
     aunt_house: {
-        en:"Aunt House",
+        en:"Aunt's House",
         es:"Casa de la Tia"
     },school: {
         en:"School",
@@ -44,9 +44,11 @@ const translations = {
     },
     too_expensive_order_instructions:{
         en: "Too expensive :(",
+        es: "Tu orden es muy caro",
     },
     missing_item_instructions:{
         en: "Missing item :(",
+        es: "Te falta un artículo de tu orden",
     },
     order: {
         en: "Order",

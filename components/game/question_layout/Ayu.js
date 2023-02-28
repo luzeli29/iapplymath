@@ -5,7 +5,8 @@ import translations from '@translations';
 import {useWrapperContext} from '@common_imports'
 import 'reactjs-popup/dist/index.css';
 import {GiYarn, GiHand} from "react-icons/gi";
-
+import Tooltip from '@components/accessibility/tooltip';
+import { getText } from '@common_imports';
 //Ayu component that is found on the bottom right box of GameLayout
 export default function Ayu ({handleAyuClick}) {
     //get lang from context
@@ -64,7 +65,9 @@ export default function Ayu ({handleAyuClick}) {
           
           <div className={style.ayu_image_container}>
              <button onClick={() => handleClick()}>
+             <Tooltip text={getText("hover_ayu_tooltip",lang)}>
              <GiHand className={style.breathe} ></GiHand>
+             </Tooltip>
                 <Image
                    priority={true}
                    style={{zIndex:-1}}
