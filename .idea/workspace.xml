@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a71d341c-3588-4d4b-93eb-81c85cb4cf0d" name="Changes" comment="Added decimal &amp; sound &amp; questions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/core/core_layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/core/core_layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/game/format_answer.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/game/format_answer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +70,7 @@
       <workItem from="1675449548001" duration="13382000" />
       <workItem from="1676739309443" duration="10815000" />
       <workItem from="1677341188702" duration="7134000" />
-      <workItem from="1677433879322" duration="2119000" />
+      <workItem from="1677433879322" duration="3971000" />
     </task>
     <task id="LOCAL-00001" summary="Adjusted deep breathing anim">
       <created>1676739075807</created>
