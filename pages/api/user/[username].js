@@ -16,7 +16,8 @@ export default async function handler(req, res) {
 
 async function userGet(username,db,res) {
   const bodyObject = {username: username}
-  let findResponse = await db.collection("users").findOne(bodyObject)
+
+  let findResponse = await db.collection("data").findOne(bodyObject)
     
   if(findResponse) {
     return res.json({
@@ -38,9 +39,8 @@ async function userPost(username, db,res) {
     const bodyObject = {
       username: username,
     }
-    let findResponse = await db.collection("users").findOne(bodyObject)
+    let findResponse = await db.collection("data").findOne(bodyObject)
     if(findResponse) {
-      console.log("user in")
       return res.json({
         code: 400,
         message: "User already in database.",
@@ -52,10 +52,7 @@ async function userPost(username, db,res) {
         date_created: new Date(),
         sessions: [],
       }
-      const insertResult = await db.collection("users").insertOne(insertObject);
-      console.log("insert result")
-      console.log(insertResult)
-
+      const insertResult = await db.collection("data").insertOne(insertObject);
 
       return res.json({
         code: 200,

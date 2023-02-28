@@ -6,9 +6,19 @@ import { FaCog } from "react-icons/fa";
 import {RiChatHeartLine} from "react-icons/ri";
 import {TbLogout, TbMusicOff} from "react-icons/tb";
 import {TbMusic} from "react-icons/tb";
-
+import Tooltip from "@components/accessibility/tooltip"
+import getText from '@utils/text/getText'
 export default function Header() {
     const context = useWrapperContext();
+    const lang = context.state.lang
+
+    const AvatarTooltipText = getText("avatar_tooltip",lang)
+    const MapTooltipText = getText("map_tooltip",lang)
+    const CheckinTooltipText = getText("checkin_tooltip",lang)
+    const MuteTooltipText = getText("mute_tooltip",lang)
+    const LogoutTooltipText = getText("logout_tooltip",lang)
+
+
     const router = useRouter()
     async function handleLogout() {
         const endpoint = '/api/session/' + username
@@ -45,16 +55,26 @@ export default function Header() {
             </div>
             {username ? 
                 <div className="col col-lg-2">
-                    <button onClick={() => router.push('/avatar/select')}><BsFillPersonFill/></button>
+                    <Tooltip text={AvatarTooltipText}>
+                        <button onClick={() => router.push('/avatar/select')}><BsFillPersonFill/></button>
+                    </Tooltip>
+                    <Tooltip text={MapTooltipText}>
                     <button onClick={() => router.push('/game/map')}><BsMapFill/></button>
-                    {/* <button onClick={() => router.push('/settings')}><FaCog/></button> */}
+                    </Tooltip>
+                    <Tooltip text={CheckinTooltipText}>
                     <button onClick={() => router.push('/check_in')}><RiChatHeartLine/></button>
+                    </Tooltip>
+                    <Tooltip text={MuteTooltipText}>
                     <button onClick={() => context.state.mute === "Yes" ? context.setMute("No") : context.setMute("Yes")}>
                         {context.state.mute === "Yes" ? <TbMusicOff /> : <TbMusic />}
                         {console.log("mute retrieved in header: " + context.state.mute)}
                     </button>
+                    </Tooltip>
+                    <Tooltip text={LogoutTooltipText}>
                     {/* <button onClick={() => router.push('/pet')}><MdPets/></button> */}
                     <button onClick={() => handleLogout()}><TbLogout/></button>
+                    </Tooltip>
+
                 </div>
                 :
                 null
@@ -68,11 +88,6 @@ export default function Header() {
                 <p>Username: {context.state.username}</p>
             :
                 <p className="red pt-2">User is not logged in</p>
-            }
-            {process.env.NODE_ENV === 'development' ? 
-            <p>
-                {username + ' - ' + userId}
-            </p>: <></>
             }
         </div>
     </div>

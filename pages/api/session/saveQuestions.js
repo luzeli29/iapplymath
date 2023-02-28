@@ -40,7 +40,7 @@ async function handlePost(req,db,res) {
 
     const pushFilter = "sessions." + index + ".games_played"
     //Push new session
-    const insertResult = await db.collection("users").updateOne(
+    const insertResult = await db.collection("data").updateOne(
         filter,
         {$push: {
             [pushFilter] : pushData

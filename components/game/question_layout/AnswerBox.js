@@ -113,7 +113,7 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
                 </Popup>
                 <h4>Type answer here:</h4>
                 <br></br>
-                {showEmptyHint ? <p>{translations.empty_hint[lang]}</p> : <></>}
+                {showEmptyHint ? <p className="red">{translations.empty_hint[lang]}</p> : <></>}
                 <br></br>
                 <div>
                     <table className={style.num_pad_container}>

@@ -48,7 +48,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    }
 
    async function handleExit(exitType) {
-      context.setQuestionNum(0)
       const cleanedQuestions = cleanQuestions(_questions)
 
       if(cleanedQuestions.length > 0) {
@@ -84,6 +83,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          }    
       }  
 
+      context.setQuestionNum(0)
       switch(exitType) {
          case "FINISHED":
             handleFinish()
@@ -217,7 +217,7 @@ function cleanQuestions(questions) {
        }
        cleanedQuestions[cleanedQuestions.length] = {
          question_text: question.en,
-         question_answer: question.answer,
+         correct_answer: question.answer,
          incorrect_num: question.incorrectNum,
          time_taken: question.timeTaken
        }
