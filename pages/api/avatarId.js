@@ -15,7 +15,7 @@ export default async function handler(req, res) {
             },
             };
             try{
-                let myPost = await db.collection("users").updateOne(filter,updateDoc)
+                let myPost = await db.collection("data").updateOne(filter,updateDoc)
                 res.json(myPost.acknowledged);
             } catch (error) {
                 throwError("Post to DB failed. " + error)

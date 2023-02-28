@@ -4,9 +4,10 @@ import { useRouter } from 'next/router'
 import style from '@styles/pet.module.css'
 import {useWrapperContext,getText} from '@common_imports'
 import { motion } from "framer-motion"
+import ClickableIcon from '@components/clickable_icon';
 
 
-export default function Creator() {
+export default function Pet() {
     //get the site context and lang
     const context = useWrapperContext()
     const lang = context.state.lang
@@ -35,21 +36,27 @@ export default function Creator() {
         body: JSONdata,
         }
 
+        const response = await fetch(endpoint, options)
+        //const result = await response.json()
+        //TODO: error correct results.
+
         router.push('/background')
     }
 
     const PetButton = ({index}) => {
         const path = "/img/pets/pet"
         return (
-            <button
-                onClick={() => context.setPetId(index)}
-                className={style.pet_select_button}>
+            
+            <ClickableIcon
+                isSelected={petId == index}
+                clickCallback={() => context.setPetId(index)}>
+                    <div className={style.pet_select_button}>
                 <Image
                         priority={true}
                         layout={"fill"}
                         src={context.state.petId == index ? path + index + ".png" : path + index + ".png"}/> 
-            
-            </button>
+            </div>
+            </ClickableIcon>
         )
     } 
     
