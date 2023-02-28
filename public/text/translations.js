@@ -4,7 +4,7 @@ const translations = {
     // ----- Map Translations -----
 
     aunt_house: {
-        en:"Aunt House",
+        en:"Aunt's House",
         es:"Casa de la Tia"
     },school: {
         en:"School",
