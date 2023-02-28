@@ -40,6 +40,7 @@ async function userPost(username, db,res) {
     }
     let findResponse = await db.collection("users").findOne(bodyObject)
     if(findResponse) {
+      console.log("user in")
       return res.json({
         code: 400,
         message: "User already in database.",
@@ -52,6 +53,10 @@ async function userPost(username, db,res) {
         sessions: [],
       }
       const insertResult = await db.collection("users").insertOne(insertObject);
+      console.log("insert result")
+      console.log(insertResult)
+
+
       return res.json({
         code: 200,
         message: "Created user.",

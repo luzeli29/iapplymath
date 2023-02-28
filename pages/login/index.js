@@ -41,8 +41,9 @@ export default function Login() {
     }
 
     const response = await fetch(endpoint, options)
+    console.log(response)
     const result = await response.json()
-    
+
     if (result.code === 200) {
       if(!handleSessionStart(username)) return; 
       context.setUsername(result.data.username);
