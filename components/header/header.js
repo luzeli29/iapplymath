@@ -4,7 +4,8 @@ import {useRouter} from 'next/router'
 import { BsMapFill,BsFillPersonFill} from "react-icons/bs";
 import { FaCog } from "react-icons/fa";
 import {RiChatHeartLine} from "react-icons/ri";
-import {TbLogout} from "react-icons/tb";
+import {TbLogout, TbMusicOff} from "react-icons/tb";
+import {TbMusic} from "react-icons/tb";
 
 export default function Header() {
     const context = useWrapperContext();
@@ -48,6 +49,10 @@ export default function Header() {
                     <button onClick={() => router.push('/game/map')}><BsMapFill/></button>
                     {/* <button onClick={() => router.push('/settings')}><FaCog/></button> */}
                     <button onClick={() => router.push('/check_in')}><RiChatHeartLine/></button>
+                    <button onClick={() => context.state.mute === "Yes" ? context.setMute("No") : context.setMute("Yes")}>
+                        {context.state.mute === "Yes" ? <TbMusicOff /> : <TbMusic />}
+                        {console.log("mute retrieved in header: " + context.state.mute)}
+                    </button>
                     {/* <button onClick={() => router.push('/pet')}><MdPets/></button> */}
                     <button onClick={() => handleLogout()}><TbLogout/></button>
                 </div>
