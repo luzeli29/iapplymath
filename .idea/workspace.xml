@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="a71d341c-3588-4d4b-93eb-81c85cb4cf0d" name="Changes" comment="" />
-=======
     <list default="true" id="a71d341c-3588-4d4b-93eb-81c85cb4cf0d" name="Changes" comment="Added decimal &amp; sound &amp; questions">
-      <change afterPath="$PROJECT_DIR$/public/sound/null.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/core/core_layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/core/core_layout.js" afterDir="false" />
     </list>
->>>>>>> dev
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,21 +30,17 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-<<<<<<< HEAD
-=======
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2GzWbM60gExPZNiBeUnrOuYYe52" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
->>>>>>> dev
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
@@ -54,7 +49,6 @@
     "WebServerToolWindowFactoryState": "false",
     "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
-=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
@@ -70,20 +64,12 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
->>>>>>> dev
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a71d341c-3588-4d4b-93eb-81c85cb4cf0d" name="Changes" comment="" />
-<<<<<<< HEAD
-      <created>1674877439709</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1674877439709</updated>
-      <workItem from="1674877442123" duration="450000" />
-=======
       <created>1667391964693</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -95,7 +81,7 @@
       <workItem from="1675449548001" duration="13382000" />
       <workItem from="1676739309443" duration="10815000" />
       <workItem from="1677341188702" duration="7134000" />
->>>>>>> dev
+      <workItem from="1677433879322" duration="2119000" />
     </task>
     <task id="LOCAL-00001" summary="Adjusted deep breathing anim">
       <created>1676739075807</created>
@@ -130,21 +116,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-<<<<<<< HEAD
-=======
     <MESSAGE value="Adjusted deep breathing anim" />
     <MESSAGE value="Added decimal &amp; sound &amp; questions" />
     <option name="LAST_COMMIT_MESSAGE" value="Added decimal &amp; sound &amp; questions" />
->>>>>>> dev
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-<<<<<<< HEAD
           <url>file://$PROJECT_DIR$/pages/game/aunt_house.js</url>
           <option name="timeStamp" value="1" />
-=======
           <url>file://$PROJECT_DIR$/components/dialog/dialog.js</url>
           <line>27</line>
           <option name="timeStamp" value="3" />
@@ -163,7 +144,6 @@
           <url>file://$PROJECT_DIR$/components/dialog/dialog.js</url>
           <line>79</line>
           <option name="timeStamp" value="7" />
->>>>>>> dev
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

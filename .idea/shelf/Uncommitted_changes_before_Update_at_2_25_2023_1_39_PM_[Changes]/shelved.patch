@@ -1,0 +1,1762 @@
+Index: utils/game/restaurant/generate_restaurant_question.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/utils/game/restaurant/generate_restaurant_question.js b/utils/game/restaurant/generate_restaurant_question.js
+--- a/utils/game/restaurant/generate_restaurant_question.js	
++++ b/utils/game/restaurant/generate_restaurant_question.js	
+@@ -11,10 +11,15 @@
+     const total = order.entree.price + order.drink.price + order.dessert.price
+ 
+     const sortedOrder = Object.values(order).sort(
++<<<<<<< HEAD
+        (p1, p2) => (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0
+     );
+     
+     console.log(sortedOrder)
++=======
++       (p1, p2) => (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0);
++        
++>>>>>>> 26cf6ddbf368ec0e5420a9e7578f639577799486
+     questions[0] = createGameQuestion(
+         {
+             en:"How much was your order?",
+Index: utils/imports/common_imports.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/utils/imports/common_imports.js b/utils/imports/common_imports.js
+--- a/utils/imports/common_imports.js	
++++ b/utils/imports/common_imports.js	
+@@ -5,7 +5,7 @@
+ import formatAnswer from '@utils/game/format_answer'
+ import simplifyAnswer from '@utils/game/simplify_answer'
+ import simplifyFraction from '@utils/game/simplify_fraction'
+-import {useWrapperContext} from '@components/context/context'
++import {useWrapperContext} from '@hooks/useContext'
+ import GameFinishLayout from '@layouts/game_layouts/game_finish_layout';
+ import GameIndexLayout from '@layouts/game_layouts/game_index_layout';
+ 
+Index: public/text/aunt_house_recipes.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/public/text/aunt_house_recipes.js b/public/text/aunt_house_recipes.js
+--- a/public/text/aunt_house_recipes.js	
++++ b/public/text/aunt_house_recipes.js	
+@@ -48,7 +48,7 @@
+             },
+ 
+         ],
+-        set_questions: [[-1,1],[-1,2]],
++        set_questions: [[0,1]],
+         family_questions: [-1],
+     }, {
+         name: {
+Index: styles/game_layout.module.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/styles/game_layout.module.css b/styles/game_layout.module.css
+--- a/styles/game_layout.module.css	
++++ b/styles/game_layout.module.css	
+@@ -40,17 +40,50 @@
+     height: 40%;
+ }
+ 
++.pet {
++    position:relative;
++    margin-left: 150px;
++    text-align: center;
++    z-index: -1;
++}
++
++.pet_me{
++    font-size: smaller;
++    background-color: #F6CA64;
++    border-radius: 5px;
++    width: 40%;
++    margin-left: 90%;
++    z-index: 5;
++}
++
++.ayu_btn{
++    transition: transform 250ms;
++
++}
++.ayu_btn:hover{
++    transform: translateY(-10px);
++}
++
++.breathe{
++    color: #7B6DBC;
++    margin-top: 60px;
++    margin-inline-end: 100px;
++    font-size: larger;
++    z-index: 5;
++    background-color: white;
++    border-radius: 7px;
++}
++.breathe:hover{
++    color: #F6CA64;
++}
+ 
+ .ayu_image_container {
+     margin: auto;
+     width: 45%;
+     height: 60%;
+     position: relative;
+-}
+-
+-.pet_img {
+-    position:relative;
+-    top: 15%
++    margin-right: 50%;
++    text-align: center;
+ }
+ 
+ .ayu_speech_bubble {
+@@ -60,6 +93,8 @@
+     background-color: white;
+     border-radius: 20px;
+     position: relative;
++    margin-left: 150px
++
+ }
+ 
+ .ayu_speech_bubble_container {
+Index: hooks/useStopWatch.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/hooks/useStopWatch.js b/hooks/useStopWatch.js
+new file mode 100644
+--- /dev/null	
++++ b/hooks/useStopWatch.js	
+@@ -0,0 +1,70 @@
++import { useState, useRef, useEffect } from "react"
++
++const padStart = (num) => {
++    return num.toString().padStart(2, "0")
++}
++  
++  const formatMs = (milliseconds) => {
++    let seconds = Math.floor(milliseconds / 1000)
++    let minutes = Math.floor(seconds / 60)
++    let hours = Math.floor(minutes / 60)
++  
++    minutes = minutes % 60
++    seconds = seconds % 60
++
++    const ms = Math.floor((milliseconds % 1000) / 10)
++  
++    let str = `${padStart(minutes)}:${padStart(seconds)}.${padStart(ms)}`
++  
++    if (hours > 0) {
++      str = `${padStart(hours)}:${str}`
++    }
++  
++    return str
++}
++
++export const useStopWatch = () => {
++    const [time, setTime] = useState(0)
++    const [isRunning, setIsRunning] = useState(false)
++    const [startTime, setStartTime] = useState(0)
++    const [timeWhenLastStopped, setTimeWhenLastStopped] = useState(0)
++
++    const interval = useRef()
++
++    useEffect(() => {
++        if (startTime > 0) {
++        interval.current = setInterval(() => {
++            setTime(() => Date.now() - startTime)
++        }, 1)
++        } else {
++        if (interval.current) {
++            clearInterval(interval.current)
++            interval.current = undefined
++        }
++        }
++    }, [startTime])
++
++    const start = () => {
++        setIsRunning(true)
++        setStartTime(Date.now())
++    }
++    const stop = () => {
++        setIsRunning(false)
++        setStartTime(0)
++        setTimeWhenLastStopped(time)
++    }
++    const reset = () => {
++        setIsRunning(false)
++        setStartTime(0)
++        setTimeWhenLastStopped(0)
++        setTime(0)
++    }
++    
++    return {
++        start,
++        stop,
++        reset,
++        isRunning,
++        time: formatMs(time),
++    }
++}
+Index: layouts/game_layouts/game_question_layout.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/layouts/game_layouts/game_question_layout.js b/layouts/game_layouts/game_question_layout.js
+--- a/layouts/game_layouts/game_question_layout.js	
++++ b/layouts/game_layouts/game_question_layout.js	
+@@ -1,29 +1,98 @@
+-import React, {useState, useEffect,useCallback} from 'react';
+-import Image from 'next/image'
++import React, {useState} from 'react';
+ import {useRouter} from 'next/router'
+-import Confetti from 'react-confetti'
+ import style from '@styles/game_layout.module.css'
+ import translations from '@translations';
+-import {useWrapperContext,Dialog,formatAnswer,simplifyAnswer} from '@common_imports'
+-import { Calculator } from 'react-mac-calculator'
+-import Popup from 'reactjs-popup';
++import {useWrapperContext,Dialog,simplifyAnswer, throwError} from '@common_imports'
+ import 'reactjs-popup/dist/index.css';
+-import {motion} from 'framer-motion';
++import Ayu from '@components/game/question_layout/Ayu';
++import AnswerBox from '@components/game/question_layout/AnswerBox';
++import QuestionBox from '@components/game/question_layout/QuestionBox';
++import { useStopWatch } from '@hooks/useStopWatch';
+ 
+-//TODO: fix confusing parm names such as answer vs question answer
+-//TODO: fix params of helper functions
++
+ export default function QuestionLayout ({children, questions, onBack, onFinish}) {
+    //get current context and other context variables
+    const context = useWrapperContext()
+    const questionNum = context.state.questionNum
+    const lang = context.state.lang
+    const petId = context.state.petId
++   const {start,stop,reset,isRunning,time} = useStopWatch()
+ 
+    //get router for Next.js
+    const router = useRouter()
+ 
+-   //if no onFinish, route to index
+-   const _onFinish = onFinish ? onFinish : () => router.push('/')
++   function handleAyuClick() {
++      //stop()
++      setState("ayu")
++   }
++
++   function handleAyuReturn() {
++      setState("questions")
++      //start()
++   }
++
++   function handleFinish() {
++      if(onFinish) {
++         onFinish()
++      } else {
++         router.push('/game')
++      }
++   }
++
++   function handleBack() {
++      if(onBack) {
++         onBack()
++      } else {
++         router.push('/game')
++      }
++   }
++
++   async function handleExit(exitType) {
++      context.setQuestionNum(0)
++      const cleanedQuestions = cleanQuestions(_questions)
++
++      if(cleanedQuestions.length > 0) {
++
++         const gameType = router.pathname.split("/")[2]
++
++         let questionData = {
++            questions: cleanedQuestions,
++            username: context.state.username,
++            gameType: gameType,
++         }
++
++         if(gameType == "restaurant") {
++            questionData.order = cleanOrder(context.state.order)
++         }
++
++         const endpoint = '/api/session/saveQuestions'
++
++         const JSONdata = JSON.stringify(questionData)
++
++         const options = {
++         method: 'POST',
++         headers: {
++               'Content-Type': 'application/json',
++         },
++         body: JSONdata,
++         }
++         const response = await fetch(endpoint, options)
++         const result = await response.json()
++      
++         if(result.code != 200)    {
++            throwError("Error when trying to save question data in game_question_layout.js")
++         }    
++      }  
++
++      switch(exitType) {
++         case "FINISHED":
++            handleFinish()
++            break;
++         case "BACK":
++            handleBack()
++            break;
++      }
++   }
+ 
+    //adds positive feedback after a question was answered correctly
+    var _questions = []
+@@ -41,7 +110,7 @@
+    const [incorrectNum, setIncorrectNum] = useState(0);
+ 
+    //handles when the user submites their answer
+-   const handleAnswer = (answer) => {
++   const handleSubmitAnswer = (answer) => {
+       //figures out what type of question the user is answering
+       switch(_questions[questionNum].answer) {
+          case "" : // No Correct answer, blank number pad (usually for feedback questions)
+@@ -64,6 +133,10 @@
+          default :
+                //Test if input is correct
+                if(simplifyAnswer(answer) == _questions[questionNum].answer) { //Answer is correct
++                  //stop()
++                  //_questions[questionNum].timeTaken = time
++                  _questions[questionNum].incorrectNum = incorrectNum
++                  //reset()
+                   context.setQuestionNum(questionNum + 1)
+                   setIncorrectNum(0)
+                } else { //Answer is incorrect
+@@ -73,6 +146,7 @@
+    }
+ 
+    //Box that shows user the question, feedback after answering, and hint if there are incorrect guesses
++<<<<<<< HEAD
+    const QuestionBox = ({question_data, incorrectNum}) => {
+       const hintText = incorrectNum > 0 ? 
+                            (incorrectNum) > question_data.hints.length ? 
+@@ -267,53 +341,50 @@
+       }
+    }
+ 
++=======
++>>>>>>> 26cf6ddbf368ec0e5420a9e7578f639577799486
+    //switches view depending on what state GameLayout is in
+    if(state == "questions") { //Question state is the standard state where user needs to answer questions
+       //check if user has completed every question
+       if(questionNum < _questions.length) {
++         const correctAnswer = _questions[questionNum].answer;
++         const answerFormat = _questions[questionNum].answerFormat;
++         if(!isRunning 
++               && correctAnswer != "fill_in"
++                  && correctAnswer) {
++            //start()
++         }
+          //Return the view to answer questions
+          //It would be good to potencially replace <table> with a css grid
+          return (
+             <>
+                <div className="back_button_container">
+-                  <button className="basic_button" id={style.back_button} onClick={() => onBack()}>{translations.back[lang]}</button>
++                  <button className="basic_button" id={style.back_button} onClick={() => handleExit("BACK")}>{translations.back[lang]}</button>
+                </div>
+                <table className="fill_container">
+                   <tbody>
+                      <tr>
+-      
+-                           <td className={style.child_container}>
+-                              {children}
+-                           </td>
+-                           <td className={style.question_container}>
+-                              <QuestionBox 
+-                                 className={style.question_box}
+-                                 question_data={_questions[questionNum]}
+-                                 incorrectNum={incorrectNum}/>
+-                           </td>
++                        <td className={style.child_container}>
++                           <p>{}</p>
++                           {children}
++                        </td>
++                        <td className={style.question_container}>
++                           <QuestionBox 
++                              className={style.question_box}
++                              questionData={_questions[questionNum]}
++                              incorrectNum={incorrectNum}/>
++                        </td>
+                      </tr>
+-      
+                      <tr>
+-      
+-                     <td className={style.numpad_container}>
+-                        <Popup trigger={
+-                           <button isHovering={true} style={{marginTop:"10px", marginLeft:"10px"}}> 
+-                              <Image width={30} height={50} src={"/img/other/calcicon.png"}/>
+-                           </button>}
+-                           closeOnDocumentClick={false} position="left center" offsetX={150} offsetY={-100}>
+-                           <div className="app">
+-                              <Calculator/>
+-                           </div>
+-                         </Popup>
+-                         <h4>Type answer here:</h4>
+-                         <br></br>
+-                         <br></br>
+-                         <NumPad/>
+-                     </td>
++                        <td className={style.numpad_container}>
++                              <AnswerBox
++                                 correctAnswer={correctAnswer}
++                                 answerFormat={answerFormat}
++                                 handleSubmitAnswer={handleSubmitAnswer}/>
++                        </td>
+                         <td className={style.ayu_block}>
+-                           <Ayu/>  
++                           <Ayu handleAyuClick={() => handleAyuClick()}/>  
+                         </td>
+-                        
+                      </tr>
+                   </tbody>
+                </table>     
+@@ -321,8 +392,7 @@
+          )
+       } else {
+          //User has answered all the questions, call onFinish and return a blank view
+-         context.setQuestionNum(0)
+-         _onFinish()
++         handleExit("FINISHED")
+          return (<></>)
+       }
+    } else {
+@@ -330,8 +400,30 @@
+       //TODO: switch dialog randomly in order to have different ayu relaxations
+        //Dialog ({scriptId, onEnd, onInput})
+        return (
+-            <Dialog scriptId={"ayu_relaxation_0"} onEnd={() => setState("questions")}/>
++            <Dialog scriptId={"ayu_relaxation_0"} onEnd={() => handleAyuReturn()}/>
+        )
+    }
+-    
++}
++
++function cleanQuestions(questions) {
++   let cleanedQuestions = []
++   questions.map((question) =>{
++       if(question.answer == "") return;
++       if(question.answer == "fill_in") return;
++       cleanedQuestions[cleanedQuestions.length] = {
++         question_text: question.en,
++         question_answer: question.answer,
++         incorrect_num: question.incorrectNum
++       }
++   })
++   return cleanedQuestions
++}
++
++function cleanOrder(order) {
++   let cleanedOrder = {
++      entree : order.entree.en + " - $" + order.entree.price,
++      drink : order.drink.en + " - $" + order.drink.price,
++      dessert : order.dessert.en + " - $" + order.dessert.price
++   }
++   return cleanedOrder
+ }
+\ No newline at end of file
+Index: pages/game/restaurant/questions/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/game/restaurant/questions/index.js b/pages/game/restaurant/questions/index.js
+--- a/pages/game/restaurant/questions/index.js	
++++ b/pages/game/restaurant/questions/index.js	
+@@ -10,7 +10,6 @@
+     const context = useWrapperContext();
+     const router = useRouter();
+     const order = context.state.order;
+-    console.log(order)
+     const question = generateOrderQuestions(order)
+     return (
+         order ? 
+Index: components/accessibility/text_reader.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/accessibility/text_reader.js b/components/accessibility/text_reader.js
+--- a/components/accessibility/text_reader.js	
++++ b/components/accessibility/text_reader.js	
+@@ -18,7 +18,6 @@
+ 
+     const handleClick = () => {
+         if(!synth.speaking) {
+-            console.log("Reading text: " + text)
+             speechSynthesis.speak(utterance);
+         }
+     }
+@@ -35,8 +34,6 @@
+ 
+ function setUtteranceByReader(reader, utterance, synth, lang) {
+     const voices = synth.getVoices();
+-    console.log(voices)
+-
+     switch(reader) {
+         case "restaurant":
+             utterance.voice = voices[lang == "en" ? 33 : 29]
+Index: components/game/question_layout/QuestionBox.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/game/question_layout/QuestionBox.js b/components/game/question_layout/QuestionBox.js
+new file mode 100644
+--- /dev/null	
++++ b/components/game/question_layout/QuestionBox.js	
+@@ -0,0 +1,45 @@
++import React, {useState, useEffect,useCallback} from 'react';
++import Image from 'next/image'
++import {useRouter} from 'next/router'
++import Confetti from 'react-confetti'
++import style from '@styles/game_layout.module.css'
++import translations from '@translations';
++import {useWrapperContext,Dialog,formatAnswer,simplifyAnswer} from '@common_imports'
++import { Calculator } from 'react-mac-calculator'
++import Popup from 'reactjs-popup';
++import 'reactjs-popup/dist/index.css';
++import {motion} from 'framer-motion';
++import NumberPad from '@components/game/question_layout/NumberPad'
++
++export default function QuestionBox({questionData, incorrectNum}) {
++    //get lang from context
++    const context = useWrapperContext()
++    const lang = context.state.lang
++    const hintText = incorrectNum > 0 ? 
++                            (incorrectNum) > questionData.hints.length ? 
++                            questionData.hints.at(-1)[lang] 
++                            : questionData.hints[incorrectNum-1][lang] 
++                            : "";
++    return (
++        <div className={style.question_text_container}>
++            <div className="row">
++                <div className="col-lg-2">
++                </div>
++                <div className="col-lg-10">
++                <p>{questionData[lang]}</p>
++                </div>
++            </div>
++            {hintText ? 
++            <div className="row">
++                <div className="col-lg-2">
++                </div>
++                <div className="col-lg-10">
++                <p>{hintText}</p>
++                </div>
++            </div> 
++            :
++            <></>}
++        </div>
++    );
++     
++}
+Index: pages/api/user/[username].js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/api/user/[username].js b/pages/api/user/[username].js
+new file mode 100644
+--- /dev/null	
++++ b/pages/api/user/[username].js	
+@@ -0,0 +1,64 @@
++import clientPromise from "@utils/database/mongodb";
++import {throwError} from '@common_imports'
++import { resolve } from "styled-jsx/css";
++
++export default async function handler(req, res) {
++  const { username } = req.query
++  const client = await clientPromise;
++  const db = client.db(process.env.DB_NAME);
++  switch (req.method) {
++    case "POST":
++      return await userPost(username,db,res)
++    case "GET":
++      return await userGet(username,db,res)
++  }
++}
++
++async function userGet(username,db,res) {
++  const bodyObject = {username: username}
++  let findResponse = await db.collection("users").findOne(bodyObject)
++    
++  if(findResponse) {
++    return res.json({
++      code: 200,
++      message: "Loging into user " + findResponse._id + ".",
++      data: findResponse,
++    });
++  } else {
++    return res.json({
++      code: 400,
++      message: "User not in database.",
++      data: {},
++    });
++  }
++}
++
++async function userPost(username, db,res) {
++  try {
++    const bodyObject = {
++      username: username,
++    }
++    let findResponse = await db.collection("users").findOne(bodyObject)
++    if(findResponse) {
++      return res.json({
++        code: 400,
++        message: "User already in database.",
++        data: {},
++      });
++    } else {
++      const insertObject = {
++        username: username,
++        date_created: new Date(),
++        sessions: [],
++      }
++      const insertResult = await db.collection("users").insertOne(insertObject);
++      return res.json({
++        code: 200,
++        message: "Created user.",
++        data: insertResult,
++      });
++    }
++  } catch (error) {
++    throwError("Could not create user. " + error)
++  }
++}
+\ No newline at end of file
+Index: components/header/header.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/header/header.js b/components/header/header.js
+--- a/components/header/header.js	
++++ b/components/header/header.js	
+@@ -9,40 +9,91 @@
+ export default function Header() {
+     const context = useWrapperContext();
+     const router = useRouter()
+-    const handleLogout = () => {
+-        context.clearData();
+-        router.push('/')
++    async function handleLogout() {
++        const endpoint = '/api/session/' + username
++
++        const options = {
++        method: 'PUT',
++        headers: {
++            'Content-Type': 'application/json',
++        },
++        }
++
++        const response = await fetch(endpoint, options)
++        const result = await response.json()
++        
++        if (result.code === 200) {
++            context.clearData();
++            router.push('/')
++        } else {
++            throwError("Could not end session. " + result.message)
++        return false
++        }
+     }
++    const username = context.state.username
++    const userId = context.state.userId
+ 
+-    return (
+-        <div className="container text-center">
+-            <div className="row pt-2">
+-                <h1 onClick={() => router.push('/')}>I Apply Math in my World</h1>
+-            </div>
+-            <div className="row justify-content-lg-center pt-1">
+-                <div className="col col-lg-1">
+-                    <button onClick={() => context.setLang('es')}><strong>Español</strong></button>
+-                </div>
+-                <div className="col col-lg-2">
+-                    <button onClick={() => router.push('/avatar/select')}><BsFillPersonFill/></button>
+-                    <button onClick={() => router.push('/game/map')}><BsMapFill/></button>
+-                    {/* <button onClick={() => router.push('/settings')}><FaCog/></button> */}
+-                    <button onClick={() => router.push('/check_in')}><RiChatHeartLine/></button>
+-                    {/* <button onClick={() => router.push('/pet')}><MdPets/></button> */}
+-                    <button onClick={() => handleLogout()}><TbLogout/></button>
+-                </div>
+-                <div className="col col-lg-1">
+-                    <button onClick={() => context.setLang('en')}><strong>English</strong></button>
+-                </div>
+-            </div>
+-            <div className="row justify-content-lg-center">
+-                {context.state.userId?
+-                    <p>USER ID: {context.state.userId}</p>
+-                :
+-                    <p className="red pt-2">User is not logged in</p>
+-                }
+-            </div>
+-        </div>
+-    );
++    if (context.state.userId == null){
++        return(
++            <div className="container text-center">
++            <div className="row pt-2">
++                <h1 onClick={() => router.push('/')}>I Apply Math in my World</h1>
++            </div>
++            <div className="row justify-content-lg-center pt-1">
++                <div className="col col-lg-1">
++                    <button onClick={() => context.setLang('es')}><strong>Español</strong></button>
++                </div>
++                <div className="col col-lg-1">
++                    <button onClick={() => context.setLang('en')}><strong>English</strong></button>
++                </div>
++            </div>
++            <div className="row justify-content-lg-center">
++                {context.state.username?
++                    <p>Username: {context.state.username}</p>
++                :
++                    <p className="red pt-2">User is not logged in</p>
++                }
++                {process.env.NODE_ENV === 'development' ? 
++                <p>
++                    {username + ' - ' + userId}
++                </p>: <></>
++                }
++            </div>
++        </div>
++        )
++    }
++    if (context.state.userId != null){
++        return (
++            <div className="container text-center">
++                <div className="row pt-2">
++                    <h1 onClick={() => router.push('/')}>I Apply Math in my World</h1>
++                </div>
++                <div className="row justify-content-lg-center pt-1">
++                    <div className="col col-lg-1">
++                        <button onClick={() => context.setLang('es')}><strong>Español</strong></button>
++                    </div>
++                    <div className="col col-lg-2">
++                        <button onClick={() => router.push('/avatar/select')}><BsFillPersonFill/></button>
++                        <button onClick={() => router.push('/game/map')}><BsMapFill/></button>
++                        {/* <button onClick={() => router.push('/settings')}><FaCog/></button> */}
++                        <button onClick={() => router.push('/check_in')}><RiChatHeartLine/></button>
++                        {/* <button onClick={() => router.push('/pet')}><MdPets/></button> */}
++                        <button onClick={() => handleLogout()}><TbLogout/></button>
++                    </div>
++                    <div className="col col-lg-1">
++                        <button onClick={() => context.setLang('en')}><strong>English</strong></button>
++                    </div>
++                </div>
++                <div className="row justify-content-lg-center">
++                    {context.state.userId?
++                        <p>USER ID: {context.state.userId}</p>
++                    :
++                        <p className="red pt-2">User is not logged in</p>
++                    }
++                </div>
++            </div>
++        );
++    }
++   
+ }
+  
+Index: components/game/question_layout/NumberPad.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/game/question_layout/NumberPad.js b/components/game/question_layout/NumberPad.js
+new file mode 100644
+--- /dev/null	
++++ b/components/game/question_layout/NumberPad.js	
+@@ -0,0 +1,14 @@
++import React, {useState, useEffect,useCallback} from 'react';
++import Image from 'next/image'
++import {useRouter} from 'next/router'
++import Confetti from 'react-confetti'
++import style from '@styles/game_layout.module.css'
++import translations from '@translations';
++import {useWrapperContext,Dialog,formatAnswer,simplifyAnswer} from '@common_imports'
++import { Calculator } from 'react-mac-calculator'
++import Popup from 'reactjs-popup';
++import 'reactjs-popup/dist/index.css';
++import {motion} from 'framer-motion';
++
++export default function NumberPad({}) {
++ }
+\ No newline at end of file
+Index: components/dialog/dialog.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/dialog/dialog.js b/components/dialog/dialog.js
+--- a/components/dialog/dialog.js	
++++ b/components/dialog/dialog.js	
+@@ -78,8 +78,6 @@
+     const stage = dialog.stage ? dialog.stage : Scripts["error"].stage
+     const ayuImg = script[lineNum].stg ? script[lineNum].stg : dialog.stage;
+     const backgroundImgSrc = changeBackgroundImgSrc(ayuImg);
+-    //
+-    console.log("script[lineNum] value: " + script[lineNum].stg);
+     const hasCharacters = (stage == "aunt_house" || stage == "restaurant")
+ 
+     var speechTriangle = "end";
+Index: pages/404.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/404.js b/pages/404.js
+--- a/pages/404.js	
++++ b/pages/404.js	
+@@ -13,7 +13,7 @@
+       <h2>{getText('page_not_found',lang)}</h2>
+       <p>
+         {getText('click',lang) + " "}
+-          <Link href="/"><a><strong>{getText('here',lang)}</strong></a></Link> 
++          <Link href="/"><strong>{getText('here',lang)}</strong></Link> 
+         {" " + getText('to_return_home',lang)}
+       </p>
+     </>
+Index: components/game/question_layout/Ayu.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/game/question_layout/Ayu.js b/components/game/question_layout/Ayu.js
+new file mode 100644
+--- /dev/null	
++++ b/components/game/question_layout/Ayu.js	
+@@ -0,0 +1,89 @@
++import React, {useState} from 'react';
++import Image from 'next/image'
++import style from '@styles/game_layout.module.css'
++import translations from '@translations';
++import {useWrapperContext} from '@common_imports'
++import 'reactjs-popup/dist/index.css';
++import {GiYarn, GiHand} from "react-icons/gi";
++
++//Ayu component that is found on the bottom right box of GameLayout
++export default function Ayu ({handleAyuClick}) {
++    //get lang from context
++    const context = useWrapperContext()
++    const lang = context.state.lang
++
++    //afNum is the affermation that should be shown if user hovers on Ayu
++    const [afNum, setAyuAfNum] = useState(0);
++    //isHovering keeps track of if the user is hovering on Ayu
++    const [isHovering, setIsHovered] = useState(false);
++
++    async function handleAPICall() {
++       const endpoint = '/api/session/increment_ayu/' + context.state.username
++
++       const options = {
++          method: 'PUT',
++          headers: {
++          'Content-Type': 'application/json',
++          },
++       }
++
++       const response = await fetch(endpoint, options)
++       const result = await response.json()
++       if (result.code !== 200) {
++          throwError("Could not increment ayu interact. " + result.message)
++          setErrorMessage(result.message);
++       }
++    }
++
++    function handleClick() {
++       handleAPICall();
++       handleAyuClick()
++    }
++
++    //Handles mouse over Ayu
++    const onMouseEnter = () => {
++       setIsHovered(true);
++       setAyuAfNum(Math.floor(Math.random() * 11));
++    }
++
++    //Handles mouse leaving Ayu
++    const onMouseLeave = () => setIsHovered(false);
++
++    return (
++       <div className="fill_container"
++             onMouseEnter={onMouseEnter}
++             onMouseLeave={onMouseLeave}> 
++          <div className={style.ayu_speech_bubble_container}>
++             
++             {isHovering ? 
++                <div className={style.ayu_speech_bubble}>
++                   <div className={style.ayu_speech_bubble_triangle} ></div>
++                   <p className={style.speech_bubble_text}>{translations.ayu_affermations[afNum][lang]}</p>
++                </div> : <></>}
++          </div>
++          
++          <div className={style.ayu_image_container}>
++             <button onClick={() => handleClick()}>
++             <GiHand className={style.breathe} ></GiHand>
++                <Image
++                   priority={true}
++                   style={{zIndex:-1}}
++                   layout={"fill"}
++                   src={"/img/ayu/ayu_idle.gif"}/>
++             </button>
++             <div>              
++                  {/* <p className={style.pet_me}>Pet me!</p> */}
++                  {/* <GiHand className={style.pet_me}></GiHand> */}
++                  
++                  <Image
++                     className={style.pet}
++                     priority={true}
++                     layout={"fill"}
++                     src = {"/img/pets/pet" + context.state.petId + ".png"}
++                     alt = {"You haven't selected your pet!"}/>
++               </div>
++          </div>
++          
++       </div>
++    )
++ }
+\ No newline at end of file
+Index: components/game/question_layout/AnswerBox.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/game/question_layout/AnswerBox.js b/components/game/question_layout/AnswerBox.js
+new file mode 100644
+--- /dev/null	
++++ b/components/game/question_layout/AnswerBox.js	
+@@ -0,0 +1,139 @@
++import React, {useState, useEffect,useCallback} from 'react';
++import Image from 'next/image'
++import Confetti from 'react-confetti'
++import style from '@styles/game_layout.module.css'
++import translations from '@translations';
++import {useWrapperContext,formatAnswer} from '@common_imports'
++import { Calculator } from 'react-mac-calculator'
++import Popup from 'reactjs-popup';
++import 'reactjs-popup/dist/index.css';
++
++export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer}) {
++    //get lang from context
++    const context = useWrapperContext()
++    const lang = context.state.lang
++    const [inputAnswer, setInputAnswer] = useState("");
++    //keeps track if view should show the empty hint within the numpad
++    const [showEmptyHint, setShowEmptyHint] = useState(false);
++
++    const handleKeyPress = useCallback(event => {
++        if (event.key == "Backspace") { //backspace pressed
++           handleButtonPress("←")
++        } else if (event.key == "Enter") { //enter pressed
++           //TODO: fix it so this doesnt cause a memory leak
++           //handleButtonPress("✓")
++        } else if((event.keyCode >= 48 && event.keyCode <= 57) || event.key =="/") { //0-9 pressed
++           handleButtonPress(event.key)
++        } 
++     },[inputAnswer])
++    function submitAnswer() {
++        handleSubmitAnswer(inputAnswer)
++        setInputAnswer("")
++    }
++     //handles a button press or keypress
++    function handleButtonPress(value) {
++        if(value == "←") {
++           //removes the rightmost char
++           setInputAnswer(inputAnswer.slice(0,inputAnswer.length - 1)); 
++        } else if (value == "✓") {
++           //submits answer
++           if (inputAnswer) {
++              //answer is not empty and needs to be not empty (answering a normal question)
++              //makes sure empty hint is removed
++              submitAnswer(inputAnswer)
++           } else if (correctAnswer == "") {
++              //answer is supposed to be blank
++              submitAnswer(inputAnswer)
++           } else {
++              //answer was blank but was not supposed to be blank
++              setShowEmptyHint(true)
++           }
++        } else {
++           //adding a number to the current answer value
++           //Makes sure answer is less then 7 char
++           setInputAnswer(formatAnswer(answerFormat,inputAnswer).toString().length < 7 ? inputAnswer + value : inputAnswer);
++        }
++     }
++
++     //standard numpad button
++    const renderButton = (value) => {
++        return (
++           <button key={value} onClick={() => handleButtonPress(value)} className={style.num_pad_button}>
++              {value}
++           </button>
++        );
++        
++     }
++
++     //useEffect to allow for keypress to be registered
++    useEffect(() => {
++        //handles keypress
++        document.addEventListener("keydown", handleKeyPress);
++  
++        return () => {
++           document.removeEventListener("keydown", handleKeyPress);
++        };
++     }, [handleKeyPress]);
++
++     //switches numPad depending and what the answer should be
++    if (!correctAnswer) {
++        //returns when there is no needed answer
++        return (
++            <>
++                <div className="header_container">
++                    <Confetti
++                    confettiSource={{ x: 0, y: -100, w: 650, h: 600 }}
++                    friction={0.96} />
++                </div>
++                <div className="fill_container">
++                    <br></br>
++                    <br></br>
++                    <button
++                            onClick={() => handleButtonPress("✓")}
++                            className={style.continue_button}>
++                        {translations.continue[lang]}
++                    </button>
++                </div></>
++        )
++     } else {
++        //there is a needed answer
++        return (
++        //TODO: Make the CSS wayyyyyy better
++            <div>
++                <Popup trigger={
++                                <button isHovering={true} style={{marginTop:"10px", marginLeft:"10px"}}> 
++                                    <Image width={30} height={50} src={"/img/other/calcicon.png"}/>
++                                </button>
++                                }
++                        closeOnDocumentClick={false} 
++                        position="left center" offsetX={150} offsetY={-100}>
++                    <div className="app">
++                        <Calculator/>
++                    </div>
++                </Popup>
++                <h4>Type answer here:</h4>
++                <br></br>
++                {showEmptyHint ? <p>{translations.empty_hint[lang]}</p> : <></>}
++                <br></br>
++                <div>
++                    <table className={style.num_pad_container}>
++                        <tbody>
++                            <tr>
++                            <td className={style.num_pad_button_box}>
++                            
++                            </td>
++                            <td className={style.num_pad_left_box}>
++                                <p className={style.num_pad_answer}> <b className={style.num_pad_answer_text}>{formatAnswer(answerFormat,inputAnswer)} </b></p>
++                            </td>
++                            <td className={style.num_pad_left_box}>
++                                {renderButton("✓")}
++                            </td>
++                            </tr>
++                        </tbody>
++                    </table>
++                    <input className="d-none" autoFocus={true} onBlur={({ target }) => target.focus()}/>
++                </div>
++            </div>
++        )
++     }
++}
+Index: pages/_app.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/_app.js b/pages/_app.js
+--- a/pages/_app.js	
++++ b/pages/_app.js	
+@@ -5,7 +5,7 @@
+ import 'bootstrap/dist/css/bootstrap.css';
+ import '@styles/globals.css'
+ import Layout from '@layouts/core/core_layout'
+-import ContextWrapper from '@components/context/context'
++import ContextWrapper from '@hooks/useContext'
+ 
+ function MyApp({ Component, session, ...pageProps }) {
+   return (
+Index: utils/database/get_current_session.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/utils/database/get_current_session.js b/utils/database/get_current_session.js
+new file mode 100644
+--- /dev/null	
++++ b/utils/database/get_current_session.js	
+@@ -0,0 +1,26 @@
++export default async function GetCurrentSessionIndex(username) {
++    //TODO: CHANGE THIS TO NOT STATIC
++    const endpoint = 'http://localhost:3000/api/session/' + username
++
++    const options = {
++      method: 'GET',
++      headers: {
++        'Content-Type': 'application/json',
++      },
++    }
++
++    const response = await fetch(endpoint, options)
++    const result = await response.json()
++    
++    if (result.code === 200) {
++      const sessions = result.data.sessions
++
++      //TODO: add logic to finding multiple open sessions and handling them
++      const index = sessions.length - 1
++
++      return index;
++    } else {
++      throwError("Could not create session. " + result.message)
++      setErrorMessage(result.message);
++      return null
++    }}
+\ No newline at end of file
+Index: pages/api/session/[username].js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/api/session/[username].js b/pages/api/session/[username].js
+new file mode 100644
+--- /dev/null	
++++ b/pages/api/session/[username].js	
+@@ -0,0 +1,100 @@
++import clientPromise from "@utils/database/mongodb";
++import {throwError} from '@common_imports'
++import GetCurrentSessionIndex from '@utils/database/get_current_session'
++
++export default async function handler(req, res) {
++  const { username } = req.query
++  const client = await clientPromise;
++  const db = client.db(process.env.DB_NAME);
++  switch (req.method) {
++    case "POST":
++      return await startSession(username,db,res);
++    case "PUT":
++      return await endSession(username,db,res);
++    case "GET":
++      return await getSessions(username,db,res);
++  }
++  return resolve
++}
++
++async function getSessions(username,db,res) {
++  const filter = {username : username}
++  //TODO: ERROR HANDALING IF NO USER FOUND
++  const findUser = await db.collection("users").findOne(filter)
++  return res.status(200).json({
++  code: 200,
++  message: "Fetched sessions in user.",
++  data: findUser,
++  });
++}
++
++//Logic to end session
++async function endSession(username,db,res) {
++  try {
++    const filter = {username: username}
++    
++    //TODO: Handle if you dont find user
++    //TODO: Handle if user has no active session
++
++    const index = await GetCurrentSessionIndex(username)
++
++    const endDate = "sessions." + index + ".end_date"
++
++    const updateResult = await db.collection("users").findOneAndUpdate(
++      filter,
++      { 
++        $set : {
++          [endDate] : new Date()
++        }
++      }
++     )
++
++    return res.status(200).json({
++    code: 200,
++    message: "Ended session in user.",
++    data: updateResult,
++    });
++  }
++
++  catch (error) {
++    throwError("Could not end user session. " + error)
++  }
++}
++
++//Logic to create new session
++async function startSession(username,db,res) {
++  try {
++    const filter = {username: username}
++
++    //TODO: Handle if you dont find user
++    //TODO: Handle if user has active session
++
++    const sessionObject = {
++      sessions: {
++        start_date: new Date(),
++        times_talked_to_ayu: 0
++      }
++    };
++
++    //Push new session
++    const insertResult = await db.collection("users").updateOne(
++      filter,
++      {$push: sessionObject}
++    );
++
++    return res.status(200).json({
++      code: 200,
++      message: "Created session in user.",
++      data: insertResult,
++    });
++    
++  }
++  catch (error) {
++    throwError("Could not create user session. " + error)
++    return res.status(400).json({
++      code: 200,
++      message: error,
++      data: insertResult,
++    });
++  }
++}
+\ No newline at end of file
+Index: pages/pet/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/pet/index.js b/pages/pet/index.js
+--- a/pages/pet/index.js	
++++ b/pages/pet/index.js	
+@@ -19,7 +19,7 @@
+     //Should handle anything to be done in order to use avatar in game
+     const handleSavePet = async() => {
+         const data = {
+-            userId: context.state.userId,
++            username: context.state.username,
+             petId: context.state.petId
+         }
+ 
+@@ -34,8 +34,6 @@
+         },
+         body: JSONdata,
+         }
+-        const response = await fetch(endpoint, options)
+-        //const result = await response.json()
+ 
+         router.push('/game/map')
+     }
+Index: pages/login/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/login/index.js b/pages/login/index.js
+--- a/pages/login/index.js	
++++ b/pages/login/index.js	
+@@ -7,7 +7,30 @@
+   const context = useWrapperContext();
+   const router = useRouter();
+   const [errorMessage, setErrorMessage] = useState("");
++  
++  const handleSessionStart = async (username) => {
++    const endpoint = '/api/session/' + username
+ 
++    const options = {
++      method: 'POST',
++      headers: {
++        'Content-Type': 'application/json',
++      },
++    }
++
++    const response = await fetch(endpoint, options)
++    const result = await response.json()
++    
++    if (result.code === 200) {
++      context.setSessionId(result.data._id)
++      return true
++    } else {
++      throwError("Could not create session. " + result.message)
++      setErrorMessage(result.message);
++      return false
++    }
++  }
++  
+   const handleLogin = async (username) => {
+     const endpoint = '/api/user/' + username
+ 
+@@ -22,11 +45,12 @@
+     const result = await response.json()
+ 
+     if (result.code === 200) {
+-      context.setUserId(result.data.userId);
+-      context.setUserLongId(result.data._id);
++      if(!handleSessionStart(username)) return; 
++      context.setUsername(result.data.username);
++      context.setUserId(result.data._id);
+ 
+-      if(result.data.avatarId) {
+-        context.setAvatarId(result.data.avatarId);
++      if(result.data.avatar_id) {
++        context.setAvatarId(result.data.avatar_id);
+         router.push("/game/map")
+       } else {
+         router.push("/avatar/select")
+@@ -51,7 +75,9 @@
+     const result = await response.json()
+ 
+     if(result.code === 200) {
+-      context.setUserId(username);
++      if(!handleSessionStart(username)) return; 
++      context.setUsername(username);
++      context.setUserId(result.data.insertedId);
+       router.push("/avatar/select")
+     } else {
+       throwError("Account creation did not return 200. " + result.message)
+@@ -63,7 +89,7 @@
+   const handleSubmit = async (event) => {
+     event.preventDefault()
+     const submitType = event.nativeEvent.submitter.value;
+-    const username = event.target.user_id.value
++    const username = event.target.username.value
+     switch (submitType) {
+       case "login":
+         handleLogin(username)
+@@ -82,11 +108,12 @@
+       <p className="red">{errorMessage}</p>
+       <form autoComplete="off" onSubmit={handleSubmit}>
+         <div>
+-          <label htmlFor="UserId">UserId</label>
++          <label htmlFor="UserId">Username</label>
+           <input
+-            id="user_id"
++            id="username"
+             type="text"
+-            name="user_id"
++            name="username"
++            pattern="[a-zA-Z0-9]*"
+           />
+         </div>
+         <div className="row">
+Index: pages/api/session/increment_ayu/[username].js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/api/session/increment_ayu/[username].js b/pages/api/session/increment_ayu/[username].js
+new file mode 100644
+--- /dev/null	
++++ b/pages/api/session/increment_ayu/[username].js	
+@@ -0,0 +1,51 @@
++import clientPromise from "@utils/database/mongodb";
++import {throwError} from '@common_imports'
++import GetCurrentSessionIndex from '@utils/database/get_current_session'
++
++export default async function handler(req, res) {
++  const { username } = req.query
++  const client = await clientPromise;
++  const db = client.db(process.env.DB_NAME);
++  switch (req.method) {
++    case "PUT":
++      return await handlePut(username,db,res);
++  }
++}
++
++async function handlePut(username,db,res) {
++  try {
++
++    //TODO: Handle if you dont find user
++    const index = await GetCurrentSessionIndex(username)
++    //TODO: MAKE A GETSESSION API to get correct session then remove following code
++
++    const filter = {
++        username : username,
++    }
++
++    const incText = "sessions." + index + ".times_talked_to_ayu"
++
++    const updateResult = await db.collection("users").findOneAndUpdate(
++      filter,
++      { $inc : { 
++          [incText] : 1
++        } 
++      }
++     )
++
++    return res.status(200).json({
++    code: 200,
++    message: "Incremented Ayu Dialog in session.",
++    data: updateResult,
++    });
++    
++  }
++  catch (error) {
++    throwError("Could not incremented Ayu Dialog in session. " + error)
++    return res.status(400).json({
++      code: 400,
++      message: error,
++      data: updateResult,
++      });
++  }
++}
+\ No newline at end of file
+Index: pages/api/session/saveQuestions.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/api/session/saveQuestions.js b/pages/api/session/saveQuestions.js
+new file mode 100644
+--- /dev/null	
++++ b/pages/api/session/saveQuestions.js	
+@@ -0,0 +1,66 @@
++import clientPromise from "@utils/database/mongodb";
++import {throwError} from '@common_imports'
++import GetCurrentSessionIndex from '@utils/database/get_current_session'
++
++export default async function handler(req, res) {
++
++  const client = await clientPromise;
++  const db = client.db(process.env.DB_NAME);
++
++  switch (req.method) {
++    case "POST":
++      return await handlePost(req,db,res);
++  }
++}
++
++async function handlePost(req,db,res) {
++  try {
++    const questions = req.body.questions;
++    const username = req.body.username;
++    const gameType = req.body.gameType;
++
++
++    //TODO: Handle if you dont find user
++    const index = await GetCurrentSessionIndex(username)
++    //TODO: MAKE A GETSESSION API to get correct session then remove following code
++
++    const filter = {
++        username : username,
++    }
++
++    let pushData = {
++        questions : questions,
++        game_type: gameType
++    }
++
++    if(req.body.order) {
++        const order = req.body.order
++        pushData.order = order
++    }
++
++    const pushFilter = "sessions." + index + ".games_played"
++    //Push new session
++    const insertResult = await db.collection("users").updateOne(
++        filter,
++        {$push: {
++            [pushFilter] : pushData
++        } 
++        }
++    );
++
++    return res.status(200).json({
++    code: 200,
++    message: "Saved game data session.",
++    data: insertResult,
++    });
++    
++  }
++  catch (error) {
++    throwError("Could not save game data in session." + error)
++    return res.status(400).json({
++      code: 400,
++      message: error,
++      data: null,
++      });
++  }
++}
+\ No newline at end of file
+Index: pages/avatar/select.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/avatar/select.js b/pages/avatar/select.js
+--- a/pages/avatar/select.js	
++++ b/pages/avatar/select.js	
+@@ -9,7 +9,7 @@
+     const context = useWrapperContext()
+     const lang = context.state.lang
+     const avatarId = context.state.avatarId
+-    const userId = context.state.userId
++    const username = context.state.username
+     
+     const router = useRouter();
+ 
+@@ -17,7 +17,7 @@
+     //Should handle anything to be done in order to use avatar in game
+     const handleSaveAvatar = async() => {
+         const data = {
+-            userId: context.state.userId,
++            username: context.state.username,
+             avatarId: context.state.avatarId
+         }
+ 
+@@ -62,7 +62,7 @@
+                     return <AvatarButton index={i + 1} key={i} />;
+                 })}
+             </div>
+-            {avatarId && userId ? 
++            {avatarId && username ? 
+                 <button 
+                         className={style.continue_button}
+                         onClick={() => handleSaveAvatar()}>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,7 +5,36 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="a71d341c-3588-4d4b-93eb-81c85cb4cf0d" name="Changes" comment="Added decimal &amp; sound &amp; questions">
+-      <change afterPath="$PROJECT_DIR$/public/sound/null.mp3" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/components/game/question_layout/AnswerBox.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/components/game/question_layout/Ayu.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/components/game/question_layout/NumberPad.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/components/game/question_layout/QuestionBox.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/hooks/useStopWatch.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/pages/api/session/[username].js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/pages/api/session/increment_ayu/[username].js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/pages/api/session/saveQuestions.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/pages/api/user/[username].js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/pages/stopwatch.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/utils/database/get_current_session.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/components/accessibility/text_reader.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/accessibility/text_reader.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/components/context/context.js" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useContext.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/components/dialog/dialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/dialog/dialog.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/components/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/layouts/game_layouts/game_question_layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/game_layouts/game_question_layout.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/404.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/404.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/api/avatarId.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/avatarId.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/api/petId.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/petId.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/api/user/[userId].js" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/avatar/select.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/avatar/select.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/game/restaurant/questions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/game/restaurant/questions/index.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/pet/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/pet/index.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pages/settings/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/settings/index.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/public/text/aunt_house_recipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/text/aunt_house_recipes.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/styles/game_layout.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/game_layout.module.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/utils/game/restaurant/generate_restaurant_question.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/game/restaurant/generate_restaurant_question.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/utils/imports/common_imports.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/imports/common_imports.js" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -68,7 +97,7 @@
+       <workItem from="1674325140127" duration="420000" />
+       <workItem from="1675449548001" duration="13382000" />
+       <workItem from="1676739309443" duration="10815000" />
+-      <workItem from="1677341188702" duration="7134000" />
++      <workItem from="1677341188702" duration="7578000" />
+     </task>
+     <task id="LOCAL-00001" summary="Adjusted deep breathing anim">
+       <created>1676739075807</created>
+@@ -84,7 +113,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1677349923525</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Added decimal &amp; sound &amp; questions">
++      <created>1677349952381</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1677349952381</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+Index: pages/settings/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pages/settings/index.js b/pages/settings/index.js
+--- a/pages/settings/index.js	
++++ b/pages/settings/index.js	
+@@ -5,8 +5,8 @@
+ export default function Index() {
+   const context = useWrapperContext();
+   const lang = context.state.lang  
++  const userName = context.state.userName
+   const userId = context.state.userId
+-  const userLongId = context.state.userLongId
+   const router = useRouter();
+ 
+   const handleLogout = () => {
+@@ -22,7 +22,7 @@
+       userId ? 
+       /* User is logged in */
+       <>
+-      <p>Given User Id: {userId}</p>
++      <p>UserName: {j}</p>
+       <p>True User Id: {userLongId}</p>
+ 
+       <button onClick={() => handleLogout()}>Logout</button>
+Index: components/context/context.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/context/context.js b/hooks/useContext.js
+rename from components/context/context.js
+rename to hooks/useContext.js
+--- a/components/context/context.js	
++++ b/hooks/useContext.js	
+@@ -8,9 +8,11 @@
+   //lang is the current langage needed to show
+   const [lang, setLang] = useState("en");
+ 
+-  const [userId, setUserId] = useState();
++  const [username, setUsername] = useState();
++  const [sessionId, setSessionId] = useState();
++
+   const [mapLocation, setMapLocation] = useState("Base");
+-  const [userLongId, setUserLongId] = useState();
++  const [userId, setUserId] = useState();
+   const [order, setOrder] = useState();
+ 
+   useEffect(() => {
+@@ -40,20 +42,26 @@
+       setPetId(window.sessionStorage.getItem('PET_ID'))
+     }
+ 
++    const usernameLocal = window.sessionStorage.getItem('USERNAME');
++    if (usernameLocal) {
++      setUsername(usernameLocal)
++    }
++
+     const userIdLocal = window.sessionStorage.getItem('USER_ID');
+     if (userIdLocal) {
+       setUserId(userIdLocal)
+     }
+ 
+-    const userLongIdLocal = window.sessionStorage.getItem('USER_LONG_ID');
+-    if (userLongIdLocal) {
+-      setUserLongId(userLongIdLocal)
++    const sessionIdLocal = window.sessionStorage.getItem('SESSION_ID');
++    if (sessionIdLocal) {
++      setSessionId(sessionIdLocal)
+     }
++
+   });
+ 
+   const clearData = () => {
+-    setUserId("");
+-    window.sessionStorage.removeItem('USER_ID')
++    setUsername("");
++    window.sessionStorage.removeItem('USERNAME')
+ 
+     setLang("en");
+     window.sessionStorage.removeItem('LANG_STATE')
+@@ -64,8 +72,12 @@
+     setPetId("")
+     setPetId(window.sessionStorage.getItem('PET_ID'))
+ 
+-    setUserLongId("");
+-    window.sessionStorage.removeItem('USER_LONG_ID')
++    setUserId("");
++    window.sessionStorage.removeItem('USER_ID')
++
++    setSessionId('')
++    window.sessionStorage.removeItem('SESSION_ID')
++
+   }
+ 
+   //avatar keeps track of what avatar to show
+@@ -81,9 +93,10 @@
+           avatarId:avatarId,
+           petId: petId,
+           userId: userId,
+-          userLongId: userLongId,
++          username: username,
+           order: order,
+           mapLocation: mapLocation,
++          sessionId: sessionId,
+       },
+       setLang: (newLang) => {
+         window.sessionStorage.setItem('LANG_STATE',newLang)
+@@ -99,13 +112,17 @@
+       },
+       setQuestionNum: (newNum) => setQuestionNum(newNum),
+       setOrder: (newOrder) => setOrder(newOrder),
++      setUsername: (username) => {
++        window.sessionStorage.setItem('USERNAME',username)
++        setUsername(username)
++      },
+       setUserId: (userId) => {
+         window.sessionStorage.setItem('USER_ID',userId)
+         setUserId(userId)
+       },
+-      setUserLongId: (userLongId) => {
+-        window.sessionStorage.setItem('USER_LONG_ID',userLongId)
+-        setUserLongId(userLongId)
++      setSessionId: (sessionId) => {
++        window.sessionStorage.setItem('SESSION_ID',sessionId)
++        setSessionId(sessionId)
+       },
+       setMapLocation: (newMapLocation) => setMapLocation(newMapLocation),
+       clearData: () => clearData(),
+@@ -122,6 +139,4 @@
+ //function to call context
+ export function useWrapperContext() {
+     return useContext(Context);
+-}
+-  
+-
++}
+\ No newline at end of file
