@@ -4,6 +4,7 @@ import GetCurrentSessionIndex from '@utils/database/get_current_session'
 
 export default async function handler(req, res) {
   const { username } = req.query
+  //TODO: ERROR HANDLE USERNAME
   const client = await clientPromise;
   const db = client.db(process.env.DB_NAME);
   switch (req.method) {
@@ -25,7 +26,7 @@ async function handlePut(username,db,res) {
 
     const incText = "sessions." + index + ".times_talked_to_ayu"
 
-    const updateResult = await db.collection("users").findOneAndUpdate(
+    const updateResult = await db.collection("data").findOneAndUpdate(
       filter,
       { $inc : { 
           [incText] : 1

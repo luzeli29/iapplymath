@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 async function getSessions(username,db,res) {
   const filter = {username : username}
   //TODO: ERROR HANDALING IF NO USER FOUND
-  const findUser = await db.collection("users").findOne(filter)
+  const findUser = await db.collection("data").findOne(filter)
   return res.status(200).json({
   code: 200,
   message: "Fetched sessions in user.",
@@ -40,7 +40,7 @@ async function endSession(username,db,res) {
 
     const endDate = "sessions." + index + ".end_date"
 
-    const updateResult = await db.collection("users").findOneAndUpdate(
+    const updateResult = await db.collection("data").findOneAndUpdate(
       filter,
       { 
         $set : {
@@ -77,7 +77,7 @@ async function startSession(username,db,res) {
     };
 
     //Push new session
-    const insertResult = await db.collection("users").updateOne(
+    const insertResult = await db.collection("data").updateOne(
       filter,
       {$push: sessionObject}
     );

@@ -34,6 +34,7 @@
     "WebServerToolWindowFactoryState": "false",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -45,7 +46,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677793410276</updated>
-      <workItem from="1677793414154" duration="595000" />
+      <workItem from="1677793414154" duration="1220000" />
     </task>
     <servers />
   </component>
