@@ -35,6 +35,8 @@ export default function Creator() {
         const response = await fetch(endpoint, options)
         //const result = await response.json()
 
+        //TODO: error correct results.
+
         router.push('/pet')
     }
 

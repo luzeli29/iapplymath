@@ -41,10 +41,9 @@ export default function Login() {
     }
 
     const response = await fetch(endpoint, options)
-    console.log(response)
     const result = await response.json()
 
-    if (result.code === 200) {
+    if (result && result.code === 200) {
       if(!handleSessionStart(username)) return; 
       context.setUsername(result.data.username);
       context.setUserId(result.data._id);
@@ -72,9 +71,9 @@ export default function Login() {
     }
 
     const response = await fetch(endpoint, options)
+    const result = await response.json()
 
     if(result.code === 200) {
-      const result = await response.json()
       if(!handleSessionStart(username)) return; 
       context.setUsername(username);
       context.setUserId(result.data.insertedId);
