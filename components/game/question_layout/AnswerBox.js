@@ -22,11 +22,12 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
         } else if (event.key == "Enter") { //enter pressed
            //TODO: fix it so this doesnt cause a memory leak
            //handleButtonPress("✓")
-        } else if((event.keyCode >= 48 && event.keyCode <= 57) || event.key =="/") { //0-9 pressed
+        } else if((event.keyCode >= 48 && event.keyCode <= 57) || event.key =="/" || event.key == ".") { //0-9 pressed
            handleButtonPress(event.key)
         } 
      },[inputAnswer])
     function submitAnswer() {
+        console.log(inputAnswer);
         handleSubmitAnswer(inputAnswer)
         setInputAnswer("")
     }
