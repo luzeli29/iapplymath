@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/.idea/iapplymath.iml" filepath="$PROJECT_DIR$/.idea/iapplymath.iml" />
-=======
-      <module fileurl="file://$PROJECT_DIR$/.idea/iapplymathDev.iml" filepath="$PROJECT_DIR$/.idea/iapplymathDev.iml" />
->>>>>>> dev
+      <module fileurl="file://$PROJECT_DIR$/.idea/iapplymathV2.iml" filepath="$PROJECT_DIR$/.idea/iapplymathV2.iml" />
     </modules>
   </component>
 </project>
