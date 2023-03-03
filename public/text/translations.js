@@ -146,6 +146,11 @@ const translations = {
         es:"Por favor, ponga una respuesta.",
     },
 
+    pet_ayu: {
+        en: "Play with Ayu",
+        es: "Juega con Ayu"
+    },
+
     question_feedback: [ 
         {
             en: "Excellent!",
