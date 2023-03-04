@@ -26,32 +26,24 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
            handleButtonPress(event.key)
         } 
      },[inputAnswer])
+
     function submitAnswer() {
-        console.log(inputAnswer);
         handleSubmitAnswer(inputAnswer)
         setInputAnswer("")
     }
-     //handles a button press or keypress
+
     function handleButtonPress(value) {
         if(value == "←") {
-           //removes the rightmost char
            setInputAnswer(inputAnswer.slice(0,inputAnswer.length - 1)); 
         } else if (value == "✓") {
-           //submits answer
            if (inputAnswer) {
-              //answer is not empty and needs to be not empty (answering a normal question)
-              //makes sure empty hint is removed
               submitAnswer(inputAnswer)
            } else if (correctAnswer == "") {
-              //answer is supposed to be blank
               submitAnswer(inputAnswer)
            } else {
-              //answer was blank but was not supposed to be blank
               setShowEmptyHint(true)
            }
         } else {
-           //adding a number to the current answer value
-           //Makes sure answer is less then 7 char
            setInputAnswer(formatAnswer(answerFormat,inputAnswer).toString().length < 7 ? inputAnswer + value : inputAnswer);
         }
      }
@@ -66,7 +58,6 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
         
      }
 
-     //useEffect to allow for keypress to be registered
     useEffect(() => {
         //handles keypress
         document.addEventListener("keydown", handleKeyPress);
@@ -76,8 +67,8 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
         };
      }, [handleKeyPress]);
 
-     //switches numPad depending and what the answer should be
-    if (!correctAnswer) {
+    console.log(correctAnswer)
+    if (correctAnswer === "") {
         //returns when there is no needed answer
         return (
             <>
