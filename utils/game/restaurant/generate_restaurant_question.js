@@ -249,8 +249,8 @@ function generateOrderQuestions(order) {
     randomValue = getRandomInt(2, 10);
     questions[15] = createGameQuestion(
         {
-            en:"How much will you pay for the entrée," + order.entree.en + ", if you share it with " + randomValue + " friends and you all equally split the cost?",
-            es:"¿Cuánto pagará por el plato principal, " + order.entree.es + ", si lo comparte con " + randomValue + " amigos y todos dividen el costo por igual?",
+            en:"How much will you pay for the entrée," + order.entree.en + ", if you share it with " + randomValue + " friends and you all equally split the cost? Hint: Write your answer as a fraction.",
+            es:"¿Cuánto pagará por el plato principal, " + order.entree.es + ", si lo comparte con " + randomValue + " amigos y todos dividen el costo por igual? Pista: escribe tu respuesta como una fracción.",
         },
         simplifyFraction(order.entree.price, (randomValue + 1)),
         [{
@@ -347,7 +347,7 @@ function generateOrderQuestions(order) {
     questions[20] = createGameQuestion(
         {
             en:"Elena would like to taste a " + fractionArrayEN[randomValue] + "of your entrée. How much of your food will you be sharing with her? Hint: write your answer as a fraction.",
-            es:"A Elena le gustaría probar un " + fractionArrayES[randomValue] + " octava parte de tu plato principal. ¿Cuánto de tu comida compartirás con ella? Pista: escribe tu respuesta como una fracción.",
+            es:"A Elena le gustaría probar un " + fractionArrayES[randomValue] + " de tu plato principal. ¿Cuánto de tu comida compartirás con ella? Pista: escribe tu respuesta como una fracción.",
         },
         randomValue == 0 ? simplifyFraction(1 / 3) : randomValue == 1 ? simplifyFraction(1 / 4) : simplifyFraction(1 / 6),
         [{
