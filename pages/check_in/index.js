@@ -4,7 +4,8 @@ import {useWrapperContext} from '@common_imports'
 import { useRouter } from 'next/router'
 import style from '../../styles/check_in.module.css'
 import translations from '../../public/text/translations';
-import { motion } from "framer-motion"
+import ClickableIcon from '@components/clickable_icon';
+
 
 export default function Creator() {
     //get the site context and lang
@@ -31,8 +32,7 @@ export default function Creator() {
                 <Image
                     priority={true}
                     layout={"fill"}
-                    src={feeling == index ? path + index + ".png" : path + index + ".png"}/>
-
+                    src={feeling == index ? path + index + "_selected.png" : path + index + ".png"}/>
             </button>
         )
     }
@@ -42,7 +42,7 @@ export default function Creator() {
             <h1 className={style.as_title_container}>{translations.check_in[lang]}</h1>
             <div className={style.feeling_buttons}>
                 {Array.apply(0, Array(5)).map((x,i) => {
-                    return <motion.div whileHover={{scale: 0.8}} whileTap={{backgroundColor: "#000000", borderRadius:100}} index={i + 1} key={i} > <FeelingButton index={i + 1} key={i}/> </motion.div>
+                    return <div whileTap={{backgroundColor: "#000000", borderRadius:100}} index={i + 1} key={i} > <FeelingButton index={i + 1} key={i}/> </div>
                     ;
                 })}
             </div>

@@ -61,7 +61,26 @@ const translations = {
     },
 
     // ----- General Translations -----
-
+    avatar_tooltip: {
+        en: "Change Avatar",
+        es: "Change Avatar",
+    },
+    map_tooltip: {
+        en: "Go To The map",
+        es: "Go To The map",
+    },
+    checkin_tooltip: {
+        en: "Check in",
+        es: "Check in",
+    },
+    mute_tooltip: {
+        en: "Mute Music",
+        es: "Mute Music",
+    },
+    logout_tooltip: {
+        en: "Logout",
+        es: "Logout",
+    },
     login: {
         en: "Login",
         es: "Login"
@@ -144,6 +163,11 @@ const translations = {
     empty_hint: {
         en:"Please put in an answer.",
         es:"Por favor, ponga una respuesta.",
+    },
+
+    pet_ayu: {
+        en: "Play with Ayu",
+        es: "Juega con Ayu"
     },
 
     question_feedback: [ 
