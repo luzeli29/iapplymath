@@ -10,11 +10,19 @@ export default function RestaurantQuestions() {
     const context = useWrapperContext();
     const router = useRouter();
     const order = context.state.order;
-    const question = generateOrderQuestions(order)
+
+    const [questions, setQuestions] = useState()
+
+    useEffect(() => {
+        setQuestions(generateOrderQuestions(order))
+    },[]);
+
+    if(!questions) return <></>
+
     return (
         order ? 
             <GameQuestionLayout
-                    questions={question}
+                    questions={questions}
                     onBack={() => router.push('/game/restaurant/')}
                     onFinish={() => 
                         {

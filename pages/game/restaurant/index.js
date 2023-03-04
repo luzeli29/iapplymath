@@ -28,9 +28,7 @@ const Resturant = () => {
     useEffect(() => {
         setMenu(getMenu());
         setBudget(Math.floor(Math.random() * 3) + 10)
-    }, []);
-
-
+    }, [router.isReady]);
 
     function handleHover(dish) {
         if(dish) {
@@ -71,6 +69,8 @@ const Resturant = () => {
         }
     }
       
+    if(!order || !menu) return <></>
+
     return (
         <GameIndexLayout
                 lang={lang}

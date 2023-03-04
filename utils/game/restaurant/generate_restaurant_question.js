@@ -19,7 +19,7 @@ function generateOrderQuestions(order) {
         },
         total,
         [],
-        "money"
+        "decimal"
     )
 
 
@@ -30,7 +30,7 @@ function generateOrderQuestions(order) {
         },
         total - sortedOrder[0].price,
         [],
-        "money"
+        "decimal"
     )
     questions[2] = createGameQuestion(
         {
@@ -39,7 +39,7 @@ function generateOrderQuestions(order) {
         },
         total - sortedOrder[2].price,
         [],
-        "money"
+        "decimal"
     )
 
     questions[3] = createGameQuestion(
@@ -49,27 +49,27 @@ function generateOrderQuestions(order) {
         },
         order.entree.price * 3,
         [],
-        "money"
+        "decimal"
     )
 
     questions[4] = createGameQuestion(
         {
-            en:"Elena’s friend, Alex, joins you at the table. If all three of you order the same drink, " + order.drink.en + " what is the total cost of all drinks?",
+            en:"Elena’s friend, Alex, joins you at the table. If all three of you order the same drink, " + order.drink.en + " , what is the total cost of all drinks?",
             es:"Missing ES translation.",
         },
         order.drink.price * 3,
         [],
-        "money"
+        "decimal"
     )
 
     questions[5] = createGameQuestion(
         {
-            en:"Elena’s friend, Alex, joins you at the table. If all three of you order the same dessert, " + order.dessert.en + " what is the total cost of all desserts?",
+            en:"Elena’s friend, Alex, joins you at the table. If all three of you order the same dessert, " + order.dessert.en + ", what is the total cost of all desserts?",
             es:"Missing ES translation.",
         },
         order.dessert.price * 3,
         [],
-        "money"
+        "decimal"
     )
 
     let randomValue = getRandomInt(1, 10);
@@ -80,7 +80,7 @@ function generateOrderQuestions(order) {
         },
         order.entree.price * randomValue,
         [],
-        "money"
+        "decimal"
     )
 
     randomValue = getRandomInt(1, 10);
@@ -91,7 +91,7 @@ function generateOrderQuestions(order) {
         },
         order.drink.price * randomValue,
         [],
-        "money"
+        "decimal"
     )
 
     randomValue = getRandomInt(1, 10);
@@ -102,7 +102,7 @@ function generateOrderQuestions(order) {
         },
         order.dessert.price * randomValue,
         [],
-        "money"
+        "decimal"
     )
 
     questions[9] = createGameQuestion(
@@ -112,7 +112,7 @@ function generateOrderQuestions(order) {
         },
         order.entree.price / 2,
         [],
-        "money"
+        "decimal"
     )
     questions[10] = createGameQuestion(
         {
@@ -121,7 +121,7 @@ function generateOrderQuestions(order) {
         },
         order.drink.price / 2,
         [],
-        "money"
+        "decimal"
     )
     questions[11] = createGameQuestion(
         {
@@ -130,7 +130,7 @@ function generateOrderQuestions(order) {
         },
         order.dessert.price / 2,
         [],
-        "money"
+        "decimal"
     )
 
     randomValue = getRandomInt(1, 10);
@@ -143,17 +143,19 @@ function generateOrderQuestions(order) {
         },
         Math.floor(secondRandomValue / randomValue),
         [],
+        "decimal"
     )
 
     secondRandomValue = getRandomInt(10, 30);
     questions[13] = createGameQuestion(
         {
-            en:"Your budget is now " + secondRandomValue + " dollars. If you order the " + order.drink.price + " " + order.drink.en +
-                " and " + order.dessert.price + " " + order.dessert.en +  ", how much money do you have left over?",
+            en:"Your budget is now " + secondRandomValue + " dollars. If you order the " + order.drink.price + " dollar " + order.drink.en +
+                " and " + order.dessert.price + " dollar " + order.dessert.en +  ", how much money do you have left over?",
             es:"Missing ES translation.",
         },
         secondRandomValue - (order.dessert.price + order.drink.price),
         [],
+        "decimal"
     )
 
     randomValue = getRandomInt(1, 10);
@@ -165,6 +167,7 @@ function generateOrderQuestions(order) {
         },
         Math.floor(secondRandomValue / randomValue),
         [],
+        "decimal"
     )
     return questions
 
