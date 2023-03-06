@@ -1,5 +1,5 @@
 import clientPromise from "@utils/database/mongodb";
-import {throwError} from '@common_imports'
+import {throwError} from '@utils/imports/commonImports'
 import { resolve } from "styled-jsx/css";
 
 export default async function handler(req, res) {

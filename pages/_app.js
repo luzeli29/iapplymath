@@ -4,8 +4,8 @@ import React, {} from 'react';
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css';
 import '@styles/globals.css'
-import Layout from '@layouts/core/core_layout'
-import ContextWrapper from '@hooks/useContext'
+import Layout from '@layouts/core/coreLayout'
+import ContextWrapper from '@hooks/useWrapperContext'
 
 function MyApp({ Component, session, ...pageProps }) {
   return (
