@@ -33,16 +33,16 @@ export default function FamilySelect() {
 
     return(
         <GameQuestionLayout
-            onBack={() => router.push('/game/aunt-house')}
+            onBack={() => router.push('/game/auntHouse')}
             questions={questions}
             onFinish={() => {
-                router.push('/game/aunt-house/questions/family/' + recipe_index)
+                router.push('/game/auntHouse/questions/family/' + recipeIndex)
                 return(<></>)}}>
             <div className={style.fs_aunt_container}>
                 <Image
                     priority={true}
                     layout="fill"
-                    src={"/img/aunt_house/aunt_house_speaker.png"}
+                    src={"/img/auntHouse/aunt_house_speaker.png"}
                 />
             </div>
         </GameQuestionLayout>)
