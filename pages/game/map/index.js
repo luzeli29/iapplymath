@@ -23,7 +23,7 @@ export default function Map() {
 
     const handleAuntsHouse = () => {
         context.setMapLocation("AuntsHouse");
-        router.push('/game/aunt-house/introduction');
+        router.push('/game/auntHouse/introduction');
     }
 
     return (
@@ -102,47 +102,4 @@ export default function Map() {
             </div>
         </>
     );
-    
-    //TODO: Add text to appear when hovering over playable house
-    //TODO: Recreate map from previous game
-    /*
-    return (
-        <div className={style.map}>
-            <table className={style.map_table}>
-                <tbody>
-                    <tr>
-                        <td className={style.map_box}>
-                            <MapIcon game_page_id={"aunt_house"}/>
-                        </td>
-                        <td className={style.map_box}>
-                        </td>
-                        <td className={style.map_box}>
-                            <MapIcon game_page_id={"school"}/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className={style.map_box}>
-                        </td>
-                        <td className={style.map_box}>
-                            <MapIcon game_page_id={"my_house"}/>
-                        </td>
-                        <td className={style.map_box}>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className={style.map_box}>
-                            <MapIcon game_page_id={"grocery_store"}/>
-                        </td>
-                        <td className={style.map_box}>
-                        </td>
-                        <td className={style.map_box}>
-                            <MapIcon game_page_id={"restaurant"}/>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    )
-
-    */
 }

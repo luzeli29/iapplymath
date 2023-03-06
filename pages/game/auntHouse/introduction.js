@@ -10,7 +10,7 @@ export default function Introduction() {
         <>
         <Dialog 
             scriptId={"aunt_intro"} 
-            onEnd={() => router.push('/game/aunt-house')}/>)
+            onEnd={() => router.push('/game/auntHouse')}/>)
         </>
     )
 }

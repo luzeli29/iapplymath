@@ -21,10 +21,10 @@ export default function RecipeSelect() {
 return (
     <GameIndexLayout
             lang={lang}
-            game_name={"aunt_house"}
+            game_name={"auntHouse"}
             instruction_text={"aunt_welcome"}
             submit_text={"cook"}
-            handleSubmit={() => router.push('/game/aunt-house/recipe-card/' + recipe)}>
+            handleSubmit={() => router.push('/game/auntHouse/recipeCard/' + recipe)}>
                 
         <div className={style.recipe_select_button_grid}>
             {recipes.map((x, index) => {

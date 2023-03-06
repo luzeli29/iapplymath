@@ -9,8 +9,8 @@ export default function Finished() {
     return (
         <GameFinishLayout
             lang={lang}
-            game_name={"aunt_house"}
+            game_name={"auntHouse"}
             restart_text={"recipe_select"}
-            handleRestart={() => router.push('/game/aunt-house')}/>
+            handleRestart={() => router.push('/game/auntHouse')}/>
     );
 }

@@ -7,7 +7,7 @@ import SmallRecipeCard from '@comps/game/auntHouse/smallRecipeCard'
 export default function AuntHouseQuestions() {
     const router = useRouter()
     const { recipeIndex } = router.query
-    const { question_type } = router.query
+    const { questionType } = router.query
     //No clue why, but if you delete this if statement then the page can not be refreshed without error
     if(!recipeIndex) {
         return(
@@ -16,15 +16,15 @@ export default function AuntHouseQuestions() {
     }
     var finishRoute = '';
     var questions = [];
-    switch(question_type) {
+    switch(questionType) {
         case 'family': 
             var familySize = window.sessionStorage.getItem('FAMILY_SIZE');
-            questions = generateFamilyQuestions(recipe_index,familySize);
+            questions = generateFamilyQuestions(recipeIndex,familySize);
             finishRoute = '/game/aunt-house/finished';
             break;
         default:
-            questions = generateAuntHouseQuestions(recipe_index)
-            finishRoute = '/game/aunt-house/family-members/' + recipe_index;
+            questions = generateAuntHouseQuestions(recipeIndex)
+            finishRoute = '/game/aunt-house/family-members/' + recipeIndex;
             break;
     }
     return (
@@ -35,7 +35,7 @@ export default function AuntHouseQuestions() {
                     window.sessionStorage.removeItem('FAMILY_SIZE');
                     router.push(finishRoute)}}> 
             <SmallRecipeCard
-                recipeIndex={recipe_index}
+                recipeIndex={recipeIndex}
                 />
         </GameQuestionLayout>
     );

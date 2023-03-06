@@ -17,7 +17,7 @@ export default function RecipeCard() {
         )
     }
     
-    const recipe = recipes[recipe_index]
+    const recipe = recipes[recipeIndex]
     return(
         <div className={style.recipe_card_container}>
             <div className={style.recipe_card_title_container}>
@@ -42,7 +42,7 @@ export default function RecipeCard() {
             </div>
             
             <button 
-                onClick={() => router.push('/game/aunt-house/questions/basic/' + recipe_index)}
+                onClick={() => router.push('/game/auntHouse/questions/basic/' + recipeIndex)}
                 className={style.recipe_card_button}> <strong>
                {/*TODO: potencially change if other langs were added*/}
                {translations.cook[lang]}</strong></button>

@@ -62,7 +62,7 @@ export default function Header() {
                     <button onClick={() => router.push('/game/map')}><BsMapFill/></button>
                     </Tooltip>
                     <Tooltip text={CheckinTooltipText}>
-                    <button onClick={() => router.push('/check_in')}><RiChatHeartLine/></button>
+                    <button onClick={() => router.push('/checkIn')}><RiChatHeartLine/></button>
                     </Tooltip>
                     <Tooltip text={MuteTooltipText}>
                     <button onClick={() => context.state.mute === "Yes" ? context.setMute("No") : context.setMute("Yes")}>

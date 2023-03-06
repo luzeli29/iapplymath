@@ -19,7 +19,7 @@ export default function Ayu ({handleAyuClick}) {
     const [isHovering, setIsHovered] = useState(false);
 
     async function handleAPICall() {
-       const endpoint = '/api/session/increment_ayu/' + context.state.username
+       const endpoint = '/api/session/incrementAyu/' + context.state.username
 
        const options = {
           method: 'PUT',
