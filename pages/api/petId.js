@@ -1,5 +1,5 @@
 import clientPromise from "@utils/database/mongodb"
-import {throwError} from '@common_imports'
+import {throwError} from '@utils/imports/commonImports'
 
 export default async function handler(req, res) {
     const client = await clientPromise;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useRouter} from 'next/router'
 import Image from 'next/image'
-import {getText, useWrapperContext} from '@common_imports' 
+import {getText, useWrapperContext} from '@utils/imports/commonImports' 
 
 //test
 

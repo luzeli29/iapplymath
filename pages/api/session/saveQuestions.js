@@ -1,6 +1,6 @@
 import clientPromise from "@utils/database/mongodb";
-import {throwError} from '@common_imports'
-import GetCurrentSessionIndex from '@utils/database/get_current_session'
+import {throwError} from '@utils/imports/commonImports'
+import GetCurrentSessionIndex from '@utils/database/getCurrentSession'
 
 export default async function handler(req, res) {
 
