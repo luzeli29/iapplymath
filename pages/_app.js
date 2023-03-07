@@ -18,7 +18,7 @@ function MyApp({ Component, session, ...pageProps }) {
           <Layout>
             <Component {...pageProps}/>
           </Layout>
-        </ContextWrapper> 
+        </ContextWrapper>
     </>
   )
 }
