@@ -7,15 +7,9 @@ export default function ContextWrapper({ children }) {
   //creating the context states
   //lang is the current langage needed to show
   const [lang, setLang] = useState("en");
-
-  const [username, setUsername] = useState();
-  const [sessionId, setSessionId] = useState();
-
   const [mapLocation, setMapLocation] = useState("Base");
-  const [userId, setUserId] = useState();
   const [order, setOrder] = useState();
   const [mute, setMute] = useState("No");
-
   const [background, setBackgroundColor] = useState();
 
   useEffect(() => {
@@ -26,38 +20,6 @@ export default function ContextWrapper({ children }) {
       setLang("en")
     } else {
       setLang(window.sessionStorage.getItem('LANG_STATE'))
-    }
-
-    //init avatar on refresh
-    const avatarIdLocal = window.sessionStorage.getItem('AVATAR_ID');
-    if ( avatarIdLocal === null) {
-      window.sessionStorage.setItem('AVATAR_ID','')
-      setAvatarId("")
-    } else {
-      setAvatarId(window.sessionStorage.getItem('AVATAR_ID'))
-    }
-
-    const petIdLocal = window.sessionStorage.getItem('PET_ID');
-    if ( petIdLocal === null) {
-      window.sessionStorage.setItem('PET_ID','')
-      setPetId("")
-    } else {
-      setPetId(window.sessionStorage.getItem('PET_ID'))
-    }
-
-    const usernameLocal = window.sessionStorage.getItem('USERNAME');
-    if (usernameLocal) {
-      setUsername(usernameLocal)
-    }
-
-    const userIdLocal = window.sessionStorage.getItem('USER_ID');
-    if (userIdLocal) {
-      setUserId(userIdLocal)
-    }
-
-    const sessionIdLocal = window.sessionStorage.getItem('SESSION_ID');
-    if (sessionIdLocal) {
-      setSessionId(sessionIdLocal)
     }
 
     const backgroundLocal = window.sessionStorage.getItem('BACKGROUND');
@@ -115,37 +77,16 @@ export default function ContextWrapper({ children }) {
       state: {
           lang: lang,
           questionNum: questionNum,
-          avatarId:avatarId,
-          petId: petId,
-          userId: userId,
-          username: username,
           order: order,
           mapLocation: mapLocation,
-          sessionId: sessionId,
           mute: mute,
       },
       setLang: (newLang) => {
         window.sessionStorage.setItem('LANG_STATE',newLang)
         setLang(newLang)
       },
-      setAvatarId: (newAvatarId) => {
-        window.sessionStorage.setItem('AVATAR_ID',newAvatarId)
-        setAvatarId(newAvatarId)
-      },
-      setPetId: (newPetId) => {
-        window.sessionStorage.setItem('PET_ID',newPetId)
-        setPetId(newPetId)
-      },
       setQuestionNum: (newNum) => setQuestionNum(newNum),
       setOrder: (newOrder) => setOrder(newOrder),
-      setUsername: (username) => {
-        window.sessionStorage.setItem('USERNAME',username)
-        setUsername(username)
-      },
-      setUserId: (userId) => {
-        window.sessionStorage.setItem('USER_ID',userId)
-        setUserId(userId)
-      },
       setSessionId: (sessionId) => {
         window.sessionStorage.setItem('SESSION_ID',sessionId)
         setSessionId(sessionId)

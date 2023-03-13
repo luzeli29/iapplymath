@@ -1,10 +1,10 @@
-import clientPromise from "@utils/database/mongodb";
+import clientPromise from "utils/database/mongodb";
 import {throwError} from '@utils/imports/commonImports'
 import { resolve } from "styled-jsx/css";
+import EncryptUsername from "@utils/crypto/encryptUsername"
 
 export default async function handler(req, res) {
   const { username } = req.query
-
   if(!username) {
     return res.json({
       code: 400,
@@ -12,6 +12,9 @@ export default async function handler(req, res) {
       data: {},
     });
   }
+
+  const secureUsername = EncryptUsername(username)
+
   let client, db;
   try{
     client = await clientPromise;
@@ -26,9 +29,9 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case "POST":
-      return await postUser(username,db,res)
+      return await postUser(secureUsername,db,res)
     case "GET":
-      return await getUser(username,db,res)
+      return await getUser(secureUsername,db,res)
   }
 }
 
@@ -46,42 +49,29 @@ async function getUser(username,db,res) {
   } else {
     return res.json({
       code: 404,
-      message: "User" + username + " not found database.",
+      message: "User " + username + " not found database.",
       data: {},
     });
   }
 }
 
 async function postUser(username, db,res) {
-  const bodyObject = {username: username}
-
-  //Check if user is already in DB
-  try {
-    const findResponse = await getUser(username, db,res)
-  } catch (e) {
-    return res.json({
-      code: 400,
-      message: "Ran into error trying to check if user is in DB before posting. " + e.message,
-      data: {},
-    });
-  }
-
-  console.log(findResponse)
-  //TODO: Check if 404, if so then post user. 
   try{
-
     const insertObject = {
       username: username,
       date_created: new Date(),
       sessions: [],
     }
 
-    const insertResult = await db.collection("data").insertOne(insertObject);
+    await db.collection("data").insertOne(insertObject);
+
+    const bodyObject = {username: username}
+    let findResponse = await db.collection("data").findOne(bodyObject)    
 
     return res.json({
       code: 200,
       message: "Created user.",
-      data: insertResult,
+      data: findResponse,
     });
 
   } catch (e) {
@@ -92,3 +82,4 @@ async function postUser(username, db,res) {
     });
   }
 }
+

@@ -19,24 +19,7 @@ const data = [
 
 
 export default function AvatarCreator() {
-  //get the site context and lang
-  const context = useWrapperContext()
-  const lang = context.state.lang
-
-  const router = useRouter();
-
-  const [num, setNum] = useState(0)
-
-  function handleClick() {
-    setNum(num + 1)
-  }
-
-  //This is called when the player is done creating
-  //Should handle anything to be done in order to use avatar in game
-  const handleFinishAvatar = () => {
-    context.setViewState("map")
-  }
-
+  const {skinTone, Slider} = useSkinSlider()
   return (
     <div>
       <h1>Creator</h1>

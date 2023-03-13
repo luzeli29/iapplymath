@@ -1,4 +1,4 @@
-import clientPromise from "@utils/database/mongodb";
+import clientPromise from "utils/database/mongodb";
 import {throwError} from '@utils/imports/commonImports'
 import GetCurrentSessionIndex from '@utils/database/getCurrentSession'
 
