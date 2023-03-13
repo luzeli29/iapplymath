@@ -24,17 +24,17 @@ export default function AvatarCreator() {
 
 
   return (
-    <div className='text-center'>
+    <div className='text-center pt-3'>
       <h3>Create Your Avatar</h3>
-      <div className='row'>
+      <div className='row pt-4'>
         <div className='col-1 '></div>
         <div className='col-6 '>
           {/* THIS IS WHERE THE AVATAR PREVIEW SHOULD BE*/}
-          <div className='p-5 border' style={{backgroundColor: skinToneHex}} >
+          <div className='p-5 border border-dark border-3' style={{backgroundColor: skinToneHex}} >
           </div>
         </div>
-        <div className='col-4 border'>
-          <div className='row pt-4'>
+        <div className='col-4'>
+          <div className='row pt-2'>
             <SkinToneSlider/>
 
           </div>
