@@ -1,4 +1,4 @@
-import clientPromise from "@utils/database/mongodb"
+import clientPromise from "utils/database/mongodb"
 import {throwError} from '@utils/imports/commonImports'
 
 export default async function handler(req, res) {
@@ -15,8 +15,13 @@ export default async function handler(req, res) {
             },
             };
             try{
-                let myPost = await db.collection("data").updateOne(filter,updateDoc)
-                res.json(myPost.acknowledged);
+                await db.collection("data").updateOne(filter,updateDoc)
+                let findResponse = await db.collection("data").findOne(filter)   
+                return res.json({
+                    code: 200,
+                    message: '"avatarId" saved to user.',
+                    data: findResponse,
+                });
             } catch (error) {
                 throwError("Post to DB failed. " + error)
             }

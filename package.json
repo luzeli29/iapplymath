@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.10.2",
+    "crypto-js": "^4.1.1",
     "framer-motion": "^9.0.1",
+    "js-cookie": "^3.0.1",
     "mongodb": "^3.5.9",
     "next": "^13.1.6",
     "next-connect": "^0.13.0",

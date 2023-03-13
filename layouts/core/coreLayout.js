@@ -1,7 +1,7 @@
 import Header from "comps/header/header";
 import ReactHowler from "react-howler";
 import React, {useEffect, useState} from "react";
-import {useWrapperContext} from "@utils/imports/commonImports";
+import {useWrapperContext} from "utils/imports/commonImports";
 
 export default function Layout({ children }) {
     //standard layout of every page
