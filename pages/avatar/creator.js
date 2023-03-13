@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import {useWrapperContext} from '@utils/imports/commonImports'
+import useSkinSlider from '@hooks/avatar/useSkinSlider';
 
 //TODO: Finish avatar creator
 const data = [
@@ -19,27 +20,27 @@ const data = [
 
 
 export default function AvatarCreator() {
-  //get the site context and lang
-  const context = useWrapperContext()
-  const lang = context.state.lang
+  const {skinToneHex, SkinToneSlider} = useSkinSlider()
 
-  const router = useRouter();
-
-  const [num, setNum] = useState(0)
-
-  function handleClick() {
-    setNum(num + 1)
-  }
-
-  //This is called when the player is done creating
-  //Should handle anything to be done in order to use avatar in game
-  const handleFinishAvatar = () => {
-    context.setViewState("map")
-  }
 
   return (
-    <div>
-      <h1>Creator</h1>
+    <div className='text-center'>
+      <h3>Create Your Avatar</h3>
+      <div className='row'>
+        <div className='col-1 '></div>
+        <div className='col-6 '>
+          {/* THIS IS WHERE THE AVATAR PREVIEW SHOULD BE*/}
+          <div className='p-5 border' style={{backgroundColor: skinToneHex}} >
+          </div>
+        </div>
+        <div className='col-4 border'>
+          <div className='row pt-4'>
+            <SkinToneSlider/>
+
+          </div>
+        </div>
+        <div className='col-1 '></div>
+      </div>
     </div>
   );
 }
