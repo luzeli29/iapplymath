@@ -2,8 +2,12 @@ import Header from "comps/header/header";
 import ReactHowler from "react-howler";
 import React, {useEffect, useState} from "react";
 import {useWrapperContext} from "utils/imports/commonImports";
+import { useSiteContext } from "@hooks/siteContext/useSiteContext";
+import Loading from "@comps/screens/loading";
 
 export default function Layout({ children }) {
+    const {user, loading, error} = useSiteContext()
+
     //standard layout of every page
     //has a header with title and lang select,
     //then the children displayed in the box of the view container

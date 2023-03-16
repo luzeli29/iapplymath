@@ -5,19 +5,26 @@ import EncryptUsername from "@utils/crypto/encryptUsername";
 
 export default async function handler(req, res) {
   const { username } = req.query
-  const client = await clientPromise;
-  const db = client.db(process.env.DB_NAME);
+  if(!username) {
+    return res.json({
+      code: 400,
+      message: "Username cannot be null",
+      data: {},
+    });
+  }
+  const bodyObject = req.body;
   const secureUsername = EncryptUsername(username)
 
+  const client = await clientPromise;
+  const db = client.db(process.env.DB_NAME);
   switch (req.method) {
     case "POST":
       return await startSession(secureUsername,db,res);
     case "PUT":
-      return await endSession(secureUsername,db,res);
+      return await putSession(secureUsername,bodyObject,db,res);
     case "GET":
       return await getSessions(secureUsername,db,res);
   }
-  return resolve
 }
 
 async function getSessions(username,db,res) {
@@ -31,46 +38,67 @@ async function getSessions(username,db,res) {
   }
 }
 
-//Logic to end session
-async function endSession(username,db,res) {
-  try {
-    const filter = {username: username}
-    
-    //TODO: Handle if you dont find user
-    //TODO: Handle if user has no active session
+async function putSession(username,bodyObject,db,res) {
+  const filter = {username: username}
+  if(Object.keys(bodyObject).length == 0) {
+    return res.status(400).json({
+      code: 400,
+      message: '"bodyObject" was null when trying to put into session.',
+      data: {},
+      });
+  }
+  
+  try{
+
     const sessions = await getSessions(username,db,res)
 
     if(!sessions) {
-      return res.status(404).json({
-        code: 404,
-        message: "Could not end session.",
+      return res.status(400).json({
+        code: 400,
+        message: "Could not end session due to issue with getSessions.",
         data: {},
         });
     }
 
     const index = sessions.length - 1
+    const sessionKeyStart = "sessions." + index + "."
 
-    const endDate = "sessions." + index + ".end_date"
+    let updateSessionObject = {}
+    for (const [key, value] of Object.entries(bodyObject)) {
+      //TODO: Could be better way of handling incrementingAyu
+      if(key == "times_talked_to_ayu") {
+        if (!await incrementAyu(username,index,db)) {
+          return res.status(400).json({
+            code: 400,
+            message: 'Error when trying to increment Ayu',
+            data: {},
+            });
+        }
+         continue;
+       }
+      const sessionKey = sessionKeyStart + key
+      updateSessionObject[sessionKey] = value
+    }
 
     const updateResult = await db.collection("data").findOneAndUpdate(
       filter,
       { 
-        $set : {
-          [endDate] : new Date()
-        }
+        $set : updateSessionObject
       }
      )
-
-    return res.status(200).json({
-    code: 200,
-    message: "Ended session in user.",
-    data: updateResult,
-    });
+     return res.status(200).json({
+      code: 200,
+      message: 'Put "bodyObject" into session.',
+      data: {updateResult},
+      });
+  } catch (e) {
+    return res.status(400).json({
+      code: 400,
+      message: 'Error when trying to put into Session.' + e.message,
+      data: {},
+      });  
   }
-
-  catch (error) {
-    throwError("Could not end user session. " + error)
-  }
+  
 }
 
 //Logic to create new session
@@ -80,10 +108,9 @@ async function startSession(username,db,res) {
 
     //TODO: Handle if you dont find user
     //TODO: Handle if user has active session
-
     const sessionObject = {
       sessions: {
-        start_date: new Date(),
+        start_date: Date.now(),
         times_talked_to_ayu: 0
       }
     };
@@ -93,7 +120,9 @@ async function startSession(username,db,res) {
       filter,
       {$push: sessionObject}
     );
-
+    if(!insertResult) {
+      //TODO: HANDLE ERROR
+    }
     return res.status(200).json({
       code: 200,
       message: "Created session in user.",
@@ -108,5 +137,33 @@ async function startSession(username,db,res) {
       message: error,
       data: insertResult,
     });
+  }
+}
+
+async function incrementAyu(username,index,db) {
+  try {
+
+    const filter = {
+      username : username,
+    }
+
+    const incText = "sessions." + index + ".times_talked_to_ayu"
+
+    const updateResult = await db.collection("data").findOneAndUpdate(
+      filter,
+      { $inc : { 
+          [incText] : 1
+        } 
+      }
+    
+      )
+    if(updateResult.ok) {
+      return true
+    } else {
+      return false
+    }
+  }
+  catch (error) {
+    return false
   }
 }

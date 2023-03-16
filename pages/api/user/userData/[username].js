@@ -59,7 +59,7 @@ async function postUser(username, db,res) {
   try{
     const insertObject = {
       username: username,
-      date_created: new Date(),
+      date_created: (new Date()).toString(),
       sessions: [],
     }
 
