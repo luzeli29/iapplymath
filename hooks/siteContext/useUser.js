@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import log from '@utils/debug/log';
+import useSession from './useSession';
 
 export default function useUser() {
-  const [user, setUser] = useState();
+  const [userdata, setUserdata] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
+
+  const {session} = useSession(userdata)
+
   const generalUserEndpoint = '/api/user/userData/'
   const avatarIdEndpoint = '/api/user/userData/avatarId'
   const petIdEndpoint = '/api/user/userData/petId'
-  const generalSessionEndpoint = '/api/user/sessionData/'
 
   useEffect(() => {
     updateUserFromCookie()
@@ -21,9 +24,9 @@ export default function useUser() {
     const storedUserData = Cookies.get('user');
 
     if (storedUserData) {
-      setUser(JSON.parse(storedUserData));
+      setUserdata(JSON.parse(storedUserData));
     } else {
-      setUser()
+      setUserdata()
     }
     
   }
@@ -101,7 +104,7 @@ export default function useUser() {
     const cleanUserData = cleanUserApiResult(username, result.data)
     setUserCookie(cleanUserData)
     //TODO: Start session for user
-    const sessionStarted = await startSession(username)
+    const sessionStarted = await session.startSession(username)
     setLoading(false)
     return true
   }
@@ -200,75 +203,14 @@ export default function useUser() {
 
   async function logout() {
     log("Logging out...")
-    //TODO: End session for user
-    await endSession(user.username)
 
-    await clearUserCookie()
-  }
-
-  async function startSession(username) {
-    if(!username) {
-      setError('"username" is null when trying to start session.')
-      return false
-    }
-    const endpoint = generalSessionEndpoint + username
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-    try {
-  
-      const response = await fetch(endpoint, options)
-      const result = await response.json()
-      
-      if (result.code === 200) {
-        return true
-      } else {
-        setError('Could not create session.')
-        return false
-      }
-    } catch (e) {
-      setError("Error when starting session.")
-      return false
-    }
-  }
-
-  async function endSession(username) {
-    if(!user) {
-      setError('User is not logged in')
-      return false
-    }
-    if(user.isOffline) {
+    if(userdata.isOffline) {
       return true
     }
-    if(!username) {
-      setError('"username" is null when trying to start session.')
-      return false
-    }
-    const endpoint = generalSessionEndpoint + username
-    const options = {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-    try {
-  
-      const response = await fetch(endpoint, options)
-      const result = await response.json()
-      
-      if (result.code === 200) {
-        return true
-      } else {
-        setError('Error when ending session.')
-        return false
-      }
-    } catch (e) {
-      setError("Error when ending session.")
-      return false
-    }
+
+    await session.endSession(userdata.username)
+
+    await clearUserCookie()
   }
 
   async function setPetId(petId) {
@@ -277,18 +219,18 @@ export default function useUser() {
       setError('"petId" was null')
       return
     }
-    if(!user) {
+    if(!userdata) {
       setError('User is not logged in')
       return
     }
-    if(!user.secureUsername) {
+    if(!userdata.secureUsername) {
       setError('User has not "secureUsername" stored.')
       return
     }
     try{
       log('Setting "petId" to ' + petId)
       
-      if(user.isOffline) {
+      if(userdata.isOffline) {
         const newUser = user
         newUser.petId = petId
         setUserCookie(newUser)
@@ -297,7 +239,7 @@ export default function useUser() {
       }
 
       const data = {
-        username: user.secureUsername,
+        username: userdata.secureUsername,
         petId: petId
       }
 
@@ -323,7 +265,7 @@ export default function useUser() {
         setAvatarId(null)
         return false
       }
-      const cleanUserData = cleanUserApiResult(user.username, result.data)
+      const cleanUserData = cleanUserApiResult(userdata.username, result.data)
       setUserCookie(cleanUserData)
       setLoading(false)
       return true
@@ -341,18 +283,18 @@ export default function useUser() {
       setError('"avatarId" was null')
       return
     }
-    if(!user) {
+    if(!userdata) {
       setError('User is not logged in')
       return
     }
-    if(!user.secureUsername) {
+    if(!userdata.secureUsername) {
       setError('User has not "secureUsername" stored.')
       return
     }
     try{
       log('Setting "avatarId" to ' + avatarId)
 
-      if(user.isOffline) {
+      if(userdata.isOffline) {
         const newUser = user
         newUser.avatarId = avatarId
         setUserCookie(newUser)
@@ -361,7 +303,7 @@ export default function useUser() {
       }
 
       const data = {
-        username: user.secureUsername,
+        username: userdata.secureUsername,
         avatarId: avatarId
       }
 
@@ -387,7 +329,7 @@ export default function useUser() {
         setAvatarId(null)
         return false
       }
-      const cleanUserData = cleanUserApiResult(user.username, result.data)
+      const cleanUserData = cleanUserApiResult(userdata.username, result.data)
       setUserCookie(cleanUserData)
       setLoading(false)
       return true
@@ -398,14 +340,57 @@ export default function useUser() {
     }
   }
 
-  return {
-    user: user,
+  async function incrementAyu() {
+    if(!session) {
+      setError('"session" is null. Can not increment Ayu.')
+      return false;
+    }
+    if(!userdata) {
+      setError('"userdata" is null. Can not increment Ayu.')
+      return false
+    }
+    if(userdata.isOffline) {
+      return true
+    }
+    if(!userdata.username) {
+      setError('"username" is null. Can not increment Ayu.')
+      return false
+    }
+
+    session.incrementAyu(userdata.username)
+
+    return true
+  }
+
+  async function putSession(bodyObject) {
+    if(!session) {
+      setError('"session" is null. Can not increment Ayu.')
+      return false;
+    }
+    if(userdata.isOffline) {
+      return true
+    }
+
+    await session.putSession(userdata.username,bodyObject)
+
+    return true
+  }
+
+  const user = {
     loading: loading,
     error: error,
-    login,
-    logout,
-    setAvatarId,
-    setPetId,
-    offlineLogin,
+    data: userdata,
+    login: login,
+    offlineLogin: offlineLogin,
+    logout: logout,
+    setAvatarId: setAvatarId,
+    setPetId: setPetId,
+    incrementAyu: incrementAyu,
+    putSession: putSession
+
+  }
+  
+  return {
+    user: user
   };
 };

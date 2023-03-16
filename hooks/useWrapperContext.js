@@ -11,7 +11,6 @@ export default function ContextWrapper({ children }) {
   const [order, setOrder] = useState();
   const [mute, setMute] = useState("No");
   const [background, setBackgroundColor] = useState();
-
   useEffect(() => {
     //init lang on refresh
     const langState = window.sessionStorage.getItem('LANG_STATE');
@@ -41,7 +40,7 @@ export default function ContextWrapper({ children }) {
     var r = document.querySelector(':root');
     r.style.setProperty('--page-color', background ? background : "#EDBFC6");
 
-  });
+  },[]);
 
   const clearData = () => {
     setUsername("");

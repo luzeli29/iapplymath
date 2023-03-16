@@ -1,16 +1,20 @@
 import Loading from "@comps/screens/loading"
-import useUser from "@hooks/user/useUser"
+import { useSiteContext } from "@hooks/siteContext/useSiteContext"
+import useUser from "@hooks/siteContext/useUser"
 import { useRouter } from "next/router"
 import React, { useEffect, useState } from "react"
 
 export default function Login() {
-  const {user, loading, error, login, logout, offlineLogin} = useUser()
+  console.log("in login")
+  const {user, loading, error} = useSiteContext()
+  console.log(user)
   const [feedbackText, setFeedbackText] = useState()
   const [onRoute, setOnRoute] = useState()
 
   const router = useRouter()
 
   if(loading) return <Loading/>
+  
 
   async function handleSubmit(event) {
       event.preventDefault()
@@ -23,24 +27,24 @@ export default function Login() {
       }
       let loggedIn = false
       if(submitType == "offline_login") {
-        loggedIn = offlineLogin(inputUsername)
+        loggedIn = user.offlineLogin(inputUsername)
       } else if (submitType == "login") {
-        loggedIn = await login(inputUsername)
+        loggedIn = await user.login(inputUsername)
       }
 
       if(loggedIn){
         setOnRoute(true)
-        router.push("/dev/info")
+        router.push("/test")
       }
   }
 
   if(onRoute) return (<Loading/>)
 
-  if(user && !loading && !error) {
+  if(user.data && !loading && !error) {
     return (
       <div className="container">
         <p className="red">You are already logged in.</p>
-        <button className="basic_button" onClick={() => logout()}>Logout</button>
+        <button className="basic_button" onClick={() => user.logout()}>Logout</button>
       </div>
     )
   }
