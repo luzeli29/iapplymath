@@ -1,11 +1,11 @@
 import React, {useState,useEffect, useReducer} from 'react'
 import {useRouter} from 'next/router'
-import {useWrapperContext,GameIndexLayout} from '@common_imports'
+import {useWrapperContext,GameIndexLayout} from '@utils/imports/commonImports'
 import style from '@styles/restaurant.module.css'
-import getMenu from '@utils/game/restaurant/get_menu'
-import ItemDescription from '@components/game/restuarant/ItemDescription'
-import Order from '@components/game/restuarant/Order'
-import Menu from '@components/game/restuarant/Menu'
+import getMenu from '@utils/game/restaurant/getMenu'
+import ItemDescription from '@comps/game/restuarant/itemDescription'
+import Order from '@comps/game/restuarant/order'
+import Menu from '@comps/game/restuarant/menu'
 
 const Resturant = () => {
     const context = useWrapperContext()

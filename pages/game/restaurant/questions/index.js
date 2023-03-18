@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from 'react'
 import {useRouter} from 'next/router'
-import {GameQuestionLayout,useWrapperContext} from '@common_imports'
-import generateOrderQuestions from '@utils/game/restaurant/generate_restaurant_question'
-import Order from '@components/game/restuarant/Order'
+import {GameQuestionLayout,useWrapperContext} from '@utils/imports/commonImports'
+import generateOrderQuestions from '@utils/game/restaurant/generateRestaurantQuestion'
+import Order from '@comps/game/restuarant/order'
 
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import {useRouter} from 'next/router'
-import {GameFinishLayout,useWrapperContext} from '@common_imports'
+import {GameFinishLayout,useWrapperContext} from '@utils/imports/commonImports'
 
 
 export default function Finished() {

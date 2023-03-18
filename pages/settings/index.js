@@ -1,5 +1,5 @@
 import React from 'react'
-import { useWrapperContext, getText } from '@common_imports'
+import { useWrapperContext, getText } from '@utils/imports/commonImports'
 import { useRouter } from 'next/router'
 
 export default function Index() {

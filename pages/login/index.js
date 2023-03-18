@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import {useWrapperContext} from '@common_imports'
+import {useWrapperContext} from '@utils/imports/commonImports'
 import {useRouter} from 'next/router'
-import {throwError} from '@common_imports'
+import {throwError} from '@utils/imports/commonImports'
 
 export default function Login() {
   const context = useWrapperContext();
