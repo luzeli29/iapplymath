@@ -19,7 +19,6 @@ const data = [
 
 
 export default function AvatarCreator() {
-  const {skinTone, Slider} = useSkinSlider()
   return (
     <div>
       <h1>Creator</h1>
