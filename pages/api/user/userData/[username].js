@@ -13,8 +13,17 @@ export default async function handler(req, res) {
     });
   }
 
-  const secureUsername = EncryptUsername(username)
-
+  let secureUsername
+  try {
+    secureUsername = EncryptUsername(username)
+  } catch (e) {
+    return res.json({
+      code: 400,
+      message: "Error why trying to encrypt username.",
+      data: {},
+    });
+  }
+  
   let client, db;
   try{
     client = await clientPromise;
