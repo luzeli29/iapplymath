@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Image from "next/image";
 import { useRouter } from 'next/router'
-import {useWrapperContext} from '@common_imports'
+import {useWrapperContext} from '@utils/imports/commonImports'
 
 //TODO: Finish avatar creator
 const data = [
@@ -19,24 +19,6 @@ const data = [
 
 
 export default function AvatarCreator() {
-  //get the site context and lang
-  const context = useWrapperContext()
-  const lang = context.state.lang
-
-  const router = useRouter();
-
-  const [num, setNum] = useState(0)
-
-  function handleClick() {
-    setNum(num + 1)
-  }
-
-  //This is called when the player is done creating
-  //Should handle anything to be done in order to use avatar in game
-  const handleFinishAvatar = () => {
-    context.setViewState("map")
-  }
-
   return (
     <div>
       <h1>Creator</h1>

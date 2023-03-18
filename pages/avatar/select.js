@@ -2,7 +2,7 @@ import React from 'react';
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import style from '@styles/avatar.module.css'
-import {useWrapperContext,getText} from '@common_imports'
+import {useWrapperContext,getText} from '@utils/imports/commonImports'
 
 export default function Creator() {
     //get the site context and lang

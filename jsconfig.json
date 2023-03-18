@@ -3,11 +3,11 @@
         "baseUrl": ".",
         "paths": {
             // Imports to files
-            "@common_imports": ["utils/imports/common_imports"],
+            "@commonImports": ["utils/imports/commonImports"],
 
             // Imports to folders
             "@public/*": ["public/*"],
-            "@components/*": ["components/*"],
+            "@comps/*": ["comps/*"],
             "@layouts/*": ["layouts/*"],
             "@utils/*": ["utils/*"],
             "@styles/*": ["styles/*"],
@@ -17,4 +17,4 @@
             "@translations": ["public/text/translations"],
         }
     },
-  }
+}

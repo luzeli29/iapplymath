@@ -1,4 +1,4 @@
-import menu_options from "@public/text/menu_options"
+import menu_options from "@public/text/menuOptions"
 
 export default function getMenuItem(menuItemCode) { 
     if(!menuItemCode) {

@@ -1,5 +1,5 @@
 import translations from '@public/text/translations'
-import {throwError} from '@common_imports' 
+import {throwError} from '@utils/imports/commonImports' 
 
 export default function getText(textId,lang) {
 
