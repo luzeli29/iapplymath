@@ -1,6 +1,6 @@
 import React from 'react'
 import style from '@styles/restaurant.module.css'
-import MenuButton from './MenuButton';
+import MenuButton from './menuButton';
 
 const Menu = ({menu, handleHover, handleDishClick}) => {
     if(menu) {
