@@ -4,7 +4,7 @@ import {useWrapperContext,GameIndexLayout} from '@utils/imports/commonImports'
 import style from '@styles/restaurant.module.css'
 import getMenu from '@utils/game/restaurant/getMenu'
 import ItemDescription from '@comps/game/restuarant/itemDescription'
-import Order from '@comps/game/restuarant/Order'
+import Order from '@comps/game/restuarant/order'
 import Menu from '@comps/game/restuarant/menu'
 
 const Resturant = () => {

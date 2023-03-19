@@ -22,7 +22,6 @@ const data = [
 export default function AvatarCreator() {
   const {skinToneHex, SkinToneSlider} = useSkinSlider()
 
-
   return (
     <div className='text-center pt-3'>
       <h3>Create Your Avatar</h3>
