@@ -72,7 +72,8 @@ export default function Ayu ({handleAyuClick}) {
                    priority={true}
                    style={{zIndex:-1}}
                    layout={"fill"}
-                   src={"/img/ayu/ayu_idle.gif"}/>
+                   src={"/img/ayu/ayu_idle.gif"}
+                   alt={"ayu idle gif"}/>
              </button>
              <div>              
                   {/* <p className={style.pet_me}>Pet me!</p> */}

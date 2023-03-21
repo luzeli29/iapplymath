@@ -20,7 +20,8 @@ const Index = () => {
           height = {280}
           quantity = {100}
           priority = {true}
-          src={"/img/other/global.png"}/>
+          src={"/img/other/global.png"}
+          alt={"globe"}/>
       </div>
       <div className="text-center">
         {userId ?

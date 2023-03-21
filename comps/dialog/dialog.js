@@ -137,13 +137,15 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                             width={650}
                             height={375}
                             quality={100}
-                            src={backgroundImgSrc}/>
+                            src={backgroundImgSrc}
+                            alt={"background"}/>
                         <div className={style.player_img}>
                             <Image
                                     priority={true}
                                     layout={"fill"}
                                     quality={100}
-                                    src={"/img/avatar/pre_made/A" + avatarId + "_back.png"}/> 
+                                    src={"/img/avatar/pre_made/A" + avatarId + "_back.png"}
+                                    alt={"avatar"}/> 
                         </div>
                         <div className={style.speaker_img}>
                         {dialog.no_speaker ?
@@ -155,7 +157,9 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                                 priority={true}
                                 layout={"fill"}
                                 quality={100}
-                                src={"/img/" + stage + "/" + stage + "_speaker.png"}/>
+                                src={"/img/" + stage + "/" + stage + "_speaker.png"}
+                                alt={"speaker image"}
+                                />
                         }
                         </div>
                     </>
@@ -165,7 +169,8 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                         width={375}
                         height={375}
                         quality={100}
-                        src={backgroundImgSrc}/>
+                        src={backgroundImgSrc}
+                        alt={"background"} />
                 }
             </div>
             <input className="d-none" autoFocus={true} onBlur={({ target }) => {target.focus()}}/>

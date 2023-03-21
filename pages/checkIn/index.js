@@ -32,7 +32,8 @@ export default function Creator() {
                 <Image
                     priority={true}
                     layout={"fill"}
-                    src={feeling == index ? path + index + "_selected.png" : path + index + ".png"}/>
+                    src={feeling == index ? path + index + "_selected.png" : path + index + ".png"}
+                    alt={"feeling"}/>
             </button>
         )
     }

@@ -94,7 +94,7 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
             <div>
                 <Popup trigger={
                                 <button isHovering={true} style={{marginTop:"10px", marginLeft:"10px"}}> 
-                                    <Image width={30} height={50} src={"/img/other/calcicon.png"}/>
+                                    <Image width={30} height={50} src={"/img/other/calcicon.png"} alt={"calculator"}/>
                                 </button>
                                 }
                         closeOnDocumentClick={false} 

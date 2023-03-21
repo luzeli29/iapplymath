@@ -41,6 +41,7 @@ return (
                                         width={80}
                                         height={80}
                                         src={"/img/food/"+x.path+ ".png"}
+                                        alt={"food"}
                                     />
                                 </div>
                         </button>

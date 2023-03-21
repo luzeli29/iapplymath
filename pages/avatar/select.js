@@ -49,7 +49,8 @@ export default function Creator() {
                 <Image
                         priority={true}
                         layout={"fill"}
-                        src={context.state.avatarId == index ? path + index + "_selected.png" : path + index + ".png"}/> 
+                        src={context.state.avatarId == index ? path + index + "_selected.png" : path + index + ".png"}
+                        alt={"avatar"}/> 
             
             </button>
         )

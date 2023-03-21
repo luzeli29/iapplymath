@@ -54,7 +54,8 @@ export default function Pet() {
                 <Image
                         priority={true}
                         layout={"fill"}
-                        src={context.state.petId == index ? path + index + ".png" : path + index + ".png"}/> 
+                        src={context.state.petId == index ? path + index + ".png" : path + index + ".png"}
+                        alt={"pet"}/> 
             </div>
             </ClickableIcon>
         )
