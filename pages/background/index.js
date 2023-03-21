@@ -32,7 +32,8 @@ export default function Creator() {
                 <Image
                     priority={true}
                     layout={"fill"}
-                    src={background === index ? path + index + "_selected.png" : path + index + ".png"}/>
+                    src={background === index ? path + index + "_selected.png" : path + index + ".png"}
+                    alt={"background color"}/>
 
             </button>
         )

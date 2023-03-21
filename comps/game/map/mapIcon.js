@@ -24,7 +24,8 @@ export default function MapIcon({game_page_id}) {
                                 layout={"fill"}
                                 quality={100}
                                 priority={true}
-                                src={src}/> 
+                                src={src}
+                                alt={"map"}/> 
                     </button>
                 </div>
             </div>

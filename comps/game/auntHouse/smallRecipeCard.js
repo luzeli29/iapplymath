@@ -18,7 +18,8 @@ export default function SmallRecipeCard({recipeIndex}) {
                                         <p className={style.small_recipe_card_ing} key={ing[lang]}>
                                             <img 
                                                 src={"/img/ing/" + ing.img} 
-                                                className={style.ing_image_small}/>
+                                                className={style.ing_image_small}
+                                                alt={"recipe ingredient"}/>
                                             {ing.amount + " " + ing[lang]}
                                         </p>
                                     );

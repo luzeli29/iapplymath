@@ -52,7 +52,8 @@ export default function Map() {
                         layout={"fill"}
                         quality={100}
                         priority={true}
-                        src={"/img/map/aunt_house.png"}/> 
+                        src={"/img/map/aunt_house.png"}
+                        alt={"aunt house"}/> 
 
                 </button>
                 
@@ -72,7 +73,8 @@ export default function Map() {
                         layout={"fill"}
                         quality={100}
                         priority={true}
-                        src={"/img/map/restaurant.png"}/>
+                        src={"/img/map/restaurant.png"}
+                        alt={"restaurant"}/>
                     <p>{translations.restaurant[lang]}</p>
 
                 </button> 
