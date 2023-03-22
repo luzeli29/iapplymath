@@ -1,5 +1,5 @@
 import Loading from '@comps/screens/loading'
-import { useSiteContext } from '@hooks/siteContext/useSiteContext'
+import { useSiteContext } from '@hooks/siteContext/useUserContext'
 import useUser from '@hooks/siteContext/useUser'
 import Link from 'next/link'
 import { useRouter } from 'next/router'

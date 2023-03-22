@@ -58,7 +58,7 @@ async function getUser(username,db,res) {
   } else {
     return res.json({
       code: 404,
-      message: "User " + username + " not found database.",
+      message: "User not found.",
       data: {},
     });
   }
