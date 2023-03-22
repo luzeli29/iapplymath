@@ -67,7 +67,6 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
         };
      }, [handleKeyPress]);
 
-    console.log(correctAnswer)
     if (correctAnswer === "") {
         //returns when there is no needed answer
         return (

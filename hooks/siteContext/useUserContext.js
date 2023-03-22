@@ -6,14 +6,9 @@ const Context = createContext();
 
 export default function SiteWrapper({children}) {
     const [error, setError] = useState();
-    const {user} = useUser();
-    const {settings} = useSettings();
+    const {user,settings} = useUser();
 
     //TODO: HANDLE LOADING AND ERRORS IN DIFFERNET HOOKS
-
-    function getErrors() {
-      //get errors form user, session and settings
-    }
 
     function logout() {
       user.logout()
@@ -22,10 +17,10 @@ export default function SiteWrapper({children}) {
     }
 
     const context = {
-        user: user,
         settings: settings,
+        user: user,
         loading: user.loading || settings.loading,
-        error: getErrors(),
+        error: error,
         logout:logout
     }
   
@@ -36,6 +31,6 @@ export default function SiteWrapper({children}) {
       );
 }
 
-export function useSiteContext() {
+export function useUserContext() {
     return useContext(Context);
 }

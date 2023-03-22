@@ -1,5 +1,5 @@
 import Loading from '@comps/screens/loading'
-import { useSiteContext } from '@hooks/siteContext/useSiteContext'
+import { useSiteContext } from '@hooks/siteContext/useUserContext'
 import useUser from '@hooks/siteContext/useUser'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -22,7 +22,6 @@ export default function Settings() {
             <p>{error}</p>
         )
     }
-    console.log(settings)
     return (
         <div> 
             <p>{settings.lang}</p>
