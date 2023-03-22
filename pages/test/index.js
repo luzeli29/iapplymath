@@ -1,5 +1,5 @@
 import Loading from '@comps/screens/loading'
-import { useSiteContext } from '@hooks/siteContext/useSiteContext'
+import { useSiteContext } from '@hooks/siteContext/useUserContext'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Link from 'next/link'
@@ -13,9 +13,9 @@ export default function Test() {
         return <Loading/>
     }
 
-    if(error) {
+    if(user.error) {
         return (
-            <p>{error}</p>
+            <p>{user.error}</p>
         )
     }
     return (

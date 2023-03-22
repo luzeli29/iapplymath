@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import log from '@utils/debug/log';
+import {log} from '@utils/debug/log';
 import useSession from './useSession';
+import useSettings from './useSettings';
 
 export default function useUser() {
   const [userdata, setUserdata] = useState();
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const {settings} = useSettings();
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
@@ -25,6 +30,7 @@ export default function useUser() {
 
     if (storedUserData) {
       setUserdata(JSON.parse(storedUserData));
+      setLoggedIn(true)
     } else {
       setUserdata()
     }
@@ -64,6 +70,7 @@ export default function useUser() {
 
     if(storedUserData) {
       setError('A user was already found to be logged in.')
+      setLoading(false)
       return false
     }
   
@@ -79,26 +86,19 @@ export default function useUser() {
     let response = await fetch(endpoint, getOptions)
     if(!response) {
       setError('"response" came back null when trying to login.')
+      setLoading(false)
       return false
     }
     let result = await response.json()
     if(!result) {
       setError('"result" came back null when trying to login.')
+      setLoading(false)
       return false
     }
-    if(result.code != 200 && result.code != 404) {
-      console.log(result.message)
+    if(result.code != 200) {
       setError(result.message)
+      setLoading(false)
       return false
-    }
-
-    //We create user
-    if(result.code == 404) {
-      result = await createUser(username)
-      if(!result) {
-        setError('"result" came back null when trying to login.')
-        return false
-      }
     }
 
     const cleanUserData = cleanUserApiResult(username, result.data)
@@ -106,33 +106,69 @@ export default function useUser() {
     //TODO: Start session for user
     const sessionStarted = await session.startSession(username)
     setLoading(false)
+    setError(false)
+    setLoggedIn(true)
     return true
   }
 
   async function createUser(username) {
+    setLoading(true)
+    setError(false)
     const endpoint = generalUserEndpoint + username
 
-    console.log("User was not found in database, creating new users.")
+    const getOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+
+    let response = await fetch(endpoint, getOptions)
+    if(!response) {
+      setError('"response" came back null when trying to create account.')
+      setLoading(false)
+      return false
+    }
+    let result = await response.json()
+    if(!result) {
+      setError('"result" came back null when trying to create account.')
+      setLoading(false)
+      return false
+    }
+
+    if(result.code == 200) {
+      setError("Could not create user since user already exists.")
+      setLoading(false)
+      return false
+    }
+    if(result.code != 404) {
+      setError("Could not create user.")
+      setLoading(false)
+      return false
+    }
+
     const postOptions = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
     }
-    let response = await fetch(endpoint, postOptions)
+    response = await fetch(endpoint, postOptions)
     if(!response) throw new Error("Response came back null when trying to create new user in login.")
-    let result = await response.json()
+    result = await response.json()
     if(!result) throw new Error("Result came back null when trying to create new user in login.")
 
     if(result.code == 200) {
+      setLoading(false)
+      setError(false)
       return result
     } else {
-      console.log("Error when creating new user. " + result.message)
       setError("Error when creating new user. " + result.message)
     }
   }
 
   function offlineLogin(username) {
+    setError()
     log("Logging in offline mode...")
 
     const offlineUser = {
@@ -146,6 +182,7 @@ export default function useUser() {
     try {
       setUserCookie(offlineUser)
       setLoading(false)
+      setLoggedIn(true)
       return true
     } catch (e) {
       setError('Error when trying to login offline.')
@@ -205,15 +242,21 @@ export default function useUser() {
     log("Logging out...")
 
     if(userdata.isOffline) {
+      await clearUserCookie()
+      setLoading(false)
+      setError(false)
       return true
     }
 
     await session.endSession(userdata.username)
-
+    settings.clearSettingsCookie()
     await clearUserCookie()
+    setLoggedIn(false)
+    return true
   }
 
   async function setPetId(petId) {
+    setError()
     setLoading(true)
     if(petId === undefined) {
       setError('"petId" was null')
@@ -278,6 +321,7 @@ export default function useUser() {
   }
 
   async function setAvatarId(avatarId) {
+    setError()
     setLoading(true)
     if(avatarId === undefined) {
       setError('"avatarId" was null')
@@ -341,6 +385,7 @@ export default function useUser() {
   }
 
   async function incrementAyu() {
+    setError()
     if(!session) {
       setError('"session" is null. Can not increment Ayu.')
       return false;
@@ -363,6 +408,7 @@ export default function useUser() {
   }
 
   async function putSession(bodyObject) {
+    setError()
     if(!session) {
       setError('"session" is null. Can not increment Ayu.')
       return false;
@@ -377,12 +423,14 @@ export default function useUser() {
   }
 
   const user = {
+    loggedIn: loggedIn,
     loading: loading,
     error: error,
     data: userdata,
     login: login,
     offlineLogin: offlineLogin,
     logout: logout,
+    createUser: createUser,
     setAvatarId: setAvatarId,
     setPetId: setPetId,
     incrementAyu: incrementAyu,
@@ -391,6 +439,7 @@ export default function useUser() {
   }
   
   return {
-    user: user
+    user: user,
+    settings: settings,
   };
 };
