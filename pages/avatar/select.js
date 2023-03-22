@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import style from '@styles/avatar.module.css'
-import {useWrapperContext,getText} from '@utils/imports/commonImports'
-
-export default function Creator() {
+import { getText } from '@commonImports';
+import { useUserContext } from '@hooks/siteContext/useUserContext';
+export default function AvatarSelect() {
     //get the site context and lang
+    const {user,settings,loading, error} = useUserContext()
+    const [selectedAvatarId, setSelectedAvatarId] = useState()
+    const router = useRouter()
+
+    if(loading) return <Loading/>
+    if(onRoute) return (<Loading/>)
     const context = useWrapperContext()
     const lang = context.state.lang
     const avatarId = context.state.avatarId
     const username = context.state.username
     
-    const router = useRouter();
 
     //This is called when the player is done creating
     //Should handle anything to be done in order to use avatar in game
