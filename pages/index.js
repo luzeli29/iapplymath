@@ -1,7 +1,7 @@
 import React from 'react';
 import {useRouter} from 'next/router'
 import Image from 'next/image'
-import {getText, useWrapperContext} from '@common_imports' 
+import {getText, useWrapperContext} from '@utils/imports/commonImports' 
 
 //test
 
@@ -20,7 +20,8 @@ const Index = () => {
           height = {280}
           quantity = {100}
           priority = {true}
-          src={"/img/other/global.png"}/>
+          src={"/img/other/global.png"}
+          alt={"globe"}/>
       </div>
       <div className="text-center">
         {userId ?

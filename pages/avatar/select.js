@@ -2,7 +2,7 @@ import React from 'react';
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import style from '@styles/avatar.module.css'
-import {useWrapperContext,getText} from '@common_imports'
+import {useWrapperContext,getText} from '@utils/imports/commonImports'
 
 export default function Creator() {
     //get the site context and lang
@@ -49,7 +49,8 @@ export default function Creator() {
                 <Image
                         priority={true}
                         layout={"fill"}
-                        src={context.state.avatarId == index ? path + index + "_selected.png" : path + index + ".png"}/> 
+                        src={context.state.avatarId == index ? path + index + "_selected.png" : path + index + ".png"}
+                        alt={"avatar"}/> 
             
             </button>
         )
