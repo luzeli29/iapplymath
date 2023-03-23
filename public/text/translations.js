@@ -207,6 +207,24 @@ const translations = {
             en: "Repeat after me: I like math because it’s useful in everyday life.",
             es: "Repite después de mi: Me gustan las matemáticas porque son útiles en mi día a día.",
         },{
+            en: "Repeat after me: My mistakes are opportunities to learn.",
+            es: "Repite después de mi: Mis errores son oportunidades para aprender.",
+        },{
+            en: "Repeat after me: My knowledge of mathematics grows everyday.",
+            es: "Repite después de mi: Mi conocimiento en matemáticas crece todos los días.",
+        },{
+            en: "Repeat after me: My mind is flexible enough to do hard things.",
+            es: "Repite después de mi: Mi mente es lo suficientemente flexible para hacer cosas difíciles.",
+        },{
+            en: "Repeat after me: I don’t have to be fast to be good at math.",
+            es: "Repite después de mi: No tengo que ser la persona más rápida para ser buena en matemáticas.",
+        },{
+            en: "Repeat after me: I am a creative problem solver.",
+            es: "Repite después de mi: Soy creativo al solucionar problemas.",
+        },{
+            en: "Repeat after me: I am a mathematician.",
+            es: "Repite después de mi: Soy matemático/a.",
+        },{
             en: "Practice saying this: With more practice it will get easier!",
             es: "Practica diciendo esto: ¡Con más práctica será más fácil!",
         },{
@@ -221,7 +239,29 @@ const translations = {
         },{
             en: "Practice saying this: I can learn whatever I put my mind to.",
             es: "Practica diciendo esto: Puedo aprender lo que me proponga.",
+        },{
+            en: "Practice saying this: I know that I am supported by others whenever I face challenges.",
+            es: "Practica diciendo esto: Sé que recibo apoyo de los demás cada vez que yo enfrento desafíos.",
+        },{
+            en: "Practice saying this: I am not my emotions and it’s okay to feel them. ",
+            es: "Practica diciendo esto: Yo no soy mis emociones solo las siento y eso está bien.",
+        },{
+            en: "Practice saying this: I can work through my challenges successfully.",
+            es: "Practica diciendo esto: Puedo superar mis desafíos con éxito.",
+        },{
+            en: "Practice saying this: I am developing a love for math.",
+            es: "Practica diciendo esto: Estoy desarrollando un amor por las matemáticas. ",
+        },{
+            en: "Practice saying this: I am a good learner, I learn and I grow at my own pace.",
+            es: "Practica diciendo esto: Soy un buen estudiante, aprendo y crezco a mi propio ritmo.",
+        },{
+            en: "Practice saying this: I am in charge of my learning.",
+            es: "Practica diciendo esto: Estoy a cargo de mi aprendizaje.",
+        },{
+            en: "Practice saying this: My mind is full of brilliant ideas.",
+            es: "Practica diciendo esto: Mi mente está llena de ideas brillantes.",
         },
+        
     ],
 }
 

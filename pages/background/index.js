@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Image from "next/image";
-import {useWrapperContext,getText} from '@common_imports'
+import {useWrapperContext,getText} from '@utils/imports/commonImports'
 import { useRouter } from 'next/router'
 import style from '@styles/avatar.module.css'
 
@@ -32,7 +32,8 @@ export default function Creator() {
                 <Image
                     priority={true}
                     layout={"fill"}
-                    src={background === index ? path + index + "_selected.png" : path + index + ".png"}/>
+                    src={background === index ? path + index + "_selected.png" : path + index + ".png"}
+                    alt={"background color"}/>
 
             </button>
         )

@@ -2,7 +2,7 @@ import ReactHowler from 'react-howler'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
 import style from '@styles/map.module.css'
-import {useWrapperContext} from '@common_imports'
+import {useWrapperContext} from '@utils/imports/commonImports'
 import translations from '@translations';
 import {motion} from 'framer-motion';
 
@@ -23,7 +23,7 @@ export default function Map() {
 
     const handleAuntsHouse = () => {
         context.setMapLocation("AuntsHouse");
-        router.push('/game/aunt-house/introduction');
+        router.push('/game/auntHouse/introduction');
     }
 
     return (
@@ -52,7 +52,8 @@ export default function Map() {
                         layout={"fill"}
                         quality={100}
                         priority={true}
-                        src={"/img/map/aunt_house.png"}/> 
+                        src={"/img/map/aunt_house.png"}
+                        alt={"aunt house"}/> 
 
                 </button>
                 
@@ -72,7 +73,8 @@ export default function Map() {
                         layout={"fill"}
                         quality={100}
                         priority={true}
-                        src={"/img/map/restaurant.png"}/>
+                        src={"/img/map/restaurant.png"}
+                        alt={"restaurant"}/>
                     <p>{translations.restaurant[lang]}</p>
 
                 </button> 
@@ -102,47 +104,4 @@ export default function Map() {
             </div>
         </>
     );
-    
-    //TODO: Add text to appear when hovering over playable house
-    //TODO: Recreate map from previous game
-    /*
-    return (
-        <div className={style.map}>
-            <table className={style.map_table}>
-                <tbody>
-                    <tr>
-                        <td className={style.map_box}>
-                            <MapIcon game_page_id={"aunt_house"}/>
-                        </td>
-                        <td className={style.map_box}>
-                        </td>
-                        <td className={style.map_box}>
-                            <MapIcon game_page_id={"school"}/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className={style.map_box}>
-                        </td>
-                        <td className={style.map_box}>
-                            <MapIcon game_page_id={"my_house"}/>
-                        </td>
-                        <td className={style.map_box}>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className={style.map_box}>
-                            <MapIcon game_page_id={"grocery_store"}/>
-                        </td>
-                        <td className={style.map_box}>
-                        </td>
-                        <td className={style.map_box}>
-                            <MapIcon game_page_id={"restaurant"}/>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    )
-
-    */
 }

@@ -4,8 +4,9 @@ import React, {} from 'react';
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css';
 import '@styles/globals.css'
-import Layout from '@layouts/core/core_layout'
-import ContextWrapper from '@hooks/useContext'
+import Layout from '@layouts/core/coreLayout'
+import ContextWrapper from '@hooks/useWrapperContext'
+import SiteWrapper from '@hooks/siteContext/useSiteContext'
 
 function MyApp({ Component, session, ...pageProps }) {
   return (
@@ -15,10 +16,12 @@ function MyApp({ Component, session, ...pageProps }) {
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
       </Head>
         <ContextWrapper>
+          <SiteWrapper>
           <Layout>
             <Component {...pageProps}/>
           </Layout>
-        </ContextWrapper> 
+          </SiteWrapper>
+        </ContextWrapper>
     </>
   )
 }
