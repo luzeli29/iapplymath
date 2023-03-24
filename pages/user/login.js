@@ -1,4 +1,3 @@
-import ErrorScreen from "@comps/screens/errorScreen"
 import Loading from "@comps/screens/loading"
 import { useUserContext } from "@hooks/siteContext/useUserContext"
 import useUser from "@hooks/siteContext/useUser"
@@ -24,6 +23,7 @@ export default function Login() {
         setFeedbackText("Please input a username.")
         return
       }
+      setFeedbackText()
       let loggedIn = false
       switch (submitType) {
         case "offline_login":
@@ -41,17 +41,16 @@ export default function Login() {
 
       if(loggedIn){
         if(!user.avatarId) {
-          router.push("/avatar/select")
+          router.push("/user/avatar/select")
           setOnRoute(true)
         } else if(!user.petId) {
-          router.push("/pet")
+          router.push("/user/petSelect")
           setOnRoute(true)
         } else {
           router.push("/game/map")
           setOnRoute(true)
         }
       }
-      setFeedbackText(user.error)
   }
 
   if(user.data && !loading && !error) {
@@ -72,7 +71,9 @@ export default function Login() {
 
         <form className="" autoComplete="off" onSubmit={handleSubmit}>
             <div className="row w-75 mx-auto pt-5 text-center">
-              <p className="red">{feedbackText}</p>
+              <p className="red">{feedbackText ? feedbackText : " "}</p>
+              <p className="red">{user.error }</p>
+
               <label className="col-4 text-end" htmlFor="UserId">Username:</label>
               <input className="col-6" id="username" type="text" name="username" pattern="[a-zA-Z0-9]*"/>
             </div>
@@ -88,7 +89,7 @@ export default function Login() {
               </div>
               <div className="col-12 text-center pt-3">
               {user.error ? 
-                  <button className="" type="submit" name="action" value="offline_login">Play Offline</button>
+                  null//<button className="" type="submit" name="action" value="offline_login">Play Offline</button>
                 : null}
               </div>
           </div>

@@ -22,11 +22,12 @@ export default function QuickNavButtons({user,settings,router}) {
         user.logout()
         router.push('/')
     }
+    
     if(loggedIn){
         return (
             <div className="col col-lg-2">
             {/* Avatar Button */}
-            <QuickNavButton text={AvatarTooltipText} onClick={() => router.push('/avatar/select')}>
+            <QuickNavButton text={AvatarTooltipText} onClick={() => router.push('/user/avatar/select')}>
                 <BsFillPersonFill/>
             </QuickNavButton>
             {/* Checkin Button */}
@@ -34,7 +35,7 @@ export default function QuickNavButtons({user,settings,router}) {
                 <BsMapFill/>
             </QuickNavButton>
             {/* Checkin Button */}
-            <QuickNavButton text={CheckinTooltipText} onClick={() => router.push('/checkIn')}>
+            <QuickNavButton text={CheckinTooltipText} onClick={() => router.push('/user/checkIn')}>
                 <RiChatHeartLine/>
             </QuickNavButton>
             {/* Mute Button */}
@@ -55,7 +56,7 @@ export default function QuickNavButtons({user,settings,router}) {
                     {mute ? <TbMusicOff /> : <TbMusic />}
                 </QuickNavButton> 
                 {/* Login Button */}
-                <QuickNavButton text={LoginTooltipText} onClick={() => router.push('/login')}>
+                <QuickNavButton text={LoginTooltipText} onClick={() => router.push('/user/login')}>
                     <TbLogin/>
                 </QuickNavButton>  
             </div>

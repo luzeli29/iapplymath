@@ -18,7 +18,6 @@ export default function Header() {
     if(!router.isReady) return <></>
 
     const loggedIn = user.loggedIn
-    const username = loggedIn ? user.data.username : ""
 
     return(
         <div className="container text-center">
@@ -36,7 +35,7 @@ export default function Header() {
         </div>
         <div className="row justify-content-lg-center">
             {loggedIn ?
-                <p className=" pt-2">{username}</p>
+                <p className=" pt-2">{user.data.username}</p>
             :
                 <></>
             }

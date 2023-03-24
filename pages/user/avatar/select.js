@@ -4,73 +4,65 @@ import { useRouter } from 'next/router'
 import style from '@styles/avatar.module.css'
 import { getText } from '@commonImports';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
+import Error from 'pages/error';
+import Loading from '@comps/screens/loading';
+import { err, log } from '@utils/debug/log';
+import Login from 'pages/user/login';
 export default function AvatarSelect() {
     //get the site context and lang
     const {user,settings,loading, error} = useUserContext()
-    const [selectedAvatarId, setSelectedAvatarId] = useState()
+    const isLoggedIn = user.loggedIn    
+    const userAvatarId = isLoggedIn ? user.data.avatarId : null
+    const [selectedAvatarId, setSelectedAvatarId] = useState(userAvatarId? userAvatarId : null)
+    const [feedbackText, setFeedbackText] = useState()
+
     const router = useRouter()
 
-    if(loading) return <Loading/>
-    if(onRoute) return (<Loading/>)
-    const context = useWrapperContext()
-    const lang = context.state.lang
-    const avatarId = context.state.avatarId
-    const username = context.state.username
+    if(loading || !router.isReady) return <Loading/>
+    if(error) return <Error error={error}/>
     
+    const lang = settings.lang
+    if(!isLoggedIn) return <Login/>
 
-    //This is called when the player is done creating
-    //Should handle anything to be done in order to use avatar in game
-    const handleSaveAvatar = async() => {
-        const data = {
-            username: context.state.username,
-            avatarId: context.state.avatarId
+    function handleSaveAvatar() {
+        if(!isLoggedIn) {
+            setFeedbackText(getText('not_loggedin_avatar',lang))
+            err('User is not logged in.')
+            return
         }
+        setFeedbackText()
 
-        const JSONdata = JSON.stringify(data)
+        user.setAvatarId(selectedAvatarId)
 
-        const endpoint = '/api/avatarId'
-
-        const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSONdata,
-        }
-        const response = await fetch(endpoint, options)
-        //const result = await response.json()
-
-        //TODO: error correct results.
-
-        router.push('/pet')
+        router.push('/user/petSelect')
     }
 
     const AvatarButton = ({index}) => {
-        const path = "/img/avatar/pre_made/A"
+        const path = "/img/avatar/preMade/A"
         return (
             <button
-                onClick={() => context.setAvatarId(index)}
+                onClick={() => setSelectedAvatarId(index)}
                 className={style.avatar_select_button}>
                 <Image
                         priority={true}
                         layout={"fill"}
-                        src={context.state.avatarId == index ? path + index + "_selected.png" : path + index + ".png"}
+                        src={selectedAvatarId == index ? path + index + "_selected.png" : path + index + ".png"}
                         alt={"avatar"}/> 
-            
+
             </button>
         )
     } 
     
-
     return (
         <>
             <h1 className={style.as_title_container}>{getText('pick_avatar',lang)}</h1>
+            <p className='text-center'>{feedbackText}</p>
             <div className={style.button_bar}>
                 {Array.apply(0, Array(8)).map((x,i) => {
                     return <AvatarButton index={i + 1} key={i} />;
                 })}
             </div>
-            {avatarId && username ? 
+            {selectedAvatarId ? 
                 <button 
                         className={style.continue_button}
                         onClick={() => handleSaveAvatar()}>
@@ -78,8 +70,6 @@ export default function AvatarSelect() {
                 </button>
             :
                 <>
-                    <p>
-                    </p>
                 </>
             }
         </>
