@@ -1,3 +1,4 @@
+import ErrorScreen from "@comps/screens/errorScreen"
 import Loading from "@comps/screens/loading"
 import { useUserContext } from "@hooks/siteContext/useUserContext"
 import useUser from "@hooks/siteContext/useUser"
@@ -51,6 +52,7 @@ export default function Login() {
           setOnRoute(true)
         }
       }
+      setFeedbackText(user.error)
   }
 
   if(user.data && !loading && !error) {
@@ -73,7 +75,6 @@ export default function Login() {
             <div className="row w-75 mx-auto pt-5 text-center">
               <p className="red">{feedbackText ? feedbackText : " "}</p>
               <p className="red">{user.error }</p>
-
               <label className="col-4 text-end" htmlFor="UserId">Username:</label>
               <input className="col-6" id="username" type="text" name="username" pattern="[a-zA-Z0-9]*"/>
             </div>

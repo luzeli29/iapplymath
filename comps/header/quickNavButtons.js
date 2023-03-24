@@ -22,7 +22,7 @@ export default function QuickNavButtons({user,settings,router}) {
         user.logout()
         router.push('/')
     }
-    
+
     if(loggedIn){
         return (
             <div className="col col-lg-2">
