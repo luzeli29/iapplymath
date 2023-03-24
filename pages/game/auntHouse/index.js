@@ -4,12 +4,23 @@ import {useRouter} from 'next/router'
 import {GameIndexLayout,useWrapperContext} from '@utils/imports/commonImports'
 import style from '@styles/aunt_house.module.css'
 import recipes from '@public/text/auntHouseRecipes'
+import { useUserContext } from '@hooks/siteContext/useUserContext'
+import Loading from '@comps/screens/loading'
+import Error from 'pages/error'
+import Login from 'pages/user/login'
 
 export default function RecipeSelect() {
-  const lang = useWrapperContext().state.lang;
-  const router = useRouter()
+    const {user,settings,loading, error} = useUserContext()
+    const router = useRouter()
+    const [recipe, setRecipe] = useState();
 
-  const [recipe, setRecipe] = useState();
+    const isLoggedIn = user.loggedIn    
+    if(loading || !router.isReady) return <Loading/>
+    if(error) return <Error error={error}/>
+    if(!isLoggedIn) return <Login/>
+
+    const lang = settings.lang
+
 
   function handleRecipeClick (recipe_object) {
     if(recipe == recipe_object) {
@@ -21,7 +32,7 @@ export default function RecipeSelect() {
 return (
     <GameIndexLayout
             lang={lang}
-            game_name={"auntHouse"}
+            game_name={"aunt_house"}
             instruction_text={"aunt_welcome"}
             submit_text={"cook"}
             handleSubmit={() => router.push('/game/auntHouse/recipeCard/' + recipe)}>

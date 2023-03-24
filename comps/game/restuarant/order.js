@@ -1,11 +1,14 @@
 import style from '@styles/restaurant.module.css'
+import { err } from '@utils/debug/log'
 import {useWrapperContext} from '@utils/imports/commonImports'
 
 //order component that shows what the user has ordered
 //used both in QuestionLayout and in MenuSelect
-function Order({order,budget}) {
-    const lang = useWrapperContext().state.lang
-    
+function Order({lang, order, budget}) {
+    if(!lang) {
+        lang = "en"
+        err('"lang" not defined.')
+    }    
     if(!order) {
         return (
             <div className="container">
