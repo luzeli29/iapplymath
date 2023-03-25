@@ -13,18 +13,42 @@ const dialog_scripts = {
         stage: "ayu",
         lines: [
             {
-                en:"Hi, my name is Ayu and I am here to support you! Click or press enter to advance.",
-                es:"Hola, mi nombre es Ayu y estoy aquí para apoyarte! Por favor haga clic o presione la tecla Enter para avanzar en el juego",
+                en:"Hi, my name is Ayuda but all my friends call me Ayu. “Ayuda” means “help” in Spanish.",
+                es:"Hola, mi nombre es Ayuda pero mis amistades me llaman Ayu. “Ayuda” significa “help” en inglés.",
             },{
-                en:"You can hover over me if you need support and you can click on me if you want to relax.",
-                es:"Puedes mover el cursor sobre mí si necesitas apoyo y puedes hacer clic sobre mí si te quieres relajar.",
+                en:"I am here to help you during the game. If you need a break from solving problems, pet me and I will be there to help you relax. " +
+                    "You can also click on your pet to get support while you are finding solutions. ",
+                es:"Yo estoy aquí para ayudarte durante el juego. Si necesitas un descanso mientras resuelves problemas, acaríciame y allí estaré " +
+                    "para ayudarte a relajar. También puedes hacer clic sobre tu mascota para que te apoye mientras consigues tus soluciones.",
             },{
-                en:"For all math questions, just type your answer with your keyboard.",
-                es:"Para todas las preguntas de matemáticas, simplemente escribe tu respuesta usando el teclado.",
-            },
+                en:"Math problems can be challenging, so we have built in some other game features to help you with solving math in your world. " +
+                    "We know that soon you will be saying “I Apply Math in my World”",
+                es:"Los problemas de matemática pueden sentirse complicados y por eso hemos incorporado algunas otras características " +
+                    "en este juego para ayudarte a resolver problemas matemáticos en tu mundo. Sabemos que pronto estarás diciendo “Yo Aplicó Matemáticas en mi Mundo”",
+            },{
+                en:"Math problems can be challenging, so we have built in some other game features to help you with solving math in your world. " +
+                    "We know that soon you will be saying “I Apply Math in my World”",
+                es:"Los problemas de matemática pueden sentirse complicados y por eso hemos incorporado algunas otras características " +
+                    "en este juego para ayudarte a resolver problemas matemáticos en tu mundo. Sabemos que pronto estarás diciendo “Yo Aplicó Matemáticas en mi Mundo”",
+            },{
+                en: " - The game has a calculator that you can use at any time\n" +
+                    " - The music can be turned on or off whenever you want.\n" +
+                    " - The game will save your progress for your next visit, but you need to log out when you are done playing.\n" +
+                    " - At any point during the game you can tell us how you feel.\n" +
+                    " - You can also return to the map if you’d like to go on a different adventure\n",
+                es: " - El juego tiene una calculadora que puedes usar en cualquier momento \n" +
+                    " - La música se puede apagar y prender cuando tú quieras. \n" +
+                    " - El juego guardará tu progreso para tu próxima visita, pero debes cerrar tu sesión cuando termines de jugar \n" +
+                    " - En cualquier momento durante el juego nos puedes decir cómo te sientes \n" +
+                    " - También puedes volver al mapa si deseas intentar una aventura diferente\n",
+            },{
+                en:"This game has different levels (Level 1, Level 2 and Level 3) Level 1 is for beginners, " +
+                    "Level 2 is for advanced, and Level 3 is for experts. ",
+                es:"Este juego tiene diferentes niveles (Nivel 1, Nivel 2 y Nivel 3) El Nivel 1 es para principiantes, " +
+                    "el Nivel 2 es para avanzados y el Nivel 3 es para expertos.",
+            }
         ],
     },
-
     aunt_intro: {
         stage: "aunt_house",
         lines: [
@@ -108,11 +132,11 @@ const dialog_scripts = {
                 en: "Hey, I am so happy to see you here!",
                 es: "¡Hola, estoy muy feliz de verte por aquí!"
             },{
-                en: "Thanks for coming! Comida con Amor is my favorite restaurant!",
-                es: "Gracias por venir! Comida con Amor es mi restaurante favorito!"
+                en: "Thanks for coming! Delicia is my favorite restaurant!",
+                es: "¡Gracias por venir! ¡Delicia es mi restaurante favorito!"
             },{
-                en: "All right, let’s order some food!",
-                es: "Vamos a pedir algo para comer!"
+                en: "All right, let’s explore their menu. I heard the menu changes every time you visit!",
+                es: "Exploremos el menú. ¡Escuché que el menú cambia cada vez que visitas!"
             },
         ]
     },

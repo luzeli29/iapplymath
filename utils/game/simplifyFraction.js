@@ -1,5 +1,5 @@
 //Helper function to simplify fractions
-export default function simplifyFraction(number,denomin) {
+export default function simplifyFraction(number, denomin) {
     if((number/denomin)% 1 == 0) {
        return number/denomin
     } else {

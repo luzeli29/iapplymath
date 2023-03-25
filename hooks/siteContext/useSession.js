@@ -58,18 +58,6 @@ export default function useSession() {
         return await putSession(username,bodyObject)
     }
 
-    async function incrementAyu(username) {
-      if(!username) {
-        setError('"userdata" was null in putSession')
-        return false
-      }
-      const bodyObject = {
-        times_talked_to_ayu: "inc"
-      }
-      return await putSession(username,bodyObject)
-
-    }
-
     async function putSession(username,bodyObject) {
         if(!username) {
             setError('"userdata" was null in putSession')
@@ -108,7 +96,6 @@ export default function useSession() {
         startSession: startSession,
         endSession: endSession,
         putSession: putSession,
-        incrementAyu: incrementAyu,
     }
 
     return ({

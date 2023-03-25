@@ -1,34 +1,60 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useRouter} from 'next/router'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
-import {useWrapperContext,Dialog,simplifyAnswer, throwError} from '@utils/imports/commonImports'
+import {Dialog,simplifyAnswer, throwError} from '@utils/imports/commonImports'
 import 'reactjs-popup/dist/index.css';
 import Ayu from '@comps/game/quizComps/ayu';
 import AnswerBox from '@comps/game/quizComps/answerBox';
 import QuestionBox from '@comps/game/quizComps/questionBox';
 import { useStopWatch } from '@hooks/useStopWatch';
+import { useUserContext } from '@hooks/siteContext/useUserContext';
+import Loading from '@comps/screens/loading';
+import { err } from '@utils/debug/log';
 
 
 export default function QuestionLayout ({children, questions, onBack, onFinish}) {
    //get current context and other context variables
-   const context = useWrapperContext()
-   const questionNum = context.state.questionNum
-   const lang = context.state.lang
-   const petId = context.state.petId
-   const {start,stop,reset,isRunning,time} = useStopWatch()
+   const {user,settings,loading, error} = useUserContext()
+   const [questionNum, setQuestionNum] = useState(0)
+   const router = useRouter()
+   const isLoggedIn = user.loggedIn
+   const [incorrectNum, setIncorrectNum] = useState(0);
+   const [state, setState] = useState("questions")
+   const [isFinished, setFinished] = useState(false)
+   if(!questions) {
+      handleExit("BACK")
+   }
+   useEffect(() => {
+      setFinished(false)
+   }, [questions]);
+
+   //adds positive feedback after a question was answered correctly
+   var _questions = []
+   if(questions) {
+      for(var i = 0; i < questions.length; i ++) {
+         _questions[_questions.length] = questions[i]
+         _questions[_questions.length] = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
+      }
+   }
+   if(loading) return <Loading/>
+   if(!router.isReady) return <Loading/>
+   if(error) return <Error error={error}/>
+   if(!isLoggedIn) return <Login/>
+   if(state == "finished") return <Loading/>
+   const lang = settings.lang
+   //const {start,stop,reset,isRunning,time} = useStopWatch()
 
    //get router for Next.js
-   const router = useRouter()
 
    function handleAyuClick() {
-      stop()
+      //stop()
       setState("ayu")
    }
 
    function handleAyuReturn() {
       setState("questions")
-      start()
+      //start()
    }
 
    function handleFinish() {
@@ -51,39 +77,29 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       const cleanedQuestions = cleanQuestions(_questions)
 
       if(cleanedQuestions.length > 0) {
-
          const gameType = router.pathname.split("/")[2]
 
          let questionData = {
-            questions: cleanedQuestions,
-            username: context.state.username,
-            gameType: gameType,
+            games_played: {
+               questions: cleanedQuestions,
+               username: user.username,
+               gameType: gameType,
+            }
          }
 
          if(gameType == "restaurant") {
-            questionData.order = cleanOrder(context.state.order)
+            //questionData.order = cleanOrder()
          }
 
-         const endpoint = '/api/session/saveQuestions'
-
-         const JSONdata = JSON.stringify(questionData)
-
-         const options = {
-         method: 'POST',
-         headers: {
-               'Content-Type': 'application/json',
-         },
-         body: JSONdata,
+         try {
+            user.putSession(questionData)
+         } catch (e) {
+            err(e.message)
          }
-         const response = await fetch(endpoint, options)
-         const result = await response.json()
-      
-         if(result.code != 200)    {
-            throwError("Error when trying to save question data in game_question_layout.js")
-         }    
-      }  
 
-      context.setQuestionNum(0)
+      }
+      setFinished(true)
+      setQuestionNum(0)
       switch(exitType) {
          case "FINISHED":
             handleFinish()
@@ -94,27 +110,15 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       }
    }
 
-   //adds positive feedback after a question was answered correctly
-   var _questions = []
-
-   if(questions) {
-      for(var i = 0; i < questions.length; i ++) {
-         _questions[_questions.length] = questions[i]
-         _questions[_questions.length] = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
-      }
-   }
    //create two states
    //State keeps track of where the page is in terms of the game
-   const [state, setState] = useState("questions")
    //incorrectNum keeps track of number of incorrect in a row
-   const [incorrectNum, setIncorrectNum] = useState(0);
-
    //handles when the user submites their answer
    const handleSubmitAnswer = (answer) => {
       //figures out what type of question the user is answering
       switch(_questions[questionNum].answer) {
          case "" : // No Correct answer, blank number pad (usually for feedback questions)
-               context.setQuestionNum(questionNum + 1)
+               setQuestionNum(questionNum + 1)
                setIncorrectNum(0)
                //if there is a function to be called on answer, call it
                if(_questions[questionNum].onAnswer) {
@@ -123,8 +127,8 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                break;
          case "fill_in" : //Question requires value from user to be later used
                //if filled in answer is good onAnswer returns true and we move on
-               if (_questions[questionNum].onAnswer(answer)) { 
-                  context.setQuestionNum(questionNum + 1)
+               if (_questions[questionNum].onAnswer(answer)) {
+                  setQuestionNum(questionNum + 1)
                   setIncorrectNum(0)
                } else { //Filled in answer is not accepted
                   setIncorrectNum(incorrectNum + 1)
@@ -133,11 +137,11 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          default :
                //Test if input is correct
                if(simplifyAnswer(answer) == _questions[questionNum].answer) { //Answer is correct
-                  stop()
-                  _questions[questionNum].timeTaken = time
+                  //stop()
+                  //_questions[questionNum].timeTaken = time
                   _questions[questionNum].incorrectNum = incorrectNum
-                  reset()
-                  context.setQuestionNum(questionNum + 1)
+                  //reset()
+                  setQuestionNum(questionNum + 1)
                   setIncorrectNum(0)
                } else { //Answer is incorrect
                   setIncorrectNum(incorrectNum + 1)
@@ -145,20 +149,17 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       }
    }
 
-   //Box that shows user the question, feedback after answering, and hint if there are incorrect guesses
-   //switches view depending on what state GameLayout is in
-   if(state == "questions") { //Question state is the standard state where user needs to answer questions
-      //check if user has completed every question
+   if(state == "questions") {
       if(questionNum < _questions.length) {
          const correctAnswer = _questions[questionNum].answer;
          const answerFormat = _questions[questionNum].answerFormat;
+         /*
          if(!isRunning 
                && correctAnswer != "fill_in"
                   && correctAnswer) {
-            start()
+            //start()
          }
-         //Return the view to answer questions
-         //It would be good to potencially replace <table> with a css grid
+         */
          return (
             <>
                <div className="back_button_container">
@@ -171,7 +172,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                            {children}
                         </td>
                         <td className={style.question_container}>
-                           <QuestionBox 
+                           <QuestionBox
                               className={style.question_box}
                               questionData={_questions[questionNum]}
                               incorrectNum={incorrectNum}/>
@@ -185,22 +186,20 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                                  handleSubmitAnswer={handleSubmitAnswer}/>
                         </td>
                         <td className={style.ayu_block}>
-                           <Ayu handleAyuClick={() => handleAyuClick()}/>  
+                           <Ayu handleAyuClick={() => handleAyuClick()}/>
                         </td>
                      </tr>
                   </tbody>
-               </table>     
-            </>             
+               </table>
+               <a className="feedback_button" rel="no referrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">Give us feedback!</a>
+            </>
          )
       } else {
-         //User has answered all the questions, call onFinish and return a blank view
          handleExit("FINISHED")
-         return (<></>)
+         return (<Loading/>)
       }
    } else {
-      //Shows a Ayu dialog to help relax user
       //TODO: switch dialog randomly in order to have different ayu relaxations
-       //Dialog ({scriptId, onEnd, onInput})
        return (
             <Dialog scriptId={"ayu_relaxation_0"} onEnd={() => handleAyuReturn()}/>
        )
