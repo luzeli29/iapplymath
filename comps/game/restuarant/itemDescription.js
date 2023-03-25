@@ -1,9 +1,13 @@
 import style from '@styles/restaurant.module.css'
-import {useWrapperContext} from '@utils/imports/commonImports'
+import { err } from '@utils/debug/log'
 
 //Item description shown when player hovers over button
-const ItemDescription = ({hoveredDish,budget}) => {
-    const lang = useWrapperContext().state.lang
+const ItemDescription = ({lang,hoveredDish,budget}) => {
+    if(!lang) {
+        lang = "en"
+        err('"lang" not defined.')
+    }
+
     const dish = hoveredDish
     return (
         <div>

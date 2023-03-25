@@ -6,10 +6,19 @@ import getMenu from '@utils/game/restaurant/getMenu'
 import ItemDescription from '@comps/game/restuarant/itemDescription'
 import Order from '@comps/game/restuarant/order'
 import Menu from '@comps/game/restuarant/menu'
+import { useUserContext } from '@hooks/siteContext/useUserContext'
+import Loading from '@comps/screens/loading'
+import Error from 'pages/error'
+import Login from 'pages/user/login'
+import menuOptions from "@public/text/menuOptions"
 
-const Resturant = () => {
-    const context = useWrapperContext()
-    const lang = context.state.lang
+
+function getMenuItemFromIndex(dishType,index) {
+    
+}
+
+export default function Resturant () {
+    const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
 
     const [hoveredDish, setHoveredDish] = useState()
@@ -19,16 +28,23 @@ const Resturant = () => {
     const [budget,setBudget] = useState()
     const [order, updateOrder] = useReducer((prev,next) => {
         return{...prev,...next}
-    }, {entree: '', drink: '', dessert: ''})
+    }, {entree: -1, drink: -1, dessert: -1})
 
-    function handleOrderComplete() {
-        router.push('/game/restaurant/questions')
-    }
-
-    useEffect(() => {
+     useEffect(() => {
         setMenu(getMenu());
         setBudget(Math.floor(Math.random() * 3) + 10)
     }, [router.isReady]);
+
+    const isLoggedIn = user.loggedIn    
+    if(loading || !router.isReady) return <Loading/>
+    if(error) return <Error error={error}/>
+    if(!isLoggedIn) return <Login/>
+    const lang = settings.lang
+
+    function handleOrderComplete() {
+        //TODO: Validate the parms
+        router.push('/game/restaurant/quiz/' + 'basic' + '?entreeIndex=' + order.entree + '&drinkIndex=' + order.drink + '&dessertIndex=' + order.dessert)
+    }
 
     function handleHover(dish) {
         if(dish) {
@@ -80,6 +96,7 @@ const Resturant = () => {
                 handleSubmit={() => handleOrderComplete()}>
             <div className={style.ms_container}>
                 <Menu 
+                    lang={lang}
                     menu={menu} 
                     handleHover={(dish) => handleHover(dish)}
                     handleDishClick={(dish,type) => handleDishClick(dish,type)}/>
@@ -88,6 +105,7 @@ const Resturant = () => {
                 </div>
                 <div className={style.ms_order_container}>
                     <Order 
+                        lang={lang}
                         order={order}
                         budget={budget}/>
                 </div>
@@ -95,5 +113,3 @@ const Resturant = () => {
         </GameIndexLayout>
     )
 }
-
-export default Resturant

@@ -74,7 +74,16 @@ async function putSession(username,bodyObject,db,res) {
             data: {},
             });
         }
-         continue;
+        continue;
+       } else if (key == "games_played") {
+        if (!await saveGameData(username,value,index,db)) {
+          return res.status(400).json({
+            code: 400,
+            message: 'Error when trying to increment Ayu',
+            data: {},
+            });
+        }
+        continue;
        }
       const sessionKey = sessionKeyStart + key
       updateSessionObject[sessionKey] = value
@@ -153,6 +162,34 @@ async function incrementAyu(username,index,db) {
       filter,
       { $inc : { 
           [incText] : 1
+        } 
+      }
+    
+      )
+    if(updateResult.ok) {
+      return true
+    } else {
+      return false
+    }
+  }
+  catch (error) {
+    return false
+  }
+}
+
+async function saveGameData(username,gamedata,index,db) {
+  try {
+
+    const filter = {
+      username : username,
+    }
+
+    const pushText = "sessions." + index + ".games_played"
+
+    const updateResult = await db.collection("data").findOneAndUpdate(
+      filter,
+      { $push : { 
+          [pushText] : gamedata
         } 
       }
     

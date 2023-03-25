@@ -1,46 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import style from '@styles/pet.module.css'
 import {useWrapperContext,getText} from '@utils/imports/commonImports'
 import { motion } from "framer-motion"
 import ClickableIcon from '@comps/clickableIcon';
+import { useUserContext } from '@hooks/siteContext/useUserContext';
+import Loading from '@comps/screens/loading';
+import Error from 'pages/error';
 
 
-export default function Pet() {
-    //get the site context and lang
-    const context = useWrapperContext()
-    const lang = context.state.lang
-    const petId = context.state.petId
-    const userId = context.state.userId
+export default function PetSelect() {
+    const {user,settings,loading, error} = useUserContext()
+    const isLoggedIn = user.loggedIn    
+    const userPetId =isLoggedIn ? user.data.petId : null
+    const [selectedPetId, setSelectedPetId] = useState(userPetId? userPetId : null)
+
+    const router = useRouter()
+
+    if(loading || !router.isReady) return <Loading/>
+    if(error) return <Error error={error}/>
     
-    const router = useRouter();
-
+    const lang = settings.lang
+    if(!isLoggedIn) return <Login/>
+    
     //This is called when the player is done creating
     //Should handle anything to be done in order to use avatar in game
     const handleSavePet = async() => {
-        const data = {
-            username: context.state.username,
-            petId: context.state.petId
-        }
 
-        const JSONdata = JSON.stringify(data)
+        user.setPetId(selectedPetId)
 
-        const endpoint = '/api/petId'
 
-        const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSONdata,
-        }
-
-        const response = await fetch(endpoint, options)
-        //const result = await response.json()
-        //TODO: error correct results.
-
-        router.push('/background')
+        router.push('/user/backgroundSelect')
     }
 
     const PetButton = ({index}) => {
@@ -48,13 +39,13 @@ export default function Pet() {
         return (
             
             <ClickableIcon
-                isSelected={petId == index}
-                clickCallback={() => context.setPetId(index)}>
+                selected={selectedPetId == index}
+                onClick={() => setSelectedPetId(index)}>
                     <div className={style.pet_select_button}>
                 <Image
                         priority={true}
                         layout={"fill"}
-                        src={context.state.petId == index ? path + index + ".png" : path + index + ".png"}
+                        src={path + index + ".png"}
                         alt={"pet"}/> 
             </div>
             </ClickableIcon>
@@ -67,10 +58,10 @@ export default function Pet() {
             <h1 className={style.as_title_container}>{getText('pet_select',lang)}</h1>
             <div className={style.button_bar}>
                 {Array.apply(0, Array(4)).map((x,i) => {
-                    return <PetButton index={i + 1} key={i} />;
+                    return <PetButton index={i} key={i} />;
                 })}
             </div>
-            {petId && userId ? 
+            {selectedPetId != undefined ? 
                 <button 
                         className={style.continue_button}
                         onClick={() => handleSavePet()}>
