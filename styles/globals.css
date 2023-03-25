@@ -37,6 +37,20 @@ body {
   box-shadow: 2px 2px #190933;
 }
 
+.feedback_button {
+  font-size: medium;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--button-background-color);
+  width: 200px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 15px;
+  box-shadow: 2px 2px #190933;
+}
+
 button,
 a {
   background: none;
