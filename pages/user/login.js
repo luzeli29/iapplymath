@@ -17,8 +17,13 @@ export default function Login() {
 
   async function handleSubmit(event) {
       event.preventDefault()
-      const submitType = event.nativeEvent.submitter.value;
-      const inputUsername = event.target.username.value
+      let submitType,inputUsername
+      try {
+        submitType = event.nativeEvent.submitter.value;
+        inputUsername = event.target.username.value
+      } catch (e) {
+        setFeedbackText("Error getting username from form. Please check to see if your browser is up to date.")
+      }
 
       if(!inputUsername) {
         setFeedbackText("Please input a username.")
