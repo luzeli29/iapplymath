@@ -24,15 +24,41 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
     const router = useRouter()
 
     const isLoggedIn = user.loggedIn    
+
+    //keeps track of which line user is on, allows for rerender due to useState
+    const [lineNum, setLineNum]= useState(0);
+
+    //Handles keypress
+    const handleKeyPress = () => {
+        switch(event.keyCode){
+            case 39:
+                handleNextLine();
+                break;
+            case 13:
+                handleNextLine();
+                break;
+            case 37:
+                handlePrevLine();
+                break;
+            
+        }
+    };
+
+     //useEffect in order to detect keypress, and rerender
+    useEffect(() => {
+        document.addEventListener("keydown", handleKeyPress);
+    
+        return () => {
+          document.removeEventListener("keydown", handleKeyPress);
+        };
+    }, [handleKeyPress]);
+
     if(loading || !router.isReady) return <Loading/>
     if(error) return <Error error={error}/>
     if(!isLoggedIn) return <Login/>
 
     const lang = settings.lang
     const avatarId = user.data.avatarId
-
-    //keeps track of which line user is on, allows for rerender due to useState
-    const [lineNum, setLineNum]= useState(0);
 
     //set all needed params with id given, and check if they actually exist
     const dialog = Scripts[scriptId] ? Scripts[scriptId] : Scripts["error"]
@@ -57,30 +83,6 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
         } 
     }
 
-    //Handles keypress
-    const handleKeyPress = () => {
-        switch(event.keyCode){
-            case 39:
-                handleNextLine();
-                break;
-            case 13:
-                handleNextLine();
-                break;
-            case 37:
-                handlePrevLine();
-                break;
-            
-        }
-    };
-
-    //useEffect in order to detect keypress, and rerender
-    useEffect(() => {
-        document.addEventListener("keydown", handleKeyPress);
-    
-        return () => {
-          document.removeEventListener("keydown", handleKeyPress);
-        };
-    }, [handleKeyPress]);
   
     const stage = dialog.stage ? dialog.stage : Scripts["error"].stage
     const ayuImg = script[lineNum].stg ? script[lineNum].stg : dialog.stage;
@@ -151,7 +153,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                                     priority={true}
                                     layout={"fill"}
                                     quality={100}
-                                    src={"/img/avatar/pre_made/A" + avatarId + "_back.png"}
+                                    src={"/img/avatar/preMade/A" + avatarId + "_back.png"}
                                     alt={"avatar"}/> 
                         </div>
                         <div className={style.speaker_img}>

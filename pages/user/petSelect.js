@@ -45,7 +45,7 @@ export default function PetSelect() {
                 <Image
                         priority={true}
                         layout={"fill"}
-                        src={selectedPetId == index ? path + index + ".png" : path + index + ".png"}
+                        src={path + index + ".png"}
                         alt={"pet"}/> 
             </div>
             </ClickableIcon>
@@ -58,10 +58,10 @@ export default function PetSelect() {
             <h1 className={style.as_title_container}>{getText('pet_select',lang)}</h1>
             <div className={style.button_bar}>
                 {Array.apply(0, Array(4)).map((x,i) => {
-                    return <PetButton index={i + 1} key={i} />;
+                    return <PetButton index={i} key={i} />;
                 })}
             </div>
-            {selectedPetId ? 
+            {selectedPetId != undefined ? 
                 <button 
                         className={style.continue_button}
                         onClick={() => handleSavePet()}>

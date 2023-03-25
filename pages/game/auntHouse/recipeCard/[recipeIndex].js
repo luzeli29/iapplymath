@@ -54,7 +54,7 @@ export default function RecipeCard() {
             </div>
             
             <button 
-                onClick={() => router.push('/game/auntHouse/questions/basic/' + recipeIndex)}
+                onClick={() => router.push('/game/auntHouse/quiz/basic?recipeIndex=' + recipeIndex)}
                 className={style.recipe_card_button}> <strong>
                {/*TODO: potencially change if other langs were added*/}
                {translations.cook[lang]}</strong></button>

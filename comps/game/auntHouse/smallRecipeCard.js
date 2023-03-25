@@ -2,9 +2,21 @@ import React from 'react'
 import {useWrapperContext} from '@utils/imports/commonImports'
 import recipes from '@public/text/auntHouseRecipes'
 import style from '@styles/aunt_house.module.css'
+import Loading from '@comps/screens/loading'
+import Error from 'pages/error'
+import Login from 'pages/user/login'
+import { useUserContext } from '@hooks/siteContext/useUserContext'
+import {useRouter} from 'next/router'
 
 export default function SmallRecipeCard({recipeIndex}) {
-    const lang = useWrapperContext().state.lang;
+    const {user,settings,loading, error} = useUserContext()
+    const router = useRouter()
+    const isLoggedIn = user.loggedIn    
+    if(loading) return <Loading/> 
+    if(!router.isReady) return <Loading/>
+    if(error) return <Error error={error}/>
+    if(!isLoggedIn) return <Login/>
+    const lang = settings.lang
     const recipe = recipes[recipeIndex]
 
     return(
