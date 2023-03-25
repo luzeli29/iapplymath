@@ -37,14 +37,14 @@ const emotions = [
 
 export default function Creator() {
     const {user,settings,loading, error} = useUserContext()
-    const isLoggedIn = user.loggedIn    
+    const isLoggedIn = user.loggedIn
     const [selectedFeelingIndex, setSelectedFeelingIndex] = useState()
 
     const router = useRouter()
 
     if(loading || !router.isReady) return <Loading/>
     if(error) return <Error error={error}/>
-    
+
     const lang = settings.lang
     if(!isLoggedIn) return <Login/>
 
@@ -52,7 +52,7 @@ export default function Creator() {
     //Should handle anything to be done in order to use avatar in game
     const handleFeelingSubmit = () => {
         // context.setAvatar(avatar)
-        router.push('/game/map')
+        router.back();
     }
 
     const FeelingButton = ({index}) => {
@@ -83,8 +83,8 @@ export default function Creator() {
             <div className={style.feeling_buttons}>
                 {Array.apply(0, Array(5)).map((x,i) => {
                     return (
-                        <FeelingButton index={i} key={i}/> 
-                    )                   
+                        <FeelingButton index={i} key={i}/>
+                    )
                 })}
             </div>
             <button

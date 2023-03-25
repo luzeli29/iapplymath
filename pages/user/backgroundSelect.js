@@ -7,6 +7,7 @@ import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
 import Error from 'pages/error';
 import ClickableIcon from '@comps/clickableIcon';
+import Login from './login';
 
 const colors = ["#EDBFC6","#C1ECFA","#A6EEC7","#DAC4F7","#fadb91", "#EBA688"];
 
