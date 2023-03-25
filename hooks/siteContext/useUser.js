@@ -385,6 +385,16 @@ export default function useUser() {
   }
 
   async function incrementAyu() {
+    const bodyObject = {
+      times_talked_to_ayu: "inc"
+    }
+
+    putSession(bodyObject)
+
+    return true
+  }
+
+  async function putSession(bodyObject) {
     setError()
     if(!session) {
       setError('"session" is null. Can not increment Ayu.')
@@ -400,21 +410,6 @@ export default function useUser() {
     if(!userdata.username) {
       setError('"username" is null. Can not increment Ayu.')
       return false
-    }
-
-    session.incrementAyu(userdata.username)
-
-    return true
-  }
-
-  async function putSession(bodyObject) {
-    setError()
-    if(!session) {
-      setError('"session" is null. Can not increment Ayu.')
-      return false;
-    }
-    if(userdata.isOffline) {
-      return true
     }
 
     await session.putSession(userdata.username,bodyObject)
@@ -434,8 +429,7 @@ export default function useUser() {
     setAvatarId: setAvatarId,
     setPetId: setPetId,
     incrementAyu: incrementAyu,
-    putSession: putSession
-
+    putSession: putSession,
   }
   
   return {

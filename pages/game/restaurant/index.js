@@ -10,8 +10,14 @@ import { useUserContext } from '@hooks/siteContext/useUserContext'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
+import menuOptions from "@public/text/menuOptions"
 
-const Resturant = () => {
+
+function getMenuItemFromIndex(dishType,index) {
+    
+}
+
+export default function Resturant () {
     const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
 
@@ -22,7 +28,7 @@ const Resturant = () => {
     const [budget,setBudget] = useState()
     const [order, updateOrder] = useReducer((prev,next) => {
         return{...prev,...next}
-    }, {entree: '', drink: '', dessert: ''})
+    }, {entree: -1, drink: -1, dessert: -1})
 
      useEffect(() => {
         setMenu(getMenu());
@@ -36,7 +42,8 @@ const Resturant = () => {
     const lang = settings.lang
 
     function handleOrderComplete() {
-        router.push('/game/restaurant/questions')
+        //TODO: Validate the parms
+        router.push('/game/restaurant/quiz/' + 'basic' + '?entreeIndex=' + order.entree + '&drinkIndex=' + order.drink + '&dessertIndex=' + order.dessert)
     }
 
     function handleHover(dish) {
@@ -106,5 +113,3 @@ const Resturant = () => {
         </GameIndexLayout>
     )
 }
-
-export default Resturant

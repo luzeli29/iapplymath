@@ -7,14 +7,24 @@ import {useWrapperContext,formatAnswer} from '@utils/imports/commonImports'
 import { Calculator } from 'react-mac-calculator'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import Loading from '@comps/screens/loading'
+import Error from 'pages/error'
+import Login from 'pages/user/login'
+import { useUserContext } from '@hooks/siteContext/useUserContext'
+import {useRouter} from 'next/router'
 
 export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer}) {
-    //get lang from context
-    const context = useWrapperContext()
-    const lang = context.state.lang
+    const {user,settings,loading, error} = useUserContext()
+
     const [inputAnswer, setInputAnswer] = useState("");
-    //keeps track if view should show the empty hint within the numpad
     const [showEmptyHint, setShowEmptyHint] = useState(false);
+    const router = useRouter()
+    const isLoggedIn = user.loggedIn    
+    if(loading) return <Loading/> 
+    if(!router.isReady) return <Loading/>
+    if(error) return <Error error={error}/>
+    if(!isLoggedIn) return <Login/>
+    const lang = settings.lang
 
     const handleKeyPress = useCallback(event => {
         if (event.key == "Backspace") { //backspace pressed
