@@ -63,11 +63,11 @@ const translations = {
     // ----- General Translations -----
     avatar_tooltip: {
         en: "Change Avatar",
-        es: "Change Avatar",
+        es: "Cambiar Avatar",
     },
     map_tooltip: {
         en: "Go To The map",
-        es: "Go To The map",
+        es: "Ir al mapa",
     },
     checkin_tooltip: {
         en: "Check in",
@@ -75,11 +75,11 @@ const translations = {
     },
     mute_tooltip: {
         en: "Mute Music",
-        es: "Mute Music",
+        es: "Silenciar la música",
     },
     logout_tooltip: {
         en: "Logout",
-        es: "Logout",
+        es: "Cerrar sesión",
     },
     login_tooltip: {
         en: "Login",
@@ -91,7 +91,7 @@ const translations = {
     },
     save: {
         en: "Save",
-        es: "Save",
+        es: "Guardar sesión",
     },
     i_apply_full_title: {
         en: "I Apply Math In My World",
