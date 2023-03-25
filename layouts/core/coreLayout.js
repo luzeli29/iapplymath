@@ -1,9 +1,9 @@
 import Header from "comps/header/header";
 import ReactHowler from "react-howler";
 import React, {useEffect, useState} from "react";
-import { useUserContext } from "@hooks/siteContext/useUserContext";
 import Loading from "@comps/screens/loading";
 import { useRouter } from "next/router";
+import { useUserContext } from "@hooks/siteContext/useUserContext";
 
 export default function Layout({ children }) {
 
@@ -13,9 +13,6 @@ export default function Layout({ children }) {
     const {user,settings,loading, error} = useUserContext()
 
     const router = useRouter()
-
-    if(loading || !router.isReady) return <Loading/>
-    if(error) return <Error error={error}/>
 
     const lang = settings.lang
     const mute = settings.mute
@@ -40,6 +37,9 @@ export default function Layout({ children }) {
             }
         }
     }, [mute, mapLocation]);
+
+    if(loading || !router.isReady) return <Loading/>
+    if(error) return <Error error={error}/>
 
     return (
         <>

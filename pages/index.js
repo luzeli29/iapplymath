@@ -4,6 +4,7 @@ import Image from 'next/image'
 import {getText} from '@utils/imports/commonImports' 
 import Error from './error';
 import Loading from '@comps/screens/loading';
+import { useUserContext } from '@hooks/siteContext/useUserContext';
 
 //test
 
@@ -15,7 +16,7 @@ const Index = () => {
 
   if(loading || !router.isReady) return <Loading/>
   if(error) return <Error error={error}/>
-
+  const loggedIn = user.loggedIn
   const lang = settings.lang
 
   return (
@@ -30,7 +31,7 @@ const Index = () => {
           alt={"globe"}/>
       </div>
       <div className="text-center">
-        {userId ?
+        {loggedIn ?
         // User is logged in
         <>
         <button className="basic_button" onClick={() => router.push('/intro') }>
