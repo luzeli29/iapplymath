@@ -1,10 +1,15 @@
-import { useWrapperContext } from '@utils/imports/commonImports';
 import {React} from 'react'
 import {MdHearing} from "react-icons/md";
 
 export default function TextReader({text, reader}) {
-    const context = useWrapperContext();
-    const lang = context.state.lang;
+    const {user,settings,loading, error} = useUserContext()
+
+  const router = useRouter()
+
+  if(loading || !router.isReady) return <Loading/>
+  if(error) return <Error error={error}/>
+
+  const lang = settings.lang
 
     var synth;
     var utterance;

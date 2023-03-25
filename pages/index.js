@@ -1,16 +1,22 @@
 import React from 'react';
 import {useRouter} from 'next/router'
 import Image from 'next/image'
-import {getText, useWrapperContext} from '@utils/imports/commonImports' 
+import {getText} from '@utils/imports/commonImports' 
+import Error from './error';
+import Loading from '@comps/screens/loading';
 
 //test
 
 //Index with start button to go to intro dialog
 const Index = () => {
-  const context = useWrapperContext()
-  const lang = context.state.lang
-  const userId = context.state.userId
+  const {user,settings,loading, error} = useUserContext()
+
   const router = useRouter()
+
+  if(loading || !router.isReady) return <Loading/>
+  if(error) return <Error error={error}/>
+
+  const lang = settings.lang
 
   return (
     <div>
