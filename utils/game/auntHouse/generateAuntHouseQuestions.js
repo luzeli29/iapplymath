@@ -46,7 +46,6 @@ function generateBasicQuestions(recipeIndex) {
                     es: "Cuenta todos los ingredientes",
                 }
             ]
-
         )
     }
 
