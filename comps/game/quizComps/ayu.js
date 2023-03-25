@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Image from 'next/image'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
-import {useWrapperContext} from '@utils/imports/commonImports'
 import 'reactjs-popup/dist/index.css';
 import {GiYarn, GiHand} from "react-icons/gi";
 import Tooltip from 'comps/accessibility/tooltip';
