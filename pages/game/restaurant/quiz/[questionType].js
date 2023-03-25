@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import {useRouter} from 'next/router'
 import {GameQuestionLayout,useWrapperContext} from '@utils/imports/commonImports'
-import {generateOrderQuestions} from '@utils/game/restaurant/generateRestaurantQuestion'
+import generateOrderQuestions from '@utils/game/restaurant/generateRestaurantQuestion'
 import Order from '@comps/game/restuarant/order'
 import menuOptions from "@public/text/menuOptions"
 import Loading from '@comps/screens/loading'
@@ -23,12 +23,18 @@ export default function RestaurantQuestions() {
     const { questionType, entreeIndex, drinkIndex, dessertIndex } = router.query
 
     const order = {
-        entree: menuOptions[entreeIndex],
-        drink: menuOptions[drinkIndex],
-        dessert: menuOptions[dessertIndex]
+        entree: menuOptions.entree[entreeIndex],
+        drink: menuOptions.drink[drinkIndex],
+        dessert: menuOptions.dessert[dessertIndex]
     }
 
-    const questions = generateOrderQuestions(questionType, order)
+    const orderIndex = {
+        entree:entreeIndex,
+        drink: drinkIndex,
+        dessert: dessertIndex
+    }
+
+    const questions = generateOrderQuestions(order)
 
     if(!questions) {
         router.push('/game/restaurant')
@@ -36,7 +42,6 @@ export default function RestaurantQuestions() {
     }
 
     return (
-        order ? 
             <GameQuestionLayout
                     questions={questions}
                     onBack={() => router.push('/game/restaurant/')}
@@ -45,9 +50,7 @@ export default function RestaurantQuestions() {
                             router.push('/game/restaurant/outro')
                             return(<Loading/>)
                         }}> 
-                <Order order={order}/>
+                <Order order={orderIndex}/>
             </GameQuestionLayout>
-            :
-            <Loading/>
     )
 }
