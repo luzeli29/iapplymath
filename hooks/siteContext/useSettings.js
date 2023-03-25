@@ -12,6 +12,11 @@ export default function useSettings() {
         updateSettingsFromCookie()
         setLoading(false)
     }, []);
+
+    useEffect(() => {
+        var r = document.querySelector(':root');
+        r.style.setProperty('--page-color', backgroundHex ? backgroundHex : "#EDBFC6");
+    }, [backgroundHex]);
     
     function updateSettingsFromCookie() {
 
@@ -34,6 +39,9 @@ export default function useSettings() {
         await Cookies.remove('mute');
         await Cookies.remove('background_hex');
         updateSettingsFromCookie()
+        setLang("en")
+        setMute(false)
+        setBackgroundHex("#EDBFC6")
         return true
     }
 

@@ -5,24 +5,29 @@ import style from '@styles/map.module.css'
 import {useWrapperContext} from '@utils/imports/commonImports'
 import translations from '@translations';
 import {motion} from 'framer-motion';
+import { useUserContext } from '@hooks/siteContext/useUserContext'
+import Loading from '@comps/screens/loading'
+import Error from 'pages/error'
+import Login from 'pages/user/login'
 
 export default function Map() {
-    //get lang from context
-    const context = useWrapperContext()
-    const lang = context.state.lang
+    const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
-    const avatarId = context.state.avatarId
-    const petId = context.state.petId
-    const loadingState = context.state.loadingState
-    const mapLocation = context.state.mapLocation
 
+    const isLoggedIn = user.loggedIn    
+    if(loading || !router.isReady) return <Loading/>
+    if(error) return <Error error={error}/>
+    if(!isLoggedIn) return <Login/>
+
+    const lang = settings.lang
+    const avatarId = user.data.avatarId
+    const mapLocation = 0
+    
     const handleRestaurant = () => {
-        context.setMapLocation("Restaurant");
         router.push('/game/restaurant/introduction');
     }
 
     const handleAuntsHouse = () => {
-        context.setMapLocation("AuntsHouse");
         router.push('/game/auntHouse/introduction');
     }
 
@@ -32,7 +37,7 @@ export default function Map() {
             <div className={style.map}>
                 <motion.img className={style.player_img}
                             id = {style.player_img}
-                            src = {"/img/avatar/pre_made/A" + avatarId + ".png"}
+                            src = {"/img/avatar/preMade/A" + avatarId + ".png"}
                             initial = {{
                                 x: mapLocation == "AuntsHouse" ? 130
                                     : mapLocation == "Restaurant" ? 420

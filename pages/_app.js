@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '@styles/globals.css'
 import Layout from '@layouts/core/coreLayout'
 import ContextWrapper from '@hooks/useWrapperContext'
-import SiteWrapper from '@hooks/siteContext/useSiteContext'
+import SiteWrapper from '@hooks/siteContext/useUserContext'
 
 function MyApp({ Component, session, ...pageProps }) {
   return (

@@ -81,6 +81,10 @@ const translations = {
         en: "Logout",
         es: "Logout",
     },
+    login_tooltip: {
+        en: "Login",
+        es: "Login",
+    },
     login: {
         en: "Login",
         es: "Login"

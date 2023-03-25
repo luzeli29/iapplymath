@@ -6,6 +6,10 @@ import style from '@styles/dialog.module.css'
 import {useWrapperContext} from '@utils/imports/commonImports'
 import Scripts from '@public/text/dialogScripts'
 import TextReader from 'comps/accessibility/textReader';
+import { useUserContext } from '@hooks/siteContext/useUserContext';
+import Loading from '@comps/screens/loading';
+import Error from 'pages/error';
+import Login from 'pages/user/login';
 
 /*
 Creates a dialog screen to be shown in a game view
@@ -16,13 +20,45 @@ onInput - function in what we should do when there is an input required
 
 */
 export default function Dialog ({scriptId, onEnd, onInput}) {
-    //Get current context
-    const context =  useWrapperContext()
-    const lang = context.state.lang;
+    const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
+
+    const isLoggedIn = user.loggedIn    
 
     //keeps track of which line user is on, allows for rerender due to useState
     const [lineNum, setLineNum]= useState(0);
+
+    //Handles keypress
+    const handleKeyPress = () => {
+        switch(event.keyCode){
+            case 39:
+                handleNextLine();
+                break;
+            case 13:
+                handleNextLine();
+                break;
+            case 37:
+                handlePrevLine();
+                break;
+            
+        }
+    };
+
+     //useEffect in order to detect keypress, and rerender
+    useEffect(() => {
+        document.addEventListener("keydown", handleKeyPress);
+    
+        return () => {
+          document.removeEventListener("keydown", handleKeyPress);
+        };
+    }, [handleKeyPress]);
+
+    if(loading || !router.isReady) return <Loading/>
+    if(error) return <Error error={error}/>
+    if(!isLoggedIn) return <Login/>
+
+    const lang = settings.lang
+    const avatarId = user.data.avatarId
 
     //set all needed params with id given, and check if they actually exist
     const dialog = Scripts[scriptId] ? Scripts[scriptId] : Scripts["error"]
@@ -47,34 +83,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
         } 
     }
 
-    //Handles keypress
-    const handleKeyPress = () => {
-        switch(event.keyCode){
-            case 39:
-                handleNextLine();
-                break;
-            case 13:
-                handleNextLine();
-                break;
-            case 37:
-                handlePrevLine();
-                break;
-            
-        }
-    };
-
-    //useEffect in order to detect keypress, and rerender
-    useEffect(() => {
-        document.addEventListener("keydown", handleKeyPress);
-    
-        return () => {
-          document.removeEventListener("keydown", handleKeyPress);
-        };
-    }, [handleKeyPress]);
   
-    //get avatar from context
-    const avatarId = context.state.avatarId
-
     const stage = dialog.stage ? dialog.stage : Scripts["error"].stage
     const ayuImg = script[lineNum].stg ? script[lineNum].stg : dialog.stage;
     const backgroundImgSrc = changeBackgroundImgSrc(ayuImg);
@@ -95,7 +104,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                     <div className="card-body ">
                         <div className="row">
                             <div className="col-lg-1">
-                                <TextReader text={script[lineNum][lang]} reader={stage}/>
+                                {/* TODO: MAKE THIS WORK OR MAKE OWN HOOK <TextReader text={script[lineNum][lang]} reader={stage}/> */}
                             </div>
                             <div className="col-lg-11">
                                 <p className="card-text pt-2 me-1 pe-5">{script[lineNum][lang]}</p>
@@ -144,7 +153,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                                     priority={true}
                                     layout={"fill"}
                                     quality={100}
-                                    src={"/img/avatar/pre_made/A" + avatarId + "_back.png"}
+                                    src={"/img/avatar/preMade/A" + avatarId + "_back.png"}
                                     alt={"avatar"}/> 
                         </div>
                         <div className={style.speaker_img}>
