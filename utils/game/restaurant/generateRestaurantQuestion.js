@@ -38,12 +38,9 @@ export default function generateOrderQuestions(order) {
         [],
         "equality"
     )
-<<<<<<< HEAD
-    questions[1] = createGameQuestion(
-=======
+
     //total - sortedOrder[0].price
     questions[questions.length] = createGameQuestion(
->>>>>>> 76a772f6cc91cfcd7218986b5abf38b8ccb447c5
         {
             en:"How much is the total if you remove the most expensive item?",
             es:"¿Cuánto es el total si no compras el plato más caro?",
@@ -635,7 +632,6 @@ function getRandomHrInt() {
     return randTimeHr[randVar];
 }
 
-<<<<<<< HEAD
 function countFactors(num) {
     let factors = [];
 
@@ -647,7 +643,3 @@ function countFactors(num) {
 
     return factors.length;
 }
-
-export default generateOrderQuestions
-=======
->>>>>>> 76a772f6cc91cfcd7218986b5abf38b8ccb447c5
