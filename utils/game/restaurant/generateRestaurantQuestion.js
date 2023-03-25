@@ -37,7 +37,6 @@ function generateOrderQuestions(order) {
         [],
         "equality"
     )
-    //total - sortedOrder[0].price
     questions[1] = createGameQuestion(
         {
             en:"How much is the total if you remove the most expensive item?",
@@ -472,7 +471,144 @@ function generateOrderQuestions(order) {
         }],
         "decimal"
     )
+    let randomNum = getRandomInt(10, 50);
+    let randomNumMult = getRandomInt(2, 9);
+    questions[23] = createGameQuestion(
+        {
+            en:"The restaurant is hosting a monthly food drive event. Elena and you are helping collect and organize various food items. " +
+                "On the first day, you collected " + randomNum + " food items and on the second day you collected " + randomNumMult + " times as many items. " +
+                "How many items did you and Elena collect on the second day?",
+            es:"",
+        },
+        randomNum * randomNumMult,
+        [{
+            en: randomNum + " x " + randomNumMult + " = 2nd Day Items",
+            es: ""
+        },{
+            en: randomNum + " x " + randomNumMult + " =  " + randomNumMult * randomNum,
+            es: ""
+        }],
+        "time"
+    )
+    randomNum = getRandomInt(10, 30)
+    randomNumMult = getRandomInt(2, 5);
+    let amtOfMoney = getRandomInt(0, 1); //randomly chooses T or F. if 0 then it's less, if 1 then it's more
+    if(randomNum % randomNumMult !== 0){ amtOfMoney = 1}
+    questions[24] = createGameQuestion(
+        {
+            en:"Today your parents gave you " + randomNum + " dollars to order food at the restaurant. " +
+                "If next time they gave you " + randomNumMult + " times " + (amtOfMoney === 0 ? " less" : " more") + " money, what is your new budget?",
+            es:"",
+        },
+        amtOfMoney === 0 ? randomNum / randomNumMult : randomNum * randomNumMult,
+        [{
+            en: (amtOfMoney === 0 ? randomNum + " ÷ " + randomNumMult: randomNum + " x " + randomNumMult) +  " = New Budget" ,
+            es: ""
+        },{
+            en: (amtOfMoney === 0 ? randomNum + " ÷ " + randomNumMult + " = " + (randomNum / randomNumMult): randomNum + " x " + randomNumMult + " = " + randomNum * randomNumMult),
+            es: ""
+        }],
+        "time"
+    )
 
+    randomNum = getRandomInt(2, 50)
+    questions[25] = createGameQuestion(
+        {
+            en:"Elena’s lucky number is " + randomNum + ". How many factors does her lucky number have?",
+            es:"",
+        },
+        countFactors(randomNum),
+        [{
+            en: "If Elena's lucky number is 6, then the factors are 6, 3, 2, 1",
+            es: ""
+        },{
+            en: "If Elena's lucky number is 6, then the factors are 6, 3, 2, 1. The answer is 4.",
+            es: ""
+        }],
+        "time"
+    )
+    let sRanNum = getRandomInt(1, 9)
+    questions[26] = createGameQuestion(
+        {
+            en:"Is Elena’s lucky number, "  + randomNum + ", a multiple of " + sRanNum + "? Enter 0 for “no” and 1 for “yes”",
+            es:"",
+        },
+        (randomNum % sRanNum === 0 ? 1 : 0),
+        [{
+            en: "If Elena's lucky number is 6, then the factors are 6, 3, 2, 1",
+            es: ""
+        },{
+            en: "If Elena's lucky number is 6, then the factors are 6, 3, 2, 1. The answer is 4.",
+            es: ""
+        }],
+        "time"
+    )
+    let primeArray = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+    questions[27] = createGameQuestion(
+        {
+            en:"Elena wants to know if her lucky number, "  + randomNum + ", is prime or composite. Enter 0 in the answer box if the number is prime and 1 if the number is composite.",
+            es:"",
+        },
+        (primeArray.includes(randomNum) ? 0 : 1),
+        [{
+            en: "If Elena's lucky number is 6, then it has four factors and is composite",
+            es: ""
+        },{
+            en: "If Elena's lucky number is 7, then it has only two factors, 7 and 1, and is prime",
+            es: ""
+        }],
+        "time"
+    )
+    questions[28] = createGameQuestion(
+        {
+            en:"The restaurant receives two thousand three hundred and fifty pounds of rice and beans per month to supply the kitchen. " +
+                "Next month the restaurant will increase its rice and beans supply by 10 times. What is next month’s supply?",
+            es:"",
+        },
+        23500,
+        [{
+            en: "2350 x 10 = Next Month Supply",
+            es: ""
+        },{
+            en: "2350 x 10 = 23,500 pounds",
+            es: ""
+        }],
+        "time"
+    )
+    questions[29] = createGameQuestion(
+        {
+            en:"If the restaurant orders one thousand two hundred and fifteen kilograms of tomatoes and one thousand fifteen kilograms of flour, " +
+                "which quantity is larger? Please type the correct quantity number in the answer box. ",
+            es:"",
+        },
+        1215,
+        [{
+            en: "1,215 kg of tomatoes > 1,015 kg of flour",
+            es: ""
+        },{
+            en: "1,215",
+            es: ""
+        }],
+        "time"
+    )
+    randomNum = getRandomInt(500, 2000)
+    randomNumMult = getRandomInt(5, 20);
+    questions[30] = createGameQuestion(
+        {
+            en:"Last week the restaurant chef ran out of onions. The monthly supply of onions at the restaurant is " + randomNum + " pounds. " +
+                "How many pounds of onions will the chef have if the new onion supply is increased " + randomNumMult + " times?",
+            es:"",
+        },
+        randomNum * randomNumMult,
+        [{
+            en: randomNum + " x " + randomNumMult + " = New supply",
+            es: ""
+        },{
+            en: randomNum + " x " + randomNumMult + " = " + (randomNum * randomNumMult),
+            es: ""
+        }],
+        "time"
+    )
     return questions
 
 }
@@ -485,11 +621,24 @@ function getRandomInt(min, max) {
     }
     return randVar;
 }
+
 function getRandomHrInt() {
     //goes through an array of random times
     let randTimeHr = [12, 1, 2, 3, 4, 5, 6];
     let randVar = Math.floor(Math.random() * (6 + 1));
     return randTimeHr[randVar];
+}
+
+function countFactors(num) {
+    let factors = [];
+
+    for (let i = 1; i <= num; i++) {
+        if (num % i === 0) {
+            factors.push(i);
+        }
+    }
+
+    return factors.length;
 }
 
 export default generateOrderQuestions
