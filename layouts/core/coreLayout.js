@@ -1,38 +1,45 @@
 import Header from "comps/header/header";
 import ReactHowler from "react-howler";
 import React, {useEffect, useState} from "react";
-import {useWrapperContext} from "utils/imports/commonImports";
-import { useSiteContext } from "@hooks/siteContext/useUserContext";
+import { useUserContext } from "@hooks/siteContext/useUserContext";
 import Loading from "@comps/screens/loading";
+import { useRouter } from "next/router";
 
 export default function Layout({ children }) {
 
     //standard layout of every page
     //has a header with title and lang select,
     //then the children displayed in the box of the view container
-    const context = useWrapperContext();
-    const mapLocation = context.state.mapLocation;
-    const [musicSrc, setMusicSrc] = useState("/sound/null.mp3");
+    const {user,settings,loading, error} = useUserContext()
 
+    const router = useRouter()
+
+    if(loading || !router.isReady) return <Loading/>
+    if(error) return <Error error={error}/>
+
+    const lang = settings.lang
+    const mute = settings.mute
+    const [musicSrc, setMusicSrc] = useState("/sound/null.mp3");
+    const mapLocation = '' //TODO: get this from the router filepath
     useEffect(() => {
-            if (mapLocation === "AuntsHouse") {
+            if (mapLocation === "auntHouse") {
                 setMusicSrc("/sound/salsa_bg.mp3");
-            } else if (mapLocation === "Restaurant") {
+            } else if (mapLocation === "restaurant") {
                 setMusicSrc("/sound/salsa2_bg.mp3");
             }
     }, [mapLocation]);
 
     useEffect(() => {
-        if (context.state.mute === "Yes") {
+        if (mute) {
             setMusicSrc("/sound/null.mp3");
-        } else if (context.state.mute === "No") {
-            if (mapLocation === "AuntsHouse") {
+        } else {
+            if (mapLocation === "auntHouse") {
                 setMusicSrc("/sound/salsa_bg.mp3");
-            } else if (mapLocation === "Restaurant") {
+            } else if (mapLocation === "restaurant") {
                 setMusicSrc("/sound/salsa2_bg.mp3");
             }
         }
-    }, [context.state.mute, mapLocation]);
+    }, [mute, mapLocation]);
 
     return (
         <>

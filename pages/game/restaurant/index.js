@@ -1,6 +1,6 @@
 import React, {useState,useEffect, useReducer} from 'react'
 import {useRouter} from 'next/router'
-import {useWrapperContext,GameIndexLayout} from '@utils/imports/commonImports'
+import {GameIndexLayout} from '@utils/imports/commonImports'
 import style from '@styles/restaurant.module.css'
 import getMenu from '@utils/game/restaurant/getMenu'
 import ItemDescription from '@comps/game/restuarant/itemDescription'
