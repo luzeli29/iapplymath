@@ -1,7 +1,6 @@
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import style from '@styles/restaurant.module.css'
 import { err } from '@utils/debug/log'
-import {useWrapperContext} from '@utils/imports/commonImports'
 import menuOptions from "@public/text/menuOptions"
 
 //order component that shows what the user has ordered

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Confetti from 'react-confetti'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
-import {useWrapperContext,formatAnswer} from '@utils/imports/commonImports'
+import {formatAnswer} from '@utils/imports/commonImports'
 import { Calculator } from 'react-mac-calculator'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
