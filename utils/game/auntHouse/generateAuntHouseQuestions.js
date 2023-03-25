@@ -2,7 +2,33 @@ import recipes from '@public/text/auntHouseRecipes'
 import {simplifyFraction} from '@utils/imports/commonImports'
 import createGameQuestion from '@utils/game/createGameQuestion.js'
 
-export function generateAuntHouseQuestions(recipeIndex) {
+export default function generateAuntQuestions(questionType,recipeIndex) {
+    if(!questionType) {
+        return [createGameQuestion()]
+    }
+    if(recipeIndex < 0 || recipeIndex >= recipes.length) {
+        return [createGameQuestion()]
+    }
+
+    switch(questionType) {
+        case "basic":
+            return generateBasicQuestions(recipeIndex)
+        case "familySize":
+            return generateFamilySizeQuestion()
+        case "familyQuestion":
+            const familySize = window.sessionStorage.getItem('FAMILY_SIZE')
+
+            if(familySize == undefined) {
+                return [createGameQuestion()]
+            }
+            return generateFamilyQuestions(recipeIndex,familySize)
+        default:
+            return [createGameQuestion()]
+        }
+
+}
+
+function generateBasicQuestions(recipeIndex) {
     const recipe = recipes[recipeIndex]
     var questions = [];
     //TODO: This is bad, relook at this during recipe rework
@@ -20,7 +46,6 @@ export function generateAuntHouseQuestions(recipeIndex) {
                     es: "Cuenta todos los ingredientes",
                 }
             ]
-
         )
     }
 
@@ -39,7 +64,7 @@ export function generateAuntHouseQuestions(recipeIndex) {
     return questions
 }
 
-export function generateFamilyQuestions(recipeIndex, familySize) {
+function generateFamilyQuestions(recipeIndex, familySize) {
     const recipe = recipes[recipeIndex]
     var questions = [];
     //family questions
@@ -55,6 +80,32 @@ export function generateFamilyQuestions(recipeIndex, familySize) {
     })
     return questions
 }
+
+function generateFamilySizeQuestion() {
+    return [{
+        en: "How many people should we cook for?",
+        es: "¿Para cuántas personas vamos a cocinar?",
+    
+        hints: [{
+                en: "Please enter a number between 1 - 13",
+                //TODO: Translate
+                es: "NOT TRANSLATED YET!",
+            },
+        ],
+        answer: "fill_in",
+        onAnswer: (answer) => {
+            if(isNaN(answer)) {
+                return false;
+            } else if(answer > 1 && answer <= 12) {
+                window.sessionStorage.setItem('FAMILY_SIZE',answer)
+                return true;
+            } else {
+                //Incorrect, shows hint
+                return false;
+            }
+        }},]
+}
+
 
 //generates the propper question JS object to be read by QuestionLayout
 function generateMultiQuestion(recipe,ing, num) {
