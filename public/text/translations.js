@@ -61,6 +61,10 @@ const translations = {
     },
 
     // ----- General Translations -----
+    no_recipe_selected: {
+        en: "Please select a recipe.",
+        es: "Please select a recipe.",
+    },
     avatar_tooltip: {
         en: "Change Avatar",
         es: "Cambiar Avatar",
