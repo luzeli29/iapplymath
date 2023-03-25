@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Image from "next/image";
-import {useWrapperContext} from '@utils/imports/commonImports'
 import { useRouter } from 'next/router'
 import style from '../../styles/check_in.module.css'
 import translations from '../../public/text/translations';

@@ -2,7 +2,6 @@ import ReactHowler from 'react-howler'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
 import style from '@styles/map.module.css'
-import {useWrapperContext} from '@utils/imports/commonImports'
 import translations from '@translations';
 import {motion} from 'framer-motion';
 import { useUserContext } from '@hooks/siteContext/useUserContext'

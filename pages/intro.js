@@ -6,5 +6,5 @@ import {Dialog} from '@utils/imports/commonImports';
 export default function Intro() {
   const router = useRouter()
 
-  return <Dialog scriptId="game_intro" onEnd={() => router.push('/avatar/select')}/>
+  return <Dialog scriptId="game_intro" onEnd={() => router.push('/user/avatar/select')}/>
 }

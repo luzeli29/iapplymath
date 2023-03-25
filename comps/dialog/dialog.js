@@ -3,7 +3,6 @@ import Image from 'next/image'
 import {useRouter} from 'next/router'
 import { AiFillCaretRight,AiFillCaretLeft } from "react-icons/ai";
 import style from '@styles/dialog.module.css'
-import {useWrapperContext} from '@utils/imports/commonImports'
 import Scripts from '@public/text/dialogScripts'
 import TextReader from 'comps/accessibility/textReader';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
