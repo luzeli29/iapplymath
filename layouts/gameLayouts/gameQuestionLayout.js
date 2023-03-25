@@ -18,7 +18,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    const {user,settings,loading, error} = useUserContext()
    const [questionNum, setQuestionNum] = useState(0)
    const router = useRouter()
-   const isLoggedIn = user.loggedIn    
+   const isLoggedIn = user.loggedIn
    const [incorrectNum, setIncorrectNum] = useState(0);
    const [state, setState] = useState("questions")
    const [isFinished, setFinished] = useState(false)
@@ -37,11 +37,11 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          _questions[_questions.length] = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
       }
    }
-   if(loading) return <Loading/> 
+   if(loading) return <Loading/>
    if(!router.isReady) return <Loading/>
    if(error) return <Error error={error}/>
    if(!isLoggedIn) return <Login/>
-   if(state == "finished") return <Loading/> 
+   if(state == "finished") return <Loading/>
    const lang = settings.lang
    //const {start,stop,reset,isRunning,time} = useStopWatch()
 
@@ -88,7 +88,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          }
 
          if(gameType == "restaurant") {
-            questionData.order = cleanOrder()
+            //questionData.order = cleanOrder()
          }
 
          try {
@@ -97,7 +97,8 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
             err(e.message)
          }
 
-      }  
+      }
+      setFinished(true)
       setQuestionNum(0)
       switch(exitType) {
          case "FINISHED":
@@ -107,7 +108,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
             handleBack()
             break;
       }
-      setFinished(true)
    }
 
    //create two states
@@ -127,7 +127,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                break;
          case "fill_in" : //Question requires value from user to be later used
                //if filled in answer is good onAnswer returns true and we move on
-               if (_questions[questionNum].onAnswer(answer)) { 
+               if (_questions[questionNum].onAnswer(answer)) {
                   setQuestionNum(questionNum + 1)
                   setIncorrectNum(0)
                } else { //Filled in answer is not accepted
@@ -136,8 +136,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                break;
          default :
                //Test if input is correct
-             console.log(answer);
-             console.log(simplifyAnswer(answer));
                if(simplifyAnswer(answer) == _questions[questionNum].answer) { //Answer is correct
                   //stop()
                   //_questions[questionNum].timeTaken = time
@@ -151,7 +149,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       }
    }
 
-   if(state == "questions") { 
+   if(state == "questions") {
       if(questionNum < _questions.length) {
          const correctAnswer = _questions[questionNum].answer;
          const answerFormat = _questions[questionNum].answerFormat;
@@ -174,7 +172,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                            {children}
                         </td>
                         <td className={style.question_container}>
-                           <QuestionBox 
+                           <QuestionBox
                               className={style.question_box}
                               questionData={_questions[questionNum]}
                               incorrectNum={incorrectNum}/>
@@ -188,12 +186,12 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                                  handleSubmitAnswer={handleSubmitAnswer}/>
                         </td>
                         <td className={style.ayu_block}>
-                           <Ayu handleAyuClick={() => handleAyuClick()}/>  
+                           <Ayu handleAyuClick={() => handleAyuClick()}/>
                         </td>
                      </tr>
                   </tbody>
-               </table>     
-            </>             
+               </table>
+            </>
          )
       } else {
          handleExit("FINISHED")
