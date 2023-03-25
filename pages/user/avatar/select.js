@@ -59,7 +59,7 @@ export default function AvatarSelect() {
             <p className='text-center'>{feedbackText}</p>
             <div className={style.button_bar}>
                 {Array.apply(0, Array(8)).map((x,i) => {
-                    return <AvatarButton index={i + 1} key={i} />;
+                    return <AvatarButton index={i} key={i} />;
                 })}
             </div>
             {selectedAvatarId ? 
