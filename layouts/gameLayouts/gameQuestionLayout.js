@@ -88,7 +88,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          }
 
          if(gameType == "restaurant") {
-            questionData.order = cleanOrder()
+            //questionData.order = cleanOrder()
          }
 
          try {
@@ -98,6 +98,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          }
 
       }  
+      setFinished(true)
       setQuestionNum(0)
       switch(exitType) {
          case "FINISHED":
@@ -107,7 +108,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
             handleBack()
             break;
       }
-      setFinished(true)
    }
 
    //create two states
@@ -136,8 +136,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                break;
          default :
                //Test if input is correct
-             console.log(answer);
-             console.log(simplifyAnswer(answer));
                if(simplifyAnswer(answer) == _questions[questionNum].answer) { //Answer is correct
                   //stop()
                   //_questions[questionNum].timeTaken = time
