@@ -107,6 +107,8 @@ export default function Map() {
                     id={style.grocery_store}
                     src={"/img/map/grocery_store.png"}/>
             </div>
+            <br></br>
+            <a className="feedback_button" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">Give us feedback!</a>
         </>
     );
 }
