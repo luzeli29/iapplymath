@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import {useRouter} from 'next/router'
-import {GameQuestionLayout,useWrapperContext} from '@utils/imports/commonImports'
+import {GameQuestionLayout} from '@utils/imports/commonImports'
 import menuOptions from "@public/text/menuOptions"
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'

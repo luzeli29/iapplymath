@@ -1,5 +1,4 @@
 import React, {} from 'react';
-import {useWrapperContext} from '@utils/imports/commonImports'
 import style from '@styles/map.module.css'
 import translations from '@translations'
 import {useRouter} from 'next/router'
@@ -7,10 +6,14 @@ import Image from 'next/image'
 
 
 export default function MapIcon({game_page_id}) {
-    //get current lang
-    const lang = useWrapperContext().state.lang;
-    //init router
-    const router = useRouter()
+    const {user,settings,loading, error} = useUserContext()
+
+  const router = useRouter()
+
+  if(loading || !router.isReady) return <Loading/>
+  if(error) return <Error error={error}/>
+
+  const lang = settings.lang
     //set src
     const src = "/img/map/" + game_page_id + ".png"
 

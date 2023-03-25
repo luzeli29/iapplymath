@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Image from "next/image";
-import {useWrapperContext,getText} from '@utils/imports/commonImports'
+import {getText} from '@utils/imports/commonImports'
 import { useRouter } from 'next/router'
 import style from '@styles/avatar.module.css'
 import { useUserContext } from '@hooks/siteContext/useUserContext';
