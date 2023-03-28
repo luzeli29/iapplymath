@@ -57,6 +57,7 @@ export default function Layout({ children }) {
                 <div className="view_container">
                     { children }
                 </div>
+                <a className="feedback_button" rel="noreferrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">Give us feedback!</a>
             </div>
         </>
     );
