@@ -23,11 +23,24 @@ export default function QuestionBox({questionData, incorrectNum}) {
     if(error) return <Error error={error}/>
     if(!isLoggedIn) return <Login/>
     const lang = settings.lang
+
+    let hintText = ''
+
+    if (incorrectNum > 0) {
+        if((incorrectNum) > questionData.hints.length) {
+            hintText = 'The answer is - ' + questionData.answer
+        } else {
+            hintText = questionData.hints[incorrectNum-1][lang] 
+        }
+    }
+    /*
     const hintText = incorrectNum > 0 ? 
                             (incorrectNum) > questionData.hints.length ? 
                             questionData.hints.at(-1)[lang] 
                             : questionData.hints[incorrectNum-1][lang] 
                             : "";
+    */
+    
     const questionSrc = questionData.imgSrc
     const path = "/img/questionExamples/" + questionSrc + ".png"
     return (

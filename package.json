@@ -28,6 +28,7 @@
     "react-speech": "^1.0.2",
     "reactjs-popup": "^2.0.5",
     "sass": "^1.49.9",
+    "seedrandom": "^3.0.5",
     "swr": "^2.1.0",
     "tween-functions": "^1.2.0"
   },
