@@ -62,7 +62,7 @@ export default function AvatarSelect() {
                     return <AvatarButton index={i} key={i} />;
                 })}
             </div>
-            {selectedAvatarId ? 
+            {selectedAvatarId == undefined ? 
                 <button 
                         className={style.continue_button}
                         onClick={() => handleSaveAvatar()}>
