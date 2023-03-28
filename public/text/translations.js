@@ -60,6 +60,19 @@ const translations = {
         es: "Selección de Menú",
     },
 
+    entree: {
+        en: 'Entree',
+        es: 'Entrada'
+    },
+    drink: {
+        en: 'Drink',
+        es: 'Bebida'
+    },
+    dessert: {
+        en: 'Dessert',
+        es: 'Postre'
+    },
+
     // ----- General Translations -----
     no_recipe_selected: {
         en: "Please select a recipe.",
