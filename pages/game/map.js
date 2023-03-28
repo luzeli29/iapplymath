@@ -106,7 +106,6 @@ export default function Map() {
                     id={style.grocery_store}
                     src={"/img/map/grocery_store.png"}/>
             </div>
-            <br></br>
         </>
     );
 }

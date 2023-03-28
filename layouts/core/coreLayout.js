@@ -49,14 +49,15 @@ export default function Layout({ children }) {
                 loop = {true}
                 preload = {true}
             />
-
             <div className="header_container">
                 <Header/>
             </div>
-            <div className="body_container">
-                <div className="view_container">
-                    { children }
+                <div className="body_container">
+                    <div className="view_container">
+                        { children }
+                    </div>
                 </div>
+            <div className="">
                 <a className="feedback_button" rel="noreferrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">Give us feedback!</a>
             </div>
         </>
