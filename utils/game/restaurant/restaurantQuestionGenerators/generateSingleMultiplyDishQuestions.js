@@ -14,7 +14,7 @@ export default function generateSingleMultiplyDishQuestions(order,level,randomGe
 
     for(let i = 0; i < numbOfQuestionsNeeded; i++) {
         let question = generateMultiMultiplyQuestion(order,level,randomGenerator)
-        questions.push(question)
+        //questions.push(question)
     }
 
     return questions
