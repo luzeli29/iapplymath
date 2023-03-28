@@ -71,11 +71,11 @@ const translations = {
     },
     checkin_tooltip: {
         en: "Check in",
-        es: "Check in",
+        es: "¿Cómo te sientes?",
     },
     mute_tooltip: {
         en: "Mute Music",
-        es: "Silenciar la música",
+        es: "Controla la música",
     },
     logout_tooltip: {
         en: "Logout",
@@ -83,11 +83,11 @@ const translations = {
     },
     login_tooltip: {
         en: "Login",
-        es: "Login",
+        es: "Iniciar sesión",
     },
     login: {
         en: "Login",
-        es: "Login"
+        es: "Iniciar sesión"
     },
     save: {
         en: "Save",
