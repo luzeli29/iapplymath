@@ -4,7 +4,7 @@ import {useRouter} from 'next/router'
 import Confetti from 'react-confetti'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
-import {useWrapperContext,Dialog,formatAnswer,simplifyAnswer} from '@utils/imports/commonImports'
+import {Dialog,formatAnswer,simplifyAnswer} from '@utils/imports/commonImports'
 import { Calculator } from 'react-mac-calculator'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -23,31 +23,59 @@ export default function QuestionBox({questionData, incorrectNum}) {
     if(error) return <Error error={error}/>
     if(!isLoggedIn) return <Login/>
     const lang = settings.lang
-        const hintText = incorrectNum > 0 ? 
-                                (incorrectNum) > questionData.hints.length ? 
-                                questionData.hints.at(-1)[lang] 
-                                : questionData.hints[incorrectNum-1][lang] 
-                                : "";
-        return (
-            <div className={style.question_text_container}>
-                <div className="row">
-                    <div className="col-lg-2">
-                    </div>
-                    <div className="col-lg-10">
-                    <p>{questionData[lang]}</p>
-                    </div>
+
+    let hintText = ''
+
+    if (incorrectNum > 0) {
+        if((incorrectNum) > questionData.hints.length) {
+            hintText = 'The answer is - ' + questionData.answer
+        } else {
+            hintText = questionData.hints[incorrectNum-1][lang] 
+        }
+    }
+    /*
+    const hintText = incorrectNum > 0 ? 
+                            (incorrectNum) > questionData.hints.length ? 
+                            questionData.hints.at(-1)[lang] 
+                            : questionData.hints[incorrectNum-1][lang] 
+                            : "";
+    */
+    
+    const questionSrc = questionData.imgSrc
+    const path = "/img/questionExamples/" + questionSrc + ".png"
+    return (
+        <div className={style.question_text_container}>
+            <div className="row">
+                <div className="col-lg-2">
                 </div>
-                {hintText ? 
-                <div className="row">
-                    <div className="col-lg-2">
-                    </div>
-                    <div className="col-lg-10">
-                    <p>{hintText}</p>
-                    </div>
-                </div> 
-                :
-                <></>}
+                <div className="col-lg-10">
+                <p>{questionData[lang]}</p>
+                </div>
             </div>
-        );
+            {
+                questionSrc ? 
+                <div className='border'>
+                     <Image
+                        priority={true}
+                        width={80}
+                        height={80}
+                        src={path}
+                        alt={"example image"}/> 
+                </div>
+                :
+                <></>
+            }
+            {hintText ? 
+            <div className="row">
+                <div className="col-lg-2">
+                </div>
+                <div className="col-lg-10">
+                <p>{hintText}</p>
+                </div>
+            </div> 
+            :
+            <></>}
+        </div>
+    );
      
 }
