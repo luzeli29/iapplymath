@@ -216,7 +216,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                      </tr>
                   </tbody>
                </table>
-               <a className="feedback_button" rel="no referrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">Give us feedback!</a>
             </>
          )
       } else {
