@@ -1,11 +1,18 @@
 import React from 'react';
 import Link from "next/link"
-import {useWrapperContext, getText} from '@utils/imports/commonImports'
+import { getText} from '@utils/imports/commonImports'
+import Loading from '@comps/screens/loading';
 
 //404 page if user goes to page not found
 export default function Error() {
-  const context = useWrapperContext()
-  const lang = context.state.lang
+  const {user,settings,loading, error} = useUserContext()
+
+  const router = useRouter()
+
+  if(loading || !router.isReady) return <Loading/>
+  if(error) return <Error error={error}/>
+
+  const lang = settings.lang
 
   return (
     //TODO: Make pretty

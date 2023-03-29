@@ -2,7 +2,6 @@ import ReactHowler from 'react-howler'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
 import style from '@styles/map.module.css'
-import {useWrapperContext} from '@utils/imports/commonImports'
 import translations from '@translations';
 import {motion} from 'framer-motion';
 import { useUserContext } from '@hooks/siteContext/useUserContext'
@@ -107,6 +106,8 @@ export default function Map() {
                     id={style.grocery_store}
                     src={"/img/map/grocery_store.png"}/>
             </div>
+            <br></br>
+            <a className="feedback_button" rel="noreferrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">Give us feedback!</a>
         </>
     );
 }

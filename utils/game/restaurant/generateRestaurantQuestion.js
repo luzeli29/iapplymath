@@ -1,8 +1,10 @@
 //Generate questions with the order state
 import createGameQuestion from '@utils/game/createGameQuestion.js'
 import { simplifyFraction } from "@utils/imports/commonImports"
-
-export default function generateOrderQuestions(order) {
+import validateOrder from '@utils/validation/game/restaurant/validateOrder';
+import generateBasicOrderQuestions from './restaurantQuestionGenerators/generateBasicOrderQuestions';
+import generateMultiplyDishQuestions from './restaurantQuestionGenerators/generateSingleMultiplyDishQuestions';
+export default function generateRestaurantQuestions(order,randomGenerator) {
     /******
      * Make sure time answers are always in this format
      *  ex. HH:MMAM or HH:MMPM
@@ -19,116 +21,24 @@ export default function generateOrderQuestions(order) {
     *******/
 
     var questions = [];
-    if(!order) {
+    if(!validateOrder(order)) {
         return [createGameQuestion()];
     }
 
-    const total = order.entree.price + order.drink.price + order.dessert.price
+    const level = 5
 
-    const sortedOrder = Object.values(order).sort(
-       (p1, p2) => (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0);
+    var questions = [];
 
-    //total
-    questions[questions.length] = createGameQuestion(
-        {
-            en:"How much was your order?",
-            es:"¿Cuánto es el total?",
-        },
-        total,
-        [],
-        "equality"
-    )
-    questions[1] = createGameQuestion(
-        {
-            en:"How much is the total if you remove the most expensive item?",
-            es:"¿Cuánto es el total si no compras el plato más caro?",
-        },
-        total - sortedOrder[0].price,
-        [],
-        "time"
-    )
-    questions[questions.length] = createGameQuestion(
-        {
-            en:"How much is your total if you remove the least expensive item?",
-            es:"¿Cuánto es el total si no compras el plato más barato?",
-        },
-        total - sortedOrder[2].price,
-        [],
-        "decimal"
-    )
+    const basicOrderQuestions = generateBasicOrderQuestions(order)
+    questions = questions.concat(basicOrderQuestions)
+    
+    const multiplyDishQuestions = generateMultiplyDishQuestions(order,level,randomGenerator)
+    questions = questions.concat(multiplyDishQuestions)
 
     let randomItem;
     let randomItemEs;
     let randomOrderObj;
-    let randEnDrDe = getRandomInt(1, 3); //Entree = 1, drink = 2, dessert = 3
-    //can easily be assigned entree, drink, dessert, just need to know how to parse a string, "order.entree.es", to become a var
-    switch(randEnDrDe){
-        case 1:
-            randomItem = "entree";
-            randomItemEs = "entrada";
-            randomOrderObj = order.entree;
-            break;
-        case 2:
-            randomItem = "drink";
-            randomItemEs = "bebida";
-            randomOrderObj = order.drink;
-            break;
-        case 3:
-            randomItem = "dessert";
-            randomItemEs = "postre";
-            randomOrderObj = order.dessert;
-            break;
-    }
-    questions[questions.length] = createGameQuestion(
-        {
-            en:"Elena’s friend, Alex, joins you at the table. If all three of you order the same " + randomItem + ", " + randomOrderObj.en + ", what is the total cost of all " + randomItem + "s?",
-            es:"El amigo de Elena, Alex, se une a ti en la mesa. Si los tres piden " + (randomItemEs === "postre" ? "el mismo " : "la misma ") + randomItemEs + ", " + randomOrderObj.es + ", ¿cuál es el costo total de " + (randomItemEs === "postre" ? "todos los " : "todas las ") + randomItemEs + "s?",
-        },
-        randomOrderObj.price * 3,
-        [{
-            en: "(" + randomOrderObj.en + ") + (" + randomOrderObj.en + ") + (" + randomOrderObj.en + ") = ???",
-            es: "(" + randomOrderObj.es + ") + (" + randomOrderObj.es + ") + (" + randomOrderObj.es + ") = ???",
-        },{
-            en: "(" + randomOrderObj.en + ") + (" + randomOrderObj.en + ") + (" + randomOrderObj.en + ") = " + randomOrderObj.price * 3,
-            es: "(" + randomOrderObj.es + ") + (" + randomOrderObj.es + ") + (" + randomOrderObj.es + ") = " + randomOrderObj.price * 3,
-        }],
-        "decimal"
-    )
-    randEnDrDe = getRandomInt(1, 3);
-    switch(randEnDrDe){
-        case 1:
-            randomItem = "entrée";
-            randomItemEs = "entrada";
-            randomOrderObj = order.entree;
-            break;
-        case 2:
-            randomItem = "drink";
-            randomItemEs = "bebida";
-            randomOrderObj = order.drink;
-            break;
-        case 3:
-            randomItem = "dessert";
-            randomItemEs = "postre";
-            randomOrderObj = order.dessert;
-            break;
-    }
-    randomValue = getRandomInt(1, 10);
-    questions[questions.length] = createGameQuestion(
-        {
-            en:"If you buy your " + randomItem + ", " + randomOrderObj.en + ", " + randomValue + (randomValue === 1 ? " time" : " times") + ", how much money did you spend in total?",
-            es:"Si compra su " + randomItemEs + ", " + randomOrderObj.es + ", " + randomValue + (randomValue === 1 ? "vez" : " veces") + ", ¿cuánto dinero gastó en total?",
-        },
-        randomOrderObj.price * randomValue,
-        [{
-            en: "(" + randomOrderObj.en + ") x " + randomValue + " = ???",
-            es: "(" + randomOrderObj.es + ") x " + randomValue + " = ???",
-        },{
-            en: "(" + randomOrderObj.en + ") x " + randomValue + " = " + randomOrderObj.price * randomValue,
-            es: "(" + randomOrderObj.es + ") x " + randomValue + " = " + randomOrderObj.price * randomValue,
-        }],
-        "decimal"
-    )
-    randEnDrDe = getRandomInt(1, 3);
+    let randEnDrDe = getRandomInt(1, 3);
     switch(randEnDrDe){
         case 1:
             randomItem = "entrée";
