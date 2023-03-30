@@ -87,16 +87,16 @@ function generateFamilySizeQuestion() {
         es: "¿Para cuántas personas vamos a cocinar?",
     
         hints: [{
-                en: "Please enter a number between 1 - 13",
+                en: 'Please enter a number between 1 - 13',
                 //TODO: Translate
-                es: "NOT TRANSLATED YET!",
+                es: 'Por favor ingrese un número entre 1 - 13',
             },
         ],
         answer: "fill_in",
         onAnswer: (answer) => {
             if(isNaN(answer)) {
                 return false;
-            } else if(answer > 1 && answer <= 12) {
+            } else if(answer > 1 && answer < 13) {
                 window.sessionStorage.setItem('FAMILY_SIZE',answer)
                 return true;
             } else {

@@ -14,7 +14,6 @@ export default function Layout({ children }) {
 
     const router = useRouter()
 
-    const lang = settings.lang
     const mute = settings.mute
     const [musicSrc, setMusicSrc] = useState("/sound/null.mp3");
     const mapLocation = '' //TODO: get this from the router filepath
