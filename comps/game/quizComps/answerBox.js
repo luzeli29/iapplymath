@@ -51,9 +51,10 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
            if (inputAnswer) {
               submitAnswer(inputAnswer)
            } else if (correctAnswer == "") {
-              submitAnswer(inputAnswer)
+                setShowEmptyHint(false)
+                submitAnswer(inputAnswer)
            } else {
-              setShowEmptyHint(true)
+                setShowEmptyHint(true)
            }
         } else {
            setInputAnswer(formatAnswer(answerFormat,inputAnswer).toString().length < 12 ? inputAnswer + value : inputAnswer);

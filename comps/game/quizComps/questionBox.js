@@ -28,7 +28,7 @@ export default function QuestionBox({questionData, incorrectNum}) {
 
     if (incorrectNum > 0) {
         if((incorrectNum) > questionData.hints.length) {
-            hintText = 'The answer is - ' + questionData.answer
+            hintText = questionData.hints.at(-1)[lang] 
         } else {
             hintText = questionData.hints[incorrectNum-1][lang] 
         }
