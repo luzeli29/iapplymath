@@ -7,7 +7,5 @@ export default function CreateKeyFromPassword(password) {
 
     const key = hash.toString(HEX)
 
-    console.log(key)
-
     return key
 }
