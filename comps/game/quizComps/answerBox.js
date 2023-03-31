@@ -49,11 +49,13 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
            setInputAnswer(inputAnswer.slice(0,inputAnswer.length - 1)); 
         } else if (value == "✓") {
            if (inputAnswer) {
+              setShowEmptyHint(false)
               submitAnswer(inputAnswer)
            } else if (correctAnswer == "") {
-              submitAnswer(inputAnswer)
+                setShowEmptyHint(false)
+                submitAnswer(inputAnswer)
            } else {
-              setShowEmptyHint(true)
+                setShowEmptyHint(true)
            }
         } else {
            setInputAnswer(formatAnswer(answerFormat,inputAnswer).toString().length < 12 ? inputAnswer + value : inputAnswer);

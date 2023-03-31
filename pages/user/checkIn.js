@@ -34,10 +34,11 @@ const emotions = [
     }
 ]
 
-export default function Creator() {
+export default function Creator({onEnd}) {
     const {user,settings,loading, error} = useUserContext()
     const isLoggedIn = user.loggedIn
     const [selectedFeelingIndex, setSelectedFeelingIndex] = useState()
+    const _onEnd = onEnd ? onEnd : () => router.back();
 
     const router = useRouter()
 
@@ -50,9 +51,8 @@ export default function Creator() {
     //This is called when the player is done creating
     //Should handle anything to be done in order to use avatar in game
     const handleFeelingSubmit = () => {
-        // context.setAvatar(avatar)
-        router.back();
-    }
+        _onEnd();
+    };
 
     const FeelingButton = ({index}) => {
         const emotion = emotions.at(index)
