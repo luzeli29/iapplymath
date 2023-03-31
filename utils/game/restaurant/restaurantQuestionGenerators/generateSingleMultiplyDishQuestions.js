@@ -3,7 +3,7 @@ import createGameQuestion from "@utils/game/createGameQuestion"
 import validateOrder from "@utils/validation/game/restaurant/validateOrder"
 
 export default function generateSingleMultiplyDishQuestions(order,level,randomGenerator) {
-    const numbOfQuestionsNeeded = Math.ceil(level*.8)
+    const numbOfQuestionsNeeded = 1
     let questions = []
 
 
@@ -21,8 +21,8 @@ export default function generateSingleMultiplyDishQuestions(order,level,randomGe
 }
 
 function generateSingleMultiplyQuestion(order,level,randomGenerator) {
-    const factorMax = Math.ceil((level**2) + 3)
-    const factorMin = Math.ceil((level**2)/5 + 3)
+    const factorMax = Math.ceil(((level+2)**2) + 3)
+    const factorMin = Math.ceil(((level+2)**2)/5 + 3)
     const factor = randomGenerator.randomInt(factorMin,factorMax)
     const dishType = randomGenerator.randomDishType()
     const dish = order[dishType]
