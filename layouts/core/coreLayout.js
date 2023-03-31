@@ -15,39 +15,47 @@ export default function Layout({ children }) {
     const router = useRouter()
 
     const mute = settings.mute
-    const [musicSrc, setMusicSrc] = useState("/sound/null.mp3");
-    const mapLocation = '' //TODO: get this from the router filepath
-    useEffect(() => {
-            if (mapLocation === "auntHouse") {
-                setMusicSrc("/sound/salsa_bg.mp3");
-            } else if (mapLocation === "restaurant") {
-                setMusicSrc("/sound/salsa2_bg.mp3");
-            }
-    }, [mapLocation]);
-
-    useEffect(() => {
-        if (mute) {
-            setMusicSrc("/sound/null.mp3");
-        } else {
-            if (mapLocation === "auntHouse") {
-                setMusicSrc("/sound/salsa_bg.mp3");
-            } else if (mapLocation === "restaurant") {
-                setMusicSrc("/sound/salsa2_bg.mp3");
-            }
-        }
-    }, [mute, mapLocation]);
+    const [mapLocation, setMapLocation] = useState("/sound/null.mp3");
 
     if(loading || !router.isReady) return <Loading/>
     if(error) return <Error error={error}/>
 
-    return (
-        <>
-            <ReactHowler
+    const MusicBox = () => {
+        if(mute) return <></>
+
+        const path = router.asPath
+        const splitPath = path.split('/')
+        if(splitPath.length >= 3) {
+            const location = splitPath[2];
+            if(mapLocation != location) {
+                setMapLocation(location)
+            }
+        }
+
+        let musicSrc = '/sound/null.mp3'
+
+        switch (mapLocation) {
+            case 'auntHouse':
+                musicSrc= '/sound/salsa_bg.mp3'
+                break;
+            case 'restaurant':
+                musicSrc= '/sound/salsa2_bg.mp3'
+                break;
+        }
+
+        return (
+        <ReactHowler
                 src = {musicSrc}
                 playing ={true}
                 loop = {true}
                 preload = {true}
             />
+        )
+    }
+
+    return (
+        <>
+            <MusicBox/>
             <div className="header_container">
                 <Header/>
             </div>
