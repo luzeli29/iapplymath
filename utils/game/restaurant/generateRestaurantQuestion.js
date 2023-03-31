@@ -25,7 +25,7 @@ export default function generateRestaurantQuestions(order,randomGenerator) {
         return [createGameQuestion()];
     }
 
-    const level = 5
+    const level = 3
 
     var questions = [];
 
