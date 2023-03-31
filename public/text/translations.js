@@ -54,6 +54,23 @@ const translations = {
         en: "Order",
         es: "Pedido",
     },
+    budget: {
+        en: "budget",
+        es: "presupuesto",
+    },
+    create_user: {
+        en: "Create User",
+        es: "Crear usuario",
+    },
+    username: {
+        en: "Username:",
+        es: "Nombre del usuario:",
+    },
+    only_char: {
+        en: "Only characters and numbers, no spaces or symbols.",
+        es: "Solo usa letras y números, sin espacios ni símbolos",
+    },
+
 
     menu_select: {
         en: "Menu Select",
@@ -100,15 +117,15 @@ const translations = {
     },
     login_tooltip: {
         en: "Login",
-        es: "Iniciar sesión",
+        es: "Entrar",
     },
     login: {
         en: "Login",
-        es: "Iniciar sesión"
+        es: "Entrar"
     },
     save: {
         en: "Save",
-        es: "Guardar sesión",
+        es: "Guardar",
     },
     i_apply_full_title: {
         en: "I Apply Math In My World",
@@ -122,7 +139,7 @@ const translations = {
 
     back: {
         en: "Back",
-        es: "Retroceso"
+        es: "Retroceder"
     },
 
     back_to_map: {
@@ -146,7 +163,7 @@ const translations = {
     },
     check_in: {
         en: "How are you feeling?",
-        es: "Como te sientes?",
+        es: "¿Como te sientes?",
     },
     pet_select: {
         en: "Pick your pet",
@@ -154,7 +171,7 @@ const translations = {
     },
     background_select: {
         en: "Pick your background color",
-        es: "Elige el color de fondo de la pagina"
+        es: "Elige el color de la pagina"
     },
 
     // TODO: maybe find a better way to do this for 404 page
@@ -184,6 +201,11 @@ const translations = {
     empty_hint: {
         en:"Please put in an answer.",
         es:"Por favor, ponga una respuesta.",
+    },
+
+    type_answer: {
+        en:"Type answer here:",
+        es:"Escriba su respuesta aquí:",
     },
 
     pet_ayu: {
