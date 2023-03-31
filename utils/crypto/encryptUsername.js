@@ -15,10 +15,7 @@ function EncryptUsername(username) {
     const key = Hex.parse(process.env.ENCRYPTION_KEY)
 
     const secureUsername = AES.encrypt(username, key, { iv: iv }).toString();
-    
-    var bytes  = AES.decrypt(secureUsername, key, { iv: iv });
-    var originalText = bytes.toString(Utf8);
-    console.log(originalText)
+
     return secureUsername
 }
 
