@@ -7,7 +7,7 @@ export default function simplifyAnswer(answer) {
         if(answer[0] === '0'){ //removes the 0 if written as 01:15PM so it registers as 1:15PM
             answer = answer.slice(1);
         }
-        return answer;
+        return answer.toUpperCase();
     }
     //double check if answer.split works properly for >=, <=
     else if(answer.includes('<') || answer.includes('>') || answer.includes("=")){

@@ -11,6 +11,7 @@ import { useStopWatch } from '@hooks/useStopWatch';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
 import { err } from '@utils/debug/log';
+import Creator from 'pages/user/checkIn'
 
 
 export default function QuestionLayout ({children, questions, onBack, onFinish}) {
@@ -72,6 +73,30 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          router.push('/game')
       }
    }
+   const handleCheckinEnd = () => {
+      setState("dialogue");
+   };
+
+   const handleDialogueEnd = () => {
+      setState("checkin2");
+   };
+
+   const handleCheckin2End = () => {
+      setState("questions");
+   };
+
+   const renderContent = () => {
+      switch (state) {
+         case "ayu":
+            return <Creator onEnd={handleCheckinEnd} />;
+         case "dialogue":
+            return <Dialog scriptId={"ayu_relaxation_0"} onEnd={handleDialogueEnd}/>;
+         case "checkin2":
+            return <Creator onEnd={handleCheckin2End} />;
+         default:
+            return null;
+      }
+   };
 
    async function handleExit(exitType) {
       const cleanedQuestions = cleanQuestions(_questions)
@@ -191,7 +216,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                      </tr>
                   </tbody>
                </table>
-               <a className="feedback_button" rel="no referrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">Give us feedback!</a>
             </>
          )
       } else {
@@ -200,9 +224,14 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       }
    } else {
       //TODO: switch dialog randomly in order to have different ayu relaxations
+
        return (
-            <Dialog scriptId={"ayu_relaxation_0"} onEnd={() => handleAyuReturn()}/>
+           <>
+           {renderContent()}
+           </>
        )
+         //<Creator onEnd={handleAyuReturn} />
+           //<Dialog scriptId={"ayu_relaxation_0"} onEnd={() => handleAyuReturn()}/>
    }
 }
 

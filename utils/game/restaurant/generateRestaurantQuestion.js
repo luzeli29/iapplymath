@@ -35,6 +35,8 @@ export default function generateRestaurantQuestions(order,randomGenerator) {
     const multiplyDishQuestions = generateMultiplyDishQuestions(order,level,randomGenerator)
     questions = questions.concat(multiplyDishQuestions)
 
+    return questions 
+    /*
     let randomItem;
     let randomItemEs;
     let randomOrderObj;
@@ -550,4 +552,5 @@ function countFactors(num) {
     }
 
     return factors.length;
+    */
 }
