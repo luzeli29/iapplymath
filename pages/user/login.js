@@ -53,7 +53,7 @@ export default function Login() {
           router.push("/user/petSelect")
           setOnRoute(true)
         } else {
-          router.push("/game/map")
+          router.push("/game/intro")
           setOnRoute(true)
         }
       }

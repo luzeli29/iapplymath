@@ -11,10 +11,18 @@ export default function Layout({ children }) {
     //has a header with title and lang select,
     //then the children displayed in the box of the view container
     const {user,settings,loading, error} = useUserContext()
+    const feedback = [
+        {
+            en: "Give us feedback!",
+            es: "¡Danos su opinión!",
+        }
+    ]
 
     const router = useRouter()
-
-    const lang = settings.lang
+    const lang = settings.lang;
+    const text = feedback.find(f => Boolean(f[lang]))[lang];
+    console.log(lang);
+    console.log(feedback[lang]);
     const mute = settings.mute
     const [musicSrc, setMusicSrc] = useState("/sound/null.mp3");
     const mapLocation = '' //TODO: get this from the router filepath
@@ -58,7 +66,7 @@ export default function Layout({ children }) {
                     </div>
                 </div>
             <div className="">
-                <a className="feedback_button" rel="noreferrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">Give us feedback!</a>
+                <a className="feedback_button" rel="noreferrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">{text}</a>
             </div>
         </>
     );

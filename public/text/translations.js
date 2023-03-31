@@ -48,7 +48,7 @@ const translations = {
     },
     missing_item_instructions:{
         en: "Missing item :(",
-        es: "Te falta un artículo de tu orden",
+        es: "Te falta un artículo de tu orden :(",
     },
     order: {
         en: "Order",
