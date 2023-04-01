@@ -52,7 +52,11 @@ const translations = {
     },
     order: {
         en: "Order",
-        es: "Pedido",
+        es: "Ordenar",
+    },
+    order_2: {
+        en: "Order",
+        es: "La Orden",
     },
     budget: {
         en: "budget",
