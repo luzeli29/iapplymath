@@ -43,7 +43,7 @@ function generateSingleMultiplyQuestion(order,level,randomGenerator) {
         question = createGameQuestion(
             {
                 en:'If your family wants to order your same entree ' + factor + ' times, how much is your family’s total?',
-                es:'Si su familia quiere pedir el mismo plato principal' + factor + ' veces , ¿cuánto es el total?',
+                es:'Si su familia quiere pedir el mismo plato principal ' + factor + ' veces , ¿cuánto es el total?',
             },
             dish.price * factor,
             [{
