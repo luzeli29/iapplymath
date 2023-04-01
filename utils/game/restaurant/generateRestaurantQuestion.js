@@ -3,6 +3,8 @@ import createGameQuestion from '@utils/game/createGameQuestion.js'
 import { simplifyFraction } from "@utils/imports/commonImports"
 import validateOrder from '@utils/validation/game/restaurant/validateOrder';
 import generateBasicOrderQuestions from './restaurantQuestionGenerators/generateBasicOrderQuestions';
+import generateGraphQuestions from './restaurantQuestionGenerators/generateGraphQuestions';
+import generateMultiMultiplyDishQuestions from './restaurantQuestionGenerators/generateMultiMultiplyDishQuestions';
 import generateMultiplyDishQuestions from './restaurantQuestionGenerators/generateSingleMultiplyDishQuestions';
 export default function generateRestaurantQuestions(order,randomGenerator) {
     /******
@@ -34,6 +36,12 @@ export default function generateRestaurantQuestions(order,randomGenerator) {
     
     const multiplyDishQuestions = generateMultiplyDishQuestions(order,level,randomGenerator)
     questions = questions.concat(multiplyDishQuestions)
+
+    const multiMultiplyQuestions = generateMultiMultiplyDishQuestions(order,level,randomGenerator)
+    questions = questions.concat(multiMultiplyQuestions)
+
+    const graphQuestions = generateGraphQuestions(randomGenerator)
+    questions = questions.concat(graphQuestions)
 
     return questions 
     /*

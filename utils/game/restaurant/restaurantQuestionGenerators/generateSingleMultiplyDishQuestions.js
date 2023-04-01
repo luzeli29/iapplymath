@@ -3,18 +3,13 @@ import createGameQuestion from "@utils/game/createGameQuestion"
 import validateOrder from "@utils/validation/game/restaurant/validateOrder"
 
 export default function generateSingleMultiplyDishQuestions(order,level,randomGenerator) {
-    const numbOfQuestionsNeeded = 1
+    const numbOfQuestionsNeeded = 3
     let questions = []
 
 
     for(let i = 0; i < numbOfQuestionsNeeded; i++) {
         let question = generateSingleMultiplyQuestion(order,level,randomGenerator)
         questions.push(question)
-    }
-
-    for(let i = 0; i < numbOfQuestionsNeeded; i++) {
-        let question = generateMultiMultiplyQuestion(order,level,randomGenerator)
-        //questions.push(question)
     }
 
     return questions
@@ -28,6 +23,7 @@ function generateSingleMultiplyQuestion(order,level,randomGenerator) {
     const dish = order[dishType]
     const dishTypeEs =  getText(dishType,'es').toLowerCase()
     let question
+
     if(factor == 3) {
         question = createGameQuestion(
             {
@@ -43,6 +39,21 @@ function generateSingleMultiplyQuestion(order,level,randomGenerator) {
                 es: "(" + dish.es + ") + (" + dish.es + ") + (" + dish.es + ") = " + dish.price * 3,
             }]
         )
+    } else if (dishType == 'entree') {
+        question = createGameQuestion(
+            {
+                en:'If your family wants to order your same entree ' + factor + ' times, how much is your family’s total?',
+                es:'Si su familia quiere pedir el mismo plato principal' + factor + ' veces , ¿cuánto es el total?',
+            },
+            dish.price * factor,
+            [{
+                en: "(" + dish.en + ") x " + factor + " = ???",
+                es: "(" + dish.es + ") x " + factor + " = ???",
+            },{
+                en: "(" + dish.en + ") x " + factor + " = " + dish.price * factor,
+                es: "(" + dish.es + ") x " + factor + " = " + dish.price * factor,
+            }]
+        ) 
     } else {
         question = createGameQuestion(
             {
@@ -60,8 +71,4 @@ function generateSingleMultiplyQuestion(order,level,randomGenerator) {
         ) 
     }
     return question
-}
-
-function generateMultiMultiplyQuestion(order,level,randomGenerator) {
-
 }

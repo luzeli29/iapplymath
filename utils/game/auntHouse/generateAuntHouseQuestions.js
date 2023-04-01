@@ -61,6 +61,7 @@ function generateBasicQuestions(recipeIndex) {
         }
         //goes through every ingredient for every multiple
     })
+
     return questions
 }
 
