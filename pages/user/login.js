@@ -4,12 +4,14 @@ import { useUserContext } from "@hooks/siteContext/useUserContext"
 import useUser from "@hooks/siteContext/useUser"
 import { useRouter } from "next/router"
 import React, { useEffect, useState } from "react"
+import translations from "@translations";
 
 export default function Login() {
-  const {user, loading, error} = useUserContext()
+  const {user, settings, loading, error} = useUserContext()
   const [feedbackText, setFeedbackText] = useState(user.error)
   const [onRoute, setOnRoute] = useState()
   const router = useRouter()
+    const lang = settings.lang
 
   if(loading) return <Loading/>
   if(onRoute) return (<Loading/>)
@@ -53,7 +55,7 @@ export default function Login() {
           router.push("/user/petSelect")
           setOnRoute(true)
         } else {
-          router.push("/game/map")
+          router.push("/game/intro")
           setOnRoute(true)
         }
       }
@@ -80,18 +82,18 @@ export default function Login() {
             <div className="row w-75 mx-auto pt-5 text-center">
               <p className="red">{feedbackText ? feedbackText : " "}</p>
               <p className="red">{user.error }</p>
-              <label className="col-4 text-end" htmlFor="UserId">Username:</label>
+              <label className="col-4 text-end" htmlFor="UserId">{translations.username[lang]}</label>
               <input className="col-6" id="username" type="text" name="username" pattern="[a-zA-Z0-9]*"/>
             </div>
             <div className="row w-75  mx-auto text-center">
-              <p>Only characters and numbers, no spaces or symbols.</p>
+              <p>{translations.only_char[lang]}</p>
             </div>
             <div className="row pt-5">
               <div className="col-6 text-center">
-                <button className="basic_button" type="submit" name="action" value="create_user">Create User</button>
+                <button className="basic_button" type="submit" name="action" value="create_user">{translations.create_user[lang]}</button>
               </div>
               <div className="col-6 text-center">
-                <button className="basic_button" type="submit" name="action" value="login">Login</button>
+                <button className="basic_button" type="submit" name="action" value="login">{translations.login[lang]}</button>
               </div>
               <div className="col-12 text-center pt-3">
               {user.error ? 

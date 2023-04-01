@@ -51,6 +51,11 @@
     margin: auto;
 }
 
+.recipe_select_box_image {
+    width: 60px;
+    height: 60px;
+}
+
 .recipe_card_button {
     position: absolute;
     bottom: 3%;

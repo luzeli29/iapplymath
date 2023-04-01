@@ -16,31 +16,32 @@ const dialog_scripts = {
                 en:"Hi, my name is Ayuda but all my friends call me Ayu. “Ayuda” means “help” in Spanish.",
                 es:"Hola, mi nombre es Ayuda pero mis amistades me llaman Ayu. “Ayuda” significa “help” en inglés.",
             },{
-                en:"I am here to help you during the game. If you need a break from solving problems, pet me and I will be there to help you relax. " +
-                    "You can also click on your pet to get support while you are finding solutions. ",
+                en:"I am here to help you during the game. If you need a break from solving problems, pet me and I will be there to help you relax. ",
                 es:"Yo estoy aquí para ayudarte durante el juego. Si necesitas un descanso mientras resuelves problemas, acaríciame y allí estaré " +
-                    "para ayudarte a relajar. También puedes hacer clic sobre tu mascota para que te apoye mientras consigues tus soluciones.",
+                    "para ayudarte a relajar.",
             },{
-                en:"Math problems can be challenging, so we have built in some other game features to help you with solving math in your world. " +
-                    "We know that soon you will be saying “I Apply Math in my World”",
+                en:"You can also click on your pet to get support while you are finding solutions.",
+                es:"También puedes hacer clic sobre tu mascota para que te apoye mientras consigues tus soluciones.",
+            },{
+                en:"Math problems can be challenging, so we have built in some other game features to help you with solving math in your world.",
                 es:"Los problemas de matemática pueden sentirse complicados y por eso hemos incorporado algunas otras características " +
-                    "en este juego para ayudarte a resolver problemas matemáticos en tu mundo. Sabemos que pronto estarás diciendo “Yo Aplicó Matemáticas en mi Mundo”",
+                    "en este juego para ayudarte a resolver problemas matemáticos en tu mundo.",
             },{
-                en:"Math problems can be challenging, so we have built in some other game features to help you with solving math in your world. " +
-                    "We know that soon you will be saying “I Apply Math in my World”",
-                es:"Los problemas de matemática pueden sentirse complicados y por eso hemos incorporado algunas otras características " +
-                    "en este juego para ayudarte a resolver problemas matemáticos en tu mundo. Sabemos que pronto estarás diciendo “Yo Aplicó Matemáticas en mi Mundo”",
+                en:"We know that soon you will be saying “I Apply Math in my World”",
+                es:"Sabemos que pronto estarás diciendo “Yo Aplicó Matemáticas en mi Mundo”",
             },{
-                en: " - The game has a calculator that you can use at any time\n" +
-                    " - The music can be turned on or off whenever you want.\n" +
-                    " - The game will save your progress for your next visit, but you need to log out when you are done playing.\n" +
-                    " - At any point during the game you can tell us how you feel.\n" +
-                    " - You can also return to the map if you’d like to go on a different adventure\n",
-                es: " - El juego tiene una calculadora que puedes usar en cualquier momento \n" +
-                    " - La música se puede apagar y prender cuando tú quieras. \n" +
-                    " - El juego guardará tu progreso para tu próxima visita, pero debes cerrar tu sesión cuando termines de jugar \n" +
-                    " - En cualquier momento durante el juego nos puedes decir cómo te sientes \n" +
-                    " - También puedes volver al mapa si deseas intentar una aventura diferente\n",
+                en: "The game has a calculator that you can use at any time." +
+                    "The music can be turned on or off whenever you want.",
+                es: "El juego tiene una calculadora que puedes usar en cualquier momento." +
+                    "La música se puede apagar y prender cuando tú quieras.",
+            },{
+                en: "The game will save your progress for your next visit, but you need to log out when you are done playing.",
+                es: "El juego guardará tu progreso para tu próxima visita, pero debes cerrar tu sesión cuando termines de jugar.",
+            },{
+                en: "At any point during the game you can tell us how you feel." +
+                    "You can also return to the map if you’d like to go on a different adventure.",
+                es: "En cualquier momento durante el juego nos puedes decir cómo te sientes." +
+                    "También puedes volver al mapa si deseas intentar una aventura diferente.",
             },{
                 en:"This game has different levels (Level 1, Level 2 and Level 3) Level 1 is for beginners, " +
                     "Level 2 is for advanced, and Level 3 is for experts. ",

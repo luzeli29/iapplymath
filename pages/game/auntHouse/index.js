@@ -63,6 +63,7 @@ export default function RecipeSelect() {
                                             height={80}
                                             src={"/img/food/"+x.path+ ".png"}
                                             alt={"food"}
+                                            className={style.recipe_select_box_image}
                                         />
                                     </div>
                             </button>
