@@ -11,7 +11,7 @@ function EncryptUsername(username) {
     if(!username) {
         throw new Error ("No username given to EncryptUsername")
     }
-
+    
     const key = Hex.parse(process.env.ENCRYPTION_KEY)
     const secureUsername = AES.encrypt(username, key, { iv: iv }).toString();
 

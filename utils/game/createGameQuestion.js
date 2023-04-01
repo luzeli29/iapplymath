@@ -1,7 +1,7 @@
 import {throwError} from '@utils/imports/commonImports'
 import translations from '@public/text/translations'
 
-export default function createGameQuestion(questionText,answer,hints,answerFormat, onAnswer) {
+export default function createGameQuestion(questionText,answer,hints,answerFormat, onAnswer, imgSrc) {
     //Check empty question text
     if(!questionText) {
         throwError('No question text was found in func CreateGameQuestion(). Returning error question.')
@@ -49,6 +49,7 @@ export default function createGameQuestion(questionText,answer,hints,answerForma
         answer_format: answerFormat,
         hints: hintArray,
         onAnswer: onAnswer,
+        imgSrc: imgSrc
     }
 
     return question

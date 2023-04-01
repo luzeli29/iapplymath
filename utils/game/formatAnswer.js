@@ -18,6 +18,18 @@ export default function formatAnswer(format, value) {
             } else {
                 return "0.00"
             }
+        case "timeNum":
+            if(value) {
+                return value;
+            } else {
+                return "00:00"
+            }
+        case "equality":
+            if(value) {
+                return value;
+            } else {
+                return "0<1"
+            }
         case "numb":
           //todo: add error catching for diff formats
        default:
