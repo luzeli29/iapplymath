@@ -113,7 +113,11 @@ const translations = {
     },
     mute_tooltip: {
         en: "Mute Music",
-        es: "Controla la música",
+        es: 'Musica Muda',
+    },
+    unmute_tooltip: {
+        en: "Unmute Music",
+        es: 'Activar Música',
     },
     logout_tooltip: {
         en: "Logout",
