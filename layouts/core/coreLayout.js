@@ -1,39 +1,51 @@
 import Header from "comps/header/header";
 import ReactHowler from "react-howler";
 import React, {useEffect, useState} from "react";
-import {useWrapperContext} from "utils/imports/commonImports";
-import { useSiteContext } from "@hooks/siteContext/useSiteContext";
 import Loading from "@comps/screens/loading";
+import { useRouter } from "next/router";
+import { useUserContext } from "@hooks/siteContext/useUserContext";
 
 export default function Layout({ children }) {
-    const {user, loading, error} = useSiteContext()
 
     //standard layout of every page
     //has a header with title and lang select,
     //then the children displayed in the box of the view container
-    const context = useWrapperContext();
-    const mapLocation = context.state.mapLocation;
-    const [musicSrc, setMusicSrc] = useState("/sound/null.mp3");
+    const {user,settings,loading, error} = useUserContext()
+    const router = useRouter()
+    const feedback = [
+        {
+            en: "Give us feedback!",
+            es: "¡Danos su opinión!",
+        }
+    ]
 
+    const lang = settings.lang
+    const text = feedback.find(f => Boolean(f[lang]))[lang];
+    const mute = settings.mute
+    const [musicSrc, setMusicSrc] = useState("/sound/null.mp3");
+    const mapLocation = '' //TODO: get this from the router filepath
     useEffect(() => {
-            if (mapLocation === "AuntsHouse") {
+            if (mapLocation === "auntHouse") {
                 setMusicSrc("/sound/salsa_bg.mp3");
-            } else if (mapLocation === "Restaurant") {
+            } else if (mapLocation === "restaurant") {
                 setMusicSrc("/sound/salsa2_bg.mp3");
             }
     }, [mapLocation]);
 
     useEffect(() => {
-        if (context.state.mute === "Yes") {
+        if (mute) {
             setMusicSrc("/sound/null.mp3");
-        } else if (context.state.mute === "No") {
-            if (mapLocation === "AuntsHouse") {
+        } else {
+            if (mapLocation === "auntHouse") {
                 setMusicSrc("/sound/salsa_bg.mp3");
-            } else if (mapLocation === "Restaurant") {
+            } else if (mapLocation === "restaurant") {
                 setMusicSrc("/sound/salsa2_bg.mp3");
             }
         }
-    }, [context.state.mute, mapLocation]);
+    }, [mute, mapLocation]);
+
+    if(loading || !router.isReady) return <Loading/>
+    if(error) return <Error error={error}/>
 
     return (
         <>
@@ -43,14 +55,16 @@ export default function Layout({ children }) {
                 loop = {true}
                 preload = {true}
             />
-
             <div className="header_container">
                 <Header/>
             </div>
-            <div className="body_container">
-                <div className="view_container">
-                    { children }
+                <div className="body_container">
+                    <div className="view_container">
+                        { children }
+                    </div>
                 </div>
+            <div className="">
+                <a className="feedback_button" rel="noreferrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">{text}</a>
             </div>
         </>
     );

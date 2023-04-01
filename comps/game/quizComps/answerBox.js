@@ -3,18 +3,28 @@ import Image from 'next/image'
 import Confetti from 'react-confetti'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
-import {useWrapperContext,formatAnswer} from '@utils/imports/commonImports'
+import {formatAnswer} from '@utils/imports/commonImports'
 import { Calculator } from 'react-mac-calculator'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import Loading from '@comps/screens/loading'
+import Error from 'pages/error'
+import Login from 'pages/user/login'
+import { useUserContext } from '@hooks/siteContext/useUserContext'
+import {useRouter} from 'next/router'
 
 export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer}) {
-    //get lang from context
-    const context = useWrapperContext()
-    const lang = context.state.lang
+    const {user,settings,loading, error} = useUserContext()
+
     const [inputAnswer, setInputAnswer] = useState("");
-    //keeps track if view should show the empty hint within the numpad
     const [showEmptyHint, setShowEmptyHint] = useState(false);
+    const router = useRouter()
+    const isLoggedIn = user.loggedIn    
+    if(loading) return <Loading/> 
+    if(!router.isReady) return <Loading/>
+    if(error) return <Error error={error}/>
+    if(!isLoggedIn) return <Login/>
+    const lang = settings.lang
 
     const handleKeyPress = useCallback(event => {
         if (event.key == "Backspace") { //backspace pressed
@@ -22,7 +32,9 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
         } else if (event.key == "Enter") { //enter pressed
            //TODO: fix it so this doesnt cause a memory leak
            //handleButtonPress("✓")
-        } else if((event.keyCode >= 48 && event.keyCode <= 57) || event.key =="/" || event.key == ".") { //0-9 pressed
+        } else if((event.keyCode >= 48 && event.keyCode <= 57) || event.key === '/' ||
+            event.key === '.' || event.key === ':' || event.key === 'A' || event.key === 'M' ||
+            event.key === 'P' || event.key === '>' || event.key === '<' || event.key === '=') { //0-9 pressed
            handleButtonPress(event.key)
         } 
      },[inputAnswer])
@@ -37,14 +49,16 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
            setInputAnswer(inputAnswer.slice(0,inputAnswer.length - 1)); 
         } else if (value == "✓") {
            if (inputAnswer) {
+              setShowEmptyHint(false)
               submitAnswer(inputAnswer)
            } else if (correctAnswer == "") {
-              submitAnswer(inputAnswer)
+                setShowEmptyHint(false)
+                submitAnswer(inputAnswer)
            } else {
-              setShowEmptyHint(true)
+                setShowEmptyHint(true)
            }
         } else {
-           setInputAnswer(formatAnswer(answerFormat,inputAnswer).toString().length < 7 ? inputAnswer + value : inputAnswer);
+           setInputAnswer(formatAnswer(answerFormat,inputAnswer).toString().length < 12 ? inputAnswer + value : inputAnswer);
         }
      }
 
@@ -67,7 +81,6 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
         };
      }, [handleKeyPress]);
 
-    console.log(correctAnswer)
     if (correctAnswer === "") {
         //returns when there is no needed answer
         return (
@@ -94,7 +107,7 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
             <div>
                 <Popup trigger={
                                 <button isHovering={true} style={{marginTop:"10px", marginLeft:"10px"}}> 
-                                    <Image width={30} height={50} src={"/img/other/calcicon.png"}/>
+                                    <Image width={30} height={50} src={"/img/other/calcicon.png"} alt={"calculator"}/>
                                 </button>
                                 }
                         closeOnDocumentClick={false} 
@@ -103,9 +116,8 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
                         <Calculator/>
                     </div>
                 </Popup>
-                <h4>Type answer here:</h4>
+                <h4>{translations.type_answer[lang]}</h4>
                 <br></br>
-                {showEmptyHint ? <p className="red">{translations.empty_hint[lang]}</p> : <></>}
                 <br></br>
                 <div>
                     <table className={style.num_pad_container}>
@@ -123,6 +135,7 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
                             </tr>
                         </tbody>
                     </table>
+                    {showEmptyHint ? <p className="red text-center">{translations.empty_hint[lang]}</p> : <></>}
                     <input className="d-none" autoFocus={true} onBlur={({ target }) => target.focus()}/>
                 </div>
             </div>
