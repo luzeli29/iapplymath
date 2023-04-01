@@ -11,51 +11,50 @@ export default function Layout({ children }) {
     //has a header with title and lang select,
     //then the children displayed in the box of the view container
     const {user,settings,loading, error} = useUserContext()
-
     const router = useRouter()
+    const feedback = [
+        {
+            en: "Give us feedback!",
+            es: "¡Danos su opinión!",
+        }
+    ]
 
+    const lang = settings.lang
+    const text = feedback.find(f => Boolean(f[lang]))[lang];
     const mute = settings.mute
-    const [mapLocation, setMapLocation] = useState("/sound/null.mp3");
+    const [musicSrc, setMusicSrc] = useState("/sound/null.mp3");
+    const mapLocation = '' //TODO: get this from the router filepath
+    useEffect(() => {
+            if (mapLocation === "auntHouse") {
+                setMusicSrc("/sound/salsa_bg.mp3");
+            } else if (mapLocation === "restaurant") {
+                setMusicSrc("/sound/salsa2_bg.mp3");
+            }
+    }, [mapLocation]);
+
+    useEffect(() => {
+        if (mute) {
+            setMusicSrc("/sound/null.mp3");
+        } else {
+            if (mapLocation === "auntHouse") {
+                setMusicSrc("/sound/salsa_bg.mp3");
+            } else if (mapLocation === "restaurant") {
+                setMusicSrc("/sound/salsa2_bg.mp3");
+            }
+        }
+    }, [mute, mapLocation]);
 
     if(loading || !router.isReady) return <Loading/>
     if(error) return <Error error={error}/>
 
-    const MusicBox = () => {
-        if(mute) return <></>
-
-        const path = router.asPath
-        const splitPath = path.split('/')
-        if(splitPath.length >= 3) {
-            const location = splitPath[2];
-            if(mapLocation != location) {
-                setMapLocation(location)
-            }
-        }
-
-        let musicSrc = '/sound/null.mp3'
-
-        switch (mapLocation) {
-            case 'auntHouse':
-                musicSrc= '/sound/salsa_bg.mp3'
-                break;
-            case 'restaurant':
-                musicSrc= '/sound/salsa2_bg.mp3'
-                break;
-        }
-
-        return (
-        <ReactHowler
+    return (
+        <>
+            <ReactHowler
                 src = {musicSrc}
                 playing ={true}
                 loop = {true}
                 preload = {true}
             />
-        )
-    }
-
-    return (
-        <>
-            <MusicBox/>
             <div className="header_container">
                 <Header/>
             </div>
@@ -65,7 +64,7 @@ export default function Layout({ children }) {
                     </div>
                 </div>
             <div className="">
-                <a className="feedback_button" rel="noreferrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">Give us feedback!</a>
+                <a className="feedback_button" rel="noreferrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">{text}</a>
             </div>
         </>
     );

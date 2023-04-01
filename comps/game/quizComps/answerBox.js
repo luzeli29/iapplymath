@@ -116,9 +116,8 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
                         <Calculator/>
                     </div>
                 </Popup>
-                <h4>Type answer here:</h4>
+                <h4>{translations.type_answer[lang]}</h4>
                 <br></br>
-                {showEmptyHint ? <p className="red">{translations.empty_hint[lang]}</p> : <></>}
                 <br></br>
                 <div>
                     <table className={style.num_pad_container}>
@@ -136,6 +135,7 @@ export default function AnswerBox({correctAnswer,answerFormat,handleSubmitAnswer
                             </tr>
                         </tbody>
                     </table>
+                    {showEmptyHint ? <p className="red text-center">{translations.empty_hint[lang]}</p> : <></>}
                     <input className="d-none" autoFocus={true} onBlur={({ target }) => target.focus()}/>
                 </div>
             </div>

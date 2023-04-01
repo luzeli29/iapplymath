@@ -54,11 +54,11 @@ export default function QuestionBox({questionData, incorrectNum}) {
             </div>
             {
                 questionSrc ? 
-                <div className='border'>
+                <div className=''>
                      <Image
                         priority={true}
-                        width={80}
-                        height={80}
+                        width={180}
+                        height={180}
                         src={path}
                         alt={"example image"}/> 
                 </div>
