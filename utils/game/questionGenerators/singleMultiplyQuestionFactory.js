@@ -2,9 +2,14 @@ import { getText } from "@commonImports"
 import createGameQuestion from "@utils/game/createGameQuestion"
 import validateOrder from "@utils/validation/game/restaurant/validateOrder"
 
-export default function generateSingleMultiplyDishQuestions(order,level,randomGenerator) {
+export default function generateSingleMultiplyDishQuestions(game,helperObject,level,randomGenerator) {
     const numbOfQuestionsNeeded = 3
     let questions = []
+
+    switch (game) {
+        case'auntHouse':
+            return 
+    }
 
 
     for(let i = 0; i < numbOfQuestionsNeeded; i++) {
