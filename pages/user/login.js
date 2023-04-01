@@ -47,7 +47,10 @@ export default function Login() {
           }
       }
 
-      if(loggedIn){
+      if(loggedIn && submitType == 'create_user'){
+        router.push("/intro")
+        setOnRoute(true)
+      } else if (loggedIn) {
         if(!user.avatarId) {
           router.push("/user/avatar/select")
           setOnRoute(true)
@@ -55,7 +58,7 @@ export default function Login() {
           router.push("/user/petSelect")
           setOnRoute(true)
         } else {
-          router.push("/game/intro")
+          router.push("/game")
           setOnRoute(true)
         }
       }
