@@ -27,7 +27,7 @@ export default function CreateKey() {
             <form className="" autoComplete="off" onSubmit={handleSubmit}>
             <div className='row'>
                 <label className="col-4 text-end" htmlFor="password">Password:</label>
-                <input className="col-6" id="password" type="text" name="password" pattern="[a-zA-Z0-9]*"/>
+                <input className="col-6" id="password" type="password" name="password"/>
             </div>
             <div className='row pt-3'>
                 <div className='col text-center'>
