@@ -87,16 +87,16 @@ function generateFamilySizeQuestion() {
         es: "¿Para cuántas personas vamos a cocinar?",
     
         hints: [{
-                en: "Please enter a number between 1 - 13",
+                en: 'Please enter a number between 1 - 13',
                 //TODO: Translate
-                es: "NOT TRANSLATED YET!",
+                es: 'Por favor ingrese un número entre 1 - 13',
             },
         ],
         answer: "fill_in",
         onAnswer: (answer) => {
             if(isNaN(answer)) {
                 return false;
-            } else if(answer > 1 && answer <= 12) {
+            } else if(answer > 1 && answer < 13) {
                 window.sessionStorage.setItem('FAMILY_SIZE',answer)
                 return true;
             } else {
@@ -122,8 +122,8 @@ function generateMultiQuestion(recipe,ing, num) {
     return ([
         createGameQuestion(
             {
-                en: ing.question.en  + " do we need for " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"].en + " " + recipe.name.en.toLowerCase() + "?",
-                es: "¿" + ing.question.es + " necesitamos para " + " " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"].es + " " + recipe.name.es.toLowerCase() + "?",
+                en: ing.question.en  + " do we need for " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"].en + " " + recipe.name.en.toLowerCase() + "? (Please answer with fractions only)",
+                es: "¿" + ing.question.es + " necesitamos para " + " " + num + " " + recipe.serving_of[num == 1 ? "singular" : "plural"].es + " " + recipe.name.es.toLowerCase() + "? (Por favor responda solo con fracciones)",
             },
             answer,
             [{

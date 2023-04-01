@@ -15,12 +15,28 @@ export default function QuickNavButtons({user,settings,router}) {
     const MapTooltipText = getText("map_tooltip",lang)
     const CheckinTooltipText = getText("checkin_tooltip",lang)
     const MuteTooltipText = getText("mute_tooltip",lang)
+    const UnMuteTooltipText = getText("unmute_tooltip",lang)
+
     const LogoutTooltipText = getText("logout_tooltip",lang)
     const LoginTooltipText = getText("login_tooltip",lang)
 
     function handleLogout() {
         user.logout()
         router.push('/')
+    }
+
+    const MuteButton = () => {
+        if(mute) {
+            return (
+            <QuickNavButton text={UnMuteTooltipText} onClick={() => settings.toggleMute()}>
+                <TbMusicOff /> 
+            </QuickNavButton> )
+        } else {
+            return (
+            <QuickNavButton text={MuteTooltipText} onClick={() => settings.toggleMute()}>
+                 <TbMusic />
+            </QuickNavButton> )  
+        }
     }
 
     if(loggedIn){
@@ -39,9 +55,7 @@ export default function QuickNavButtons({user,settings,router}) {
                 <RiChatHeartLine/>
             </QuickNavButton>
             {/* Mute Button */}
-            <QuickNavButton text={MuteTooltipText} onClick={() => settings.toggleMute()}>
-                {mute ? <TbMusicOff /> : <TbMusic />}
-            </QuickNavButton>   
+            <MuteButton/>
             {/* Logout Button */}
             <QuickNavButton text={LogoutTooltipText} onClick={() => handleLogout()}>
                 <TbLogout/>
@@ -52,9 +66,7 @@ export default function QuickNavButtons({user,settings,router}) {
         return (
             <div className="col col-lg-2">
                 {/* Mute Button */}
-                <QuickNavButton text={MuteTooltipText} onClick={() => settings.toggleMute()}>
-                    {mute ? <TbMusicOff /> : <TbMusic />}
-                </QuickNavButton> 
+                <MuteButton/>
                 {/* Login Button */}
                 <QuickNavButton text={LoginTooltipText} onClick={() => router.push('/user/login')}>
                     <TbLogin/>
