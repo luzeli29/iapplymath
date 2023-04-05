@@ -1,0 +1,74 @@
+{
+    "servingTypes" : {
+        "cup": {
+            "nameSingular": {
+                "en": "Cup",
+                "es": "Vaso"
+            },
+            "namePlural": {
+                "en": "Cups",
+                "es": "Vasos"
+            }
+        },
+        "serving": {
+            "nameSingular": {
+                "en": "Serving",
+                "es": "Porcione"
+            },
+            "namePlural": {
+                "en": "Servings",
+                "es": "Porciones"
+            }
+        },
+        "clove": {
+            "nameSingular": {
+                "en": "Clove",
+                "es": "Diente"
+            },
+            "namePlural": {
+                "en": "Cloves",
+                "es": "Dientes"
+            }
+        },
+        "tablespoon": {
+            "nameSingular": {
+                "en": "Tablespoon",
+                "es": "Cucharada"
+            },
+            "namePlural": {
+                "en": "Tablespoons",
+                "es": "Cucharadas"
+            }
+        },
+        "bag": {
+            "nameSingular": {
+                "en": "Bag",
+                "es": "Bolsa"
+            },
+            "namePlural": {
+                "en": "Bags",
+                "es": "Bolsas"
+            }
+        },
+        "bowl": {
+            "nameSingular": {
+                "en": "Bowl",
+                "es": "Bol"
+            },
+            "namePlural": {
+                "en": "Bowls",
+                "es": "Bochas"
+            }
+        },
+        "self": {
+            "nameSingular": {
+                "en": "",
+                "es": ""
+            },
+            "namePlural": {
+                "en": "",
+                "es": ""
+            }
+        }
+    }
+}
