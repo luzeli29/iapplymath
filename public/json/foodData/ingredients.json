@@ -1,0 +1,29 @@
+{
+    "ingredients" : {
+        "carrot" : {
+            "nameSingular" : {
+                "en" : "Carrot",
+                "es" : "Zanahoria"
+            },
+            "namePlural" : {
+                "en" : "Carrots",
+                "es" : "Zanahorias" 
+            },
+            "imgSrc" : "carrots",
+            "servingTypeCode" : "self"
+        }
+        ,
+        "orange" : {
+            "nameSingular" : {
+                "en" : "Orange",
+                "es" : "Naranja"
+            },
+            "namePlural" : {
+                "en" : "Oranges",
+                "es" : "Naranjas" 
+            },
+            "imgSrc" : "oranges",
+            "servingTypeCode" : "self"
+        }
+    }
+}
