@@ -1,5 +1,5 @@
 {
-    "servingTypes" : {
+    "servingType" : {
         "cup": {
             "nameSingular": {
                 "en": "Cup",
@@ -58,6 +58,25 @@
             "namePlural": {
                 "en": "Bowls",
                 "es": "Bochas"
+            }
+        },
+        "pound": {
+            "nameSingular": {
+                "en": "Pound",
+                "es": "Libra"
+            },
+            "namePlural": {
+                "en": "Pounds",
+                "es": "Libras"
+            }
+        },"dish": {
+            "nameSingular": {
+                "en": "Dish",
+                "es": "Plato"
+            },
+            "namePlural": {
+                "en": "Dishes",
+                "es": "Platos"
             }
         },
         "self": {

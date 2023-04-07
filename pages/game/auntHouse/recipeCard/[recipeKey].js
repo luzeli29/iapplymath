@@ -1,12 +1,21 @@
 import React from 'react'
 import {useRouter} from 'next/router'
 import style from '@styles/aunt_house.module.css'
-import recipes from '@public/text/auntHouseRecipes'
 import translations from '@translations'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
+import LoadRecipes from '@utils/staticData/staticDataFetching/foodData/loadRecipes'
+
+export async function getStaticProps(){
+    const recipes = await LoadRecipes()
+    return {
+      props: {
+        recipes,
+      },
+    }
+}
 
 export default function RecipeCard() {
     const {user,settings,loading, error} = useUserContext()
@@ -19,16 +28,13 @@ export default function RecipeCard() {
 
     const lang = settings.lang
 
-    const { recipeIndex } = router.query
+    const { recipeKey } = router.query
     
     //No clue why, but if you delete this if statement then the page can not be refreshed without error
-    if(!recipeIndex) {
-        return(
-            <p></p>
-        )
-    }
+    if(!recipeKey) <Error/>
     
-    const recipe = recipes[recipeIndex]
+    const recipe = recipes[recipeKey]
+    console.log(recipe)
     return(
         <div className={style.recipe_card_container}>
             <div className={style.recipe_card_title_container}>
@@ -39,11 +45,11 @@ export default function RecipeCard() {
                     return(
                         <>
 
-                        <p key={ing[lang]} className={style.recipe_card_ing}>
+                        <p key={ing.name[lang]} className={style.recipe_card_ing}>
                             <img 
                                 src={"/img/ing/" + ing.img} 
                                 className={style.ing_image}/>
-                            {ing.amount == "" ? ing[lang] : ing.amount + " " + ing[lang]}
+                            {ing.amount == "" ? ing.nameSingular[lang] : ing.amount + " " + ing.nameSingular[lang]}
                             
                         </p>
                         
@@ -53,7 +59,7 @@ export default function RecipeCard() {
             </div>
             
             <button 
-                onClick={() => router.push('/game/auntHouse/quiz/basic?recipeIndex=' + recipeIndex)}
+                onClick={() => router.push('/game/auntHouse/quiz/basic?recipeKey=' + recipeKey)}
                 className={style.recipe_card_button}> <strong>
                {/*TODO: potencially change if other langs were added*/}
                {translations.cook[lang]}</strong></button>

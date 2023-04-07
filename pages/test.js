@@ -1,5 +1,5 @@
 import Loading from '@comps/screens/loading';
-import LoadRecipes from '@utils/staticDataFetch/loadRecipes';
+import LoadRecipes from '@utils/staticData/staticDataFetching/foodData/loadRecipes';
 import { useRouter } from 'next/router';
 import React from 'react'
 

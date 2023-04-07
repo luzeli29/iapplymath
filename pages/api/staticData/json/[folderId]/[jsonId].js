@@ -7,7 +7,10 @@ export default async function handler(req, res) {
     if(jsonId == undefined || folderId == undefined) {
         return res.status(400).json("error")
     }
-    const jsonPath = path.join(process.cwd(), 'public/json/' + folderId + '/' + jsonId + ".json");
+
+
+    //TODO : Make the path to the static data dynamic
+    const jsonPath = path.join(process.cwd(), 'utils/staticData/json/' + folderId + '/' + jsonId + ".json");
 
     try{
         const fileContents = await fs.readFile(jsonPath, 'utf8');
