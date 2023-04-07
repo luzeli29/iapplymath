@@ -8,7 +8,6 @@ import Login from 'pages/user/login'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import createGameQuestion from '@utils/game/createGameQuestion'
 import SmallRecipeCard from '@comps/game/auntHouse/smallRecipeCard'
-import recipes from '@public/text/auntHouseRecipes'
 import {simplifyFraction} from '@utils/imports/commonImports'
 import generateAuntQuestions from '@utils/game/auntHouse/generateAuntHouseQuestions'
 

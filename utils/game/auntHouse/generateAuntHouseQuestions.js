@@ -1,8 +1,7 @@
-import recipes from '@public/text/auntHouseRecipes'
 import {simplifyFraction} from '@utils/imports/commonImports'
 import createGameQuestion from '@utils/game/createGameQuestion.js'
 
-export default function generateAuntQuestions(questionType,recipeIndex) {
+export default function generateAuntQuestions(recipes,questionType,recipeIndex) {
     if(!questionType) {
         return [createGameQuestion()]
     }
