@@ -10,7 +10,6 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
     if(icons == undefined || !icons) return <></>
     if(getContentFromValue == undefined || !getContentFromValue) return <></>
 
-    console.log('hi')
 
     function handleSelect(key) {
         if(selectIcon) {
@@ -33,8 +32,8 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
     const iconKeys = Object.keys(icons)
 
     const CurrentIconView = () => {
-        const startIndex = pageNumber * width * height 
-        const endIndex = startIndex + (width * height)
+        const startIndex = pageNumber * maxWidth * maxHeigh 
+        const endIndex = startIndex + (maxWidth * maxHeigh)
         const keyArr = iconKeys.slice(startIndex,endIndex)
         const valueArr = keyArr.map((key) => icons[key])
 
@@ -46,17 +45,17 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
     const IconGrid = ({keyArr,valueArr}) => {
         const containerStyle = {
             display: 'grid',
-            gridTemplateColumns: `repeat(${width}, 1fr)`,
-            gridTemplateRows: `repeat(${height}, 1fr)`,
+            gridTemplateColumns: `repeat(${maxWidth}, 1fr)`,
+            gridTemplateRows: `repeat(${maxHeigh}, 1fr)`,
             gridGap: '20px',
             height: '100%',
           };
-        
+          
           return (
             <div style={containerStyle}>
               {keyArr.map((key, index) => (
                 <div key={index} className="mx-auto">
-                    <Tooltip text={valueArr[index].name[_lang]}>
+                    <Tooltip text={valueArr[index].name ? valueArr[index].name[lang] : ''}>
                         <IconButton keyCode={key} value={valueArr[index]}/>
                     </Tooltip>
                 </div>
@@ -68,29 +67,27 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
     const IconButton = ({keyCode,value}) => {
         const isSelected = keyCode == selectedIcon && selectedIcon != undefined
         return (
-            <ClickableIcon selected={isSelected} onClick={() => handleSelect(keyCode)}> 
-                {getContentFromValue(value)}
-            </ClickableIcon>
+                getContentFromValue(keyCode,value)
         )
     }
 
     return (
         <div className="row">
 
-            <div className="col-2">
+            <div className="col-1 mx-auto">
                 {pageNumber != 0 ? 
-                <button cl onClick={() => prevPage()}>{getText('prev_page',_lang)}</button>
+                <button cl onClick={() => prevPage()}>{'<'}</button>
                 :
                     null
                 }
             </div>
 
-            <div className="col-8">
+            <div className="col-10">
                 <CurrentIconView/>
             </div>
-            <div className="col-2">
+            <div className="col-1 mx-auto">
                 {pageNumber < maxPage - 1 ? 
-                <button onClick={() => nextPage()}>{getText('next_page',_lang)}</button>
+                <button onClick={() => nextPage()}>{'>'}</button>
                 :
                     null
                 }

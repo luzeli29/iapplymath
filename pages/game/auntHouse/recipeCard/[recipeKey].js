@@ -32,13 +32,14 @@ export async function getStaticProps(context){
     const recipe = recipes[recipeKey]
     return {
       props: {
+        recipeKey,
         recipe,
       },
     }
 }
 
 
-export default function RecipeCard({recipe}) {
+export default function RecipeCard({recipeKey,recipe}) {
     const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
 
@@ -49,6 +50,7 @@ export default function RecipeCard({recipe}) {
     if(!isLoggedIn) return <Login/>
 
     const lang = settings.lang
+    console.log(recipeKey)
     console.log(recipe)
     const recipeTitle = generateRecipeTitleText(recipe,lang)
     const recipeServingText = generateRecipeServingText(recipe,lang)
@@ -64,10 +66,10 @@ export default function RecipeCard({recipe}) {
                         <h4>{recipeServingText}</h4>
                     </div>
                     <div className='row mx-auto pb-2 px-2'>
-                        <div className='col-6 pt-2'>
+                        <div className='col-4 pt-2'>
                             <p>{instructionText}</p>
                         </div>
-                        <div className='col-6 border-start border-dark'>
+                        <div className='col-8 border-start border-dark'>
                             <IngredientList ingredients={ingredients} lang={lang}/>
                         </div>
                     </div>
@@ -85,7 +87,7 @@ export default function RecipeCard({recipe}) {
                 </div>
                 <div className='col-6 text-start'>
                     <button 
-                    onClick={() => router.push('/game/auntHouse/quiz/basic?recipeKey=' + recipeKey)}
+                    onClick={() => router.push('/game/auntHouse/quiz/' + recipeKey + '?questionType=basic')}
                     className={'basic_button'}>
                     <strong>
                             {getText('cook',lang)}

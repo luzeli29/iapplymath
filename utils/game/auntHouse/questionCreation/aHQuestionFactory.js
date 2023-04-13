@@ -1,67 +1,36 @@
 import {simplifyFraction} from '@utils/imports/commonImports'
 import createGameQuestion from '@utils/game/createGameQuestion.js'
+import { log } from '@utils/debug/log'
+import generateBasicAHQuestions from './basic/generateBasicAHQuestions'
 
-export default function generateAuntQuestions(recipes,questionType,recipeIndex) {
+export default function aHQuestionFactory(questionType,recipe) {
     if(!questionType) {
         return [createGameQuestion()]
     }
-    if(recipeIndex < 0 || recipeIndex >= recipes.length) {
+    if(!recipe) {
         return [createGameQuestion()]
     }
 
+    log('Generating Aunt House Questions')
+    log('Question Type: ' + questionType)
+    log('Recipe: ' + recipe.name.en)
+
     switch(questionType) {
         case "basic":
-            return generateBasicQuestions(recipeIndex)
+            return generateBasicAHQuestions(recipe)
         case "familySize":
             return generateFamilySizeQuestion()
         case "familyQuestion":
             const familySize = window.sessionStorage.getItem('FAMILY_SIZE')
 
             if(familySize == undefined) {
-                return [createGameQuestion()]
+                return generateFamilyQuestions(recipe,3)
             }
-            return generateFamilyQuestions(recipeIndex,familySize)
+            return generateFamilyQuestions(recipe,familySize)
         default:
             return [createGameQuestion()]
         }
 
-}
-
-function generateBasicQuestions(recipeIndex) {
-    const recipe = recipes[recipeIndex]
-    var questions = [];
-    //TODO: This is bad, relook at this during recipe rework
-    if(recipeIndex == 3) {
-        /*TODO: potencially change if other langs were added*/
-        questions[0] = createGameQuestion(
-            {
-                en:"How many different fruits do we need for our fruit salad?",
-                es:"¿Cuántas frutas diferentes necesitamos para nuestra ensalada de frutas?",
-            }, 
-            4,
-            [
-                {
-                    en: "Count all the ingredients.",
-                    es: "Cuenta todos los ingredientes",
-                }
-            ]
-        )
-    }
-
-    recipe.set_questions.map((x) => {
-        if(x[0] == -1) {
-            //do question on every ingredient with given multiple
-            recipe.ingredients.map((ing) => {
-                questions = questions.concat(generateMultiQuestion(recipe,ing, x[1]))
-            })
-        } else {
-            //do question with given ing and multiple
-            questions = questions.concat(generateMultiQuestion(recipe,recipe.ingredients[x[0]], x[1]))
-        }
-        //goes through every ingredient for every multiple
-    })
-
-    return questions
 }
 
 function generateFamilyQuestions(recipeIndex, familySize) {
