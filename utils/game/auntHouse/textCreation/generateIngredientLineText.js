@@ -7,7 +7,6 @@ export default function generateIngredientLineText(ingredient, lang) {
     } else {
         _lang = 'en'
     }
-    console.log(ingredient)
     const amount = ingredient.amount ? ingredient.amount + ' ': ''
 
     const amountEval = eval(amount)

@@ -8,6 +8,7 @@ import Error from 'pages/error'
 import Login from 'pages/user/login'
 import LoadRecipes from '@utils/staticData/staticDataFetching/foodData/loadRecipes'
 import IconGroup from '@comps/iconGroup'
+import ClickableIcon from '@comps/clickableIcon'
 
 export async function getStaticProps(){
     const recipes = await LoadRecipes()
@@ -39,20 +40,23 @@ export default function RecipeSelect({recipes}) {
         router.push('/game/auntHouse/recipeCard/' + selectedRecipe)
     }
 
-    function getRecipeIcon(value) {
+    function getRecipeIcon(key,value) {
+        console.log(value)
         if(value.imgSrc == undefined) return <></>
         const imgSrc = '/img/food/' + value.imgSrc + '.png'
         return (
-            <div className='mx-auto px-2'>
-        
-                <Image
-                        priority={true}
-                        width={100}
-                        height={75}
-                        src={imgSrc}
-                        alt={value.imgSrc}/>
-                <p>{'Level : ' + value.level}</p>
-            </div>
+            <ClickableIcon selected={selectedRecipe == key} onClick={() => setSelectedRecipe(key)}> 
+                <div className='mx-auto px-2'>
+            
+                    <Image
+                            priority={true}
+                            width={100}
+                            height={75}
+                            src={imgSrc}
+                            alt={value.imgSrc}/>
+                    <p>{'Level : ' + value.level}</p>
+                </div>
+            </ClickableIcon>
         )
     }
 
@@ -69,7 +73,7 @@ export default function RecipeSelect({recipes}) {
                     icons={recipes}
                     selectIcon={(recipe) => setSelectedRecipe(recipe)}
                     selectedIcon={selectedRecipe}
-                    getContentFromValue={(value) => getRecipeIcon(value)}
+                    getContentFromValue={(key,value) => getRecipeIcon(key,value)}
                     width={2}
                     height={2}/>
                 </div>
