@@ -8,8 +8,15 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
     
     const _lang = lang ? lang : 'en'
     if(icons == undefined || !icons) return <></>
-    if(selectIcon == undefined || !selectIcon) return <></>
     if(getContentFromValue == undefined || !getContentFromValue) return <></>
+
+    console.log('hi')
+
+    function handleSelect(key) {
+        if(selectIcon) {
+            selectIcon(key)
+        }
+    }
 
     function nextPage() {
         setPageNumber(pageNumber+1)
@@ -61,7 +68,7 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
     const IconButton = ({keyCode,value}) => {
         const isSelected = keyCode == selectedIcon && selectedIcon != undefined
         return (
-            <ClickableIcon selected={isSelected} onClick={() => selectIcon(keyCode)}> 
+            <ClickableIcon selected={isSelected} onClick={() => handleSelect(keyCode)}> 
                 {getContentFromValue(value)}
             </ClickableIcon>
         )

@@ -36,7 +36,7 @@ export default function RecipeSelect({recipes}) {
             setInstructionText("no_recipe_selected")
             return false
         }
-        router.push('/game/auntHouse/recipeCard?recipeKey=' + selectedRecipe)
+        router.push('/game/auntHouse/recipeCard/' + selectedRecipe)
     }
 
     function getRecipeIcon(value) {

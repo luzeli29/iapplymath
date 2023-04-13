@@ -135,7 +135,7 @@
             "imgSrc" : "burritos",
             "servingSize" : 2,
             "recipeMakesAmount" : 4,
-            "servingType" : "enchilada",
+            "servingType" : "self",
             "ingredients" : [
                 {
                     "ingredient" : "mashedBlackBeans",
@@ -146,11 +146,11 @@
                     "amount" : "1/2",
                     "servingType" : "self"
                 },{
-                    "ingredient" : "mashedSweetPotatos",
+                    "ingredient" : "mashedSweetPotato",
                     "amount" : "1/2",
                     "servingType" : "cup"
                 },{
-                    "ingredient" : "tortillas",
+                    "ingredient" : "tortilla",
                     "amount" : "4",
                     "servingType" : "self"
                 },{

@@ -110,7 +110,7 @@
                 "en" : "Salt and Spices to Taste",
                 "es": "Sal y Especias al Gusto"
             },
-            "imgSrc" : "saltAndSpiceForTaste"
+            "imgSrc" : "salt_pepper"
         },
         "mashedBlackBeans" : {
             "nameSingular" : {
@@ -192,6 +192,16 @@
                 "es": "Tortillas"
             },
             "imgSrc" : "tortillas"
+        },"mango" : {
+            "nameSingular" : {
+                "en" : "Mango",
+                "es" : "Mango"
+            },
+            "namePlural" : {
+                "en" : "Mangos",
+                "es" : "Mangos"
+            },
+            "imgSrc" : "mango"
         }
     }
 }

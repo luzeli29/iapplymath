@@ -9,7 +9,7 @@ import { useUserContext } from '@hooks/siteContext/useUserContext'
 import createGameQuestion from '@utils/game/createGameQuestion'
 import SmallRecipeCard from '@comps/game/auntHouse/smallRecipeCard'
 import {simplifyFraction} from '@utils/imports/commonImports'
-import generateAuntQuestions from '@utils/game/auntHouse/generateAuntHouseQuestions'
+import generateAuntQuestions from '@utils/game/auntHouse/questionCreation/generateAuntHouseQuestions'
 
 
 export default function AuntHouseQuestions() {
