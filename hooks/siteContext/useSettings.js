@@ -64,7 +64,7 @@ export default function useSettings() {
         }
 
         setLang(newLang)
-        Cookies.set('lang', JSON.stringify(newLang), { expires: 7 });
+        Cookies.set('lang', JSON.stringify(newLang), { expires: 1 });
 
         return true
     }
@@ -72,7 +72,7 @@ export default function useSettings() {
     function toggleMute() {
         const newMute = !mute
         setMute(newMute)
-        Cookies.set('mute', JSON.stringify(newMute), { expires: 7 });
+        Cookies.set('mute', JSON.stringify(newMute), { expires: 1 });
         return true
     }
 
@@ -85,7 +85,7 @@ export default function useSettings() {
         //TODO: Check if valid hex
 
         setBackgroundHex(hex)
-        Cookies.set('background_hex', JSON.stringify(hex), { expires: 7 });
+        Cookies.set('background_hex', JSON.stringify(hex), { expires: 1 });
 
         return true
     }
