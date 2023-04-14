@@ -1,7 +1,6 @@
 const { err } = require("@utils/debug/log");
 
 function fillTextTags(text, tags) {
-
   let filledText = text;
   for (var key in tags) {
     if (tags.hasOwnProperty(key)) {
