@@ -32,7 +32,7 @@ export async function getStaticProps(context){
     const recipeKey = params.recipeKey
 
     const recipes = await LoadRecipes()
-    
+
     let recipe = recipes.carrotOrangeJuice
     if(recipes[recipeKey]) {
         recipe = recipes[recipeKey]
@@ -49,20 +49,19 @@ export default function AuntHouseQuestions({recipe}) {
     const [questions, setQuestions] = useState()
     const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
-    const isLoggedIn = user.loggedIn    
+    const isLoggedIn = user.loggedIn  
+    useEffect(() => {
+        const generatedQuestions = aHQuestionFactory(questionType, recipe)
+        console.log(generatedQuestions)
+        setQuestions(generatedQuestions)
+    },[questionType])
+  
     if(loading) return <Loading/> 
     if(!router.isReady) return <Loading/>
     if(error) return <Error error={error}/>
     if(!isLoggedIn) return <Login/>
     const lang = settings.lang
     const { questionType, recipeKey, familySize } = router.query
-
-    useEffect(() => {
-        const generatedQuestions = aHQuestionFactory(questionType, recipe)
-        console.log(generatedQuestions)
-        setQuestions(generatedQuestions)
-    },[questionType])
-
     const recipeTitle = generateRecipeTitleText(recipe,lang)
     const recipeServingText = generateRecipeServingText(recipe,lang)
     const finishRoute = getFinishRoute(questionType,recipeKey,familySize)
