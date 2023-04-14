@@ -1,0 +1,207 @@
+{
+    "ingredient" : {
+        "carrot" : {
+            "nameSingular" : {
+                "en" : "Carrot",
+                "es" : "Zanahoria"
+            },
+            "namePlural" : {
+                "en" : "Carrots",
+                "es" : "Zanahorias" 
+            },
+            "imgSrc" : "carrots"
+        }
+        ,
+        "orange" : {
+            "nameSingular" : {
+                "en" : "Orange",
+                "es" : "Naranja"
+            },
+            "namePlural" : {
+                "en" : "Oranges",
+                "es" : "Naranjas" 
+            },
+            "imgSrc" : "oranges"
+        },
+        "tomatillos" : {
+            "nameSingular" : {
+                "en" : "Tomatillo",
+                "es" : "Tomatillo"
+            },
+            "namePlural" : {
+                "en" : "Tomatillos",
+                "es" : "Tomatillos"
+            },
+            "imgSrc" : "tomatillo"
+        },
+        "choppedWhiteOnion" : {
+            "nameSingular" : {
+                "en" : "Chopped White Onion",
+                "es" : "Cebolla Blanca Picada"
+            },
+            "namePlural" : {
+                "en" : "Chopped White Onions",
+                "es" : "Cebolla Blanca Picadas"
+            },
+            "imgSrc" : "onions"
+        },
+        "choppedCilantro" : {
+            "nameSingular" : {
+                "en" : "Chopped Cilantro",
+                "es": "Cilantro picado"
+            },
+            "namePlural" : {
+                "en" : "Chopped Cilantro",
+                "es": "Cilantro picado"
+            },
+            "imgSrc" : "cilantro"
+        },
+        "garlic" : {
+            "nameSingular" : {
+                "en" : "Garlic",
+                "es": "Ajo"
+            },
+            "namePlural" : {
+                "en" : "Garlic",
+                "es": "Ajo"
+            },
+            "imgSrc" : "garlic"
+        },
+        "freshLimeJuice" : {
+            "nameSingular" : {
+                "en" : "Fresh Lime Juice",
+                "es": "Jugo de Limón"
+            },
+            "namePlural" : {
+                "en" : "Fresh Lime Juice",
+                "es": "Jugo de Limón"
+            },
+            "imgSrc" : "lime"
+        },
+        "jalapenoOrSerranoPeppers" : {
+            "nameSingular" : {
+                "en" : "Jalapeño or Serrano Peppers for Spice",
+                "es": "Chiles Jalapeños o Serranos para Especias"
+            },
+            "namePlural" : {
+                "en" : "Jalapeño or Serrano Peppers for Spice",
+                "es": "Chiles Jalapeños o Serranos para Especias"
+            },
+            "imgSrc" : "jalapenoOrSerranoPeppers",
+            "notQuizable" : true
+        },
+        "tortillaChips" : {
+            "nameSingular" : {
+                "en" : "Tortilla Chips",
+                "es": "Chips de Tortilla"
+            },
+            "namePlural" : {
+                "en" : "Tortilla Chips",
+                "es": "Chips de Tortilla"
+            },
+            "imgSrc" : "tortillas"
+        },
+        "saltAndSpiceForTaste" : {
+            "nameSingular" : {
+                "en" : "Salt and Spices to Taste",
+                "es": "Sal y Especias al Gusto"
+            },
+            "namePlural" : {
+                "en" : "Salt and Spices to Taste",
+                "es": "Sal y Especias al Gusto"
+            },
+            "imgSrc" : "salt_pepper"
+        },
+        "mashedBlackBeans" : {
+            "nameSingular" : {
+                "en" : "Mashed Black Beans",
+                "es": "Puré de Frijoles Negros"
+            },
+            "namePlural" : {
+                "en" : "Mashed Black Beans",
+                "es": "Puré de Frijoles Negros"
+            },
+            "imgSrc" : "black_beans"
+        },"onion" : {
+            "nameSingular" : {
+                "en" : "Onion",
+                "es" : "Picada"
+            },
+            "namePlural" : {
+                "en" : "Onions",
+                "es" : "Picadas"
+            },
+            "imgSrc" : "onions"
+        },"mashedSweetPotato" : {
+            "nameSingular" : {
+                "en" : "Mashed Sweet Potato",
+                "es": "Puré de Papa Dulce"
+            },
+            "namePlural" : {
+                "en" : "Mashed Sweet Potato",
+                "es": "Puré de Papa Dulce"
+            },
+            "imgSrc" : "mashed_sweet_potato"
+        },"tomatilloSauce" : {
+            "nameSingular" : {
+                "en" : "Tomatillo Sauce",
+                "es" : "Salsa de Tomatillos"
+            },
+            "namePlural" : {
+                "en" : "Tomatillo Sauce",
+                "es" : "Salsa de Tomatillos"
+            },
+            "imgSrc" : "tomatillo_sauce"
+        },"papaya" : {
+            "nameSingular" : {
+                "en" : "Papaya",
+                "es" : "Papaya"
+            },
+            "namePlural" : {
+                "en" : "Papayas",
+                "es" : "Papayas"
+            },
+            "imgSrc" : "papaya"
+        },"strawberry" : {
+            "nameSingular" : {
+                "en" : "Strawberry",
+                "es" : "Fresa"
+            },
+            "namePlural" : {
+                "en" : "Strawberries",
+                "es" : "Fresas"
+            },
+            "imgSrc" : "strawberry"
+        },"kiwi" : {
+            "nameSingular" : {
+                "en" : "Kiwi",
+                "es" : "Kiwi"
+            },
+            "namePlural" : {
+                "en" : "Kiwis",
+                "es" : "Kiwis"
+            },
+            "imgSrc" : "kiwi"
+        },"tortilla" : {
+            "nameSingular" : {
+                "en" : "Tortilla",
+                "es": "Tortilla"
+            },
+            "namePlural" : {
+                "en" : "Tortillas",
+                "es": "Tortillas"
+            },
+            "imgSrc" : "tortillas"
+        },"mango" : {
+            "nameSingular" : {
+                "en" : "Mango",
+                "es" : "Mango"
+            },
+            "namePlural" : {
+                "en" : "Mangos",
+                "es" : "Mangos"
+            },
+            "imgSrc" : "mango"
+        }
+    }
+}

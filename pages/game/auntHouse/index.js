@@ -1,18 +1,28 @@
 import React, {useState} from 'react'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
-import {GameIndexLayout} from '@utils/imports/commonImports'
-import style from '@styles/aunt_house.module.css'
-import recipes from '@public/text/auntHouseRecipes'
+import {GameIndexLayout, getText} from '@utils/imports/commonImports'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
+import LoadRecipes from '@utils/staticData/staticDataFetching/foodData/loadRecipes'
+import IconGroup from '@comps/iconGroup'
+import ClickableIcon from '@comps/clickableIcon'
 
-export default function RecipeSelect() {
+export async function getStaticProps(){
+    const recipes = await LoadRecipes()
+    return {
+      props: {
+        recipes,
+      },
+    }
+}
+
+export default function RecipeSelect({recipes}) {
     const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
-    const [recipe, setRecipe] = useState();
+    const [selectedRecipe, setSelectedRecipe] = useState()
     const [instructionText, setInstructionText] = useState("aunt_welcome");
 
     const isLoggedIn = user.loggedIn    
@@ -22,21 +32,31 @@ export default function RecipeSelect() {
 
     const lang = settings.lang
 
-
-  function handleRecipeClick (recipe_object) {
-        if(recipe == recipe_object) {
-            setRecipe(null)
-        } else {
-            setRecipe(recipe_object)
-        }
-    }
-
-    function handleRecipeSelect() {
-        if(recipe == null) {
+    function handleRecipeSubmit() {
+        if(selectedRecipe == null) {
             setInstructionText("no_recipe_selected")
             return false
         }
-        router.push('/game/auntHouse/recipeCard/' + recipe)
+        router.push('/game/auntHouse/recipeCard/' + selectedRecipe)
+    }
+
+    function getRecipeIcon(key,value) {
+        if(value.imgSrc == undefined) return <></>
+        const imgSrc = '/img/food/' + value.imgSrc + '.png'
+        return (
+            <ClickableIcon selected={selectedRecipe == key} onClick={() => setSelectedRecipe(key)}> 
+                <div className='mx-auto px-2'>
+            
+                    <Image
+                            priority={true}
+                            width={100}
+                            height={75}
+                            src={imgSrc}
+                            alt={value.imgSrc}/>
+                    <p>{'Level : ' + value.level}</p>
+                </div>
+            </ClickableIcon>
+        )
     }
 
     return (
@@ -45,31 +65,17 @@ export default function RecipeSelect() {
                 game_name={"aunt_house"}
                 instruction_text={instructionText}
                 submit_text={"cook"}
-                handleSubmit={() => handleRecipeSelect()}>
-                    
-            <div className={style.recipe_select_button_grid}>
-                {recipes.map((x, index) => {
-                    return(
-                        <div key={x.name.en} className={style.recipe_select_button_container}>
-                            <button 
-                                onClick={() => {
-                                    handleRecipeClick(index)
-                                }}>
-                                    <div className={index == recipe ? style.recipe_select_box_container_selected : style.recipe_select_box_container}>
-                                    <p className={style.recipe_select_box_text}>{x.name[lang]}</p>
-                                        <Image
-                                            priority={true}
-                                            width={80}
-                                            height={80}
-                                            src={"/img/food/"+x.path+ ".png"}
-                                            alt={"food"}
-                                            className={style.recipe_select_box_image}
-                                        />
-                                    </div>
-                            </button>
-                        </div>
-                        )})}
-            </div>
+                handleSubmit={() => handleRecipeSubmit()}>
+                <div className='pt-3'>
+                <IconGroup 
+                    lang={lang}
+                    icons={recipes}
+                    selectIcon={(recipe) => setSelectedRecipe(recipe)}
+                    selectedIcon={selectedRecipe}
+                    getContentFromValue={(key,value) => getRecipeIcon(key,value)}
+                    width={2}
+                    height={2}/>
+                </div>
         </GameIndexLayout>
     )
 }
