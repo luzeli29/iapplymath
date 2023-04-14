@@ -50,8 +50,6 @@ export default function RecipeCard({recipeKey,recipe}) {
     if(!isLoggedIn) return <Login/>
 
     const lang = settings.lang
-    console.log(recipeKey)
-    console.log(recipe)
     const recipeTitle = generateRecipeTitleText(recipe,lang)
     const recipeServingText = generateRecipeServingText(recipe,lang)
     const instructionText = recipe.instructions ? recipe.instructions[lang] : 'instructions'

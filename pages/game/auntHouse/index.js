@@ -41,7 +41,6 @@ export default function RecipeSelect({recipes}) {
     }
 
     function getRecipeIcon(key,value) {
-        console.log(value)
         if(value.imgSrc == undefined) return <></>
         const imgSrc = '/img/food/' + value.imgSrc + '.png'
         return (

@@ -16,8 +16,6 @@ export default async function LoadRecipes() {
     const servingTypes = await loadServingTypes()
     //TODO: Validate data
 
-    //console.log(ingredientsData)
-    //console.log(servingTypesData)
     mergeObjectsIntoObjectByKeys(recipes,{...ingredients,...servingTypes})
 
     return recipes

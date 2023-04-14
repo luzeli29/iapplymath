@@ -20,7 +20,6 @@ export default function generateIngredientLineText(ingredient, lang) {
             ingredientName = ingredient.ingredient.nameSingular ? ingredient.ingredient.nameSingular[lang] : 'name singular'
         } else {
             ingredientName = ingredient.ingredient.namePlural ? ingredient.ingredient.namePlural[lang] : 'name namePlural'
-
         }
     } else {
         servingText = ingredient.servingType.nameSingular[lang]

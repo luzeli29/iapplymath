@@ -5,7 +5,6 @@ import React from 'react'
 
 export default function Test({recipes}) {
 
-    console.log(recipes)
     return (
         <div>test</div>
     )

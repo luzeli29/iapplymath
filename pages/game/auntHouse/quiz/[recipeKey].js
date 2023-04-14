@@ -9,6 +9,9 @@ import { useUserContext } from '@hooks/siteContext/useUserContext'
 import SmallRecipeCard from '@comps/game/auntHouse/smallRecipeCard'
 import LoadRecipes from '@utils/staticData/staticDataFetching/foodData/loadRecipes'
 import aHQuestionFactory from '@utils/game/auntHouse/questionCreation/aHQuestionFactory'
+import IngredientList from '@comps/game/auntHouse/ingredientList'
+import generateRecipeTitleText from '@utils/game/auntHouse/textCreation/generateRecipeTitleText'
+import generateRecipeServingText from '@utils/game/auntHouse/textCreation/generateRecipeServingText'
 
 
 export async function getStaticPaths() {
@@ -27,7 +30,6 @@ export async function getStaticPaths() {
 export async function getStaticProps(context){
     const  {params}  = context
     const recipeKey = params.recipeKey
-    console.log(params)
 
     const recipes = await LoadRecipes()
     
@@ -53,14 +55,16 @@ export default function AuntHouseQuestions({recipe}) {
     if(!router.isReady) return <Loading/>
     if(error) return <Error error={error}/>
     if(!isLoggedIn) return <Login/>
-
+    const lang = settings.lang
     const { questionType, recipeKey, familySize } = router.query
 
     useEffect(() => {
         const generatedQuestions = aHQuestionFactory(questionType, recipe)
+        console.log(generatedQuestions)
         setQuestions(generatedQuestions)
     },[])
-
+    const recipeTitle = generateRecipeTitleText(recipe,lang)
+    const recipeServingText = generateRecipeServingText(recipe,lang)
     const finishRoute = getFinishRoute(questionType,recipeKey,familySize)
     
     if(!questions) return(<Loading/>)
@@ -70,6 +74,11 @@ export default function AuntHouseQuestions({recipe}) {
                 questions={questions}
                 onBack={() => router.push('/game/auntHouse/')}
                 onFinish={() => router.push(finishRoute)}> 
+                <div>
+                    <p>{recipeTitle}</p>
+                    <p>{recipeServingText}</p>
+                    <IngredientList ingredients={recipe.ingredients} lang={lang}/>
+                </div>
         </GameQuestionLayout>
     )
 }

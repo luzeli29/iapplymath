@@ -31,7 +31,6 @@ export default function mergeObjectsIntoObjectByKeys(objectMergeTo, objectsMerge
 
 function mergeObject(objectMergeTo, mergeIfValid) {
     for (const [key, value] of Object.entries(objectMergeTo)) {
-        //console.log(`${key}: ${typeof(value)}`);
 
         switch (typeof(value)) {
             case 'object':
