@@ -2,19 +2,13 @@ const { err } = require("@utils/debug/log");
 
 function fillTextTags(text, tags) {
 
-  const filledText = text;
-
-
-  var regex = /%([^%]+)%/g;
-  var keys = [];
-  var match;
-  
-  while ((match = regex.exec(text)) !== null) {
-    console.log(match[1])
-    keys.push(match[1]);
+  let filledText = text;
+  for (var key in tags) {
+    if (tags.hasOwnProperty(key)) {
+      var keyTag = "%" + key.toUpperCase() + "%";
+      filledText = filledText.replace(new RegExp(keyTag, "g"), tags[key]);
+    }
   }
-  console.log(keys)
-
   return filledText;
 }
 

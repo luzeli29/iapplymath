@@ -15,18 +15,19 @@
             "servingSize" : 1,
             "recipeMakesAmount" : 1,
             "servingType" : "cup",
-            "ingredients" : [
-                {
+            "ingredients" : {
+                "carrot" :{
                     "ingredient" : "carrot",
                     "amount" : "3",
                     "servingType" : "self"
 
-                },{
+                },
+                "orange" :{
                     "ingredient" : "orange",
                     "amount" : "2",
                     "servingType" : "self"
                 }
-            ],
+            },
             "defaultIngredientMultiQuestions" : [
                 {
                     "ingredientCode" : "carrot",
@@ -61,43 +62,49 @@
             "servingSize" : 6,
             "recipeMakesAmount" : 1,
             "servingType" : "dish",
-            "ingredients" : [
-                {
+            "ingredients" : {
+                "tomatillos" :{
                     "ingredient" : "tomatillos",
                     "amount" : "1",
                     "servingType" : "pound"
-                },{
+                },
+                "choppedWhiteOnion" :{
                     "ingredient" : "choppedWhiteOnion",
                     "amount" : "1/2",
                     "servingType" : "cup"
-                },{
+                },
+                "choppedCilantro" :{
                     "ingredient" : "choppedCilantro",
                     "amount" : "1/2",
                     "servingType" : "cup"
-                },{
+                },
+                "garlic" :{
                     "ingredient" : "garlic",
                     "amount" : "6",
                     "servingType" : "clove"
-                },{
+                },
+                "freshLimeJuice" :{
                     "ingredient" : "freshLimeJuice",
                     "amount" : "1",
                     "servingType" : "tablespoon"
-                },{
+                },
+                "jalapenoOrSerranoPeppers" :{
                     "ingredient" : "jalapenoOrSerranoPeppers",
                     "amount" : "1-2",
                     "servingType" : "self"
-
-                },{
+                },
+                "tortillaChips" :{
                     "ingredient" : "tortillaChips",
                     "amount" : "1",
                     "servingType" : "bag"
 
-                },{
+                },
+                "saltAndSpiceForTaste" :{
                     "ingredient" : "saltAndSpiceForTaste",
                     "amount" : "",
                     "servingType" : "self"
                 }
-            ],
+            },
             "defaultIngredientMultiQuestions" : [
                 {
                     "ingredientCode" : "garlic",
@@ -136,33 +143,38 @@
             "servingSize" : 2,
             "recipeMakesAmount" : 4,
             "servingType" : "self",
-            "ingredients" : [
-                {
+            "ingredients" : {
+                "mashedBlackBeans" :{
                     "ingredient" : "mashedBlackBeans",
                     "amount" : "1",
                     "servingType" : "cup"
-                },{
+                },
+                "onion" :{
                     "ingredient" : "onion",
                     "amount" : "1/2",
                     "servingType" : "self"
-                },{
+                },
+                "mashedSweetPotato" :{
                     "ingredient" : "mashedSweetPotato",
                     "amount" : "1/2",
                     "servingType" : "cup"
-                },{
+                },
+                "tortilla" :{
                     "ingredient" : "tortilla",
                     "amount" : "4",
                     "servingType" : "self"
-                },{
+                },
+                "tomatilloSauce" :{
                     "ingredient" : "tomatilloSauce",
                     "amount" : "1/4",
                     "servingType" : "cup"
-                },{
+                },
+                "saltAndSpiceForTaste" :{
                     "ingredient" : "saltAndSpiceForTaste",
                     "amount" : "",
                     "servingType" : "self"
                 }
-            ],
+            },
             "defaultIngredientMultiQuestions" : [
                 {
                     "ingredientCode" : "onion",
@@ -202,145 +214,28 @@
             "servingSize" : 1,
             "recipeMakesAmount" : 1,
             "servingType" : "bowl",
-            "ingredients" : [
-                {
+            "ingredients" : {
+                "papaya" :{
                     "ingredient" : "papaya",
                     "amount" : "1/4",
                     "servingType" : "self"
-                },{
+                },
+                "mango" :{
                     "ingredient" : "mango",
                     "amount" : "1/4",
                     "servingType" : "self"
-                },{
+                },
+                "strawberry" :{
                     "ingredient" : "strawberry",
                     "amount" : "1/3",
                     "servingType" : "self"
-                },{
+                },
+                "kiwi" :{
                     "ingredient" : "kiwi",
                     "amount" : "1/2",
                     "servingType" : "self"
                 }
-            ],
-            "defaultIngredientMultiQuestions" : [
-                {
-                    "ingredientCode" : "mango",
-                    "factor" : "1"
-                },{
-                    "ingredientCode" : "mango",
-                    "factor" : "3"
-                },{
-                    "ingredientCode" : "strawberry",
-                    "factor" : "2"
-                },{
-                    "ingredientCode" : "papaya",
-                    "factor" : "2"
-                },{
-                    "ingredientCode" : "papaya",
-                    "factor" : "2"
-                },{
-                    "ingredientCode" : "mango",
-                    "factor" : "4"
-                }
-            ],
-            "defaultFamilyQuestionIngredients" : [
-                "papaya",
-                "strawberry",
-                "kiwi"
-            ]
-        },
-        "fruitSalad2" :{
-            "level" : "2",
-            "name" : {
-                "en": "Fruit Salad",
-                "es": "Ensalada de Frutas"
             },
-            "instructions" : {
-                "en" : "Cut the fruit into small pieces and serve on a plate.",
-                "es" : "Corte la fruta en pedazos pequeños y servir en un plato."
-            },
-            "imgSrc" : "fruit_salad",
-            "servingSize" : 1,
-            "recipeMakesAmount" : 1,
-            "servingType" : "bowl",
-            "ingredients" : [
-                {
-                    "ingredient" : "papaya",
-                    "amount" : "1/4",
-                    "servingType" : "self"
-                },{
-                    "ingredient" : "mango",
-                    "amount" : "1/4",
-                    "servingType" : "self"
-                },{
-                    "ingredient" : "strawberry",
-                    "amount" : "1/3",
-                    "servingType" : "self"
-                },{
-                    "ingredient" : "kiwi",
-                    "amount" : "1/2",
-                    "servingType" : "self"
-                }
-            ],
-            "defaultIngredientMultiQuestions" : [
-                {
-                    "ingredientCode" : "mango",
-                    "factor" : "1"
-                },{
-                    "ingredientCode" : "mango",
-                    "factor" : "3"
-                },{
-                    "ingredientCode" : "strawberry",
-                    "factor" : "2"
-                },{
-                    "ingredientCode" : "papaya",
-                    "factor" : "2"
-                },{
-                    "ingredientCode" : "papaya",
-                    "factor" : "2"
-                },{
-                    "ingredientCode" : "mango",
-                    "factor" : "4"
-                }
-            ],
-            "defaultFamilyQuestionIngredients" : [
-                "papaya",
-                "strawberry",
-                "kiwi"
-            ]
-        },
-        "fruitSalad3" :{
-            "level" : "3",
-            "name" : {
-                "en": "Fruit Salad",
-                "es": "Ensalada de Frutas"
-            },
-            "instructions" : {
-                "en" : "Cut the fruit into small pieces and serve on a plate.",
-                "es" : "Corte la fruta en pedazos pequeños y servir en un plato."
-            },
-            "imgSrc" : "fruit_salad",
-            "servingSize" : 1,
-            "recipeMakesAmount" : 1,
-            "servingType" : "bowl",
-            "ingredients" : [
-                {
-                    "ingredient" : "papaya",
-                    "amount" : "1/4",
-                    "servingType" : "self"
-                },{
-                    "ingredient" : "mango",
-                    "amount" : "1/4",
-                    "servingType" : "self"
-                },{
-                    "ingredient" : "strawberry",
-                    "amount" : "1/3",
-                    "servingType" : "self"
-                },{
-                    "ingredient" : "kiwi",
-                    "amount" : "1/2",
-                    "servingType" : "self"
-                }
-            ],
             "defaultIngredientMultiQuestions" : [
                 {
                     "ingredientCode" : "mango",
