@@ -2,6 +2,8 @@ import React from 'react';
 import Link from "next/link"
 import { getText} from '@utils/imports/commonImports'
 import Loading from '@comps/screens/loading';
+import { useUserContext } from '@hooks/siteContext/useUserContext';
+import { useRouter } from 'next/router';
 
 //404 page if user goes to page not found
 export default function Error() {

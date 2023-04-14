@@ -95,6 +95,10 @@ const translations = {
     },
 
     // ----- General Translations -----
+    of: {
+        en: 'Of',
+        es: 'De'
+    },
     no_recipe_selected: {
         en: "Please select a recipe.",
         es: "Please select a recipe.",
