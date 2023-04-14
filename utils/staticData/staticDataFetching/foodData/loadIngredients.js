@@ -1,11 +1,10 @@
 import GetBaseUrl from "@utils/api/getBaseUrl"
-
-const baseUrl = GetBaseUrl()
-const foodDataEndpoint = baseUrl + '/api/staticData/json/foodData/'
+import { promises as fs } from 'fs';
+import path from 'path';
 
 export default async function loadIngredients() {
-    const ingredientsRes = await fetch(foodDataEndpoint + 'ingredients')
-    const ingredientsDataJSON = await ingredientsRes.json()
+    const ingredientsFileContent =  path.join(process.cwd(), 'utils/staticData/json/foodData/ingredients.json');
+    const ingredientsDataJSON = await fs.readFile(ingredientsFileContent, 'utf8');
     const ingredients = JSON.parse(ingredientsDataJSON)
 
     return ingredients
