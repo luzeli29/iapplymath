@@ -1,15 +1,14 @@
 import { getText, simplifyFraction } from "@commonImports"
-import aHSimpleMultiQuestion from "@public/text/questions/auntHouse/aHSimpleMultiQuestions"
-import createGameQuestion from "@utils/game/createGameQuestion"
+import aHSimpleMultiQuestions from "@public/text/questions/auntHouse/aHSimpleMultiQuestions"
 import fillQuestionTemplate from "@utils/game/questionGenerators/fillQuestionTemplate"
-
-const questionTemplates = aHSimpleMultiQuestion
 
 export default function generateAHSimpleMultiQuestion(recipe,ingredient,factor,randomGenerator) {
     let templateToUse = randomGenerator != undefined ? randomGenerator.randomInt(0,questionTemplates.length) : 0
-    const template = questionTemplates[templateToUse]
+    console.log(aHSimpleMultiQuestions)
+    const template = aHSimpleMultiQuestions[templateToUse]
     let tags = {}
     tags.factor = factor
+    console.log(ingredient)
     tags.ing_amount = ingredient.amount
     tags.answer = simplifyFraction((eval(ingredient.amount) * factor),recipe.recipeMakesAmount)
     tags.serving_Size = recipe.servingSize
@@ -36,12 +35,6 @@ export default function generateAHSimpleMultiQuestion(recipe,ingredient,factor,r
         tags.RECIPE_SERVING_ES += recipe.name.es.toLowerCase()
     }
 
-
-    /*
-    %INGREDIENT_SERVINGS%
-    %RECIPE_SERVINGS%?
-    %SERVING_SIZE%
-    */
     const question = fillQuestionTemplate(template,tags)
 
     return question

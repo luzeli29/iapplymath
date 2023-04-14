@@ -48,7 +48,6 @@ export async function getStaticProps(context){
 export default function AuntHouseQuestions({recipe}) {
     const [questions, setQuestions] = useState()
     const {user,settings,loading, error} = useUserContext()
-
     const router = useRouter()
     const isLoggedIn = user.loggedIn    
     if(loading) return <Loading/> 
@@ -62,18 +61,24 @@ export default function AuntHouseQuestions({recipe}) {
         const generatedQuestions = aHQuestionFactory(questionType, recipe)
         console.log(generatedQuestions)
         setQuestions(generatedQuestions)
-    },[])
+    },[questionType])
+
     const recipeTitle = generateRecipeTitleText(recipe,lang)
     const recipeServingText = generateRecipeServingText(recipe,lang)
     const finishRoute = getFinishRoute(questionType,recipeKey,familySize)
     
     if(!questions) return(<Loading/>)
 
+    function handleFinish() {
+        router.push(finishRoute)
+        setQuestions('')
+    }
+
     return (
         <GameQuestionLayout
                 questions={questions}
                 onBack={() => router.push('/game/auntHouse/')}
-                onFinish={() => router.push(finishRoute)}> 
+                onFinish={() => handleFinish()}> 
                 <div>
                     <p>{recipeTitle}</p>
                     <p>{recipeServingText}</p>
@@ -83,16 +88,16 @@ export default function AuntHouseQuestions({recipe}) {
     )
 }
 
-function getFinishRoute(questionType, recipeKey) {
+function getFinishRoute(questionType, recipeKey,familySize) {
     if (!questionType) {
         return '/'
     }
 
     switch(questionType) {
         case 'basic':
-            return '/game/auntHouse/quiz/familySize?recipeKey=' + recipeKey
+            return '/game/auntHouse/quiz/' + recipeKey + '?questionType=familySize'
         case "familySize":
-            return '/game/auntHouse/quiz/familyQuestion?recipeKey=' + recipeKey
+            return '/game/auntHouse/quiz/' + recipeKey + '?questionType=familyQuestion'
         case "familyQuestion":
             return '/game/auntHouse/finished'
     }

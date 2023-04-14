@@ -19,7 +19,6 @@ export default function generateBasicAHQuestions(recipe,randomGenerator) {
         questions.push(generateAHSimpleMultiQuestions(recipe,ingredient, factor, randomGenerator))       
     })
     
-    console.log(questions)
 
     return questions
 }
