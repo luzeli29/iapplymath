@@ -44,7 +44,7 @@
     position:relative;
     margin-left: 150px;
     text-align: center;
-    z-index: -1;
+    z-index: 2;
 }
 
 .pet_me{
@@ -89,12 +89,11 @@
 .ayu_speech_bubble {
     margin-left: auto;
     margin-right: auto;
-    height: 80%;
+    height: 95%;
     background-color: white;
     border-radius: 20px;
     position: relative;
-    margin-left: 150px
-
+    margin-left: 150px;
 }
 
 .ayu_speech_bubble_container {
@@ -114,6 +113,9 @@
     margin: auto;
     position: relative;
     font-size: small;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .num_pad_container {

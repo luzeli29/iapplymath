@@ -41,11 +41,8 @@ export default function Ayu ({handleAyuClick}) {
    const onMouseLeave = () => setIsHovered(false);
 
    return (
-      <div className="fill_container"
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}> 
+      <div className="fill_container"> 
          <div className={style.ayu_speech_bubble_container}>
-            
             {isHovering ? 
                <div className={style.ayu_speech_bubble}>
                   <div className={style.ayu_speech_bubble_triangle} ></div>
@@ -65,14 +62,13 @@ export default function Ayu ({handleAyuClick}) {
                   src={"/img/ayu/ayu_idle.gif"}
                   alt={"ayu idle gif"}/>
             </button>
-            <div>              
-               {/* <p className={style.pet_me}>Pet me!</p> */}
-               {/* <GiHand className={style.pet_me}></GiHand> */}
-               
+            <div >              
                <Image
-                  className={style.pet}
                   priority={true}
                   layout={"fill"}
+                  className={style.pet}
+                  onMouseEnter={onMouseEnter}
+                  onMouseLeave={onMouseLeave}
                   src = {"/img/pets/pet" + petId + ".png"}
                   alt = {"You haven't selected your pet!"}/>
             </div>
