@@ -47,7 +47,7 @@ export default async function handler(req, res) {
 async function getUser(username,db,res) {
   const bodyObject = {username: username}
 
-  let findResponse = await db.collection("data").findOne(bodyObject)
+  let findResponse = await db.collection('users').findOne(bodyObject)
     
   if(findResponse) {
     return res.json({
@@ -70,12 +70,13 @@ async function postUser(username, db,res) {
       username: username,
       date_created: (new Date()).toString(),
       sessions: [],
+      roles: ['user'],
     }
 
-    await db.collection("data").insertOne(insertObject);
+    await db.collection('users').insertOne(insertObject);
 
     const bodyObject = {username: username}
-    let findResponse = await db.collection("data").findOne(bodyObject)    
+    let findResponse = await db.collection('users').findOne(bodyObject)    
 
     return res.json({
       code: 200,
