@@ -4,9 +4,9 @@ import style from '@styles/game_layout.module.css'
 import translations from '@translations';
 import {Dialog,simplifyAnswer, throwError} from '@utils/imports/commonImports'
 import 'reactjs-popup/dist/index.css';
-import Ayu from '@comps/game/quizComps/ayu';
-import AnswerBox from '@comps/game/quizComps/answerBox';
-import QuestionBox from '@comps/game/quizComps/questionBox';
+import Ayu from '@comps/game/quiz/ayu';
+import AnswerBox from '@comps/game/quiz/answerBox';
+import QuestionBox from '@comps/game/quiz/questionBox';
 import { useStopWatch } from '@hooks/useStopWatch';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';

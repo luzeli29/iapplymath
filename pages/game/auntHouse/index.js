@@ -6,9 +6,10 @@ import { useUserContext } from '@hooks/siteContext/useUserContext'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
-import LoadRecipes from '@utils/staticData/staticDataFetching/foodData/loadRecipes'
+import LoadRecipes from '@utils/staticData/json/foodData/loadRecipes'
 import IconGroup from '@comps/iconGroup'
 import ClickableIcon from '@comps/clickableIcon'
+import LevelDisplay from '@comps/game/levelDisplay'
 
 export async function getStaticProps(){
     const recipes = await LoadRecipes()
@@ -53,7 +54,7 @@ export default function RecipeSelect({recipes}) {
                             height={75}
                             src={imgSrc}
                             alt={value.imgSrc}/>
-                    <p>{'Level : ' + value.level}</p>
+                    <LevelDisplay level={value.level} lang={lang}/>
                 </div>
             </ClickableIcon>
         )
