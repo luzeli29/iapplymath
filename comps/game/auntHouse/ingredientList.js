@@ -25,7 +25,7 @@ export default function IngredientList({ingredients, lang}) {
                         src={ingredientSrc}
                         alt={'ing'}/>
                 </div>   
-                <div className='ps-4 col-10'>
+                <div className='ps-3 col-10'>
                     <p>{ingredientLineText}</p>
                 </div>               
             </div>

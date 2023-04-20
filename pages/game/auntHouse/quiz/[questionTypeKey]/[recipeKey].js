@@ -85,8 +85,8 @@ export default function AuntHouseQuestions({recipe}) {
                 onBack={() => router.push('/game/auntHouse/')}
                 onFinish={() => handleFinish()}> 
                 <div>
-                    <p>{recipeTitle}</p>
-                    <p>{recipeServingText}</p>
+                    <p className='text-center'>{recipeTitle}</p>
+                    <p className='text-center'>{recipeServingText}</p>
                     <IngredientList ingredients={recipe.ingredients} lang={lang}/>
                 </div>
         </GameQuestionLayout>
