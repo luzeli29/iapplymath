@@ -80,12 +80,12 @@
         },
         "jalapenoOrSerranoPeppers" : {
             "nameSingular" : {
-                "en" : "Jalapeño or Serrano Peppers for Spice",
-                "es": "Chiles Jalapeños o Serranos para Especias"
+                "en" : "Jalapeño or Serrano Peppers",
+                "es": "Chiles Jalapeños o Serranos"
             },
             "namePlural" : {
-                "en" : "Jalapeño or Serrano Peppers for Spice",
-                "es": "Chiles Jalapeños o Serranos para Especias"
+                "en" : "Jalapeño or Serrano Peppers",
+                "es": "Chiles Jalapeños o Serranos"
             },
             "imgSrc" : "jalapenoOrSerranoPeppers",
             "notQuizable" : true
