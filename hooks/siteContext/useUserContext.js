@@ -5,6 +5,7 @@ import useUser from './useUser';
 const Context = createContext();
 
 export default function SiteWrapper({children}) {
+    const [selectedBackgroundIndex, setSelectedBackgroundIndex] = useState(-1);
     const [error, setError] = useState();
     const {user,settings} = useUser();
 
@@ -21,9 +22,11 @@ export default function SiteWrapper({children}) {
         user: user,
         loading: user.loading || settings.loading,
         error: error,
-        logout:logout
-    }
-  
+        logout: logout,
+        selectedBackgroundIndex: selectedBackgroundIndex,
+        setSelectedBackgroundIndex: setSelectedBackgroundIndex
+    };
+
     return (
         <Context.Provider value={context}>
           {children}
