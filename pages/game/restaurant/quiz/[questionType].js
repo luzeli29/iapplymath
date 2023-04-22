@@ -45,8 +45,6 @@ export default function RestaurantQuestions() {
     if(error) return <Error error={error}/>
     if(!isLoggedIn) return <Login/>
 
-    log(questions)
-
     return (
             <GameQuestionLayout
                     questions={questions}

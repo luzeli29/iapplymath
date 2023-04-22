@@ -5,7 +5,7 @@ import { useUserContext } from '@hooks/siteContext/useUserContext'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
-import LoadRecipes from '@utils/staticData/staticDataFetching/foodData/loadRecipes'
+import LoadRecipes from '@utils/staticData/json/foodData/loadRecipes'
 import { getText } from '@commonImports'
 import generateIngredientStatement from '@utils/game/auntHouse/textCreation/generateIngredientLineText'
 import generateRecipeTitleText from '@utils/game/auntHouse/textCreation/generateRecipeTitleText'
@@ -85,7 +85,7 @@ export default function RecipeCard({recipeKey,recipe}) {
                 </div>
                 <div className='col-6 text-start'>
                     <button 
-                    onClick={() => router.push('/game/auntHouse/quiz/' + recipeKey + '?questionType=basic')}
+                    onClick={() => router.push('/game/auntHouse/quiz/basic/' + recipeKey)}
                     className={'basic_button'}>
                     <strong>
                             {getText('cook',lang)}
