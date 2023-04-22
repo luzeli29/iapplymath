@@ -60,7 +60,7 @@ const translations = {
     },
     budget: {
         en: "budget",
-        es: "presupuesto",
+        es: "El presupuesto",
     },
     create_user: {
         en: "Create User",
@@ -83,7 +83,7 @@ const translations = {
 
     entree: {
         en: 'Entree',
-        es: 'Entrada'
+        es: 'Plato principal'
     },
     drink: {
         en: 'Drink',
