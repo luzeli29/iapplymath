@@ -1,0 +1,33 @@
+{
+    "location" : {
+        "auntHouse" : {
+            "questionTypes": {
+                "basic" :{
+                    "questionParams": 
+                        {"recipeKey" : "string"}
+                    
+                },
+                "familySize" :{
+                    "questionParams": 
+                        {"recipeKey" : "string"}}
+                },
+                "familyQuestion" :{
+                    "questionParams": {
+                            "recipeKey" : "string",
+                            "familySize" : "int"
+                        }
+                }
+        },
+        "restaurant" : {
+            "questionTypes": {
+                "basic" :{
+                    "questionParams": {
+                        "entreeIndex" : "int",
+                        "drinkIndex" : "int",
+                        "dessertIndex" : "int"
+                    }
+                }
+            }
+        }
+    }
+}

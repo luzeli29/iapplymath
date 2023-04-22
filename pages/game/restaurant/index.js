@@ -80,7 +80,7 @@ export default function Resturant () {
                 menuOptions.dessert[order.dessert].price > budget) {
             setInstructionText("too_expensive_order_instructions")
         } else {
-            router.push('/game/restaurant/quiz/basic?entreeIndex=' + order.entree + '&drinkIndex=' + order.drink+ '&dessertIndex=' + order.dessert)         
+            router.push('/game/restaurant/basic/levelSelect?entreeIndex=' + order.entree + '&drinkIndex=' + order.drink+ '&dessertIndex=' + order.dessert)         
         }
     }
       

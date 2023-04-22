@@ -203,6 +203,10 @@ const translations = {
         en:"Click",
         es:"Haz clic",
     },
+    level: {
+        en:"Level",
+        es:"Nivel",
+    },
     here: {
         en: "Here",
         es: "Aquí",
