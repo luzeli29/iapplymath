@@ -30,7 +30,7 @@ export default async function handler(req, res) {
 async function getSessions(username,db,res) {
   const filter = {username : username}
   //TODO: ERROR HANDALING IF NO USER FOUND
-  const findUser = await db.collection("data").findOne(filter)
+  const findUser = await db.collection('users').findOne(filter)
   if(findUser) {
     return findUser.sessions
   } else {
@@ -99,7 +99,7 @@ async function putSession(username,bodyObject,db,res) {
       updateSessionObject[sessionKey] = value
     }
 
-    const updateResult = await db.collection("data").findOneAndUpdate(
+    const updateResult = await db.collection('users').findOneAndUpdate(
       filter,
       { 
         $set : updateSessionObject
@@ -135,7 +135,7 @@ async function startSession(username,db,res) {
     };
 
     //Push new session
-    const insertResult = await db.collection("data").updateOne(
+    const insertResult = await db.collection('users').updateOne(
       filter,
       {$push: sessionObject}
     );
@@ -168,7 +168,7 @@ async function incrementAyu(username,index,db) {
 
     const incText = "sessions." + index + ".times_talked_to_ayu"
 
-    const updateResult = await db.collection("data").findOneAndUpdate(
+    const updateResult = await db.collection('users').findOneAndUpdate(
       filter,
       { $inc : { 
           [incText] : 1
@@ -196,7 +196,7 @@ async function saveGameData(username,gamedata,index,db) {
 
     const pushText = "sessions." + index + ".games_played"
 
-    const updateResult = await db.collection("data").findOneAndUpdate(
+    const updateResult = await db.collection('users').findOneAndUpdate(
       filter,
       { $push : { 
           [pushText] : gamedata

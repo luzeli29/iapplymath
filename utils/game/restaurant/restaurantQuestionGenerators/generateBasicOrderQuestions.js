@@ -26,7 +26,7 @@ export default function generateBasicOrderQuestions(order) {
         totalWithoutTop,
         [],
     ))
-    console.log(sortedOrder)
+
     const totalWithoutBottom = total - sortedOrder[2].price
     questions.push(createGameQuestion(
         {
