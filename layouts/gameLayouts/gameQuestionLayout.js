@@ -260,7 +260,7 @@ function cleanQuestions(questions) {
 
 function cleanOrder(order) {
    let cleanedOrder = {
-      entree : order.entree.en + " - $" + order.entree.price,
+      mainDish : order.mainDish.en + " - $" + order.mainDish.price,
       drink : order.drink.en + " - $" + order.drink.price,
       dessert : order.dessert.en + " - $" + order.dessert.price
    }

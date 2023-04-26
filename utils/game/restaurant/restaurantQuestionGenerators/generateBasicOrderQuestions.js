@@ -3,7 +3,7 @@ import validateOrder from "@utils/validation/game/restaurant/validateOrder";
 
 export default function generateBasicOrderQuestions(order) {
     let questions = []
-    const total = order.entree.price + order.drink.price + order.dessert.price
+    const total = order.mainDish.price + order.drink.price + order.dessert.price
 
     const sortedOrder = Object.values(order).sort(
        (p1, p2) => (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0);

@@ -93,7 +93,7 @@ const translations = {
         es: "Selección de Menú",
     },
 
-    entree: {
+    mainDish: {
         en: 'Main dish',
         es: 'Plato principal'
     },

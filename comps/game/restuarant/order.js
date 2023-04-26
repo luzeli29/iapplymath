@@ -16,7 +16,7 @@ function Order({order, budget}) {
     return (
         <div className={style.order_container}>    
             <p className={style.order_text}>{translations.order_2[lang]}</p>
-            {order.entree != -1 ? <p className={style.order_text}>{menuOptions.entree[order.entree][lang]} - ${menuOptions.entree[order.entree].price}.00</p> : <></>}
+            {order.mainDish != -1 ? <p className={style.order_text}>{menuOptions.mainDish[order.mainDish][lang]} - ${menuOptions.mainDish[order.mainDish].price}.00</p> : <></>}
             {order.drink != -1 ? <p className={style.order_text}>{menuOptions.drink[order.drink][lang]} - ${menuOptions.drink[order.drink].price}.00</p> : <></>}
             {order.dessert != -1 ? <p className={style.order_text}>{menuOptions.dessert[order.dessert][lang]} - ${menuOptions.dessert[order.dessert].price}.00</p> : <></>}
             
