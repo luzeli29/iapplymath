@@ -56,7 +56,7 @@ function generateSingleMultiplyQuestion(order,level,randomGenerator) {
                 es: "(" + dish.es + ") + (" + dish.es + ") + (" + dish.es + ") = " + dish.price * 3,
             }]
         )
-    } else if (dishType == 'entree') {
+    } else if (dishType == 'mainDish') {
         question = createGameQuestion(
             {
                 en:'If your family wants to order your same main dish ' + factor + ' times, how much is your family’s total?',

@@ -22,7 +22,7 @@
             "questionTypes": {
                 "basic" :{
                     "questionParams": {
-                        "entreeIndex" : "int",
+                        "mainDishIndex" : "int",
                         "drinkIndex" : "int",
                         "dessertIndex" : "int"
                     }

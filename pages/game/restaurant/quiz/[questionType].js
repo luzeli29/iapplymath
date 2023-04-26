@@ -18,16 +18,16 @@ export default function RestaurantQuestions() {
     const [questions, setQuestions] = useState()
     const router = useRouter()
 
-    const { questionType, entreeIndex, drinkIndex, dessertIndex } = router.query
+    const { questionType, mainDishIndex, drinkIndex, dessertIndex } = router.query
 
     const orderIndex = {
-        entree:entreeIndex,
+        mainDish:mainDishIndex,
         drink: drinkIndex,
         dessert: dessertIndex
     }
 
     const order = {
-        entree: menuOptions.entree[entreeIndex],
+        mainDish: menuOptions.mainDish[mainDishIndex],
         drink: menuOptions.drink[drinkIndex],
         dessert: menuOptions.dessert[dessertIndex]
     }
