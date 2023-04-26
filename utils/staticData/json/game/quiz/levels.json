@@ -1,0 +1,16 @@
+{
+    "level" : {
+        "levelOne" : {
+            "desc" : "Level One",
+            "value": 1
+        },
+        "levelTwo" : {
+            "desc" : "Level Two",
+            "value": 2
+        },
+        "levelThree" : {
+            "desc" : "Level Three",
+            "value": 3
+        }
+    }
+}

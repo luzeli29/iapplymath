@@ -7,18 +7,18 @@ import '@styles/globals.css'
 import Layout from '@layouts/core/coreLayout'
 import SiteWrapper from '@hooks/siteContext/useUserContext'
 
-function MyApp({ Component, session, ...pageProps }) {
+function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
         <title>I Apply Math in my World</title>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
       </Head>
-          <SiteWrapper>
-          <Layout>
-            <Component {...pageProps}/>
-          </Layout>
-          </SiteWrapper>
+      <SiteWrapper>
+        <Layout>
+          <Component {...pageProps}/>
+        </Layout>
+      </SiteWrapper>
     </>
   )
 }

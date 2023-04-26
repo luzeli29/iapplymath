@@ -42,7 +42,7 @@ export default function useUser() {
       setError('"data" was null when setting user cookie.')
     }
     try{
-      await Cookies.set('user', JSON.stringify(data), { expires: 7 });
+      await Cookies.set('user', JSON.stringify(data), { expires: 1 });
       updateUserFromCookie()
       return true
     } catch (e) {

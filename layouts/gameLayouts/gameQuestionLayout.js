@@ -4,14 +4,15 @@ import style from '@styles/game_layout.module.css'
 import translations from '@translations';
 import {Dialog,simplifyAnswer, throwError} from '@utils/imports/commonImports'
 import 'reactjs-popup/dist/index.css';
-import Ayu from '@comps/game/quizComps/ayu';
-import AnswerBox from '@comps/game/quizComps/answerBox';
-import QuestionBox from '@comps/game/quizComps/questionBox';
+import Ayu from '@comps/game/quiz/ayu';
+import AnswerBox from '@comps/game/quiz/answerBox';
+import QuestionBox from '@comps/game/quiz/questionBox';
 import { useStopWatch } from '@hooks/useStopWatch';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
 import { err } from '@utils/debug/log';
 import Creator from 'pages/user/checkIn'
+import createGameQuestion from '@utils/game/createGameQuestion';
 
 
 export default function QuestionLayout ({children, questions, onBack, onFinish}) {
@@ -35,7 +36,10 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    if(questions) {
       for(var i = 0; i < questions.length; i ++) {
          _questions[_questions.length] = questions[i]
-         _questions[_questions.length] = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
+         const continueQuestion = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
+         continueQuestion.questionFormat = "continue"
+         
+         _questions[_questions.length] = continueQuestion
       }
    }
    if(loading) return <Loading/>
@@ -178,6 +182,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       if(questionNum < _questions.length) {
          const correctAnswer = _questions[questionNum].answer;
          const answerFormat = _questions[questionNum].answerFormat;
+         const questionFormat = _questions[questionNum].questionFormat;
          /*
          if(!isRunning 
                && correctAnswer != "fill_in"
@@ -207,7 +212,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                         <td className={style.numpad_container}>
                               <AnswerBox
                                  correctAnswer={correctAnswer}
-                                 answerFormat={answerFormat}
+                                 questionFormat={questionFormat}
                                  handleSubmitAnswer={handleSubmitAnswer}/>
                         </td>
                         <td className={style.ayu_block}>

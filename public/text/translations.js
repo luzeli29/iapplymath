@@ -37,6 +37,18 @@ const translations = {
         en: "Cook!",
         es: "¡Cocinar!",
     },
+    serves:{
+        en: "Serves",
+        es: "Sirve",
+    },
+    person:{
+        en: "Person",
+        es: "Persona",
+    },
+    people:{
+        en:"People",
+        es:"Personas",
+    },
     // ----- Resturant Translations -----
     menu_select_instructions: {
         en: "Choose one entree, one drink, and one dessert. The total price of the items you select must be less than or equal to that budget.",
@@ -95,6 +107,10 @@ const translations = {
     },
 
     // ----- General Translations -----
+    of: {
+        en: 'Of',
+        es: 'De'
+    },
     no_recipe_selected: {
         en: "Please select a recipe.",
         es: "Please select a recipe.",
@@ -186,6 +202,10 @@ const translations = {
     click: {
         en:"Click",
         es:"Haz clic",
+    },
+    level: {
+        en:"Level",
+        es:"Nivel",
     },
     here: {
         en: "Here",
