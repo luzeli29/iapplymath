@@ -103,7 +103,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                     <div className="card-body ">
                         <div className="row">
                             <div className="col-lg-1">
-                                {/* TODO: MAKE THIS WORK OR MAKE OWN HOOK <TextReader text={script[lineNum][lang]} reader={stage}/> */}
+                                <TextReader text={script[lineNum][lang]} reader={stage}/>
                             </div>
                             <div className="col-lg-11">
                                 <p className="card-text pt-2 me-1 pe-5">{script[lineNum][lang]}</p>

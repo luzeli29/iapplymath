@@ -1,15 +1,20 @@
-import {React} from 'react'
-import {MdHearing} from "react-icons/md";
+import { React, useState } from 'react'
+import { MdHearing } from "react-icons/md";
+import { useUserContext } from '@hooks/siteContext/useUserContext';
+import { useRouter } from 'next/router';
 
-export default function TextReader({text, reader}) {
-    const {user,settings,loading, error} = useUserContext()
 
-  const router = useRouter()
+export default function TextReader({ text, reader }) {
+    const { user, settings, loading, error } = useUserContext()
+    const [isSpeaking, setIsSpeaking] = useState(false)
+    const router = useRouter()
 
-  if(loading || !router.isReady) return <Loading/>
-  if(error) return <Error error={error}/>
+    
 
-  const lang = settings.lang
+    if (loading || !router.isReady) return <Loading />
+    if (error) return <Error error={error} />
+
+    const lang = settings.lang
 
     var synth;
     var utterance;
@@ -17,21 +22,28 @@ export default function TextReader({text, reader}) {
     if (typeof window !== "undefined") {
         synth = window.speechSynthesis;
         utterance = new SpeechSynthesisUtterance(text);
-
         setUtteranceByReader(reader, utterance, synth, lang);
+
+        utterance.onend = function () {
+            setIsSpeaking(false);
+        }
+
+        utterance.onstart = function () {
+            setIsSpeaking(true);
+        }
     }
 
     const handleClick = () => {
-        if(!synth.speaking) {
+        if (!synth.speaking) {
             speechSynthesis.speak(utterance);
         }
     }
 
     return (
         <div className="justify-content-center">
-            <button className="btn border border-2 p-0 px-1 border-primary" onClick={() => handleClick()} 
-                disabled={synth ? synth.speaking : false}>
-                <MdHearing/>
+            <button className="btn border border-2 p-0 px-1 border-primary" onClick={() => handleClick()}
+                disabled={isSpeaking}>
+                <MdHearing />
             </button>
         </div>
     )
@@ -39,7 +51,7 @@ export default function TextReader({text, reader}) {
 
 function setUtteranceByReader(reader, utterance, synth, lang) {
     const voices = synth.getVoices();
-    switch(reader) {
+    switch (reader) {
         case "restaurant":
             utterance.voice = voices[lang == "en" ? 33 : 29]
             utterance.pitch = lang == "en" ? 2 : 2
