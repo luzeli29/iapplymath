@@ -32,14 +32,14 @@ function generateTwoMultiplyQuestion(order,level,randomGenerator) {
     const factor2 = randomGenerator.randomInt(factorMin,factorMax)
 
     switch (dishType1) {
-        case 'entree': 
+        case 'mainDish': 
             dishType2 = dishType2Choice ? 'drink' : 'dessert'
             break
         case 'drink': 
-            dishType2 = dishType2Choice ? 'dessert' : 'entree'
+            dishType2 = dishType2Choice ? 'dessert' : 'mainDish'
             break
         case 'dessert': 
-            dishType2 = dishType2Choice ? 'entree' : 'drink'
+            dishType2 = dishType2Choice ? 'mainDish' : 'drink'
             break
     }
 
@@ -68,27 +68,27 @@ function generateTwoMultiplyQuestion(order,level,randomGenerator) {
 function generateThreeMultiplyQuestion(order,level,randomGenerator) {
     const factorMax = Math.ceil(((level+2)**2) + 3)
     const factorMin = Math.ceil(((level+2)**2)/5 + 3)
-    const factorEntree = randomGenerator.randomInt(factorMin,factorMax)
+    const factorMainDish = randomGenerator.randomInt(factorMin,factorMax)
     const factorDrink = randomGenerator.randomInt(factorMin,factorMax)
     const factorDessert = randomGenerator.randomInt(factorMin,factorMax)
 
-    const entree = order.entree
+    const mainDish = order.mainDish
     const drink = order.drink
     const dessert = order.dessert
 
-    const answer = (factorEntree * entree.price) + (factorDessert * dessert.price) + (factorDrink * drink.price)
+    const answer = (factorMainDish * mainDish.price) + (factorDessert * dessert.price) + (factorDrink * drink.price)
     const question = createGameQuestion(
         {
-            en:'If you buy ' + factorEntree + ' ' + entree.en + ', ' + factorDrink + ' ' + drink.en + ', and ' + factorDessert + ' ' + dessert.en + ', what is your total?',
-            es:'Si compras ' + factorEntree + ' ' + entree.es + ', ' + factorDrink + ' ' + drink.es + ', et ' + factorDessert + ' ' + dessert.es + ' ¿Cuál es su total?',
+            en:'If you buy ' + factorMainDish + ' ' + mainDish.en + ', ' + factorDrink + ' ' + drink.en + ', and ' + factorDessert + ' ' + dessert.en + ', what is your total?',
+            es:'Si compras ' + factorMainDish + ' ' + mainDish.es + ', ' + factorDrink + ' ' + drink.es + ', et ' + factorDessert + ' ' + dessert.es + ' ¿Cuál es su total?',
         },
         answer,
         [{
-            en: "(" + entree.en + ") x " + factorEntree + " + (" + drink.en + ") x " + factorDrink + " + (" + dessert.en + ") x " + factorDessert +" = ?",
-            es: "(" + entree.es + ") x " + factorEntree + " + (" + drink.es + ") x " + factorDrink + " + (" + dessert.es + ") x " + factorDessert +" = ?",
+            en: "(" + mainDish.en + ") x " + factorMainDish + " + (" + drink.en + ") x " + factorDrink + " + (" + dessert.en + ") x " + factorDessert +" = ?",
+            es: "(" + mainDish.es + ") x " + factorMainDish + " + (" + drink.es + ") x " + factorDrink + " + (" + dessert.es + ") x " + factorDessert +" = ?",
         },{
-            en: "(" + entree.en + ") x " + factorEntree + " + (" + drink.en + ") x " + factorDrink + " + (" + dessert.en + ") x " + factorDessert +" = " + answer,
-            es: "(" + entree.es + ") x " + factorEntree + " + (" + drink.es + ") x " + factorDrink + " + (" + dessert.es + ") x " + factorDessert +" = " + answer,
+            en: "(" + mainDish.en + ") x " + factorMainDish + " + (" + drink.en + ") x " + factorDrink + " + (" + dessert.en + ") x " + factorDessert +" = " + answer,
+            es: "(" + mainDish.es + ") x " + factorMainDish + " + (" + drink.es + ") x " + factorDrink + " + (" + dessert.es + ") x " + factorDessert +" = " + answer,
         }]
     ) 
 

@@ -7,12 +7,12 @@ export default function validateOrder(order) {
         return false
     }
 
-    if(!order.entree) {
-        err('Validating order failed due to no entree object given.')
+    if(!order.mainDish) {
+        err('Validating order failed due to no main dish object given.')
         return false
     }
-    if(!validateDish(order.entree)) {
-        err('Validating order failed due to entree failing dish validation.')
+    if(!validateDish(order.mainDish)) {
+        err('Validating order failed due to main dish failing dish validation.')
         return false
     }
 

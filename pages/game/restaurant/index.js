@@ -28,7 +28,7 @@ export default function Resturant () {
     const [budget,setBudget] = useState()
     const [order, updateOrder] = useReducer((prev,next) => {
         return{...prev,...next}
-    }, {entree: -1, drink: -1, dessert: -1})
+    }, {mainDish: -1, drink: -1, dessert: -1})
 
      useEffect(() => {
         setMenu(getMenu());
@@ -43,7 +43,7 @@ export default function Resturant () {
 
     function handleOrderComplete() {
         //TODO: Validate the parms
-        router.push('/game/restaurant/quiz/' + 'basic' + '?entreeIndex=' + order.entree + '&drinkIndex=' + order.drink + '&dessertIndex=' + order.dessert)
+        router.push('/game/restaurant/quiz/' + 'basic' + '?mainDishIndex=' + order.mainDish + '&drinkIndex=' + order.drink + '&dessertIndex=' + order.dessert)
     }
 
     function handleHover(dish) {
@@ -56,8 +56,8 @@ export default function Resturant () {
 
     function handleDishClick(dishType, dishIndex) {
         switch(dishType) {
-            case 'entree':
-                updateOrder({entree: dishIndex})
+            case 'mainDish':
+                updateOrder({mainDish: dishIndex})
                 break;
             case 'drink':
                 updateOrder({drink: dishIndex})
@@ -69,18 +69,18 @@ export default function Resturant () {
     }
     function handleOrderComplete() {
 
-        if(order.entree == -1) {
+        if(order.mainDish == -1) {
             setInstructionText("missing_item_instructions")
         } else if (order.drink == -1) {
             setInstructionText("missing_item_instructions")
         } else if (order.dessert == -1) {
             setInstructionText("missing_item_instructions")
-        } else if (menuOptions.entree[order.entree].price + 
+        } else if (menuOptions.mainDish[order.mainDish].price + 
                 menuOptions.drink[order.drink].price + 
                 menuOptions.dessert[order.dessert].price > budget) {
             setInstructionText("too_expensive_order_instructions")
         } else {
-            router.push('/game/restaurant/basic/levelSelect?entreeIndex=' + order.entree + '&drinkIndex=' + order.drink+ '&dessertIndex=' + order.dessert)         
+            router.push('/game/restaurant/basic/levelSelect?mainDishIndex=' + order.mainDish + '&drinkIndex=' + order.drink+ '&dessertIndex=' + order.dessert)         
         }
     }
       
