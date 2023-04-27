@@ -33,12 +33,12 @@ const Menu = ({menu, handleHover, handleDishClick}) => {
 
     return (
         <div className={style.menu_grid}>
-            <p className={style.menu_titles}><strong>{getText('entree', lang)}</strong></p>
+            <p className={style.menu_titles}><strong>{getText('mainDish', lang)}</strong></p>
             <div className={style.five_grid}>
-                {menu.entree.map((dishIndex) => {
+                {menu.mainDish.map((dishIndex) => {
                     return (
                         <MenuButton 
-                            dishType={'entree'}
+                            dishType={'mainDish'}
                             dishIndex={dishIndex}/>                    
                 )})}
             </div>
