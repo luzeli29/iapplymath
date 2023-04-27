@@ -92,7 +92,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
 
     if(stage == "ayu" || stage == "ayuDeepBreathIn" || stage == "ayuDeepBreathHold" || stage == "ayuDeepBreathOut") {
         speechTriangle = "center"
-    } else if (script[lineNum].playerSpeaking) {
+    } else if (script[lineNum].player_speaking) {
         speechTriangle = "start"
     }
 

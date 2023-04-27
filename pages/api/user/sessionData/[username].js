@@ -40,6 +40,16 @@ async function getSessions(username,db,res) {
 
 async function putSession(username,bodyObject,db,res) {
   const filter = {username: username}
+
+  const findUser = await db.collection("data").findOne(filter)
+  if(!findUser) {
+    return res.status(404).json({
+      code: 404,
+      message: 'Cannot find user in database to log out!',
+      data: {},
+    });
+  }
+
   if(Object.keys(bodyObject).length == 0) {
     return res.status(400).json({
       code: 400,
@@ -47,17 +57,17 @@ async function putSession(username,bodyObject,db,res) {
       data: {},
       });
   }
-  
+
   try{
 
     const sessions = await getSessions(username,db,res)
 
     if(!sessions) {
-      return res.status(400).json({
-        code: 400,
-        message: "Could not end session due to issue with getSessions.",
+      return res.status(404).json({
+        code: 404,
+        message: 'Cannot find user to log out',
         data: {},
-        });
+      });
     }
 
     const index = sessions.length - 1
