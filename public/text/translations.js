@@ -72,7 +72,7 @@ const translations = {
     },
     budget: {
         en: "budget",
-        es: "presupuesto",
+        es: "El presupuesto",
     },
     create_user: {
         en: "Create User",

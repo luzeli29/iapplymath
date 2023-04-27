@@ -65,7 +65,7 @@ async function getUser(username,db,res) {
 }
 
 async function postUser(username, db,res) {
-  try{
+  try {
     const insertObject = {
       username: username,
       date_created: (new Date()).toString(),
@@ -76,6 +76,7 @@ async function postUser(username, db,res) {
     await db.collection('users').insertOne(insertObject);
 
     const bodyObject = {username: username}
+    
     let findResponse = await db.collection('users').findOne(bodyObject)    
 
     return res.json({
@@ -92,4 +93,3 @@ async function postUser(username, db,res) {
     });
   }
 }
-
