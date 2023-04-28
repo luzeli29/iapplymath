@@ -13,6 +13,7 @@ import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
+import TextReader from '@comps/accessibility/textReader';
 
 export default function QuestionBox({questionData, incorrectNum}) {
     const {user,settings,loading, error} = useUserContext()
@@ -40,6 +41,8 @@ export default function QuestionBox({questionData, incorrectNum}) {
                             : questionData.hints[incorrectNum-1][lang] 
                             : "";
     */
+
+    console.log("Question:",questionData)
     
     const questionSrc = questionData.imgSrc
     const path = "/img/questionExamples/" + questionSrc + ".png"
@@ -48,8 +51,10 @@ export default function QuestionBox({questionData, incorrectNum}) {
             <div className="row">
                 <div className="col-lg-2">
                 </div>
-                <div className="col-lg-10">
+                <div className="col-lg-10 ">
+
                 <p>{questionData[lang]}</p>
+                <TextReader text={questionData[lang]} reader={"restaurant"}/>
                 </div>
             </div>
             {
