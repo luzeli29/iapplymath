@@ -165,7 +165,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                break;
          default :
                //Test if input is correct
-               if(simplifyAnswer(answer) == _questions[questionNum].answer) { //Answer is correct
+               if(answer == _questions[questionNum].answer) { //Answer is correct
                   //stop()
                   //_questions[questionNum].timeTaken = time
                   _questions[questionNum].incorrectNum = incorrectNum
@@ -181,7 +181,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    if(state == "questions") {
       if(questionNum < _questions.length) {
          const correctAnswer = _questions[questionNum].answer;
-         const answerFormat = _questions[questionNum].answerFormat;
          const questionFormat = _questions[questionNum].questionFormat;
          /*
          if(!isRunning 

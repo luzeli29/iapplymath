@@ -5,7 +5,7 @@ export default function fillQuestionTemplate(template,tags) {
     console.log(template)
     const questionText = template.questionText
     const answer = tags.answer
-
+    const questionFormat = template.questionFormat
     //THIS IS TERRIBLE, I KNOW...
     const hintsObj = JSON.parse(JSON.stringify(template.hints));
     const hints = Object.values(hintsObj)
@@ -23,6 +23,7 @@ export default function fillQuestionTemplate(template,tags) {
         },
         answer,
         hints,
+        questionFormat
 
     )
     return question
