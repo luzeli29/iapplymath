@@ -2,26 +2,12 @@ import menuOptions from "@public/text/menuOptions"
 
 function getMenu () {
 
-    var menu = {
-        mainDish: [0,1,2,3,4],
-        drink: [0,1,2],
-        dessert: [0,1,2],
+    const menu = {
+        mainDish: shuffleMenuArray(menuOptions.mainDish.length, 0).slice(0,5) || [0,1,2,3,4],
+        drink: shuffleMenuArray(menuOptions.drink.length, 0).slice(0,3) || [0,1,2],
+        dessert: shuffleMenuArray(menuOptions.dessert.length, 0).slice(0,3) || [0,1,2],
     }
-    //TODO: Randomize menu
-    /*
-    //generate random menu
-    shuffleMenuArray(menu_options.entree.length, 0).slice(0,5).map(index => {
-        menu.entree[menu.entree.length] = menu_options.entree[index]
-    })
 
-    shuffleMenuArray(menu_options.drink.length, 1).slice(0,3).map(index => {
-        menu.drink[menu.drink.length] = menu_options.drink[index]
-    })
-
-    shuffleMenuArray(menu_options.dessert.length, 0).slice(0,3).map(index => {
-        menu.dessert[menu.dessert.length] = menu_options.dessert[index]
-    })
-    */
     return menu
 }
 
