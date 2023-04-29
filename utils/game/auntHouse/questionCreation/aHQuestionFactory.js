@@ -54,5 +54,7 @@ function generateFamilySizeQuestion() {
             } else {
                 return false;
             }
-        }},]
+        },
+        questionFormat: 'wholeNumber'
+        },]
 }
