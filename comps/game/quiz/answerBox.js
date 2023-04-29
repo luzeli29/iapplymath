@@ -15,6 +15,7 @@ import QuizCalculator from './quizCalculator';
 import DefaultAnswerBox from './answerBoxes/defaultAnswerBox';
 import ContinueAnswerBox from './answerBoxes/continueAnswerBox';
 import FractionAnswerBox from './answerBoxes/fractionAnswerBox';
+import WholeNumberAnswerBox from './answerBoxes/wholeNumberAnswerBox';
 
 export default function AnswerBox({correctAnswer,questionFormat,handleSubmitAnswer}) {
     const {user,settings,loading, error} = useUserContext()
@@ -32,6 +33,8 @@ export default function AnswerBox({correctAnswer,questionFormat,handleSubmitAnsw
                 return <ContinueAnswerBox lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
             case "fraction":
                 return <FractionAnswerBox lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
+            case 'wholeNumber':
+                return <WholeNumberAnswerBox lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>    
             default:
                 return <DefaultAnswerBox lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
         }
