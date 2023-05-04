@@ -1,3 +1,4 @@
+import { log } from '@utils/debug/log';
 import RGBToHex from '@utils/rgbToHex';
 import React, { useState } from 'react'
 
@@ -41,7 +42,7 @@ export default function useSkinSlider() {
     }
 
     const renderSlider = () => {
-        console.log(lighestSkinToneHex)
+        log(lighestSkinToneHex)
         return (
         <div className='container'>
         <div className='row'>

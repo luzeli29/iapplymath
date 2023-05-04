@@ -10,11 +10,9 @@ export default function generateFamilyQuestions(recipe, familySize,randomGenerat
 
     recipe.defaultFamilyQuestionIngredients.map((questionData) => {
         const ingredient = recipe.ingredients[questionData]
-        console.log(ingredient)
         if(!ingredient) return
         questions.push(generateAHSimpleMultiQuestion(recipe,ingredient, factor, randomGenerator))       
     })
-    console.log(questions)
     return questions
 
 }

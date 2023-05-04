@@ -107,6 +107,19 @@ const translations = {
     },
 
     // ----- General Translations -----
+    true : {
+        en: "True",
+        es: "Verdadero",
+    },
+    
+    false : {
+        en: "False",
+        es: "Falso",
+    },
+    submit: {
+        en: "Submit",
+        es: "Enviar",
+    },
     franctions_only: {
         en: "Please answer with fractions only",
         es: "Por favor responda solo con fracciones",

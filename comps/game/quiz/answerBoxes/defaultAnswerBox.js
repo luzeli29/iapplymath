@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import QuizCalculator from '../quizCalculator'
+import QuizCalculator from '../quizCalculator/quizCalculator'
 import { getText } from '@commonImports'
 import { log } from '@utils/debug/log'
 
