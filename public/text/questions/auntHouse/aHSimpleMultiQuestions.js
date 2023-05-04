@@ -14,7 +14,7 @@ const aHSimpleMultiQuestions = [
                 es: '( %ING_AMOUNT% x %FACTOR%) / %SERVING_SIZE% = %ANSWER%',
             }
         },
-        questionFormat: 'fraction',
+        questionFormatKey: 'fraction',
             
     }
 ]

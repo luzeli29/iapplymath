@@ -55,6 +55,6 @@ function generateFamilySizeQuestion() {
                 return false;
             }
         },
-        questionFormat: 'wholeNumber'
+        questionFormatKey: 'wholeNumber'
         },]
 }

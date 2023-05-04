@@ -5,8 +5,7 @@ import ClickableIcon from "./clickableIcon"
 
 export default function IconGroup({lang,icons,selectedIcon, selectIcon,getContentFromValue,width,height}) {
     const [pageNumber, setPageNumber] = useState(0)
-    
-    const _lang = lang ? lang : 'en'
+    lang = lang ? lang : 'en'
     if(icons == undefined || !icons) return <></>
     if(getContentFromValue == undefined || !getContentFromValue) return <></>
 
