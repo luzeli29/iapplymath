@@ -10,9 +10,10 @@ import QuestionBox from '@comps/game/quiz/questionBox';
 import { useStopWatch } from '@hooks/useStopWatch';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
-import { err } from '@utils/debug/log';
+import { err, log } from '@utils/debug/log';
 import Creator from 'pages/user/checkIn'
 import createGameQuestion from '@utils/game/createGameQuestion';
+import useGame from '@hooks/siteContext/useGame';
 
 
 export default function QuestionLayout ({children, questions, onBack, onFinish}) {
@@ -24,6 +25,23 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    const [incorrectNum, setIncorrectNum] = useState(0);
    const [state, setState] = useState("questions")
    const [isFinished, setFinished] = useState(false)
+   const [timer, setTimer] = useState(0);
+   const [isRunningTimer, setIsRunningTimer] = useState(true);
+   const { game } = useGame();
+
+   useEffect(() => {
+      if (isRunningTimer) {
+        const timer_ = setTimeout(() => {
+         setTimer((prevSeconds) => prevSeconds + 1);
+        }, 1000);
+        return () => {
+          clearTimeout(timer_);
+        };
+      }
+
+      console.log("pabllooo", timer)
+    }, [timer, isRunningTimer]);
+
    if(!questions) {
       handleExit("BACK")
    }
@@ -144,6 +162,9 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    //incorrectNum keeps track of number of incorrect in a row
    //handles when the user submites their answer
    const handleSubmitAnswer = (answer) => {
+      // setIsRunningTimer(false)
+      game.saveTime(user.data.secureUsername, timer, _questions[questionNum])
+      
       //figures out what type of question the user is answering
       switch(_questions[questionNum].answer) {
          case "" : // No Correct answer, blank number pad (usually for feedback questions)
@@ -167,7 +188,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                //Test if input is correct
                if(simplifyAnswer(answer) == _questions[questionNum].answer) { //Answer is correct
                   //stop()
-                  //_questions[questionNum].timeTaken = time
+                  _questions[questionNum].timeTaken = timer
                   _questions[questionNum].incorrectNum = incorrectNum
                   //reset()
                   setQuestionNum(questionNum + 1)
@@ -175,6 +196,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                } else { //Answer is incorrect
                   setIncorrectNum(incorrectNum + 1)
                }
+               
       }
    }
 
@@ -183,6 +205,17 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          const correctAnswer = _questions[questionNum].answer;
          const answerFormat = _questions[questionNum].answerFormat;
          const questionFormat = _questions[questionNum].questionFormat;
+
+         switch(questionFormat) {
+            case "continue":
+               setTimer(0)
+               setIsRunningTimer(false)
+               break
+            default:
+               setIsRunningTimer(true)
+               break
+        }
+
          /*
          if(!isRunning 
                && correctAnswer != "fill_in"
