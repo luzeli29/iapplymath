@@ -47,8 +47,9 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
             display: 'grid',
             gridTemplateColumns: `repeat(${maxWidth}, 1fr)`,
             gridTemplateRows: `repeat(${maxHeigh}, 1fr)`,
-            gridGap: '20px',
-            height: '100%',
+            gridGap: '2px'
+
+        
           };
           
           return (

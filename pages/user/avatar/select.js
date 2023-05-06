@@ -52,11 +52,17 @@ export default function AvatarSelect() {
             </button>
         )
     } 
+    console.log(feedbackText)
     
     return (
         <>
             <h1 className={style.as_title_container}>{getText('pick_avatar',lang)}</h1>
-            <p className='text-center'>{feedbackText}</p>
+            {feedbackText != undefined ? 
+                <p className='text-center'>{feedbackText}</p>
+            :
+            <>
+            </>
+            }
             <div className={style.button_bar}>
                 {Array.apply(0, Array(8)).map((x,i) => {
                     return <AvatarButton index={i} key={i} />;
