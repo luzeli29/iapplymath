@@ -60,15 +60,12 @@ export default function useSeededRandom(initSeed) {
     function generateSeed() {
         const generatedSeed = randomBytes(8).toString("hex");
         const hshdSeed = hashSTR(generatedSeed)
-        log('Generated seed ' + generatedSeed + ' for useSeededRandom().')
-        log('Hashed seed ' + hshdSeed + ' for useSeededRandom().');
         setSeed(generatedSeed)
         setHashedSeed(hshdSeed)
     }
 
     function checkSeed() {
         if (!seed) {
-            log('No "seed" was defined in useSeededRandom() hook.')
             generateSeed()
             randFunction = sfc32(hashedSeed[0], hashedSeed[1], hashedSeed[2], hashedSeed[3])
         }
@@ -85,7 +82,6 @@ export default function useSeededRandom(initSeed) {
         checkSeed()
         checkRand()
         let randomNumberFromSeed = randFunction()
-        log('Random number generated: ' + randomNumberFromSeed)
         return randomNumberFromSeed
     }
 
