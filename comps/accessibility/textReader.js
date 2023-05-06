@@ -28,7 +28,6 @@ export default function TextReader({ text, reader }) {
             alert("Your browser does not support speech synthesis. Please use a different browser.")
             return <></>
         }
-        console.log("reader:", reader)
         reader = reader ? reader : "default";
 
         utterance =setUtteranceByReader(reader, synth, lang,text,reader);
@@ -45,7 +44,6 @@ export default function TextReader({ text, reader }) {
     const handleClick = () => {
         if (!synth.speaking) {
             speechSynthesis.speak(utterance);
-            console.log("uterance:", utterance)
         }
     }
 
