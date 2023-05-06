@@ -12,8 +12,7 @@ export default function ContinueAnswerBox({lang,handleSubmitAnswer}) {
                     friction={0.96} />
                 </div>
                 <div className="fill_container">
-                    <br></br>
-                    <br></br>
+            
                     <button
                             onClick={() => handleSubmitAnswer()}
                             className={style.continue_button}>

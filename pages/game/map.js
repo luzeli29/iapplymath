@@ -1,4 +1,5 @@
 import ReactHowler from 'react-howler'
+import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
 import style from '@styles/map.module.css'
@@ -21,7 +22,7 @@ export default function Map() {
     const lang = settings.lang
     const avatarId = user.data.avatarId
     const mapLocation = 0
-    
+
     const handleRestaurant = () => {
         router.push('/game/restaurant/introduction');
     }
@@ -30,26 +31,81 @@ export default function Map() {
         router.push('/game/auntHouse/introduction');
     }
 
+    const containerRef = useRef(null);
+    const [position, setPosition] = useState({
+      x: 0,
+      y: 0,
+    });
+  
+    const getXPercentage = (x, containerWidth) => {
+      return `${(x / containerWidth) * 100}%`;
+    };
+  
+    const getYPercentage = (y, containerHeight) => {
+      return `${(y / containerHeight) * 100}%`;
+    };
+
+    const getXPercentage2 = (x, containerWidth) => {
+        return (containerWidth/2-30);
+      };
+    
+      const getYPercentage2 = (y, containerHeight) => {
+        return (containerHeight-37.5*2);
+      };
+
+     
+  
+    useEffect(() => {
+      const handleResize = () => {
+        const containerWidth = containerRef.current.clientWidth;
+        const containerHeight = containerRef.current.clientHeight;
+  
+        setPosition({
+          x:
+            mapLocation == "AuntsHouse"
+              ? getXPercentage(130, containerWidth)
+              : mapLocation == "Restaurant"
+              ? getXPercentage(420, containerWidth)
+              : getXPercentage2(320,containerWidth),
+          y:
+            mapLocation == "AuntsHouse"
+              ? getYPercentage(120, containerHeight)
+              : mapLocation == "Restaurant"
+              ? getYPercentage(440, containerHeight)
+              : getYPercentage2(470,containerHeight)
+        });
+      };
+  
+      handleResize();
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, [mapLocation]);
+  
+    
+
     return (
         <>
 
-            <div className={style.map}>
+            <div className={style.map} ref={containerRef}>
                 <motion.img className={style.player_img}
                             id = {style.player_img}
                             src = {"/img/avatar/preMade/A" + avatarId + ".png"}
-                            initial = {{
-                                x: mapLocation == "AuntsHouse" ? 130
-                                    : mapLocation == "Restaurant" ? 420
-                                        : 320,
-                                y: mapLocation == "AuntsHouse" ? 120
-                                    : mapLocation == "Restaurant" ? 440
-                                        : 470
+                            style ={{
+                                position: 'absolute',
+                                top: position.y,
+                                left: position.x,
                             }}
+                           
                 />
             
                 <p className={style.aunt_house_text}>{translations.aunt_house[lang]}</p>
 
                 <p className={style.restaurant_text}>{translations.restaurant[lang]}</p> 
+                
                 <button onClick={() => handleAuntsHouse()}
                         className={style.icon_button_small} id={style.aunt_house}> 
                     <Image 
@@ -79,7 +135,7 @@ export default function Map() {
                         priority={true}
                         src={"/img/map/restaurant.png"}
                         alt={"restaurant"}/>
-                    <p>{translations.restaurant[lang]}</p>
+                
 
                 </button> 
 

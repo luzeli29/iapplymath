@@ -99,22 +99,19 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
     return (
         <div className="container-fluid h-100 p-3">
             <div className="h-25 container  justify-content-center">
-                <div className="card w-85 text-center mx-auto">
-                    <div className="card-body ">
+                <div className="card text-center mx-auto pt-0">
+                    <div className="card-body px-0 pt-2 pb-1 ">
                         <div className="row">
-                            <div className="col-lg-1">
-                                <TextReader text={script[lineNum][lang]} reader={stage}/>
-                            </div>
                             <div className="col-lg-11">
-                                <p className="card-text pt-2 me-1 pe-5">{script[lineNum][lang]}</p>
+                                <p className="card-text resize-text"> <TextReader text={script[lineNum][lang]} reader={stage}/> {script[lineNum][lang]}</p>
                             </div>
                         </div>
                     </div>
-                    <div className="card-subtitle mb-2 text-muted">
+                    <div className="card-subtitle text-muted">
                         <div className="row align-items-center">
                             <div className="col">
                                 {lineNum > 0 ? 
-                                    <button onClick={() => handlePrevLine()}><AiFillCaretLeft/></button>
+                                    <button  className = "resize-text" onClick={() => handlePrevLine()}><AiFillCaretLeft/></button>
                                 :
                                     <></>
                                 }
@@ -124,9 +121,9 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                             </div>
                             <div className="col">
                                 {lineNum != (script.length - 1)? 
-                                    <button onClick={() => handleNextLine()}><AiFillCaretRight/></button>
+                                    <button className = "resize-text" onClick={() => handleNextLine()}><AiFillCaretRight/></button>
                                 :
-                                    <button onClick={() => handleNextLine()}>Continue</button>
+                                    <button className = "resize-text" onClick={() => handleNextLine()}>Continue</button>
                                 }
                             </div>
                         </div>
@@ -136,14 +133,13 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                 <div className={style.speech_bubble_triangle}></div>     
                 </div>
             </div>
-            <div className="d-flex justify-content-center container h-75 w-75">
+            <div className="d-flex justify-content-center container">
                 {
                     hasCharacters ?
-                    <>
+                    <div className="w-full relative pt-[100%]" style={{width: '100%', height: '50vh', position: 'relative'}}>
                         <Image
                             priority={true}
-                            width={650}
-                            height={375}
+                            layout = {'fill'}
                             quality={100}
                             src={backgroundImgSrc}
                             alt={"background"}/>
@@ -152,6 +148,7 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                                     priority={true}
                                     layout={"fill"}
                                     quality={100}
+                                    objectFit = {'contain'}
                                     src={"/img/avatar/preMade/A" + avatarId + "_back.png"}
                                     alt={"avatar"}/> 
                         </div>
@@ -161,24 +158,27 @@ export default function Dialog ({scriptId, onEnd, onInput}) {
                             </> 
                         : 
                             
-                            <Image
+                            <Image 
                                 priority={true}
                                 layout={"fill"}
+                                objectFit = {'contain'}
                                 quality={100}
                                 src={"/img/" + stage + "/" + stage + "_speaker.png"}
                                 alt={"speaker image"}
                                 />
                         }
                         </div>
-                    </>
+                    </div>
                     :
-                    <Image
+                    <div  style={{width: '375px', height:'40vh', position: 'relative', marginTop: '10vh'}}>
+                    <Image 
                         priority={true}
-                        width={375}
-                        height={375}
+                        layout={"fill"}
+                        objectFit = {'contain'}
                         quality={100}
                         src={backgroundImgSrc}
                         alt={"background"} />
+                    </div>
                 }
             </div>
             <input className="d-none" autoFocus={true} onBlur={({ target }) => {target.focus()}}/>

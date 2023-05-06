@@ -57,39 +57,41 @@ export default function RecipeCard({recipeKey,recipe}) {
     const ingredients = recipe.ingredients
     return(
         <div className={style.recipe_card_container}>
-            <div className='p-3 container-fluid'>
-                <div className='card mx-auto'>
-                    <div className='card-body text-center mx-auto'>
-                        <h2 className='card-title'>{recipeTitle}</h2>
-                        <h4>{recipeServingText}</h4>
+            <div className='p-2 mb-5'>
+                
+                <div className='card'>
+                    <div className='card-body text-center mt-0 mb-0  p-0'>
+                        <h2 className='card-title mb-0 resize-text_title'>{recipeTitle}</h2>
+                        <h4 className='resize-text'> {recipeServingText}</h4>
                     </div>
-                    <div className='row mx-auto pb-2 px-2'>
+                    <div className='row mx-auto'>
                         <div className='col-4 pt-2'>
-                            <p>{instructionText}</p>
+                            <p className='resize-text'>{instructionText}</p>
                         </div>
                         <div className='col-8 border-start border-dark'>
                             <IngredientList ingredients={ingredients} lang={lang}/>
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
+      
             <div className='row'>
                 <div className='col-6 text-end'>
                     <button 
                         onClick={() => router.push('/game/auntHouse')}
                         className={'basic_button'}>
-                        <strong>
+                        <text>
                             {getText('back',lang)}
-                        </strong>
+                        </text>
                     </button>
                 </div>
                 <div className='col-6 text-start'>
                     <button 
                     onClick={() => router.push('/game/auntHouse/quiz/basic/' + recipeKey)}
                     className={'basic_button'}>
-                    <strong>
+                    <text>
                             {getText('cook',lang)}
-                        </strong>
+                        </text>
                     </button>
                 </div>
             </div>

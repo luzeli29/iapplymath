@@ -50,12 +50,12 @@ export default function TextReader({ text, reader }) {
     }
 
     return (
-        <div className="justify-content-center">
+        <>
             <button className="btn border border-2 p-0 px-1 border-primary" onClick={() => handleClick()}
                 disabled={isSpeaking}>
                 <MdHearing />
             </button>
-        </div>
+       </>
     )
 }
 
