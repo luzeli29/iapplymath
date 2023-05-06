@@ -6,8 +6,9 @@ const defaultSeed = '42'
 
 export default function useSeededRandom(initSeed) {
     const [seed, setSeed] = useState(initSeed)
+    const [hashedSeed, setHashedSeed] = useState([]);
     const [loading, setLoading] = useState(true)
-    let rand = null;
+    let randFunction = null;
 
     useEffect(() => {
         if (!seed) {
@@ -58,31 +59,32 @@ export default function useSeededRandom(initSeed) {
 
     function generateSeed() {
         const generatedSeed = randomBytes(8).toString("hex");
-        const hashedSeed = hashSTR(generatedSeed)
+        const hshdSeed = hashSTR(generatedSeed)
         log('Generated seed ' + generatedSeed + ' for useSeededRandom().')
-        log('Hashed seed ' + hashedSeed + ' for useSeededRandom().');
-        setSeed(hashedSeed)
+        log('Hashed seed ' + hshdSeed + ' for useSeededRandom().');
+        setSeed(generatedSeed)
+        setHashedSeed(hshdSeed)
     }
 
     function checkSeed() {
         if (!seed) {
             log('No "seed" was defined in useSeededRandom() hook.')
             generateSeed()
-            rand = sfc32(seed[0], seed[1], seed[2], seed[3])
+            randFunction = sfc32(hashedSeed[0], hashedSeed[1], hashedSeed[2], hashedSeed[3])
         }
     }
 
     function checkRand() {
-        if (!rand) {
+        if (!randFunction) {
             checkSeed()
-            rand = sfc32(seed[0], seed[1], seed[2], seed[3])
+            randFunction = sfc32(hashedSeed[0], hashedSeed[1], hashedSeed[2], hashedSeed[3])
         }
     }
 
     function getRandom() {
         checkSeed()
         checkRand()
-        let randomNumberFromSeed = rand()
+        let randomNumberFromSeed = randFunction()
         log('Random number generated: ' + randomNumberFromSeed)
         return randomNumberFromSeed
     }
