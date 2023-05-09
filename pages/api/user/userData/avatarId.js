@@ -15,8 +15,8 @@ export default async function handler(req, res) {
             },
             };
             try{
-                await db.collection("data").updateOne(filter,updateDoc)
-                let findResponse = await db.collection("data").findOne(filter)   
+                await db.collection('users').updateOne(filter,updateDoc)
+                let findResponse = await db.collection('users').findOne(filter)   
                 return res.json({
                     code: 200,
                     message: '"avatarId" saved to user.',

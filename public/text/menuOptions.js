@@ -1,5 +1,5 @@
 const menu_options = {
-    entree: [
+    mainDish: [
         {  
             en: "Huevos Rancheros",
             es: "Huevos Rancheros",

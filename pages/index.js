@@ -23,8 +23,8 @@ const Index = () => {
     <div>
       <div className="pt-5 text-center">
         <Image
-          width = {300}
-          height = {280}
+          width = {350}
+          height = {350}
           quantity = {100}
           priority = {true}
           src={"/img/other/global.png"}

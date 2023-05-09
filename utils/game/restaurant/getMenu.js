@@ -3,7 +3,7 @@ import menuOptions from "@public/text/menuOptions"
 function getMenu () {
 
     var menu = {
-        entree: [0,1,2,3,4],
+        mainDish: [0,1,2,3,4],
         drink: [0,1,2],
         dessert: [0,1,2],
     }

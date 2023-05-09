@@ -1,5 +1,4 @@
 import React from 'react'
-import recipes from '@public/text/auntHouseRecipes'
 import style from '@styles/aunt_house.module.css'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
