@@ -1,31 +1,28 @@
 import menuOptions from "@public/text/menuOptions"
 
 function getMenu () {
+    const { mainDish, drink, dessert } = menuOptions
+    const drinks = shuffleMenuArray(drink.length, 0)
+    drinks.splice(drinks.indexOf(0), 1)
 
-    var menu = {
-        mainDish: [0,1,2,3,4],
-        drink: [0,1,2],
-        dessert: [0,1,2],
+    const menu = {
+        mainDish: shuffleMenuArray(mainDish.length, 0).slice(0,5) || [0,1,2,3,4],
+        drink: shuffleArray([0, ...drinks.slice(0,2)]) || [0,1,2],
+        dessert: shuffleMenuArray(dessert.length, 0).slice(0,3) || [0,1,2],
     }
-    //TODO: Randomize menu
-    /*
-    //generate random menu
-    shuffleMenuArray(menu_options.entree.length, 0).slice(0,5).map(index => {
-        menu.entree[menu.entree.length] = menu_options.entree[index]
-    })
 
-    shuffleMenuArray(menu_options.drink.length, 1).slice(0,3).map(index => {
-        menu.drink[menu.drink.length] = menu_options.drink[index]
-    })
-
-    shuffleMenuArray(menu_options.dessert.length, 0).slice(0,3).map(index => {
-        menu.dessert[menu.dessert.length] = menu_options.dessert[index]
-    })
-    */
     return menu
 }
 
 export default getMenu 
+
+const shuffleArray = (arr) => {
+for (let i = arr.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[randomIndex]] = [arr[randomIndex], arr[i]];
+}
+return arr;
+}
 
 const shuffleMenuArray = (size, offset) => {
     var arr = Array.from(Array(size).keys())
