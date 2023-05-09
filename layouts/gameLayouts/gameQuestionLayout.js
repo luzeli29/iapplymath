@@ -37,7 +37,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       for(var i = 0; i < questions.length; i ++) {
          _questions[_questions.length] = questions[i]
          const continueQuestion = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
-         continueQuestion.questionFormat = "continue"
+         continueQuestion.questionFormatKey = "correctAnswer"
          
          _questions[_questions.length] = continueQuestion
       }
@@ -165,7 +165,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                break;
          default :
                //Test if input is correct
-               if(simplifyAnswer(answer) == _questions[questionNum].answer) { //Answer is correct
+               if(answer == _questions[questionNum].answer) { //Answer is correct
                   //stop()
                   //_questions[questionNum].timeTaken = time
                   _questions[questionNum].incorrectNum = incorrectNum
@@ -181,8 +181,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    if(state == "questions") {
       if(questionNum < _questions.length) {
          const correctAnswer = _questions[questionNum].answer;
-         const answerFormat = _questions[questionNum].answerFormat;
-         const questionFormat = _questions[questionNum].questionFormat;
+         const questionFormatKey = _questions[questionNum].questionFormatKey;
          /*
          if(!isRunning 
                && correctAnswer != "fill_in"
@@ -212,7 +211,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                         <td className={style.numpad_container}>
                               <AnswerBox
                                  correctAnswer={correctAnswer}
-                                 questionFormat={questionFormat}
+                                 questionFormatKey={questionFormatKey}
                                  handleSubmitAnswer={handleSubmitAnswer}/>
                         </td>
                         <td className={style.ayu_block}>
