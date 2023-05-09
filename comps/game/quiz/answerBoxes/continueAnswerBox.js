@@ -2,14 +2,25 @@ import React, {useState, useEffect,useCallback} from 'react';
 import Confetti from 'react-confetti'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
+import { err } from '@utils/debug/log';
+import QuestionFormats from '@utils/game/questionFormats'
 
-export default function ContinueAnswerBox({lang,handleSubmitAnswer}) {
+const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {
+  if(!questionFormat) {
+    err('"questionFormat" is required for ContinueAnswerBox.')
+    questionFormat = QuestionFormats.continue
+  }
+  const renderConfetti = () => {
+    return (
+      <Confetti
+                    confettiSource={{ x: 0, y: -100, w: 650, h: 600 }}
+                    friction={0.96} />
+    )
+  }
   return (
     <>
                 <div className="header_container">
-                    <Confetti
-                    confettiSource={{ x: 0, y: -100, w: 650, h: 600 }}
-                    friction={0.96} />
+                  {questionFormat.confetti && renderConfetti()}
                 </div>
                 <div className="fill_container">
                     <br></br>
@@ -22,3 +33,5 @@ export default function ContinueAnswerBox({lang,handleSubmitAnswer}) {
                 </div></>
   )
 }
+
+export default ContinueAnswerBox

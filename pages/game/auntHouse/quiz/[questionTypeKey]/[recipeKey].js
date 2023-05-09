@@ -58,7 +58,6 @@ export default function AuntHouseQuestions({recipe}) {
     const isLoggedIn = user.loggedIn  
     useEffect(() => {
         const generatedQuestions = aHQuestionFactory(questionTypeKey, recipe)
-        console.log(generatedQuestions)
         setQuestions(generatedQuestions)
     },[questionTypeKey])
   

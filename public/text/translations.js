@@ -107,6 +107,31 @@ const translations = {
     },
 
     // ----- General Translations -----
+    true : {
+        en: "True",
+        es: "Verdadero",
+    },
+    
+    false : {
+        en: "False",
+        es: "Falso",
+    },
+    submit: {
+        en: "Submit",
+        es: "Enviar",
+    },
+    franctions_only: {
+        en: "Please answer with fractions only",
+        es: "Por favor responda solo con fracciones",
+    },
+    invalid_fraction: {
+        en: "Please enter a valid fraction",
+        es: "Por favor ingrese una fracción válida",
+    },
+    empty_answer: {
+        en: "Please enter an answer",
+        es: "Por favor ingrese una respuesta",
+    },
     of: {
         en: 'Of',
         es: 'De'
