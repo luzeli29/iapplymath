@@ -15,22 +15,22 @@ const emotions = [
         src: "happy",
         en: "Happy",
         es: "Feliz",
-    },{
-        src: "stressed",
-        en: "Stressed",
-        es: "Estresado",
-    },{
+    }, {
+        src: "bored",
+        en: "Bored",
+        es: "Aburrido/a",
+    }, {
         src: "sad",
         en: "Sad",
         es: "Triste",
     },{
-        src: "meh",
-        en: "Meh",
-        es: "Bah",
-    },{
+        src: "stressed",
+        en: "Stressed",
+        es: "Estresado/a",
+    }, {
         src: "angry",
         en: "Angry",
-        es: "Enojado",
+        es: "Enojado/a",
     }
 ]
 

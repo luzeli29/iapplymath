@@ -37,9 +37,21 @@ const translations = {
         en: "Cook!",
         es: "¡Cocinar!",
     },
+    serves:{
+        en: "Serves",
+        es: "Sirve",
+    },
+    person:{
+        en: "Person",
+        es: "Persona",
+    },
+    people:{
+        en:"People",
+        es:"Personas",
+    },
     // ----- Resturant Translations -----
     menu_select_instructions: {
-        en: "Choose one entree, one drink, and one dessert. The total price of the items you select must be less than or equal to that budget.",
+        en: "Choose one main dish, one drink, and one dessert. The total price of the items you select must be less than or equal to that budget.",
         es: "Elija un plato principal, una bebida y un postre. Tenga en cuenta el dinero que tiene para pagar!",
     },
     too_expensive_order_instructions:{
@@ -60,7 +72,7 @@ const translations = {
     },
     budget: {
         en: "budget",
-        es: "presupuesto",
+        es: "El presupuesto",
     },
     create_user: {
         en: "Create User",
@@ -81,9 +93,9 @@ const translations = {
         es: "Selección de Menú",
     },
 
-    entree: {
-        en: 'Entree',
-        es: 'Entrada'
+    mainDish: {
+        en: 'Main dish',
+        es: 'Plato principal'
     },
     drink: {
         en: 'Drink',
@@ -95,6 +107,10 @@ const translations = {
     },
 
     // ----- General Translations -----
+    of: {
+        en: 'Of',
+        es: 'De'
+    },
     no_recipe_selected: {
         en: "Please select a recipe.",
         es: "Please select a recipe.",
@@ -113,7 +129,7 @@ const translations = {
     },
     mute_tooltip: {
         en: "Mute Music",
-        es: 'Musica Muda',
+        es: 'Silenciar Música',
     },
     unmute_tooltip: {
         en: "Unmute Music",
@@ -186,6 +202,10 @@ const translations = {
     click: {
         en:"Click",
         es:"Haz clic",
+    },
+    level: {
+        en:"Level",
+        es:"Nivel",
     },
     here: {
         en: "Here",

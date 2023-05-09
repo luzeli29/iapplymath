@@ -1,9 +1,21 @@
 import { getText } from "@commonImports"
+import { err } from "@utils/debug/log"
 import createGameQuestion from "@utils/game/createGameQuestion"
 import validateOrder from "@utils/validation/game/restaurant/validateOrder"
 
-export default function generateSingleMultiplyDishQuestions(game,helperObject,level,randomGenerator) {
-    const numbOfQuestionsNeeded = 3
+export default function simpleMultiQuestionFactory(game,helperObject,randomGenerator) {
+    if(!game) {
+        err('No "game" provided to generateSimpleMultiQuestion')
+        return [createGameQuestion()]
+    }
+    if(!helperObject) {
+        err('No "helperObject" provided to generateSimpleMultiQuestion')
+        return [createGameQuestion()]
+    }
+    if(!randomGenerator) {
+        err('No "randomGenerator" provided to generateSimpleMultiQuestion. Using unseeded random generator.')
+    }
+    const maxNumbOfQuestions = helperObject.level ? 3 * helperObject.level : 3
     let questions = []
 
     switch (game) {
@@ -44,10 +56,10 @@ function generateSingleMultiplyQuestion(order,level,randomGenerator) {
                 es: "(" + dish.es + ") + (" + dish.es + ") + (" + dish.es + ") = " + dish.price * 3,
             }]
         )
-    } else if (dishType == 'entree') {
+    } else if (dishType == 'mainDish') {
         question = createGameQuestion(
             {
-                en:'If your family wants to order your same entree ' + factor + ' times, how much is your family’s total?',
+                en:'If your family wants to order your same main dish ' + factor + ' times, how much is your family’s total?',
                 es:'Si su familia quiere pedir el mismo plato principal' + factor + ' veces , ¿cuánto es el total?',
             },
             dish.price * factor,

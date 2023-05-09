@@ -30,7 +30,7 @@ export default async function handler(req, res) {
 async function getSessions(username,db,res) {
   const filter = {username : username}
   //TODO: ERROR HANDALING IF NO USER FOUND
-  const findUser = await db.collection("data").findOne(filter)
+  const findUser = await db.collection('users').findOne(filter)
   if(findUser) {
     return findUser.sessions
   } else {
@@ -40,6 +40,16 @@ async function getSessions(username,db,res) {
 
 async function putSession(username,bodyObject,db,res) {
   const filter = {username: username}
+
+  const findUser = await db.collection("data").findOne(filter)
+  if(!findUser) {
+    return res.status(404).json({
+      code: 404,
+      message: 'Cannot find user in database to log out!',
+      data: {},
+    });
+  }
+
   if(Object.keys(bodyObject).length == 0) {
     return res.status(400).json({
       code: 400,
@@ -47,17 +57,17 @@ async function putSession(username,bodyObject,db,res) {
       data: {},
       });
   }
-  
+
   try{
 
     const sessions = await getSessions(username,db,res)
 
     if(!sessions) {
-      return res.status(400).json({
-        code: 400,
-        message: "Could not end session due to issue with getSessions.",
+      return res.status(404).json({
+        code: 404,
+        message: 'Cannot find user to log out',
         data: {},
-        });
+      });
     }
 
     const index = sessions.length - 1
@@ -89,7 +99,7 @@ async function putSession(username,bodyObject,db,res) {
       updateSessionObject[sessionKey] = value
     }
 
-    const updateResult = await db.collection("data").findOneAndUpdate(
+    const updateResult = await db.collection('users').findOneAndUpdate(
       filter,
       { 
         $set : updateSessionObject
@@ -125,7 +135,7 @@ async function startSession(username,db,res) {
     };
 
     //Push new session
-    const insertResult = await db.collection("data").updateOne(
+    const insertResult = await db.collection('users').updateOne(
       filter,
       {$push: sessionObject}
     );
@@ -158,7 +168,7 @@ async function incrementAyu(username,index,db) {
 
     const incText = "sessions." + index + ".times_talked_to_ayu"
 
-    const updateResult = await db.collection("data").findOneAndUpdate(
+    const updateResult = await db.collection('users').findOneAndUpdate(
       filter,
       { $inc : { 
           [incText] : 1
@@ -186,7 +196,7 @@ async function saveGameData(username,gamedata,index,db) {
 
     const pushText = "sessions." + index + ".games_played"
 
-    const updateResult = await db.collection("data").findOneAndUpdate(
+    const updateResult = await db.collection('users').findOneAndUpdate(
       filter,
       { $push : { 
           [pushText] : gamedata

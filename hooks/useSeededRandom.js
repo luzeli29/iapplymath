@@ -60,7 +60,7 @@ export default function useSeededRandom(initSeed) {
     function randomDishType() {
         const rand = Math.floor(getRandom() * 3)
         switch (rand) {
-            case 0: return 'entree'
+            case 0: return 'mainDish'
             case 1: return 'drink'
             case 2: return 'dessert'
 
