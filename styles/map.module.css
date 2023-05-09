@@ -102,7 +102,7 @@
 }
 
 .aunt_house_text {
-    position: relative;
+    position: absolute;
     top: 1vh;
     left: 10vw;
     margin-left: 10px;
