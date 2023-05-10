@@ -11,6 +11,41 @@ import Error from 'pages/error'
 import Login from 'pages/user/login'
 
 export default function Map() {
+  const containerRef = useRef(null);
+  const [position, setPosition] = useState({
+    x: 0,
+    y: 0,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      const containerWidth = containerRef.current.clientWidth;
+      const containerHeight = containerRef.current.clientHeight;
+
+      setPosition({
+        x:
+          mapLocation == "AuntsHouse"
+            ? getXPercentage(130, containerWidth)
+            : mapLocation == "Restaurant"
+            ? getXPercentage(420, containerWidth)
+            : getXPercentage2(320,containerWidth),
+        y:
+          mapLocation == "AuntsHouse"
+            ? getYPercentage(120, containerHeight)
+            : mapLocation == "Restaurant"
+            ? getYPercentage(440, containerHeight)
+            : getYPercentage2(470,containerHeight)
+      });
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [mapLocation]);
     const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
 
@@ -30,6 +65,9 @@ export default function Map() {
     const handleAuntsHouse = () => {
         router.push('/game/auntHouse/introduction');
     }
+
+    
+    
   
     const getXPercentage = (x, containerWidth) => {
       return `${(x / containerWidth) * 100}%`;
@@ -46,6 +84,11 @@ export default function Map() {
       const getYPercentage2 = (y, containerHeight) => {
         return (containerHeight-37.5*2);
       };
+
+     
+  
+    
+  
     
 
     return (
@@ -55,14 +98,11 @@ export default function Map() {
                 <motion.img className={style.player_img}
                             id = {style.player_img}
                             src = {"/img/avatar/preMade/A" + avatarId + ".png"}
-                            initial = {{
-                              x: mapLocation == "AuntsHouse" ? 130
-                                  : mapLocation == "Restaurant" ? 420
-                                      : 320,
-                              y: mapLocation == "AuntsHouse" ? 120
-                                  : mapLocation == "Restaurant" ? 440
-                                      : 470
-                          }}
+                            style ={{
+                                position: 'absolute',
+                                top: position.y,
+                                left: position.x,
+                            }}
                            
                 />
             
