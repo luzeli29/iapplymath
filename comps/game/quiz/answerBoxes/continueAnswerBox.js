@@ -23,8 +23,7 @@ const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {
                   {questionFormat.confetti && renderConfetti()}
                 </div>
                 <div className="fill_container">
-                    <br></br>
-                    <br></br>
+            
                     <button
                             onClick={() => handleSubmitAnswer()}
                             className={style.continue_button}>

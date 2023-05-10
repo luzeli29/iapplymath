@@ -68,26 +68,26 @@
 }
 
 .icon {
-    width: 150px;
-    height: 150px;
+    width: 15vw;
+    height: 20vh;
     position: absolute;
 }
 
 .icon_small {
-    width: 75px;
-    height: 75px;
+    width: 6vw;
+    height: 15vh;
     position: absolute;
 }
 
 .icon_button {
-    width: 150px;
-    height: 150px;
+    width: 15vw;
+    height: 20vh;
     position: absolute;
 }
 
 .icon_button_small {
-    width: 75px;
-    height: 75px;
+    width: 8vw;
+    height: 15vh;
     position: absolute;
 }
 
@@ -103,15 +103,15 @@
 
 .aunt_house_text {
     position: absolute;
-    top: 2%;
-    left: 10%;
+    top: 1vh;
+    left: 10vw;
     margin-left: 10px;
 }
 
 .restaurant_text {
     position: absolute;
-    left: 85%;
-    top:60%;
+    left: 72%;
+    top:56%;
 }
 
 .home_text {
@@ -123,8 +123,8 @@
 
 .school_text {
     position: absolute;
-    left: 83%;
-    top:10%;
+    left: 80%;
+    top:8%;
     color: white;
 }
 

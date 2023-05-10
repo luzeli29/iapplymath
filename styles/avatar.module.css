@@ -3,23 +3,36 @@
     width: 100px;
     position: relative;
 }
+
   
 .button_bar {
     display: grid;
-    grid-auto-flow: column;
-    gap: 4px;
     align-items: center;
     justify-items: center;
     width: 100%;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    max-width: 400px;
+    margin-top: 0%;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+}
+.button_bar2 {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap:0.5%;
+    width: 100%;
+    margin-top: 0%;
+    max-width: 400px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
 }
 
 .as_title_container{
     width: 100%;
     text-align: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 5vh;
+    padding-bottom: 0%;
+    font-size: 5vh ;
 }
 
 .hoverable {
@@ -38,14 +51,15 @@
 }
 
 .continue_button {
-    position: absolute;
-    top: 82%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-size: x-large;
     background-color: var(--button-background-color);
-    width: 200px;
-    height: 50px;
+    width: 220px;
+    height: 40px;
     border-radius: 15px;
     box-shadow: 2px 2px #190933;
+    max-width: 90%;
+    margin-top: 1vh;
+    margin-bottom: 3vmax;
+    align-self: center;
   }
+

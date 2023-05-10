@@ -22,10 +22,10 @@ export default function Header() {
 
     return(
         <div className="container text-center">
-        <div className="row pt-2">
-            <h1 onClick={() => router.push('/')}>I Apply Math in my World</h1>
+        <div >
+            <text class= "font-h1" onClick={() => router.push('/')}>I Apply Math in my World</text>
         </div>
-        <div className="row justify-content-lg-center pt-1">
+        <div className="row justify-content-lg-center">
             <div className="col col-lg-1">
                 <button onClick={() => settings.setLang('es')}><strong>Español</strong></button>
             </div>

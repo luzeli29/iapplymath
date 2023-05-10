@@ -21,13 +21,15 @@ const Index = () => {
 
   return (
     <div>
-      <div className="pt-5 text-center">
-        <Image
-          width = {350}
-          height = {350}
+      <div className="">
+        <Image 
           quantity = {100}
           priority = {true}
           src={"/img/other/global.png"}
+          width = {100}
+          height = {100}
+          className='globes'
+        
           alt={"globe"}/>
       </div>
       <div className="text-center">
