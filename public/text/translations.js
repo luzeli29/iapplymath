@@ -135,6 +135,14 @@ const translations = {
         en: "Unmute Music",
         es: 'Activar Música',
     },
+    font_tooltip: {
+        en: "Dyslexic Friendly Font",
+        es: 'Fuente amigable para disléxicos',
+    },
+    fontdys_tooltip: {
+        en: "Original Font",
+        es: 'Fuente original',
+    },
     logout_tooltip: {
         en: "Logout",
         es: "Cerrar sesión",
