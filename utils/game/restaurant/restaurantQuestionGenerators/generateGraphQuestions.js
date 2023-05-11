@@ -24,7 +24,7 @@ function generateDefaultGraphQuestion(randomGenerator) {
             en: 'x = y; x = ' + dishIndex + ' and y = ' + answer,
             es: 'x = y; x = ' + dishIndex + ' et y = ' + answer,
         }],
-        null,
+        "wholeNumber",
         null,
         'defaultGraphQuestion'
     )

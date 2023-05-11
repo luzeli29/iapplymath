@@ -1,5 +1,6 @@
 import createGameQuestion from "@utils/game/createGameQuestion";
 import validateOrder from "@utils/validation/game/restaurant/validateOrder";
+import QuestionFormats from "@utils/game/questionFormats";
 
 export default function generateBasicOrderQuestions(order) {
     let questions = []
@@ -15,6 +16,8 @@ export default function generateBasicOrderQuestions(order) {
         },
         total,
         [],
+        "wholeNumber",
+
     ))
 
     const totalWithoutTop = total - sortedOrder[0].price
@@ -25,6 +28,7 @@ export default function generateBasicOrderQuestions(order) {
         },
         totalWithoutTop,
         [],
+        "wholeNumber",
     ))
 
     const totalWithoutBottom = total - sortedOrder[2].price
@@ -35,6 +39,7 @@ export default function generateBasicOrderQuestions(order) {
         },
         totalWithoutBottom,
         [],
+        "wholeNumber",
     ))
 
     return questions
