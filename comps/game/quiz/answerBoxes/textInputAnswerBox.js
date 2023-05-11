@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import QuizCalculator from '../quizCalculator/quizCalculator'
 import { getText, simplifyAnswer, simplifyFraction } from '@commonImports'
-import { err, log } from '@utils/debug/log'
+import DevLog from '@utils/debug/devLog'
 import QuestionFormats from '@utils/game/questionFormats'
+import DevErr from '@utils/debug/devErr'
 
 const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
     if(!questionFormat) {
-        err('"questionFormat" is required for TextInputAnswerBox.')
+        DevErr('"questionFormat" is required for TextInputAnswerBox.')
         questionFormat = QuestionFormats.wholeNumber
     }
 
@@ -22,7 +23,7 @@ const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
-        log('form submitted with answer: ' + userAnswer)
+        DevLog('form submitted with answer: ' + userAnswer)
 
         if(userAnswer === '') {
             setAnswerFeedback(getText(empty_answer,lang))
@@ -32,7 +33,7 @@ const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
 
         if(questionFormat.validationRegex) {
             isValidAnswer = validateAnswerRegex(userAnswer)
-            console.log('isValidAnswer: ' + isValidAnswer)
+            DevLog('isValidAnswer: ' + isValidAnswer)
         }
 
         if(!isValidAnswer) {
@@ -47,7 +48,7 @@ const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
             try{
             simplifiedAnswer = questionFormat.simplifyAnswer(simplifiedAnswer)
             }   catch(e) {
-                err('Error simplifying answer: ' + userAnswer + ' with simplifyAnswer()')
+                DevErr('Error simplifying answer: ' + userAnswer + ' with simplifyAnswer()')
             }
         }
         handleSubmitAnswer(simplifiedAnswer)

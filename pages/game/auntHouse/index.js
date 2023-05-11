@@ -64,7 +64,7 @@ export default function RecipeSelect({recipes}) {
     return (
         <GameIndexLayout
                 lang={lang}
-                game_name={"aunt_house"}
+                gameName={"aunt_house"}
                 instruction_text={instructionText}
                 submit_text={"cook"}
                 handleSubmit={() => handleRecipeSubmit()}>

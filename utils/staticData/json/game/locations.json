@@ -28,6 +28,15 @@
                     }
                 }
             }
+        },
+        "school" : {
+            "questionTypes": {
+               "basic" : {
+                    "questionParams": {
+                        "schoolTopicKey" : "string"
+                    }
+               }
+            }
         }
     }
 }

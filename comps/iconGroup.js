@@ -10,17 +10,17 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
     if(getContentFromValue == undefined || !getContentFromValue) return <></>
 
 
-    function handleSelect(key) {
+    const handleSelect = (key) => {
         if(selectIcon) {
             selectIcon(key)
         }
     }
 
-    function nextPage() {
+    const nextPage = () => {
         setPageNumber(pageNumber+1)
     }
 
-    function prevPage() {
+    const prevPage = () => {
         setPageNumber(pageNumber-1)
     }
 
@@ -67,7 +67,9 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
     const IconButton = ({keyCode,value}) => {
         const isSelected = keyCode == selectedIcon && selectedIcon != undefined
         return (
-                getContentFromValue(keyCode,value)
+            <div className="mx-auto">
+                {getContentFromValue(keyCode,value)}
+            </div>
         )
     }
 
@@ -82,7 +84,7 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
                 }
             </div>
 
-            <div className="col-10">
+            <div className="col-10 mx-auto">
                 <CurrentIconView/>
             </div>
             <div className="col-1 mx-auto">

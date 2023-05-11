@@ -1,6 +1,6 @@
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import style from '@styles/restaurant.module.css'
-import { err } from '@utils/debug/log'
+import { err } from '@utils/debug/devLog'
 import menuOptions from "@public/text/menuOptions"
 import translations from "@translations";
 
