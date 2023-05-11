@@ -58,7 +58,8 @@ function generateTwoMultiplyQuestion(order,level,randomGenerator) {
         },{
             en: "(" + dish1.en + ") x " + factor1 + " + (" + dish2.en + ") x " + factor2 +" = " + answer,
             es: "(" + dish1.es + ") x " + factor1 + " + (" + dish2.es + ") x " + factor2 +" = " + answer,
-        }]
+        }],
+        "wholeNumber"
     ) 
 
     return question
@@ -89,7 +90,8 @@ function generateThreeMultiplyQuestion(order,level,randomGenerator) {
         },{
             en: "(" + mainDish.en + ") x " + factorMainDish + " + (" + drink.en + ") x " + factorDrink + " + (" + dessert.en + ") x " + factorDessert +" = " + answer,
             es: "(" + mainDish.es + ") x " + factorMainDish + " + (" + drink.es + ") x " + factorDrink + " + (" + dessert.es + ") x " + factorDessert +" = " + answer,
-        }]
+        }],
+        "wholeNumber"
     ) 
 
     return question

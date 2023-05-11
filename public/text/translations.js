@@ -124,6 +124,10 @@ const translations = {
         en: "Please answer with fractions only",
         es: "Por favor responda solo con fracciones",
     },
+    whole_numbers_only:{
+        en: "Please answer with whole numbers only",
+        es: "Por favor responda solo con números enteros",
+    },
     invalid_fraction: {
         en: "Please enter a valid fraction",
         es: "Por favor ingrese una fracción válida",
