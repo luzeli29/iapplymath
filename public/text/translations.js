@@ -105,6 +105,17 @@ const translations = {
         en: 'Dessert',
         es: 'Postre'
     },
+    // ----- School Translations -----
+
+    school_index_instruction : {
+        en: "Please choose which type of math equation you would like to solve!",
+        es: "¡Elige qué tipo de ecuación matemática te gustaría resolver!",
+    },
+
+    no_school_topic_selected: {
+        en: "Please select a question topic.",
+        es: "Por favor seleccione un tema de pregunta.",
+    },
 
     // ----- General Translations -----
     true : {

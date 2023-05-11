@@ -1,4 +1,4 @@
-import { err, log } from "@utils/debug/log";
+import { err, log } from "@utils/debug/devLog";
 import { useEffect, useState } from "react";
 import seedrandom from "seedrandom";
 import { randomBytes } from "crypto";
@@ -114,10 +114,21 @@ export default function useSeededRandom(initSeed) {
         }
     }
 
+    const randomSchoolTopic = () => {
+        const rand = Math.floor(getRandom() * 4)
+        switch (rand) {
+            case 0: return 'addition'
+            case 1: return 'subtraction'
+            case 2: return 'multiplication'
+            case 3: return 'division'
+        }
+    }
+
     const randomGenerator = {
         randomInt: randomInt,
         randomHr: randomHr,
-        randomDishType: randomDishType
+        randomDishType: randomDishType,
+        randomSchoolTopic: randomSchoolTopic
     }
 
     return {

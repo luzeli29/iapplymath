@@ -1,6 +1,6 @@
 import {simplifyFraction} from '@utils/imports/commonImports'
 import createGameQuestion from '@utils/game/createGameQuestion.js'
-import { log } from '@utils/debug/log'
+import DevLog from '@utils/debug/devLog'
 import generateBasicAHQuestions from './basic/generateBasicAHQuestions'
 import generateFamilyQuestions from './familyQuestions/generateFamilyQuestions'
 
@@ -12,9 +12,9 @@ export default function aHQuestionFactory(questionType,recipe) {
         return [createGameQuestion()]
     }
 
-    log('Generating Aunt House Questions')
-    log('Question Type: ' + questionType)
-    log('Recipe: ' + recipe.name.en)
+    DevLog('Generating Aunt House Questions')
+    DevLog('Question Type: ' + questionType)
+    DevLog('Recipe: ' + recipe.name.en)
 
     switch(questionType) {
         case "basic":

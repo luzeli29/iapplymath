@@ -1,0 +1,25 @@
+{
+    "schoolTopic" : {
+        "add" : {
+            "name" : "addition",
+            "sign" : "+",
+            "questionTemplate" : "%FIRST_NUMBER% %SIGN% %SECOND_NUMBER% = ?"
+        },
+        "sub" : {
+            "name" : "subtraction",
+            "sign" : "-"
+        },
+        "mul" : {
+            "name" : "multiplication",
+            "sign" : "x"
+        },
+        "div" : {
+            "name" : "division",
+            "sign" : "/"
+        },
+        "rand" : {
+            "name" : "random",
+            "sign" : "?"
+        }
+    }
+}
