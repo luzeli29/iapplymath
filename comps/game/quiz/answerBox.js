@@ -21,8 +21,6 @@ export default function AnswerBox({correctAnswer,questionFormatKey,handleSubmitA
     if(error) return <Error error={error}/>
     if(!isLoggedIn) return <Login/>
     const lang = settings.lang
-    console.log("questionFormat",questionFormat)
-    console.log("questionFormatKey",questionFormatKey)
     const questionFormat = QuestionFormats[questionFormatKey];
     const getAnswerBox = () => {
         if(!questionFormat) {
@@ -30,7 +28,6 @@ export default function AnswerBox({correctAnswer,questionFormatKey,handleSubmitA
             return <ContinueAnswerBox lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
         }
         
-        console.log(questionFormat)
         switch(questionFormat.answerBoxType) {
             case 'textInput':
                 return <TextInputAnswerBox questionFormat={questionFormat} lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
