@@ -10,7 +10,6 @@ const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
         questionFormat = QuestionFormats.wholeNumber
     }
 
-    console.log(questionFormat.answerBoxMessage);
 
     const [userAnswer, setUserAnswer] = useState('')
     const [answerFeedback, setAnswerFeedback] = useState('')
