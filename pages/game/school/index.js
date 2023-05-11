@@ -1,9 +1,12 @@
 import { GameIndexLayout, getText } from '@commonImports'
 import ClickableIcon from '@comps/clickableIcon'
 import IconGroup from '@comps/iconGroup'
+import Loading from '@comps/screens/loading'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import LoadSchoolTopics from '@utils/game/school/quiz/schoolTopics/loadSchoolTopics'
 import { useRouter } from 'next/router'
+import Error from 'pages/error'
+import Login from 'pages/user/login'
 import React, { useState } from 'react'
 
 export async function getStaticProps(){
