@@ -1,44 +1,45 @@
-import React, {useState} from 'react';
-import Image from "next/image";
+import React, {useEffect, useState} from 'react';
 import { useRouter } from 'next/router'
 import style from '../../styles/check_in.module.css'
 import translations from '../../public/text/translations';
-import ClickableIcon from '@comps/clickableIcon';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
+import ReactAudioPlayer from 'react-audio-player';
 import Loading from '@comps/screens/loading';
 import Error from 'pages/error';
 import Login from './login';
-import Tooltip from '@comps/accessibility/tooltip';
 
-const emotions = [
-    {
-        src: "happy",
-        en: "Happy",
-        es: "Feliz",
-    }, {
-        src: "bored",
-        en: "Bored",
-        es: "Aburrido/a",
-    }, {
-        src: "sad",
-        en: "Sad",
-        es: "Triste",
-    },{
-        src: "stressed",
-        en: "Stressed",
-        es: "Estresado/a",
-    }, {
-        src: "angry",
-        en: "Angry",
-        es: "Enojado/a",
-    }
-]
 
 export default function Creator({onEnd}) {
     const {user,settings,loading, error} = useUserContext()
     const isLoggedIn = user.loggedIn
-    const [selectedFeelingIndex, setSelectedFeelingIndex] = useState()
     const _onEnd = onEnd ? onEnd : () => router.back();
+    const [counter, setCounter] = useState(180);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const formatMinutes = (time) => {
+        return `${Math.floor(time / 60)}`.padStart(2, '0');
+    };
+    
+    const formatSeconds = (time) => {
+        return `${time % 60}`.padStart(2, '0');
+    };
+
+    const startCountdown = () => {
+        setIsPlaying(true);
+      
+        const timer = setInterval(() => {
+          setCounter((prevCounter) => prevCounter - 1);
+        }, 1000);
+      
+        setTimeout(() => {
+          clearInterval(timer);
+          setIsPlaying(false);
+        }, 180000);
+    };
+
+    useEffect(() => {
+        startCountdown()
+    }, [])
 
     const router = useRouter()
 
@@ -54,37 +55,16 @@ export default function Creator({onEnd}) {
         _onEnd();
     };
 
-    const FeelingButton = ({index}) => {
-        const emotion = emotions.at(index)
-        if(!emotion) return <Error/>
-        const text = emotion[lang]
-        const imgSrc = "/img/feelings/" + emotion.src + ".png"
-        return (
-            <Tooltip text={text}>
-            <ClickableIcon
-                selected={selectedFeelingIndex == index}
-                onClick={() => setSelectedFeelingIndex(index)}
-                className={style.avatar_select_button}>
-                <Image
-                    priority={true}
-                    width={80}
-                    height={80}
-                    src={imgSrc}
-                    alt={text}/>
-            </ClickableIcon>
-            </Tooltip>
-        )
-    }
-
     return (
         <>
             <h1 className={style.as_title_container}>{translations.check_in[lang]}</h1>
             <div className={style.feeling_buttons}>
-                {Array.apply(0, Array(5)).map((x,i) => {
-                    return (
-                        <FeelingButton index={i} key={i}/>
-                    )
-                })}
+                {isPlaying && (
+                    <h2>
+                    {formatMinutes(counter)}:{formatSeconds(counter)}
+                    </h2>
+                )}
+                <ReactAudioPlayer src="../../src/breakmusic.mp4" autoPlay loop />
             </div>
             <button
                 className={style.continue_button}
