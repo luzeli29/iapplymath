@@ -211,8 +211,8 @@ const translations = {
         es: "Proximamente!",
     },
     check_in: {
-        en: "How are you feeling?",
-        es: "¿Como te sientes?",
+        en: "Chill Out Break",
+        es: "Pausa para relajarse",
     },
     pet_select: {
         en: "Pick your pet",

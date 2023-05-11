@@ -12,6 +12,7 @@ import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
 import { err } from '@utils/debug/log';
 import Creator from 'pages/user/checkIn'
+import BrainBrake from 'pages/user/brainBreak'
 import createGameQuestion from '@utils/game/createGameQuestion';
 
 
@@ -92,7 +93,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    const renderContent = () => {
       switch (state) {
          case "ayu":
-            return <Creator onEnd={handleCheckinEnd} />;
+            return <BrainBrake />;
          case "dialogue":
             return <Dialog scriptId={"ayu_relaxation_0"} onEnd={handleDialogueEnd}/>;
          case "checkin2":
