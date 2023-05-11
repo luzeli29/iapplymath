@@ -14,8 +14,7 @@ body {
   height: 100%;
   overflow: hidden;
   padding: 0;
-  margin: 0;
-	font-family: Futura,Trebuchet MS,Arial,sans-serif; 
+  margin: 0; 
   background-color: var(--page-color);
   color: var(--font-color);
 }
@@ -341,4 +340,10 @@ h4{
   border-radius: 50%;
   background-color: var(--button-background-color);
   cursor: pointer;
+}
+
+@font-face {
+  font-family: "DyslexicRegular";   /*Can be any text*/
+  src: local("DyslexicRegular"),
+  url("../public/fonts/OpenDyslexic-Regular.otf");
 }

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Cookies from 'js-cookie';
+import { BiToggleLeft } from 'react-icons/bi';
 
 export default function useSettings() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState();
     const [lang, setLang] = useState("en");
     const [mute, setMute] = useState(false);
+    const [font, setFont] = useState(false);
     const [backgroundHex, setBackgroundHex] = useState("#EDBFC6");
     
     useEffect(() => {
@@ -28,6 +30,10 @@ export default function useSettings() {
         if(storedMute) {
             setMute(JSON.parse(storedMute))
         }
+        const storedFont = Cookies.get('font');
+        if(storedFont) {
+            setFont(JSON.parse(storedFont))
+        }
         const storedBackgroundHex = Cookies.get('background_hex');
         if(storedBackgroundHex) {
             setBackgroundHex(JSON.parse(storedBackgroundHex))
@@ -38,9 +44,11 @@ export default function useSettings() {
         await Cookies.remove('lang');
         await Cookies.remove('mute');
         await Cookies.remove('background_hex');
+        await Cookies.remove('font');
         updateSettingsFromCookie()
         setLang("en")
         setMute(false)
+        setFont(false)
         setBackgroundHex("#EDBFC6")
         return true
     }
@@ -76,6 +84,13 @@ export default function useSettings() {
         return true
     }
 
+    function toggleFont() {
+        const newFont = !font
+        setFont(newFont)
+        Cookies.set('font', JSON.stringify(newFont), { expires: 1 });
+        return true
+    }
+
     function switchBackgroundHex(hex) {
         if(!hex) {
             setError('"hex" was not given to switchBackgroundHex')
@@ -95,9 +110,11 @@ export default function useSettings() {
         error: error,
         lang: lang,
         mute: mute,
+        font: font,
         backgroundHex: backgroundHex,
         setLang: switchLang,
         toggleMute: toggleMute,
+        toggleFont: toggleFont,
         setBackgroundHex: switchBackgroundHex,
         clearSettingsCookie: clearSettingsCookie,
     }
