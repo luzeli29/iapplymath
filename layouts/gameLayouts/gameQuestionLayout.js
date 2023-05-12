@@ -10,7 +10,7 @@ import QuestionBox from '@comps/game/quiz/questionBox';
 import { useStopWatch } from '@hooks/useStopWatch';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
-import { err } from '@utils/debug/log';
+import { err, log } from '@utils/debug/log';
 import Creator from 'pages/user/checkIn'
 import createGameQuestion from '@utils/game/createGameQuestion';
 
@@ -42,6 +42,12 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          _questions[_questions.length] = continueQuestion
       }
    }
+
+   log("loading: " + loading)
+   log("router.isReady: " + router.isReady)
+   log("isLoggedIn: " + isLoggedIn)
+   log("state: " + state)
+
    if(loading) return <Loading/>
    if(!router.isReady) return <Loading/>
    if(error) return <Error error={error}/>
@@ -64,8 +70,11 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
 
    function handleFinish() {
       if(onFinish) {
+         log("ON FINISH")
+         log(onFinish)
          onFinish()
       } else {
+         log("NO ON FINISH")
          router.push('/game')
       }
    }
@@ -224,7 +233,8 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          )
       } else {
          handleExit("FINISHED")
-         return (<Loading/>)
+         // log("ELSE STATEMENT")
+         // return (<Loading/>)
       }
    } else {
       //TODO: switch dialog randomly in order to have different ayu relaxations
