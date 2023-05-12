@@ -13,6 +13,7 @@ import IngredientList from '@comps/game/auntHouse/ingredientList'
 import generateRecipeTitleText from '@utils/game/auntHouse/textCreation/generateRecipeTitleText'
 import generateRecipeServingText from '@utils/game/auntHouse/textCreation/generateRecipeServingText'
 import LoadLocations from '@utils/staticData/json/game/loadLocations'
+import { log } from '@utils/debug/log'
 
 
 export async function getStaticPaths() {
@@ -26,6 +27,7 @@ export async function getStaticPaths() {
             keyPaths.push({ params: { questionTypeKey: questionTypeKey, recipeKey : recipeKey}});
         }
     }
+    console.log(keyPaths)
     
     return {
         paths: keyPaths,
@@ -35,6 +37,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context){
     const  {params}  = context
+    console.log("params")
+    console.log(params)
     const recipeKey = params.recipeKey
 
     const recipes = await LoadRecipes()
@@ -44,6 +48,9 @@ export async function getStaticProps(context){
         recipe = recipes[recipeKey]
     }
 
+    console.log("recipe")
+    console.log(recipe)
+
     return {
       props: {
         recipe,
@@ -52,28 +59,37 @@ export async function getStaticProps(context){
 }
 
 export default function AuntHouseQuestions({recipe}) {
-    const [questions, setQuestions] = useState()
     const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
     const isLoggedIn = user.loggedIn  
-    useEffect(() => {
-        const generatedQuestions = aHQuestionFactory(questionTypeKey, recipe)
-        setQuestions(generatedQuestions)
-    },[questionTypeKey])
-  
+    
     if(loading) return <Loading/> 
     if(!router.isReady) return <Loading/>
     if(error) return <Error error={error}/>
     if(!isLoggedIn) return <Login/>
     const lang = settings.lang
     const { questionTypeKey, recipeKey, familySize } = router.query
+    // added initial state to prevent error on first render
+    const [questions, setQuestions] = useState(aHQuestionFactory(questionTypeKey, recipe))
+
     const recipeTitle = generateRecipeTitleText(recipe,lang)
     const recipeServingText = generateRecipeServingText(recipe,lang)
     const finishRoute = getFinishRoute(questionTypeKey,recipeKey,familySize)
     
-    if(!questions) return(<Loading/>)
+    useEffect(() => {
+        const generatedQuestions = aHQuestionFactory(questionTypeKey, recipe)
+        setQuestions(generatedQuestions)
+    },[questionTypeKey])
+    
+    log("route: " + finishRoute)
+    if(!questions){
+        console.log("questions not loaded")
+        return(<Loading/>)  
+    } 
 
     function handleFinish() {
+        console.log("handleFinish")
+        console.log(finishRoute)
         router.push(finishRoute)
         setQuestions('')
     }
