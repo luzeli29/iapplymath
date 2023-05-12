@@ -3,17 +3,17 @@
         "cup": {
             "nameSingular": {
                 "en": "Cup",
-                "es": "Vaso"
+                "es": "Taza"
             },
             "namePlural": {
                 "en": "Cups",
-                "es": "Vasos"
+                "es": "Tazas"
             }
         },
         "serving": {
             "nameSingular": {
                 "en": "Serving",
-                "es": "Porcione"
+                "es": "Porción"
             },
             "namePlural": {
                 "en": "Servings",
@@ -53,11 +53,11 @@
         "bowl": {
             "nameSingular": {
                 "en": "Bowl",
-                "es": "Bol"
+                "es": "Tazón"
             },
             "namePlural": {
                 "en": "Bowls",
-                "es": "Bochas"
+                "es": "Tazones"
             }
         },
         "pound": {

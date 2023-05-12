@@ -81,7 +81,7 @@ function generateThreeMultiplyQuestion(order,level,randomGenerator) {
     const question = createGameQuestion(
         {
             en:'If you buy ' + factorMainDish + ' ' + mainDish.en + ', ' + factorDrink + ' ' + drink.en + ', and ' + factorDessert + ' ' + dessert.en + ', what is your total?',
-            es:'Si compras ' + factorMainDish + ' ' + mainDish.es + ', ' + factorDrink + ' ' + drink.es + ', et ' + factorDessert + ' ' + dessert.es + ' ¿Cuál es su total?',
+            es:'Si compras ' + factorMainDish + ' ' + mainDish.es + ', ' + factorDrink + ' ' + drink.es + ', y ' + factorDessert + ' ' + dessert.es + ' ¿Cuál es su total?',
         },
         answer,
         [{
