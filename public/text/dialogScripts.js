@@ -13,40 +13,28 @@ const dialog_scripts = {
         stage: "ayu",
         lines: [
             {
-                en:"Hi, my name is Ayuda but all my friends call me Ayu. “Ayuda” means “help” in Spanish.",
-                es:"Hola, mi nombre es Ayuda, pero puedes llamarme Ayu.",
+                en:"Hi, my name is Ayuda but all my friends call me Ayu. “Ayuda” means “help” in Spanish. I am here to help you during the game.",
+                es:"Hola, mi nombre es Ayuda, pero puedes llamarme Ayu. Yo estoy aquí para ayudarte durante el juego.",
             },{
-                en:"I am here to help you during the game. If you need a break from solving problems, pet me and I will be there to help you relax. ",
-                es:"Yo estoy aquí para ayudarte durante el juego. Si necesitas un descanso mientras resuelves problemas, acaríciame y allí estaré " +
-                    "para ayudarte a relajar.",
-            },{
-                en:"You can also click on your pet to get support while you are finding solutions.",
-                es:"También puedes hacer clic sobre tu mascota para que te apoye mientras consigues tus soluciones.",
+                
+                en:"You can take a break from problem solving and find relaxation with your pet or with me, we are always there to support you.",
+                es:"Puedes tomar un descanso de resolver problemas y encontrar relajación con tu mascota o conmigo, siempre estamos ahí para apoyarte.",
             },{
                 en:"Math problems can be challenging, so we have built in some other game features to help you with solving math in your world.",
                 es:"Los problemas de matemática pueden sentirse complicados y por eso hemos incorporado algunas otras características " +
                     "en este juego para ayudarte a resolver problemas matemáticos en tu mundo.",
             },{
-                en:"We know that soon you will be saying “I Apply Math in my World”",
-                es:"Sabemos que pronto estarás diciendo “Yo Aplicó Matemáticas en mi Mundo”",
-            },{
-                en: "The game has a calculator that you can use at any time." +
-                    "The music can be turned on or off whenever you want.",
-                es: "El juego tiene una calculadora que puedes usar en cualquier momento." +
-                    "La música se puede apagar y prender cuando tú quieras.",
+                en: "You can use the game's calculator and turn music on or off anytime. Also, feel free to share how you feel or return to the map for a new adventure.",
+                es: "Puedes usar la calculadora del juego y activar o desactivar la música en cualquier momento. Además, siéntete libre de compartir cómo te sientes o volver al mapa para una nueva aventura.",
             },{
                 en: "The game will save your progress for your next visit, but you need to log out when you are done playing.",
                 es: "El juego guardará tu progreso para tu próxima visita, pero debes cerrar tu sesión cuando termines de jugar.",
             },{
-                en: "At any point during the game you can tell us how you feel." +
-                    "You can also return to the map if you’d like to go on a different adventure.",
-                es: "En cualquier momento durante el juego nos puedes decir cómo te sientes." +
-                    "También puedes volver al mapa si deseas intentar una aventura diferente.",
+                en:"This game has different levels - Level 1 is for beginners, Level 2 is for advanced, and Level 3 is for experts.",
+                es:"Este juego tiene diferentes niveles: el Nivel 1 es para principiantes, el Nivel 2 es para avanzados y el Nivel 3 es para expertos."
             },{
-                en:"This game has different levels (Level 1, Level 2 and Level 3) Level 1 is for beginners, " +
-                    "Level 2 is for advanced, and Level 3 is for experts. ",
-                es:"Este juego tiene diferentes niveles (Nivel 1, Nivel 2 y Nivel 3) El Nivel 1 es para principiantes, " +
-                    "el Nivel 2 es para avanzados y el Nivel 3 es para expertos.",
+                en:"We know that soon you will be saying “I Apply Math in my World”",
+                es:"Sabemos que pronto estarás diciendo “Yo Aplicó Matemáticas en mi Mundo”",
             }
         ],
     },
