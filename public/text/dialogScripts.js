@@ -4,7 +4,7 @@ const dialog_scripts = {
         lines: [
             {
                 en:"Hi, if you're seeing this there was an error with the website's code. Click or press enter to go to the index page.",
-                es:"Hola, please switch to english!",
+                es:"Por favor cambia al idioma inglés, hubo un error con el código de la página",
             },
         ],
     },
@@ -14,7 +14,7 @@ const dialog_scripts = {
         lines: [
             {
                 en:"Hi, my name is Ayuda but all my friends call me Ayu. “Ayuda” means “help” in Spanish.",
-                es:"Hola, mi nombre es Ayuda pero mis amistades me llaman Ayu. “Ayuda” significa “help” en inglés.",
+                es:"Hola, mi nombre es Ayuda, pero puedes llamarme Ayu.",
             },{
                 en:"I am here to help you during the game. If you need a break from solving problems, pet me and I will be there to help you relax. ",
                 es:"Yo estoy aquí para ayudarte durante el juego. Si necesitas un descanso mientras resuelves problemas, acaríciame y allí estaré " +
@@ -86,18 +86,18 @@ const dialog_scripts = {
         
             {
                 en:"Slowly, let’s take three big belly breaths.",
-                es:"Lentamente, tomemos tres respiraciones profundas.",
+                es:"Tomemos tres respiraciones profundas lentamente.",
             }, {
                 en:"Breathe in slowly through your nose for 4, 3, 2, 1\nBreathe out slowly through your mouth for 5, 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 4, 3, 2, 1\Exhala lentamente por tu boca 5, 4, 3, 2, 1",
+                es:"Inhala lentamente por tu nariz 4, 3, 2, 1\nExhala lentamente por tu boca 5, 4, 3, 2, 1",
                 stg: "ayuDeepBreathContinuous"
             },{
                 en:"Breathe in slowly through your nose for 5, 4, 3, 2, 1\nBreathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 5, 4, 3, 2, 1\Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
+                es:"Inhala lentamente por tu nariz 5, 4, 3, 2, 1\nExhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
                 stg: "ayuDeepBreathContinuous"
             },{
                 en:"Breathe in slowly through your nose for 6, 5, 4, 3, 2, 1\nBreathe out slowly through your mouth for 7, 6, 5, 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 6, 5, 4, 3, 2, 1\Exhala lentamente por tu boca 7, 6, 5, 4, 3, 2, 1",
+                es:"Inhala lentamente por tu nariz 6, 5, 4, 3, 2, 1\nExhala lentamente por tu boca 7, 6, 5, 4, 3, 2, 1",
                 stg: "ayuDeepBreathContinuous"
             }
         ],
@@ -108,16 +108,16 @@ const dialog_scripts = {
             lines:   [
             {
                 en:"Let’s stretch our back muscles like a cat after a relaxing nap! breathe in and reach your arms up overhead then breathe out and relax your hands by your sides.",
-                es:"Estiremos nuestros músculos de la espalda como un gato después de una siesta relajante! Inhala y levanta tus brazos por encima de tus cabeza, luego exhala y relaja tus manos a tus costados."
+                es:"¡Estiremos los músculos de la espalda como un gato después de una siesta relajante! Respira hondo y alza los brazos por encima de la cabeza, luego exhala y relaja tus manos a los costados."
             }, {
                 en:"Slowly breathe in and bring your shoulders up towards your head and when you breathe out push your head down into your shoulders.",
-                es:"Lentamente inhala y levanta tus hombros hacia tu cabeza y cuando exhalas empuja tu cabeza para abajo hacia tus hombros.",
+                es:"Respira lentamente y eleva los hombros hacia la cabeza, y cuando exhales presiona la cabeza hacia los hombros."
             },{
                 en:"Now slowly breathe in and reach your shoulders up and back then breathe out and let your shoulders come back down, do this three times.",
-                es:"Ahora inhala lentamente y levanta tus hombros hacia arriba y hacia atrás, luego exhala y deja que tus hombros vuelvan a bajar, haga esto tres veces.",
+                es:"Ahora inhala lentamente y levanta tus hombros hacia arriba y hacia atrás, luego exhala y deja que tus hombros vuelvan a bajar, repite esto tres veces.",
             },{
                 en:"Imagine you have two juicy lemons in each hand. Begin to squeeze all the juice out of the lemons using your hands, your arms, your legs, your toes, and even your face. Squeeze and tense up every muscle in your body for 3…2…1… Then stop squeezing and release the tension in your whole body",
-                es:"Imagina que tienes dos limones jugosos en cada mano. Comienza a exprimir todo el jugo del limón usando tus manos, tus brazos, tus piernas, tus dedos de los pies e incluso con tu cara. Aprieta y tensiona los músculos en tu cuerpo por 3…2…1… Despues deja de apretar y suelta toda la tensión en tu cuerpo."
+                es:"Imagina que tienes dos limones jugosos en cada mano. Comienza a exprimir todo el jugo del limón usando tus manos, tus brazos, tus piernas, tus dedos de los pies, incluso con tu cara. Aprieta y tensa los músculos en tu cuerpo por 3…2…1… Despues deja de apretar y suelta toda la tensión en tu cuerpo."
             },{
                 en:"Release the tension in your body and relax.",
                 es:"Suelta la tensión en tu cuerpo y relájate"
@@ -151,7 +151,7 @@ const dialog_scripts = {
                 es: "Guau, estoy muy satisfecha!"
             },{
                 en: "The food was really good!",
-                es: "Si, la comida estaba muy buena!",
+                es: "La comida estaba muy buena!",
                 player_speaking: true,
             },{
                 en: "It was! Let’s come again soon.",
