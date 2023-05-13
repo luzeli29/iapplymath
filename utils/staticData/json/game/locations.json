@@ -9,7 +9,7 @@
                 },
                 "familySize" :{
                     "questionParams": 
-                        {"recipeKey" : "string"}}
+                        {"recipeKey" : "string"}
                 },
                 "familyQuestion" :{
                     "questionParams": {
@@ -17,6 +17,7 @@
                             "familySize" : "int"
                         }
                 }
+            }
         },
         "restaurant" : {
             "questionTypes": {
