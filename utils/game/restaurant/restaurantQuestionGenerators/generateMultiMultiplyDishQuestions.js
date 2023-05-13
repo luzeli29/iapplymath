@@ -58,7 +58,8 @@ function generateTwoMultiplyQuestion(order,level,randomGenerator) {
         },{
             en: "(" + dish1.en + ") x " + factor1 + " + (" + dish2.en + ") x " + factor2 +" = " + answer,
             es: "(" + dish1.es + ") x " + factor1 + " + (" + dish2.es + ") x " + factor2 +" = " + answer,
-        }]
+        }],
+        "wholeNumber"
     ) 
 
     return question
@@ -80,7 +81,7 @@ function generateThreeMultiplyQuestion(order,level,randomGenerator) {
     const question = createGameQuestion(
         {
             en:'If you buy ' + factorMainDish + ' ' + mainDish.en + ', ' + factorDrink + ' ' + drink.en + ', and ' + factorDessert + ' ' + dessert.en + ', what is your total?',
-            es:'Si compras ' + factorMainDish + ' ' + mainDish.es + ', ' + factorDrink + ' ' + drink.es + ', et ' + factorDessert + ' ' + dessert.es + ' ¿Cuál es su total?',
+            es:'Si compras ' + factorMainDish + ' ' + mainDish.es + ', ' + factorDrink + ' ' + drink.es + ', y ' + factorDessert + ' ' + dessert.es + ' ¿Cuál es su total?',
         },
         answer,
         [{
@@ -89,7 +90,8 @@ function generateThreeMultiplyQuestion(order,level,randomGenerator) {
         },{
             en: "(" + mainDish.en + ") x " + factorMainDish + " + (" + drink.en + ") x " + factorDrink + " + (" + dessert.en + ") x " + factorDessert +" = " + answer,
             es: "(" + mainDish.es + ") x " + factorMainDish + " + (" + drink.es + ") x " + factorDrink + " + (" + dessert.es + ") x " + factorDessert +" = " + answer,
-        }]
+        }],
+        "wholeNumber"
     ) 
 
     return question

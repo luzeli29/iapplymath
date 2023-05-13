@@ -133,11 +133,11 @@
             "level" : "1",
             "name" : {
                 "en" : "Black Bean and Sweet Potato Enchiladas",
-                "es": "Enchilada de Frijol Negro y Papa Dulce"
+                "es": "Enchilada de Frijol Negro y Camote"
             },
             "instructions" : {
                 "en" : "Fill the tortillas with mashed black beans and sweet potatoes then roll up each tortilla into a singular tube. Pour the tomatillo sauce on top of the tortillas and then bake for 30 minutes at 350 degrees.",
-                "es" : "Rellene las tortillas con puré de frijoles negros y papa dulce, luego enrolle cada tortilla en forma de tubito. Póngale la salsa de tomatillo encima de las tortillas y luego hornee por 30 minutos a 350 grados."
+                "es" : "Rellene las tortillas con frijoles negros y camote, luego enrolle cada tortilla en forma de tubito. Póngale la salsa de tomatillo encima de las tortillas y luego hornee por 30 minutos a 350 grados."
             },
             "imgSrc" : "burritos",
             "servingSize" : 2,
@@ -208,7 +208,7 @@
             },
             "instructions" : {
                 "en" : "Cut the fruit into small pieces and serve on a plate.",
-                "es" : "Corte la fruta en pedazos pequeños y servir en un plato."
+                "es" : "Corte la fruta en pedazos pequeños y sirva en un plato."
             },
             "imgSrc" : "fruit_salad",
             "servingSize" : 1,

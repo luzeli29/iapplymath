@@ -115,31 +115,31 @@
         "mashedBlackBeans" : {
             "nameSingular" : {
                 "en" : "Mashed Black Beans",
-                "es": "Puré de Frijoles Negros"
+                "es": "Frijoles Negros Licuados"
             },
             "namePlural" : {
                 "en" : "Mashed Black Beans",
-                "es": "Puré de Frijoles Negros"
+                "es": "Frijoles Negros Licuados"
             },
             "imgSrc" : "black_beans"
         },"onion" : {
             "nameSingular" : {
                 "en" : "Onion",
-                "es" : "Picada"
+                "es" : "Cebolla"
             },
             "namePlural" : {
                 "en" : "Onions",
-                "es" : "Picadas"
+                "es" : "Cebollas"
             },
             "imgSrc" : "onions"
         },"mashedSweetPotato" : {
             "nameSingular" : {
                 "en" : "Mashed Sweet Potato",
-                "es": "Puré de Papa Dulce"
+                "es": "Puré de Camote"
             },
             "namePlural" : {
                 "en" : "Mashed Sweet Potato",
-                "es": "Puré de Papa Dulce"
+                "es": "Puré de Camote"
             },
             "imgSrc" : "mashed_sweet_potato"
         },"tomatilloSauce" : {
