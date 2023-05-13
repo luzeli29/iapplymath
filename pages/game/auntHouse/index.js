@@ -46,12 +46,13 @@ export default function RecipeSelect({recipes}) {
         const imgSrc = '/img/food/' + value.imgSrc + '.png'
         return (
             <ClickableIcon selected={selectedRecipe == key} onClick={() => setSelectedRecipe(key)}> 
-                <div className='mx-auto px-2'>
+                <div className='mx-auto px-2' style={{position:'relative'}}>
             
-                    <Image
+                    <Image className='h-1 w-1'
                             priority={true}
-                            width={100}
-                            height={75}
+                            width={60}
+                            height={35}
+                            objectFit = {'contain'}
                             src={imgSrc}
                             alt={value.imgSrc}/>
                     <LevelDisplay level={value.level} lang={lang}/>
@@ -63,11 +64,11 @@ export default function RecipeSelect({recipes}) {
     return (
         <GameIndexLayout
                 lang={lang}
-                game_name={"aunt_house"}
+                gameName={"aunt_house"}
                 instruction_text={instructionText}
                 submit_text={"cook"}
                 handleSubmit={() => handleRecipeSubmit()}>
-                <div className='pt-3'>
+                <div className=''>
                 <IconGroup 
                     lang={lang}
                     icons={recipes}

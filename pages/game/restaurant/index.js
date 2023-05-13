@@ -89,7 +89,7 @@ export default function Resturant () {
     return (
         <GameIndexLayout
                 lang={lang}
-                game_name={"restaurant"}
+                gameName={"restaurant"}
                 instruction_text={instructionText}
                 submit_text={"order"}
                 handleSubmit={() => handleOrderComplete()}>

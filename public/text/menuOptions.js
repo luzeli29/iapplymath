@@ -12,7 +12,7 @@ const menu_options = {
             price: 9,
         },{
             en: "Chicken and Rice",
-            es: "Arroz con pollo",
+            es: "Arroz con Pollo",
             img: "rice_with_chicken.png",
             price: 7,
         },{
@@ -43,7 +43,7 @@ const menu_options = {
             price: 9,
         },{
             en: "Quinoa Salad",
-            es: "Ensalada De Quinua",
+            es: "Ensalada De Quinoa",
             img: "quinoa_salad.png",
             price: 7
         },{
@@ -58,7 +58,7 @@ const menu_options = {
             price: 7,
         },{
             en: "Tamale",
-            es: "Tamale",
+            es: "Tamal",
             img: "tamale.png",
             price: 6,
         },{
@@ -91,18 +91,18 @@ const menu_options = {
             img: "lavendar_lemonade.png",
             price: 2,
         },{
-            en: "Coconut Lime Aguas Fresca",
-            es: "Aguas Frescas de Coco y Lima",
+            en: "Coconut Lime Agua Fresca",
+            es: "Agua Fresca de Coco y Lima",
             img: "aguas_frescas_coconut_lime.png",
             price: 3,
         },{
             en: "Milkshake",
-            es: "Malteada",
+            es: "Batido",
             img: "milkshake.png",
             price: 5,
         },{
             en: "Orange Juice",
-            es: "Zumo de Naranja",
+            es: "Jugo de Naranja",
             img: "orange_juice.png",
             price: 4,
         }

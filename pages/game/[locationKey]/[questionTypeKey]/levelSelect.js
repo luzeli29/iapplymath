@@ -57,7 +57,7 @@ export default function LevelSelect({location,levels}) {
     
     function getLevelIcon(key,value) {
         return (
-            <ClickableIcon selected={selectedLevel == key} onClick={() => setSelectedLevel(key)}> 
+            <ClickableIcon selected={selectedLevel == value.value} onClick={() => setSelectedLevel(value.value)}> 
                     <LevelDisplay level={value.value} lang={lang}/>
             </ClickableIcon>
         )
@@ -68,14 +68,13 @@ export default function LevelSelect({location,levels}) {
             const locationKey = routerQuery.locationKey
             const questionTypeKey = routerQuery.questionTypeKey
             const questionParams = location.questionTypes[questionTypeKey].questionParams
-            console.log(questionParams)
 
             let params = {}
             for(let paramKey of Object.keys(questionParams)){
                 params[paramKey] = routerQuery[paramKey]
             }
+            params.level = selectedLevel
             const paramString = CreateParamString(params)
-            console.log(paramString)
             router.push('/game/' + locationKey + '/quiz/' + questionTypeKey + paramString)
         }
     }

@@ -3,12 +3,11 @@ import aHSimpleMultiQuestions from "@public/text/questions/auntHouse/aHSimpleMul
 import fillQuestionTemplate from "@utils/game/questionGenerators/fillQuestionTemplate"
 
 export default function generateAHSimpleMultiQuestion(recipe,ingredient,factor,randomGenerator) {
+
     let templateToUse = randomGenerator != undefined ? randomGenerator.randomInt(0,questionTemplates.length) : 0
-    console.log(aHSimpleMultiQuestions)
     const template = aHSimpleMultiQuestions[templateToUse]
     let tags = {}
     tags.factor = factor
-    console.log(ingredient)
     tags.ing_amount = ingredient.amount
     tags.answer = simplifyFraction((eval(ingredient.amount) * factor),recipe.recipeMakesAmount)
     tags.serving_Size = recipe.servingSize

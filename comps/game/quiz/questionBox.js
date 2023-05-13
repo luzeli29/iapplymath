@@ -14,6 +14,7 @@ import Error from 'pages/error'
 import Login from 'pages/user/login'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import TextReader from '@comps/accessibility/textReader';
+import DevLog from '@utils/debug/devLog';
 
 export default function QuestionBox({questionData, incorrectNum}) {
     const {user,settings,loading, error} = useUserContext()
@@ -42,7 +43,7 @@ export default function QuestionBox({questionData, incorrectNum}) {
                             : "";
     */
 
-    console.log("Question:",questionData)
+    DevLog("Question:" + questionData)
     
     const questionSrc = questionData.imgSrc
     const path = "/img/questionExamples/" + questionSrc + ".png"

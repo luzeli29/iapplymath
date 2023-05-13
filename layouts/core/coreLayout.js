@@ -22,6 +22,8 @@ export default function Layout({ children }) {
     const lang = settings.lang
     const text = feedback.find(f => Boolean(f[lang]))[lang];
     const mute = settings.mute
+    const font = settings.font
+    const [fontFamily, setFontFamily] = useState();
     const [musicSrc, setMusicSrc] = useState("/sound/null.mp3");
     const mapLocation = '' //TODO: get this from the router filepath
     useEffect(() => {
@@ -44,6 +46,14 @@ export default function Layout({ children }) {
         }
     }, [mute, mapLocation]);
 
+    useEffect(() => {
+        if (font){
+            setFontFamily('DyslexicRegular')
+        } else{
+            setFontFamily('Futura,Trebuchet MS,Arial,sans-serif')
+        }
+    }, [font])
+
     if(loading || !router.isReady) return <Loading/>
     if(error) return <Error error={error}/>
 
@@ -55,16 +65,16 @@ export default function Layout({ children }) {
                 loop = {true}
                 preload = {true}
             />
-            <div className="header_container">
+            <div className="header_container" style ={{fontFamily}}>
                 <Header/>
             </div>
-                <div className="body_container">
-                    <div className="view_container">
+                <div className="body_container" style ={{fontFamily}}>
+                    <div className="view_container" style ={{fontFamily}}>
                         { children }
                     </div>
                 </div>
-            <div className="">
-                <a className="feedback_button" rel="noreferrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank">{text}</a>
+            <div className="feedback" style ={{fontFamily}}>
+                <a className="feedback_button" rel="noreferrer" href="https://unc.az1.qualtrics.com/jfe/form/SV_7OJAstMhj3nshvg" target="_blank" style ={{fontFamily}}>{text}</a>
             </div>
         </>
     );

@@ -2,17 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {useRouter} from 'next/router'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
-import {Dialog,simplifyAnswer, throwError} from '@utils/imports/commonImports'
+import {Dialog} from '@utils/imports/commonImports'
 import 'reactjs-popup/dist/index.css';
 import Ayu from '@comps/game/quiz/ayu';
 import AnswerBox from '@comps/game/quiz/answerBox';
 import QuestionBox from '@comps/game/quiz/questionBox';
-import { useStopWatch } from '@hooks/useStopWatch';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
-import { err } from '@utils/debug/log';
 import Creator from 'pages/user/checkIn'
-import createGameQuestion from '@utils/game/createGameQuestion';
+import DevErr from '@utils/debug/devErr';
 
 
 export default function QuestionLayout ({children, questions, onBack, onFinish}) {
@@ -36,12 +34,14 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    if(questions) {
       for(var i = 0; i < questions.length; i ++) {
          _questions[_questions.length] = questions[i]
-         const continueQuestion = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
-         continueQuestion.questionFormat = "continue"
+         let continueQuestion = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
+         continueQuestion.questionFormatKey = "correctAnswer"
          
          _questions[_questions.length] = continueQuestion
       }
    }
+
+
    if(loading) return <Loading/>
    if(!router.isReady) return <Loading/>
    if(error) return <Error error={error}/>
@@ -123,7 +123,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          try {
             user.putSession(questionData)
          } catch (e) {
-            err(e.message)
+            DevErr(e.message)
          }
 
       }
@@ -165,7 +165,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                break;
          default :
                //Test if input is correct
-               if(simplifyAnswer(answer) == _questions[questionNum].answer) { //Answer is correct
+               if(answer == _questions[questionNum].answer) { //Answer is correct
                   //stop()
                   //_questions[questionNum].timeTaken = time
                   _questions[questionNum].incorrectNum = incorrectNum
@@ -181,8 +181,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    if(state == "questions") {
       if(questionNum < _questions.length) {
          const correctAnswer = _questions[questionNum].answer;
-         const answerFormat = _questions[questionNum].answerFormat;
-         const questionFormat = _questions[questionNum].questionFormat;
+         const questionFormatKey = _questions[questionNum].questionFormatKey;
          /*
          if(!isRunning 
                && correctAnswer != "fill_in"
@@ -212,7 +211,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
                         <td className={style.numpad_container}>
                               <AnswerBox
                                  correctAnswer={correctAnswer}
-                                 questionFormat={questionFormat}
+                                 questionFormatKey={questionFormatKey}
                                  handleSubmitAnswer={handleSubmitAnswer}/>
                         </td>
                         <td className={style.ayu_block}>
@@ -225,7 +224,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          )
       } else {
          handleExit("FINISHED")
-         return (<Loading/>)
       }
    } else {
       //TODO: switch dialog randomly in order to have different ayu relaxations

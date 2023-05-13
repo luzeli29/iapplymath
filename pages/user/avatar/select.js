@@ -6,8 +6,10 @@ import { getText } from '@commonImports';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Error from 'pages/error';
 import Loading from '@comps/screens/loading';
-import { err, log } from '@utils/debug/log';
+import DevLog from '@utils/debug/devLog';
 import Login from 'pages/user/login';
+import DevErr from '@utils/debug/devErr';
+
 export default function AvatarSelect() {
     //get the site context and lang
     const {user,settings,loading, error} = useUserContext()
@@ -27,7 +29,7 @@ export default function AvatarSelect() {
     function handleSaveAvatar() {
         if(!isLoggedIn) {
             setFeedbackText(getText('not_loggedin_avatar',lang))
-            err('User is not logged in.')
+            DevErr('User is not logged in.')
             return
         }
         setFeedbackText()
@@ -52,11 +54,17 @@ export default function AvatarSelect() {
             </button>
         )
     } 
+    DevLog(feedbackText)
     
     return (
         <>
             <h1 className={style.as_title_container}>{getText('pick_avatar',lang)}</h1>
-            <p className='text-center'>{feedbackText}</p>
+            {feedbackText != undefined ? 
+                <p className='text-center'>{feedbackText}</p>
+            :
+            <>
+            </>
+            }
             <div className={style.button_bar}>
                 {Array.apply(0, Array(8)).map((x,i) => {
                     return <AvatarButton index={i} key={i} />;

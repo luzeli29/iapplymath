@@ -2,11 +2,11 @@ import fillTextTags from "@utils/text/fillTextTags"
 import createGameQuestion from "../createGameQuestion"
 
 export default function fillQuestionTemplate(template,tags) {
-    console.log(template)
     const questionText = template.questionText
     const answer = tags.answer
+    const questionFormatKey = template.questionFormatKey
 
-    //THIS IS TERRIBLE, I KNOW...
+    //FIXME: THIS IS TERRIBLE, I KNOW...
     const hintsObj = JSON.parse(JSON.stringify(template.hints));
     const hints = Object.values(hintsObj)
 
@@ -23,6 +23,7 @@ export default function fillQuestionTemplate(template,tags) {
         },
         answer,
         hints,
+        questionFormatKey
 
     )
     return question

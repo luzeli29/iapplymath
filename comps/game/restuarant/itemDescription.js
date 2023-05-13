@@ -1,6 +1,6 @@
 import { getText } from '@commonImports'
 import style from '@styles/restaurant.module.css'
-import { err } from '@utils/debug/log'
+import { err } from '@utils/debug/devLog'
 
 //Item description shown when player hovers over button
 const ItemDescription = ({lang,hoveredDish,budget}) => {

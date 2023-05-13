@@ -4,7 +4,7 @@ const dialog_scripts = {
         lines: [
             {
                 en:"Hi, if you're seeing this there was an error with the website's code. Click or press enter to go to the index page.",
-                es:"Hola, please switch to english!",
+                es:"Por favor cambia al idioma inglés, hubo un error con el código de la página",
             },
         ],
     },
@@ -13,40 +13,28 @@ const dialog_scripts = {
         stage: "ayu",
         lines: [
             {
-                en:"Hi, my name is Ayuda but all my friends call me Ayu. “Ayuda” means “help” in Spanish.",
-                es:"Hola, mi nombre es Ayuda pero mis amistades me llaman Ayu. “Ayuda” significa “help” en inglés.",
+                en:"Hi, my name is Ayuda but all my friends call me Ayu. “Ayuda” means “help” in Spanish. I am here to help you during the game.",
+                es:"Hola, mi nombre es Ayuda, pero puedes llamarme Ayu. Yo estoy aquí para ayudarte durante el juego.",
             },{
-                en:"I am here to help you during the game. If you need a break from solving problems, pet me and I will be there to help you relax. ",
-                es:"Yo estoy aquí para ayudarte durante el juego. Si necesitas un descanso mientras resuelves problemas, acaríciame y allí estaré " +
-                    "para ayudarte a relajar.",
-            },{
-                en:"You can also click on your pet to get support while you are finding solutions.",
-                es:"También puedes hacer clic sobre tu mascota para que te apoye mientras consigues tus soluciones.",
+                
+                en:"You can take a break from problem solving and find relaxation with your pet or with me, we are always there to support you.",
+                es:"Puedes tomar un descanso de resolver problemas y encontrar relajación con tu mascota o conmigo, siempre estamos ahí para apoyarte.",
             },{
                 en:"Math problems can be challenging, so we have built in some other game features to help you with solving math in your world.",
                 es:"Los problemas de matemática pueden sentirse complicados y por eso hemos incorporado algunas otras características " +
                     "en este juego para ayudarte a resolver problemas matemáticos en tu mundo.",
             },{
-                en:"We know that soon you will be saying “I Apply Math in my World”",
-                es:"Sabemos que pronto estarás diciendo “Yo Aplicó Matemáticas en mi Mundo”",
-            },{
-                en: "The game has a calculator that you can use at any time." +
-                    "The music can be turned on or off whenever you want.",
-                es: "El juego tiene una calculadora que puedes usar en cualquier momento." +
-                    "La música se puede apagar y prender cuando tú quieras.",
+                en: "You can use the game's calculator and turn music on or off anytime. Also, feel free to share how you feel or return to the map for a new adventure.",
+                es: "Puedes usar la calculadora del juego y activar o desactivar la música en cualquier momento. Además, siéntete libre de compartir cómo te sientes o volver al mapa para una nueva aventura.",
             },{
                 en: "The game will save your progress for your next visit, but you need to log out when you are done playing.",
                 es: "El juego guardará tu progreso para tu próxima visita, pero debes cerrar tu sesión cuando termines de jugar.",
             },{
-                en: "At any point during the game you can tell us how you feel." +
-                    "You can also return to the map if you’d like to go on a different adventure.",
-                es: "En cualquier momento durante el juego nos puedes decir cómo te sientes." +
-                    "También puedes volver al mapa si deseas intentar una aventura diferente.",
+                en:"This game has different levels - Level 1 is for beginners, Level 2 is for advanced, and Level 3 is for experts.",
+                es:"Este juego tiene diferentes niveles: el Nivel 1 es para principiantes, el Nivel 2 es para avanzados y el Nivel 3 es para expertos."
             },{
-                en:"This game has different levels (Level 1, Level 2 and Level 3) Level 1 is for beginners, " +
-                    "Level 2 is for advanced, and Level 3 is for experts. ",
-                es:"Este juego tiene diferentes niveles (Nivel 1, Nivel 2 y Nivel 3) El Nivel 1 es para principiantes, " +
-                    "el Nivel 2 es para avanzados y el Nivel 3 es para expertos.",
+                en:"We know that soon you will be saying “I Apply Math in my World”",
+                es:"Sabemos que pronto estarás diciendo “Yo Aplicó Matemáticas en mi Mundo”",
             }
         ],
     },
@@ -86,18 +74,18 @@ const dialog_scripts = {
         
             {
                 en:"Slowly, let’s take three big belly breaths.",
-                es:"Lentamente, tomemos tres respiraciones profundas.",
+                es:"Tomemos tres respiraciones profundas lentamente.",
             }, {
                 en:"Breathe in slowly through your nose for 4, 3, 2, 1\nBreathe out slowly through your mouth for 5, 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 4, 3, 2, 1\Exhala lentamente por tu boca 5, 4, 3, 2, 1",
+                es:"Inhala lentamente por tu nariz 4, 3, 2, 1\nExhala lentamente por tu boca 5, 4, 3, 2, 1",
                 stg: "ayuDeepBreathContinuous"
             },{
                 en:"Breathe in slowly through your nose for 5, 4, 3, 2, 1\nBreathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 5, 4, 3, 2, 1\Exhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
+                es:"Inhala lentamente por tu nariz 5, 4, 3, 2, 1\nExhala lentamente por tu boca 6, 5, 4, 3, 2, 1",
                 stg: "ayuDeepBreathContinuous"
             },{
                 en:"Breathe in slowly through your nose for 6, 5, 4, 3, 2, 1\nBreathe out slowly through your mouth for 7, 6, 5, 4, 3, 2, 1",
-                es:"Inhala lentamente por tu nariz 6, 5, 4, 3, 2, 1\Exhala lentamente por tu boca 7, 6, 5, 4, 3, 2, 1",
+                es:"Inhala lentamente por tu nariz 6, 5, 4, 3, 2, 1\nExhala lentamente por tu boca 7, 6, 5, 4, 3, 2, 1",
                 stg: "ayuDeepBreathContinuous"
             }
         ],
@@ -108,16 +96,16 @@ const dialog_scripts = {
             lines:   [
             {
                 en:"Let’s stretch our back muscles like a cat after a relaxing nap! breathe in and reach your arms up overhead then breathe out and relax your hands by your sides.",
-                es:"Estiremos nuestros músculos de la espalda como un gato después de una siesta relajante! Inhala y levanta tus brazos por encima de tus cabeza, luego exhala y relaja tus manos a tus costados."
+                es:"¡Estiremos los músculos de la espalda como un gato después de una siesta relajante! Respira hondo y alza los brazos por encima de la cabeza, luego exhala y relaja tus manos a los costados."
             }, {
                 en:"Slowly breathe in and bring your shoulders up towards your head and when you breathe out push your head down into your shoulders.",
-                es:"Lentamente inhala y levanta tus hombros hacia tu cabeza y cuando exhalas empuja tu cabeza para abajo hacia tus hombros.",
+                es:"Respira lentamente y eleva los hombros hacia la cabeza, y cuando exhales presiona la cabeza hacia los hombros."
             },{
                 en:"Now slowly breathe in and reach your shoulders up and back then breathe out and let your shoulders come back down, do this three times.",
-                es:"Ahora inhala lentamente y levanta tus hombros hacia arriba y hacia atrás, luego exhala y deja que tus hombros vuelvan a bajar, haga esto tres veces.",
+                es:"Ahora inhala lentamente y levanta tus hombros hacia arriba y hacia atrás, luego exhala y deja que tus hombros vuelvan a bajar, repite esto tres veces.",
             },{
                 en:"Imagine you have two juicy lemons in each hand. Begin to squeeze all the juice out of the lemons using your hands, your arms, your legs, your toes, and even your face. Squeeze and tense up every muscle in your body for 3…2…1… Then stop squeezing and release the tension in your whole body",
-                es:"Imagina que tienes dos limones jugosos en cada mano. Comienza a exprimir todo el jugo del limón usando tus manos, tus brazos, tus piernas, tus dedos de los pies e incluso con tu cara. Aprieta y tensiona los músculos en tu cuerpo por 3…2…1… Despues deja de apretar y suelta toda la tensión en tu cuerpo."
+                es:"Imagina que tienes dos limones jugosos en cada mano. Comienza a exprimir todo el jugo del limón usando tus manos, tus brazos, tus piernas, tus dedos de los pies, incluso con tu cara. Aprieta y tensa los músculos en tu cuerpo por 3…2…1… Despues deja de apretar y suelta toda la tensión en tu cuerpo."
             },{
                 en:"Release the tension in your body and relax.",
                 es:"Suelta la tensión en tu cuerpo y relájate"
@@ -127,7 +115,6 @@ const dialog_scripts = {
 
     resturant_intro: {
         stage: "restaurant",
-        no_speaker: true,
         lines: [
             {
                 en: "Hey, I am so happy to see you here!",
@@ -144,14 +131,13 @@ const dialog_scripts = {
 
     resturant_outro: {
         stage: "restaurant",
-        no_speaker: true,
         lines: [
             {
                 en: "Wow, I’m so full!",
                 es: "Guau, estoy muy satisfecha!"
             },{
                 en: "The food was really good!",
-                es: "Si, la comida estaba muy buena!",
+                es: "La comida estaba muy buena!",
                 player_speaking: true,
             },{
                 en: "It was! Let’s come again soon.",
@@ -161,6 +147,43 @@ const dialog_scripts = {
                 es: "¡Claro, nos vemos luego!",
                 player_speaking: true,
             }
+        ]
+    },
+
+    school_intro: {
+        stage: "school",
+        lines: [
+            {
+                en: 'Welcome to Ms. Garcia’s math classroom!',
+                es: '¡Bienvenidos a la clase de matemáticas de la Sra. García!'
+            },
+            {
+                en: 'At the end of the year we have a very fun math contest in my class.',
+                es: 'Al final del año tendremos un concurso de matemáticas muy divertido.'
+            },
+            {
+                en: 'Here you can practice multiplying, dividing, adding, and subtracting numbers!',
+                es: '¡Aquí puedes practicar la multiplicación, división, suma y resta de números!'
+            },
+            {
+                en: 'Math can be challenging sometimes, so do your best and take a break when you need to. I know you can do it!',
+                es: 'Las matemáticas pueden ser desafiantes a veces, así que haz tu mejor esfuerzo y tómate un descanso cuando lo necesites. ¡¡Sé que puedes hacerlo!!'
+            },
+        ]
+    },
+
+    school_outro: {
+        stage: "school",
+        lines: [
+            {
+                en: 'Thank you for practicing math with me today, you were amazing!',
+                es: 'Gracias por practicar matemáticas conmigo hoy, ¡estuvo increíble!'
+            },
+            {
+                en: 'You are going to do awesome on your test!',
+                es: '¡Te va  a ir súper bien en tu prueba!'
+            },
+            
         ]
     }
     

@@ -2,7 +2,7 @@ import React, { } from 'react';
 import {useRouter} from 'next/router'
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import QuickNavButtons from '@comps/header/quickNavButtons';
-import { err } from '@utils/debug/log';
+import DevErr from '@utils/debug/devErr';
 
 export default function Header() {
     const {user,settings, loading, error} = useUserContext()
@@ -11,8 +11,8 @@ export default function Header() {
     if(loading) return <></>
     if(error) {
         //TODO: route to error screen
-        err('Error when creating header.')
-        err(error)
+        DevErr('Error when creating header.')
+        DevErr(error)
         return <></>
     }
     if(!router.isReady) return <></>
@@ -22,10 +22,10 @@ export default function Header() {
 
     return(
         <div className="container text-center">
-        <div className="row pt-2">
-            <h1 onClick={() => router.push('/')}>I Apply Math in my World</h1>
+        <div >
+            <text class= "font-h1" onClick={() => router.push('/')}>I Apply Math in my World</text>
         </div>
-        <div className="row justify-content-lg-center pt-1">
+        <div className="row justify-content-lg-center">
             <div className="col col-lg-1">
                 <button onClick={() => settings.setLang('es')}><strong>Español</strong></button>
             </div>
