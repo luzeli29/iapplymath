@@ -13,7 +13,6 @@ import IngredientList from '@comps/game/auntHouse/ingredientList'
 import generateRecipeTitleText from '@utils/game/auntHouse/textCreation/generateRecipeTitleText'
 import generateRecipeServingText from '@utils/game/auntHouse/textCreation/generateRecipeServingText'
 import LoadLocations from '@utils/staticData/json/game/loadLocations'
-import { log } from '@utils/debug/log'
 
 
 export async function getStaticPaths() {

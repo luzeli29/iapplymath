@@ -1,5 +1,4 @@
 import { getText, simplifyFraction } from "@commonImports"
-import { log } from "@utils/debug/log"
 import aHSimpleMultiQuestions from "@public/text/questions/auntHouse/aHSimpleMultiQuestions"
 import fillQuestionTemplate from "@utils/game/questionGenerators/fillQuestionTemplate"
 
