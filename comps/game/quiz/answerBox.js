@@ -8,9 +8,9 @@ import {useRouter} from 'next/router'
 import ContinueAnswerBox from './answerBoxes/continueAnswerBox';
 import QuestionFormats from '@utils/game/questionFormats'
 import TextInputAnswerBox from './answerBoxes/textInputAnswerBox';
-import { err, log } from '@utils/debug/log';
 import QuizCalculator from './quizCalculator/quizCalculator';
 import ButtonAnswerBox from './answerBoxes/buttonAnswerBox';
+import DevErr from '@utils/debug/devErr';
 
 export default function AnswerBox({correctAnswer,questionFormatKey,handleSubmitAnswer}) {
     const {user,settings,loading, error} = useUserContext()
@@ -24,7 +24,7 @@ export default function AnswerBox({correctAnswer,questionFormatKey,handleSubmitA
     const questionFormat = QuestionFormats[questionFormatKey];
     const getAnswerBox = () => {
         if(!questionFormat) {
-            err('"questionFormat" is not defined')
+            DevErr('"questionFormat" is not defined')
             return <ContinueAnswerBox lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
         }
         
@@ -36,7 +36,7 @@ export default function AnswerBox({correctAnswer,questionFormatKey,handleSubmitA
             case 'continue':
                 return <ContinueAnswerBox questionFormat={questionFormat} lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
             default:
-                err('Invalid answerBoxType')
+                DevErr('Invalid answerBoxType')
                 return <ContinueAnswerBox lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
         }
     }

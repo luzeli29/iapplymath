@@ -1,4 +1,4 @@
-const { err } = require("@utils/debug/log");
+const { err } = require("@utils/debug/devLog");
 
 function fillTextTags(text, tags) {
   let filledText = text;

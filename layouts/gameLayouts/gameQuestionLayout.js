@@ -2,17 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {useRouter} from 'next/router'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
-import {Dialog,simplifyAnswer, throwError} from '@utils/imports/commonImports'
+import {Dialog} from '@utils/imports/commonImports'
 import 'reactjs-popup/dist/index.css';
 import Ayu from '@comps/game/quiz/ayu';
 import AnswerBox from '@comps/game/quiz/answerBox';
 import QuestionBox from '@comps/game/quiz/questionBox';
-import { useStopWatch } from '@hooks/useStopWatch';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
-import { err, log } from '@utils/debug/log';
 import Creator from 'pages/user/checkIn'
-import createGameQuestion from '@utils/game/createGameQuestion';
+import DevErr from '@utils/debug/devErr';
 
 
 export default function QuestionLayout ({children, questions, onBack, onFinish}) {
@@ -36,7 +34,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    if(questions) {
       for(var i = 0; i < questions.length; i ++) {
          _questions[_questions.length] = questions[i]
-         const continueQuestion = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
+         let continueQuestion = translations.question_feedback[Math.floor(Math.random() * translations.question_feedback.length)]
          continueQuestion.questionFormatKey = "correctAnswer"
          
          _questions[_questions.length] = continueQuestion
@@ -132,7 +130,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          try {
             user.putSession(questionData)
          } catch (e) {
-            err(e.message)
+            DevErr(e.message)
          }
 
       }

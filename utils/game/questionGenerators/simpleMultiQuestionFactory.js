@@ -1,19 +1,18 @@
 import { getText } from "@commonImports"
-import { err } from "@utils/debug/log"
+import DevErr from "@utils/debug/devErr"
 import createGameQuestion from "@utils/game/createGameQuestion"
-import validateOrder from "@utils/validation/game/restaurant/validateOrder"
 
 export default function simpleMultiQuestionFactory(game,helperObject,randomGenerator) {
     if(!game) {
-        err('No "game" provided to generateSimpleMultiQuestion')
+        DevErr('No "game" provided to generateSimpleMultiQuestion')
         return [createGameQuestion()]
     }
     if(!helperObject) {
-        err('No "helperObject" provided to generateSimpleMultiQuestion')
+        DevErr('No "helperObject" provided to generateSimpleMultiQuestion')
         return [createGameQuestion()]
     }
     if(!randomGenerator) {
-        err('No "randomGenerator" provided to generateSimpleMultiQuestion. Using unseeded random generator.')
+        DevErr('No "randomGenerator" provided to generateSimpleMultiQuestion. Using unseeded random generator.')
     }
     const maxNumbOfQuestions = helperObject.level ? 3 * helperObject.level : 3
     let questions = []

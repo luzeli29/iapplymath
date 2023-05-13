@@ -1,9 +1,10 @@
-import { err } from "@utils/debug/log";
 import createGameQuestion from "@utils/game/createGameQuestion";
 import generateAHSimpleMultiQuestions from "@utils/game/auntHouse/questionCreation/auntHouseQuestionGenerators/generateAHSimpleMultiQuestion";
+import DevErr from "@utils/debug/devErr";
+
 export default function generateBasicAHQuestions(recipe,randomGenerator) {
     if(!recipe) {
-        err('No "recipe" given to generateBasicAHQuestions')
+        DevErr('No "recipe" given to generateBasicAHQuestions')
         return [createGameQuestion()]
     }
 

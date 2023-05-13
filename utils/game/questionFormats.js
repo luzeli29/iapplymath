@@ -16,6 +16,13 @@ const QuestionFormats = {
         answerBoxMessage: 'franctions_only',
         calculatorType: 'basic'
     },
+    'fractionExact': {
+        validationRegex : /^-?(?:0|[1-9]\d*)(?:\/[1-9]\d*)?$/,
+        validationFailMessage: 'invalid_fraction',
+        answerBoxType: 'textInput',
+        answerBoxMessage: 'exact_franctions_only',
+        calculatorType: 'basic'
+    },
     'wholeNumber': {
         validationRegex : /^-?(?:0|[1-9]\d*)$/,
         validationFailMessage: 'invalid_whole_number',

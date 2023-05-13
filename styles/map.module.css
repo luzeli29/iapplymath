@@ -123,9 +123,9 @@
 
 .school_text {
     position: absolute;
-    left: 80%;
-    top:8%;
-    color: white;
+    top: 1vh;
+    left: 55vw;
+    margin-left: 10px;
 }
 
 .grocery_store_text {
@@ -175,7 +175,6 @@
 
 #school {
     position: absolute;
-    top: 8%;
-    left: 55%;
-    opacity: 50%;
+    top: 12%;
+    left: 70%;
 }

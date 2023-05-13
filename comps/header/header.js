@@ -2,7 +2,7 @@ import React, { } from 'react';
 import {useRouter} from 'next/router'
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import QuickNavButtons from '@comps/header/quickNavButtons';
-import { err } from '@utils/debug/log';
+import DevErr from '@utils/debug/devErr';
 
 export default function Header() {
     const {user,settings, loading, error} = useUserContext()
@@ -11,8 +11,8 @@ export default function Header() {
     if(loading) return <></>
     if(error) {
         //TODO: route to error screen
-        err('Error when creating header.')
-        err(error)
+        DevErr('Error when creating header.')
+        DevErr(error)
         return <></>
     }
     if(!router.isReady) return <></>

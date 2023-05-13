@@ -115,7 +115,6 @@ const dialog_scripts = {
 
     resturant_intro: {
         stage: "restaurant",
-        no_speaker: true,
         lines: [
             {
                 en: "Hey, I am so happy to see you here!",
@@ -132,7 +131,6 @@ const dialog_scripts = {
 
     resturant_outro: {
         stage: "restaurant",
-        no_speaker: true,
         lines: [
             {
                 en: "Wow, I’m so full!",
@@ -149,6 +147,43 @@ const dialog_scripts = {
                 es: "¡Claro, nos vemos luego!",
                 player_speaking: true,
             }
+        ]
+    },
+
+    school_intro: {
+        stage: "school",
+        lines: [
+            {
+                en: 'Welcome to Ms. Garcia’s math classroom!',
+                es: '¡Bienvenidos a la clase de matemáticas de la Sra. García!'
+            },
+            {
+                en: 'At the end of the year we have a very fun math contest in my class.',
+                es: 'Al final del año tendremos un concurso de matemáticas muy divertido.'
+            },
+            {
+                en: 'Here you can practice multiplying, dividing, adding, and subtracting numbers!',
+                es: '¡Aquí puedes practicar la multiplicación, división, suma y resta de números!'
+            },
+            {
+                en: 'Math can be challenging sometimes, so do your best and take a break when you need to. I know you can do it!',
+                es: 'Las matemáticas pueden ser desafiantes a veces, así que haz tu mejor esfuerzo y tómate un descanso cuando lo necesites. ¡¡Sé que puedes hacerlo!!'
+            },
+        ]
+    },
+
+    school_outro: {
+        stage: "school",
+        lines: [
+            {
+                en: 'Thank you for practicing math with me today, you were amazing!',
+                es: 'Gracias por practicar matemáticas conmigo hoy, ¡estuvo increíble!'
+            },
+            {
+                en: 'You are going to do awesome on your test!',
+                es: '¡Te va  a ir súper bien en tu prueba!'
+            },
+            
         ]
     }
     
