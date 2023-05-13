@@ -68,8 +68,12 @@ export default function AuntHouseQuestions({recipe}) {
     if(error) return <Error error={error}/>
     if(!isLoggedIn) return <Login/>
     const lang = settings.lang
+
+
+    // FAMILY SIZE is always undefined here
     const { questionTypeKey, recipeKey, familySize } = router.query
-    // added initial state to prevent error on first render
+
+
     const [questions, setQuestions] = useState(aHQuestionFactory(questionTypeKey, recipe))
 
     const recipeTitle = generateRecipeTitleText(recipe,lang)
@@ -117,6 +121,7 @@ function getFinishRoute(questionTypeKey, recipeKey,familySize) {
         case 'basic':
             return '/game/auntHouse/quiz/familySize/' + recipeKey
         case "familySize":
+            // /game/auntHouse/quiz/familySize/carrotOrangeJuice    
             return '/game/auntHouse/quiz/familyQuestion/' + recipeKey
         case "familyQuestion":
             return '/game/auntHouse/finished'
