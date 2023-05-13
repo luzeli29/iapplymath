@@ -1,11 +1,10 @@
-import { err, log } from "@utils/debug/log"
+import DevErr from "@utils/debug/devErr";
 
 export default function mergeObjectsIntoObjectByKeys(objectMergeTo, objectsMergeFrom) {
     const keyMap = new Map();
-
     for (const [key, value] of Object.entries(objectsMergeFrom)) {
         if(keyMap.get(key)) {
-            err('Same key already found in "mergeObjectsIntoObjectByKeys()", overriding previous value.')
+            DevErr('Same key already found in "mergeObjectsIntoObjectByKeys()", overriding previous value.')
         }
         keyMap.set(key,value)
     }

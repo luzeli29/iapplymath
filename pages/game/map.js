@@ -66,6 +66,9 @@ export default function Map() {
         router.push('/game/auntHouse/introduction');
     }
 
+    const handleSchoolClick = () => {
+      router.push('/game/school/introduction');
+    }
     
     
   
@@ -152,15 +155,19 @@ export default function Map() {
                             src={"/img/map/my_house.png"}/>
                 </div>
 
-                <p className={style.school_text}>{translations.coming_soon[lang]}</p>
-                <div
-                    className={style.icon} 
-                    id={style.school}>
-                        <img className={style.icon} 
-                            id={style.school}
-                            src={"/img/map/school.png"}/>
-                </div>
-
+                <p className={style.school_text}>{translations.school[lang]}</p>
+                <button onClick={() => handleSchoolClick()}>
+                  <div
+                      className={style.icon_button} 
+                      id={style.school}>
+                        <Image 
+                        layout={"fill"}
+                        quality={100}
+                        priority={true}
+                        src={"/img/map/school.png"}
+                        alt={"school image"}/>
+                  </div>
+                </button>
                 <p className={style.grocery_store_text}>{translations.coming_soon[lang]}</p>
                 <img className={style.icon} 
                     id={style.grocery_store}

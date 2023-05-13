@@ -1,5 +1,5 @@
 import Tooltip from '@comps/accessibility/tooltip';
-import {log, err} from '@utils/debug/log'
+import DevErr from '@utils/debug/devErr';
 import React from 'react'
 import {BiCircle} from "react-icons/bi";
 
@@ -17,7 +17,7 @@ export default function QuickNavButton({children,text,onClick}) {
     if(onClick) {
         handleClick = onClick
     } else {
-        handleClick = () => err("No onClick defined.")
+        handleClick = () => DevErr("No onClick defined.")
     }
 
     if(children) {

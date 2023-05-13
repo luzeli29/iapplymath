@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import {log} from '@utils/debug/log';
+import DevLog from '@utils/debug/devLog';
 import useSession from './useSession';
 import useSettings from './useSettings';
 
@@ -64,7 +64,7 @@ export default function useUser() {
   }
 
   async function login(username) {
-    log("Logging in...")
+    DevLog("Logging in...")
     setLoading(true)
     const storedUserData = Cookies.get('user');
 
@@ -169,7 +169,7 @@ export default function useUser() {
 
   function offlineLogin(username) {
     setError()
-    log("Logging in offline mode...")
+    DevLog("Logging in offline mode...")
 
     const offlineUser = {
         username: username,
@@ -239,7 +239,7 @@ export default function useUser() {
   }
 
   async function logout() {
-    log("Logging out...")
+    DevLog("Logging out...")
 
     if(userdata.isOffline) {
       await clearUserCookie()
@@ -271,7 +271,7 @@ export default function useUser() {
       return
     }
     try{
-      log('Setting "petId" to ' + petId)
+      DevLog('Setting "petId" to ' + petId)
       
       if(userdata.isOffline) {
         const newUser = user
@@ -336,7 +336,7 @@ export default function useUser() {
       return
     }
     try{
-      log('Setting "avatarId" to ' + avatarId)
+      DevLog('Setting "avatarId" to ' + avatarId)
 
       if(userdata.isOffline) {
         const newUser = user
