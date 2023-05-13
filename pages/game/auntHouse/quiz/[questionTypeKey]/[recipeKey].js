@@ -79,15 +79,11 @@ export default function AuntHouseQuestions({recipe}) {
     const recipeServingText = generateRecipeServingText(recipe,lang)
     const finishRoute = getFinishRoute(questionTypeKey,recipeKey,familySize)
     
-    log("route: " + finishRoute)
     if(!questions){
-        console.log("questions not loaded")
         return(<Loading/>)  
     } 
 
     function handleFinish() {
-        console.log("handleFinish")
-        console.log(finishRoute)
         router.push(finishRoute)
         setQuestions('')
     }

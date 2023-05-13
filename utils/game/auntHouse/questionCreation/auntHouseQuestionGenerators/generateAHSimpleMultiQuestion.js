@@ -4,15 +4,7 @@ import aHSimpleMultiQuestions from "@public/text/questions/auntHouse/aHSimpleMul
 import fillQuestionTemplate from "@utils/game/questionGenerators/fillQuestionTemplate"
 
 export default function generateAHSimpleMultiQuestion(recipe,ingredient,factor,randomGenerator) {
-    log("generateAHSimpleMultiQuestion")
-    log("recipe:")
-    log(recipe)
-    log("ingredient:")
-    log(ingredient)
-    log("factor:")
-    log(factor)
-    log("randomGenerator:")
-    log(randomGenerator)
+
     let templateToUse = randomGenerator != undefined ? randomGenerator.randomInt(0,questionTemplates.length) : 0
     const template = aHSimpleMultiQuestions[templateToUse]
     let tags = {}
