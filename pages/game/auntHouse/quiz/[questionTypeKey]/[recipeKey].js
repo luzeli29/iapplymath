@@ -13,7 +13,6 @@ import IngredientList from '@comps/game/auntHouse/ingredientList'
 import generateRecipeTitleText from '@utils/game/auntHouse/textCreation/generateRecipeTitleText'
 import generateRecipeServingText from '@utils/game/auntHouse/textCreation/generateRecipeServingText'
 import LoadLocations from '@utils/staticData/json/game/loadLocations'
-import { log } from '@utils/debug/log'
 
 
 export async function getStaticPaths() {
@@ -79,15 +78,11 @@ export default function AuntHouseQuestions({recipe}) {
     const recipeServingText = generateRecipeServingText(recipe,lang)
     const finishRoute = getFinishRoute(questionTypeKey,recipeKey,familySize)
     
-    log("route: " + finishRoute)
     if(!questions){
-        console.log("questions not loaded")
         return(<Loading/>)  
     } 
 
     function handleFinish() {
-        console.log("handleFinish")
-        console.log(finishRoute)
         router.push(finishRoute)
         setQuestions('')
     }
