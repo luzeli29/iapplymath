@@ -37,7 +37,8 @@ function generateSingleMultiplyQuestion(order,level,randomGenerator) {
             },{
                 en: "(" + dish.en + ") + (" + dish.en + ") + (" + dish.en + ") = " + dish.price * 3,
                 es: "(" + dish.es + ") + (" + dish.es + ") + (" + dish.es + ") = " + dish.price * 3,
-            }]
+            }],
+            "wholeNumber"
         )
     } else if (dishType == 'mainDish') {
         question = createGameQuestion(
@@ -52,7 +53,8 @@ function generateSingleMultiplyQuestion(order,level,randomGenerator) {
             },{
                 en: "(" + dish.en + ") x " + factor + " = " + dish.price * factor,
                 es: "(" + dish.es + ") x " + factor + " = " + dish.price * factor,
-            }]
+            }],
+            "wholeNumber"
         ) 
     } else {
         question = createGameQuestion(
@@ -67,7 +69,8 @@ function generateSingleMultiplyQuestion(order,level,randomGenerator) {
             },{
                 en: "(" + dish.en + ") x " + factor + " = " + dish.price * factor,
                 es: "(" + dish.es + ") x " + factor + " = " + dish.price * factor,
-            }]
+            }],
+            "wholeNumber"
         ) 
     }
     return question

@@ -5,23 +5,22 @@ import ClickableIcon from "./clickableIcon"
 
 export default function IconGroup({lang,icons,selectedIcon, selectIcon,getContentFromValue,width,height}) {
     const [pageNumber, setPageNumber] = useState(0)
-    
-    const _lang = lang ? lang : 'en'
+    lang = lang ? lang : 'en'
     if(icons == undefined || !icons) return <></>
     if(getContentFromValue == undefined || !getContentFromValue) return <></>
 
 
-    function handleSelect(key) {
+    const handleSelect = (key) => {
         if(selectIcon) {
             selectIcon(key)
         }
     }
 
-    function nextPage() {
+    const nextPage = () => {
         setPageNumber(pageNumber+1)
     }
 
-    function prevPage() {
+    const prevPage = () => {
         setPageNumber(pageNumber-1)
     }
 
@@ -47,8 +46,9 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
             display: 'grid',
             gridTemplateColumns: `repeat(${maxWidth}, 1fr)`,
             gridTemplateRows: `repeat(${maxHeigh}, 1fr)`,
-            gridGap: '20px',
-            height: '100%',
+            gridGap: '2px'
+
+        
           };
           
           return (
@@ -67,7 +67,9 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
     const IconButton = ({keyCode,value}) => {
         const isSelected = keyCode == selectedIcon && selectedIcon != undefined
         return (
-                getContentFromValue(keyCode,value)
+            <div className="mx-auto">
+                {getContentFromValue(keyCode,value)}
+            </div>
         )
     }
 
@@ -82,7 +84,7 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
                 }
             </div>
 
-            <div className="col-10">
+            <div className="col-10 mx-auto">
                 <CurrentIconView/>
             </div>
             <div className="col-1 mx-auto">

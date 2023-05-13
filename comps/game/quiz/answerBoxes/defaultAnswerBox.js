@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import QuizCalculator from '../quizCalculator'
+import QuizCalculator from '../quizCalculator/quizCalculator'
 import { getText } from '@commonImports'
+import DevLog from '@utils/debug/devLog'
 
 export default function DefaultAnswerBox({lang,handleSubmitAnswer}) {
     const [userAnswer, setUserAnswer] = useState('')
 
     function handleFormSubmit(event) {
         event.preventDefault()
-        console.log('form submitted with answer: ', userAnswer)
+        DevLog('form submitted with answer: ' + userAnswer)
         handleSubmitAnswer(userAnswer)
         setUserAnswer('')
     }

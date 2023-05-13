@@ -21,12 +21,13 @@ export async function getStaticPaths() {
     const locationsObj = await LoadLocations()
     const auntHouseObj = locationsObj.auntHouse
     const keyPaths = [];
+
     for (let questionTypeKey of Object.keys(auntHouseObj.questionTypes)){
         for (let recipeKey of recipeKeys) {
             keyPaths.push({ params: { questionTypeKey: questionTypeKey, recipeKey : recipeKey}});
         }
     }
-    
+
     return {
         paths: keyPaths,
         fallback: false,
@@ -52,27 +53,34 @@ export async function getStaticProps(context){
 }
 
 export default function AuntHouseQuestions({recipe}) {
-    const [questions, setQuestions] = useState()
     const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
     const isLoggedIn = user.loggedIn  
+    
+    // FAMILY SIZE is always undefined here
+    const { questionTypeKey, recipeKey, familySize } = router.query
+
     useEffect(() => {
         const generatedQuestions = aHQuestionFactory(questionTypeKey, recipe)
-        console.log(generatedQuestions)
         setQuestions(generatedQuestions)
     },[questionTypeKey])
-  
+    
+    const [questions, setQuestions] = useState(aHQuestionFactory(questionTypeKey, recipe))
+
     if(loading) return <Loading/> 
     if(!router.isReady) return <Loading/>
     if(error) return <Error error={error}/>
     if(!isLoggedIn) return <Login/>
     const lang = settings.lang
-    const { questionTypeKey, recipeKey, familySize } = router.query
+
+
     const recipeTitle = generateRecipeTitleText(recipe,lang)
     const recipeServingText = generateRecipeServingText(recipe,lang)
     const finishRoute = getFinishRoute(questionTypeKey,recipeKey,familySize)
     
-    if(!questions) return(<Loading/>)
+    if(!questions){
+        return(<Loading/>)  
+    } 
 
     function handleFinish() {
         router.push(finishRoute)
@@ -102,6 +110,7 @@ function getFinishRoute(questionTypeKey, recipeKey,familySize) {
         case 'basic':
             return '/game/auntHouse/quiz/familySize/' + recipeKey
         case "familySize":
+            // /game/auntHouse/quiz/familySize/carrotOrangeJuice    
             return '/game/auntHouse/quiz/familyQuestion/' + recipeKey
         case "familyQuestion":
             return '/game/auntHouse/finished'

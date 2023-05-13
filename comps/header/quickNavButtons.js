@@ -5,17 +5,21 @@ import {TbLogout,TbLogin, TbMusicOff} from "react-icons/tb";
 import {TbMusic} from "react-icons/tb";
 import Tooltip from "comps/accessibility/tooltip"
 import getText from '@utils/text/getText'
+import {RxText, RxTextNone} from "react-icons/rx";
 import QuickNavButton from '@comps/header/quickNavButton';
 
 export default function QuickNavButtons({user,settings,router}) {
     const loggedIn = user.loggedIn
     const lang = settings.lang
     const mute = settings.mute
+    const font = settings.font
     const AvatarTooltipText = getText("avatar_tooltip",lang)
     const MapTooltipText = getText("map_tooltip",lang)
     const CheckinTooltipText = getText("checkin_tooltip",lang)
     const MuteTooltipText = getText("mute_tooltip",lang)
     const UnMuteTooltipText = getText("unmute_tooltip",lang)
+    const FontTooltipText = getText("font_tooltip",lang)
+    const FontDysTooltipText  = getText("fontdys_tooltip",lang)
 
     const LogoutTooltipText = getText("logout_tooltip",lang)
     const LoginTooltipText = getText("login_tooltip",lang)
@@ -34,7 +38,21 @@ export default function QuickNavButtons({user,settings,router}) {
         } else {
             return (
             <QuickNavButton text={MuteTooltipText} onClick={() => settings.toggleMute()}>
-                 <TbMusic />
+                 <TbMusic/>
+            </QuickNavButton> )  
+        }
+    }
+
+    const FontButton = () => {
+        if(font) {
+            return (
+            <QuickNavButton text={FontDysTooltipText} onClick={() => settings.toggleFont()}>
+                <RxText/>
+            </QuickNavButton> )
+        } else {
+            return (
+            <QuickNavButton text={FontTooltipText} onClick={() => settings.toggleFont()}>
+                <RxTextNone/>
             </QuickNavButton> )  
         }
     }
@@ -56,6 +74,8 @@ export default function QuickNavButtons({user,settings,router}) {
             </QuickNavButton>
             {/* Mute Button */}
             <MuteButton/>
+            {/* Font Button */}
+            <FontButton/>
             {/* Logout Button */}
             <QuickNavButton text={LogoutTooltipText} onClick={() => handleLogout()}>
                 <TbLogout/>
@@ -67,6 +87,8 @@ export default function QuickNavButtons({user,settings,router}) {
             <div className="col col-lg-2">
                 {/* Mute Button */}
                 <MuteButton/>
+                {/* Font Button */}
+                <FontButton/>
                 {/* Login Button */}
                 <QuickNavButton text={LoginTooltipText} onClick={() => router.push('/user/login')}>
                     <TbLogin/>

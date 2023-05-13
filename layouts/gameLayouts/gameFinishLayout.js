@@ -5,7 +5,7 @@ import { useUserContext } from '@hooks/siteContext/useUserContext'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
-export default function FinishLayout ({game_name,restart_text,handleRestart}) {
+export default function FinishLayout ({gameName,restart_text,handleRestart}) {
     const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
 
@@ -18,7 +18,7 @@ export default function FinishLayout ({game_name,restart_text,handleRestart}) {
    //get router for Next.js
    return (
       <>
-          <img className="view_background_image_container" src={"/img/" + game_name + "/" + game_name + "_bg.png"}/>
+          <img className="view_background_image_container" src={"/img/" + gameName + "/" + gameName + "_bg.png"}/>
           <div className="end_container">
               <button className="end_button" onClick={() => router.push('/game/map')}>{translations.back_to_map[lang]}</button>
               <button className="end_button" onClick={() => handleRestart()}>{translations[restart_text][lang]}</button>

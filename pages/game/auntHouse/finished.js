@@ -7,7 +7,7 @@ export default function Finished() {
     const router = useRouter()
     return (
         <GameFinishLayout
-            game_name={"aunt_house"}
+            gameName={"aunt_house"}
             restart_text={"recipe_select"}
             handleRestart={() => router.push('/game/auntHouse')}/>
     );

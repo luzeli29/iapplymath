@@ -9,7 +9,7 @@ import Error from 'pages/error'
 import Login from 'pages/user/login'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import useSeededRandom from '@hooks/useSeededRandom'
-import { log } from '@utils/debug/log'
+import DevLog from '@utils/debug/devLog'
 
 
 export default function RestaurantQuestions() {
@@ -35,7 +35,7 @@ export default function RestaurantQuestions() {
     useEffect(()=> {
         if(seed) {
         
-            log('Generating question with seed - ' + seed)
+            DevLog('Generating question with seed: ' + seed)
             setQuestions(generateRestaurantQuestions(order,randomGenerator))
         }
     },[seed])
