@@ -1,18 +1,9 @@
 import { getText, simplifyFraction } from "@commonImports"
-import { log } from "@utils/debug/log"
 import aHSimpleMultiQuestions from "@public/text/questions/auntHouse/aHSimpleMultiQuestions"
 import fillQuestionTemplate from "@utils/game/questionGenerators/fillQuestionTemplate"
 
 export default function generateAHSimpleMultiQuestion(recipe,ingredient,factor,randomGenerator) {
-    log("generateAHSimpleMultiQuestion")
-    log("recipe:")
-    log(recipe)
-    log("ingredient:")
-    log(ingredient)
-    log("factor:")
-    log(factor)
-    log("randomGenerator:")
-    log(randomGenerator)
+
     let templateToUse = randomGenerator != undefined ? randomGenerator.randomInt(0,questionTemplates.length) : 0
     const template = aHSimpleMultiQuestions[templateToUse]
     let tags = {}
