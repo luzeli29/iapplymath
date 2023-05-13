@@ -41,10 +41,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
       }
    }
 
-   log("loading: " + loading)
-   log("router.isReady: " + router.isReady)
-   log("isLoggedIn: " + isLoggedIn)
-   log("state: " + state)
 
    if(loading) return <Loading/>
    if(!router.isReady) return <Loading/>
@@ -68,11 +64,8 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
 
    function handleFinish() {
       if(onFinish) {
-         log("ON FINISH")
-         log(onFinish)
          onFinish()
       } else {
-         log("NO ON FINISH")
          router.push('/game')
       }
    }
@@ -231,8 +224,6 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          )
       } else {
          handleExit("FINISHED")
-         // log("ELSE STATEMENT")
-         // return (<Loading/>)
       }
    } else {
       //TODO: switch dialog randomly in order to have different ayu relaxations
