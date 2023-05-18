@@ -14,7 +14,6 @@ import DevErr from '@utils/debug/devErr';
 
 export default function AnswerBox({correctAnswer,questionFormatKey,handleSubmitAnswer}) {
     const {user,settings,loading, error} = useUserContext()
-    console.log(questionFormatKey)
     const router = useRouter()
     const isLoggedIn = user.loggedIn
     if(loading) return <Loading/>
