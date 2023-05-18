@@ -1,5 +1,4 @@
 import { MongoClient } from 'mongodb'
-import { throwError } from '@utils/imports/commonImports'
 
 const uri = process.env.MONGODB_URI
 const options = {

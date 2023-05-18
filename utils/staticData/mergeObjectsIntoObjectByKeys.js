@@ -1,5 +1,7 @@
 import DevErr from "@utils/debug/devErr";
 
+
+//TODO: make this not change the original objects
 export default function mergeObjectsIntoObjectByKeys(objectMergeTo, objectsMergeFrom) {
     const keyMap = new Map();
     for (const [key, value] of Object.entries(objectsMergeFrom)) {

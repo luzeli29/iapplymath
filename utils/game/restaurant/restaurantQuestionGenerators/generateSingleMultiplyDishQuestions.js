@@ -1,6 +1,5 @@
-import { getText } from "@commonImports"
-import createGameQuestion from "@utils/game/createGameQuestion"
-import validateOrder from "@utils/validation/game/restaurant/validateOrder"
+import getText from '@utils/text/getText'
+import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 
 export default function generateSingleMultiplyDishQuestions(order,level,randomGenerator) {
     const numbOfQuestionsNeeded = 3

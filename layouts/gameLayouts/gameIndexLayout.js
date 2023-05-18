@@ -1,7 +1,7 @@
 import React from 'react';
 import {useRouter} from 'next/router'
 import style from '@styles/game_layout.module.css'
-import { getText } from '@commonImports';
+import getText from '@utils/text/getText'
 
 //FixMe: is there a way to reduce paramaters?
 export default function GameIndexLayout ({lang, gameName,instruction_text, submit_text, handleSubmit, children}) {

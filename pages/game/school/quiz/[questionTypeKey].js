@@ -1,4 +1,4 @@
-import { GameQuestionLayout } from '@commonImports';
+import GameQuestionLayout from '@layouts/gameLayouts/gameQuestionLayout'
 import Loading from '@comps/screens/loading';
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import useSeededRandom from '@hooks/useSeededRandom'
@@ -61,7 +61,7 @@ const SchoolQuiz = ({schoolTopics}) => {
                     onBack={() => router.push('/game/school/')}
                     onFinish={() => 
                         {
-                            router.push('/game/school/outro')
+                            router.push('/dialog/schoolOutro')
                             return(<Loading/>)
                         }}> 
         </GameQuestionLayout>

@@ -1,14 +1,8 @@
-import React, {useState, useEffect,useCallback} from 'react';
+import React from 'react';
 import Image from 'next/image'
 import {useRouter} from 'next/router'
-import Confetti from 'react-confetti'
 import style from '@styles/game_layout.module.css'
-import translations from '@translations';
-import {Dialog,formatAnswer,simplifyAnswer} from '@utils/imports/commonImports'
-import { Calculator } from 'react-mac-calculator'
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import {motion} from 'framer-motion';
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
