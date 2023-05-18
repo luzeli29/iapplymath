@@ -1,6 +1,7 @@
-import { getText, simplifyFraction } from "@commonImports"
+import getText from "@utils/text/getText"
+import simplifyFraction from "@utils/game/quiz/simplifyFraction"
 import aHSimpleMultiQuestions from "@public/text/questions/auntHouse/aHSimpleMultiQuestions"
-import fillQuestionTemplate from "@utils/game/questionGenerators/fillQuestionTemplate"
+import fillQuestionTemplate from "@utils/game/quiz/questionGeneration/fillQuestionTemplate"
 
 export default function generateAHSimpleMultiQuestion(recipe,ingredient,factor,randomGenerator) {
 

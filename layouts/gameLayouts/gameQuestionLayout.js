@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useRouter} from 'next/router'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
-import {Dialog} from '@utils/imports/commonImports'
+import DialogOld from '@comps/dialog/dialogOld';
 import 'reactjs-popup/dist/index.css';
 import Ayu from '@comps/game/quiz/ayu';
 import AnswerBox from '@comps/game/quiz/answerBox';
@@ -94,7 +94,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
          case "ayu":
             return <Creator onEnd={handleCheckinEnd} />;
          case "dialogue":
-            return <Dialog scriptId={"ayu_relaxation_0"} onEnd={handleDialogueEnd}/>;
+            return <DialogOld scriptId={"ayu_relaxation_0"} onEnd={handleDialogueEnd}/>;
          case "checkin2":
             return <Creator onEnd={handleCheckin2End} />;
          default:
@@ -234,7 +234,7 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
            </>
        )
          //<Creator onEnd={handleAyuReturn} />
-           //<Dialog scriptId={"ayu_relaxation_0"} onEnd={() => handleAyuReturn()}/>
+           //<DialogOld scriptId={"ayu_relaxation_0"} onEnd={() => handleAyuReturn()}/>
    }
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import QuizCalculator from '../quizCalculator/quizCalculator'
-import { getText } from '@commonImports'
+import getText from '@utils/text/getText'
 import DevLog from '@utils/debug/devLog'
 
 export default function DefaultAnswerBox({lang,handleSubmitAnswer}) {

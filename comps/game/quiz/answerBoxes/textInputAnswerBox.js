@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import QuizCalculator from '../quizCalculator/quizCalculator'
-import { getText, simplifyAnswer, simplifyFraction } from '@commonImports'
+import getText from '@utils/text/getText'
 import DevLog from '@utils/debug/devLog'
-import QuestionFormats from '@utils/game/questionFormats'
+import QuestionFormats from '@utils/game/quiz/questionGeneration/questionFormats'
 import DevErr from '@utils/debug/devErr'
 
 const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {

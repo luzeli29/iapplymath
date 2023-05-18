@@ -1,5 +1,5 @@
 import React from 'react'
-import {Dialog} from '@utils/imports/commonImports'
+import DialogOld from '@comps/dialog/dialogOld';
 import {useRouter} from 'next/router'
 
 export default function Introduction() {
@@ -7,7 +7,7 @@ export default function Introduction() {
 
     return (
         <>
-        <Dialog 
+        <DialogOld
             scriptId={"school_intro"} 
             onEnd={() => router.push('/game/school')}/>
         </>

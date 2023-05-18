@@ -1,0 +1,54 @@
+{
+    "dialogScript" : {
+
+        "schoolIntro" : {
+            "stage" : "school",
+            "lines" : [
+                {
+                    "text" : {
+                        "en": "Welcome to Ms. Garcia’s math classroom!",
+                        "es": "¡Bienvenidos a la clase de matemáticas de la Sra. García!"
+                    }
+                },
+                {
+                    "text" : {
+                        "en": "At the end of the year we have a very fun math contest in my class.",
+                        "es": "Al final del año tendremos un concurso de matemáticas muy divertido."
+                    }
+                },
+                {
+                    "text" : {
+                        "en": "Here you can practice multiplying, dividing, adding, and subtracting numbers!",
+                        "es": "¡Aquí puedes practicar la multiplicación, división, suma y resta de números!"
+                    }
+                },
+                {
+                    "text" : {
+                        "en": "Math can be challenging sometimes, so do your best and take a break when you need to. I know you can do it!",
+                        "es": "Las matemáticas pueden ser desafiantes a veces, así que haz tu mejor esfuerzo y tómate un descanso cuando lo necesites. ¡¡Sé que puedes hacerlo!!"
+                    }
+                }
+            ]
+        },
+
+        "schoolOutro" : {
+            "stage" : "school",
+            "lines" : [
+                {
+                    "text" : {
+
+                        "en": "Thank you for practicing math with me today, you were amazing!",
+                        "es": "Gracias por practicar matemáticas conmigo hoy, ¡estuvo increíble!"
+                    }
+                },
+                {
+                    "text" : {
+                        "en": "You are going to do awesome on your test!",
+                        "es": "¡Te va  a ir súper bien en tu prueba!"
+                    }
+                }
+            ]
+        }
+
+    }
+}

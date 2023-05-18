@@ -1,6 +1,5 @@
 import clientPromise from "utils/database/mongodb";
-import {useRouter} from 'next/router'
-import {throwError} from '@utils/imports/commonImports'
+import throwError from "@utils/error/throwError";
 import EncryptUsername from "@utils/crypto/encryptUsername";
 
 export default async function handler(req, res) {

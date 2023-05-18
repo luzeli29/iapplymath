@@ -5,7 +5,7 @@ import translations from '@translations';
 import 'reactjs-popup/dist/index.css';
 import {GiYarn, GiHand} from "react-icons/gi";
 import Tooltip from 'comps/accessibility/tooltip';
-import { getText } from '@utils/imports/commonImports';
+import getText from '@utils/text/getText'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'

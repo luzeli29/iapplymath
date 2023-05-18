@@ -1,6 +1,5 @@
 //Generate questions with the order state
-import createGameQuestion from '@utils/game/createGameQuestion.js'
-import { simplifyFraction } from "@utils/imports/commonImports"
+import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 import validateOrder from '@utils/validation/game/restaurant/validateOrder';
 import generateBasicOrderQuestions from './restaurantQuestionGenerators/generateBasicOrderQuestions';
 import generateGraphQuestions from './restaurantQuestionGenerators/generateGraphQuestions';

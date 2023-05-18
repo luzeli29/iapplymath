@@ -1,4 +1,4 @@
-import { getText } from '@utils/imports/commonImports'
+import getText from '@utils/text/getText'
 import Link from 'next/link'
 import React, { useState } from 'react'
 

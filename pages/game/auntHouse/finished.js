@@ -1,7 +1,6 @@
 import React from 'react'
 import {useRouter} from 'next/router'
-import {GameFinishLayout} from '@utils/imports/commonImports'
-
+import GameFinishLayout from '@layouts/gameLayouts/gameFinishLayout'
 export default function Finished() {
     //get context and lang
     const router = useRouter()

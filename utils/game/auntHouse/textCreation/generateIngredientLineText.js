@@ -1,4 +1,4 @@
-import { getText } from "@commonImports"
+import getText from '@utils/text/getText'
 
 export default function generateIngredientLineText(ingredient, lang) {
     let _lang

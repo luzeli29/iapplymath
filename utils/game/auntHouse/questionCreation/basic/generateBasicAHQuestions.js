@@ -1,4 +1,4 @@
-import createGameQuestion from "@utils/game/createGameQuestion";
+import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 import generateAHSimpleMultiQuestions from "@utils/game/auntHouse/questionCreation/auntHouseQuestionGenerators/generateAHSimpleMultiQuestion";
 import DevErr from "@utils/debug/devErr";
 

@@ -1,18 +1,18 @@
 import React, {useState} from 'react'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
-import {GameIndexLayout, getText} from '@utils/imports/commonImports'
+import GameIndexLayout from '@layouts/gameLayouts/gameIndexLayout'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
-import LoadRecipes from '@utils/staticData/json/foodData/loadRecipes'
+import loadRecipes from '@utils/game/auntHouse/recipeData/loadRecipes'
 import IconGroup from '@comps/iconGroup'
 import ClickableIcon from '@comps/clickableIcon'
 import LevelDisplay from '@comps/game/levelDisplay'
 
 export async function getStaticProps(){
-    const recipes = await LoadRecipes()
+    const recipes = await loadRecipes()
     return {
       props: {
         recipes,

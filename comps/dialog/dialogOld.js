@@ -19,26 +19,7 @@ onInput - function in what we should do when there is an input required
 
 */
 
-// get static props for server side rendering
-export async function getStaticProps(context){
-    const  {params}  = context
-    const scriptId = params.scriptId
-    const onEnd = params.onEnd
-    const onInput = params.onInput
-
-
-    return {
-        props: {
-            scriptId,
-            onEnd,
-            onInput
-        },
-    }
-}
-
-
-
-export default function Dialog ({scriptId, onEnd, onInput}) {
+const DialogOld = ({scriptId, onEnd, onInput}) => {
     const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
 
@@ -220,3 +201,4 @@ function changeBackgroundImgSrc(stage){
             return "/img/" + stage + "/" + stage + "_bg.png";
     }
 }
+export default DialogOld;
