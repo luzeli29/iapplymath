@@ -59,15 +59,15 @@ export default function Map() {
     const mapLocation = 0
 
     const handleRestaurant = () => {
-        router.push('/game/restaurant/introduction');
+        router.push('/dialog/restaurantIntro');
     }
 
     const handleAuntsHouse = () => {
-        router.push('/game/auntHouse/introduction');
+      router.push('/dialog/auntHouseIntro');
     }
 
     const handleSchoolClick = () => {
-      router.push('/game/school/introduction');
+      router.push('/dialog/schoolIntro');
     }
     
     

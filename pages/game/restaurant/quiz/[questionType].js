@@ -51,7 +51,7 @@ export default function RestaurantQuestions() {
                     onBack={() => router.push('/game/restaurant/')}
                     onFinish={() => 
                         {
-                            router.push('/game/restaurant/outro')
+                            router.push('/dialog/restaurantOutro')
                             return(<Loading/>)
                         }}> 
                 <Order order={orderIndex}/>

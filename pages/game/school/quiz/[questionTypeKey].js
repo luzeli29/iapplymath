@@ -61,7 +61,7 @@ const SchoolQuiz = ({schoolTopics}) => {
                     onBack={() => router.push('/game/school/')}
                     onFinish={() => 
                         {
-                            router.push('/game/school/outro')
+                            router.push('/dialog/schoolOutro')
                             return(<Loading/>)
                         }}> 
         </GameQuestionLayout>

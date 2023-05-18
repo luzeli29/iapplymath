@@ -1,4 +1,3 @@
-import { getText } from '@commonImports'
 import ClickableIcon from '@comps/clickableIcon'
 import LevelDisplay from '@comps/game/levelDisplay'
 import IconGroup from '@comps/iconGroup'
@@ -11,6 +10,7 @@ import { useRouter } from 'next/router'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
 import React, { useState } from 'react'
+import getText from '@utils/text/getText'
 
 export async function getStaticPaths() {
     const locationsObj = await loadLocations()

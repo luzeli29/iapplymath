@@ -3,40 +3,52 @@
 
         "auntHouseIntro" : {
             "stage" : "auntHouse",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/game/auntHouse"
+            },
             "lines" : [
                 {
                     "text" : {
                         "en":"Welcome to my kitchen, I am so happy to see you here!",
                         "es":"¡Bienvenidos a mi cocina, estoy muy feliz de verte aquí!"
-                    }
+                    },
+                    "speaker" : "aunt"
                 }
             ]
         },
 
         "auntHouseOutro" : {
             "stage" : "auntHouse",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/game/auntHouse/finished"
+            },
             "lines" : [
                 {
                     "text" : {
                         "en": "We had so much fun in the kitchen today!",
                         "es": "¡Nos divertimos mucho en la cocina hoy!"
-                    }
+                    },
+                    "speaker" : "aunt"
                 },{
                     "text" : {
                         "en": "All this food looks delicious, thank you for helping me in the kitchen today!",
                         "es": "Toda esta comida se ve deliciosa, ¡gracias por ayudarme en la cocina hoy!"
-                    }
+                    },
+                    "speaker" : "aunt"
                 },{
                     "text" : {
                         "en": "Please come back anytime.",
                         "es": "Por favor regresa cuando quieras."
-                    }
+                    },
+                    "speaker" : "aunt"
                 },{
                     "text" : {
                         "en": "Thanks, Tia Maria. I’ll see you later!",
                         "es": "Gracias, Tía María. ¡Te veo luego!"
                     },
-                    "playerSpeaking": true
+                    "speaker" : "player"
                 }
             ]
         }

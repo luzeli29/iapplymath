@@ -3,6 +3,10 @@
 
         "error" : {
             "stage" : "error",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/"
+            },
             "lines" : [
                 {
                     "text" : {
@@ -15,6 +19,10 @@
 
         "websiteIntro" : {
             "stage" : "ayuLoggedIn",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/user/avatar/select"
+            },
             "lines" : [
                 {
                     "text" : {
