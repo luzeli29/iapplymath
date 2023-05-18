@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import {useRouter} from 'next/router'
-import {GameQuestionLayout} from '@utils/imports/commonImports'
+import GameQuestionLayout from '@layouts/gameLayouts/gameQuestionLayout'
 import generateRestaurantQuestions from '@utils/game/restaurant/generateRestaurantQuestion'
 import Order from '@comps/game/restuarant/order'
 import menuOptions from "@public/text/menuOptions"

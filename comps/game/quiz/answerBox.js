@@ -6,7 +6,7 @@ import Login from 'pages/user/login'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import {useRouter} from 'next/router'
 import ContinueAnswerBox from './answerBoxes/continueAnswerBox';
-import QuestionFormats from '@utils/game/questionFormats'
+import QuestionFormats from '@utils/game/quiz/questionGeneration/questionFormats'
 import TextInputAnswerBox from './answerBoxes/textInputAnswerBox';
 import QuizCalculator from './quizCalculator/quizCalculator';
 import ButtonAnswerBox from './answerBoxes/buttonAnswerBox';

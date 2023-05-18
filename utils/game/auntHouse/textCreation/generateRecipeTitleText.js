@@ -1,4 +1,4 @@
-import { getText } from "@commonImports"
+import getText from '@utils/text/getText'
 
 export default function generateRecipeTitleText(recipe,lang) {
     let _lang

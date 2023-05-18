@@ -1,0 +1,55 @@
+{
+    "dialogScript" : {
+
+        "restaurantIntro" : {
+            "stage" : "restaurant",
+            "lines" : [
+                {
+                    "text" : {
+                        "en": "Hey, I am so happy to see you here!",
+                        "es": "¡Hola, estoy muy feliz de verte por aquí!"
+                    }
+                },{
+                    "text" : {
+                        "en": "Thanks for coming! Delicia is my favorite restaurant!",
+                        "es": "¡Gracias por venir! ¡Delicia es mi restaurante favorito!"
+                    }
+                },{
+                    "text" : {
+                        "en": "All right, let’s explore their menu. I heard the menu changes every time you visit!",
+                        "es": "Exploremos el menú. ¡Escuché que el menú cambia cada vez que visitas!"
+                    }
+                }
+            ]
+        },
+
+        "restaurantOutro" : {
+            "stage" : "restaurant",
+            "lines" : [
+                {
+                    "text" : {
+                        "en": "Wow, I’m so full!",
+                        "es": "Guau, estoy muy satisfecha!"
+                    }
+                },{
+                    "text" : {
+                        "en": "The food was really good!",
+                        "es": "La comida estaba muy buena!"
+                    },
+                    "playerSpeaking": true
+                },{
+                    "text" : {
+                        "en": "It was! Let’s come again soon.",
+                        "es": "Sí siempre, cuando quieras volvemos!"
+                    }
+                },{
+                    "text" : {
+                        "en": "Sure! I’ll see you later!",
+                        "es": "¡Claro, nos vemos luego!"
+                    },
+                    "playerSpeaking": true
+                }
+            ]
+        }
+    }
+}

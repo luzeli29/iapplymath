@@ -1,7 +1,7 @@
 import React, {useState, useEffect,useCallback} from 'react';
-import QuestionFormats from '@utils/game/questionFormats'
+import QuestionFormats from '@utils/game/quiz/questionGeneration/questionFormats'
 import IconGroup from '@comps/iconGroup';
-import { getText } from '@commonImports';
+import getText from '@utils/text/getText'
 import DevErr from '@utils/debug/devErr';
 
 const ButtonAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {

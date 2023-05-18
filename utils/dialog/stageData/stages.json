@@ -1,0 +1,28 @@
+{
+    "stage" : {
+        "error" : {
+            "dialogType" : "ayu"
+        },
+        "ayu" : {
+            "dialogType" : "ayu"
+        },
+        "ayuLoggedIn" : {
+            "dialogType" : "ayuLoggedIn"
+        },
+        "auntHouse" : {
+            "dialogType" : "speakerAndPlayer",
+            "speakerSrc" : "",
+            "backgroundSrc" : ""
+        },
+        "restaurant" : {
+            "dialogType" : "speakerAndPlayer",
+            "speakerSrc" : "",
+            "backgroundSrc" : ""
+        },
+        "school" : {
+            "dialogType" : "speakerAndPlayer",
+            "speakerSrc" : "",
+            "backgroundSrc" : ""
+        }
+    }
+}

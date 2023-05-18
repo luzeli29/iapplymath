@@ -2,7 +2,7 @@ import React, {useState, useEffect,useCallback} from 'react';
 import Confetti from 'react-confetti'
 import style from '@styles/game_layout.module.css'
 import translations from '@translations';
-import QuestionFormats from '@utils/game/questionFormats'
+import QuestionFormats from '@utils/game/quiz/questionGeneration/questionFormats'
 import DevErr from '@utils/debug/devErr';
 
 const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {

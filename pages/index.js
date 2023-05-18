@@ -1,7 +1,7 @@
 import React from 'react';
 import {useRouter} from 'next/router'
 import Image from 'next/image'
-import {getText} from '@utils/imports/commonImports' 
+import getText from '@utils/text/getText'
 import Error from './error';
 import Loading from '@comps/screens/loading';
 import { useUserContext } from '@hooks/siteContext/useUserContext';

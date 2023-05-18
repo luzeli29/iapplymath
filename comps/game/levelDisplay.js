@@ -1,4 +1,4 @@
-import { getText } from '@commonImports'
+import getText from '@utils/text/getText'
 import React from 'react'
 
 export default function LevelDisplay({level,lang}) {
