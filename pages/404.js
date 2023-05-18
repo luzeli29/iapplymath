@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from "next/link"
-import { getText} from '@utils/imports/commonImports'
+import getText from '@utils/text/getText'
 import Loading from '@comps/screens/loading';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import { useRouter } from 'next/router';

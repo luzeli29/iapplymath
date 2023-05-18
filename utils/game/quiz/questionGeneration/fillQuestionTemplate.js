@@ -1,5 +1,5 @@
 import fillTextTags from "@utils/text/fillTextTags"
-import createGameQuestion from "../createGameQuestion"
+import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 
 export default function fillQuestionTemplate(template,tags) {
     const questionText = template.questionText

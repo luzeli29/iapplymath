@@ -1,0 +1,66 @@
+{
+    "dialogScript" : {
+
+        "error" : {
+            "stage" : "error",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/"
+            },
+            "lines" : [
+                {
+                    "text" : {
+                        "en":"Hi, if you're seeing this there was an error with the website's code. Click or press enter to go to the index page.",
+                        "es":"Por favor cambia al idioma inglés, hubo un error con el código de la página"
+                    }
+                }
+            ]
+        },
+
+        "websiteIntro" : {
+            "stage" : "ayuLoggedIn",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/user/avatar/select"
+            },
+            "lines" : [
+                {
+                    "text" : {
+                        "en":"Hi, my name is Ayuda but all my friends call me Ayu. “Ayuda” means “help” in Spanish. I am here to help you during the game.",
+                        "es":"Hola, mi nombre es Ayuda, pero puedes llamarme Ayu. Yo estoy aquí para ayudarte durante el juego."
+                    }
+                },{
+                    "text" : {
+                        "en":"You can take a break from problem solving and find relaxation with your pet or with me, we are always there to support you.",
+                        "es":"Puedes tomar un descanso de resolver problemas y encontrar relajación con tu mascota o conmigo, siempre estamos ahí para apoyarte."
+                    }
+                },{
+                    "text" : {
+                        "en":"Math problems can be challenging, so we have built in some other game features to help you with solving math in your world.",
+                        "es":"Los problemas de matemática pueden sentirse complicados y por eso hemos incorporado algunas otras características en este juego para ayudarte a resolver problemas matemáticos en tu mundo."
+                    }
+                },{
+                    "text" : {
+                        "en": "You can use the game's calculator and turn music on or off anytime. Also, feel free to share how you feel or return to the map for a new adventure.",
+                        "es": "Puedes usar la calculadora del juego y activar o desactivar la música en cualquier momento. Además, siéntete libre de compartir cómo te sientes o volver al mapa para una nueva aventura."
+                    }
+                },{
+                    "text" : {
+                        "en": "The game will save your progress for your next visit, but you need to log out when you are done playing.",
+                        "es": "El juego guardará tu progreso para tu próxima visita, pero debes cerrar tu sesión cuando termines de jugar."
+                    }
+                },{
+                    "text" : {
+                        "en":"This game has different levels - Level 1 is for beginners, Level 2 is for advanced, and Level 3 is for experts.",
+                        "es":"Este juego tiene diferentes niveles - el Nivel 1 es para principiantes, el Nivel 2 es para avanzados y el Nivel 3 es para expertos."
+                    }
+                },{
+                    "text" : {
+                        "en":"We know that soon you will be saying “I Apply Math in my World”",
+                        "es":"Sabemos que pronto estarás diciendo \"Yo Aplicó Matemáticas en mi Mundo\""
+                    }
+                }
+            ]
+        }
+    }
+}

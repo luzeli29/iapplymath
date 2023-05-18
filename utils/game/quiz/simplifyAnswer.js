@@ -1,5 +1,5 @@
 import DevLog from "@utils/debug/devLog";
-import { simplifyFraction } from "@utils/imports/commonImports"
+import simplifyFraction from "@utils/game/quiz/simplifyFraction";
 
 //simplifys answer given to allow for correct but different fractions
 export default function simplifyAnswer(answer) {

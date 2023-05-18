@@ -1,4 +1,4 @@
-import createGameQuestion from "@utils/game/createGameQuestion"
+import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 
 export default function generateAHGraphQuestions(randomGenerator) {
     const questions = []

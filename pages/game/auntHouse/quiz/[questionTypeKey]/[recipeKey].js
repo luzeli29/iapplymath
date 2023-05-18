@@ -1,24 +1,22 @@
 import React, {useState,useEffect} from 'react'
 import {useRouter} from 'next/router'
-import {GameQuestionLayout} from '@utils/imports/commonImports'
-import menuOptions from "@public/text/menuOptions"
+import GameQuestionLayout from '@layouts/gameLayouts/gameQuestionLayout'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
-import SmallRecipeCard from '@comps/game/auntHouse/smallRecipeCard'
-import LoadRecipes from '@utils/staticData/json/foodData/loadRecipes'
+import loadRecipes from '@utils/game/auntHouse/recipeData/loadRecipes'
 import aHQuestionFactory from '@utils/game/auntHouse/questionCreation/aHQuestionFactory'
 import IngredientList from '@comps/game/auntHouse/ingredientList'
 import generateRecipeTitleText from '@utils/game/auntHouse/textCreation/generateRecipeTitleText'
 import generateRecipeServingText from '@utils/game/auntHouse/textCreation/generateRecipeServingText'
-import LoadLocations from '@utils/staticData/json/game/loadLocations'
+import loadLocations from '@utils/game/loadLocations'
 
 
 export async function getStaticPaths() {
-    const recipes = await LoadRecipes()
+    const recipes = await loadRecipes()
     const recipeKeys = Object.keys(recipes)
-    const locationsObj = await LoadLocations()
+    const locationsObj = await loadLocations()
     const auntHouseObj = locationsObj.auntHouse
     const keyPaths = [];
 
@@ -38,7 +36,7 @@ export async function getStaticProps(context){
     const  {params}  = context
     const recipeKey = params.recipeKey
 
-    const recipes = await LoadRecipes()
+    const recipes = await loadRecipes()
 
     let recipe = recipes.carrotOrangeJuice
     if(recipes[recipeKey]) {
@@ -113,6 +111,6 @@ function getFinishRoute(questionTypeKey, recipeKey,familySize) {
             // /game/auntHouse/quiz/familySize/carrotOrangeJuice    
             return '/game/auntHouse/quiz/familyQuestion/' + recipeKey
         case "familyQuestion":
-            return '/game/auntHouse/finished'
+            return '/dialog/auntHouseOutro'
     }
 }

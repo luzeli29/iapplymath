@@ -1,4 +1,4 @@
-import {throwError} from '@utils/imports/commonImports'
+import throwError from '@utils/error/throwError';
 import translations from '@public/text/translations'
 
 export default function createGameQuestion(questionText,answer,hints,questionFormatKey, onAnswer, imgSrc) {

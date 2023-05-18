@@ -1,4 +1,4 @@
-import { getText } from "@commonImports"
+import getText from "@utils/text/getText"
 import { useState } from "react"
 import Tooltip from "./accessibility/tooltip"
 import ClickableIcon from "./clickableIcon"

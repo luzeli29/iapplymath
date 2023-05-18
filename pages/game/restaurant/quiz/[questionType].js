@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import {useRouter} from 'next/router'
-import {GameQuestionLayout} from '@utils/imports/commonImports'
+import GameQuestionLayout from '@layouts/gameLayouts/gameQuestionLayout'
 import generateRestaurantQuestions from '@utils/game/restaurant/generateRestaurantQuestion'
 import Order from '@comps/game/restuarant/order'
 import menuOptions from "@public/text/menuOptions"
@@ -51,7 +51,7 @@ export default function RestaurantQuestions() {
                     onBack={() => router.push('/game/restaurant/')}
                     onFinish={() => 
                         {
-                            router.push('/game/restaurant/outro')
+                            router.push('/dialog/restaurantOutro')
                             return(<Loading/>)
                         }}> 
                 <Order order={orderIndex}/>

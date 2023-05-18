@@ -1,0 +1,66 @@
+{
+    "dialogScript" : {
+
+        "ayuRelaxation0" : {
+            "stage" : "ayuLoggedIn",
+            "lines" : [
+                {
+                    "text" : {
+                        "en":"Slowly, let’s take three big belly breaths.",
+                        "es":"Tomemos tres respiraciones profundas lentamente."
+                    }
+                }, {
+                    "text" : {
+                        "en":"Breathe in slowly through your nose for 4, 3, 2, 1\nBreathe out slowly through your mouth for 5, 4, 3, 2, 1",
+                        "es":"Inhala lentamente por tu nariz 4, 3, 2, 1\nExhala lentamente por tu boca 5, 4, 3, 2, 1"
+                    },
+                    "ayuSrc": "/img/ayu/ayu_deepBreathing.gif"
+                },{
+                    "text" : {
+                        "en":"Breathe in slowly through your nose for 5, 4, 3, 2, 1\nBreathe out slowly through your mouth for 6, 5, 4, 3, 2, 1",
+                        "es":"Inhala lentamente por tu nariz 5, 4, 3, 2, 1\nExhala lentamente por tu boca 6, 5, 4, 3, 2, 1"
+                    },
+                    "ayuSrc": "/img/ayu/ayu_deepBreathing.gif"
+                },{
+                    "text" : {
+                        "en":"Breathe in slowly through your nose for 6, 5, 4, 3, 2, 1\nBreathe out slowly through your mouth for 7, 6, 5, 4, 3, 2, 1",
+                        "es":"Inhala lentamente por tu nariz 6, 5, 4, 3, 2, 1\nExhala lentamente por tu boca 7, 6, 5, 4, 3, 2, 1"
+                    },
+                    "ayuSrc": "/img/ayu/ayu_deepBreathing.gif"
+                }
+            ]
+        },
+
+        "ayuRelaxation1" : {
+            "stage" : "ayuLoggedIn",
+            "lines" : [
+                {
+                    "text" : {
+                        "en":"Let’s stretch our back muscles like a cat after a relaxing nap! breathe in and reach your arms up overhead then breathe out and relax your hands by your sides.",
+                        "es":"¡Estiremos los músculos de la espalda como un gato después de una siesta relajante! Respira hondo y alza los brazos por encima de la cabeza, luego exhala y relaja tus manos a los costados."
+                    }
+                }, {
+                    "text" : {
+                        "en":"Slowly breathe in and bring your shoulders up towards your head and when you breathe out push your head down into your shoulders.",
+                        "es":"Respira lentamente y eleva los hombros hacia la cabeza, y cuando exhales presiona la cabeza hacia los hombros."
+                    }
+                },{
+                    "text" : {
+                        "en":"Now slowly breathe in and reach your shoulders up and back then breathe out and let your shoulders come back down, do this three times.",
+                        "es":"Ahora inhala lentamente y levanta tus hombros hacia arriba y hacia atrás, luego exhala y deja que tus hombros vuelvan a bajar, repite esto tres veces."
+                    }
+                },{
+                    "text" : {
+                        "en":"Imagine you have two juicy lemons in each hand. Begin to squeeze all the juice out of the lemons using your hands, your arms, your legs, your toes, and even your face. Squeeze and tense up every muscle in your body for 3…2…1… Then stop squeezing and release the tension in your whole body",
+                        "es":"Imagina que tienes dos limones jugosos en cada mano. Comienza a exprimir todo el jugo del limón usando tus manos, tus brazos, tus piernas, tus dedos de los pies, incluso con tu cara. Aprieta y tensa los músculos en tu cuerpo por 3…2…1… Despues deja de apretar y suelta toda la tensión en tu cuerpo."
+                    }
+                },{
+                    "text" : {
+                        "en":"Release the tension in your body and relax.",
+                        "es":"Suelta la tensión en tu cuerpo y relájate"
+                    }
+                }
+            ]
+        }
+    }
+}
