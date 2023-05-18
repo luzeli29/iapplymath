@@ -118,6 +118,10 @@ const translations = {
     },
 
     // ----- General Translations -----
+    level_select: {
+        en: "Level Select",
+        es: "Seleccionar Nivel",
+    },
     of: {
         en: 'Of',
         es: 'De'
