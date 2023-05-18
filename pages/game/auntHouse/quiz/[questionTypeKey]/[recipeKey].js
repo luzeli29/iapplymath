@@ -111,6 +111,6 @@ function getFinishRoute(questionTypeKey, recipeKey,familySize) {
             // /game/auntHouse/quiz/familySize/carrotOrangeJuice    
             return '/game/auntHouse/quiz/familyQuestion/' + recipeKey
         case "familyQuestion":
-            return '/game/auntHouse/finished'
+            return '/dialog/auntHouseOutro'
     }
 }

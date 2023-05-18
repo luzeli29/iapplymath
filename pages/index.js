@@ -36,7 +36,7 @@ const Index = () => {
         {loggedIn ?
         // User is logged in
         <>
-        <button className="basic_button" onClick={() => router.push('/intro') }>
+        <button className="basic_button" onClick={() => router.push('/dialog/websiteIntro') }>
           {getText('start',lang)}
         </button>
         </>

@@ -23,7 +23,7 @@ export default function Header() {
     return(
         <div className="container text-center">
         <div >
-            <text className= "font-h1" onClick={() => router.push('/')}>I Apply Math in my World</text>
+            <p className= "font-h1" onClick={() => router.push('/')}>I Apply Math in my World</p>
         </div>
         <div className="row justify-content-lg-center">
             <div className="col col-lg-1">
