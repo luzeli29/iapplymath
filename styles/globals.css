@@ -22,6 +22,38 @@ body {
 * {
   box-sizing: border-box;
 }
+.calculator{
+box-shadow: 0 0 20px 0 #aaa;
+display: flex;
+flex-direction: column;
+font-family: Helvetica,sans-serif;
+height: 470px;
+width: 320px;
+}
+
+.calculator-display{
+  background: #1c191c;
+  color: #fff;
+  flex: 1;
+  font-size: 6 em;
+  line-height: 130px;
+  position: relative;
+
+}
+
+.calculator-display__auto-scaling {
+  display: inline-block;
+  font-family: inherit;
+  padding: 0 30px;
+  position: absolute;
+  right: 0;
+  transform-origin: right;
+}
+
+.calculator .calculator-keypad {
+  display: flex;
+  height: 350px;
+}
 
 .calculator-key{
   --button-hover-color: orange;
@@ -347,3 +379,4 @@ h4{
   src: local("DyslexicRegular"),
   url("../public/fonts/OpenDyslexic-Regular.otf");
 }
+
