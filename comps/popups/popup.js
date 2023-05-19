@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import Draggable from 'react-draggable';
+import getText from '@utils/text/getText';
 
-const Popup = ({ icon, content }) => {
+const Popup = ({ icon, content, lang }) => {
+  lang = lang ? lang : 'en'
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleTogglePopup = () => {
     setIsOpen(!isOpen);
+    setPosition({ x: 0, y: 0 })
   };
 
   const handleDrag = (e, { x, y }) => {
-    setPosition({ x, y });
+    console.log(x, y);
+    const realY = y + 12;
+    const realX = x + 80;
+    setPosition({ realX, realY });
   };
 
   return (
@@ -24,7 +30,7 @@ const Popup = ({ icon, content }) => {
           <div
             className="popup-content"
             style={{
-              position: 'absolute',
+              position: 'fixed',
               zIndex: 999,
               border: 'none',
               borderRadius: '0px',
@@ -35,8 +41,9 @@ const Popup = ({ icon, content }) => {
               background: 'transparent',
             }}
           >
-            <div className="draggable-handle">Drag Me</div>
-            <div className="app">{content}</div>
+            <div className="draggable-handle">{getText('drag_me', lang)}
+              <div className="app">{content}</div>
+            </div>
           </div>
         </Draggable>
       )}
