@@ -33,7 +33,10 @@ export default function generateBasicOrderQuestions(order, level) {
             "wholeNumber",
         ))
 
-        total = parseInt(order.mainDish.price) / 2
+        total = (order.mainDish.price) / 2
+
+
+
         questions.push(createGameQuestion(
             {
                 en: `How much will you pay for your entrée if you share half of it with Elena and split the cost evenly? `,
@@ -41,7 +44,7 @@ export default function generateBasicOrderQuestions(order, level) {
             },
             total,
             [],
-            "wholeNumber",
+            "decimal",
         ))
 
         random = Math.floor(Math.random() * 20)
