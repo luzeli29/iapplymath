@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import style from '@styles/pet.module.css'
-import {getText} from '@utils/imports/commonImports'
+import getText from '@utils/text/getText'
 import { motion } from "framer-motion"
 import ClickableIcon from '@comps/clickableIcon';
 import { useUserContext } from '@hooks/siteContext/useUserContext';

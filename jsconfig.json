@@ -2,9 +2,6 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            // Imports to files
-            "@commonImports": ["utils/imports/commonImports"],
-
             // Imports to folders
             "@public/*": ["public/*"],
             "@comps/*": ["comps/*"],

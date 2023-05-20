@@ -1,0 +1,36 @@
+{
+    "stage" : {
+        "error" : {
+            "dialogType" : "ayu",
+            "ayuSrc" : "/img/ayu/ayu_idle.gif"
+        },
+        "ayu" : {
+            "dialogType" : "ayu",
+            "ayuSrc" : "/img/ayu/ayu_idle.gif"
+        },
+        "ayuLoggedIn" : {
+            "dialogType" : "ayu",
+            "isLogginRequired" : true,
+            "ayuSrc" : "/img/ayu/ayu_idle.gif"
+        },
+        "auntHouse" : {
+            "dialogType" : "speakerAndPlayer",
+            "speakerSrc" : "/img/aunt_house/aunt_house_speaker.png",
+            "backgroundSrc" : "/img/aunt_house/aunt_house_bg.png",
+            "isLogginRequired" : true,
+            "isAvatarRequired" : true
+        },
+        "restaurant" : {
+            "dialogType" : "speakerAndPlayer",
+            "backgroundSrc" : "/img/restaurant/restaurant_bg.png",
+            "isLogginRequired" : true,
+            "isAvatarRequired" : true
+        },
+        "school" : {
+            "dialogType" : "speakerAndPlayer",
+            "backgroundSrc" : "/img/school/school_bg.png",
+            "isLogginRequired" : true,
+            "isAvatarRequired" : true
+        }
+    }
+}

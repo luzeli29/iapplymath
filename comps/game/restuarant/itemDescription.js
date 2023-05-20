@@ -1,4 +1,4 @@
-import { getText } from '@commonImports'
+import getText from '@utils/text/getText'
 import style from '@styles/restaurant.module.css'
 import { err } from '@utils/debug/devLog'
 

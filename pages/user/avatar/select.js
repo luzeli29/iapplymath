@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from "next/image";
 import { useRouter } from 'next/router'
 import style from '@styles/avatar.module.css'
-import { getText } from '@commonImports';
+import getText from '@utils/text/getText'
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Error from 'pages/error';
 import Loading from '@comps/screens/loading';

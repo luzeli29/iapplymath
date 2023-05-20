@@ -1,0 +1,68 @@
+{
+    "dialogScript" : {
+
+        "restaurantIntro" : {
+            "stage" : "restaurant",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/game/restaurant"
+            },
+            "lines" : [
+                {
+                    "text" : {
+                        "en": "Hey, I am so happy to see you here!",
+                        "es": "¡Hola, estoy muy feliz de verte por aquí!"
+                    },
+                    "speaker" : "friend"
+                },{
+                    "text" : {
+                        "en": "Thanks for coming! Delicia is my favorite restaurant!",
+                        "es": "¡Gracias por venir! ¡Delicia es mi restaurante favorito!"
+                    },
+                    "speaker" : "friend"
+                },{
+                    "text" : {
+                        "en": "All right, let’s explore their menu. I heard the menu changes every time you visit!",
+                        "es": "Exploremos el menú. ¡Escuché que el menú cambia cada vez que visitas!"
+                    },
+                    "speaker" : "friend"
+                }
+            ]
+        },
+
+        "restaurantOutro" : {
+            "stage" : "restaurant",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/game/restaurant/finished"
+            },
+            "lines" : [
+                {
+                    "text" : {
+                        "en": "Wow, I’m so full!",
+                        "es": "Guau, estoy muy satisfecha!"
+                    },
+                    "speaker" : "friend"
+                },{
+                    "text" : {
+                        "en": "The food was really good!",
+                        "es": "La comida estaba muy buena!"
+                    },
+                    "speaker" : "player"
+                },{
+                    "text" : {
+                        "en": "It was! Let’s come again soon.",
+                        "es": "Sí siempre, cuando quieras volvemos!"
+                    },
+                    "speaker" : "friend"
+                },{
+                    "text" : {
+                        "en": "Sure! I’ll see you later!",
+                        "es": "¡Claro, nos vemos luego!"
+                    },
+                    "speaker" : "player"
+                }
+            ]
+        }
+    }
+}

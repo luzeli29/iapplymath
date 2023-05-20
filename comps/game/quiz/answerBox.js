@@ -6,7 +6,7 @@ import Login from 'pages/user/login'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import {useRouter} from 'next/router'
 import ContinueAnswerBox from './answerBoxes/continueAnswerBox';
-import QuestionFormats from '@utils/game/questionFormats'
+import QuestionFormats from '@utils/game/quiz/questionGeneration/questionFormats'
 import TextInputAnswerBox from './answerBoxes/textInputAnswerBox';
 import QuizCalculator from './quizCalculator/quizCalculator';
 import ButtonAnswerBox from './answerBoxes/buttonAnswerBox';
@@ -14,7 +14,6 @@ import DevErr from '@utils/debug/devErr';
 
 export default function AnswerBox({correctAnswer,questionFormatKey,handleSubmitAnswer}) {
     const {user,settings,loading, error} = useUserContext()
-    console.log(questionFormatKey)
     const router = useRouter()
     const isLoggedIn = user.loggedIn
     if(loading) return <Loading/>
@@ -46,7 +45,7 @@ export default function AnswerBox({correctAnswer,questionFormatKey,handleSubmitA
         <div className=''> 
             <div className='row px-2'>
                 <div className='col-4'>
-                    {questionFormat.calculatorType && <QuizCalculator calculatorType={questionFormat.calculatorType}/>}
+                    {questionFormat.calculatorType && <QuizCalculator calculatorType={questionFormat.calculatorType} lang={lang}/>}
                 </div>
                 <div className='col-8'>
                 </div>

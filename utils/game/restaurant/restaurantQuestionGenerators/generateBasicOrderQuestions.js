@@ -1,6 +1,4 @@
-import createGameQuestion from "@utils/game/createGameQuestion";
-import validateOrder from "@utils/validation/game/restaurant/validateOrder";
-import QuestionFormats from "@utils/game/questionFormats";
+import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 
 export default function generateBasicOrderQuestions(order) {
     let questions = []

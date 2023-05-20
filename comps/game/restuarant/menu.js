@@ -2,7 +2,7 @@ import React from 'react'
 import style from '@styles/restaurant.module.css'
 import Loading from '@comps/screens/loading';
 import { err } from '@utils/debug/devLog';
-import { getText } from '@commonImports';
+import getText from '@utils/text/getText'
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import menuOptions from "@public/text/menuOptions"
 

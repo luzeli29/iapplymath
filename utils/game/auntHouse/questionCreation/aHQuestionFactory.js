@@ -1,5 +1,4 @@
-import {simplifyFraction} from '@utils/imports/commonImports'
-import createGameQuestion from '@utils/game/createGameQuestion.js'
+import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 import DevLog from '@utils/debug/devLog'
 import generateBasicAHQuestions from './basic/generateBasicAHQuestions'
 import generateFamilyQuestions from './familyQuestions/generateFamilyQuestions'

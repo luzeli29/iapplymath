@@ -1,4 +1,4 @@
-import { getText } from '@utils/imports/commonImports'
+import getText from '@utils/text/getText'
 import React, { useState } from 'react'
 
 export default function Loading({lang}) {

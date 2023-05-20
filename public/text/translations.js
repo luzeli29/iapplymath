@@ -118,6 +118,15 @@ const translations = {
     },
 
     // ----- General Translations -----
+    drag_me: {
+        en: "Drag me!",
+        es: "¡Arrástrame!",
+    },
+
+    level_select: {
+        en: "Level Select",
+        es: "Seleccionar Nivel",
+    },
     of: {
         en: 'Of',
         es: 'De'
