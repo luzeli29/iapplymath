@@ -9,8 +9,9 @@ import loadLevels from '@utils/game/quiz/levels/loadLevels'
 import { useRouter } from 'next/router'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import getText from '@utils/text/getText'
+import useCookie from '@hooks/useCookie'
 
 export async function getStaticPaths() {
     const locationsObj = await loadLocations()
@@ -44,18 +45,25 @@ export async function getStaticProps(context){
 
 export default function LevelSelect({location,levels}) {
     const {user,settings,loading, error} = useUserContext()
-    
+    const [quizCookie, setQuizCookie] = useCookie('restaurant_quiz')
+
     const router = useRouter()
-    const [selectedLevel, setSelectedLevel] = useState()
-
-
+    const [selectedLevel, setSelectedLevel] = useState(quizCookie && quizCookie['level'] ? quizCookie['level'] : '')
     const isLoggedIn = user.loggedIn    
-    if(loading) return <Loading/> 
-    if(error) return <Error error={error}/>
-    if(!isLoggedIn) return <Login/>
+
     const lang = settings.lang
     const routerQuery = router.query
     
+    useEffect(() => {
+        if (quizCookie != null && quizCookie != 'expires') {
+            handleLevelSelect()
+        }
+    }, [])
+
+    if(loading) return <Loading/> 
+    if(error) return <Error error={error}/>
+    if(!isLoggedIn) return <Login/>
+
     function getLevelIcon(key,value) {
         return (
             <div className='m-2'>
@@ -77,6 +85,8 @@ export default function LevelSelect({location,levels}) {
                 params[paramKey] = routerQuery[paramKey]
             }
             params.level = selectedLevel
+            setQuizCookie({ ...quizCookie, level: selectedLevel }, 7)
+
             const paramString = CreateParamString(params)
             router.push('/game/' + locationKey + '/quiz/' + questionTypeKey + paramString)
         }

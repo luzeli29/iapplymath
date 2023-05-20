@@ -6,7 +6,7 @@ import getText from '@utils/text/getText'
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import menuOptions from "@public/text/menuOptions"
 
-const Menu = ({menu, handleHover, handleDishClick}) => {
+const Menu = ({ menu, handleHover, handleDishClick }) => {
     const {user,settings,loading, error} = useUserContext()
     const isLoggedIn = user.loggedIn    
     if(loading) return <Loading/>
@@ -22,7 +22,7 @@ const Menu = ({menu, handleHover, handleDishClick}) => {
             <button className={style.menu_button}
                 onMouseEnter={() => handleHover(dish)}
                 onMouseLeave={() => handleHover()}
-                onClick={() => handleDishClick(dishType,dishIndex)}> 
+                onClick={() => handleDishClick(dishIndex, dishType)}> 
                 <img 
                     src={"/img/food/" + dish.img} 
                     className={style.ms_order_button_img}/>

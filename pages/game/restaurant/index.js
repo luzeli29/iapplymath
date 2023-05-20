@@ -11,14 +11,12 @@ import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
 import menuOptions from "@public/text/menuOptions"
+import useCookie from '@hooks/useCookie'
 
-
-function getMenuItemFromIndex(dishType,index) {
-    
-}
 
 export default function Resturant () {
     const {user,settings,loading, error} = useUserContext()
+    const [quizCookie, setQuizCookie , delQuizCookie] = useCookie('restaurant_quiz')
     const router = useRouter()
 
     const [hoveredDish, setHoveredDish] = useState()
@@ -35,16 +33,26 @@ export default function Resturant () {
         setBudget(Math.floor(Math.random() * 3) + 10)
     }, [router.isReady]);
 
+
+    useEffect(() => {   
+        if (quizCookie != null && quizCookie != 'expires') {
+            if (confirm("Hey! You have already started a test, do you want to continue it?")) {
+
+                updateOrder({mainDish: quizCookie['mainDish']})
+                updateOrder({drink: quizCookie['drink']})
+                updateOrder({dessert: quizCookie['dessert']})
+                router.push('/game/restaurant/basic/levelSelect?mainDishIndex=' + quizCookie['mainDish'] + '&drinkIndex=' + quizCookie['drink'] + '&dessertIndex=' + quizCookie['dessert'])         
+            } else {
+                delQuizCookie()
+            }
+        }
+    }, [])
+
     const isLoggedIn = user.loggedIn    
     if(loading || !router.isReady) return <Loading/>
     if(error) return <Error error={error}/>
     if(!isLoggedIn) return <Login/>
     const lang = settings.lang
-
-    function handleOrderComplete() {
-        //TODO: Validate the parms
-        router.push('/game/restaurant/quiz/' + 'basic' + '?mainDishIndex=' + order.mainDish + '&drinkIndex=' + order.drink + '&dessertIndex=' + order.dessert)
-    }
 
     function handleHover(dish) {
         if(dish) {
@@ -54,21 +62,24 @@ export default function Resturant () {
         }
     }
 
-    function handleDishClick(dishType, dishIndex) {
+    function handleDishClick(dishIndex, dishType) {
         switch(dishType) {
             case 'mainDish':
                 updateOrder({mainDish: dishIndex})
+                handleQuizCookie('mainDish', dishIndex)
                 break;
             case 'drink':
                 updateOrder({drink: dishIndex})
+                handleQuizCookie('drink', dishIndex)
                 break;
             case 'dessert':
                 updateOrder({dessert: dishIndex})
+                handleQuizCookie('dessert', dishIndex)
                 break;
         }
     }
-    function handleOrderComplete() {
 
+    function handleOrderComplete() {    
         if(order.mainDish == -1) {
             setInstructionText("missing_item_instructions")
         } else if (order.drink == -1) {
@@ -82,6 +93,17 @@ export default function Resturant () {
         } else {
             router.push('/game/restaurant/basic/levelSelect?mainDishIndex=' + order.mainDish + '&drinkIndex=' + order.drink+ '&dessertIndex=' + order.dessert)         
         }
+    }
+
+
+
+    const handleQuizCookie = (type, value) => {
+        let data = {}
+        if (quizCookie != "expires") {
+            data = { ...quizCookie }
+        }
+        data[type] = value
+        setQuizCookie(data, 7)
     }
       
     if(!menu) return <Loading/>
@@ -98,7 +120,9 @@ export default function Resturant () {
                     lang={lang}
                     menu={menu} 
                     handleHover={(dish) => handleHover(dish)}
-                    handleDishClick={(dishIndex,type) => handleDishClick(dishIndex,type)}/>
+                    handleDishClick={(dishIndex,type) => handleDishClick(dishIndex,type)}
+                    handleQuizCookie={handleQuizCookie}
+                    />
                 <div className={style.decription_container}>
                     <ItemDescription lang={lang} hoveredDish={hoveredDish} budget={budget}/>
                 </div>
