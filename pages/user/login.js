@@ -84,7 +84,6 @@ export default function Login() {
         <form className="" autoComplete="off" onSubmit={handleSubmit}>
             <div className="row w-75 mx-auto pt-5 text-center">
               <p className="red">{feedbackText ? feedbackText : " "}</p>
-              <p className="red">{user.error }</p>
               <label className="col-4 text-end" htmlFor="UserId">{translations.username[lang]}</label>
               <input className="col-6" id="username" type="text" name="username" pattern="[a-zA-Z0-9]*"/>
             </div>
