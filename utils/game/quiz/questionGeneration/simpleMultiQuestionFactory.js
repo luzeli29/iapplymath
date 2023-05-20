@@ -1,6 +1,6 @@
-import { getText } from "@commonImports"
+import getText from '@utils/text/getText'
 import DevErr from "@utils/debug/devErr"
-import createGameQuestion from "@utils/game/createGameQuestion"
+import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 
 export default function simpleMultiQuestionFactory(game,helperObject,randomGenerator) {
     if(!game) {

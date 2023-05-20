@@ -1,3 +1,6 @@
+//TODO: DELETE THIS FILE as it is useless, PLEASE DONT ADD TO THIS FILE!
+
+
 const dialog_scripts = {
     error: {
         stage: "ayu",
@@ -71,7 +74,6 @@ const dialog_scripts = {
     ayu_relaxation_0: {
         stage: "ayu",
         lines:   [
-        
             {
                 en:"Slowly, let’s take three big belly breaths.",
                 es:"Tomemos tres respiraciones profundas lentamente.",

@@ -1,15 +1,13 @@
-import fillQuestionTemplate from "@utils/game/questionGenerators/fillQuestionTemplate";
+import fillQuestionTemplate from "@utils/game/quiz/questionGeneration/fillQuestionTemplate";
+import schoolQuestionTemplates from "./schoolQuestionTemplates";
+import simplifyFraction from "@utils/game/quiz/simplifyFraction";
+import DevErr from "@utils/debug/devErr";
 
 const levelBoundaries = {
     1: {min: 1, max: 12},
     2: {min: 13, max: 99},
     3: {min: 100, max: 999},
 }
-
-import schoolQuestionTemplates from "./schoolQuestionTemplates";
-import { simplifyFraction } from "@commonImports";
-import DevErr from "@utils/debug/devErr";
-import DevLog from "@utils/debug/devLog";
 
 const generateSchoolQuestion = (schoolTopic, level,randomGenerator) => {
     let firstNumber = randomGenerator.randomInt(levelBoundaries[level].min, levelBoundaries[level].max)

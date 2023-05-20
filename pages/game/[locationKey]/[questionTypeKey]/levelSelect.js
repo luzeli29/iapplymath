@@ -3,16 +3,17 @@ import LevelDisplay from '@comps/game/levelDisplay'
 import IconGroup from '@comps/iconGroup'
 import Loading from '@comps/screens/loading'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
-import CreateParamString from '@utils/game/createParamString'
-import LoadLocations from '@utils/staticData/json/game/loadLocations'
-import LoadLevels from '@utils/staticData/json/game/quiz/loadLevels'
+import CreateParamString from '@utils/createParamString'
+import loadLocations from '@utils/game/loadLocations'
+import loadLevels from '@utils/game/quiz/levels/loadLevels'
 import { useRouter } from 'next/router'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
 import React, { useState } from 'react'
+import getText from '@utils/text/getText'
 
 export async function getStaticPaths() {
-    const locationsObj = await LoadLocations()
+    const locationsObj = await loadLocations()
     const locations = Object.keys(locationsObj)
     const keyPaths = [];
     for (let locationKey of locations) {
@@ -30,9 +31,9 @@ export async function getStaticPaths() {
 export async function getStaticProps(context){
     const  {params}  = context
     const locationKey = params.locationKey
-    const locationsObj = await LoadLocations()
+    const locationsObj = await loadLocations()
     const location =locationsObj[locationKey] 
-    const levels = await LoadLevels()
+    const levels = await loadLevels()
     return {
       props: {
         levels,
@@ -57,9 +58,11 @@ export default function LevelSelect({location,levels}) {
     
     function getLevelIcon(key,value) {
         return (
+            <div className='m-2'>
             <ClickableIcon selected={selectedLevel == value.value} onClick={() => setSelectedLevel(value.value)}> 
                     <LevelDisplay level={value.value} lang={lang}/>
             </ClickableIcon>
+            </div>
         )
     }
 
@@ -82,7 +85,9 @@ export default function LevelSelect({location,levels}) {
     return (
         <div>
             <div>
-                Level Select
+                <h1 className='text-center pb-3'>
+                    {getText('level_select',lang)}
+                </h1>
             </div>
             <IconGroup 
                     lang={lang}
@@ -92,7 +97,11 @@ export default function LevelSelect({location,levels}) {
                     getContentFromValue={(key,value) => getLevelIcon(key,value)}
                     width={3}
                     height={1}/>
-            <button onClick={() => handleLevelSelect()} disabled={!selectedLevel}>Submit</button>
+            <div className='row pt-5'>
+                <button className='basic_button mx-auto' onClick={() => handleLevelSelect()} disabled={!selectedLevel}>
+                    {getText('start',lang)}
+                </button>
+            </div>
         </div>
     )
 }

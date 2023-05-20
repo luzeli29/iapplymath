@@ -417,11 +417,20 @@ export default function useUser() {
     return true
   }
 
+  const hasAvatar = () => {
+    if(userdata.avatarId !== "") {
+      return true;
+    }
+
+    return false;
+  }
+
   const user = {
     loggedIn: loggedIn,
     loading: loading,
     error: error,
     data: userdata,
+    hasAvatar:hasAvatar,
     login: login,
     offlineLogin: offlineLogin,
     logout: logout,

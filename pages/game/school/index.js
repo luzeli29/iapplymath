@@ -1,4 +1,4 @@
-import { GameIndexLayout, getText } from '@commonImports'
+import GameIndexLayout from '@layouts/gameLayouts/gameIndexLayout'
 import ClickableIcon from '@comps/clickableIcon'
 import IconGroup from '@comps/iconGroup'
 import Loading from '@comps/screens/loading'
