@@ -1,10 +1,9 @@
 import getText from '@utils/text/getText'
 import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 
-export default function generateSingleMultiplyDishQuestions(order,level,randomGenerator) {
+export default function generateSingleMultiplyDishQuestions(order,randomGenerator, level) {
     const numbOfQuestionsNeeded = 3
     let questions = []
-
 
     for(let i = 0; i < numbOfQuestionsNeeded; i++) {
         let question = generateSingleMultiplyQuestion(order,level,randomGenerator)
@@ -23,54 +22,50 @@ function generateSingleMultiplyQuestion(order,level,randomGenerator) {
     const dishTypeEs =  getText(dishType,'es').toLowerCase()
     let question
 
-    if(factor == 3) {
+    if(level === 1) {
+        if(factor == 2) {
+            question = createGameQuestion(
+                {
+                    en:`Elena ordered the same ${dishType} as you. What is the total cost of the two ${dishType}s?`,
+                    es:`Elena pidió lo mismo ${dishTypeEs} que tú. ¿Cuál es el costo total de los dos ${dishTypeEs}?`,
+                },
+                dish.price * 2,
+                [{
+                    en: "Total Cost = (" + dish.en + ") + (" + dish.en + ")  OR Total Cost = (" + dish.en + ") * 2",
+                    es: "Costo Total = (" + dish.es + ") + (" + dish.es + ")  OR Costo Total = (" + dish.es + ") * 2",
+                }],
+                "wholeNumber"
+            )
+        } else {
+            question = createGameQuestion(
+                {
+                    en:`Elena wants to order some food to bring home to her family. She ordered the same entrée and dessert as you for her father, mother, and brother. How much will this food cost Elena?`,
+                    es:`Elena quiere pedir algo de comida para llevar a su familia. Pidió el mismo plato principal y postre que tú para su padre, madre y hermano. ¿Cuánto costará esta comida a Elena?`,
+                },
+                dish.price * factor,
+                [{
+                    en: `Step 1. Sum of Entrees = Entrée + Entrée + Entrée\nStep 2. Sum of Desserts = Dessert + Dessert + Dessert\nStep 3. Total Cost = Sum of Entrees + Sum of Desserts`,
+                    es: `Paso 1. Suma de platos principales = Plato principal + Plato principal + Plato principal\nPaso 2. Suma de postres = Postre + Postre + Postre\nPaso 3. Costo total = Suma de platos principales + Suma de postres`,
+                }],
+                "wholeNumber"
+            ) 
+        }
+    } else if (level === 2 || level === 3) {
+        // Custom level 2 and level 3 questions need to be implemented here
+        // Placeholder for custom question
         question = createGameQuestion(
             {
-                en:"Elena’s friend, Alex, joins you at the table. If all three of you order the same " + dishType + ", " + dish.en + ", what is the total cost of all " + dishType + "s?",
-                es:"El amigo de Elena, Alex, se une a ti en la mesa. Si los tres piden " + (dishTypeEs === "postre" ? "el mismo " : "la misma ") + dishTypeEs + ", " + dish.es + ", ¿cuál es el costo total de " + (dishTypeEs === "postre" ? "todos los " : "todas las ") + dishTypeEs + "s?",
+                en: "Custom question in English?",
+                es: "¿Pregunta personalizada en español?",
             },
-            dish.price * 3,
+             dish.price * factor,
             [{
-                en: "(" + dish.en + ") + (" + dish.en + ") + (" + dish.en + ") = ???",
-                es: "(" + dish.es + ") + (" + dish.es + ") + (" + dish.es + ") = ???",
-            },{
-                en: "(" + dish.en + ") + (" + dish.en + ") + (" + dish.en + ") = " + dish.price * 3,
-                es: "(" + dish.es + ") + (" + dish.es + ") + (" + dish.es + ") = " + dish.price * 3,
+                en: "Custom calculation in English?",
+                es: "¿Cálculo personalizado en español?",
             }],
             "wholeNumber"
         )
-    } else if (dishType == 'mainDish') {
-        question = createGameQuestion(
-            {
-                en:'If your family wants to order your same main dish ' + factor + ' times, how much is your family’s total?',
-                es:'Si su familia quiere pedir el mismo plato principal ' + factor + ' veces , ¿cuánto es el total?',
-            },
-            dish.price * factor,
-            [{
-                en: "(" + dish.en + ") x " + factor + " = ???",
-                es: "(" + dish.es + ") x " + factor + " = ???",
-            },{
-                en: "(" + dish.en + ") x " + factor + " = " + dish.price * factor,
-                es: "(" + dish.es + ") x " + factor + " = " + dish.price * factor,
-            }],
-            "wholeNumber"
-        ) 
-    } else {
-        question = createGameQuestion(
-            {
-                en:"If you buy your " + dishType + ", " + dish.en + ", " + factor + (factor === 1 ? " time" : " times") + ", how much money did you spend in total?",
-                es:"Si compra su " + dishTypeEs + ", " + dish.es + ", " + factor + (factor === 1 ? " vez" : " veces") + ", ¿cuánto dinero gastó en total?",
-            },
-            dish.price * factor,
-            [{
-                en: "(" + dish.en + ") x " + factor + " = ???",
-                es: "(" + dish.es + ") x " + factor + " = ???",
-            },{
-                en: "(" + dish.en + ") x " + factor + " = " + dish.price * factor,
-                es: "(" + dish.es + ") x " + factor + " = " + dish.price * factor,
-            }],
-            "wholeNumber"
-        ) 
     }
+
     return question
 }

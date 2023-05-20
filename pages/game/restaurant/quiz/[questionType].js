@@ -18,7 +18,7 @@ export default function RestaurantQuestions() {
     const [questions, setQuestions] = useState()
     const router = useRouter()
 
-    const { questionType, mainDishIndex, drinkIndex, dessertIndex } = router.query
+    const { questionType, mainDishIndex, drinkIndex, dessertIndex, level } = router.query
 
     const orderIndex = {
         mainDish:mainDishIndex,
@@ -36,7 +36,7 @@ export default function RestaurantQuestions() {
         if(seed) {
         
             DevLog('Generating question with seed: ' + seed)
-            setQuestions(generateRestaurantQuestions(order,randomGenerator))
+            setQuestions(generateRestaurantQuestions(order, randomGenerator, questionType, level))
         }
     },[seed])
 
