@@ -1,11 +1,10 @@
 import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 
-export default function generateMultiMultiplyDishQuestions(order,level,randomGenerator) {
+export default function generateMultiMultiplyDishQuestions(order, randomGenerator, level) {
     const numbOfTwoQuestionsNeeded = 2
     const numbOfThreeQuestionsNeeded = 1
 
     let questions = []
-
 
     for(let i = 0; i < numbOfTwoQuestionsNeeded; i++) {
         let question = generateTwoMultiplyQuestion(order,level,randomGenerator)
@@ -47,7 +46,7 @@ function generateTwoMultiplyQuestion(order,level,randomGenerator) {
     const question = createGameQuestion(
         {
             en:'If you buy ' + factor1 + ', ' +  dish1.en +' and ' + factor2 + ', ' + dish2.en + ', what is your total?',
-            es:'Si compras ' + factor1 + ', ' +  dish1.es +' et ' + factor2 + ', ' + dish2.es + ' ¿Cuál es su total?',
+            es:'Si compras ' + factor1 + ', ' +  dish1.es +' et ' + factor2 + ', ' + dish2.es + ' ¿Cuál es tu total?',
         },
         answer,
         [{
@@ -79,7 +78,7 @@ function generateThreeMultiplyQuestion(order,level,randomGenerator) {
     const question = createGameQuestion(
         {
             en:'If you buy ' + factorMainDish + ' ' + mainDish.en + ', ' + factorDrink + ' ' + drink.en + ', and ' + factorDessert + ' ' + dessert.en + ', what is your total?',
-            es:'Si compras ' + factorMainDish + ' ' + mainDish.es + ', ' + factorDrink + ' ' + drink.es + ', y ' + factorDessert + ' ' + dessert.es + ' ¿Cuál es su total?',
+            es:'Si compras ' + factorMainDish + ' ' + mainDish.es + ', ' + factorDrink + ' ' + drink.es + ', y ' + factorDessert + ' ' + dessert.es + ' ¿Cuál es tu total?',
         },
         answer,
         [{
