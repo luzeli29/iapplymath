@@ -69,8 +69,8 @@ width: 320px;
   max-width: 90%;
   margin-bottom: 15px;
 }
-.center-text {
-  display: flex;
+.center-tooltip {
+  
   align-items: center;
   justify-content: center;
   text-align: center;

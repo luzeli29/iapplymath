@@ -59,7 +59,7 @@ export default function QuickNavButtons({user,settings,router}) {
 
     if(loggedIn){
         return (
-            <div className="col col-lg-2 center-text">
+            <div className="col col-lg-2 center-tooltip">
             {/* Avatar Button */}
             <QuickNavButton text={AvatarTooltipText} onClick={() => router.push('/user/avatar/select')}>
                 <BsFillPersonFill/>
@@ -84,7 +84,7 @@ export default function QuickNavButtons({user,settings,router}) {
         )
     } else {
         return (
-            <div className="col col-lg-2 center-text ">
+            <div className="col col-lg-2 center-tooltip ">
                 {/* Mute Button */}
                 <MuteButton/>
                 {/* Font Button */}
