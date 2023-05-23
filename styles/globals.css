@@ -70,7 +70,7 @@ width: 320px;
   margin-bottom: 15px;
 }
 .center-tooltip {
-  
+  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
