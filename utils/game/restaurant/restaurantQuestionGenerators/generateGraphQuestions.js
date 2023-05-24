@@ -1,6 +1,6 @@
 import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 
-export default function generateGraphQuestions(randomGenerator) {
+export default function generateGraphQuestions(randomGenerator, level) {
     const questions = []
     questions[0] = generateDefaultGraphQuestion(randomGenerator)
 
@@ -14,15 +14,15 @@ function generateDefaultGraphQuestion(randomGenerator) {
     const question = createGameQuestion(
         {
             en:'This is a graph that shows the cost for each main dish. The x-axis represents the different main dishes on the menu and the y-axis is the price for each main dish. How much was main dish ' + dishIndex + '.', 
-            es:'Este es un gráfico que nos enseña el costo de cada plato principal. El eje x representa un plato principal diferente en el menú y el eje y es el precio de cada plato principal. ¿Cuánto cuesta el plato principal ' + dishIndex + '.',
+            es:'Este es un gráfico que muestra el costo de cada plato principal. El eje x representa los diferentes platos principales en el menú y el eje y es el precio de cada plato principal. ¿Cuánto cuesta el plato principal ' + dishIndex + '.',
         },
         answer,
         [{
             en: 'x = y; x = main dish and y = price',
-            es: 'x = y; x = plato principal and y = precio',
+            es: 'x = y; x = plato principal y y = precio',
         },{
             en: 'x = y; x = ' + dishIndex + ' and y = ' + answer,
-            es: 'x = y; x = ' + dishIndex + ' et y = ' + answer,
+            es: 'x = y; x = ' + dishIndex + ' y y = ' + answer,
         }],
         "wholeNumber",
         null,
