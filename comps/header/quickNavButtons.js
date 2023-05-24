@@ -5,7 +5,6 @@ import {TbLogout,TbLogin, TbMusicOff} from "react-icons/tb";
 import {TbMusic} from "react-icons/tb";
 import Tooltip from "comps/accessibility/tooltip"
 import getText from '@utils/text/getText'
-import {RxText, RxTextNone} from "react-icons/rx";
 import QuickNavButton from '@comps/header/quickNavButton';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
