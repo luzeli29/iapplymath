@@ -117,6 +117,11 @@ const translations = {
         es: "Por favor seleccione un tema de pregunta.",
     },
 
+    type_select: {
+        en: "Ecuation Type Select",
+        es: "Seleccionar Tipo de Ecuación",
+    },
+
     // ----- General Translations -----
     level_select: {
         en: "Level Select",
