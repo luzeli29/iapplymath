@@ -39,7 +39,7 @@ export default function generateBasicOrderQuestions(order, level) {
 
         questions.push(createGameQuestion(
             {
-                en: `How much will you pay for your entrée if you share half of it with Elena and split the cost evenly? `,
+                en: `How much will you pay for your main dish if you share half of it with Elena and split the cost evenly? `,
                 es: `¿Cuánto pagará por su entrada si comparte la mitad con Elena y divide el costo en partes iguales?`,
             },
             total,
@@ -60,12 +60,14 @@ export default function generateBasicOrderQuestions(order, level) {
             "wholeNumber",
         ))
 
-        random = Math.floor(Math.random() * 30)
-        random_2 = Math.floor(Math.random() * 10)
-        total = parseInt( random / parseInt(order.mainDish.price))
+        random = Math.floor(Math.random() * 30)+1 // exclude 0
+        random_2 = Math.floor(Math.random() * 10)+1 // exclude 0
+        // total = parseInt( random / parseInt(order.mainDish.price))
+        // if random is the budget, and random_2 is the price of the main dish, how many main dishes can you buy?
+        total = Math.floor(random / random_2)
         questions.push(createGameQuestion(
             {
-                en: `Elena’s budget is ${random} dollars. If her entrée costs ${random_2} dollars, how many entrees can she buy?`,
+                en: `Elena’s budget is ${random} dollars. If her main dish costs ${random_2} dollars, how many main dishes can she buy?`,
                 es: `El presupuesto de Elena es ${random} dólares. Si su entrada cuesta ${random_2} dólares, ¿cuántas entradas puede comprar?`,
             },
             total,
