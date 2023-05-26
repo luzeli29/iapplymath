@@ -32,12 +32,12 @@ export default function QuickNavButtons({user,settings,router}) {
     const MuteButton = () => {
         if(mute) {
             return (
-            <QuickNavButton text={UnMuteTooltipText} onClick={() => settings.toggleMute()}>
+            <QuickNavButton  text={UnMuteTooltipText} onClick={() => settings.toggleMute()}>
                 <TbMusicOff /> 
             </QuickNavButton> )
         } else {
             return (
-            <QuickNavButton text={MuteTooltipText} onClick={() => settings.toggleMute()}>
+            <QuickNavButton   text={MuteTooltipText} onClick={() => settings.toggleMute()}>
                  <TbMusic/>
             </QuickNavButton> )  
         }
@@ -46,7 +46,7 @@ export default function QuickNavButtons({user,settings,router}) {
     const FontButton = () => {
         if(font) {
             return (
-            <QuickNavButton text={FontDysTooltipText} onClick={() => settings.toggleFont()}>
+            <QuickNavButton   text={FontDysTooltipText} onClick={() => settings.toggleFont()}>
                 <RxText/>
             </QuickNavButton> )
         } else {
@@ -61,11 +61,11 @@ export default function QuickNavButtons({user,settings,router}) {
         return (
             <div className="col col-lg-2 center-tooltip">
             {/* Avatar Button */}
-            <QuickNavButton text={AvatarTooltipText} onClick={() => router.push('/user/avatar/select')}>
+            <QuickNavButton   text={AvatarTooltipText} onClick={() => router.push('/user/avatar/select')}>
                 <BsFillPersonFill/>
             </QuickNavButton>
             {/* Checkin Button */}
-            <QuickNavButton text={MapTooltipText} onClick={() => router.push('/game/map')}>
+            <QuickNavButton   text={MapTooltipText} onClick={() => router.push('/game/map')}>
                 <BsMapFill/>
             </QuickNavButton>
             {/* Checkin Button */}
@@ -90,7 +90,7 @@ export default function QuickNavButtons({user,settings,router}) {
                 {/* Font Button */}
                 <FontButton/>
                 {/* Login Button */}
-                <QuickNavButton text={LoginTooltipText} onClick={() => router.push('/user/login')}>
+                <QuickNavButton  text={LoginTooltipText} onClick={() => router.push('/user/login')}>
                     <TbLogin/>
                 </QuickNavButton>  
             </div>

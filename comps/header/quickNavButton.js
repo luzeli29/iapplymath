@@ -29,7 +29,7 @@ export default function QuickNavButton({children,text,onClick}) {
 
     return (
         <Tooltip text={tooltipText}>
-            <button onClick={() => handleClick()}>
+            <button  onClick={() => handleClick()}>
                 {buttonContent}
             </button>
         </Tooltip>
