@@ -5,8 +5,8 @@ import {TbLogout,TbLogin, TbMusicOff} from "react-icons/tb";
 import {TbMusic} from "react-icons/tb";
 import Tooltip from "comps/accessibility/tooltip"
 import getText from '@utils/text/getText'
-import {RxText, RxTextNone} from "react-icons/rx";
 import QuickNavButton from '@comps/header/quickNavButton';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function QuickNavButtons({user,settings,router}) {
     const loggedIn = user.loggedIn
@@ -46,13 +46,14 @@ export default function QuickNavButtons({user,settings,router}) {
     const FontButton = () => {
         if(font) {
             return (
-            <QuickNavButton   text={FontDysTooltipText} onClick={() => settings.toggleFont()}>
-                <RxText/>
+            <QuickNavButton text={FontDysTooltipText} onClick={() => settings.toggleFont()}>
+                <span className="bi bi-file-font-fill"></span>
             </QuickNavButton> )
         } else {
             return (
             <QuickNavButton text={FontTooltipText} onClick={() => settings.toggleFont()}>
-                <RxTextNone/>
+                
+                <span className="bi bi-file-font"></span>
             </QuickNavButton> )  
         }
     }
