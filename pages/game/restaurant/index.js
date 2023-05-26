@@ -35,6 +35,16 @@ export default function Resturant () {
         setBudget(Math.floor(Math.random() * 3) + 10)
     }, [router.isReady]);
 
+    const handleOrderMenu = () => {
+        updateOrder({mainDish: -1})
+        updateOrder({drink: -1})
+        updateOrder({dessert: -1})
+
+        setMenu(getMenu());
+        setBudget(Math.floor(Math.random() * 3) + 10)
+    }
+
+
     const isLoggedIn = user.loggedIn    
     if(loading || !router.isReady) return <Loading/>
     if(error) return <Error error={error}/>
@@ -106,7 +116,9 @@ export default function Resturant () {
                     <Order 
                         lang={lang}
                         order={order}
-                        budget={budget}/>
+                        budget={budget}
+                        handleOrderMenu={handleOrderMenu}
+                    />
                 </div>
             </div>
         </GameIndexLayout>
