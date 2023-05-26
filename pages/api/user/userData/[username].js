@@ -25,6 +25,15 @@ export default async function handler(req, res) {
   let client, db;
   try{
     client = await clientPromise;
+
+    if (client == null) {
+      return res.json({
+        code: 400,
+        message: "Error when trying to connect to DB.",
+        data: {},
+      });
+    }
+
     db = client.db(process.env.DB_NAME);
   } catch (e) {
     return res.json({
