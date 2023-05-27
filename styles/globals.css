@@ -69,6 +69,31 @@ width: 320px;
   max-width: 90%;
   margin-bottom: 15px;
 }
+.center-tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  
+}
+.tooltiptext{
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 160%;
+  left: 50%;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
 .feedback{
   width: 100%;
   align-items: center;
@@ -292,11 +317,33 @@ h4{
 .w-85{
   width:600px;
   height: 115px;
+
+}
+.popup-header {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: #f1f1f1;
 }
 
+.draggable-handle {
+  cursor: move;
+}
+
+.close-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: red;
+}
 
 .popup-content{
   padding: 0px !important;
+  display: flex;
+  flex-direction: column;
 }
 
 .tooltiptext {

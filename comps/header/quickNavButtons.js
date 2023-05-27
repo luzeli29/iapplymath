@@ -5,8 +5,8 @@ import {TbLogout,TbLogin, TbMusicOff} from "react-icons/tb";
 import {TbMusic} from "react-icons/tb";
 import Tooltip from "comps/accessibility/tooltip"
 import getText from '@utils/text/getText'
-import {RxText, RxTextNone} from "react-icons/rx";
 import QuickNavButton from '@comps/header/quickNavButton';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function QuickNavButtons({user,settings,router}) {
     const loggedIn = user.loggedIn
@@ -32,12 +32,12 @@ export default function QuickNavButtons({user,settings,router}) {
     const MuteButton = () => {
         if(mute) {
             return (
-            <QuickNavButton text={UnMuteTooltipText} onClick={() => settings.toggleMute()}>
+            <QuickNavButton  text={UnMuteTooltipText} onClick={() => settings.toggleMute()}>
                 <TbMusicOff /> 
             </QuickNavButton> )
         } else {
             return (
-            <QuickNavButton text={MuteTooltipText} onClick={() => settings.toggleMute()}>
+            <QuickNavButton   text={MuteTooltipText} onClick={() => settings.toggleMute()}>
                  <TbMusic/>
             </QuickNavButton> )  
         }
@@ -47,25 +47,26 @@ export default function QuickNavButtons({user,settings,router}) {
         if(font) {
             return (
             <QuickNavButton text={FontDysTooltipText} onClick={() => settings.toggleFont()}>
-                <RxText/>
+                <span className="bi bi-file-font-fill"></span>
             </QuickNavButton> )
         } else {
             return (
             <QuickNavButton text={FontTooltipText} onClick={() => settings.toggleFont()}>
-                <RxTextNone/>
+                
+                <span className="bi bi-file-font"></span>
             </QuickNavButton> )  
         }
     }
 
     if(loggedIn){
         return (
-            <div className="col col-lg-2">
+            <div className="col col-lg-2 center-tooltip">
             {/* Avatar Button */}
-            <QuickNavButton text={AvatarTooltipText} onClick={() => router.push('/user/avatar/select')}>
+            <QuickNavButton   text={AvatarTooltipText} onClick={() => router.push('/user/avatar/select')}>
                 <BsFillPersonFill/>
             </QuickNavButton>
             {/* Checkin Button */}
-            <QuickNavButton text={MapTooltipText} onClick={() => router.push('/game/map')}>
+            <QuickNavButton   text={MapTooltipText} onClick={() => router.push('/game/map')}>
                 <BsMapFill/>
             </QuickNavButton>
             {/* Checkin Button */}
@@ -84,13 +85,13 @@ export default function QuickNavButtons({user,settings,router}) {
         )
     } else {
         return (
-            <div className="col col-lg-2">
+            <div className="col col-lg-2 center-tooltip">
                 {/* Mute Button */}
                 <MuteButton/>
                 {/* Font Button */}
                 <FontButton/>
                 {/* Login Button */}
-                <QuickNavButton text={LoginTooltipText} onClick={() => router.push('/user/login')}>
+                <QuickNavButton  text={LoginTooltipText} onClick={() => router.push('/user/login')}>
                     <TbLogin/>
                 </QuickNavButton>  
             </div>

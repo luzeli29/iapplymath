@@ -15,7 +15,7 @@ export default function GameIndexLayout ({lang, gameName,instruction_text, submi
             <p className={style.basic_game_instructions_text}>{getText(instruction_text,lang)}</p>
          </div>
          
-         <div className={style.basic_game_child_container}>
+         <div style={{ maxHeight: '85%' }} className={style.basic_game_child_container}>
             {children}
          </div>
          <button className="basic_button" id={style.submit_button} onClick={() => handleSubmit()}>{getText(submit_text,lang)}</button>

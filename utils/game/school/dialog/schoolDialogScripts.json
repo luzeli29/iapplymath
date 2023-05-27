@@ -43,7 +43,7 @@
             "stage" : "school",
             "onEnd" : {
                 "type" : "route",
-                "route" : "/game/school"
+                "route" : "/game/school/finished"
             },
             "lines" : [
                 {
