@@ -12,6 +12,12 @@ import Loading from '@comps/screens/loading';
 import Creator from 'pages/user/checkIn'
 import DevErr from '@utils/debug/devErr';
 
+// Brain breake
+import DeepBreathingBreak from 'pages/brainBreak/deep-breathing-break'
+import ChillOutBreak from 'pages/brainBreak/chill-out-break'
+import MoveBodyBreak from 'pages/brainBreak/move-body-break'
+
+
 
 export default function QuestionLayout ({children, questions, onBack, onFinish}) {
    //get current context and other context variables
@@ -92,7 +98,10 @@ export default function QuestionLayout ({children, questions, onBack, onFinish})
    const renderContent = () => {
       switch (state) {
          case "ayu":
-            return <Creator onEnd={handleCheckinEnd} />;
+            // return <Creator onEnd={handleCheckinEnd} />;
+            return <DeepBreathingBreak />;
+            // return <ChillOutBreak />;
+            // return <MoveBodyBreak />;
          case "dialogue":
             return <DialogOld scriptId={"ayu_relaxation_0"} onEnd={handleDialogueEnd}/>;
          case "checkin2":
