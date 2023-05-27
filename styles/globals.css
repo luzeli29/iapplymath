@@ -93,6 +93,7 @@ width: 320px;
 
 
 
+
 .feedback{
   width: 100%;
   align-items: center;
@@ -316,11 +317,33 @@ h4{
 .w-85{
   width:600px;
   height: 115px;
+
+}
+.popup-header {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: #f1f1f1;
 }
 
+.draggable-handle {
+  cursor: move;
+}
+
+.close-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: red;
+}
 
 .popup-content{
   padding: 0px !important;
+  display: flex;
+  flex-direction: column;
 }
 
 .tooltiptext {
