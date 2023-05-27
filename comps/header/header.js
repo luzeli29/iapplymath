@@ -39,7 +39,7 @@ export default function Header() {
 
                 <p className=" pt-2">{username}</p>
             :
-                <></>
+                <p className=" pt-2" style={{opacity:0}}> -- </p>
             }
         </div>
     </div>

@@ -6,7 +6,7 @@ import translations from "@translations";
 
 //order component that shows what the user has ordered
 //used both in QuestionLayout and in MenuSelect
-function Order({order, budget}) {
+function Order({order, budget, handleOrderMenu = null}) {
     const {user,settings,loading, error} = useUserContext()
     const isLoggedIn = user.loggedIn    
     if(loading) return <Loading/>
@@ -14,18 +14,26 @@ function Order({order, budget}) {
     if(!isLoggedIn) return <Login/>
     const lang = settings.lang
     return (
-        <div className={style.order_container}>    
-            <p className={style.order_text}>{translations.order_2[lang]}</p>
-            {order.mainDish != -1 ? <p className={style.order_text}>{menuOptions.mainDish[order.mainDish][lang]} - ${menuOptions.mainDish[order.mainDish].price}.00</p> : <></>}
-            {order.drink != -1 ? <p className={style.order_text}>{menuOptions.drink[order.drink][lang]} - ${menuOptions.drink[order.drink].price}.00</p> : <></>}
-            {order.dessert != -1 ? <p className={style.order_text}>{menuOptions.dessert[order.dessert][lang]} - ${menuOptions.dessert[order.dessert].price}.00</p> : <></>}
+        <div>        
+            <div className={style.order_container}>    
+                <p className={style.order_text}>{translations.order_2[lang]}</p>
+                {order.mainDish != -1 ? <p className={style.order_text}>{menuOptions.mainDish[order.mainDish][lang]} - ${menuOptions.mainDish[order.mainDish].price}.00</p> : <></>}
+                {order.drink != -1 ? <p className={style.order_text}>{menuOptions.drink[order.drink][lang]} - ${menuOptions.drink[order.drink].price}.00</p> : <></>}
+                {order.dessert != -1 ? <p className={style.order_text}>{menuOptions.dessert[order.dessert][lang]} - ${menuOptions.dessert[order.dessert].price}.00</p> : <></>}
+                
+                {/* Re-add if you want to show total or keep it hidden
+                !budget ? 
+                <p>Total - ${order.total}.00</p>
+                : 
+                order.total <= budget ?<p className="green">Total - ${order.total}.00</p> : <p className="red">Total - ${order.total}.00</p>
+                */}
+            </div>
+            {
+            handleOrderMenu && <div className='row'>
+                <button className={style.ms_clear_button} onClick={handleOrderMenu}>Clear Order</button>
+            </div>
+            }
             
-            {/* Re-add if you want to show total or keep it hidden
-            !budget ? 
-            <p>Total - ${order.total}.00</p>
-            : 
-            order.total <= budget ?<p className="green">Total - ${order.total}.00</p> : <p className="red">Total - ${order.total}.00</p>
-            */}
         </div>
     )
 }
