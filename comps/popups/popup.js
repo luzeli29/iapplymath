@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import Draggable from 'react-draggable';
-import { FaTimes } from 'react-icons/fa';
-import { ResizableBox } from 'react-resizable';
+import getText from '@utils/text/getText';
 
-const Popup = ({ icon, content }) => {
+const Popup = ({ icon, content, lang }) => {
+  lang = lang ? lang : 'en'
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [size, setSize] = useState({ width: 320, height: 470 });
 
   const handleTogglePopup = () => {
     setIsOpen(!isOpen);
+    setPosition({ x: 0, y: 0 })
   };
 
   const handleDrag = (e, { x, y }) => {
-    setPosition({ x, y });
+    console.log(x, y);
+    const realY = y + 12;
+    const realX = x + 80;
+    setPosition({ realX, realY });
   };
 
   const handleResize = (e, { size }) => {
@@ -31,7 +35,7 @@ const Popup = ({ icon, content }) => {
           <ResizableBox
             className="popup-content"
             style={{
-              position: 'absolute',
+              position: 'fixed',
               zIndex: 999,
               border: 'none',
               borderRadius: '0px',
