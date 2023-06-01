@@ -51,7 +51,7 @@ export default function RecipeSelect({recipes}) {
                     <Image className='h-1 w-1'
                             priority={true}
                             width={60}
-                            height={35}
+                            height={45}
                             objectFit = {'contain'}
                             src={imgSrc}
                             alt={value.imgSrc}/>

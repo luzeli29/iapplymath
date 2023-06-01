@@ -18,16 +18,16 @@ export default function IngredientList({ingredients, lang}) {
             <div className='row border-bottom border-dark'>
                 <div className='col-2'>
                     <Image 
-                        width={50}
-                        height={40}
+                        width={45}
+                        height={45}
                         quality={100}
                         priority={true}
                         src={ingredientSrc}
                         alt={'ing'}/>
                 </div>   
-                <div className='ps-3 col-10'>
+                <div className='ps-5 pt-2 col-10'>
                     <p>{ingredientLineText}</p>
-                </div>               
+                </div>           
             </div>
         )
 
