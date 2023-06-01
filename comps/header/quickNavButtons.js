@@ -8,7 +8,7 @@ import getText from '@utils/text/getText'
 import QuickNavButton from '@comps/header/quickNavButton';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-export default function QuickNavButtons({user,settings,router}) {
+export default function QuickNavButtons({user,settings,handleLogout,router}) {
     const loggedIn = user.loggedIn
     const lang = settings.lang
     const mute = settings.mute
@@ -23,11 +23,6 @@ export default function QuickNavButtons({user,settings,router}) {
 
     const LogoutTooltipText = getText("logout_tooltip",lang)
     const LoginTooltipText = getText("login_tooltip",lang)
-
-    function handleLogout() {
-        user.logout()
-        router.push('/')
-    }
 
     const MuteButton = () => {
         if(mute) {

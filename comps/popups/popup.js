@@ -14,7 +14,6 @@ const Popup = ({ icon, content, lang }) => {
   };
 
   const handleDrag = (e, { x, y }) => {
-    console.log(x, y);
     const realY = y + 12;
     const realX = x + 80;
     setPosition({ realX, realY });
