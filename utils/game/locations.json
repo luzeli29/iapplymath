@@ -25,7 +25,8 @@
                     "questionParams": {
                         "mainDishIndex" : "int",
                         "drinkIndex" : "int",
-                        "dessertIndex" : "int"
+                        "dessertIndex" : "int",
+                        "level" : "int"
                     }
                 }
             }
@@ -34,7 +35,8 @@
             "questionTypes": {
                "basic" : {
                     "questionParams": {
-                        "schoolTopicKey" : "string"
+                        "schoolTopicKey" : "string",
+                        "level" : "int"
                     }
                }
             }

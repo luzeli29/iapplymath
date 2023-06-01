@@ -9,8 +9,9 @@ import { useUserContext } from '@hooks/siteContext/useUserContext'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
+import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
 
-export default function Map() {
+const Map = ({user,settings}) => {
   const containerRef = useRef(null);
   const [position, setPosition] = useState({
     x: 0,
@@ -46,13 +47,7 @@ export default function Map() {
       window.removeEventListener('resize', handleResize);
     };
   }, [mapLocation]);
-    const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
-
-    const isLoggedIn = user.loggedIn    
-    if(loading || !router.isReady) return <Loading/>
-    if(error) return <Error error={error}/>
-    if(!isLoggedIn) return <Login/>
 
     const lang = settings.lang
     const avatarId = user.data.avatarId
@@ -176,3 +171,5 @@ export default function Map() {
         </>
     );
 }
+
+export default RetrieveUserContext(Map,'gameReady')

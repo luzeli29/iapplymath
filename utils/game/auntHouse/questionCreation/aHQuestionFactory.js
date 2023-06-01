@@ -3,7 +3,7 @@ import DevLog from '@utils/debug/devLog'
 import generateBasicAHQuestions from './basic/generateBasicAHQuestions'
 import generateFamilyQuestions from './familyQuestions/generateFamilyQuestions'
 
-export default function aHQuestionFactory(questionType,recipe) {
+export default function aHQuestionFactory(questionType,recipe,randomGenerator,familySize) {
     if(!questionType) {
         return [createGameQuestion()]
     }
@@ -21,8 +21,6 @@ export default function aHQuestionFactory(questionType,recipe) {
         case "familySize":
             return generateFamilySizeQuestion()
         case "familyQuestion":
-            const familySize = window.sessionStorage.getItem('FAMILY_SIZE')
-
             if(familySize == undefined) {
                 return generateFamilyQuestions(recipe,3)
             }
