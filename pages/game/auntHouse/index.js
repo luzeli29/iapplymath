@@ -55,7 +55,7 @@ export default function RecipeSelect({recipes}) {
                             objectFit = {'contain'}
                             src={imgSrc}
                             alt={value.imgSrc}/>
-                    <LevelDisplay level={value.level} lang={lang}/>
+                    <LevelDisplay pic={true} level={value.level} lang={lang}/>
                 </div>
             </ClickableIcon>
         )
