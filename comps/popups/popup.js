@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 import getText from '@utils/text/getText';
+import { FaTimes } from 'react-icons/fa';
+import { ResizableBox } from 'react-resizable';
 
 const Popup = ({ icon, content, lang }) => {
   lang = lang ? lang : 'en'
