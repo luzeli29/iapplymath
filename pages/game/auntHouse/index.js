@@ -10,6 +10,7 @@ import loadRecipes from '@utils/game/auntHouse/recipeData/loadRecipes'
 import IconGroup from '@comps/iconGroup'
 import ClickableIcon from '@comps/clickableIcon'
 import LevelDisplay from '@comps/game/levelDisplay'
+import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
 
 export async function getStaticProps(){
     const recipes = await loadRecipes()
@@ -20,16 +21,10 @@ export async function getStaticProps(){
     }
 }
 
-export default function RecipeSelect({recipes}) {
-    const {user,settings,loading, error} = useUserContext()
+const RecipeSelect = ({user,settings,recipes}) => {
     const router = useRouter()
     const [selectedRecipe, setSelectedRecipe] = useState()
     const [instructionText, setInstructionText] = useState("aunt_welcome");
-
-    const isLoggedIn = user.loggedIn    
-    if(loading || !router.isReady) return <Loading/>
-    if(error) return <Error error={error}/>
-    if(!isLoggedIn) return <Login/>
 
     const lang = settings.lang
 
@@ -41,7 +36,7 @@ export default function RecipeSelect({recipes}) {
         router.push('/game/auntHouse/recipeCard/' + selectedRecipe)
     }
 
-    function getRecipeIcon(key,value) {
+    const getRecipeIcon = (key,value) => {
         if(value.imgSrc == undefined) return <></>
         const imgSrc = '/img/food/' + value.imgSrc + '.png'
         return (
@@ -81,3 +76,5 @@ export default function RecipeSelect({recipes}) {
         </GameIndexLayout>
     )
 }
+
+export default RetrieveUserContext(RecipeSelect, ['gameReady','hasActiveGame'])

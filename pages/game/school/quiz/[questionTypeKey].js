@@ -1,13 +1,12 @@
-import GameQuestionLayout from '@layouts/gameLayouts/gameQuestionLayout'
 import Loading from '@comps/screens/loading';
-import { useUserContext } from '@hooks/siteContext/useUserContext'
+import RetrieveUserContext from '@hooks/HOF/retrieveUserContext';
+import useQuizDataBuilder from '@hooks/quiz/useQuizDataBuilder';
 import useSeededRandom from '@hooks/useSeededRandom'
+import GameQuestionLayout from '@layouts/gameLayouts/gameQuestionLayout';
 import DevLog from '@utils/debug/devLog';
 import generateSchoolQuestions from '@utils/game/school/quiz/generateSchoolQuestions';
 import LoadSchoolTopics from '@utils/game/school/quiz/schoolTopics/loadSchoolTopics';
 import { useRouter } from 'next/router'
-import Error from 'pages/error';
-import Login from 'pages/user/login';
 import React, { useEffect, useState } from 'react'
 
 export async function getStaticPaths() {
@@ -28,44 +27,61 @@ export async function getStaticProps(){
   }
   
 
-const SchoolQuiz = ({schoolTopics}) => {
-    const {user,settings,loading, error} = useUserContext()
-    const {seed,setSeed,regenerateSeed, randomGenerator} = useSeededRandom()
-    const [questions, setQuestions] = useState()
+const SchoolQuiz = ({user,settings,schoolTopics}) => {
+    const {buildQuizData, quizDataBuilderSetters} = useQuizDataBuilder()
+
+    const [loading, setLoading] = useState(true)
     const router = useRouter()
 
-    const { questionTypeKey, schoolTopicKey, level } = router.query
+    const { questionTypeKey, schoolTopicKey, level, initSeed, initQnNum } = router.query
+    const {seed,setSeed,regenerateSeed, randomGenerator} = useSeededRandom(initSeed)
     const schoolTopic = schoolTopics[schoolTopicKey]
+
+    const generatedQuestions = () => {
+        DevLog('Generating question with seed: ' + seed)
+        const generatedQuestions = generateSchoolQuestions(questionTypeKey,schoolTopic,level,randomGenerator)
+        DevLog(generatedQuestions)
+        return generatedQuestions
+    }
 
     useEffect(()=> {
         if(seed) {
-        
-            DevLog('Generating question with seed: ' + seed)
-            const generatedQuestions = generateSchoolQuestions(questionTypeKey,schoolTopic,level,randomGenerator)
-            setQuestions(generatedQuestions)
-            DevLog(generatedQuestions)
+            const questions = generatedQuestions()
+            createQuizData(questions)
+            setLoading(false)
         }
     },[seed])
 
-    const isLoggedIn = user.loggedIn
-    if(loading || !router.isReady) return <Loading/>
-    if(error) return <Error error={error}/>
-    if(!isLoggedIn) return <Login/>
-    if(!seed || !questions) return <Loading/>
+    const createQuizData = (questions) => {
+        try{
+            const generatedQuestions = questions
+            quizDataBuilderSetters.setQuestions(generatedQuestions)
+            quizDataBuilderSetters.setSeed(seed)
+            quizDataBuilderSetters.setParams()
+            quizDataBuilderSetters.setQuestionTypeKey(questionTypeKey)
+            quizDataBuilderSetters.setOnFinish(() => () => handleFinish())
+            quizDataBuilderSetters.setLocationKey('school')
+            initQnNum ? quizDataBuilderSetters.setQuestionNum(initQnNum) 
+                : quizDataBuilderSetters.setQuestionNum(0)
+            quizDataBuilderSetters.setParams({schoolTopicKey, level})
+        } catch {
+            return false
+        }
+        return true
+    }
+
+    if(!router.isReady) return <Loading/>
   
     const lang = settings.lang
 
     return (
         <GameQuestionLayout
-                    questions={questions}
-                    onBack={() => router.push('/game/school/')}
-                    onFinish={() => 
-                        {
-                            router.push('/dialog/schoolOutro')
-                            return(<Loading/>)
-                        }}> 
+            user={user}
+            settings={settings}
+            quizData={buildQuizData()}
+            initQuestionNum={initQnNum}> 
         </GameQuestionLayout>
     )
 }
 
-export default SchoolQuiz
+export default RetrieveUserContext(SchoolQuiz,['gameReady','hasActiveGame'])

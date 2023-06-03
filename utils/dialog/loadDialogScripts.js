@@ -55,8 +55,6 @@ export default async function loadDialogScripts() {
     mergeObjectsIntoObjectByKeys(dialogScripts,stageData)
 
     DevLog('-----Loaded Dialog Scripts-----')
-    DevLog(dialogScripts)
-    DevLog('------------------------')
 
 
 

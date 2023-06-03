@@ -17,9 +17,9 @@ function Order({order, budget, handleOrderMenu = null}) {
         <div>        
             <div className={style.order_container}>    
                 <p className={style.order_text}>{translations.order_2[lang]}</p>
-                {order.mainDish != -1 ? <p className={style.order_text}>{menuOptions.mainDish[order.mainDish][lang]} - ${menuOptions.mainDish[order.mainDish].price}.00</p> : <></>}
-                {order.drink != -1 ? <p className={style.order_text}>{menuOptions.drink[order.drink][lang]} - ${menuOptions.drink[order.drink].price}.00</p> : <></>}
-                {order.dessert != -1 ? <p className={style.order_text}>{menuOptions.dessert[order.dessert][lang]} - ${menuOptions.dessert[order.dessert].price}.00</p> : <></>}
+                {order.mainDishIndex != -1 ? <p className={style.order_text}>{menuOptions.mainDish[order.mainDishIndex][lang]} - ${menuOptions.mainDish[order.mainDishIndex].price}.00</p> : <></>}
+                {order.drinkIndex != -1 ? <p className={style.order_text}>{menuOptions.drink[order.drinkIndex][lang]} - ${menuOptions.drink[order.drinkIndex].price}.00</p> : <></>}
+                {order.dessertIndex != -1 ? <p className={style.order_text}>{menuOptions.dessert[order.dessertIndex][lang]} - ${menuOptions.dessert[order.dessertIndex].price}.00</p> : <></>}
                 
                 {/* Re-add if you want to show total or keep it hidden
                 !budget ? 

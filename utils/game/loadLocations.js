@@ -16,8 +16,6 @@ const loadLocations = async () => {
     locations = locations.location
 
     DevLog('-----Loaded Locations-----')
-    DevLog(locations)
-    DevLog('------------------------')
 
     return locations
 }

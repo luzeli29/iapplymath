@@ -11,14 +11,14 @@ import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
 import menuOptions from "@public/text/menuOptions"
+import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
 
 
 function getMenuItemFromIndex(dishType,index) {
     
 }
 
-export default function Resturant () {
-    const {user,settings,loading, error} = useUserContext()
+const Resturant = ({user,settings}) => {
     const router = useRouter()
 
     const [hoveredDish, setHoveredDish] = useState()
@@ -28,32 +28,18 @@ export default function Resturant () {
     const [budget,setBudget] = useState()
     const [order, updateOrder] = useReducer((prev,next) => {
         return{...prev,...next}
-    }, {mainDish: -1, drink: -1, dessert: -1})
+    }, {mainDishIndex: -1, drinkIndex: -1, dessertIndex: -1})
 
      useEffect(() => {
         setMenu(getMenu());
         setBudget(Math.floor(Math.random() * 3) + 10)
     }, [router.isReady]);
 
-    const handleOrderMenu = () => {
-        updateOrder({mainDish: -1})
-        updateOrder({drink: -1})
-        updateOrder({dessert: -1})
-
-        setMenu(getMenu());
-        setBudget(Math.floor(Math.random() * 3) + 10)
-    }
-
-
-    const isLoggedIn = user.loggedIn    
-    if(loading || !router.isReady) return <Loading/>
-    if(error) return <Error error={error}/>
-    if(!isLoggedIn) return <Login/>
     const lang = settings.lang
 
     function handleOrderComplete() {
         //TODO: Validate the parms
-        router.push('/game/restaurant/quiz/' + 'basic' + '?mainDishIndex=' + order.mainDish + '&drinkIndex=' + order.drink + '&dessertIndex=' + order.dessert)
+        router.push('/game/restaurant/quiz/' + 'basic' + '?mainDishIndex=' + order.mainDishIndex + '&drinkIndex=' + order.drinkIndex + '&dessertIndex=' + order.dessertIndex)
     }
 
     function handleHover(dish) {
@@ -67,30 +53,30 @@ export default function Resturant () {
     function handleDishClick(dishType, dishIndex) {
         switch(dishType) {
             case 'mainDish':
-                updateOrder({mainDish: dishIndex})
+                updateOrder({mainDishIndex: dishIndex})
                 break;
             case 'drink':
-                updateOrder({drink: dishIndex})
+                updateOrder({drinkIndex: dishIndex})
                 break;
             case 'dessert':
-                updateOrder({dessert: dishIndex})
+                updateOrder({dessertIndex: dishIndex})
                 break;
         }
     }
     function handleOrderComplete() {
 
-        if(order.mainDish == -1) {
+        if(order.mainDishIndex == -1) {
             setInstructionText("missing_item_instructions")
-        } else if (order.drink == -1) {
+        } else if (order.drinkIndex == -1) {
             setInstructionText("missing_item_instructions")
-        } else if (order.dessert == -1) {
+        } else if (order.dessertIndex == -1) {
             setInstructionText("missing_item_instructions")
-        } else if (menuOptions.mainDish[order.mainDish].price + 
-                menuOptions.drink[order.drink].price + 
-                menuOptions.dessert[order.dessert].price > budget) {
+        } else if (menuOptions.mainDish[order.mainDishIndex].price + 
+                menuOptions.drink[order.drinkIndex].price + 
+                menuOptions.dessert[order.dessertIndex].price > budget) {
             setInstructionText("too_expensive_order_instructions")
         } else {
-            router.push('/game/restaurant/basic/levelSelect?mainDishIndex=' + order.mainDish + '&drinkIndex=' + order.drink+ '&dessertIndex=' + order.dessert)         
+            router.push('/game/restaurant/basic/levelSelect?mainDishIndex=' + order.mainDishIndex + '&drinkIndex=' + order.drinkIndex+ '&dessertIndex=' + order.dessertIndex)         
         }
     }
       
@@ -116,11 +102,12 @@ export default function Resturant () {
                     <Order 
                         lang={lang}
                         order={order}
-                        budget={budget}
-                        handleOrderMenu={handleOrderMenu}
-                    />
+                        budget={budget}/>
                 </div>
             </div>
         </GameIndexLayout>
     )
 }
+
+
+export default RetrieveUserContext(Resturant,['gameReady','hasActiveGame'])
