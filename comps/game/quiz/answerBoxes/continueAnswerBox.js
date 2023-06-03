@@ -11,11 +11,15 @@ const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {
     questionFormat = QuestionFormats.continue
   }
   
+
+  
   const renderConfetti = () => {
     return (
-      <Confetti
-                    confettiSource={{ x: 0, y: -100, w: 650, h: 600 }}
+      <div className="confetti_container">
+      <Confetti 
+                    confettiSource={{ x: 0, y: -100, w: 2560, h: 1440 }}
                     friction={0.96} />
+        </div>
     )
   }
   return (
