@@ -274,6 +274,25 @@ const translations = {
         es: "Juega con Ayu"
     },
 
+    active_quiz_found: {
+        en: "In Progress Game Found!",
+        es: "¡Juego en progreso encontrado!"
+    },
+    active_quiz_found_para: {
+        en: "Would you like to continue your game? If you start a new game, your progress will be lost.",
+        es: "¿Te gustaría continuar tu juego? Si comienzas un nuevo juego, tu progreso se perderá.",
+    },
+
+    continue_active_quiz: {
+        en:"Continue Game",
+        es:"Continuar Juego",
+    },
+
+    new_quiz: {
+        en:"New Game",
+        es:"Nuevo Juego",
+    },
+
     question_feedback: [ 
         {
             en: "Excellent!",

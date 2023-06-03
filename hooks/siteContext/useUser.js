@@ -437,7 +437,6 @@ export default function useUser() {
     createUser: createUser,
     setAvatarId: setAvatarId,
     setPetId: setPetId,
-    incrementAyu: incrementAyu,
     putSession: putSession,
   }
   

@@ -8,7 +8,7 @@ import generateMultiplyDishQuestions from './restaurantQuestionGenerators/genera
 import getQuestions from './restaurantQuestionGenerators/restaurantQuestions'
 
 export default function generateRestaurantQuestions(order,randomGenerator, questionType, level) {
-    console.log("que esta pasando g", {order,randomGenerator, questionType, level})
+    //console.log("que esta pasando g", {order,randomGenerator, questionType, level})
     /******
      * Make sure time answers are always in this format
      *  ex. HH:MMAM or HH:MMPM
