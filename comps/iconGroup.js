@@ -55,7 +55,7 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
             <div style={containerStyle}>
               {keyArr.map((key, index) => (
                 <div key={index} className="mx-auto">
-                    <Tooltip text={valueArr[index].name ? valueArr[index].name[lang] : ''}>
+                    <Tooltip type={true} text={valueArr[index].name ? valueArr[index].name[lang] : ''}>
                         <IconButton keyCode={key} value={valueArr[index]}/>
                     </Tooltip>
                 </div>

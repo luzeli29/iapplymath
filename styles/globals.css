@@ -89,6 +89,26 @@ width: 320px;
   transform: translate(-50%, -50%);
 }
 
+.tooltiptext2{
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+
+.confetti_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
 
 
 
