@@ -46,11 +46,11 @@ const RecipeSelect = ({user,settings,recipes}) => {
                     <Image className='h-1 w-1'
                             priority={true}
                             width={60}
-                            height={35}
+                            height={45}
                             objectFit = {'contain'}
                             src={imgSrc}
                             alt={value.imgSrc}/>
-                    <LevelDisplay level={value.level} lang={lang}/>
+                    <LevelDisplay pic={true} level={value.level} lang={lang}/>
                 </div>
             </ClickableIcon>
         )
