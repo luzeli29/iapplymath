@@ -17,7 +17,7 @@ const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {
     return (
       <div className="confetti_container">
       <Confetti 
-                    confettiSource={{ x: 0, y: -100, w: 2560, h: 1440 }}
+                    confettiSource={{ x: 0, y: -100, w: 3000, h: 2000 }}
                     friction={0.96} />
         </div>
     )
