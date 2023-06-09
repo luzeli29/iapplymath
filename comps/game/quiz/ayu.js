@@ -27,7 +27,7 @@ export default function Ayu ({handleAyuClick}) {
    const petId = user.data.petId
 
    function handleClick() {
-      user.incrementAyu()
+      // user.incrementAyu()
       handleAyuClick()
    }
 

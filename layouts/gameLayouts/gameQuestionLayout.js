@@ -13,9 +13,16 @@ import Error from 'pages/error';
 import useQuizCookies from '@hooks/quiz/useQuizCookies';
 import DevLog from '@utils/debug/devLog';
 
+// Brain Breaks
+import DeepBreathingBreak from 'pages/brainBreak/deep-breathing-break';
+import PoppinBubblesBreak from 'pages/brainBreak/poppin-bubbles-break';
+
 
 //TODO: Change to "Quiz" and move to comps folder
 const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) => {
+
+   const [showBrainBreak, setShowBrainBreak] = useState(true)
+
    if(!user) {
       DevErr('"user" is required for "Quiz" Screen')
       return <Error/>
@@ -69,7 +76,7 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
 
    function handleAyuClick() {
       //TODO: Change to brain break
-      alert('Brain Breaks not yet implemented.')
+      setShowBrainBreak(true)
    }
 
    const handleFinish = async () => {
@@ -168,7 +175,9 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
                <button className="basic_button" id={style.back_button} onClick={() => handleBack()}>{translations.back[lang]}</button>
             </div>
             <table className="fill_container">
-               <tbody>
+               {
+               showBrainBreak  ? <PoppinBubblesBreak setView={setShowBrainBreak}/> 
+               : <tbody>
                   <tr>
                      <td className={style.child_container}>
                         {children}
@@ -177,7 +186,7 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
                         <QuestionBox
                            className={style.question_box}
                            questionData={questions[questionNum]}
-                           incorrectNum={incorrectNum}/>
+                           incorrectNum={incorrectNum}/> 
                      </td>
                   </tr>
                   <tr>
@@ -191,7 +200,9 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
                         <Ayu handleAyuClick={() => handleAyuClick()}/>
                      </td>
                   </tr>
-               </tbody>
+               </tbody>  
+               }
+              
             </table>
          </>
       )
