@@ -1,5 +1,16 @@
 /* ----- Poppin Bubbles Break -----*/
 
+.art_title_container{
+    position: absolute;
+    z-index: 1000;
+    top:-6%;
+    color: white;
+    background-color: black;
+    width: 100%;
+    text-align: center;
+}
+
+
 .as_title_container{
     position: absolute;
     z-index: 1000;

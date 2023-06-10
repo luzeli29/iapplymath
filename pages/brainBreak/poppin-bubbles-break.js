@@ -68,7 +68,7 @@ export default function PoppinBubblesBreak({ setView }) {
       
         return () =>{
             clearInterval(interval)
-            setBubbles([])
+            // setBubbles([])
         };
       }, [bubbles]);
 
@@ -92,7 +92,9 @@ export default function PoppinBubblesBreak({ setView }) {
 
     return (
         <>
-            <h1 className={style.as_title_container}>{formatMinutes(counter)}:{formatSeconds(counter)}</h1>
+            <h1 className={style.as_title_container}>
+              {formatMinutes(counter)}:{formatSeconds(counter)}
+            </h1>
             <div class={style.bubble_container}>
                 {bubbles}
             </div>

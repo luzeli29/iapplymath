@@ -16,6 +16,8 @@ import DevLog from '@utils/debug/devLog';
 // Brain Breaks
 import DeepBreathingBreak from 'pages/brainBreak/deep-breathing-break';
 import PoppinBubblesBreak from 'pages/brainBreak/poppin-bubbles-break';
+import FreeSyleArtBreak from 'pages/brainBreak/free-style-art-break';
+import MandalaArtBreak from 'pages/brainBreak/madala-art-break';
 
 
 //TODO: Change to "Quiz" and move to comps folder
@@ -176,7 +178,7 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
             </div>
             <table className="fill_container">
                {
-               showBrainBreak  ? <PoppinBubblesBreak setView={setShowBrainBreak}/> 
+               showBrainBreak  ? <FreeSyleArtBreak setView={setShowBrainBreak}/> 
                : <tbody>
                   <tr>
                      <td className={style.child_container}>
