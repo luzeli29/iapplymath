@@ -1,4 +1,5 @@
-import { Calculator } from 'react-mac-calculator';
+//import { Calculator } from 'react-mac-calculator';
+import Calculator from './calculator';
 import Image from 'next/image';
 import Popup from '@comps/popups/popup';
 
