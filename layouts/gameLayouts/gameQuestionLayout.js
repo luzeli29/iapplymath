@@ -12,6 +12,7 @@ import getText from '@utils/text/getText';
 import Error from 'pages/error';
 import useQuizCookies from '@hooks/quiz/useQuizCookies';
 import DevLog from '@utils/debug/devLog';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 // Brain Breaks
 import DeepBreathingBreak from 'pages/brainBreak/deep-breathing-break';
@@ -171,6 +172,7 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
 
       const correctAnswer = questions[questionNum].answer;
       const questionFormatKey = questions[questionNum].questionFormatKey;
+      const progress = Math.round((questionNum / questions.length) * 100);
       return (
          <>
             <div className="back_button_container">
@@ -184,7 +186,9 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
                      <td className={style.child_container}>
                         {children}
                      </td>
+                     
                      <td className={style.question_container}>
+                     <ProgressBar now={progress} label={`${progress}%`} />
                         <QuestionBox
                            className={style.question_box}
                            questionData={questions[questionNum]}

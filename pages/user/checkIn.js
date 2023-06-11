@@ -60,7 +60,7 @@ export default function Creator({onEnd}) {
         const text = emotion[lang]
         const imgSrc = "/img/feelings/" + emotion.src + ".png"
         return (
-            <Tooltip text={text}>
+            <Tooltip type={true} text={text}>
             <ClickableIcon
                 selected={selectedFeelingIndex == index}
                 onClick={() => setSelectedFeelingIndex(index)}
