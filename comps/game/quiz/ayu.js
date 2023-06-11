@@ -52,8 +52,8 @@ export default function Ayu ({handleAyuClick}) {
          
          <div className={style.ayu_image_container}>
             <button onClick={() => handleClick()}>
-            <Tooltip type={true} text={translations.pet_ayu[lang]}>
-            <GiHand className={style.breathe} ></GiHand>
+            <Tooltip type={true}  text={translations.pet_ayu[lang]}>
+               <GiHand className={style.breathe} ></GiHand>
             </Tooltip>
                <Image
                   priority={true}
