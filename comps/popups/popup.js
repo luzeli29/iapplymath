@@ -52,7 +52,7 @@ const Popup = ({ icon, content, lang }) => {
             onResize={handleResize}
           >
             <div className="popup-header">
-            <div className="draggable-handle">Drag Me</div>
+            <div className="draggable-handle">{getText('drag_me', lang)}</div>
             <button className="close-button" onClick={handleTogglePopup}>
               <FaTimes />
             </button>
