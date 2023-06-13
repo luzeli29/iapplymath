@@ -3,8 +3,11 @@ import QuestionFormats from '@utils/game/quiz/questionGeneration/questionFormats
 import IconGroup from '@comps/iconGroup';
 import getText from '@utils/text/getText'
 import DevErr from '@utils/debug/devErr';
+import DevLog from '@utils/debug/devLog';
 
 const ButtonAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
+
+
   if(!questionFormat) {
     DevErr('"questionFormat" is required for ButtonAnswerBox.')
     questionFormat = QuestionFormats.trueFalse
@@ -21,14 +24,19 @@ const ButtonAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
       )
   }
 
+
+  // default width and height
+  let groupWidth = (!questionFormat.groupWidth ? 2: questionFormat.groupWidth )  
+  let groupHeight = (!questionFormat.groupHeight ? 1: questionFormat.groupHeight )
+
   return (
     <div>
       <IconGroup 
                     lang={lang}
                     icons={questionFormat.buttons}
                     getContentFromValue={(key,value) => renderQuestionButton(value.textId, value.value)}
-                    width={2}
-                    height={1}/>
+                    width={ groupWidth  }
+                    height={groupHeight}/>
     </div>
   )
 }
