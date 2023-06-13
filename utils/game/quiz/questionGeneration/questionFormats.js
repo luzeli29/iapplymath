@@ -46,6 +46,16 @@ const QuestionFormats = {
         groupHeight: 1,
         groupWidth: 2,
     },
+    "inequality": {
+        answerBoxType: 'buttons',
+        buttons: [
+            {value: 'less_than', textId: '<'},
+            {value: 'equal_to', textId: '='},
+            {value: 'greater_than', textId: '>'},
+        ],
+        groupHeight: 1,
+        groupWidth: 3,
+    },
     'time' : {
         validationRegex : /^([01]?[0-9]|2[0-3]):[0-5][0-9](am|pm)$/i,
         validationFailMessage: 'invalid_time',
