@@ -344,6 +344,283 @@ function generateLevel2BQuestions(dishes,order){
 
 }
 
+function generateLevel3BQuestions(dishes,order) {
+
+    let generatedQuestions = [];
+    let answer;
+
+    // question 1
+
+    // If 20/100 is the amount you pay and is represented as .20 in decimals, how would you represent [random value between 10-99]/100 of your bill as a decimal?
+
+    // generate random number between 10 and 99
+    let x = Math.floor(Math.random() * (99 - 10 + 1) + 10);
+
+    // answer
+    answer = x / 100;
+
+    // tp 2 decimal places
+    answer = answer.toFixed(2);
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`If 20/100 is the amount you pay and is represented as .20 in decimals, how would you represent ${x}/100 of your bill as a decimal?`,
+            es:`Si 20/100 es la cantidad que paga y se representa como .20 en decimales, ¿cómo representaría ${x}/100 de su factura como un decimal?`,
+        },
+        answer,
+        [],
+        "decimal",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 2
+
+    // With tax, your final total comes out to [any number between 0-20 with 3 decimal places]. _____’s final total is [any number between 0-20 with 3 decimal places]. Which number is greater?
+
+    // generate random number between 0 and 20
+    x = Math.floor(Math.random() * (20 - 0 + 1) + 0);
+
+    // randomize number between 100 and 999
+    let y = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+
+    // answer
+    let number1 = x + (y / 1000);
+
+    // round answer to 3 decimal places
+    number1 = number1.toFixed(3);
+
+    let x2 = Math.floor(Math.random() * (20 - 0 + 1) + 0);
+
+    // randomize number between 100 and 999
+    let y2 = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+
+    // number2
+    let number2 = x2 + (y2 / 1000);
+
+    // round answer to 3 decimal places
+    number2 = number2.toFixed(3);
+
+    let numberStr = number1.toString();
+    let numberStr2 = number2.toString();
+
+    number1 = parseFloat(number1);
+    number2 = parseFloat(number2);
+
+    answer = number1 > number2 ? "greater_than": number1 < number2 ? "less_than" : "equal_to";
+
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`With tax, your final total comes out to ${numberStr}. Elena’s final total is ${numberStr2}. Which number is greater? ${number1} __ ${number2} `,
+            es:`Con impuestos, su total final es ${numberStr}. El total final de Elena es ${numberStr2}. ¿Qué número es mayor? ${number1} __ ${number2} `,
+        },
+        answer,
+        [],
+        "inequality",
+    ))
+    
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 3
+
+    // If your total is $80.225, how much should you pay if you round to the nearest hundredth?  80.23
+
+    // generate random number between 10 and 80
+    x = Math.floor(Math.random() * (80 - 10 + 1) + 10);
+
+    // randomize number between 100 and 999
+    y = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+
+    // answer
+    number1 = x + (y / 1000);
+
+    // round answer to 3 decimal places
+    number1 = number1.toFixed(3);
+
+    // answer
+    answer = (number1*1.00).toFixed(2);
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`If your total is $${number1}, how much should you pay if you round to the nearest hundredth?`,
+            es:`Si su total es $${number1}, ¿cuánto debe pagar si redondea al centésimo más cercano?`,
+        },
+        answer,
+        [],
+        "decimal",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+    // question 4
+
+    // If your family wants to order your same main dish [any number] times, how much is your total for the main dishes?
+
+    // generate random number between 2 and 10
+    x = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+
+    // answer
+    let priceOfDish = order["mainDish"].price
+
+    // answer
+    answer = priceOfDish * x;
+
+    // round answer to 2 decimal places
+
+    answer = Math.floor(answer)
+
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`If your family wants to order your same main dish ${x} times, how much is your total for the main dishes?`,
+            es:`Si su familia quiere pedir su mismo plato principal ${x} veces, ¿cuál es su total para los platos principales?`,
+        },
+        answer,
+        [
+            {
+                en:"Round to 2 decimal places. eg. 15.00",
+                es:"Redondear a 2 decimales. por ejemplo. 15.00",
+            }
+        ],
+        "wholeNumber",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 5
+
+    // If you ordered [any number] drinks, how much would all of your drinks cost? [any number]X(drink)
+
+    // generate random number between 2 and 10
+    x = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+
+    // answer
+    priceOfDish = order["drink"].price
+
+    // answer
+    answer = priceOfDish * x;
+
+    // round answer to 2 decimal places
+
+    answer = Math.floor(answer)
+
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`If you ordered ${x} drinks, how much would all of your drinks cost?`,
+            es:`Si pidió ${x} bebidas, ¿cuánto costarían todas sus bebidas?`,
+        },
+        answer,
+        [
+            {
+                en:"Round to 2 decimal places. eg. 15.00",
+                es:"Redondear a 2 decimales. por ejemplo. 15.00",
+            }
+        ],
+        "wholeNumber",
+
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 6
+
+    // What is your total if you buy x [entree/drink/dessert] and y [entree/drink/dessert]? 
+
+    let dish1 = dishes[Math.floor(Math.random() * dishes.length)];
+    let copyDishes = dishes.filter(dish => dish !== dish1)
+    let dish2 = copyDishes[Math.floor(Math.random() * copyDishes.length)];
+    // let dish2 = dishes[Math.floor(Math.random() * dishes.length)];
+
+    
+
+
+    let nameOfDish1En = order[dish1].en
+    let nameOfDish1Es = order[dish1].es
+
+    let nameOfDish2En = order[dish2].en
+    let nameOfDish2Es = order[dish2].es
+
+    // generate random number between 2 and 10
+    x = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+
+    // generate random number between 2 and 10
+    y = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+
+    // answer
+
+
+    let priceOfDish1 = order[dish1].price
+    let priceOfDish2 = order[dish2].price
+
+    // answer
+    answer = (priceOfDish1 * x) + (priceOfDish2 * y);
+
+
+    // generate question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`What is your total if you buy ${x} ${nameOfDish1En} and ${y} ${nameOfDish2En}?`,
+            es:`¿Cuál es su total si compra ${x} ${nameOfDish1Es} y ${y} ${nameOfDish2Es}?`,
+        },
+        answer,
+        [],
+        "wholeNumber",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            
+    // question 7
+
+    // What is your total if you buy x [entree], y[drink], and z[dessert]?
+
+
+    // generate random number between 2 and 10
+    x = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+
+    // generate random number between 2 and 10
+    y = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+
+    // generate random number between 2 and 10
+    let z = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+
+    // answer
+    priceOfDish1 = order["mainDish"].price
+    priceOfDish2 = order["drink"].price
+    let priceOfDish3 = order["dessert"].price
+
+    // answer
+    answer = (priceOfDish1 * x) + (priceOfDish2 * y) + (priceOfDish3 * z);
+
+    // generate question
+
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`What is your total if you buy ${x} ${order["mainDish"].en}, ${y} ${order["drink"].en}, and ${z} ${order["dessert"].en}?`,
+            es:`¿Cuál es su total si compra ${x} ${order["mainDish"].es}, ${y} ${order["drink"].es}, y ${z} ${order["dessert"].es}?`,
+        },
+        answer,
+        [],
+        "wholeNumber",
+    ))
+
+
+
+
+
+
+
+    return generatedQuestions;
+}
+
 
 
 
@@ -384,6 +661,13 @@ export default function generateNumberAndOperationsInBaseTenQuestion(order,level
         questions = questions.concat(generatedQuestions);
     }
 
+    if(level === '3') {
+
+        let generatedQuestions = generateLevel3BQuestions(dishes,order);
+
+        questions = questions.concat(generatedQuestions);
+
+    }
 
 
     return questions;

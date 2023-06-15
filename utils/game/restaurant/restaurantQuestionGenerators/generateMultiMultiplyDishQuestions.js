@@ -509,6 +509,87 @@ function generateLevel2CQuestions(dishes,order){
     return generatedQuestions;
 }
 
+function generateLevel3CQuestions(dishes,order){
+    let generatedQuestions = [];
+    let answer;
+    // question 1
+
+    // If your total costs $100 and you have x[any whole number between 1-5] friends with you, express your answer as a fraction to calculate how much each person would pay if you split the bill?
+
+    let x = Math.floor(Math.random() * 5) + 1;
+    // answer
+    let numerator = 100;
+    let denominator = 5;
+    answer = numerator/denominator;
+
+    // round answer to 2 decimal places
+    answer = parseFloat(answer.toFixed(2));
+
+    // generate question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`If your total costs $100 and you have ${x} friends with you, calculate how much each person would pay if you split the bill?`,
+            es:`Si tu total cuesta $100 y tienes ${x} amigos contigo, calcula cuánto pagaría cada persona si dividieras la cuenta.`,
+        },
+        answer,
+        [],
+        "decimal",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 2
+
+    // If you eat half of your main dish, how much did that part of your main dish cost?
+
+    // answer
+    let cost = order.mainDish.price;
+    answer = cost*0.5;
+
+    // round answer to 2 decimal places
+    answer = parseFloat(answer.toFixed(2));
+
+    // generate question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`If you eat half of your main dish, how much did that part of your main dish cost?`,
+            es:`Si te comes la mitad de tu plato principal, ¿cuánto costó esa parte de tu plato principal?`,
+        },
+        answer,
+        [],
+        "decimal",
+    ))
+
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 3
+
+    // If you eat a quarter of your main dish, how much did that part of your entree cost?
+
+    // answer
+    cost = order.mainDish.price;
+    answer = cost*0.25;
+
+    // round answer to 2 decimal places
+    answer = parseFloat(answer.toFixed(2));
+
+    // generate question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`If you eat a quarter of your main dish, how much did that part of your entree cost?`,
+            es:`Si te comes un cuarto de tu plato principal, ¿cuánto costó esa parte de tu plato principal?`,
+        },
+        answer,
+        [],
+        "decimal",
+    ))
+
+
+
+    return generatedQuestions;
+}
+
 export default function generateNumberAndOperationsFractionsQuestions(order,level,randomGenerator){
 
     let questions = [];
@@ -522,6 +603,11 @@ export default function generateNumberAndOperationsFractionsQuestions(order,leve
     if (level === '2') {
 
         let generatedQuestions = generateLevel2CQuestions(dishes,order);
+        questions = questions.concat(generatedQuestions);
+    }
+    if (level === '3') {
+
+        let generatedQuestions = generateLevel3CQuestions(dishes,order);
         questions = questions.concat(generatedQuestions);
     }
 
