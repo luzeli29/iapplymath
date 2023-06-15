@@ -1,5 +1,6 @@
 import getText from '@utils/text/getText'
 import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
+import translations from '@public/text/translations';
 
 function generateLevel1BQuestions(dishes,order){
     let generatedQuestions = [];
@@ -87,37 +88,301 @@ function generateLevel1BQuestions(dishes,order){
 }
 
 
+function generateLevel2BQuestions(dishes,order){
+    let generatedQuestions = [];
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // question 1
+
+    // The restaurant receives two thousand three hundred and fifty pounds (2,350 lbs.) of rice and beans per month to supply the kitchen. Next month the restaurant will increase its rice and beans supply by 10 times. What is next month’s supply?
+
+    // answer
+    let answer = 23500;
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`The restaurant receives two thousand three hundred and fifty pounds (2,350 lbs.) of rice and beans per month to supply the kitchen. Next month the restaurant will increase its rice and beans supply by 10 times. What is next month’s supply?`,
+            es:`El restaurante recibe dos mil trescientas cincuenta libras (2,350 lbs.) de arroz y frijoles por mes para abastecer la cocina. El próximo mes, el restaurante aumentará su suministro de arroz y frijoles en 10 veces. ¿Cuál es el suministro del próximo mes?`,
+        },
+        answer,
+        [],
+        "wholeNumber",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 2
+
+    // If the restaurant orders one thousand two hundred and fifteen kilograms of tomatoes and one thousand fifteen kilograms of flour, which quantity is larger? Please type the correct quantity number in the answer box.
+
+    // answer
+    answer = 1215;
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`If the restaurant orders one thousand two hundred and fifteen kilograms of tomatoes and one thousand fifteen kilograms of flour, which quantity is larger? Please type the correct quantity number in the answer box.`,
+            es:`Si el restaurante ordena mil doscientos quince kilogramos de tomates y mil quince kilogramos de harina, ¿cuál es la cantidad más grande? Escriba el número de cantidad correcto en el cuadro de respuesta.`,
+        },
+        answer,
+        [],
+        "wholeNumber",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 3
+
+    // The restaurant owner placed a new order of [range: x = 1000 – 5000] pounds of oranges and [range: y = 2000 – 6000] pounds of potatoes. How many total pounds of oranges and potatoes are in this order? 
+
+    // generate random number between 1000 and 5000
+    let x = Math.floor(Math.random() * (5000 - 1000 + 1) + 1000);
+
+    // generate random number between 2000 and 6000
+    let y = Math.floor(Math.random() * (6000 - 2000 + 1) + 2000);
+
+    // answer
+    answer = x + y;
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`The restaurant owner placed a new order of ${x} pounds of oranges and ${y} pounds of potatoes. How many total pounds of oranges and potatoes are in this order?`,
+            es:`El propietario del restaurante realizó un nuevo pedido de ${x} libras de naranjas y ${y} libras de papas. ¿Cuántas libras totales de naranjas y papas hay en este pedido?`,
+        },
+        answer,
+        [],
+        "wholeNumber",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 4
+
+    // The chef noticed that he had [range: x = 200 – 500] pounds of chicken left over at the end of the week. If the initial chicken supply was [range: y = 1500 – 5000] pounds, how many pounds of chicken must the chef order to not have any left-over chicken next week? 
+
+    // generate random number between 200 and 500
+    x = Math.floor(Math.random() * (500 - 200 + 1) + 200);
+
+    // generate random number between 1500 and 5000
+    y = Math.floor(Math.random() * (5000 - 1500 + 1) + 1500);
+
+    // answer
+    answer = y - x;
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`The chef noticed that he had ${x} pounds of chicken left over at the end of the week. If the initial chicken supply was ${y} pounds, how many pounds of chicken must the chef order to not have any left-over chicken next week?`,
+            es:`El chef notó que le quedaban ${x} libras de pollo al final de la semana. Si el suministro inicial de pollo fue de ${y} libras, ¿cuántas libras de pollo debe pedir el chef para no tener pollo sobrante la próxima semana?`,
+        },
+        answer,
+        [],
+        "wholeNumber",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 5
+
+    // At the end of the month, the restaurant owner calculates the revenue for that respective month. This month the restaurant food sales were equal to [range: x = 15,000 – 25,000] dollars, the desert sales were [range: y = 7,000 – 13,000] dollars and the drink sales were [range: z = 4,000 – 10,000] dollars. What is the total revenue for the restaurant this month?
+
+    // generate random number between 15000 and 25000
+    x = Math.floor(Math.random() * (25000 - 15000 + 1) + 15000);
+
+    // generate random number between 7000 and 13000
+    y = Math.floor(Math.random() * (13000 - 7000 + 1) + 7000);
+
+    // generate random number between 4000 and 10000
+    let z = Math.floor(Math.random() * (10000 - 4000 + 1) + 4000);
+
+    // answer
+    answer = x + y + z;
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`At the end of the month, the restaurant owner calculates the revenue for that respective month. This month the restaurant food sales were equal to ${x} dollars, the desert sales were ${y} dollars and the drink sales were ${z} dollars. What is the total revenue for the restaurant this month?`,
+            es:`Al final del mes, el propietario del restaurante calcula los ingresos de ese mes respectivo. Este mes, las ventas de comida del restaurante fueron iguales a ${x} dólares, las ventas de postres fueron ${y} dólares y las ventas de bebidas fueron ${z} dólares. ¿Cuáles son los ingresos totales del restaurante este mes?`,
+        },
+        answer,
+        [],
+        "wholeNumber",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 6
+
+    // Yesterday the restaurant received [range: x = 150 – 300] food orders. If the daily order count remains the same, how many total orders will the restaurant have after [range: y = 3– 9] days?
+
+    // generate random number between 150 and 300
+    x = Math.floor(Math.random() * (300 - 150 + 1) + 150);
+
+    // generate random number between 3 and 9
+    y = Math.floor(Math.random() * (9 - 3 + 1) + 3);
+
+    // answer
+    answer = x * y;
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`Yesterday the restaurant received ${x} food orders. If the daily order count remains the same, how many total orders will the restaurant have after ${y} days?`,
+            es:`Ayer el restaurante recibió ${x} pedidos de comida. Si el recuento diario de pedidos permanece igual, ¿cuántos pedidos totales tendrá el restaurante después de ${y} días?`,
+        },
+        answer,
+        [],
+        "wholeNumber",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    // question 7
+
+    // The chef typically prepares [range: x = 30 – 99] entrée dishes per day. How many entrée dishes will the chef prepare after [range: y = 10 – 31] days?
+
+    // generate random number between 30 and 99
+    x = Math.floor(Math.random() * (99 - 30 + 1) + 30);
+
+    // generate random number between 10 and 31
+    y = Math.floor(Math.random() * (31 - 10 + 1) + 10);
+
+    // answer
+    answer = x * y;
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`The chef typically prepares ${x} entrée dishes per day. How many entrée dishes will the chef prepare after ${y} days?`,
+            es:`El chef suele preparar ${x} platos de entrada por día. ¿Cuántos platos de entrada preparará el chef después de ${y} días?`,
+        },
+        answer,
+        [],
+        "wholeNumber",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 8
+    
+    // Elena noticed that the chef is preparing [range: x = 2-9] servings of rice. If the chef has 900 grams of rice in total, how many grams of rice will each serving have? Assume the chef splits the rice equally for each serving.
+
+    // generate random number between 2 and 9
+
+    x = Math.floor(Math.random() * (9 - 2 + 1) + 2);
+
+    // answer
+    answer = 900 / x;
+
+    // round answer to 2 decimal places
+    answer = answer.toFixed(2);
 
 
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`Elena noticed that the chef is preparing ${x} servings of rice. If the chef has 900 grams of rice in total, how many grams of rice will each serving have? Assume the chef splits the rice equally for each serving.`,
+            es:`Elena notó que el chef está preparando ${x} porciones de arroz. Si el chef tiene un total de 900 gramos de arroz, ¿cuántos gramos de arroz tendrá cada porción? Suponga que el chef divide el arroz por igual para cada porción.`,
+        },
+        answer,
+        [
+        {
+            en:"Use 2 decimal places, e.g. 1.00",
+            es:"Use 2 decimal places, e.g. 1.00",
+        }
+        ],
+        "decimal",
+    ))
 
-export default function generateSingleMultiplyDishQuestions(order,randomGenerator, level) {
-    const numbOfQuestionsNeeded = 3
-    let questions = []
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    // question 9
 
-    for(let i = 0; i < numbOfQuestionsNeeded; i++) {
-        let question = generateSingleMultiplyQuestion(order,level,randomGenerator)
-        questions.push(question)
+    // You and Elena decided to calculate the mean restaurant order value during the dinner period. To find the mean, you need to divide the total sum of all orders by the total number of orders. The dinner orders are included in the table below.
+
+    // Order Number	Order Value
+    let orderValues ={
+        "1": 98,
+        "2": 48,
+        "3": 65,
+        "4": 32,
+        "5": 56,
+        "6": 74,
     }
 
-    return questions
+    // What is the mean order value during the dinner period?
+    let sum = 0;
+    let count = 0;
+    for (const [key, value] of Object.entries(orderValues)) {
+        sum += value;
+        count += 1;
+    }
+
+    // answer
+    answer = sum / count;
+
+    // create question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`You and Elena decided to calculate the mean restaurant order value during the dinner period. To find the mean, you need to divide the total sum of all orders by the total number of orders. The dinner orders are included in the table below. What is the mean order value during the dinner period?`,
+            es:`Usted y Elena decidieron calcular el valor medio del pedido del restaurante durante el período de la cena. Para encontrar la media, debe dividir la suma total de todos los pedidos por el número total de pedidos. Los pedidos de cena se incluyen en la tabla a continuación. ¿Cuál es el valor medio del pedido durante el período de la cena?`,
+        },
+        answer,
+        [],
+        "decimal",
+        null,
+        "tableLevel2BRestaurant"
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ 
+
+    return generatedQuestions;
+
 }
 
 
 
 
+// export default function generateSingleMultiplyDishQuestions(order,randomGenerator, level) {
+//     const numbOfQuestionsNeeded = 3
+//     let questions = []
 
-function generateSingleMultiplyQuestion(order,level,randomGenerator) {
+//     for(let i = 0; i < numbOfQuestionsNeeded; i++) {
+//         let question = generateSingleMultiplyQuestion(order,level,randomGenerator)
+//         questions.push(question)
+//     }
+
+//     return questions
+// }
+
+
+
+
+
+export default function generateNumberAndOperationsInBaseTenQuestion(order,level,randomGenerator) {
 
     let questions = [];
     let dishes = ["mainDish","drink","dessert"];
 
-    if(level === 1) {
+
+    if(level === '1') {
 
         let generatedQuestions = generateLevel1BQuestions(dishes,order);
+
+
         questions = questions.concat(generatedQuestions);
     }
 
+    if(level === '2') {
 
+        let generatedQuestions = generateLevel2BQuestions(dishes,order);
+
+        questions = questions.concat(generatedQuestions);
+    }
 
 
 

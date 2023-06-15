@@ -1,10 +1,10 @@
 //Generate questions with the order state
 import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 import validateOrder from '@utils/validation/game/restaurant/validateOrder';
-import generateBasicOrderQuestions from './restaurantQuestionGenerators/generateBasicOrderQuestions';
-import generateGraphQuestions from './restaurantQuestionGenerators/generateGraphQuestions';
-import generateMultiMultiplyDishQuestions from './restaurantQuestionGenerators/generateMultiMultiplyDishQuestions';
-import generateMultiplyDishQuestions from './restaurantQuestionGenerators/generateSingleMultiplyDishQuestions';
+import generateOperationsAndAlgebraQuestions from './restaurantQuestionGenerators/generateBasicOrderQuestions';
+import generateMeasurementAndDataQuestions from './restaurantQuestionGenerators/generateGraphQuestions';
+import generateNumberAndOperationsFractionsQuestions from './restaurantQuestionGenerators/generateMultiMultiplyDishQuestions';
+import generateNumberAndOperationsInBaseTenQuestion from './restaurantQuestionGenerators/generateSingleMultiplyDishQuestions';
 import getQuestions from './restaurantQuestionGenerators/restaurantQuestions'
 
 export default function generateRestaurantQuestions(order,randomGenerator, questionType, level) {
@@ -60,22 +60,51 @@ export default function generateRestaurantQuestions(order,randomGenerator, quest
     // var level_ = 3;
 
 
-    if (questionType == 'basic') {
-        questions = questions.concat(generateBasicOrderQuestions(order, level))
-    }
+    // first we get the operation and algebra questions
+    let operationsAndAlgebra = generateOperationsAndAlgebraQuestions(order, level)
+    // then we get the number and operations in base ten questions
+    let numberAndOperationsInBaseTen = generateNumberAndOperationsInBaseTenQuestion(order, level, randomGenerator)
+    // then we get the number and operations fractions questions
+    let numberAndOperationsFractions = generateNumberAndOperationsFractionsQuestions(order, level, randomGenerator)
+    // then we get the measurement and data questions
+    let measurementAndData = generateMeasurementAndDataQuestions(order, level, randomGenerator)
 
-    if (questionType == 'multiply') {
-        questions = questions.concat( generateMultiplyDishQuestions(order, randomGenerator, level))
-    }
 
-    if (questionType == ' multiMultiply') {
-        questions = questions.concat( generateMultiMultiplyDishQuestions(order, randomGenerator, level))
-    }
+    // the we add all the questions to the questions array
+    questions = questions.concat(operationsAndAlgebra)
+    questions = questions.concat(numberAndOperationsInBaseTen)
+    questions = questions.concat(numberAndOperationsFractions)
+    questions = questions.concat(measurementAndData)
 
-    if (questionType == 'graph') {
-        questions = questions.concat(generateGraphQuestions(randomGenerator, level))
-    }
-    
+    // show the length of each question array
+    // console.log("Operations and Algebra Questions: " + operationsAndAlgebra.length)
+
+    // console.log("Number and Operations in Base Ten Questions: " + numberAndOperationsInBaseTen.length)
+
+    // console.log("Number and Operations Fractions Questions: " + numberAndOperationsFractions.length)
+
+    console.log("Measurement and Data Questions: " + measurementAndData.length)
+
+
+    // show the amount of questions generated
+
+
+    // if (questionType == 'basic') {
+    //     questions = questions.concat(generateBasicOrderQuestions(order, level))
+    // }
+
+    // if (questionType == 'multiply') {
+    //     questions = questions.concat( generateMultiplyDishQuestions(order, randomGenerator, level))
+    // }
+
+    // if (questionType == ' multiMultiply') {
+    //     questions = questions.concat( generateMultiMultiplyDishQuestions(order, randomGenerator, level))
+    // }
+
+    // if (questionType == 'graph') {
+    //     questions = questions.concat(generateGraphQuestions(randomGenerator, level))
+    // }
+
     return questions 
 
 }
