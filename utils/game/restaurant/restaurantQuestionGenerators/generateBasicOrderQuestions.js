@@ -693,6 +693,21 @@ function generateLevel2AQuestions(dishes, order){
     return generatedQuestions;
 }
 
+function generateLevel3AQuestions(dishes,order){
+    let generatedQuestions = [];
+    let answer = null;
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // question 1
+
+    // How might you represent twice your mainDish using parenthesis?
+
+    // Pending
+
+
+    return generatedQuestions;
+}
 
 export default function generateOperationsAndAlgebraQuestions(order, level) {
     // array of questions
@@ -713,6 +728,14 @@ export default function generateOperationsAndAlgebraQuestions(order, level) {
         // add the A section
         let generatedQuestions = generateLevel2AQuestions(dishes, order);
         questions = questions.concat(generatedQuestions);
+    }
+
+    if (level === '3') {
+
+        // add the A section
+        let generatedQuestions = generateLevel3AQuestions(dishes, order);
+        questions = questions.concat(generatedQuestions);
+
     }
 
 

@@ -420,6 +420,7 @@ let answer = "";
 
 }
 
+
 export default function generateMeasurementAndDataQuestions(order, level, randomGenerator) {
     // const questions = []
     // questions[0] = generateDefaultGraphQuestion(randomGenerator)
@@ -437,6 +438,12 @@ export default function generateMeasurementAndDataQuestions(order, level, random
     if(level === '2') {
 
         let generatedQuestions = generateLevel2DQuestions(dishes,order);
+        questions = questions.concat(generatedQuestions);
+    }
+    if(level === '3') {
+
+        let generatedQuestions =[];
+        generatedQuestions.push(generateDefaultGraphQuestion(randomGenerator));
         questions = questions.concat(generatedQuestions);
     }
 
