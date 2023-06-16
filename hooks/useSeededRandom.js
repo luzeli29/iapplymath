@@ -83,14 +83,14 @@ export default function useSeededRandom(initSeed) {
     function checkHashedSeed() {
         if (!hashedSeed) {
             checkSeed()
-            
+            setHashedSeed(hashSTR(seed))
         }
     }
 
     function getRandom() {
         checkSeed()
-        checkRand()
         checkHashedSeed()
+        checkRand()
         let randomNumberFromSeed = randFunction()
         return randomNumberFromSeed
     }
