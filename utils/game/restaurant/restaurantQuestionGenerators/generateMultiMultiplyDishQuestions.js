@@ -95,9 +95,10 @@ import simplifyFraction from '@utils/game/quiz/simplifyFraction';
 //     return question
 // }
 
-function generateLevel1CQuestions(dishes,order){
+function generateLevel1CQuestions(dishes,order,randomInt){
     let generatedQuestions = [];
-    let random = Math.floor(Math.random() * dishes.length);
+    // let random = Math.floor(Math.random() * dishes.length);
+    let random = randomInt(0,dishes.length);
     let answer = 0;
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -151,7 +152,8 @@ function generateLevel1CQuestions(dishes,order){
     }
     
     // choose a random fraction
-    let randomFractionName = Object.keys(randomFraction)[Math.floor(Math.random() * Object.keys(randomFraction).length)];
+    // let randomFractionName = Object.keys(randomFraction)[Math.floor(Math.random() * Object.keys(randomFraction).length)];
+    let randomFractionName = Object.keys(randomFraction)[randomInt(0,Object.keys(randomFraction).length)];
     let randomFractionNameEnglish = randomFraction[randomFractionName].en;
     let randomFractionNameSpanish = randomFraction[randomFractionName].es;
 
@@ -200,10 +202,12 @@ function generateLevel1CQuestions(dishes,order){
     let fractions = ["1/2", "1/3", "1/4", "1/6", "1/8"];
 
     // choose a random fraction
-    let randomFraction1 = fractions[Math.floor(Math.random() * fractions.length)];
+    // let randomFraction1 = fractions[Math.floor(Math.random() * fractions.length)];
+    let randomFraction1 = fractions[randomInt(0,fractions.length)];
 
     // choose a random fraction
-    let randomFraction2 = fractions[Math.floor(Math.random() * fractions.length)];
+    // let randomFraction2 = fractions[Math.floor(Math.random() * fractions.length)];
+    let randomFraction2 = fractions[randomInt(0,fractions.length)];
 
     // convert the fractions to numbers
     let randomFraction1Number = eval(randomFraction1);
@@ -247,12 +251,14 @@ function generateLevel1CQuestions(dishes,order){
     };
 
     // choose a random value from values
-    let randomValueStr = Object.keys(values)[Math.floor(Math.random() * Object.keys(values).length)];
+    // let randomValueStr = Object.keys(values)[Math.floor(Math.random() * Object.keys(values).length)];
+    let randomValueStr = Object.keys(values)[randomInt(0,Object.keys(values).length)];
     let randomValue = values[randomValueStr];
 
     // choose a random number from 1 to randomValue
     // random number represents the number of portions eaten
-    let randomNumber = Math.floor(Math.random() * randomValue) + 1;
+    // let randomNumber = Math.floor(Math.random() * randomValue) + 1;
+    let randomNumber = randomInt(1,randomValue);
 
     // answer
     answer = `${randomNumber}/${randomValue}`;
@@ -281,7 +287,7 @@ function generateLevel1CQuestions(dishes,order){
 
 }
 
-function generateLevel2CQuestions(dishes,order){
+function generateLevel2CQuestions(dishes,order,randomInt){
     let generatedQuestions = [];
     let answer;
     let x;
@@ -293,8 +299,10 @@ function generateLevel2CQuestions(dishes,order){
     let possibleValuesX = ["5/8", "2/5", "1/3", "3/4", "7/12"];
     let possibleValuesY = ["4/6","6/10", "10/12", "3/8", "1/4"];
 
-    x = possibleValuesX[Math.floor(Math.random() * possibleValuesX.length)];
-    y = possibleValuesY[Math.floor(Math.random() * possibleValuesY.length)];
+    // x = possibleValuesX[Math.floor(Math.random() * possibleValuesX.length)];
+    x = possibleValuesX[randomInt(0,possibleValuesX.length)];
+    // y = possibleValuesY[Math.floor(Math.random() * possibleValuesY.length)];
+    y = possibleValuesY[randomInt(0,possibleValuesY.length)];
 
     let xNumber = eval(x);
     let yNumber = eval(y);
@@ -323,11 +331,14 @@ function generateLevel2CQuestions(dishes,order){
     possibleValuesX = ["5/8", "3/4", "4/5", "7/10", "6/12", "80/100", "40/100", "2/3"];
     
     // choose a random value from possibleValuesX
-    x = possibleValuesX[Math.floor(Math.random() * possibleValuesX.length)];
+    // x = possibleValuesX[Math.floor(Math.random() * possibleValuesX.length)];
+    x = possibleValuesX[randomInt(0,possibleValuesX.length)];
+
 
     // choose a random number from 2 to 9
     // random number represents the number of days
-    y = Math.floor(Math.random() * 8) + 2;
+    // y = Math.floor(Math.random() * 8) + 2;
+    y = randomInt(2,10);
 
     // answer
     let numerator = x.split("/")[0];
@@ -359,11 +370,13 @@ function generateLevel2CQuestions(dishes,order){
     possibleValuesX = ["7/8", "3/4", "3/5", "4/10", "7/12", "90/100", "50/100", "1/3"];
 
     // choose a random value from possibleValuesX
-    x = possibleValuesX[Math.floor(Math.random() * possibleValuesX.length)];
+    // x = possibleValuesX[Math.floor(Math.random() * possibleValuesX.length)];
+    x = possibleValuesX[randomInt(0,possibleValuesX.length)];
 
     // choose a random number from 2 to 9
     // random number represents the number of days
-    y = Math.floor(Math.random() * 8) + 2;
+    // y = Math.floor(Math.random() * 8) + 2;
+    y = randomInt(2,10);
 
     // answer
     numerator = x.split("/")[0];
@@ -509,17 +522,18 @@ function generateLevel2CQuestions(dishes,order){
     return generatedQuestions;
 }
 
-function generateLevel3CQuestions(dishes,order){
+function generateLevel3CQuestions(dishes,order,randomInt){
     let generatedQuestions = [];
     let answer;
     // question 1
 
     // If your total costs $100 and you have x[any whole number between 1-5] friends with you, express your answer as a fraction to calculate how much each person would pay if you split the bill?
 
-    let x = Math.floor(Math.random() * 5) + 1;
+    // let x = Math.floor(Math.random() * 5) + 1;
+    let x = randomInt(1,6);
     // answer
     let numerator = 100;
-    let denominator = 5;
+    let denominator = x;
     answer = numerator/denominator;
 
     // round answer to 2 decimal places
@@ -595,19 +609,21 @@ export default function generateNumberAndOperationsFractionsQuestions(order,leve
     let questions = [];
     let dishes = ["mainDish","drink","dessert"];
 
+    const { randomInt } = randomGenerator;
+
     if(level === '1') {
 
-        let generatedQuestions = generateLevel1CQuestions(dishes,order);
+        let generatedQuestions = generateLevel1CQuestions(dishes,order,randomInt);
         questions = questions.concat(generatedQuestions);
     }
     if (level === '2') {
 
-        let generatedQuestions = generateLevel2CQuestions(dishes,order);
+        let generatedQuestions = generateLevel2CQuestions(dishes,order,randomInt);
         questions = questions.concat(generatedQuestions);
     }
     if (level === '3') {
 
-        let generatedQuestions = generateLevel3CQuestions(dishes,order);
+        let generatedQuestions = generateLevel3CQuestions(dishes,order,randomInt);
         questions = questions.concat(generatedQuestions);
     }
 

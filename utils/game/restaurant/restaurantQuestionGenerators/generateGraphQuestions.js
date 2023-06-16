@@ -52,7 +52,7 @@ function getDefaultPriceByIndex(index) {
 }
 
 
-function generateLevel1DQuestions(dishes,order){
+function generateLevel1DQuestions(dishes,order,randomInt){
     // Time questions
     let generatedQuestions = [];
     let answer=0;
@@ -64,10 +64,12 @@ function generateLevel1DQuestions(dishes,order){
     // You and Elena arrive at the restaurant at [“random time from 12-6 PM”]. If it takes you both [“5-15 random number”] minutes to order, at what time will you place the order? 
 
     // choose a random time from 12-18 PM
-    let randomTimeHour = Math.floor(Math.random() * 7) + 12;
+    // let randomTimeHour = Math.floor(Math.random() * 7) + 12;
+    let randomTimeHour = randomInt(12,19)
     
     // choose a random number from 5-15
-    let randomNumberMinutes = Math.floor(Math.random() * 11) + 5;
+    // let randomNumberMinutes = Math.floor(Math.random() * 11) + 5;
+    let randomNumberMinutes = randomInt(5,16)
 
     // if minutes is less than 10, add a 0 in front of it
     if (randomNumberMinutes < 10) {
@@ -100,10 +102,12 @@ function generateLevel1DQuestions(dishes,order){
     // If you and Elena arrived at the restaurant at [“random time from 12-6 PM”] and spent [“30-59”] minutes to eat and pay, at what time will you leave the restaurant?
 
     // choose a random time from 12-18 PM
-    randomTimeHour = Math.floor(Math.random() * 7) + 12;
+    // randomTimeHour = Math.floor(Math.random() * 7) + 12;
+    randomTimeHour = randomInt(12,19);
 
     // choose a random number from 30-59
-    randomNumberMinutes = Math.floor(Math.random() * 30) + 30;
+    // randomNumberMinutes = Math.floor(Math.random() * 30) + 30;
+    randomNumberMinutes = randomInt(30,60);
 
     // if minutes is less than 10, add a 0 in front of it
     if (randomNumberMinutes < 10) {
@@ -140,13 +144,16 @@ function generateLevel1DQuestions(dishes,order){
     // how many total minutes did you wait to receive your food? What time was it when you received your food?
 
     // choose a random number from 5-20
-    let foodReadyTime = Math.floor(Math.random() * 16) + 5;
+    // let foodReadyTime = Math.floor(Math.random() * 16) + 5;
+    let foodReadyTime = randomInt(5,21);
     
     // choose a random number from 5-15
-    let foodOrderTime = Math.floor(Math.random() * 11) + 5;
+    // let foodOrderTime = Math.floor(Math.random() * 11) + 5;
+    let foodOrderTime = randomInt(5,16);
     
     // choose a random time from 12-18 PM
-    randomTimeHour = Math.floor(Math.random() * 7) + 12;
+    // randomTimeHour = Math.floor(Math.random() * 7) + 12;
+    randomTimeHour = randomInt(12,19);
     
     let minutes = foodReadyTime + foodOrderTime;
 
@@ -181,7 +188,7 @@ function generateLevel1DQuestions(dishes,order){
 
 }
 
-function generateLevel2DQuestions(dishes,order){
+function generateLevel2DQuestions(dishes,order,randomInt){
 let generatedQuestions = [];
 let answer = "";
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -191,10 +198,12 @@ let answer = "";
     // The restaurant receives [range: x = 10-30] kilograms of fresh rice every day. If the chef cooked [range: y = 7-25; y must be < x) kilograms of rice today, how much fresh rice is left over at the end of the day? 
 
     // choose a random number from 10-30
-    let x = Math.floor(Math.random() * 21) + 10;
+    // let x = Math.floor(Math.random() * 21) + 10;
+    let x = randomInt(10,31);
 
     // choose a random number from 7-25
-    let y = Math.floor(Math.random() * 19) + 7;
+    // let y = Math.floor(Math.random() * 19) + 7;
+    let y = randomInt(7,26);
 
 
     while(y >= x){
@@ -229,10 +238,11 @@ let answer = "";
     // Elena received a new water bottle from her parents. Her bottle can hold up to 1,000 milliliters of water. If she fills her bottle using a [range: x = 100-250] milliliter container, how many containers will she need to completely fill her bottle?
 
     // choose a random number from 100-250
-    x = Math.floor(Math.random() * 151) + 100;
+    // x = Math.floor(Math.random() * 151) + 100;
+    x = randomInt(100,251);
 
     // answer
-    answer = 1000 / x;
+    answer =parseFloat( 1000 / x);
 
     // fix answer to 2 decimal place
     answer = answer.toFixed(2);
@@ -261,7 +271,8 @@ let answer = "";
     // Your house is [range: 0.2-5.0] kilometers away from the restaurant. Calculate the same distance in meters. (Hint: 1 kilometer = 1,000 meters or 1 meter = 0.001 kilometers).
 
     // choose a random number from 0.2 - 5.0
-    x = Math.floor(Math.random() * 4801) + 200;
+    // x = Math.floor(Math.random() * 4801) + 200;
+    x = randomInt(200,5001);
     x = x / 1000;
 
     // answer
@@ -290,7 +301,8 @@ let answer = "";
     // Your bottle can hold up to 1.5 liters of liquid. If you filled your bottle with water and drank [range: x = 100 – 1,400] milliliters, how many milliliters of water are left in the bottle?
 
     // choose a random number from 100 - 1400
-    x = Math.floor(Math.random() * 1301) + 100;
+    // x = Math.floor(Math.random() * 1301) + 100;
+    x = randomInt(100,1401);
 
     // answer
     answer = 1500 - x;
@@ -319,10 +331,12 @@ let answer = "";
     // Your restaurant table is rectangular. After measuring it, you determined that the table is [range: x = 50 – 120] centimeters long and [range: y = 50 – 100] centimeters wide. What is the perimeter of your table?
 
     // choose a random number from 50 - 120
-    x = Math.floor(Math.random() * 71) + 50;
+    // x = Math.floor(Math.random() * 71) + 50;
+    x = randomInt(50,121);
 
     // choose a random number from 50 - 100
-    y = Math.floor(Math.random() * 51) + 50;
+    // y = Math.floor(Math.random() * 51) + 50;
+    y = randomInt(50,101);
 
     // answer
     answer = (2*x) + (2*y);
@@ -370,11 +384,13 @@ let answer = "";
     // If you and Elena arrived at the restaurant at [range: 12PM-6 PM; any time including minutes] and spent [range: 45-90] minutes to eat and pay, at what time would you leave the restaurant? Hint: please type your answer in time format (i.e., 1:09PM).
 
     // choose a random number from 12 - 18
-    x = Math.floor(Math.random() * 7) + 12;
+    // x = Math.floor(Math.random() * 7) + 12;
+    x = randomInt(12,19);
 
     // choose a random number from 45 - 90
 
-    y = Math.floor(Math.random() * 46) + 45;
+    // y = Math.floor(Math.random() * 46) + 45;
+    y = randomInt(45,91);
 
     // answer
     // if minutes are less than 60, then add minutes to x
@@ -430,14 +446,16 @@ export default function generateMeasurementAndDataQuestions(order, level, random
     let questions = [];
     let dishes = ["mainDish","drink","dessert"];
 
+    const { randomInt } = randomGenerator;
+
     if(level === '1') {
 
-        let generatedQuestions = generateLevel1DQuestions(dishes,order);
+        let generatedQuestions = generateLevel1DQuestions(dishes,order, randomInt);
         questions = questions.concat(generatedQuestions);
     }
     if(level === '2') {
 
-        let generatedQuestions = generateLevel2DQuestions(dishes,order);
+        let generatedQuestions = generateLevel2DQuestions(dishes,order, randomInt);
         questions = questions.concat(generatedQuestions);
     }
     if(level === '3') {
