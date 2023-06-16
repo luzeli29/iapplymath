@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import { useRouter } from 'next/router'
-import style from '../../styles/brain_breaks.module.css'
-import translations from '../../public/text/translations';
+import style from '../../../../styles/brain_breaks.module.css'
+import translations from '../../../../public/text/translations';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
 import Error from 'pages/error';
-import Login from '../user/login';
+import Login from '../../../user/login';
 // import music from '../../public/sound/salsa2_bg.mp3';
 
 export default function PoppinBubblesBreak({ setView }) {
@@ -84,11 +84,16 @@ export default function PoppinBubblesBreak({ setView }) {
     if(!isLoggedIn) return <Login/>
 
     const handleBack = () => {
-        setView(false);
-    };
-    
 
-    
+      let redirect = router?.query?.url ?? ''
+
+      if(redirect) {
+        router.push(decodeURIComponent(redirect))
+      }else {
+        router.push('/game/map')
+        
+      }
+    };
 
     return (
         <>
