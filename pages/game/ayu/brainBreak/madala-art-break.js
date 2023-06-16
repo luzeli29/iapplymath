@@ -1,14 +1,14 @@
 import React, {useEffect, useState, useRef} from 'react';
 import { useRouter } from 'next/router'
-import style from '../../styles/brain_breaks.module.css'
-import translations from '../../public/text/translations';
+import style from '../../../../styles/brain_breaks.module.css'
+import translations from '../../../../public/text/translations';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
 import Error from 'pages/error';
-import Login from '../user/login';
+import Login from '../../../user/login';
 import { ReactSketchCanvas } from "react-sketch-canvas";
 
-export default function FreeSyleArtBreak({ setView }) {
+export default function MandalaArtBreak({ setView }) {
     const [counter, setCounter] = useState(180);
     const canvas = useRef()
     const [ideas, setIdeas] = useState(['Lion', 'Tiger', 'House', 'Tree']);
@@ -58,8 +58,31 @@ export default function FreeSyleArtBreak({ setView }) {
     if(!isLoggedIn) return <Login/>
 
     const handleBack = () => {
-        setView(false);
-    };
+
+      let redirect = router?.query?.url ?? ''
+
+      if(redirect) {
+        router.push(decodeURIComponent(redirect))
+      }else {
+        router.push('/game/map')
+        
+      }
+  };
+
+
+
+    // Draw
+    const initialDrawing = [
+      {
+        path: [
+          { x: 100, y: 100 },
+          { x: 200, y: 200 },
+          { x: 300, y: 100 },
+        ],
+        color: '#FF0000',
+        width: 10,
+      }
+    ];
 
 
     return (
@@ -79,6 +102,7 @@ export default function FreeSyleArtBreak({ setView }) {
                 strokeColor={color}
                 undo={true}
                 redo={true}
+                initialLines={initialDrawing} 
             />
             </div>
               {/* <button

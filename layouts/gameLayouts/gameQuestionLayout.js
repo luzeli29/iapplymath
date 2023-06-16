@@ -15,16 +15,16 @@ import DevLog from '@utils/debug/devLog';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 // Brain Breaks
-import DeepBreathingBreak from 'pages/brainBreak/deep-breathing-break';
-import PoppinBubblesBreak from 'pages/brainBreak/poppin-bubbles-break';
-import FreeSyleArtBreak from 'pages/brainBreak/free-style-art-break';
-import MandalaArtBreak from 'pages/brainBreak/madala-art-break';
+// import DeepBreathingBreak from 'pages/brainBreak/deep-breathing-break';
+// import PoppinBubblesBreak from 'pages/brainBreak/poppin-bubbles-break';
+// import FreeSyleArtBreak from 'pages/brainBreak/free-style-art-break';
+// import MandalaArtBreak from 'pages/brainBreak/madala-art-break';
 
 
 //TODO: Change to "Quiz" and move to comps folder
 const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) => {
 
-   const [showBrainBreak, setShowBrainBreak] = useState(true)
+   // const [showBrainBreak, setShowBrainBreak] = useState(false)
 
    if(!user) {
       DevErr('"user" is required for "Quiz" Screen')
@@ -79,7 +79,8 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
 
    function handleAyuClick() {
       //TODO: Change to brain break
-      setShowBrainBreak(true)
+      var encodedUrl = encodeURIComponent(router?.asPath ?? '');
+      router.push('/game/ayu/ayuLevelSelect?url=' + encodedUrl)
    }
 
    const handleFinish = async () => {
@@ -179,9 +180,7 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
                <button className="basic_button" id={style.back_button} onClick={() => handleBack()}>{translations.back[lang]}</button>
             </div>
             <table className="fill_container">
-               {
-               showBrainBreak  ? <FreeSyleArtBreak setView={setShowBrainBreak}/> 
-               : <tbody>
+              <tbody>
                   <tr>
                      <td className={style.child_container}>
                         {children}
@@ -207,8 +206,6 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
                      </td>
                   </tr>
                </tbody>  
-               }
-              
             </table>
          </>
       )
