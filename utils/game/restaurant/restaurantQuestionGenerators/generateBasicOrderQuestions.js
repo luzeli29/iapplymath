@@ -208,9 +208,10 @@ import translations from '@public/text/translations';
 // }
 
 
-function generateLevel1AQuestions(dishes, order) {
+function generateLevel1AQuestions(dishes, order, randomInt) {
     let generatedQuestions = [];
-    let random = Math.floor(Math.random() * 3);
+    // let random = Math.floor(Math.random() * 3);
+    let random = randomInt(0,3);
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // question 1
@@ -247,7 +248,8 @@ function generateLevel1AQuestions(dishes, order) {
     // If you buy your [entree/drink/dessert] ‘x’ [where x is a random # 1-10] times, how much money did you spend in total?
     
     // choose random dish
-    random = Math.floor(Math.random() * dishes.length);
+    // random = Math.floor(Math.random() * dishes.length);
+    random = randomInt(0,dishes.length);
     randomDishName = dishes[random];
     randomDishNameSpanish = translations[randomDishName].es
     randomDishNameEnglish = translations[randomDishName].en
@@ -256,7 +258,8 @@ function generateLevel1AQuestions(dishes, order) {
     priceOfRandomDish = order[randomDishName].price;
 
     // choose random number between 1 and 10
-    let randomNum = Math.floor(Math.random() * 10 + 1); 
+    // let randomNum = Math.floor(Math.random() * 10 + 1); 
+    let randomNum = randomInt(1,11);
 
     // answer
     // in case is water still valid -> 0*randomNum = 0
@@ -307,8 +310,12 @@ function generateLevel1AQuestions(dishes, order) {
     // Take a look at your order, how much will your new total be if you ordered [x, a random # 2-10] mainDish and [y, a random # 2-10] deserts?
 
     // choose random number between 2 and 10
-    let randomNum1 = Math.floor(Math.random() * 9 + 2);
-    let randomNum2 = Math.floor(Math.random() * 9 + 2);
+    // let randomNum1 = Math.floor(Math.random() * 9 + 2);
+    let randomNum1 = randomInt(2,11);
+
+
+    // let randomNum2 = Math.floor(Math.random() * 9 + 2);
+    let randomNum2 = randomInt(2,11);
 
     // get the price of said dishes
     let priceOfMainDish = order["mainDish"].price;
@@ -336,7 +343,8 @@ function generateLevel1AQuestions(dishes, order) {
 
     // choose random number between 10 and 30
     // random number is the budget
-    randomNum = Math.floor(Math.random() * 21 + 10);
+    // randomNum = Math.floor(Math.random() * 21 + 10);
+    randomNum = randomInt(10,31);
 
     // get the price of said dish
     priceOfMainDish = order["mainDish"].price;
@@ -363,7 +371,8 @@ function generateLevel1AQuestions(dishes, order) {
 
     // choose random number between 10 and 30
     // random number is the budget
-    randomNum = Math.floor(Math.random() * 21 + 10);
+    // randomNum = Math.floor(Math.random() * 21 + 10);
+    randomNum = randomInt(10,31);
 
     // get the price of said dishes
     let priceOfDrink = order["drink"].price;
@@ -398,10 +407,12 @@ function generateLevel1AQuestions(dishes, order) {
 
     // choose random number between 10 and 30
     // random number is the budget
-    randomNum = Math.floor(Math.random() * 21 + 10);
+    // randomNum = Math.floor(Math.random() * 21 + 10);
+    randomNum = randomInt(10,31);
 
     // choose random number between 1 and 10
-    randomNum2 = Math.floor(Math.random() * 10 + 1);
+    // randomNum2 = Math.floor(Math.random() * 10 + 1);
+    randomNum2 = randomInt(1,11);
 
     // get the price of said dish
     priceOfDrink = order["drink"].price;
@@ -448,14 +459,16 @@ function generateLevel1AQuestions(dishes, order) {
     // How much will you pay for the main dish if you share it with [‘x’, a random # 2-10] friends and you all equally split the cost?
 
     // choose random number between 2 and 10
-    randomNum = Math.floor(Math.random() * 9 + 2);
+    // randomNum = Math.floor(Math.random() * 9 + 2);
+    randomNum = randomInt(2,11);
 
     // get the price of said dish
     priceOfMainDish = order["mainDish"].price;
 
     // answer
     let totalPeople = randomNum + 1;
-    answer = Math.floor(parseInt(priceOfMainDish) / totalPeople);
+    answer = parseFloat((parseInt(priceOfMainDish) / totalPeople).toFixed(2));
+
 
     // create question
     generatedQuestions.push(createGameQuestion(
@@ -465,7 +478,7 @@ function generateLevel1AQuestions(dishes, order) {
         },
         answer,
         [],
-        "wholeNumber",
+        "decimal",
     ))
 
 
@@ -474,7 +487,7 @@ function generateLevel1AQuestions(dishes, order) {
     
 }
 
-function generateLevel2AQuestions(dishes, order){
+function generateLevel2AQuestions(dishes, order, randomInt){
     let generatedQuestions = [];
 
     // ***********************************************************************************************************************
@@ -483,10 +496,12 @@ function generateLevel2AQuestions(dishes, order){
     // “Restaurant name” is hosting a monthly food drive event. Elena and you are helping collect and organize various food items. On the first day, you collected [range: x = 10-50] food items and on the second day you collected [range y=2-9] times as many items. How many items did you and Elena collect on the second day?
 
     // choose random number between 10 and 50
-    let randomNum = Math.floor(Math.random() * 41 + 10);
+    // let randomNum = Math.floor(Math.random() * 41 + 10);
+    let randomNum = randomInt(10,51);
 
     // choose random number between 2 and 9
-    let randomNum2 = Math.floor(Math.random() * 8 + 2);
+    // let randomNum2 = Math.floor(Math.random() * 8 + 2);
+    let randomNum2 = randomInt(2,10);
 
     // answer
     let answer = randomNum * randomNum2;
@@ -508,10 +523,12 @@ function generateLevel2AQuestions(dishes, order){
     // Today your parents gave you [range: x = 10-30] dollars to order food at the restaurant. If next time they gave you [range = 2-5] times [less/more] money, what is your new budget?
 
     // choose random number between 10 and 30
-    randomNum = Math.floor(Math.random() * 21 + 10);
+    // randomNum = Math.floor(Math.random() * 21 + 10);
+    randomNum = randomInt(10,31);
 
     // choose random number between 2 and 5
-    randomNum2 = Math.floor(Math.random() * 4 + 2);
+    // randomNum2 = Math.floor(Math.random() * 4 + 2);
+    randomNum2 = randomInt(2,6);
 
     let options = ["less", "more"];
     // choose random option
@@ -576,10 +593,12 @@ function generateLevel2AQuestions(dishes, order){
     // If your budget in 2021 was [range: x = 20-28] dollars, how many [“entrées”/ ”desserts”/”drinks”] could you afford to buy?
 
     // choose random number between 20 and 28
-    randomNum = Math.floor(Math.random() * 9 + 20);
+    // randomNum = Math.floor(Math.random() * 9 + 20);
+    randomNum = randomInt(20,29);
 
     // choose random dish
-    let randomDish = dishes[Math.floor(Math.random() * dishes.length)];
+    // let randomDish = dishes[Math.floor(Math.random() * dishes.length)];
+    let randomDish = dishes[randomInt(0, dishes.length)];
     let randomDishNameSpanish = translations[randomDish].es
     let randomDishNameEnglish = translations[randomDish].en
     // get the price of said dish
@@ -607,7 +626,8 @@ function generateLevel2AQuestions(dishes, order){
     // In 2022 your budget was unchanged, [x = # from part a.] dollars. How many [“entrées”/ ”desserts”/”drinks”] could you buy then?
 
     // choose random dish
-    randomDish = dishes[Math.floor(Math.random() * dishes.length)];
+    // randomDish = dishes[Math.floor(Math.random() * dishes.length)];
+    randomDish = dishes[randomInt(0, dishes.length)];
     randomDishNameSpanish = translations[randomDish].es
     randomDishNameEnglish = translations[randomDish].en
 
@@ -658,10 +678,12 @@ function generateLevel2AQuestions(dishes, order){
     // Elena’s budget in 2021 was 28 dollars. What would Elena’s new budget need to be in [2022 or 2023] for her to buy as many [“entrées”/ ”desserts”/”drinks”] as she could in 2021?
 
     // choose random year between 2022 and 2023
-    let randomYear = Math.floor(Math.random() * 2 + 2022);
+    // let randomYear = Math.floor(Math.random() * 2 + 2022);
+    let randomYear = randomInt(2022, 2024);
 
     // choose random dish
-    randomDish = dishes[Math.floor(Math.random() * dishes.length)];
+    // randomDish = dishes[Math.floor(Math.random() * dishes.length)];
+    randomDish = dishes[randomInt(0, dishes.length)];
     randomDishNameSpanish = translations[randomDish].es
     randomDishNameEnglish = translations[randomDish].en
 
@@ -693,7 +715,7 @@ function generateLevel2AQuestions(dishes, order){
     return generatedQuestions;
 }
 
-function generateLevel3AQuestions(dishes,order){
+function generateLevel3AQuestions(dishes,order, randomInt){
     let generatedQuestions = [];
     let answer = null;
 
@@ -709,31 +731,33 @@ function generateLevel3AQuestions(dishes,order){
     return generatedQuestions;
 }
 
-export default function generateOperationsAndAlgebraQuestions(order, level) {
+export default function generateOperationsAndAlgebraQuestions(order, level,randomGenerator) {
     // array of questions
     let questions = [];
     // array of dishes
     let dishes = ["mainDish", "drink", "dessert"];
+
+    const { randomInt } = randomGenerator;
+
     // random number to choose a dish
-    let random = Math.floor(Math.random() * dishes.length);
 
     if (level === '1') {
         // add the A section
-        let generatedQuestions = generateLevel1AQuestions(dishes, order);
+        let generatedQuestions = generateLevel1AQuestions(dishes, order,randomInt);
         questions = questions.concat(generatedQuestions);
         
     }
 
     if (level === '2') {
         // add the A section
-        let generatedQuestions = generateLevel2AQuestions(dishes, order);
+        let generatedQuestions = generateLevel2AQuestions(dishes, order,randomInt);
         questions = questions.concat(generatedQuestions);
     }
 
     if (level === '3') {
 
         // add the A section
-        let generatedQuestions = generateLevel3AQuestions(dishes, order);
+        let generatedQuestions = generateLevel3AQuestions(dishes, order, randomInt);
         questions = questions.concat(generatedQuestions);
 
     }

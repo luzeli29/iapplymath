@@ -2,9 +2,10 @@ import getText from '@utils/text/getText'
 import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 import translations from '@public/text/translations';
 
-function generateLevel1BQuestions(dishes,order){
+function generateLevel1BQuestions(dishes,order,randomInt){
     let generatedQuestions = [];
-    let random = Math.floor(Math.random() * dishes.length);
+    // let random = Math.floor(Math.random() * dishes.length);
+    let random = randomInt(0, dishes.length);
     let answer = 0;
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
@@ -88,7 +89,7 @@ function generateLevel1BQuestions(dishes,order){
 }
 
 
-function generateLevel2BQuestions(dishes,order){
+function generateLevel2BQuestions(dishes,order,randomInt){
     let generatedQuestions = [];
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -137,10 +138,12 @@ function generateLevel2BQuestions(dishes,order){
     // The restaurant owner placed a new order of [range: x = 1000 – 5000] pounds of oranges and [range: y = 2000 – 6000] pounds of potatoes. How many total pounds of oranges and potatoes are in this order? 
 
     // generate random number between 1000 and 5000
-    let x = Math.floor(Math.random() * (5000 - 1000 + 1) + 1000);
+    // let x = Math.floor(Math.random() * (5000 - 1000 + 1) + 1000);
+    let x = randomInt(1000,5001)
 
     // generate random number between 2000 and 6000
-    let y = Math.floor(Math.random() * (6000 - 2000 + 1) + 2000);
+    // let y = Math.floor(Math.random() * (6000 - 2000 + 1) + 2000);
+    let y = randomInt(2000,6001)
 
     // answer
     answer = x + y;
@@ -163,10 +166,12 @@ function generateLevel2BQuestions(dishes,order){
     // The chef noticed that he had [range: x = 200 – 500] pounds of chicken left over at the end of the week. If the initial chicken supply was [range: y = 1500 – 5000] pounds, how many pounds of chicken must the chef order to not have any left-over chicken next week? 
 
     // generate random number between 200 and 500
-    x = Math.floor(Math.random() * (500 - 200 + 1) + 200);
+    // x = Math.floor(Math.random() * (500 - 200 + 1) + 200);
+    x = randomInt(200,501)
 
     // generate random number between 1500 and 5000
-    y = Math.floor(Math.random() * (5000 - 1500 + 1) + 1500);
+    // y = Math.floor(Math.random() * (5000 - 1500 + 1) + 1500);
+    y = randomInt(1500,5001)
 
     // answer
     answer = y - x;
@@ -189,13 +194,16 @@ function generateLevel2BQuestions(dishes,order){
     // At the end of the month, the restaurant owner calculates the revenue for that respective month. This month the restaurant food sales were equal to [range: x = 15,000 – 25,000] dollars, the desert sales were [range: y = 7,000 – 13,000] dollars and the drink sales were [range: z = 4,000 – 10,000] dollars. What is the total revenue for the restaurant this month?
 
     // generate random number between 15000 and 25000
-    x = Math.floor(Math.random() * (25000 - 15000 + 1) + 15000);
+    // x = Math.floor(Math.random() * (25000 - 15000 + 1) + 15000);
+    x = randomInt(15000,25001)
 
     // generate random number between 7000 and 13000
-    y = Math.floor(Math.random() * (13000 - 7000 + 1) + 7000);
+    // y = Math.floor(Math.random() * (13000 - 7000 + 1) + 7000);
+    y = randomInt(7000,13001)
 
     // generate random number between 4000 and 10000
-    let z = Math.floor(Math.random() * (10000 - 4000 + 1) + 4000);
+    // let z = Math.floor(Math.random() * (10000 - 4000 + 1) + 4000);
+    let z = randomInt(4000,10001)
 
     // answer
     answer = x + y + z;
@@ -218,10 +226,12 @@ function generateLevel2BQuestions(dishes,order){
     // Yesterday the restaurant received [range: x = 150 – 300] food orders. If the daily order count remains the same, how many total orders will the restaurant have after [range: y = 3– 9] days?
 
     // generate random number between 150 and 300
-    x = Math.floor(Math.random() * (300 - 150 + 1) + 150);
+    // x = Math.floor(Math.random() * (300 - 150 + 1) + 150);
+    x = randomInt(150,301)
 
     // generate random number between 3 and 9
-    y = Math.floor(Math.random() * (9 - 3 + 1) + 3);
+    // y = Math.floor(Math.random() * (9 - 3 + 1) + 3);
+    y = randomInt(3,10)
 
     // answer
     answer = x * y;
@@ -244,10 +254,12 @@ function generateLevel2BQuestions(dishes,order){
     // The chef typically prepares [range: x = 30 – 99] entrée dishes per day. How many entrée dishes will the chef prepare after [range: y = 10 – 31] days?
 
     // generate random number between 30 and 99
-    x = Math.floor(Math.random() * (99 - 30 + 1) + 30);
+    // x = Math.floor(Math.random() * (99 - 30 + 1) + 30);
+    x = randomInt(30,100)
 
     // generate random number between 10 and 31
-    y = Math.floor(Math.random() * (31 - 10 + 1) + 10);
+    // y = Math.floor(Math.random() * (31 - 10 + 1) + 10);
+    y = randomInt(10,32)
 
     // answer
     answer = x * y;
@@ -271,7 +283,8 @@ function generateLevel2BQuestions(dishes,order){
 
     // generate random number between 2 and 9
 
-    x = Math.floor(Math.random() * (9 - 2 + 1) + 2);
+    // x = Math.floor(Math.random() * (9 - 2 + 1) + 2);
+    x = randomInt(2,10)
 
     // answer
     answer = 900 / x;
@@ -344,7 +357,7 @@ function generateLevel2BQuestions(dishes,order){
 
 }
 
-function generateLevel3BQuestions(dishes,order) {
+function generateLevel3BQuestions(dishes,order,randomInt) {
 
     let generatedQuestions = [];
     let answer;
@@ -354,7 +367,8 @@ function generateLevel3BQuestions(dishes,order) {
     // If 20/100 is the amount you pay and is represented as .20 in decimals, how would you represent [random value between 10-99]/100 of your bill as a decimal?
 
     // generate random number between 10 and 99
-    let x = Math.floor(Math.random() * (99 - 10 + 1) + 10);
+    // let x = Math.floor(Math.random() * (99 - 10 + 1) + 10);
+    let x = randomInt(10,100)
 
     // answer
     answer = x / 100;
@@ -380,10 +394,12 @@ function generateLevel3BQuestions(dishes,order) {
     // With tax, your final total comes out to [any number between 0-20 with 3 decimal places]. _____’s final total is [any number between 0-20 with 3 decimal places]. Which number is greater?
 
     // generate random number between 0 and 20
-    x = Math.floor(Math.random() * (20 - 0 + 1) + 0);
+    // x = Math.floor(Math.random() * (20 - 0 + 1) + 0);
+    x = randomInt(0,20)
 
     // randomize number between 100 and 999
-    let y = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+    // let y = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+    let y = randomInt(100,1000)
 
     // answer
     let number1 = x + (y / 1000);
@@ -391,10 +407,12 @@ function generateLevel3BQuestions(dishes,order) {
     // round answer to 3 decimal places
     number1 = number1.toFixed(3);
 
-    let x2 = Math.floor(Math.random() * (20 - 0 + 1) + 0);
+    // let x2 = Math.floor(Math.random() * (20 - 0 + 1) + 0);
+    let x2 = randomInt(0,20)
 
     // randomize number between 100 and 999
-    let y2 = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+    // let y2 = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+    let y2 = randomInt(100,1000)
 
     // number2
     let number2 = x2 + (y2 / 1000);
@@ -430,10 +448,12 @@ function generateLevel3BQuestions(dishes,order) {
     // If your total is $80.225, how much should you pay if you round to the nearest hundredth?  80.23
 
     // generate random number between 10 and 80
-    x = Math.floor(Math.random() * (80 - 10 + 1) + 10);
+    // x = Math.floor(Math.random() * (80 - 10 + 1) + 10);
+    x = randomInt(10,80)
 
     // randomize number between 100 and 999
-    y = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+    // y = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+    y = randomInt(100,1000)
 
     // answer
     number1 = x + (y / 1000);
@@ -463,7 +483,8 @@ function generateLevel3BQuestions(dishes,order) {
     // If your family wants to order your same main dish [any number] times, how much is your total for the main dishes?
 
     // generate random number between 2 and 10
-    x = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    // x = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    x = randomInt(2,11)
 
     // answer
     let priceOfDish = order["mainDish"].price
@@ -499,7 +520,8 @@ function generateLevel3BQuestions(dishes,order) {
     // If you ordered [any number] drinks, how much would all of your drinks cost? [any number]X(drink)
 
     // generate random number between 2 and 10
-    x = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    // x = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    x = randomInt(2,11)
 
     // answer
     priceOfDish = order["drink"].price
@@ -535,9 +557,10 @@ function generateLevel3BQuestions(dishes,order) {
 
     // What is your total if you buy x [entree/drink/dessert] and y [entree/drink/dessert]? 
 
-    let dish1 = dishes[Math.floor(Math.random() * dishes.length)];
+    // let dish1 = dishes[Math.floor(Math.random() * dishes.length)];
+    let dish1 = dishes[randomInt(0,dishes.length)];
     let copyDishes = dishes.filter(dish => dish !== dish1)
-    let dish2 = copyDishes[Math.floor(Math.random() * copyDishes.length)];
+    let dish2 = copyDishes[randomInt(0,copyDishes.length)];
     // let dish2 = dishes[Math.floor(Math.random() * dishes.length)];
 
     
@@ -550,10 +573,12 @@ function generateLevel3BQuestions(dishes,order) {
     let nameOfDish2Es = order[dish2].es
 
     // generate random number between 2 and 10
-    x = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    // x = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    x = randomInt(2,11)
 
     // generate random number between 2 and 10
-    y = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    // y = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    y = randomInt(2,11)
 
     // answer
 
@@ -584,13 +609,16 @@ function generateLevel3BQuestions(dishes,order) {
 
 
     // generate random number between 2 and 10
-    x = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    // x = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    x = randomInt(2,11)
 
     // generate random number between 2 and 10
-    y = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    // y = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    y = randomInt(2,11)
 
     // generate random number between 2 and 10
-    let z = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    // let z = Math.floor(Math.random() * (10 - 2 + 1) + 2);
+    let z = randomInt(2,11)
 
     // answer
     priceOfDish1 = order["mainDish"].price
@@ -645,10 +673,11 @@ export default function generateNumberAndOperationsInBaseTenQuestion(order,level
     let questions = [];
     let dishes = ["mainDish","drink","dessert"];
 
+    const { randomInt } = randomGenerator;
 
     if(level === '1') {
 
-        let generatedQuestions = generateLevel1BQuestions(dishes,order);
+        let generatedQuestions = generateLevel1BQuestions(dishes,order,randomInt);
 
 
         questions = questions.concat(generatedQuestions);
@@ -656,14 +685,14 @@ export default function generateNumberAndOperationsInBaseTenQuestion(order,level
 
     if(level === '2') {
 
-        let generatedQuestions = generateLevel2BQuestions(dishes,order);
+        let generatedQuestions = generateLevel2BQuestions(dishes,order,randomInt);
 
         questions = questions.concat(generatedQuestions);
     }
 
     if(level === '3') {
 
-        let generatedQuestions = generateLevel3BQuestions(dishes,order);
+        let generatedQuestions = generateLevel3BQuestions(dishes,order,randomInt);
 
         questions = questions.concat(generatedQuestions);
 

@@ -30,38 +30,10 @@ export default function generateRestaurantQuestions(order,randomGenerator, quest
     }
 
 
-    // if (!['multiply', 'multiMultiply', 'graph'].includes(questionType)) {
-    //     console.log('Question Type: ' + questionType + ' not valid');
-    //     return []
-    // }
-
-    // if (!['le', 'multiMultiply', 'graph'].includes(questionType)) {
-    //     console.log('Question Type: ' + questionType + ' not valid');
-    //     return []
-    // }
-
-    // for (let i = 0; i < questions_list[questionType][`lvl${level}`]; ++i) {
-    //     const item = questions_list[questionType][`lvl${level}`][i]
-    //     questions.push(createGameQuestion(
-    //         item[en],
-    //         item[es],
-    //         item[answer],
-    //         item[hints],
-    //         item[type],
-    //         item[onAnswer],
-    //         item[imgSrc]
-    //     ))
-    // }
-
-    // const questions_list = generateBasicOrderQuestions(order)
-    // questions = questions.concat(questions_list)
-
-    // var questions = [];
-    // var level_ = 3;
 
 
     // first we get the operation and algebra questions
-    let operationsAndAlgebra = generateOperationsAndAlgebraQuestions(order, level)
+    let operationsAndAlgebra = generateOperationsAndAlgebraQuestions(order, level,randomGenerator)
     // then we get the number and operations in base ten questions
     let numberAndOperationsInBaseTen = generateNumberAndOperationsInBaseTenQuestion(order, level, randomGenerator)
     // then we get the number and operations fractions questions
@@ -83,7 +55,7 @@ export default function generateRestaurantQuestions(order,randomGenerator, quest
 
     // console.log("Number and Operations Fractions Questions: " + numberAndOperationsFractions.length)
 
-    console.log("Measurement and Data Questions: " + measurementAndData.length)
+    // console.log("Measurement and Data Questions: " + measurementAndData.length)
 
 
     // show the amount of questions generated
