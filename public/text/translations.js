@@ -386,6 +386,11 @@ const translations = {
         },
         
     ],
+    brain_break: {
+        en:"Brain Break select",
+        es:"Selecciona un Brain Break",
+    },
+
 }
 
 export default translations;
