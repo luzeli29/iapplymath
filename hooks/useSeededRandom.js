@@ -6,7 +6,7 @@ const defaultSeed = '42'
 
 export default function useSeededRandom(initSeed) {
     const [seed, setSeed] = useState(initSeed)
-    const [hashedSeed, setHashedSeed] = useState(null);
+    const [hashedSeed, setHashedSeed] = useState([]);
     const [loading, setLoading] = useState(true)
     let randFunction = null;
 
@@ -62,27 +62,26 @@ export default function useSeededRandom(initSeed) {
 
     function generateSeed() {
         const generatedSeed = randomBytes(8).toString("hex");
-        const hshdSeed = hashSTR(generatedSeed)
         setSeed(generatedSeed)
-        setHashedSeed(hshdSeed)
     }
 
     function checkSeed() {
         if (!seed) {
             generateSeed()
-            randFunction = sfc32(hashedSeed[0], hashedSeed[1], hashedSeed[2], hashedSeed[3])
         }
     }
 
     function checkRand() {
+        checkSeed()
+        checkHashedSeed()
         if (!randFunction) {
-            checkSeed()
             randFunction = sfc32(hashedSeed[0], hashedSeed[1], hashedSeed[2], hashedSeed[3])
         }
     }
     function checkHashedSeed() {
-        if (!hashedSeed) {
-            checkSeed()
+        checkSeed()
+        
+        if(!hashedSeed) {
             setHashedSeed(hashSTR(seed))
         }
     }
