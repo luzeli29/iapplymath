@@ -5,8 +5,12 @@ import translations from '@translations';
 import QuestionFormats from '@utils/game/quiz/questionGeneration/questionFormats'
 import DevErr from '@utils/debug/devErr';
 import successAudio from '@public/sound/success.mp3'
-
+import { useSelector } from 'react-redux';
 const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {
+
+  const musicMuteState = useSelector((state) => state.music.value)
+
+
   if(!questionFormat) {
     DevErr('"questionFormat" is required for ContinueAnswerBox.')
     questionFormat = QuestionFormats.continue
@@ -15,9 +19,12 @@ const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {
 
   
   const renderConfetti = () => {
-    let audio = new Audio(successAudio);
-    audio.loop = false;
-    audio.play();
+
+    if(!musicMuteState){
+      let audio = new Audio(successAudio);
+      audio.loop = false;
+      audio.play();
+    }
     
     return (
       <div className="confetti_container">
