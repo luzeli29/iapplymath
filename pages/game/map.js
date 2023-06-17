@@ -9,8 +9,9 @@ import { useUserContext } from '@hooks/siteContext/useUserContext'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
+import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
 
-export default function Map() {
+const Map = ({user,settings}) => {
   const containerRef = useRef(null);
   const [position, setPosition] = useState({
     x: 0,
@@ -46,13 +47,7 @@ export default function Map() {
       window.removeEventListener('resize', handleResize);
     };
   }, [mapLocation]);
-    const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
-
-    const isLoggedIn = user.loggedIn    
-    if(loading || !router.isReady) return <Loading/>
-    if(error) return <Error error={error}/>
-    if(!isLoggedIn) return <Login/>
 
     const lang = settings.lang
     const avatarId = user.data.avatarId
@@ -109,12 +104,12 @@ export default function Map() {
                            
                 />
             
-                <p className={style.aunt_house_text}>{translations.aunt_house[lang]}</p>
+                <p className={style.aunt_house_text}>{translations.coming_soon[lang]}</p>
 
                 <p className={style.restaurant_text}>{translations.restaurant[lang]}</p> 
                 
-                <button onClick={() => handleAuntsHouse()}
-                        className={style.icon_button_small} id={style.aunt_house}> 
+                <button
+                        className={style.icon_small} id={style.aunt_house}> 
                     <Image 
                         layout={"fill"}
                         quality={100}
@@ -155,10 +150,10 @@ export default function Map() {
                             src={"/img/map/my_house.png"}/>
                 </div>
 
-                <p className={style.school_text}>{translations.school[lang]}</p>
-                <button onClick={() => handleSchoolClick()}>
+                <p className={style.school_text}>{translations.coming_soon[lang]}</p>
+                <button>
                   <div
-                      className={style.icon_button} 
+                      className={style.icon} 
                       id={style.school}>
                         <Image 
                         layout={"fill"}
@@ -176,3 +171,5 @@ export default function Map() {
         </>
     );
 }
+
+export default RetrieveUserContext(Map,'gameReady')

@@ -13,10 +13,10 @@
 
 .ms_container {
     position: relative;
-    width: 100%;
-    height: 100%;
-    top: 2%;
-    left: 50%;
+    width: 130%;
+    height: 98%;
+    top: 13%;
+    left: 35%;
     transform: translate(-50%, 0%);
 
 }
@@ -73,20 +73,20 @@
     text-align: center;
     display: block;
     top: 0%;
-    left: 90%;
+    left: 100%;
     transform: translate(-50%, 0%);
-    width: 30%;
+    width: 50%;
     height: 50%;
     border: solid black 2px;
 }
 
 .ms_order_container {
-    position: relative;
+    position: absolute;
     display: block;
-    top: 0%;
-    left: 90%;
+    top: 100%;
+    left: 100%;
     transform: translate(-50%, -100%);
-    width: 30%;
+    width: 50%;
     height: 50%;
     border: solid black 2px;
     background-color: #F6EFDD;

@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import { useRouter } from 'next/router'
-import style from '../../styles/check_in.module.css'
-import translations from '../../public/text/translations';
+import style from '../../../../styles/check_in.module.css'
+import translations from '../../../../public/text/translations';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
 import Error from 'pages/error';
-import Login from '../user/login';
+import Login from '../../../user/login';
 // import music from '../../public/sound/salsa2_bg.mp3';
 
 export default function MoveBodyBreak({onEnd}) {
@@ -56,9 +56,18 @@ export default function MoveBodyBreak({onEnd}) {
 
     //This is called when the player is done creating
     //Should handle anything to be done in order to use avatar in game
-    const handleFeelingSubmit = () => {
-        _onEnd();
+    const handleBack = () => {
+
+        let redirect = router?.query?.url ?? ''
+  
+        if(redirect) {
+          router.push(decodeURIComponent(redirect))
+        }else {
+          router.push('/game/map')
+          
+        }
     };
+  
 
     return (
         <>
@@ -72,7 +81,7 @@ export default function MoveBodyBreak({onEnd}) {
             </div>
             <button
                 className={style.continue_button}
-                onClick={() => handleFeelingSubmit()}
+                onClick={() => handleBack()}
             >{translations.continue[lang]}</button>
         </>
     )

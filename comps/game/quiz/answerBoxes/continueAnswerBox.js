@@ -4,6 +4,7 @@ import style from '@styles/game_layout.module.css'
 import translations from '@translations';
 import QuestionFormats from '@utils/game/quiz/questionGeneration/questionFormats'
 import DevErr from '@utils/debug/devErr';
+import successAudio from '@public/sound/success.mp3'
 
 const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {
   if(!questionFormat) {
@@ -11,11 +12,19 @@ const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {
     questionFormat = QuestionFormats.continue
   }
   
+
+  
   const renderConfetti = () => {
+    let audio = new Audio(successAudio);
+    audio.loop = false;
+    audio.play();
+    
     return (
-      <Confetti
-                    confettiSource={{ x: 0, y: -100, w: 650, h: 600 }}
+      <div className="confetti_container">
+      <Confetti 
+                    confettiSource={{ x: 0, y: -100, w: 3000, h: 2000 }}
                     friction={0.96} />
+        </div>
     )
   }
   return (

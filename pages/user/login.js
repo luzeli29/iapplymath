@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react"
 import translations from "@translations";
 
 export default function Login() {
-  const {user, settings, loading, error} = useUserContext()
+  const {user, settings, loading, error,login,logout} = useUserContext()
   const [feedbackText, setFeedbackText] = useState(user.error)
   const [onRoute, setOnRoute] = useState()
   const router = useRouter()
@@ -38,12 +38,12 @@ export default function Login() {
           loggedIn = user.offlineLogin(inputUsername)
           break;
         case "login":
-          loggedIn = await user.login(inputUsername)
+          loggedIn = await login(inputUsername)
           break;
         case "create_user":
           const createdUser = await user.createUser(inputUsername)
           if(createdUser) {
-            loggedIn = await user.login(inputUsername)
+            loggedIn = await login(inputUsername)
           }
       }
 
@@ -71,7 +71,7 @@ export default function Login() {
         <div className="row w-75 mx-auto pt-5 text-center">
           <div className="col-12">
             <p className="">You are logged in.</p>
-            <button className="basic_button" onClick={() => user.logout()}>Logout</button>
+            <button className="basic_button" onClick={() => logout()}>Logout</button>
           </div>
         </div>
       </div>
@@ -92,9 +92,9 @@ export default function Login() {
             </div>
             <div className="row pt-5">
               <div className="col-6 text-center">
-                <button className="basic_button" type="submit" name="action" value="create_user">{translations.create_user[lang]}</button>
+                {/*<button className="basic_button" type="submit" name="action" value="create_user">{translations.create_user[lang]}</button> */}
               </div>
-              <div className="col-6 text-center">
+              <div className="col-12 text-center">
                 <button className="basic_button" type="submit" name="action" value="login">{translations.login[lang]}</button>
               </div>
               <div className="col-12 text-center pt-3">
