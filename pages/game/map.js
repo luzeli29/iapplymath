@@ -104,12 +104,12 @@ const Map = ({user,settings}) => {
                            
                 />
             
-                <p className={style.aunt_house_text}>{translations.aunt_house[lang]}</p>
+                <p className={style.aunt_house_text}>{translations.coming_soon[lang]}</p>
 
                 <p className={style.restaurant_text}>{translations.restaurant[lang]}</p> 
                 
-                <button onClick={() => handleAuntsHouse()}
-                        className={style.icon_button_small} id={style.aunt_house}> 
+                <button
+                        className={style.icon_small} id={style.aunt_house}> 
                     <Image 
                         layout={"fill"}
                         quality={100}
@@ -150,10 +150,10 @@ const Map = ({user,settings}) => {
                             src={"/img/map/my_house.png"}/>
                 </div>
 
-                <p className={style.school_text}>{translations.school[lang]}</p>
-                <button onClick={() => handleSchoolClick()}>
+                <p className={style.school_text}>{translations.coming_soon[lang]}</p>
+                <button>
                   <div
-                      className={style.icon_button} 
+                      className={style.icon} 
                       id={style.school}>
                         <Image 
                         layout={"fill"}

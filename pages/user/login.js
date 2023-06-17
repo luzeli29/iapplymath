@@ -92,9 +92,9 @@ export default function Login() {
             </div>
             <div className="row pt-5">
               <div className="col-6 text-center">
-                <button className="basic_button" type="submit" name="action" value="create_user">{translations.create_user[lang]}</button>
+                {/*<button className="basic_button" type="submit" name="action" value="create_user">{translations.create_user[lang]}</button> */}
               </div>
-              <div className="col-6 text-center">
+              <div className="col-12 text-center">
                 <button className="basic_button" type="submit" name="action" value="login">{translations.login[lang]}</button>
               </div>
               <div className="col-12 text-center pt-3">
