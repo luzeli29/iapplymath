@@ -153,8 +153,8 @@ const translations = {
         es: "¿Cómo te sientes?",
     },
     mute_tooltip: {
-        en: "Mute Music",
-        es: 'Silenciar Música',
+        en: "Mute Sounds",
+        es: 'Silenciar sonidos',
     },
     unmute_tooltip: {
         en: "Unmute Music",
