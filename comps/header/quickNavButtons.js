@@ -7,11 +7,12 @@ import Tooltip from "comps/accessibility/tooltip"
 import getText from '@utils/text/getText'
 import QuickNavButton from '@comps/header/quickNavButton';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useSelector } from 'react-redux';
 
 export default function QuickNavButtons({user,settings,handleLogout,router}) {
     const loggedIn = user.loggedIn
     const lang = settings.lang
-    const mute = settings.mute
+    const mute = useSelector((state) => state.music.value)
     const font = settings.font
     const AvatarTooltipText = getText("avatar_tooltip",lang)
     const MapTooltipText = getText("map_tooltip",lang)

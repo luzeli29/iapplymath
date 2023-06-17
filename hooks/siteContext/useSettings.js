@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import Cookies from 'js-cookie';
 import { BiToggleLeft } from 'react-icons/bi';
+import { toggleMuteRedux } from 'store/Slices/musicSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
+
 
 export default function useSettings() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState();
     const [lang, setLang] = useState("en");
-    const [mute, setMute] = useState(false);
     const [font, setFont] = useState(false);
     const [backgroundHex, setBackgroundHex] = useState("#EDBFC6");
+    
+    const musicMuteState = useSelector((state) => state.music.value)
+    const [mute, setMute] = useState(false);
+    const dispatch = useDispatch()
     
     useEffect(() => {
         updateSettingsFromCookie()
@@ -78,10 +85,14 @@ export default function useSettings() {
     }
 
     function toggleMute() {
+        dispatch(toggleMuteRedux())
+        
+        // keeping this here for now in case we want to use it later
         const newMute = !mute
         setMute(newMute)
-        Cookies.set('mute', JSON.stringify(newMute), { expires: 1 });
+        Cookies.set('mute', JSON.stringify(musicMuteState), { expires: 1 });
         return true
+
     }
 
     function toggleFont() {
