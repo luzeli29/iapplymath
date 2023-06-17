@@ -5,7 +5,7 @@ import QuickNavButtons from '@comps/header/quickNavButtons';
 import DevErr from '@utils/debug/devErr';
 
 export default function Header() {
-    const {user,settings, loading, error} = useUserContext()
+    const {user,settings, loading, error,logout} = useUserContext()
     const router = useRouter()
     
     if(loading) return <></>
@@ -29,7 +29,7 @@ export default function Header() {
             <div className="col col-lg-1">
                 <button onClick={() => settings.setLang('es')}><strong>Español</strong></button>
             </div>
-                <QuickNavButtons user={user} settings={settings} router={router}/>
+                <QuickNavButtons user={user} settings={settings} handleLogout={logout} router={router}/>
             <div className="col col-lg-1">
                 <button onClick={() => settings.setLang('en')}><strong>English</strong></button>
             </div>

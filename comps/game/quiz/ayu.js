@@ -27,7 +27,7 @@ export default function Ayu ({handleAyuClick}) {
    const petId = user.data.petId
 
    function handleClick() {
-      user.incrementAyu()
+      // user.incrementAyu()
       handleAyuClick()
    }
 
@@ -52,8 +52,8 @@ export default function Ayu ({handleAyuClick}) {
          
          <div className={style.ayu_image_container}>
             <button onClick={() => handleClick()}>
-            <Tooltip text={translations.pet_ayu[lang]}>
-            <GiHand className={style.breathe} ></GiHand>
+            <Tooltip type={true}  text={translations.pet_ayu[lang]}>
+               <GiHand className={style.breathe} ></GiHand>
             </Tooltip>
                <Image
                   priority={true}

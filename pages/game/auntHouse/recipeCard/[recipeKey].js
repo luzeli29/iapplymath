@@ -84,7 +84,7 @@ export default function RecipeCard({recipeKey,recipe}) {
                 </div>
                 <div className='col-6 text-start'>
                     <button 
-                    onClick={() => router.push('/game/auntHouse/quiz/basic/' + recipeKey)}
+                    onClick={() => router.push('/game/auntHouse/quiz/basic?recipeKey=' + recipeKey)}
                     className={'basic_button'}>
                         {getText('cook',lang)}
                     </button>

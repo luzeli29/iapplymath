@@ -12,8 +12,6 @@ const loadRecipes = async () => {
     mergeObjectsIntoObjectByKeys(recipes,{...ingredients,...servingTypes})
 
     DevLog('-----Loaded Recipes-----')
-    DevLog(recipes)
-    DevLog('------------------------')
 
     return recipes
 }

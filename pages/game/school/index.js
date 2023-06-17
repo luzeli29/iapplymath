@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
 import React, { useState } from 'react'
+import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
 
 export async function getStaticProps(){
   let schoolTopics = await LoadSchoolTopics()
@@ -19,15 +20,10 @@ export async function getStaticProps(){
 }
 
 
-const SchoolIndex = ({schoolTopics}) => {
-  const {user,settings,loading, error} = useUserContext()
+const SchoolIndex = ({user,settings,schoolTopics}) => {
   const router = useRouter()
   const [selectedTopic, setSelectedTopic] = useState()
   const [instructionText, setInstructionText] = useState('school_index_instruction');
-  const isLoggedIn = user.loggedIn    
-  if(loading || !router.isReady) return <Loading/>
-  if(error) return <Error error={error}/>
-  if(!isLoggedIn) return <Login/>
 
   const lang = settings.lang
 
@@ -74,4 +70,4 @@ const SchoolIndex = ({schoolTopics}) => {
   )
 }
 
-export default SchoolIndex
+export default RetrieveUserContext(SchoolIndex,['gameReady','hasActiveGame'])
