@@ -31,6 +31,7 @@ export default function Login() {
         setFeedbackText("Please input a username.")
         return
       }
+
       setFeedbackText()
       let loggedIn = false
       switch (submitType) {
@@ -38,7 +39,7 @@ export default function Login() {
           loggedIn = user.offlineLogin(inputUsername)
           break;
         case "login":
-          loggedIn = await login(inputUsername)
+          loggedIn = await login(inputUsername, lang)
           break;
         case "create_user":
           const createdUser = await user.createUser(inputUsername)
@@ -92,7 +93,7 @@ export default function Login() {
             </div>
             <div className="row pt-5">
               <div className="col-6 text-center">
-                {/*<button className="basic_button" type="submit" name="action" value="create_user">{translations.create_user[lang]}</button> */}
+                <button className="basic_button" type="submit" name="action" value="create_user">{translations.create_user[lang]}</button>
               </div>
               <div className="col-12 text-center">
                 <button className="basic_button" type="submit" name="action" value="login">{translations.login[lang]}</button>

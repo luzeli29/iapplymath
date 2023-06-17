@@ -63,7 +63,12 @@ export default function useUser() {
     }
   }
 
-  async function login(username) {
+  async function changeLanguage(username, lang) {
+    const sessionStarted = await session.startSession(username, lang)
+    return true
+  }
+
+  async function login(username, lang) {
     DevLog("Logging in...")
     setLoading(true)
     const storedUserData = Cookies.get('user');
@@ -104,12 +109,14 @@ export default function useUser() {
     const cleanUserData = cleanUserApiResult(username, result.data)
     setUserCookie(cleanUserData)
     //TODO: Start session for user
-    const sessionStarted = await session.startSession(username)
+    const sessionStarted = await changeLanguage(username, lang)
     setLoading(false)
     setError(false)
     setLoggedIn(true)
     return true
   }
+
+
 
   async function createUser(username) {
     setLoading(true)
@@ -438,6 +445,7 @@ export default function useUser() {
     setAvatarId: setAvatarId,
     setPetId: setPetId,
     putSession: putSession,
+    changeLanguage: changeLanguage
   }
   
   return {

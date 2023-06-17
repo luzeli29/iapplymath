@@ -13,14 +13,14 @@ const SiteWrapper = ({children}) => {
 
     //TODO: HANDLE LOADING AND ERRORS IN DIFFERNET HOOKS
 
-    const login = async (username) => {
+    const login = async (username, lang) => {
       try{
         quizCookieHandler.handleLogin()
       } catch (e) {
         DevErr('Failed to logout of quiz cookie...' + e)
       }      
       
-      const loggedIn = await user.login(username)
+      const loggedIn = await user.login(username, lang)
 
       return loggedIn
     }

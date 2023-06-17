@@ -63,7 +63,7 @@ const RetrieveUserContext = (Component,requirements) => {
     }
 
     const validateLoggedIn = () => {
-      if (!user.loggedIn) {
+      if (!user?.loggedIn) {
         DevErr('User is not logged in.')
         router.push('/user/login')
         return <Loading/>
@@ -71,7 +71,7 @@ const RetrieveUserContext = (Component,requirements) => {
     }
 
     const validateHasAvatar = () => {
-      if (!user.data.avatarId) {
+      if (!user?.data?.avatarId) {
         DevErr('User does not have an avatar.')
         router.push('/user/avatar/select')
         return <Loading/>
@@ -79,7 +79,7 @@ const RetrieveUserContext = (Component,requirements) => {
     }
 
     const validateHasPet = () => {
-      if (!user.data.petId) {
+      if (!user?.data?.petId) {
         DevErr('User does not have a pet.')
         router.push('/user/pet')
         return <Loading/>

@@ -4,6 +4,7 @@ import EncryptUsername from "@utils/crypto/encryptUsername";
 
 export default async function handler(req, res) {
   const { username } = req.query
+  const { lang } = req.body
   if(!username) {
     return res.json({
       code: 400,
@@ -18,7 +19,7 @@ export default async function handler(req, res) {
   const db = client.db(process.env.DB_NAME);
   switch (req.method) {
     case "POST":
-      return await startSession(secureUsername,db,res);
+      return await startSession(secureUsername,db,res, lang);
     case "PUT":
       return await putSession(secureUsername,bodyObject,db,res);
     case "GET":
@@ -120,7 +121,7 @@ async function putSession(username,bodyObject,db,res) {
 }
 
 //Logic to create new session
-async function startSession(username,db,res) {
+async function startSession(username,db,res, lang) {
   try {
     const filter = {username: username}
 
@@ -129,6 +130,7 @@ async function startSession(username,db,res) {
     const sessionObject = {
       sessions: {
         start_date: Date.now(),
+        lang: lang,
         times_talked_to_ayu: 0
       }
     };

@@ -7,7 +7,8 @@ import DevErr from '@utils/debug/devErr';
 export default function Header() {
     const {user,settings, loading, error,logout} = useUserContext()
     const router = useRouter()
-    
+    const lang = settings.lang 
+
     if(loading) return <></>
     if(error) {
         //TODO: route to error screen
@@ -20,6 +21,13 @@ export default function Header() {
     const loggedIn = user.loggedIn
     const username = loggedIn ? user.data.username : ""
 
+
+    const handleLanguage = (value = 'en') => {
+
+        settings.setLang(value)
+        user.changeLanguage(username, value)
+    }
+
     return(
         <div className="container text-center">
         <div >
@@ -27,11 +35,11 @@ export default function Header() {
         </div>
         <div className="row justify-content-lg-center">
             <div className="col col-lg-1">
-                <button onClick={() => settings.setLang('es')}><strong>Español</strong></button>
+                <button disabled={lang === 'es'} onClick={() => handleLanguage('es')}><strong>Español</strong></button>
             </div>
                 <QuickNavButtons user={user} settings={settings} handleLogout={logout} router={router}/>
             <div className="col col-lg-1">
-                <button onClick={() => settings.setLang('en')}><strong>English</strong></button>
+                <button disabled={lang === 'en'} onClick={() => handleLanguage('en')}><strong>English</strong></button>
             </div>
         </div>
         <div className="row justify-content-lg-center">

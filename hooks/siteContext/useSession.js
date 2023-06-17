@@ -10,7 +10,7 @@ export default function useSession() {
         setLoading(false)
     }, []);
 
-    async function startSession(username) {
+    async function startSession(username, lang) {
         if(!username) {
             setError('"username" is null when trying to start session.')
             return false
@@ -23,6 +23,9 @@ export default function useSession() {
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify({
+              lang: lang
+            })
         }
 
         try {
@@ -58,7 +61,7 @@ export default function useSession() {
         return await putSession(username,bodyObject)
     }
 
-    async function putSession(username,bodyObject) {
+    async function putSession(username, bodyObject) {
         if(!username) {
             setError('"userdata" was null in putSession')
             return false
