@@ -12,7 +12,7 @@ import QuizCalculator from './quizCalculator/quizCalculator';
 import ButtonAnswerBox from './answerBoxes/buttonAnswerBox';
 import DevErr from '@utils/debug/devErr';
 
-export default function AnswerBox({correctAnswer,questionFormatKey,handleSubmitAnswer}) {
+export default function AnswerBox({correctAnswer,questionFormatKey,handleSubmitAnswer, handleInitTime, handleEndTime}) {
     const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
     const isLoggedIn = user.loggedIn
@@ -25,19 +25,19 @@ export default function AnswerBox({correctAnswer,questionFormatKey,handleSubmitA
     const getAnswerBox = () => {
         if(!questionFormat) {
             DevErr('"questionFormat" is not defined')
-            return <ContinueAnswerBox lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
+            return <ContinueAnswerBox handleEndTime={handleEndTime} lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
         }
         
         switch(questionFormat.answerBoxType) {
             case 'textInput':
-                return <TextInputAnswerBox questionFormat={questionFormat} lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
+                return <TextInputAnswerBox handleInitTime={handleInitTime} questionFormat={questionFormat} lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
             case 'buttons':
-                return <ButtonAnswerBox questionFormat={questionFormat} lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
+                return <ButtonAnswerBox handleInitTime={handleInitTime} questionFormat={questionFormat} lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
             case 'continue':
-                return <ContinueAnswerBox questionFormat={questionFormat} lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
+                return <ContinueAnswerBox handleEndTime={handleEndTime} questionFormat={questionFormat} lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
             default:
                 DevErr('Invalid answerBoxType')
-                return <ContinueAnswerBox lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
+                return <ContinueAnswerBox handleEndTime={handleEndTime} lang={lang} handleSubmitAnswer={handleSubmitAnswer}/>
         }
     }
 

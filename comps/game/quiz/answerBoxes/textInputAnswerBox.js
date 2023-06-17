@@ -4,7 +4,7 @@ import DevLog from '@utils/debug/devLog'
 import QuestionFormats from '@utils/game/quiz/questionGeneration/questionFormats'
 import DevErr from '@utils/debug/devErr'
 
-const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
+const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer, handleInitTime}) => {
     if(!questionFormat) {
         DevErr('"questionFormat" is required for TextInputAnswerBox.')
         questionFormat = QuestionFormats.wholeNumber
@@ -41,6 +41,8 @@ const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
             setAnswerFeedback(getText(validationFailMessage,lang))
             return
         }
+
+        handleInitTime()
 
         let simplifiedAnswer = userAnswer
 

@@ -5,7 +5,7 @@ import getText from '@utils/text/getText'
 import DevErr from '@utils/debug/devErr';
 import DevLog from '@utils/debug/devLog';
 
-const ButtonAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
+const ButtonAnswerBox = ({questionFormat,lang,handleSubmitAnswer, handleTimer}) => {
 
 
   if(!questionFormat) {

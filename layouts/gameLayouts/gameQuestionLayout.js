@@ -14,15 +14,10 @@ import useQuizCookies from '@hooks/quiz/useQuizCookies';
 import DevLog from '@utils/debug/devLog';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
-// Brain Breaks
-// import DeepBreathingBreak from 'pages/brainBreak/deep-breathing-break';
-// import PoppinBubblesBreak from 'pages/brainBreak/poppin-bubbles-break';
-// import FreeSyleArtBreak from 'pages/brainBreak/free-style-art-break';
-// import MandalaArtBreak from 'pages/brainBreak/madala-art-break';
-
 
 //TODO: Change to "Quiz" and move to comps folder
 const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) => {
+   const {user,settings,loading, error} = useUserContext()
 
    // const [showBrainBreak, setShowBrainBreak] = useState(false)
 
@@ -74,6 +69,29 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
          router.events.off("routeChangeStart", exitingFunction);
       };
     }, []);
+
+   const endpoint = '/api/user/questionData/' + user?.data?.username ?? ''
+
+   let response = null
+   const handleInitTime = async () => {
+      response = await fetch(endpoint,  {
+         method: 'POST',
+         headers: {
+         'Content-Type': 'application/json',
+         },
+      })
+   }
+
+   
+   const handleEndTime = async () => {
+      response = await fetch(endpoint,  {
+         method: 'PUT',
+         headers: {
+         'Content-Type': 'application/json',
+         },
+      })
+   }
+
 
    if(!router.isReady) return <Loading/>
 
@@ -199,7 +217,10 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
                            <AnswerBox
                               correctAnswer={correctAnswer}
                               questionFormatKey={questionFormatKey}
-                              handleSubmitAnswer={handleSubmitAnswer}/>
+                              handleSubmitAnswer={handleSubmitAnswer}
+                              handleInitTime={handleInitTime}
+                              handleEndTime={handleEndTime}
+                           />
                      </td>
                      <td className={style.ayu_block}>
                         <Ayu handleAyuClick={() => handleAyuClick()}/>

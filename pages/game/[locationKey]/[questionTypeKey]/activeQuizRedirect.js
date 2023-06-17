@@ -61,7 +61,7 @@ const ActiveQuizRedirect = ({user,settings,location}) => {
         }
 
         for(let paramKey of Object.keys(questionParams)){
-            urlParams[paramKey] = params[paramKey]
+            urlParams[paramKey] = params && params[paramKey]
         }
 
         const paramString = CreateParamString(urlParams)

@@ -6,7 +6,7 @@ import QuestionFormats from '@utils/game/quiz/questionGeneration/questionFormats
 import DevErr from '@utils/debug/devErr';
 import successAudio from '@public/sound/success.mp3'
 import { useSelector } from 'react-redux';
-const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {
+const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer, handleEndTime}) => {
 
   const musicMuteState = useSelector((state) => state.music.value)
 
@@ -34,6 +34,13 @@ const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {
         </div>
     )
   }
+
+
+  const handleSubmit = () => {
+    handleEndTime()
+    handleSubmitAnswer()
+  }
+
   return (
     <>
                 <div className="header_container">
@@ -42,7 +49,7 @@ const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {
                 <div className="fill_container">
             
                     <button
-                            onClick={() => handleSubmitAnswer()}
+                            onClick={() => handleSubmit()}
                             className={style.continue_button}>
                         {translations.continue[lang]}
                     </button>

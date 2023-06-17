@@ -6,7 +6,7 @@ const defaultSeed = '42'
 
 export default function useSeededRandom(initSeed) {
     const [seed, setSeed] = useState(initSeed)
-    const [hashedSeed, setHashedSeed] = useState(null);
+    const [hashedSeed, setHashedSeed] = useState({});
     const [loading, setLoading] = useState(true)
     let randFunction = null;
 
