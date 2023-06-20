@@ -1,3 +1,28 @@
+/* Chill Out */
+
+.chillout_container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+
+.chillout_ayu {
+    width: 50%;
+    height: 60%;
+} 
+
+.chillout_text {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 /* ----- Poppin Bubbles Break -----*/
 
 .art_title_container{
