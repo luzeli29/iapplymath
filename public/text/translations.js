@@ -393,8 +393,7 @@ const translations = {
     chillOutBreak: {
         en: "This is a do nothing break, so try to sit still in your seat and listen to the music until time is up",
         es: "Este es un descanso para no hacer nada, así que trate de quedarse quieto en su asiento y escuche la música hasta que se acabe el tiempo",
-
-    }
+    },
 
     // types of answers
     franctions_only:{
