@@ -242,19 +242,43 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // The server divided your entrée dish into [‘x, random value’ – list: two, three, four, six, eight] equal portions. If you eat [y, random # 1-8 – y must be <= x] portions, what is the total amount of food you ate? Hint: use unit fractions to find your answer. 
 
     // declare possible values
-    let values = {
-        "two":2,
-        "three":3,
-        "four":4,
-        "six":6,
-        "eight":8,
-    };
+    // let values = {
+    //     "two":2,
+    //     "three":3,
+    //     "four":4,
+    //     "six":6,
+    //     "eight":8,
+    // };
 
+    let values = {
+        2:{
+            en:"two",
+            es:"dos",
+        },
+        3:{
+            en:"three",
+            es:"tres",
+        },
+        4:{
+            en:"four",
+            es:"cuatro",
+        },
+        6:{
+            en:"six",
+            es:"seis",
+        },
+        8:{
+            en:"eight",
+            es:"ocho",
+        },
+    }
     // choose a random value from values
     // let randomValueStr = Object.keys(values)[Math.floor(Math.random() * Object.keys(values).length)];
-    let randomValueStr = Object.keys(values)[randomInt(0,Object.keys(values).length)];
-    let randomValue = values[randomValueStr];
-
+    // let randomValueStr = Object.keys(values)[randomInt(0,Object.keys(values).length)];
+    // let randomValue = values[randomValueStr];
+    let randomValue = Object.keys(values)[randomInt(0,Object.keys(values).length)];
+    let randomValueStrEn = values[randomValue].en;
+    let randomValueStrEs = values[randomValue].es;
     // choose a random number from 1 to randomValue
     // random number represents the number of portions eaten
     // let randomNumber = Math.floor(Math.random() * randomValue) + 1;
@@ -272,8 +296,8 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`The server divided your entrée dish into ${randomValueStr} equal portions. If you eat ${randomNumber} portions, what is the total amount of food you ate?`,
-            es:`El mesero dividió tu plato principal en ${randomValueStr} porciones iguales. Si tú comes ${randomNumber} porciones, ¿cuánta comida comiste en total?`,
+            en:`The server divided your entrée dish into ${randomValueStrEn} equal portions. If you eat ${randomNumber} portions, what is the total amount of food you ate?`,
+            es:`El mesero dividió tu plato principal en ${randomValueStrEs} porciones iguales. Si tú comes ${randomNumber} porciones, ¿cuánta comida comiste en total?`,
         },
         answer,
         [hint],
@@ -591,7 +615,7 @@ function generateLevel3CQuestions(dishes,order,randomInt){
     // generate question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`If you eat a quarter of your main dish, how much did that part of your entree cost?`,
+            en:`If you eat a quarter of your main dish, how much did that part of your main dish cost?`,
             es:`Si te comes un cuarto de tu plato principal, ¿cuánto costó esa parte de tu plato principal?`,
         },
         answer,
