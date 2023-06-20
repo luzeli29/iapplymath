@@ -13,7 +13,7 @@ import { useUserContext } from '@hooks/siteContext/useUserContext'
 import {useRouter} from 'next/router'
 
 //Ayu component that is found on the bottom right box of GameLayout
-export default function Ayu ({handleAyuClick}) {
+export default function Ayu ({handleAyuClick = null}) {
    const {user,settings,loading, error} = useUserContext()
    const [afNum, setAyuAfNum] = useState(0);
    const [isHovering, setIsHovered] = useState(false);
@@ -51,7 +51,7 @@ export default function Ayu ({handleAyuClick}) {
          </div>
          
          <div className={style.ayu_image_container}>
-            <button onClick={() => handleClick()}>
+            {handleAyuClick ? <button onClick={() => handleClick()}>
             <Tooltip type={true}  text={translations.pet_ayu[lang]}>
                <GiHand className={style.breathe} ></GiHand>
             </Tooltip>
@@ -61,7 +61,16 @@ export default function Ayu ({handleAyuClick}) {
                   layout={"fill"}
                   src={"/img/ayu/ayu_idle.gif"}
                   alt={"ayu idle gif"}/>
-            </button>
+            </button>:
+            <div>
+               <Image
+                  priority={true}
+                  style={{zIndex:-1}}
+                  layout={"fill"}
+                  src={"/img/ayu/ayu_idle.gif"}
+                  alt={"ayu idle gif"}/>
+            </div>
+            }
             <div >              
                <Image
                   priority={true}
