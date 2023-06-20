@@ -391,6 +391,58 @@ const translations = {
         es:"Selecciona un Brain Break",
     },
 
+    // types of answers
+    franctions_only:{
+        en:"Fractions only",
+        es:"Solo fracciones",
+    },
+    exact_franctions_only:{
+        en:"Exact fractions only",
+        es:"Solo Fracciones Exactas",
+    },
+    whole_numbers_only:{
+        en:"Whole numbers only",
+        es:"Solo números enteros",
+    },
+    time_only:{
+        en:"Time",
+        es:"Tiempo",
+    },
+    decimals_only:{
+        en:"Decimals only",
+        es:"Solo decimales",
+    },
+    money_only:{
+        en:"Money",
+        es:"Dinero",
+    },
+    meters_only:{
+        en:"Meters",
+        es:"Metros",
+    },
+    centimeters_only:{
+        en:"Centimeters",
+        es:"Centímetros",
+    },
+    liters_only:{
+        en:"Liters",
+        es:"Litros",
+    },
+    milliliters_only:{
+        en:"Milliliters",
+        es:"Mililitros",
+    },
+    grams_only:{
+        en:"Grams",
+        es:"Gramos",
+    },
+    kilograms_only:{
+        en:"Kilograms",
+        es:"Kilogramos",
+    },
+
+
+
 }
 
 export default translations;
