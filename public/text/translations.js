@@ -393,52 +393,52 @@ const translations = {
 
     // types of answers
     franctions_only:{
-        en:"Fractions only",
-        es:"Solo fracciones",
+        en:"Your answer must be a fraction",
+        es:"Tu respuesta debe ser una fracción",
     },
     exact_franctions_only:{
-        en:"Exact fractions only",
-        es:"Solo Fracciones Exactas",
+        en:"Answer must be an exact fraction",
+        es:"La respuesta debe ser una fracción exacta",
     },
     whole_numbers_only:{
-        en:"Whole numbers only",
-        es:"Solo números enteros",
+        en:"Answer must be a whole number",
+        es:"La respuesta debe ser un número entero",
     },
     time_only:{
-        en:"Time",
-        es:"Tiempo",
+        en:"Answer must be in time format",
+        es:"La respuesta debe ser en formato de tiempo",
     },
     decimals_only:{
-        en:"Decimals only",
-        es:"Solo decimales",
+        en:"Answer must be a decimal",
+        es:"La respuesta debe ser un decimal",
     },
     money_only:{
-        en:"Money",
-        es:"Dinero",
+        en:"Answer must be in money format",
+        es:"La respuesta debe ser en formato de dinero",
     },
     meters_only:{
-        en:"Meters",
-        es:"Metros",
+        en:"Answer must be in meters format",
+        es:"La respuesta debe ser en formato de metros",
     },
     centimeters_only:{
-        en:"Centimeters",
-        es:"Centímetros",
+        en:"Answer must be in centimeters format",
+        es:"La respuesta debe ser en formato de centímetros",
     },
     liters_only:{
-        en:"Liters",
-        es:"Litros",
+        en:"Answer must be in liters format",
+        es:"La respuesta debe ser en formato de litros",
     },
     milliliters_only:{
-        en:"Milliliters",
-        es:"Mililitros",
+        en:"Answer must be in milliliters format",
+        es:"La respuesta debe ser en formato de mililitros",
     },
     grams_only:{
-        en:"Grams",
-        es:"Gramos",
+        en:"Answer must be in grams format",
+        es:"La respuesta debe ser en formato de gramos",
     },
     kilograms_only:{
-        en:"Kilograms",
-        es:"Kilogramos",
+        en:"Answer must be in kilograms format",
+        es:"La respuesta debe ser en formato de kilogramos",
     },
 
 
