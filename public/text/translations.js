@@ -448,6 +448,32 @@ const translations = {
     },
 
 
+    // Buttons translations
+
+    true:{
+        en:"True",
+        es:"Verdadero",
+    },
+    false:{
+        en:"False",
+        es:"Falso",
+    },
+    "<":{
+        en:"<",
+        es:"<",
+    }
+    ,
+    ">":{
+        en:">",
+        es:">",
+    },
+    "=":{
+        en:"=",
+        es:"=",
+    },
+
+
+
 
 }
 
