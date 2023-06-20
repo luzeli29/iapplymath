@@ -10,6 +10,10 @@ import DevLog from '@utils/debug/devLog';
 import { useRouter } from 'next/router';
 import Loading from '../screens/loading';
 
+import { setLocation } from 'store/Slices/musicSlice';
+import { useDispatch } from 'react-redux';
+
+
 const errorLines = [
     {
         text : {
@@ -25,6 +29,13 @@ const defaultOnEnd = {
 }
 
 const Dialog = ({dialogScript,lang,avatarId}) => {
+
+    // set playing to true
+    const dispatch = useDispatch()
+
+
+
+
     lang = lang ? lang : 'en'
 
     const router = useRouter()
@@ -46,6 +57,9 @@ const Dialog = ({dialogScript,lang,avatarId}) => {
     };
 
     useEffect(() => {
+
+        dispatch(setLocation('restaurant'))
+
         document.addEventListener("keydown", handleKeyPress);
         return () => {
             document.removeEventListener("keydown", handleKeyPress);
