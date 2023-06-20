@@ -441,6 +441,12 @@ const translations = {
         es:"La respuesta debe ser en formato de kilogramos",
     },
 
+    // submit
+    submit:{
+        en:"Submit",
+        es:"Enviar",
+    },
+
 
 
 }
