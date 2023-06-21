@@ -61,6 +61,9 @@ const Map = ({user,settings}) => {
     const mapLocation = 0
 
     const handleRestaurant = () => {
+
+        dispatch(setLocation('restaurant'))
+
         router.push('/dialog/restaurantIntro');
     }
 
