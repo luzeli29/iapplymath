@@ -21,7 +21,7 @@ import getText from '@utils/text/getText'
 // }
 
 const brainBreaksList = {
-    "chill-out-brake" : {
+    "chill-out-break" : {
         "value": "Chill Out"
     },
     "deep-breathing-break" : {
@@ -38,7 +38,7 @@ const brainBreaksList = {
     },
     "poppin-bubbles-break" : {
         "value": "Popping Bubbles Break"
-    },
+    }
 }
 
 const findKeyByValue = (object, value) => {

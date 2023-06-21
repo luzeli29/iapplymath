@@ -179,6 +179,7 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
             <div className="back_button_container">
                <button className="basic_button" id={style.back_button} onClick={() => handleBack()}>{translations.back[lang]}</button>
             </div>
+            <ProgressBar className='w-75' variant="success" now={progress} label={`${progress}%`} />
             <table className="fill_container">
               <tbody>
                   <tr>
@@ -187,7 +188,6 @@ const GameQuestionLayout = ({user,settings,quizData,initQuestionNum,children}) =
                      </td>
                      
                      <td className={style.question_container}>
-                     <ProgressBar now={progress} label={`${progress}%`} />
                         <QuestionBox
                            className={style.question_box}
                            questionData={questions[questionNum]}
