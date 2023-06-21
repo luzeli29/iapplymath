@@ -11,7 +11,11 @@ import Error from 'pages/error'
 import Login from 'pages/user/login'
 import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
 
+import { useDispatch } from 'react-redux'
+import { setLocation } from 'store/Slices/musicSlice'
+
 const Map = ({user,settings}) => {
+  const dispatch = useDispatch()
   const containerRef = useRef(null);
   const [position, setPosition] = useState({
     x: 0,
@@ -19,6 +23,9 @@ const Map = ({user,settings}) => {
   });
 
   useEffect(() => {
+
+    dispatch(setLocation('map'))
+
     const handleResize = () => {
       const containerWidth = containerRef.current.clientWidth;
       const containerHeight = containerRef.current.clientHeight;

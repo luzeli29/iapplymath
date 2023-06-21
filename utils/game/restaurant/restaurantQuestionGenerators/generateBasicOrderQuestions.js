@@ -328,7 +328,7 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
     generatedQuestions.push(createGameQuestion(
         {
             en:`Take a look at your order, how much will your new total be if you ordered ${randomNum1} main dishes and ${randomNum2} desserts?`,
-            es:`Echa un vistazo a tu orden, ¿cuánto será tu nuevo total si ordenas ${randomNum1} ${randomDishNameSpanish} y ${randomNum2} ${randomDishNameSpanish}?`,
+            es:`Echa un vistazo a tu orden, ¿cuánto será tu nuevo total si ordenas ${randomNum1} platos principales y ${randomNum2} postres?`,
         },
         answer,
         [],
@@ -530,6 +530,11 @@ function generateLevel2AQuestions(dishes, order, randomInt){
     // randomNum2 = Math.floor(Math.random() * 4 + 2);
     randomNum2 = randomInt(2,6);
 
+    let traduccion = {
+        "less":"menos",
+        "more":"más"
+    }
+
     let options = ["less", "more"];
     // choose random option
     let randomOption = options[Math.floor(Math.random() * options.length)];
@@ -557,7 +562,7 @@ function generateLevel2AQuestions(dishes, order, randomInt){
     generatedQuestions.push(createGameQuestion(
         {
             en:`Today your parents gave you ${randomNum} dollars to order food at the restaurant. If next time they gave you ${randomNum2} times ${randomOption} money, what is your new budget?`,
-            es:`Hoy tus padres te dieron ${randomNum} dólares para ordenar comida en el restaurante. Si la próxima vez te dieran ${randomNum2} veces ${randomOption} dinero, ¿cuál es tu nuevo presupuesto?`,
+            es:`Hoy tus padres te dieron ${randomNum} dólares para ordenar comida en el restaurante. Si la próxima vez te dieran ${randomNum2} veces ${traduccion[randomOption]} dinero, ¿cuál es tu nuevo presupuesto?`,
         },
         answer,
         [],

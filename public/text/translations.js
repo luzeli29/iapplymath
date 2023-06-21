@@ -390,6 +390,94 @@ const translations = {
         en:"Brain Break select",
         es:"Selecciona un Brain Break",
     },
+    chillOutBreak: {
+        en: "This is a do nothing break, so try to sit still in your seat and listen to the music until time is up",
+        es: "Este es un descanso para no hacer nada, así que trate de quedarse quieto en su asiento y escuche la música hasta que se acabe el tiempo",
+    },
+
+    // types of answers
+    franctions_only:{
+        en:"Your answer must be a fraction",
+        es:"Tu respuesta debe ser una fracción",
+    },
+    exact_franctions_only:{
+        en:"Answer must be an exact fraction",
+        es:"La respuesta debe ser una fracción exacta",
+    },
+    whole_numbers_only:{
+        en:"Answer must be a whole number",
+        es:"La respuesta debe ser un número entero",
+    },
+    time_only:{
+        en:"Answer must be in time format",
+        es:"La respuesta debe ser en formato de tiempo",
+    },
+    decimals_only:{
+        en:"Answer must be a decimal",
+        es:"La respuesta debe ser un decimal",
+    },
+    money_only:{
+        en:"Answer must be in money format",
+        es:"La respuesta debe ser en formato de dinero",
+    },
+    meters_only:{
+        en:"Answer must be in meters format",
+        es:"La respuesta debe ser en formato de metros",
+    },
+    centimeters_only:{
+        en:"Answer must be in centimeters format",
+        es:"La respuesta debe ser en formato de centímetros",
+    },
+    liters_only:{
+        en:"Answer must be in liters format",
+        es:"La respuesta debe ser en formato de litros",
+    },
+    milliliters_only:{
+        en:"Answer must be in milliliters format",
+        es:"La respuesta debe ser en formato de mililitros",
+    },
+    grams_only:{
+        en:"Answer must be in grams format",
+        es:"La respuesta debe ser en formato de gramos",
+    },
+    kilograms_only:{
+        en:"Answer must be in kilograms format",
+        es:"La respuesta debe ser en formato de kilogramos",
+    },
+
+    // submit
+    submit:{
+        en:"Submit",
+        es:"Enviar",
+    },
+
+
+    // Buttons translations
+
+    true:{
+        en:"True",
+        es:"Verdadero",
+    },
+    false:{
+        en:"False",
+        es:"Falso",
+    },
+    "<":{
+        en:"<",
+        es:"<",
+    }
+    ,
+    ">":{
+        en:">",
+        es:">",
+    },
+    "=":{
+        en:"=",
+        es:"=",
+    },
+
+
+
 
 }
 
