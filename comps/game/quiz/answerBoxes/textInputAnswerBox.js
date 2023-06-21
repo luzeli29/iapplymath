@@ -60,7 +60,7 @@ const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
         return (
         <div className="input-group mb-3">
             <input maxLength='15' onChange={e => setUserAnswer(e.target.value)} className="form-control text-center" value={userAnswer} id="userAnswer" type="text" name="userAnswer"/>
-            <button disabled={userAnswer == ''} className='btn btn-outline-primary' type="submit" name="action" value="submit_answer">{getText('submit',lang)}</button>
+            <button disabled={userAnswer == ''} className='btn btn-success' type="submit" name="action" value="submit_answer">{getText('submit',lang)}</button>
         </div>
         )
     }
