@@ -76,12 +76,12 @@ function generateLevel1DQuestions(dishes,order,randomInt){
         randomNumberMinutes = "0" + randomNumberMinutes;
     }
     // answer
-    answer = `${randomTimeHour}:${randomNumberMinutes}pm`;
+    answer = `${randomTimeHour}:${randomNumberMinutes}`;
     
     // hint
     let hint = {
-        en: "Write your answer in the format HH:MMpm. For example, 13:30pm.",
-        es: "Escribe tu respuesta en el formato HH:MMpm. Por ejemplo, 13:30pm.",
+        en: "Write your answer in the format HH:MM. For example, 13:30.",
+        es: "Escribe tu respuesta en el formato HH:MM. Por ejemplo, 13:30.",
     }
 
     // create question
@@ -116,12 +116,12 @@ function generateLevel1DQuestions(dishes,order,randomInt){
 
 
     // answer
-    answer = `${randomTimeHour}:${randomNumberMinutes}pm`;
+    answer = `${randomTimeHour}:${randomNumberMinutes}`;
     
     // hint
     hint = {
-        en: "Write your answer in the format HH:MMpm. For example, 13:30pm.",
-        es: "Escribe tu respuesta en el formato HH:MMpm. Por ejemplo, 13:30pm.",
+        en: "Write your answer in the format HH:MMpm. For example, 13:30.",
+        es: "Escribe tu respuesta en el formato HH:MMpm. Por ejemplo, 13:30.",
     }
 
     // create question
@@ -163,12 +163,12 @@ function generateLevel1DQuestions(dishes,order,randomInt){
     }
 
     // answer
-    answer = `${randomTimeHour}:${minutes}pm`;
+    answer = `${randomTimeHour}:${minutes}`;
     
     // hint
     hint = {
-        en: "Write your answer in the format HH:MMpm. For example, 13:30pm.",
-        es: "Escribe tu respuesta en el formato HH:MMpm. Por ejemplo, 13:30pm.",
+        en: "Write your answer in the format HH:MMpm. For example, 13:30.",
+        es: "Escribe tu respuesta en el formato HH:MMpm. Por ejemplo, 13:30.",
     }
 
     // create question
@@ -403,7 +403,7 @@ let answer = "";
         if(minutes < 10) {
             minutes = "0" + minutes;
         }
-        answer = hour + ":" + minutes + "pm";
+        answer = hour + ":" + minutes;
     }
     else {
         hour = hour + 1;
@@ -412,19 +412,19 @@ let answer = "";
         if(minutes < 10) {
             minutes = "0" + minutes;
         }
-        answer = hour + ":" + minutes + "pm";
+        answer = hour + ":" + minutes;
     }
 
     generatedQuestions.push(createGameQuestion(
         {
-            en:`If you and Elena arrived at the restaurant at ${x}PM and spent ${y} minutes to eat and pay, at what time would you leave the restaurant? Hint: please type your answer in time format (i.e., 13:09pm).`,
-            es:`Si tú y Elena llegaron al restaurante a las ${x}PM y pasaron ${y} minutos para comer y pagar, ¿a qué hora saldrían del restaurante? Sugerencia: escriba su respuesta en formato de hora (es decir, 13:09pm).`,
+            en:`If you and Elena arrived at the restaurant at ${x}PM and spent ${y} minutes to eat and pay, at what time would you leave the restaurant?`,
+            es:`Si tú y Elena llegaron al restaurante a las ${x}PM y pasaron ${y} minutos para comer y pagar, ¿a qué hora saldrían del restaurante?`,
         },
         answer,
         [
             {
-                en: `Answer using the unit "hours". example answer: 1:09PM`,
-                es: `Responde usando la unidad "horas". ejemplo de respuesta: 1:09PM`,
+                en: `Answer using the unit "hours". example answer: 13:09`,
+                es: `Responde usando la unidad "horas". ejemplo de respuesta: 13:09`,
             }
         ],
         "time",
