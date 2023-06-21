@@ -335,7 +335,7 @@ function generateLevel2BQuestions(dishes,order,randomInt){
 
     // answer
     answer = sum / count;
-
+    answer = parseFloat( answer.toFixed(2))
     // create question
     generatedQuestions.push(createGameQuestion(
         {
