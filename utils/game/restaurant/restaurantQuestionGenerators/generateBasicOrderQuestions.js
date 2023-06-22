@@ -221,13 +221,29 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
     
     // choose a random dish
     let randomDishName = dishes[random];
-    let randomDishNameEnglish = translations[randomDishName].en
-    let randomDishNameSpanish = translations[randomDishName].es
     
     // get the price of said dish
     let priceOfRandomDish = order[randomDishName].price;
     // answer
     let answer = parseInt(priceOfRandomDish) * 3;
+
+    const plurals ={
+        "mainDish":{
+            en:"main dishes",
+            es:"platos principales",
+        },
+        "drink":{
+            en:"drinks",
+            es:"bebidas",
+        },
+        "dessert":{
+            en:"desserts",
+            es:"postres",
+        },
+    }
+
+    let randomDishNameEnglish = plurals[randomDishName].en
+    let randomDishNameSpanish = plurals[randomDishName].es
 
     // create question
     generatedQuestions.push(createGameQuestion(
