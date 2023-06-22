@@ -98,6 +98,7 @@
     text-align: center;
     margin-inline-end: 100px;
     margin-inline-start: 0px;
+    z-index: 2;
 
 }
 
@@ -109,13 +110,14 @@
     border-radius: 20px;
     position: relative;
     margin-left: 150px;
+    z-index: 2;
 }
 
 .ayu_speech_bubble_container {
     margin: auto;
     width: 90%;
     height: 55%;
-    z-index: 9999;
+    z-index: 2;
 }
 
 .speech_bubble_text{
