@@ -1,5 +1,6 @@
 import React, {} from 'react';
-import { BsMapFill,BsFillPersonFill} from "react-icons/bs";
+import { BsMapFill,BsFillPersonFill,BsFillPeopleFill} from "react-icons/bs";
+import { BiColorFill} from "react-icons/bi";
 import {RiChatHeartLine} from "react-icons/ri";
 import {TbLogout,TbLogin, TbMusicOff} from "react-icons/tb";
 import {TbMusic} from "react-icons/tb";
@@ -21,6 +22,8 @@ export default function QuickNavButtons({user,settings,handleLogout,router}) {
     const UnMuteTooltipText = getText("unmute_tooltip",lang)
     const FontTooltipText = getText("font_tooltip",lang)
     const FontDysTooltipText  = getText("fontdys_tooltip",lang)
+    const petTooltipText  = getText("pet_tooltip",lang)
+    const backgroundTooltipText  = getText("background_tooltip",lang)
 
     const LogoutTooltipText = getText("logout_tooltip",lang)
     const LoginTooltipText = getText("login_tooltip",lang)
@@ -60,6 +63,12 @@ export default function QuickNavButtons({user,settings,handleLogout,router}) {
             {/* Avatar Button */}
             <QuickNavButton   text={AvatarTooltipText} onClick={() => router.push('/user/avatar/select')}>
                 <BsFillPersonFill/>
+            </QuickNavButton>
+            <QuickNavButton   text={petTooltipText} onClick={() => router.push('/user/petSelect')}>
+                <BsFillPeopleFill/>
+            </QuickNavButton>
+            <QuickNavButton   text={backgroundTooltipText} onClick={() => router.push('/user/backgroundSelect')}>
+                <BiColorFill/>
             </QuickNavButton>
             {/* Checkin Button */}
             <QuickNavButton   text={MapTooltipText} onClick={() => router.push('/game/map')}>
