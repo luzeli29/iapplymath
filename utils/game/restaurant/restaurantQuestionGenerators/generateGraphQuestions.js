@@ -269,7 +269,8 @@ let answer = "";
     answer =parseFloat( 1000 / x);
 
     // fix answer to 2 decimal place
-    answer = answer.toFixed(2);
+    answer =parseFloat(answer.toFixed(2));
+
 
     // generate question
     generatedQuestions.push(createGameQuestion(
