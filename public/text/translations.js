@@ -466,6 +466,15 @@ const translations = {
         es:"Enviar",
     },
 
+    pet_tooltip : {
+        en:"Change Pet",
+        es:"Cambiar Mascota",
+    },
+
+    background_tooltip : {
+        en:"Change Background",
+        es:"Cambiar Fondo",
+    },
 
     // Buttons translations
 
@@ -491,7 +500,20 @@ const translations = {
     "=":{
         en:"=",
         es:"=",
-    }
+    },
+    yes: {
+        en: "Yes",
+        es: "Sí",
+    },
+    no: {
+        en: "No",
+        es: "No",
+    },
+    
+    show_tutorial_prompt: {
+        en: "Would you like to see the tutorial?",
+        es: "¿Te gustaría ver el tutorial?",
+    },
 }
 
 export default translations
