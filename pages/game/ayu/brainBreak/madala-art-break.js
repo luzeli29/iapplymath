@@ -124,7 +124,7 @@ export default function MandalaArtBreak({ setView }) {
                   className={style.continue_button}
                   onClick={() => handleBack()}
               >
-                {translations.continue[lang]}
+                {translations.back[lang]}
               </button>
         </>
     )
