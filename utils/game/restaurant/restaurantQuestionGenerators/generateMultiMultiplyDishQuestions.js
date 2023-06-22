@@ -122,13 +122,7 @@ function generateLevel1CQuestions(dishes,order,randomInt){
             es:`Elena quiere probar la mitad de tu plato principal. ¿Cuánta comida compartirás con ella?`,
         },
         answer,
-        [{
-            en: "Half = 1/2",
-            es: "Mitad = 1/2", 
-        },{
-            en: "Write your answer as a fraction.",
-            es: "Escribe tu respuesta como una fracción.", 
-        }],
+        [hint],
         "fraction",
     ))
 
