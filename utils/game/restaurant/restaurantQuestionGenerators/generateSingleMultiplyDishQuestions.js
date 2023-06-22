@@ -31,7 +31,13 @@ function generateLevel1BQuestions(dishes,order,randomInt){
             es:`Elena ordenó el mismo ${randomDishNameSpanish} que tú. ¿Cuál es el costo total de los dos ${randomDishNameSpanish}?`,
         },
         answer,
-        [],
+        [{
+            en:  randomDishNameEnglish+ " + " + randomDishNameEnglish+ " = ???  Or find the answer with: " + randomDishNameEnglish+ " x  2 = ???",
+            es:  randomDishNameSpanish+ " + " + randomDishNameSpanish + " = ???  O encuenta la respuesta con " + randomDishNameSpanish+ " x  2 = ???",
+        },{
+            en: randomDishNameEnglish+ " + " + randomDishNameEnglish+ " = " + priceOfDish*2,
+            es:  randomDishNameSpanish+ " + " + randomDishNameSpanish + " = " + priceOfDish*2,
+        }],
         "wholeNumber",
     ))
 
@@ -55,7 +61,19 @@ function generateLevel1BQuestions(dishes,order,randomInt){
             es:`Elena quiere ordenar comida para llevar a su familia. Ella ordenó el mismo plato principal y postre que tú para su padre, madre y hermano. ¿Cuánto costará esta comida a Elena?`,
         },
         answer,
-        [],
+        [{
+            en:  "Step 1. Sum of main dish = " + priceOfMainDish + "+" + priceOfMainDish +  "+" + priceOfMainDish ,
+            es: "Paso 1. Suma de los platos fuertes = " + priceOfMainDish + "+" + priceOfMainDish +  "+" + priceOfMainDish ,
+        },{
+            en: "Step 2. Sum of desserts= " + priceOfDessert + "+" + priceOfDessert +  "+" + priceOfDessert ,
+            es: "Paso 2. Suma de los postres= " + priceOfDessert + "+" + priceOfDessert +  "+" + priceOfDessert ,
+        },{
+            en: "Step 3. Total Cost = " + priceOfMainDish*3 + "+" + priceOfDessert*3 ,
+            es: "Paso 3. Costo total= " + priceOfMainDish*3 + "+" + priceOfDessert*3 ,
+        },{
+            en:  priceOfMainDish*3 + "+" + priceOfDessert*3 + " = " + (priceOfMainDish*3 + priceOfDessert*3) ,
+            es:  priceOfMainDish*3 + "+" + priceOfDessert*3 + " = " + (priceOfMainDish*3 + priceOfDessert*3) ,
+        }],
         "wholeNumber",
     ))
 
@@ -69,6 +87,7 @@ function generateLevel1BQuestions(dishes,order,randomInt){
         priceOfDessert = order["dessert"].price;
 
         // answer
+        let answerbef = answer
         answer = answer - (parseInt(priceOfDessert) * 2);
 
         // create question
@@ -78,7 +97,19 @@ function generateLevel1BQuestions(dishes,order,randomInt){
                 es:`La madre y el padre de Elena no querían un postre. ¿Cuál es el costo total del pedido de Elena después de quitar los postres de sus padres?`,
             },
             answer,
-            [],
+            [{
+                en:  "New cost = initial cost -  (" + priceOfDessert + " x 2) = ???  Or: New cost = initial cost - ( " + priceOfDessert + " + " + priceOfDessert + ") = ???" ,
+                es: "Costo nuevo = costo inicial - (" + priceOfDessert + " x 2) = ???  O puedes hacer: costo nuevo = costo inicial - ( " + priceOfDessert + " + " + priceOfDessert + ") = ???" ,
+            },{
+                en:  "New cost = " +answerbef +" - ("+ priceOfDessert + " x 2) = ???  Or: New cost = "+answerbef+ " - ( " + priceOfDessert + " + " + priceOfDessert + ") = ???" ,
+                es: "Costo nuevo = " +answerbef+ " - (" + priceOfDessert + " x 2) = ???  O puedes hacer: costo nuevo = "+answerbef+ " - ( " + priceOfDessert + " + " + priceOfDessert + ") = ???" ,
+            },{
+                en: "New cost = " +answerbef +" - ("+ (priceOfDessert*2) + ") = ??? ",
+                es: "Costo nuevo = " +answerbef +" - ("+ (priceOfDessert*2) + ") = ??? ",
+            },{
+                en: answerbef +" - ("+ (priceOfDessert*2) + ") = " + (answerbef-(priceOfDessert*2)),
+                es: answerbef +" - ("+ (priceOfDessert*2) + ") = " + (answerbef-(priceOfDessert*2)),
+            }],
             "wholeNumber",
         ))
 
