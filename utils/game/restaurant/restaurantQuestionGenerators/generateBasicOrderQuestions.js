@@ -271,11 +271,26 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
     // in case is water still valid -> 0*randomNum = 0
     answer = parseInt(priceOfRandomDish) * randomNum;
 
+
+    const amountWording = {
+        plural:{
+            en: "times",
+            es: "veces",
+        },
+        singular:{
+            en: "time",
+            es: "vez",
+        }
+    }
+
+    let amountWordingAnswer = (randomNum > 1) ? amountWording.plural : amountWording.singular;
+
+
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`If you buy your ${randomDishNameEnglish} ${randomNum} times, how much money did you spend in total?`,
-            es:`Si compras tu ${randomDishNameSpanish} ${randomNum} veces, ¿cuánto dinero gastaste en total?`,
+            en:`If you buy your ${randomDishNameEnglish} ${randomNum} ${amountWordingAnswer.en}, how much money did you spend in total?`,
+            es:`Si compras tu ${randomDishNameSpanish} ${randomNum} ${amountWordingAnswer.es}, ¿cuánto dinero gastaste en total?`,
         },
         answer,
         [{
