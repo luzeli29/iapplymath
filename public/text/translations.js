@@ -394,8 +394,6 @@ const translations = {
         en: "This is a do nothing break, so try to sit still in your seat and listen to the music until time is up",
         es: "Este es un descanso para no hacer nada, así que trate de quedarse quieto en su asiento y escuche la música hasta que se acabe el tiempo",
     },
-
-    },
     moveBodyTitle: {
         en:"Move Your Body",
         es:"Move Your Body",
@@ -411,6 +409,7 @@ const translations = {
     moveBodyDescription3: {
         en:"Wiggle in your seat or stand up and wiggle if you can",
         es:"Muévete en tu asiento o ponte de pie y muévete si puedes",
+    },
     // types of answers
     franctions_only:{
         en:"Your answer must be a fraction",
@@ -478,6 +477,7 @@ const translations = {
         en:"False",
         es:"Falso",
     },
+
     "<":{
         en:"<",
         es:"<",
@@ -487,14 +487,11 @@ const translations = {
         en:">",
         es:">",
     },
+    
     "=":{
         en:"=",
         es:"=",
-    },
-
-
-
-
+    }
 }
 
-export default translations;
+export default translations
