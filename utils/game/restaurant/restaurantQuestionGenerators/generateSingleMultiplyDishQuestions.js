@@ -321,7 +321,7 @@ function generateLevel2BQuestions(dishes,order,randomInt){
     answer = 900 / x;
 
     // round answer to 2 decimal places
-    answer = answer.toFixed(2);
+    answer = parseFloat(answer.toFixed(2));
 
 
     // create question
@@ -405,7 +405,7 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
     answer = x / 100;
 
     // tp 2 decimal places
-    answer = answer.toFixed(2);
+    answer = parseFloat(answer.toFixed(2));
 
     // create question
     generatedQuestions.push(createGameQuestion(
@@ -493,7 +493,7 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
     number1 = number1.toFixed(3);
 
     // answer
-    answer = (number1*1.00).toFixed(2);
+    answer = parseFloat((number1*1.00).toFixed(2));
 
     // create question
     generatedQuestions.push(createGameQuestion(
