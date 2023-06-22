@@ -32,7 +32,8 @@ const Resturant = ({user,settings}) => {
 
      useEffect(() => {
         setMenu(getMenu());
-        setBudget(Math.floor(Math.random() * 3) + 10)
+        // set budget to be between 12 and 16
+        setBudget(Math.floor(Math.random() * 5) + 12)
     }, [router.isReady]);
 
     const lang = settings.lang
