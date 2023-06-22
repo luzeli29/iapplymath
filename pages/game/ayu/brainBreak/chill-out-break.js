@@ -48,7 +48,7 @@ export default function ChillOutBreak() {
             <button
                 className={style.continue_button}
                 onClick={() => handleBack()}
-            >{translations.continue[lang]}</button>
+            >{translations.back[lang]}</button>
         </>
     )
 }

@@ -1,50 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import { useRouter } from 'next/router'
-import style from '../../../../styles/check_in.module.css'
+import style from '../../../../styles/brain_breaks.module.css'
 import translations from '../../../../public/text/translations';
 import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
 import Error from 'pages/error';
 import Login from '../../../user/login';
+import useTimer from '@hooks/useTimer';
+import imgBanner from '@public/img/brainBreaks/moveYourBody.gif'
 // import music from '../../public/sound/salsa2_bg.mp3';
 
-export default function MoveBodyBreak({onEnd}) {
+export default function MoveBodyBreak() {
     const {user,settings,loading, error} = useUserContext()
     const isLoggedIn = user.loggedIn
-    const _onEnd = onEnd ? onEnd : () => router.back();
-    const [counter, setCounter] = useState(180);
-    const [isPlaying, setIsPlaying] = useState(false);
 
-    const formatMinutes = (time) => {
-        return `${Math.floor(time / 60)}`.padStart(2, '0');
-    };
-
-    const formatSeconds = (time) => {
-        return `${time % 60}`.padStart(2, '0');
-    };
-
-    const startCountdown = () => {
-        setIsPlaying(true);
-
-        const timer = setInterval(() => {
-          setCounter((prevCounter) => prevCounter - 1);
-        }, 1000);
-
-        setTimeout(() => {
-          clearInterval(timer);
-          setIsPlaying(false);
-        }, 180000);
-    };
-
-    useEffect(() => {
-        // const audio = new Audio(music);
-        // audio.play();
-        // startCountdown()
-        // return () => {
-        //     audio.pause();
-        //     audio.currentTime = 0;
-        // };
-    }, [])
+    const { formattedTime } = useTimer(180); // 3 minutes in seconds
 
     const router = useRouter()
 
@@ -59,30 +29,42 @@ export default function MoveBodyBreak({onEnd}) {
     const handleBack = () => {
 
         let redirect = router?.query?.url ?? ''
-  
+
         if(redirect) {
           router.push(decodeURIComponent(redirect))
         }else {
           router.push('/game/map')
           
         }
-    };
-  
+    }
 
     return (
         <>
-            <h1 className={style.as_title_container}>{translations.check_in[lang]}</h1>
-            <div className={style.feeling_buttons}>
-                {isPlaying && (
-                    <h2>
-                    {formatMinutes(counter)}:{formatSeconds(counter)}
+            <h1 className={style.as_title_container}>{translations.moveBodyTitle[lang]}</h1>
+            <div className={style.chillout_container}>
+
+                <div className={style.move_your_body_img}>
+                    <img src={imgBanner?.src} alt="Person dancing" />
+                </div>
+
+                <div className={style.chillout_text}>
+
+                    <ol>
+                        <li><h5>{translations.moveBodyDescription1[lang]}</h5></li>
+                        <li><h5>{translations.moveBodyDescription2[lang]}</h5></li>
+                        <li><h5>{translations.moveBodyDescription3[lang]}</h5></li>
+                    </ol>
+                    
+                    <h2 style={{textAlign: 'center', marginTop: '30px'}}>
+                    {formattedTime()}
                     </h2>
-                )}
-            </div>
+                </div> 
+
+            </div> 
             <button
                 className={style.continue_button}
                 onClick={() => handleBack()}
-            >{translations.continue[lang]}</button>
+            >{translations.back[lang]}</button>
         </>
     )
 }

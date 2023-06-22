@@ -7,43 +7,25 @@ import Loading from '@comps/screens/loading';
 import Error from 'pages/error';
 import Login from '../../../user/login';
 import { ReactSketchCanvas } from "react-sketch-canvas";
+import useTimer from '@hooks/useTimer';
 
 export default function FreeSyleArtBreak() {
-    const [counter, setCounter] = useState(180);
     const canvas = useRef()
-    const [ideas, setIdeas] = useState(['Lion', 'Tiger', 'House', 'Tree']);
+    const [promp] = useState(() => {
+      const ideas = ['food', 'animal', 'sport', 'people', 'place']
+      const randomIndex = Math.floor(Math.random() * ideas.length)
+      return ideas[randomIndex]
+    });
+    const [] = useState(['food', 'animal', 'sport', 'people', 'place']);
+    const { formattedTime } = useTimer(180); // 3 minutes in seconds
 
     // Utils for free style art break
-    const [color, setColor] = useState('#ff0000');
+    const [color, setColor] = useState('#0008ff');
   
     const handleChangeColor = (e) => {
       console.log(e.target.value)
       setColor(e.target.value);
     };
-
-
-    // Utils for timer logic
-    const formatMinutes = (time) => {
-        return `${Math.floor(time / 60)}`.padStart(2, '0');
-    };
-
-    const formatSeconds = (time) => {
-        return `${time % 60}`.padStart(2, '0');
-    };
-
-    // Implementation
-    useEffect(() => {
-      const timer = setInterval(() => {
-        if (counter > 0) {
-          setCounter((prevCounter) => prevCounter - 1);
-        }
-      }, 1000);
-
-      return () =>{
-        clearInterval(timer)
-        setCounter(180)
-      };
-    }, [counter])
 
 
     // Utils
@@ -67,16 +49,51 @@ export default function FreeSyleArtBreak() {
         router.push('/game/map')
         
       }
-  };
+    };
 
+
+
+    function saveImage(image) {
+      // Cadena de datos base64 de la imagen PNG
+      var base64Image = image;
+    
+      // Convertir la cadena base64 en un objeto Blob
+      var byteCharacters = atob(base64Image.split(',')[1]);
+      var byteArrays = [];
+    
+      for (var i = 0; i < byteCharacters.length; i++) {
+        byteArrays.push(byteCharacters.charCodeAt(i));
+      }
+    
+      var byteArray = new Uint8Array(byteArrays);
+      var blob = new Blob([byteArray], { type: 'image/png' });
+    
+      // Crear una URL de objeto para la imagen
+      var url = URL.createObjectURL(blob);
+    
+      // Descargar la imagen
+      var link = document.createElement('a');
+      link.href = url;
+      link.download = 'image.png';
+      link.click();
+    
+      // Liberar la URL del objeto
+      URL.revokeObjectURL(url);
+    }
 
     return (
         <>
             <h1 className={style.art_title_container}>
-              {formatMinutes(counter)}:{formatSeconds(counter)}  -  
-              <span>Draw a {ideas[2]}</span>  -  
+              {formattedTime()}  -  
+              <span>Draw your favorite {promp}</span>  -  
               <input type="color" value={color} onChange={handleChangeColor} />
-
+              {/* <button onClick={()=> canvas.clearCanvas()}>Clear</button> */}
+              <button
+                  className={style.goBack_button}
+                  onClick={() => handleBack()}
+              >
+                {translations.back[lang]}
+              </button>
             </h1>
             <div class={style.bubble_container}>
             <ReactSketchCanvas
@@ -89,26 +106,20 @@ export default function FreeSyleArtBreak() {
                 redo={true}
             />
             </div>
-              {/* <button
+            <button
                 className={style.continue_button}
                 onClick={() => {
                   canvas.current
                     .exportImage("png")
                     .then(data => {
-                      console.log(data)
+                      saveImage(data)
                     })
                     .catch(e => {
                       console.log(e)
                     });
                 }}
               >
-                Get Image
-              </button> */}
-              <button
-                  className={style.continue_button}
-                  onClick={() => handleBack()}
-              >
-                {translations.continue[lang]}
+               {translations.save[lang]}
               </button>
         </>
     )

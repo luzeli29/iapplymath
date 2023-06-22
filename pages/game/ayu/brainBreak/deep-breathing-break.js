@@ -61,7 +61,7 @@ export default function DeepBreathingBreak() {
             <button
                 className={style.continue_button}
                 onClick={() => handleBack()}
-            >{translations.continue[lang]}</button>
+            >{translations.back[lang]}</button>
         </>
     )
 }
