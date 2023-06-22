@@ -118,7 +118,7 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena would like to taste half of your entrée. How much of your food will you be sharing with her?`,
+            en:`Elena would like to taste half of your main dish. How much of your food will you be sharing with her?`,
             es:`Elena quiere probar la mitad de tu plato principal. ¿Cuánta comida compartirás con ella?`,
         },
         answer,
@@ -163,7 +163,7 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena would like to taste a ${randomFractionNameEnglish} of your entrée. How much of your food will you be sharing with her?`,
+            en:`Elena would like to taste a ${randomFractionNameEnglish} of your main dish. How much of your food will you be sharing with her?`,
             es:`Elena quiere probar un ${randomFractionNameSpanish} de tu plato principal. ¿Cuánta comida compartirás con ella?`,
         },
         answer,
@@ -286,6 +286,7 @@ function generateLevel1CQuestions(dishes,order,randomInt){
 
     // answer
     answer = `${randomNumber}/${randomValue}`;
+    answer = simplifyFraction(randomNumber,randomValue);
 
     // hint
     hint = {
@@ -296,7 +297,7 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`The server divided your entrée dish into ${randomValueStrEn} equal portions. If you eat ${randomNumber} portions, what is the total amount of food you ate?`,
+            en:`The server divided your main dish into ${randomValueStrEn} equal portions. If you eat ${randomNumber} portions, what is the total amount of food you ate?`,
             es:`El mesero dividió tu plato principal en ${randomValueStrEs} porciones iguales. Si tú comes ${randomNumber} porciones, ¿cuánta comida comiste en total?`,
         },
         answer,
@@ -337,7 +338,7 @@ function generateLevel2CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena’s entrée was bigger than she expected, and she only ate ${x} of her food. If you ate ${y} of your food, which quantity is smaller?  x __ y  `,
+            en:`Elena’s main dish was bigger than she expected, and she only ate ${x} of her food. If you ate ${y} of your food, which quantity is smaller?  x __ y  `,
             es:`El plato principal de Elena era más grande de lo que esperaba, y solo comió ${x} de su comida. Si usted comió ${y} de su comida, ¿qué cantidad es menor? x __ y`,
         },
         answer,
