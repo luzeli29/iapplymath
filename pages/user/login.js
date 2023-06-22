@@ -52,7 +52,7 @@ export default function Login() {
         setOnRoute(true)
       } else if (loggedIn) {
         if(!user.avatarId) {
-          router.push("/user/avatar/select")
+          router.push("/dialog/websiteIntro")
           setOnRoute(true)
         } else if(!user.petId) {
           router.push("/user/petSelect")
