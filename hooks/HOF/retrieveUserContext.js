@@ -23,10 +23,15 @@ import useQuizCookies from "@hooks/quiz/useQuizCookies"
     ----------------------------------------    
 */
 
+const loggedInDepended = ['gameReady', 'hasAvatar', 'hasPet', 'activeGame', 'requireActiveQuiz']
+
 const RetrieveUserContext = (Component,requirements) => {
   const RetrieveUserComponent = (pageProps) => {
     DevLog('Retrieving user context from HOF')
-    const {user,settings,loading, error} = useUserContext()
+    requirements? DevLog('With requirements: ' + requirements) : null
+
+
+    const {user, settings, loading, error, login,logout} = useUserContext()
     const {hasActiveCookie,quizCookie,quizCookieInfo} = useQuizCookies()
 
     const router = useRouter()
@@ -35,55 +40,55 @@ const RetrieveUserContext = (Component,requirements) => {
     if(error) return  router.push('/error')
 
     const validateRequirements = () => {
+      if(!requirements) {
+        return true
+      }
+
       if (requirements.includes("loggedIn") || requirements.includes("gameReady")) {
-        validateLoggedIn()
+        if (!user.loggedIn) {
+          DevErr('User is not logged in.')
+          router.push('/user/login')
+          return false
+        }
       }
   
       if(requirements.includes("hasAvatar") || requirements.includes("gameReady")) {
-        validateHasAvatar()
+        if (typeof user.data?.avatarId !== 'number') {
+          DevErr('User does not have an avatar.')
+          router.push('/user/avatar/select')
+          return false
+        }
       }
   
       if(requirements.includes("hasPet") || requirements.includes("gameReady")) {
-        validateHasPet()
+        if (typeof user.data?.petId !== 'number') {
+          DevErr('User does not have a pet.')
+          router.push('/user/petSelect')
+          return false
+        }
       }
 
       if(requirements.includes('hasActiveGame')) {
-        validateActiveGame()
+        const activeGame = validateActiveGame()
+        if(!activeGame) {
+          return false
+        }
       }
 
       if(requirements.includes('requireActiveQuiz')) {
-        validateRequireActiveQuiz()
+        if(!hasActiveCookie()) {
+          router.push('/game/map')
+          return false
+        }
       }
 
-      
       // TODO: Create "roleAdmin" check
       // TODO: Create "roleDev" check
       // TODO: Create "roleResearcher" check
       // TODO: Create "isOffline" check
-    }
 
-    const validateLoggedIn = () => {
-      if (!user.loggedIn) {
-        DevErr('User is not logged in.')
-        router.push('/user/login')
-        return <Loading/>
-      }
-    }
+      return true
 
-    const validateHasAvatar = () => {
-      if (!user?.data?.avatarId) {
-        DevErr('User does not have an avatar.')
-        router.push('/user/avatar/select')
-        return <Loading/>
-      }
-    }
-
-    const validateHasPet = () => {
-      if (!user.data.petId) {
-        DevErr('User does not have a pet.')
-        router.push('/user/pet')
-        return <Loading/>
-      }
     }
 
     const validateActiveGame = () => {
@@ -97,31 +102,30 @@ const RetrieveUserContext = (Component,requirements) => {
         if(!locationKey) {
           DevErr('Failed to handle Active Quiz Redirect, "locationKey" was null.')
           router.push('/game/map')
-          return <Loading/>
+          return false
         }
 
         const questionTypeKey = quizCookie.questionTypeKey
         if(!questionTypeKey) {
           DevErr('Failed to handle Active Quiz Redirect, "questionTypeKey" was null.')
           router.push('/game/map')
-          return <Loading/>
+          return false
         }
 
         router.push('/game/' + locationKey + '/' + questionTypeKey + '/activeQuizRedirect')
-        return <Loading/>
+        return false
       }
+      return true
     }
 
-    const validateRequireActiveQuiz = () => {
-      if(!hasActiveCookie()) {
-        router.push('/game/map')
-        return <Loading/>
-      }
+
+    const render = () => {
+      const meetsRequirements = validateRequirements()
+      if(meetsRequirements) return <Component user={user} settings={settings} {...pageProps} />
+      return <Loading/>
     }
 
-    if(requirements) validateRequirements()
-
-    return <Component user={user} settings={settings} {...pageProps} />
+    return render()
   }
 
   return RetrieveUserComponent
