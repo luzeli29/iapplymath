@@ -71,7 +71,7 @@ const RetrieveUserContext = (Component,requirements) => {
     }
 
     const validateHasAvatar = () => {
-      if (!user.data.avatarId) {
+      if (!user?.data?.avatarId) {
         DevErr('User does not have an avatar.')
         router.push('/user/avatar/select')
         return <Loading/>

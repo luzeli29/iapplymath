@@ -394,6 +394,22 @@ const translations = {
         en: "This is a do nothing break, so try to sit still in your seat and listen to the music until time is up",
         es: "Este es un descanso para no hacer nada, así que trate de quedarse quieto en su asiento y escuche la música hasta que se acabe el tiempo",
 
+    },
+    moveBodyTitle: {
+        en:"Move Your Body",
+        es:"Move Your Body",
+    },
+    moveBodyDescription1: {
+        en:"You can reach your arms over your head as you breathe in and then move your arms down as you breathe out",
+        es:"Puedes estirar tus brazos sobre tú cabeza mientras inhalas y luego mueve los brazos hacia abajo mientras exhalas",
+    },
+    moveBodyDescription2: {
+        en:"Try squeezing your fists tightly when you breathe in and release your fists when you breathe out",
+        es:"Intenta apretar tus puños con fuerza cuando inhales y sueltalos cuando exhales",
+    },
+    moveBodyDescription3: {
+        en:"Wiggle in your seat or stand up and wiggle if you can",
+        es:"Muévete en tu asiento o ponte de pie y muévete si puedes",
     }
 
 }
