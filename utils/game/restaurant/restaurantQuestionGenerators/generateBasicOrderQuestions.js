@@ -303,6 +303,9 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
 
     // answer
     answer = parseInt(priceOfRandomDish) / 2;
+    
+    answer = parseFloat(answer.toFixed(2));
+
 
     // create question
     generatedQuestions.push(createGameQuestion(
@@ -616,13 +619,15 @@ function generateLevel2AQuestions(dishes, order, randomInt){
             }
 
         }
-        answer = Math.floor( randomNum / randomNum2 );
+        answer =  randomNum / randomNum2;
 
         
     }else{
         // answer
         answer = randomNum * randomNum2;
     }
+
+    answer = parseFloat(answer.toFixed(2));
 
     // create question
     generatedQuestions.push(createGameQuestion(
@@ -632,7 +637,7 @@ function generateLevel2AQuestions(dishes, order, randomInt){
         },
         answer,
         [],
-        "wholeNumber",
+        "decimal",
     ))
 
     // ***********************************************************************************************************************
