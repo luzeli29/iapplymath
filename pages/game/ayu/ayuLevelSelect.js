@@ -11,15 +11,6 @@ import React, { useState } from 'react'
 import getText from '@utils/text/getText'
 
 
-// export async function getStaticProps(context){
-//     const  {params}  = context
-//     return {
-//       props: {
-//         location
-//       },
-//     }
-// }
-
 const brainBreaksList = {
     "chill-out-break" : {
         "value": "Chill Out"
@@ -30,9 +21,9 @@ const brainBreaksList = {
     "free-style-art-break" : {
         "value": "Free Style Art"
     },
-    "mandala-art-break" : {
-        "value": "Mandala Art"
-    },
+    // "mandala-art-break" : {
+    //     "value": "Mandala Art"
+    // },
     "move-body-break" : {
         "value": "Move Body"
     },
