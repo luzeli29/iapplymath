@@ -236,7 +236,13 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
             es:`El amigo de Elena, Alex, se une a ti en la mesa. Si los tres piden lo mismo  ${randomDishNameSpanish}, ¿cuál es el costo total de todas las ${randomDishNameSpanish}?`,
         },
         answer,
-        [],
+        [{
+            en: "(" + randomDishNameEnglish + ") x " + 3 + " = ???",
+            es: "(" + randomDishNameSpanish + ") x " + 3 + " = ???",
+        },{
+            en: "(" + randomDishNameEnglish + ") x " + 3 + " = " + priceOfRandomDish * 3,
+            es: "(" + randomDishNameSpanish + ") x " + 3 + " = " + priceOfRandomDish * 3,
+        }],
         "wholeNumber",
     ))
 
@@ -272,7 +278,13 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
             es:`Si compras tu ${randomDishNameSpanish} ${randomNum} veces, ¿cuánto dinero gastaste en total?`,
         },
         answer,
-        [],
+        [{
+            en: "(" + randomDishNameEnglish + ") x " + randomNum + " = ???",
+            es: "(" + randomDishNameSpanish + ") x " + randomNum + " = ???",
+        },{
+            en: "(" + randomDishNameEnglish + ") x " + randomNum + " = " + priceOfRandomDish * randomNum,
+            es: "(" + randomDishNameSpanish + ") x " + randomNum + " = " + priceOfRandomDish * randomNum,
+        }],
         "wholeNumber",
     ))
 
@@ -299,7 +311,13 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
             es:`¿Cuánto pagarás por tu ${randomDishNameSpanish} si compartes la mitad con Elena y dividen el costo por igual?`,
         },
         answer,
-        [],
+        [{
+            en: "(" + randomDishNameEnglish + ") ÷ " + 2 + " = ???",
+            es: "(" + randomDishNameSpanish + ") ÷ " + 2 + " = ???",
+        },{
+            en: "(" + randomDishNameEnglish + ") ÷ " + 2 + " = " + priceOfRandomDish / 2,
+            es: "(" + randomDishNameSpanish + ") ÷ " + 2 + " = " + priceOfRandomDish / 2,
+        }],
         "decimal",
     ))
 
@@ -331,7 +349,13 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
             es:`Echa un vistazo a tu orden, ¿cuánto será tu nuevo total si ordenas ${randomNum1} platos principales y ${randomNum2} postres?`,
         },
         answer,
-        [],
+        [{
+            en: "(" + priceOfMainDish + " x " + randomNum1 + ") + (" + priceOfDessert + " x " + randomNum2 + ")  = ???",
+            es: "(" + priceOfMainDish + " x " + randomNum1 + ") + (" + priceOfDessert + " x " + randomNum2 + ")  = ???",
+        },{
+            en: "(" + priceOfMainDish + " x " + randomNum1 + ") + (" + priceOfDessert + " x " + randomNum2 + ")  = " + (priceOfMainDish*randomNum1)+(priceOfDessert*randomNum2),
+            es: "(" + priceOfMainDish + " x " + randomNum1 + ") + (" + priceOfDessert + " x " + randomNum2 + ")  = " + (priceOfMainDish*randomNum1)+(priceOfDessert*randomNum2),
+        }],
         "wholeNumber",
     ))
 
@@ -359,7 +383,16 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
             es:`El presupuesto de Elena es de ${randomNum} dólares. Si su ${randomDishNameSpanish} cuesta ${priceOfMainDish} dólares, ¿cuántos platos principales puede comprar?`,
         },
         answer,
-        [],
+        [{
+            en:  randomNum+ " ÷ " + priceOfMainDish + " = ???",
+            es:  randomNum+ " ÷ " + priceOfMainDish + " = ???",
+        },{
+            en: randomNum+ " ÷ " + priceOfMainDish + " = " + randomNum/priceOfMainDish,
+            es: randomNum+ " ÷ " + priceOfMainDish + " = " + randomNum/priceOfMainDish,
+        },{
+            en: "Main dish count must be rounded down to the nearest whole number",
+            es: "El número de platos fuertes debe redondearse hacia abajo al número entero más cercano",
+        }],
         "wholeNumber",
     ))
 
@@ -395,7 +428,13 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
             es:`Tu presupuesto es ahora de ${randomNum} dólares. Si pides  ${nameOfDrinkSpanish} y  ${nameOfDessertSpanish}, ¿cuánto dinero te queda?`,
         },
         answer,
-        [],
+        [{
+            en:  randomNum+ " - " + " ( " + nameOfDrinkEnglish + " + " + nameOfDessertEnglish + " ) = ???",
+            es:  randomNum+ " - " + " ( " + nameOfDrinkSpanish + " + " + nameOfDessertSpanish + " ) = ???",
+        },{
+            en: randomNum+ " - " + " ( " + nameOfDrinkEnglish + " + " + nameOfDessertEnglish + " ) = " + (randomNum - (priceOfDessert+ priceOfDrink)),
+            es: randomNum+ " - " + " ( " + nameOfDrinkSpanish + " + " + nameOfDessertSpanish + " ) = " + (randomNum - (priceOfDessert+ priceOfDrink)),
+        }],
         "wholeNumber",
     ))
 
@@ -432,7 +471,16 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
                 es:`Si tu presupuesto es de ${randomNum} dólares, ¿cuántos postres puedes pedir?`,
             },
             answer,
-            [],
+            [{
+                en:  randomNum+ " ÷ " + priceOfDessert + " = ???",
+                es:  randomNum+ " ÷ " + priceOfDessert + " = ???",
+            },{
+                en: randomNum+ " ÷ " + priceOfDessert + " = "+ randomNum/priceOfDessert,
+                es: randomNum+ " ÷ " + priceOfDessert + " = "+ randomNum/priceOfDessert,
+            },{
+                en: "Dessert count must be rounded down to the nearest whole number",
+                es: "El número de postres debe redondearse hacia abajo al número entero más cercano",
+            }],
             "wholeNumber",
         ))
 
@@ -447,7 +495,16 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
                 es:`Si tu presupuesto es de ${randomNum} dólares, ¿cuántas bebidas puedes pedir?`,
             },
             answer,
-            [],
+            [{
+                en:  randomNum+ " ÷ " + priceOfDrink + " = ???",
+                es:  randomNum+ " ÷ " + priceOfDrink + " = ???",
+            },{
+                en: randomNum+ " ÷ " + priceOfDrink + " = "+ randomNum/priceOfDrink,
+                es: randomNum+ " ÷ " + priceOfDrink + " = "+ randomNum/priceOfDrink,
+            },{
+                en: "Drink count must be rounded down to the nearest whole number",
+                es: "El número de bebidas debe redondearse hacia abajo al número entero más cercano",
+            }],
             "wholeNumber",
         ))
     }
@@ -477,7 +534,16 @@ function generateLevel1AQuestions(dishes, order, randomInt) {
             es:`¿Cuánto pagarás por el plato principal si lo compartes con ${randomNum} amigos y todos comparten el costo por igual?`,
         },
         answer,
-        [],
+        [{
+            en:  priceOfMainDish+ " ÷ " + totalPeople + " = ???",
+            es:  priceOfMainDish+ " ÷ " + totalPeople + " = ???",
+        },{
+            en: priceOfMainDish+ " ÷ " + totalPeople+ " = " + priceOfMainDish/totalPeople,
+            es: priceOfMainDish+ " ÷ " + totalPeople + " = " + priceOfMainDish/totalPeople,
+        },{
+            en: "Round your answer to the nearest hundredth",
+            es: "Redondea tu respuesta a la centésima más cercana ",
+        }],
         "decimal",
     ))
 
