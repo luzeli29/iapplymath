@@ -9,18 +9,14 @@ import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
 import Error from 'pages/error';
 import Login from './login';
+import RetrieveUserContext from '@hooks/HOF/retrieveUserContext';
 
-
-export default function PetSelect() {
-    const {user,settings,loading, error} = useUserContext()
+const PetSelect = ({user,settings}) => {
     const isLoggedIn = user.loggedIn    
     const userPetId =isLoggedIn ? user.data.petId : null
     const [selectedPetId, setSelectedPetId] = useState(userPetId? userPetId : null)
 
     const router = useRouter()
-
-    if(loading || !router.isReady) return <Loading/>
-    if(error) return <Error error={error}/>
     
     const lang = settings.lang
     if(!isLoggedIn) return <Login/>
@@ -32,7 +28,7 @@ export default function PetSelect() {
         user.setPetId(selectedPetId)
 
 
-        router.push('/user/backgroundSelect')
+        router.push('/game/map');
     }
 
     const PetButton = ({index}) => {
@@ -78,3 +74,4 @@ export default function PetSelect() {
     )
 }
 
+export default RetrieveUserContext(PetSelect)
