@@ -51,33 +51,43 @@ export default function Ayu ({handleAyuClick = null}) {
          </div>
          
          <div className={style.ayu_image_container}>
-            {handleAyuClick ? <button onClick={() => handleClick()}>
-            <Tooltip type={true}  text={translations.pet_ayu[lang]}>
+            {handleAyuClick ? 
+            <button className={style.ayu_breathe} onClick={() => handleClick()}>
+            <Tooltip type={3}  text={translations.pet_ayu[lang]}>
                <GiHand className={style.breathe} ></GiHand>
             </Tooltip>
                <Image
                   priority={true}
-                  style={{zIndex:-1}}
-                  layout={"fill"}
+                  style={{zIndex:5}}
+                  //layout={"fill"}
                   src={"/img/ayu/ayu_idle.gif"}
-                  alt={"ayu idle gif"}/>
+                  alt={"ayu idle gif"}
+                  height = {110}
+                  width = {110}
+                  />
+
             </button>:
             <div>
                <Image
                   priority={true}
-                  style={{zIndex:-1}}
-                  layout={"fill"}
+                  //style={{zIndex:-1}}
+                  //layout={"fill"}
                   src={"/img/ayu/ayu_idle.gif"}
-                  alt={"ayu idle gif"}/>
+                  alt={"ayu idle gif"}
+                  height = {110}
+                  width = {110}
+                  />
             </div>
             }
-            <div >              
+            <div  className={style.pet_img} >              
                <Image
                   priority={true}
-                  layout={"fill"}
+                  //layout={"fill"}
                   className={style.pet}
                   onMouseEnter={onMouseEnter}
                   onMouseLeave={onMouseLeave}
+                  height = {110}
+                  width = {110}
                   src = {"/img/pets/pet" + petId + ".png"}
                   alt = {"You haven't selected your pet!"}/>
             </div>
