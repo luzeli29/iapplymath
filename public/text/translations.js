@@ -514,6 +514,52 @@ const translations = {
         en: "Would you like to see the tutorial?",
         es: "¿Te gustaría ver el tutorial?",
     },
+    
+    invalid_whole_number: {
+        en: "Invalid whole number",
+        es: "Número entero inválido",
+    },
+    invalid_fraction: {
+        en: "Invalid fraction",
+        es: "Fracción inválida",
+    },
+    invalid_decimal: {
+        en: "Invalid decimal",
+        es: "Decimal inválido",
+    },
+    invalid_time: {
+        en: "Invalid time",
+        es: "Tiempo inválido",
+    },
+    invalid_money: {
+        en: "Invalid money",
+        es: "Dinero inválido",
+    },
+    invalid_unit_meters: {
+        en: "Make sure anwser is in meters",
+        es: "Asegúrate de que la respuesta esté en metros",
+    },
+    invalid_unit_centimeters: {
+        en: "Make sure anwser is in centimeters",
+        es: "Asegúrate de que la respuesta esté en centímetros",
+    },
+    invalid_unit_liters: {
+        en: "Make sure anwser is in liters",
+        es: "Asegúrate de que la respuesta esté en litros",
+    },
+    invalid_unit_milliliters: {
+        en: "Make sure anwser is in milliliters",
+        es: "Asegúrate de que la respuesta esté en mililitros",
+    },
+    invalid_unit_grams: {
+        en: "Make sure anwser is in grams",
+        es: "Asegúrate de que la respuesta esté en gramos",
+    },
+    invalid_unit_kilograms: {
+        en: "Make sure anwser is in kilograms",
+        es: "Asegúrate de que la respuesta esté en kilogramos",
+    },
+
 }
 
 export default translations
