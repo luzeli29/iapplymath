@@ -118,7 +118,7 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena would like to taste half of your entrée. How much of your food will you be sharing with her?`,
+            en:`Elena would like to taste half of your main dish. How much of your food will you be sharing with her?`,
             es:`Elena quiere probar la mitad de tu plato principal. ¿Cuánta comida compartirás con ella?`,
         },
         answer,
