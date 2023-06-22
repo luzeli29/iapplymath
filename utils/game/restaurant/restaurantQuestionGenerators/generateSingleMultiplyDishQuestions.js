@@ -6,6 +6,23 @@ function generateLevel1BQuestions(dishes,order,randomInt){
     let generatedQuestions = [];
     // let random = Math.floor(Math.random() * dishes.length);
     let random = randomInt(0, dishes.length);
+
+    const plurals ={
+        "mainDish":{
+            en:"main dishes",
+            es:"platos principales",
+        },
+        "drink":{
+            en:"drinks",
+            es:"bebidas",
+        },
+        "dessert":{
+            en:"desserts",
+            es:"postres",
+        },
+    }
+
+
     let answer = 0;
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
@@ -18,6 +35,9 @@ function generateLevel1BQuestions(dishes,order,randomInt){
     let randomDishNameEnglish = translations[randomDishName].en
     let randomDishNameSpanish = translations[randomDishName].es
 
+    let pluralRandomDishNameEnglish = plurals[randomDishName].en
+    let pluralRandomDishNameSpanish = plurals[randomDishName].es
+
     // get the price of said dish
     let priceOfDish = order[randomDishName].price;
 
@@ -27,8 +47,8 @@ function generateLevel1BQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena ordered the same ${randomDishNameEnglish} as you. What is the total cost of the two ${randomDishNameEnglish}?`,
-            es:`Elena ordenó el mismo ${randomDishNameSpanish} que tú. ¿Cuál es el costo total de los dos ${randomDishNameSpanish}?`,
+            en:`Elena ordered the same ${randomDishNameEnglish} as you. What is the total cost of the two ${pluralRandomDishNameEnglish}?`,
+            es:`Elena ordenó el mismo ${randomDishNameSpanish} que tú. ¿Cuál es el costo total de los dos ${pluralRandomDishNameSpanish}?`,
         },
         answer,
         [{
