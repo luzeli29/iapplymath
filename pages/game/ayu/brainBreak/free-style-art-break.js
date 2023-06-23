@@ -23,7 +23,6 @@ export default function FreeSyleArtBreak() {
     const [color, setColor] = useState('#0008ff');
   
     const handleChangeColor = (e) => {
-      console.log(e.target.value)
       setColor(e.target.value);
     };
 
@@ -94,13 +93,22 @@ export default function FreeSyleArtBreak() {
               >
                 {translations.back[lang]}
               </button>
+              <button
+                className={style.goBack_button}
+                onClick={() => {
+                  canvas.current
+                    .clearCanvas()
+                }}
+              >
+               {translations.clear[lang]}
+              </button>
             </h1>
             <div class={style.bubble_container}>
             <ReactSketchCanvas
                 ref={canvas}
                 width="100%"
                 height="100%"
-                strokeWidth={4}
+                strokeWidth={8}
                 strokeColor={color}
                 undo={true}
                 redo={true}
