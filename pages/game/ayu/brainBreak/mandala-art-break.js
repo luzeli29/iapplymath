@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, {useEffect, useState, useRef} from 'react';
 import { useRouter } from 'next/router'
 import style from '../../../../styles/brain_breaks.module.css'
@@ -9,17 +10,19 @@ import Login from '../../../user/login';
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import useTimer from '@hooks/useTimer';
 
-export default function FreeSyleArtBreak() {
+export default function MandalaArtBreak() {
     const canvas = useRef()
-    const [promp] = useState(() => {
-      const ideas = ['food', 'animal', 'sport', 'people', 'place']
-      const randomIndex = Math.floor(Math.random() * ideas.length)
-      return ideas[randomIndex]
-    });
-    const [] = useState(['food', 'animal', 'sport', 'people', 'place']);
     const { formattedTime } = useTimer(180); // 3 minutes in seconds
 
     // Utils for free style art break
+    const [mandala_list] = useState([
+      "https://previews.123rf.com/images/queertrade/queertrade1811/queertrade181100050/111754678-simple-mandala-print-easy-coloring-page-illustration-for-kids-and-adult-beginners.jpg",
+      "https://coloringhome.com/coloring/RiA/ykq/RiAykqg6T.png",
+      "https://follen.org/wp-content/uploads/2020/04/free-mandalas-to-color-for-adults-with-kids-mandala-designs-beginners-print-and-672x870-1.png",
+      "https://www.justcolor.net/kids/wp-content/uploads/sites/12/nggallery/mandalas/Coloring-for-kids-mandalas-69780.jpg",
+      "https://www.creativefabrica.com/wp-content/uploads/2021/11/15/Simple-Mandala-Coloring-Page-Graphics-20223669-1.jpg"
+    ]);
+    const [mandala, setMandala] = useState(mandala_list[0]);
     const [color, setColor] = useState('#0008ff');
   
     const handleChangeColor = (e) => {
@@ -50,41 +53,28 @@ export default function FreeSyleArtBreak() {
       }
     };
 
-
-
-    function saveImage(image) {
-      // Cadena de datos base64 de la imagen PNG
-      var base64Image = image;
-    
-      // Convertir la cadena base64 en un objeto Blob
-      var byteCharacters = atob(base64Image.split(',')[1]);
-      var byteArrays = [];
-    
-      for (var i = 0; i < byteCharacters.length; i++) {
-        byteArrays.push(byteCharacters.charCodeAt(i));
-      }
-    
-      var byteArray = new Uint8Array(byteArrays);
-      var blob = new Blob([byteArray], { type: 'image/png' });
-    
-      // Crear una URL de objeto para la imagen
-      var url = URL.createObjectURL(blob);
-    
-      // Descargar la imagen
-      var link = document.createElement('a');
-      link.href = url;
-      link.download = 'image.png';
-      link.click();
-    
-      // Liberar la URL del objeto
-      URL.revokeObjectURL(url);
+    const handleSelectDesign = (url) => {
+      setMandala(url)
+      canvas.current.clearCanvas()
     }
+
+
+
+      const saveSVG = (svgCode) => {
+        const blob = new Blob([svgCode], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'mandalaArt.svg';
+        link.click();
+        URL.revokeObjectURL(url);
+      };
 
     return (
         <>
             <h1 className={style.art_title_container}>
               {formattedTime()}  -  
-              <span>Draw your favorite {promp}</span>  -  
+              <span> Pick a design to color</span>  -  
               <input type="color" value={color} onChange={handleChangeColor} />
               {/* <button onClick={()=> canvas.clearCanvas()}>Clear</button> */}
               <button
@@ -102,25 +92,14 @@ export default function FreeSyleArtBreak() {
               >
                {translations.clear[lang]}
               </button>
-            </h1>
-            <div class={style.bubble_container}>
-            <ReactSketchCanvas
-                ref={canvas}
-                width="100%"
-                height="100%"
-                strokeWidth={8}
-                strokeColor={color}
-                undo={true}
-                redo={true}
-            />
-            </div>
-            <button
-                className={style.continue_button}
+              <button
+                className={style.goBack_button}
                 onClick={() => {
                   canvas.current
-                    .exportImage("png")
+                    .exportSvg("svg")
                     .then(data => {
-                      saveImage(data)
+                      // console.log(data)
+                      saveSVG(data)
                     })
                     .catch(e => {
                       console.log(e)
@@ -129,6 +108,31 @@ export default function FreeSyleArtBreak() {
               >
                {translations.save[lang]}
               </button>
+            </h1>
+            <div class={style.mandala_container}>
+            <div className={style.mandala_items}>
+              {mandala_list.map((item, i) => <img 
+                key={i}
+                onClick={()=>handleSelectDesign(item)}
+                alt={`mandala art ${i}`}
+                className={style.item}
+                src={item}
+                />)}
+            </div>
+            <ReactSketchCanvas
+                backgroundImage={mandala}
+                exportWithBackgroundImage={true}
+                preserveBackgroundImageAspectRatio=""
+                width='650px'
+                height='650px'
+                // className={style.mandala_container}
+                ref={canvas}
+                strokeWidth={8}
+                strokeColor={color}
+                undo={true}
+                redo={true}
+            />
+            </div>
         </>
     )
 }

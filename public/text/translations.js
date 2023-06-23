@@ -410,6 +410,10 @@ const translations = {
     moveBodyDescription3: {
         en:"Wiggle in your seat or stand up and wiggle if you can",
         es:"Muévete en tu asiento o ponte de pie y muévete si puedes",
+    },
+    clear: {
+        en: "Clear",
+        es: "Limpiar"
     }
 
 }
