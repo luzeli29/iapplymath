@@ -613,7 +613,13 @@ function generateLevel2AQuestions(dishes, order, randomInt){
             es:`El restaurante está organizando un evento mensual de recolección de alimentos. Elena y tú están ayudando a recolectar y organizar varios alimentos. El primer día, recolectaste ${randomNum} alimentos y el segundo día recolectaste ${randomNum2} veces más. ¿Cuántos alimentos recolectaron Elena y tú el segundo día?`,
         },
         answer,
-        [],
+        [{
+            en:  randomNum + " x " + randomNum2 + " = ???",
+            es:  randomNum + " x " + randomNum2 + " = ???",
+        },{
+            en: randomNum + " x " + randomNum2 + " = " + randomNum*randomNum2,
+            es: randomNum + " x " + randomNum2 + " = " + randomNum*randomNum2,
+        }],
         "wholeNumber",
     ))
 
@@ -667,7 +673,14 @@ function generateLevel2AQuestions(dishes, order, randomInt){
             es:`Hoy tus padres te dieron ${randomNum} dólares para ordenar comida en el restaurante. Si la próxima vez te dieran ${randomNum2} veces ${traduccion[randomOption]} dinero, ¿cuál es tu nuevo presupuesto?`,
         },
         answer,
-        [],
+        [{
+            en:  "if 'more' = " + randomNum +" * "+ randomNum2,
+            es:  "si es 'más' = " + randomNum +" * "+ randomNum2,
+        },{
+            en: "if 'less' = " + randomNum + "  ÷ " +  randomNum2,
+            es:  "si es 'menos' = " + randomNum + "  ÷ " + randomNum2,
+            
+        }],
         "decimal",
     ))
 
@@ -721,7 +734,17 @@ function generateLevel2AQuestions(dishes, order, randomInt){
             es:`Si tu presupuesto en 2021 fue de ${randomNum} dólares, ¿cuántos ${randomDishNameSpanish} podrías comprar?`,
         },
         answer,
-        [],
+        [{
+            en:  randomNum + " ÷ "+ priceOfDish+ " = ???",
+            es:  randomNum + " ÷ "+ priceOfDish+ " = ???",
+        },{
+            en: randomNum + " ÷ "+ priceOfDish+ " = " + randomNum/priceOfDish,
+            es: randomNum + " ÷ "+ priceOfDish+ " = " + randomNum/priceOfDish,
+            
+        },{
+            en: "Main dish count must be rounded down to the nearest whole number",
+            es: "El número de platos fuertes debe redondearse hacia abajo al número entero más cercano",
+        }],
         "wholeNumber",
         null,
         "tableRestaurant"
@@ -751,7 +774,17 @@ function generateLevel2AQuestions(dishes, order, randomInt){
             es:`En 2022 tu presupuesto no cambió, ${randomNum} dólares. ¿Cuántos ${randomDishNameSpanish} podrías comprar entonces?`,
         },
         answer,
-        [],
+        [{
+            en:  randomNum + " ÷ "+ priceOfDish+ " = ???",
+            es:  randomNum + " ÷ "+ priceOfDish+ " = ???",
+        },{
+            en: randomNum + " ÷ "+ priceOfDish+ " = " + randomNum/priceOfDish,
+            es: randomNum + " ÷ "+ priceOfDish+ " = " + randomNum/priceOfDish,
+            
+        },{
+            en: "Main dish count must be rounded down to the nearest whole number",
+            es: "El número de platos fuertes debe redondearse hacia abajo al número entero más cercano",
+        }],
         "wholeNumber",
         null,
         "tableRestaurant"
@@ -772,7 +805,14 @@ function generateLevel2AQuestions(dishes, order, randomInt){
             es:`Si tus padres te dan el mismo presupuesto que en 2021, ${randomNum} dólares, ¿en qué año pudiste comprar más comida? Ingresa el año correcto en el cuadro de respuesta.`,
         },
         answer,
-        [],
+        [{
+            en:  "If budget stays constant, which year has the lowest food price",
+            es:  "Si el presupuesto se mantiene constance, que año tiene los precios de comida más bajos",
+        },{
+            en: "Food price is lowest in 2021, thus you can buy the most food in 2021",
+            es: "El precio de la comida más bajo en el 2021, se puede comprar más comida en el 2021"
+            
+        }],
         "wholeNumber",
         null,
         "tableRestaurant"
@@ -809,7 +849,22 @@ function generateLevel2AQuestions(dishes, order, randomInt){
             es:`El presupuesto de Elena en 2021 fue de 28 dólares. ¿Cuánto tendría que ser el presupuesto de Elena en ${randomYear} para que ella pueda comprar tantos ${randomDishNameSpanish} como pudo en 2021?`,
         },
         answer,
-        [],
+        [{
+            en:  "Step 1: Calculate food items in 2021 (x) = 28 ÷ " + randomDishNameEnglish, 
+            es:  "Paso 1: Calcular la canitdad de comida en 2021 (x) = 28 ÷ " + randomDishNameSpanish
+        },{
+            en: "Step 2: Multiply 2021 food items (x) by "+ randomDishNameEnglish + " = Price to obtain new budget (y)",
+            es: "Paso 2: Multiplica los items de comida del 2021 (x) por "+ randomDishNameSpanish + " = Precio del nuevo presupuesto  (y)",
+            
+        },{
+            en: "28 ÷ " + randomDishNameEnglish + " = " + firstStep,
+            es: "28 ÷ " + randomDishNameSpanish + " = " + firstStep,
+            
+        },{
+            en: firstStep + " x " + secondStep + " = " + answer,
+            es: firstStep + " x " + secondStep + " = " + answer,
+            
+        }],
         "decimal",
         null,
         "tableRestaurant"

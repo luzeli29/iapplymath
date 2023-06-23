@@ -246,12 +246,16 @@ let answer = "";
             es:`El restaurante recibe ${x} kilogramos de arroz fresco todos los días. Si el chef cocinó ${y} kilogramos de arroz hoy, ¿cuánto arroz fresco queda al final del día?`,
         },
         answer+"kg",
-        [
-            {
-                en: `Answer using the unit "kg". example answer: 5kg`,
-                es: `Responde usando la unidad "kg". ejemplo de respuesta: 5kg`,
-            }
-        ],
+        [{
+            en: "Fresh Rice Remaining = (initial fresh rice) - (rice cooked)",
+            es: "Arroz fresco restante = (arroz fresco inicial) - (arroz cocinado)",
+        },{
+            en: "Fresh Rice Remaining = " + x + " - "  + y,
+            es: "Arroz fresco restante = " + x + " - "  + y,
+        },{
+            en: `Answer using the unit "kg". example answer: 5kg`,
+            es: `Responde usando la unidad "kg". ejemplo de respuesta: 5kg`,
+        }],
         "unitKiloGrams",
     ))
     
@@ -279,12 +283,19 @@ let answer = "";
             es:`Elena recibió una nueva botella de agua de sus padres. Su botella puede contener hasta 1,000 mililitros de agua. Si llena su botella usando un recipiente de ${x} mililitros, ¿cuántos recipientes necesitará para llenar completamente su botella?`,
         },
         answer+"ml",
-        [
-            {
-                en: `Answer using the unit "millimiters". example answer: 5.2ml`,
-                es: `Responde usando la unidad "mililitros". ejemplo de respuesta: 5.2ml`,
-            }
-        ],
+        [{
+            en: "Containers required = (bottle capacity) ÷ (container size)",
+            es: "Contenedores requeridos = (capacidad de la botella) ÷ (tamaño del recipiente)",
+        },{
+            en: "Containers required = 1000 " + " ÷ " + x,
+            es: "Contenedores requeridos = 1000 " + " ÷ " + x,
+        },{
+            en: `Answer using the unit "millimiters". example answer: 5.2ml`,
+            es: `Responde usando la unidad "mililitros". ejemplo de respuesta: 5.2ml`,
+        },{
+            en: answer,
+            es: answer,
+        }],
         "unitMilliLiters",
     ))
 
@@ -310,12 +321,13 @@ let answer = "";
             es:`Tu casa está a ${x} kilómetros de distancia del restaurante. Calcula la misma distancia en metros. (Pista: 1 kilómetro = 1,000 metros o 1 metro = 0.001 kilómetros).`,
         },
         answer+"m",
-        [
-            {
-                en: `Answer using the unit "meters". example answer: 5.2m`,
-                es: `Responde usando la unidad "metros". ejemplo de respuesta: 5.2m`,
-            }
-        ],
+        [{
+            en: "Multiply the distance from your house to the restaurant by 1,000 since 1 kilometer equals 1,000 meters.",
+            es: "Multiplica la distancia de tu casa al restaurante por 1.000 ya que 1 kilómetro equivale a 1.000 metros.",
+        },{
+            en: `Answer using the unit "meters". example answer: 5.2m`,
+            es: `Responde usando la unidad "metros". ejemplo de respuesta: 5.2m`,
+        }],
         "unitMeters",
     ))
 
@@ -339,11 +351,16 @@ let answer = "";
             es:`Tu botella puede contener hasta 1.5 litros de líquido. Si llenaste tu botella con agua y bebiste ${x} mililitros, ¿cuántos mililitros de agua quedan en la botella?`,
         },
         answer+"ml",
-        [
-            {
-                en: `Answer using the unit "milliliters". example answer: 5.2ml`,
-                es: `Responde usando la unidad "mililitros". ejemplo de respuesta: 5.2ml`,
-            }
+        [{
+            en: "Step 1: You must first convert initial water from liters to milliliters by multiplying the bottle capacity by 1,000 since 1 liter equals 1,000 milliliters. ",
+            es:  "Paso 1: Primero debes convertir el agua inicial de litros a mililitros multiplicando la capacidad de la botella por 1,000 ya que 1 litro equivale a 1,000 mililitros",
+        },{
+            en: "Step 2: Calculate milliliters of water left in bottle. Water left = Initial water – (water drank)",            
+            es: "Paso 2: Calcular los mililitros de agua que quedan en la botella. Agua que queda = Agua inicial – (agua bebida)",
+        },{
+            en: `Answer using the unit "milliliters". example answer: 5.2ml`,
+            es: `Responde usando la unidad "mililitros". ejemplo de respuesta: 5.2ml`,
+        }
         ], 
         "unitMilliLiters",
     ))
@@ -372,9 +389,16 @@ let answer = "";
             es:`La mesa del restaurante es rectangular. Despues de medirla, determinaste que la mesa tiene ${x} centímetros de largo y ${y} centímetros de ancho. ¿Cuál es el perímetro de tu mesa?`,
         },
         answer,
-        [
+        [{
+            en: "Perimeter of table = (2 x length) + (2 x width)",
+            es: "Perímetro de la mesa = (2 x largo) + (2 x ancho)",
 
-        ],
+        },
+        {
+            en: "Perimeter of table = (2 x "+ x+ " ) + (2 x " +  y + ")",
+            es: "Perímetro de la mesa = (2 x "+ x+ " ) + (2 x " +  y + ")",
+
+        }],
         "wholeNumber",
 
     ))
@@ -394,7 +418,10 @@ let answer = "";
             es:`Elena te pidió ayuda con uno de sus problemas de matemáticas y te dio el diagrama de ángulos a continuación. El ángulo ∠ABC mide 120° y el ángulo ∠ABD mide 37°. ¿Cuál es la medida del ángulo ∠DBC en grados?`,
         },
         answer,
-        [
+        [{
+            en: "∠DBC = ∠ABC - ∠ABD ",
+            es:  "∠DBC = ∠ABC - ∠ABD ",
+        }
 
         ],
         "wholeNumber",
@@ -446,8 +473,7 @@ let answer = "";
             es:`Si tú y Elena llegaron al restaurante a las ${x}PM y pasaron ${y} minutos para comer y pagar, ¿a qué hora saldrían del restaurante?`,
         },
         answer,
-        [
-            {
+        [{
                 en: `Answer using the unit "hours". example answer: 13:09`,
                 es: `Responde usando la unidad "horas". ejemplo de respuesta: 13:09`,
             }
