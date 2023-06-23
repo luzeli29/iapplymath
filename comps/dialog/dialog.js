@@ -10,6 +10,8 @@ import DevLog from '@utils/debug/devLog';
 import { useRouter } from 'next/router';
 import Loading from '../screens/loading';
 
+
+
 const errorLines = [
     {
         text : {
@@ -25,6 +27,12 @@ const defaultOnEnd = {
 }
 
 const Dialog = ({dialogScript,lang,avatarId}) => {
+
+    // set playing to true
+
+
+
+
     lang = lang ? lang : 'en'
 
     const router = useRouter()
@@ -46,6 +54,7 @@ const Dialog = ({dialogScript,lang,avatarId}) => {
     };
 
     useEffect(() => {
+
         document.addEventListener("keydown", handleKeyPress);
         return () => {
             document.removeEventListener("keydown", handleKeyPress);

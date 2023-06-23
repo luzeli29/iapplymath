@@ -393,7 +393,6 @@ const translations = {
     chillOutBreak: {
         en: "This is a do nothing break, so try to sit still in your seat and listen to the music until time is up",
         es: "Este es un descanso para no hacer nada, así que trate de quedarse quieto en su asiento y escuche la música hasta que se acabe el tiempo",
-
     },
     moveBodyTitle: {
         en:"Move Your Body",
@@ -411,11 +410,160 @@ const translations = {
         en:"Wiggle in your seat or stand up and wiggle if you can",
         es:"Muévete en tu asiento o ponte de pie y muévete si puedes",
     },
-    clear: {
+    // types of answers
+    franctions_only:{
+        en:"Your answer must be a fraction",
+        es:"Tu respuesta debe ser una fracción",
+    },
+    exact_franctions_only:{
+        en:"Answer must be an exact fraction",
+        es:"La respuesta debe ser una fracción exacta",
+    },
+    whole_numbers_only:{
+        en:"Answer must be a whole number",
+        es:"La respuesta debe ser un número entero",
+    },
+    time_only:{
+        en:"Answer must be in time format",
+        es:"La respuesta debe ser en formato de tiempo",
+    },
+    decimals_only:{
+        en:"Answer must be a decimal",
+        es:"La respuesta debe ser un decimal",
+    },
+    money_only:{
+        en:"Answer must be in money format",
+        es:"La respuesta debe ser en formato de dinero",
+    },
+    meters_only:{
+        en:"Answer must be in meters format",
+        es:"La respuesta debe ser en formato de metros",
+    },
+    centimeters_only:{
+        en:"Answer must be in centimeters format",
+        es:"La respuesta debe ser en formato de centímetros",
+    },
+    liters_only:{
+        en:"Answer must be in liters format",
+        es:"La respuesta debe ser en formato de litros",
+    },
+    milliliters_only:{
+        en:"Answer must be in milliliters format",
+        es:"La respuesta debe ser en formato de mililitros",
+    },
+    grams_only:{
+        en:"Answer must be in grams format",
+        es:"La respuesta debe ser en formato de gramos",
+    },
+    kilograms_only:{
+        en:"Answer must be in kilograms format",
+        es:"La respuesta debe ser en formato de kilogramos",
+    },
+
+    // submit
+    submit:{
+        en:"Submit",
+        es:"Enviar",
+    },
+
+    pet_tooltip : {
+        en:"Change Pet",
+        es:"Cambiar Mascota",
+    },
+
+    background_tooltip : {
+        en:"Change Background",
+        es:"Cambiar Fondo",
+    },
+
+    // Buttons translations
+
+    true:{
+        en:"True",
+        es:"Verdadero",
+    },
+    false:{
+        en:"False",
+        es:"Falso",
+    },
+
+    "<":{
+        en:"<",
+        es:"<",
+    }
+    ,
+    ">":{
+        en:">",
+        es:">",
+    },
+    
+    "=":{
+        en:"=",
+        es:"=",
+    },
+    yes: {
+        en: "Yes",
+        es: "Sí",
+    },
+    no: {
+        en: "No",
+        es: "No",
+    },
+    
+    show_tutorial_prompt: {
+        en: "Would you like to see the tutorial?",
+        es: "¿Te gustaría ver el tutorial?",
+    },
+    
+    invalid_whole_number: {
+        en: "Invalid whole number",
+        es: "Número entero inválido",
+    },
+    invalid_fraction: {
+        en: "Invalid fraction",
+        es: "Fracción inválida",
+    },
+    invalid_decimal: {
+        en: "Invalid decimal",
+        es: "Decimal inválido",
+    },
+    invalid_time: {
+        en: "Invalid time",
+        es: "Tiempo inválido",
+    },
+    invalid_money: {
+        en: "Invalid money",
+        es: "Dinero inválido",
+    },
+    invalid_unit_meters: {
+        en: "Make sure anwser is in meters",
+        es: "Asegúrate de que la respuesta esté en metros",
+    },
+    invalid_unit_centimeters: {
+        en: "Make sure anwser is in centimeters",
+        es: "Asegúrate de que la respuesta esté en centímetros",
+    },
+    invalid_unit_liters: {
+        en: "Make sure anwser is in liters",
+        es: "Asegúrate de que la respuesta esté en litros",
+    },
+    invalid_unit_milliliters: {
+        en: "Make sure anwser is in milliliters",
+        es: "Asegúrate de que la respuesta esté en mililitros",
+    },
+    invalid_unit_grams: {
+        en: "Make sure anwser is in grams",
+        es: "Asegúrate de que la respuesta esté en gramos",
+    },
+    invalid_unit_kilograms: {
+        en: "Make sure anwser is in kilograms",
+        es: "Asegúrate de que la respuesta esté en kilogramos",
+    },
+      clear: {
         en: "Clear",
         es: "Limpiar"
     }
 
 }
 
-export default translations;
+export default translations

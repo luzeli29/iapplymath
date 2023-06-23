@@ -38,7 +38,7 @@ const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
 
         if(!isValidAnswer) {
             const validationFailMessage = questionFormat.validationFailMessage
-            setAnswerFeedback(getText(validationFailMessage,lang))
+            setAnswerFeedback(validationFailMessage)
             return
         }
 
@@ -60,7 +60,7 @@ const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
         return (
         <div className="input-group mb-3">
             <input maxLength='15' onChange={e => setUserAnswer(e.target.value)} className="form-control text-center" value={userAnswer} id="userAnswer" type="text" name="userAnswer"/>
-            <button disabled={userAnswer == ''} className='btn btn-outline-primary' type="submit" name="action" value="submit_answer">{getText('submit',lang)}</button>
+            <button disabled={userAnswer == ''} className='btn btn-success' type="submit" name="action" value="submit_answer">{getText('submit',lang)}</button>
         </div>
         )
     }
@@ -81,7 +81,7 @@ const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
                 </div>
                 <div className='row'>
                     {answerFeedback && 
-                    <label className="col text-center red" htmlFor="userAnswer">{answerFeedback}</label>
+                    <label className="col text-center red" htmlFor="userAnswer">{getText(answerFeedback,lang)}</label>
                     }
                 </div>
             </form>
