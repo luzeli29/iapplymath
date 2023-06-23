@@ -55,12 +55,15 @@ export default function QuestionBox({ questionData, incorrectNum }) {
         <div className="">
           <Popup
             icon={
-              <Image
-                width={50}
-                height={50}
-                src="/img/other/image.png"
-                alt="calculator"
-              />
+            <div className="col-lg">
+                <Image
+                  width={50}
+                  height={50}
+                  src="/img/other/image.png"
+                  alt="calculator"
+                />
+                <p>Click to open the image</p>
+            </div>
             }
             content={
               <Image
