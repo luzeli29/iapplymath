@@ -6,6 +6,23 @@ function generateLevel1BQuestions(dishes,order,randomInt){
     let generatedQuestions = [];
     // let random = Math.floor(Math.random() * dishes.length);
     let random = randomInt(0, dishes.length);
+
+    const plurals ={
+        "mainDish":{
+            en:"main dishes",
+            es:"platos principales",
+        },
+        "drink":{
+            en:"drinks",
+            es:"bebidas",
+        },
+        "dessert":{
+            en:"desserts",
+            es:"postres",
+        },
+    }
+
+
     let answer = 0;
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
@@ -18,6 +35,9 @@ function generateLevel1BQuestions(dishes,order,randomInt){
     let randomDishNameEnglish = translations[randomDishName].en
     let randomDishNameSpanish = translations[randomDishName].es
 
+    let pluralRandomDishNameEnglish = plurals[randomDishName].en
+    let pluralRandomDishNameSpanish = plurals[randomDishName].es
+
     // get the price of said dish
     let priceOfDish = order[randomDishName].price;
 
@@ -27,11 +47,17 @@ function generateLevel1BQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena ordered the same ${randomDishNameEnglish} as you. What is the total cost of the two ${randomDishNameEnglish}?`,
-            es:`Elena ordenó el mismo ${randomDishNameSpanish} que tú. ¿Cuál es el costo total de los dos ${randomDishNameSpanish}?`,
+            en:`Elena ordered the same ${randomDishNameEnglish} as you. What is the total cost of the two ${pluralRandomDishNameEnglish}?`,
+            es:`Elena ordenó el mismo ${randomDishNameSpanish} que tú. ¿Cuál es el costo total de los dos ${pluralRandomDishNameSpanish}?`,
         },
         answer,
-        [],
+        [{
+            en:  randomDishNameEnglish+ " + " + randomDishNameEnglish+ " = ???  Or find the answer with: " + randomDishNameEnglish+ " x  2 = ???",
+            es:  randomDishNameSpanish+ " + " + randomDishNameSpanish + " = ???  O encuenta la respuesta con " + randomDishNameSpanish+ " x  2 = ???",
+        },{
+            en: randomDishNameEnglish+ " + " + randomDishNameEnglish+ " = " + priceOfDish*2,
+            es:  randomDishNameSpanish+ " + " + randomDishNameSpanish + " = " + priceOfDish*2,
+        }],
         "wholeNumber",
     ))
 
@@ -55,7 +81,19 @@ function generateLevel1BQuestions(dishes,order,randomInt){
             es:`Elena quiere ordenar comida para llevar a su familia. Ella ordenó el mismo plato principal y postre que tú para su padre, madre y hermano. ¿Cuánto costará esta comida a Elena?`,
         },
         answer,
-        [],
+        [{
+            en:  "Step 1. Sum of main dish = " + priceOfMainDish + "+" + priceOfMainDish +  "+" + priceOfMainDish ,
+            es: "Paso 1. Suma de los platos fuertes = " + priceOfMainDish + "+" + priceOfMainDish +  "+" + priceOfMainDish ,
+        },{
+            en: "Step 2. Sum of desserts= " + priceOfDessert + "+" + priceOfDessert +  "+" + priceOfDessert ,
+            es: "Paso 2. Suma de los postres= " + priceOfDessert + "+" + priceOfDessert +  "+" + priceOfDessert ,
+        },{
+            en: "Step 3. Total Cost = " + priceOfMainDish*3 + "+" + priceOfDessert*3 ,
+            es: "Paso 3. Costo total= " + priceOfMainDish*3 + "+" + priceOfDessert*3 ,
+        },{
+            en:  priceOfMainDish*3 + "+" + priceOfDessert*3 + " = " + (priceOfMainDish*3 + priceOfDessert*3) ,
+            es:  priceOfMainDish*3 + "+" + priceOfDessert*3 + " = " + (priceOfMainDish*3 + priceOfDessert*3) ,
+        }],
         "wholeNumber",
     ))
 
@@ -69,6 +107,7 @@ function generateLevel1BQuestions(dishes,order,randomInt){
         priceOfDessert = order["dessert"].price;
 
         // answer
+        let answerbef = answer
         answer = answer - (parseInt(priceOfDessert) * 2);
 
         // create question
@@ -78,7 +117,19 @@ function generateLevel1BQuestions(dishes,order,randomInt){
                 es:`La madre y el padre de Elena no querían un postre. ¿Cuál es el costo total del pedido de Elena después de quitar los postres de sus padres?`,
             },
             answer,
-            [],
+            [{
+                en:  "New cost = initial cost -  (" + priceOfDessert + " x 2) = ???  Or: New cost = initial cost - ( " + priceOfDessert + " + " + priceOfDessert + ") = ???" ,
+                es: "Costo nuevo = costo inicial - (" + priceOfDessert + " x 2) = ???  O puedes hacer: costo nuevo = costo inicial - ( " + priceOfDessert + " + " + priceOfDessert + ") = ???" ,
+            },{
+                en:  "New cost = " +answerbef +" - ("+ priceOfDessert + " x 2) = ???  Or: New cost = "+answerbef+ " - ( " + priceOfDessert + " + " + priceOfDessert + ") = ???" ,
+                es: "Costo nuevo = " +answerbef+ " - (" + priceOfDessert + " x 2) = ???  O puedes hacer: costo nuevo = "+answerbef+ " - ( " + priceOfDessert + " + " + priceOfDessert + ") = ???" ,
+            },{
+                en: "New cost = " +answerbef +" - ("+ (priceOfDessert*2) + ") = ??? ",
+                es: "Costo nuevo = " +answerbef +" - ("+ (priceOfDessert*2) + ") = ??? ",
+            },{
+                en: answerbef +" - ("+ (priceOfDessert*2) + ") = " + (answerbef-(priceOfDessert*2)),
+                es: answerbef +" - ("+ (priceOfDessert*2) + ") = " + (answerbef-(priceOfDessert*2)),
+            }],
             "wholeNumber",
         ))
 
@@ -290,7 +341,7 @@ function generateLevel2BQuestions(dishes,order,randomInt){
     answer = 900 / x;
 
     // round answer to 2 decimal places
-    answer = answer.toFixed(2);
+    answer = parseFloat(answer.toFixed(2));
 
 
     // create question
@@ -335,7 +386,7 @@ function generateLevel2BQuestions(dishes,order,randomInt){
 
     // answer
     answer = sum / count;
-
+    answer = parseFloat( answer.toFixed(2))
     // create question
     generatedQuestions.push(createGameQuestion(
         {
@@ -374,7 +425,7 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
     answer = x / 100;
 
     // tp 2 decimal places
-    answer = answer.toFixed(2);
+    answer = parseFloat(answer.toFixed(2));
 
     // create question
     generatedQuestions.push(createGameQuestion(
@@ -462,7 +513,7 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
     number1 = number1.toFixed(3);
 
     // answer
-    answer = (number1*1.00).toFixed(2);
+    answer = parseFloat((number1*1.00).toFixed(2));
 
     // create question
     generatedQuestions.push(createGameQuestion(

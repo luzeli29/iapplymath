@@ -4,7 +4,7 @@ import style from '@styles/game_layout.module.css'
 import translations from '@translations';
 import QuestionFormats from '@utils/game/quiz/questionGeneration/questionFormats'
 import DevErr from '@utils/debug/devErr';
-import successAudio from '@public/sound/success.mp3'
+import successAudio from '@public/sound/cheering.mp3'
 import { useSelector } from 'react-redux';
 const ContinueAnswerBox = ({questionFormat, lang,handleSubmitAnswer}) => {
 

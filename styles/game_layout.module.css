@@ -43,7 +43,7 @@
 
 .pet {
     position:relative;
-    margin-left: 150px;
+    margin-left: 20px;
     text-align: center;
     z-index: 2;
 }
@@ -64,11 +64,17 @@
 .ayu_btn:hover{
     transform: translateY(-10px);
 }
+.ayu_breathe{
+    margin-left: 150px;
+    margin-bottom: 50px;
+}
+
 
 .breathe{
     color: #7B6DBC;
-    margin-top: 60px;
-    margin-inline-end: 100px;
+    margin-top: 35px;
+    margin-inline-end: 0px;
+    margin-inline-start: 50px ;
     font-size: larger;
     z-index: 5;
     background-color: white;
@@ -78,13 +84,22 @@
     color: #F6CA64;
 }
 
+
 .ayu_image_container {
-    margin: auto;
-    width: 40%;
-    height: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 290px;
+    height: 130px;
     position: relative;
-    margin-right: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 20px;
     text-align: center;
+    margin-inline-end: 100px;
+    margin-inline-start: 0px;
+    z-index: 2;
+
 }
 
 .ayu_speech_bubble {
@@ -95,12 +110,14 @@
     border-radius: 20px;
     position: relative;
     margin-left: 150px;
+    z-index: 2;
 }
 
 .ayu_speech_bubble_container {
     margin: auto;
     width: 90%;
     height: 55%;
+    z-index: 2;
 }
 
 .speech_bubble_text{
@@ -117,6 +134,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
 }
 
 .num_pad_container {

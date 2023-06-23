@@ -1,23 +1,29 @@
-import ErrorScreen from "@comps/screens/errorScreen"
 import Loading from "@comps/screens/loading"
 import { useUserContext } from "@hooks/siteContext/useUserContext"
-import useUser from "@hooks/siteContext/useUser"
 import { useRouter } from "next/router"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import translations from "@translations";
 
-export default function Login() {
+const Login = () => {
   const {user, settings, loading, error,login,logout} = useUserContext()
   const [feedbackText, setFeedbackText] = useState(user.error)
-  const [onRoute, setOnRoute] = useState()
   const router = useRouter()
-    const lang = settings.lang
+  const lang = settings.lang
 
   if(loading) return <Loading/>
-  if(onRoute) return (<Loading/>)
+  
+  const handleLoggedIn = () => {
+      
+    router.push('/game')
 
+    return (
+      <Loading lang={lang}/>
+    )
+  }
 
-  async function handleSubmit(event) {
+  const handleLoggedOut = () => {
+
+    const handleSubmit = async (event) => {
       event.preventDefault()
       let submitType,inputUsername
       try {
@@ -26,7 +32,7 @@ export default function Login() {
       } catch (e) {
         setFeedbackText("Error getting username from form. Please check to see if your browser is up to date.")
       }
-
+  
       if(!inputUsername) {
         setFeedbackText("Please input a username.")
         return
@@ -46,39 +52,10 @@ export default function Login() {
             loggedIn = await login(inputUsername)
           }
       }
-
-      if(loggedIn && submitType == 'create_user'){
-        router.push("/intro")
-        setOnRoute(true)
-      } else if (loggedIn) {
-        if(!user.avatarId) {
-          router.push("/user/avatar/select")
-          setOnRoute(true)
-        } else if(!user.petId) {
-          router.push("/user/petSelect")
-          setOnRoute(true)
-        } else {
-          router.push("/game")
-          setOnRoute(true)
-        }
-      }
       setFeedbackText(user.error)
-  }
+    }
 
-  if(user.data && !loading && !error) {
     return (
-      <div className="container">
-        <div className="row w-75 mx-auto pt-5 text-center">
-          <div className="col-12">
-            <p className="">You are logged in.</p>
-            <button className="basic_button" onClick={() => logout()}>Logout</button>
-          </div>
-        </div>
-      </div>
-    )
-  }
-  
-  return (
       <div className="container">
 
         <form className="" autoComplete="off" onSubmit={handleSubmit}>
@@ -107,3 +84,18 @@ export default function Login() {
       </div>
     )
   }
+
+  const render = () => {
+    if(user.loggedIn) {
+      return handleLoggedIn()
+    } else {
+      return handleLoggedOut()
+    }
+  }
+
+  return (
+    render()
+  )
+}
+
+export default Login

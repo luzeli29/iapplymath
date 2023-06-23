@@ -76,12 +76,12 @@ function generateLevel1DQuestions(dishes,order,randomInt){
         randomNumberMinutes = "0" + randomNumberMinutes;
     }
     // answer
-    answer = `${randomTimeHour}:${randomNumberMinutes}pm`;
+    answer = `${randomTimeHour}:${randomNumberMinutes}`;
     
     // hint
     let hint = {
-        en: "Write your answer in the format HH:MMpm. For example, 13:30pm.",
-        es: "Escribe tu respuesta en el formato HH:MMpm. Por ejemplo, 13:30pm.",
+        en: "Write your answer in the format HH:MM. For example, 13:30.",
+        es: "Escribe tu respuesta en el formato HH:MM. Por ejemplo, 13:30.",
     }
 
     // create question
@@ -91,7 +91,14 @@ function generateLevel1DQuestions(dishes,order,randomInt){
             es:`Tú y Elena llegan al restaurante a las ${randomTimeHour}pm. Si les toma ${randomNumberMinutes} minutos ordenar, ¿a qué hora harán el pedido?`,
         },
         answer,
-        [hint],
+        [{
+            en:  "Add minutes to the hour when you arrive at the restaurant. If you arrive at 2 PM and it takes you 12 minutes to order, you will place the order at 2:00 PM + 12 minutes which is 2:12 PM." ,
+            es: "Agregue minutos a la hora cuando llegue al restaurante. Si llega a las 14:00 y tarda 12 minutos en hacer el pedido, hará el pedido a las 14:00 + 12 minutos, que son las 14:12 PM.",
+        },{
+            en: "Write your answer in the format HH:MM. For example, 13:30.",
+            es: "Escribe tu respuesta en el formato HH:MM. Por ejemplo, 13:30.",
+        
+        }],
         "time",
     ))
 
@@ -116,12 +123,12 @@ function generateLevel1DQuestions(dishes,order,randomInt){
 
 
     // answer
-    answer = `${randomTimeHour}:${randomNumberMinutes}pm`;
+    answer = `${randomTimeHour}:${randomNumberMinutes}`;
     
     // hint
     hint = {
-        en: "Write your answer in the format HH:MMpm. For example, 13:30pm.",
-        es: "Escribe tu respuesta en el formato HH:MMpm. Por ejemplo, 13:30pm.",
+        en: "Write your answer in the format HH:MMpm. For example, 13:30.",
+        es: "Escribe tu respuesta en el formato HH:MMpm. Por ejemplo, 13:30.",
     }
 
     // create question
@@ -131,7 +138,14 @@ function generateLevel1DQuestions(dishes,order,randomInt){
             es:`Si tú y Elena llegaron al restaurante a las ${randomTimeHour}pm y se tardaron ${randomNumberMinutes} minutos en comer y pagar, ¿a qué hora saldrán del restaurante?`,
         },
         answer,
-        [hint],
+        [{
+            en:  "Add minutes to the hour when you arrive at the restaurant. If you arrive at 2 PM and it takes you 12 minutes to eat and pay, you will leave at 2:00 PM + 12 minutes which is 2:12 PM." ,
+            es: "Agregue minutos a la hora cuando llegue al restaurante. Si llega a las 14:00 y tarda 12 minutos en hacer comer y pagar, saldrán del restaurante a las 14:00 PM + 12 minutos, que son las 14:12 PM.",
+        },{
+            en: "Write your answer in the format HH:MM. For example, 13:30.",
+            es: "Escribe tu respuesta en el formato HH:MM. Por ejemplo, 13:30.",
+        
+        }],
         "time",
     ))
     
@@ -163,12 +177,12 @@ function generateLevel1DQuestions(dishes,order,randomInt){
     }
 
     // answer
-    answer = `${randomTimeHour}:${minutes}pm`;
+    answer = `${randomTimeHour}:${minutes}`;
     
     // hint
     hint = {
-        en: "Write your answer in the format HH:MMpm. For example, 13:30pm.",
-        es: "Escribe tu respuesta en el formato HH:MMpm. Por ejemplo, 13:30pm.",
+        en: "Write your answer in the format HH:MMpm. For example, 13:30.",
+        es: "Escribe tu respuesta en el formato HH:MMpm. Por ejemplo, 13:30.",
     }
 
     // create question
@@ -178,7 +192,17 @@ function generateLevel1DQuestions(dishes,order,randomInt){
             es:`El mesero les dice a ti y a Elena que su comida estará lista en ${foodReadyTime} minutos. Si su orden tardó ${foodOrderTime} minutos y llegaron al restaurante a las ${randomTimeHour}pm, ¿a qué hora recibieron su comida?`,
         },
         answer,
-        [hint],
+        [{
+            en:  "Step 1. Total Time = Food Ready Time + Order Time",
+            es: "Paso 1. Tiempo total = Tiempo de comida lista + Tiempo de pedido",
+        },{
+            en: "Step 2. Add total time to the hour when you arrived at restaurant to calculate what time it is when you receive your order",
+            es: "Paso 2. Sume el tiempo total a la hora en que llegó al restaurante para calcular qué hora es cuando reciben su pedido",
+        },{
+            en: "Write your answer in the format HH:MM. For example, 13:30.",
+            es: "Escribe tu respuesta en el formato HH:MM. Por ejemplo, 13:30.",
+        
+        }],
         "time",
         ))
 
@@ -245,7 +269,8 @@ let answer = "";
     answer =parseFloat( 1000 / x);
 
     // fix answer to 2 decimal place
-    answer = answer.toFixed(2);
+    answer =parseFloat(answer.toFixed(2));
+
 
     // generate question
     generatedQuestions.push(createGameQuestion(
@@ -403,7 +428,7 @@ let answer = "";
         if(minutes < 10) {
             minutes = "0" + minutes;
         }
-        answer = hour + ":" + minutes + "pm";
+        answer = hour + ":" + minutes;
     }
     else {
         hour = hour + 1;
@@ -412,19 +437,19 @@ let answer = "";
         if(minutes < 10) {
             minutes = "0" + minutes;
         }
-        answer = hour + ":" + minutes + "pm";
+        answer = hour + ":" + minutes;
     }
 
     generatedQuestions.push(createGameQuestion(
         {
-            en:`If you and Elena arrived at the restaurant at ${x}PM and spent ${y} minutes to eat and pay, at what time would you leave the restaurant? Hint: please type your answer in time format (i.e., 13:09pm).`,
-            es:`Si tú y Elena llegaron al restaurante a las ${x}PM y pasaron ${y} minutos para comer y pagar, ¿a qué hora saldrían del restaurante? Sugerencia: escriba su respuesta en formato de hora (es decir, 13:09pm).`,
+            en:`If you and Elena arrived at the restaurant at ${x}PM and spent ${y} minutes to eat and pay, at what time would you leave the restaurant?`,
+            es:`Si tú y Elena llegaron al restaurante a las ${x}PM y pasaron ${y} minutos para comer y pagar, ¿a qué hora saldrían del restaurante?`,
         },
         answer,
         [
             {
-                en: `Answer using the unit "hours". example answer: 1:09PM`,
-                es: `Responde usando la unidad "horas". ejemplo de respuesta: 1:09PM`,
+                en: `Answer using the unit "hours". example answer: 13:09`,
+                es: `Responde usando la unidad "horas". ejemplo de respuesta: 13:09`,
             }
         ],
         "time",
