@@ -112,3 +112,26 @@
     text-align: center;
 }
 
+
+/* Mandala art */
+
+.mandala_container {
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+.mandala_items {
+    width: 20%;
+    height: 100%;
+    overflow: scroll;
+    margin-top: 40px;
+}
+.item {
+    width: 100%;
+}
