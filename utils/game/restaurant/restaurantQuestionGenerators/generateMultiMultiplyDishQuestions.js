@@ -618,7 +618,10 @@ function generateLevel3CQuestions(dishes,order,randomInt){
             es:`Si tu total cuesta $100 y tienes ${x} amigos contigo, calcula cuánto pagaría cada persona si dividieras la cuenta.`,
         },
         answer,
-        [],
+        [{
+            en: "Cost = 100 ÷ " + x,
+            es: "Costo = 100 ÷ " + x,
+        }],
         "decimal",
     ))
 
@@ -642,7 +645,10 @@ function generateLevel3CQuestions(dishes,order,randomInt){
             es:`Si te comes la mitad de tu plato principal, ¿cuánto costó esa parte de tu plato principal?`,
         },
         answer,
-        [],
+        [{
+            en: "(Cost of main dish) x 0.5" ,
+            es: "(Costo del plato fuerte) x 0.5" ,
+        }],
         "decimal",
     ))
 
@@ -667,7 +673,10 @@ function generateLevel3CQuestions(dishes,order,randomInt){
             es:`Si te comes un cuarto de tu plato principal, ¿cuánto costó esa parte de tu plato principal?`,
         },
         answer,
-        [],
+        [{
+            en: "(Cost of main dish) x 0.25" ,
+            es: "(Costo del plato fuerte) x 0.25" ,
+        }],
         "decimal",
     ))
 
