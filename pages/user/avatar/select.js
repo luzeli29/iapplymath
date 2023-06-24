@@ -36,7 +36,7 @@ export default function AvatarSelect() {
 
         user.setAvatarId(selectedAvatarId)
 
-        router.push('/user/petSelect')
+        router.push('/game/map')
     }
 
     const AvatarButton = ({index}) => {

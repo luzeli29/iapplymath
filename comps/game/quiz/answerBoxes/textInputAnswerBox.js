@@ -38,7 +38,7 @@ const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
 
         if(!isValidAnswer) {
             const validationFailMessage = questionFormat.validationFailMessage
-            setAnswerFeedback(getText(validationFailMessage,lang))
+            setAnswerFeedback(validationFailMessage)
             return
         }
 
@@ -81,7 +81,7 @@ const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
                 </div>
                 <div className='row'>
                     {answerFeedback && 
-                    <label className="col text-center red" htmlFor="userAnswer">{answerFeedback}</label>
+                    <label className="col text-center red" htmlFor="userAnswer">{getText(answerFeedback,lang)}</label>
                     }
                 </div>
             </form>

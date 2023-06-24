@@ -6,6 +6,23 @@ function generateLevel1BQuestions(dishes,order,randomInt){
     let generatedQuestions = [];
     // let random = Math.floor(Math.random() * dishes.length);
     let random = randomInt(0, dishes.length);
+
+    const plurals ={
+        "mainDish":{
+            en:"main dishes",
+            es:"platos principales",
+        },
+        "drink":{
+            en:"drinks",
+            es:"bebidas",
+        },
+        "dessert":{
+            en:"desserts",
+            es:"postres",
+        },
+    }
+
+
     let answer = 0;
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
@@ -18,6 +35,9 @@ function generateLevel1BQuestions(dishes,order,randomInt){
     let randomDishNameEnglish = translations[randomDishName].en
     let randomDishNameSpanish = translations[randomDishName].es
 
+    let pluralRandomDishNameEnglish = plurals[randomDishName].en
+    let pluralRandomDishNameSpanish = plurals[randomDishName].es
+
     // get the price of said dish
     let priceOfDish = order[randomDishName].price;
 
@@ -27,11 +47,17 @@ function generateLevel1BQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena ordered the same ${randomDishNameEnglish} as you. What is the total cost of the two ${randomDishNameEnglish}?`,
-            es:`Elena ordenó el mismo ${randomDishNameSpanish} que tú. ¿Cuál es el costo total de los dos ${randomDishNameSpanish}?`,
+            en:`Elena ordered the same ${randomDishNameEnglish} as you. What is the total cost of the two ${pluralRandomDishNameEnglish}?`,
+            es:`Elena ordenó el mismo ${randomDishNameSpanish} que tú. ¿Cuál es el costo total de los dos ${pluralRandomDishNameSpanish}?`,
         },
         answer,
-        [],
+        [{
+            en:  randomDishNameEnglish+ " + " + randomDishNameEnglish+ " = ???  Or find the answer with: " + randomDishNameEnglish+ " x  2 = ???",
+            es:  randomDishNameSpanish+ " + " + randomDishNameSpanish + " = ???  O encuenta la respuesta con " + randomDishNameSpanish+ " x  2 = ???",
+        },{
+            en: randomDishNameEnglish+ " + " + randomDishNameEnglish+ " = " + priceOfDish*2,
+            es:  randomDishNameSpanish+ " + " + randomDishNameSpanish + " = " + priceOfDish*2,
+        }],
         "wholeNumber",
     ))
 
@@ -55,7 +81,19 @@ function generateLevel1BQuestions(dishes,order,randomInt){
             es:`Elena quiere ordenar comida para llevar a su familia. Ella ordenó el mismo plato principal y postre que tú para su padre, madre y hermano. ¿Cuánto costará esta comida a Elena?`,
         },
         answer,
-        [],
+        [{
+            en:  "Step 1. Sum of main dish = " + priceOfMainDish + "+" + priceOfMainDish +  "+" + priceOfMainDish ,
+            es: "Paso 1. Suma de los platos fuertes = " + priceOfMainDish + "+" + priceOfMainDish +  "+" + priceOfMainDish ,
+        },{
+            en: "Step 2. Sum of desserts= " + priceOfDessert + "+" + priceOfDessert +  "+" + priceOfDessert ,
+            es: "Paso 2. Suma de los postres= " + priceOfDessert + "+" + priceOfDessert +  "+" + priceOfDessert ,
+        },{
+            en: "Step 3. Total Cost = " + priceOfMainDish*3 + "+" + priceOfDessert*3 ,
+            es: "Paso 3. Costo total= " + priceOfMainDish*3 + "+" + priceOfDessert*3 ,
+        },{
+            en:  priceOfMainDish*3 + "+" + priceOfDessert*3 + " = " + (priceOfMainDish*3 + priceOfDessert*3) ,
+            es:  priceOfMainDish*3 + "+" + priceOfDessert*3 + " = " + (priceOfMainDish*3 + priceOfDessert*3) ,
+        }],
         "wholeNumber",
     ))
 
@@ -69,6 +107,7 @@ function generateLevel1BQuestions(dishes,order,randomInt){
         priceOfDessert = order["dessert"].price;
 
         // answer
+        let answerbef = answer
         answer = answer - (parseInt(priceOfDessert) * 2);
 
         // create question
@@ -78,7 +117,19 @@ function generateLevel1BQuestions(dishes,order,randomInt){
                 es:`La madre y el padre de Elena no querían un postre. ¿Cuál es el costo total del pedido de Elena después de quitar los postres de sus padres?`,
             },
             answer,
-            [],
+            [{
+                en:  "New cost = initial cost -  (" + priceOfDessert + " x 2) = ???  Or: New cost = initial cost - ( " + priceOfDessert + " + " + priceOfDessert + ") = ???" ,
+                es: "Costo nuevo = costo inicial - (" + priceOfDessert + " x 2) = ???  O puedes hacer: costo nuevo = costo inicial - ( " + priceOfDessert + " + " + priceOfDessert + ") = ???" ,
+            },{
+                en:  "New cost = " +answerbef +" - ("+ priceOfDessert + " x 2) = ???  Or: New cost = "+answerbef+ " - ( " + priceOfDessert + " + " + priceOfDessert + ") = ???" ,
+                es: "Costo nuevo = " +answerbef+ " - (" + priceOfDessert + " x 2) = ???  O puedes hacer: costo nuevo = "+answerbef+ " - ( " + priceOfDessert + " + " + priceOfDessert + ") = ???" ,
+            },{
+                en: "New cost = " +answerbef +" - ("+ (priceOfDessert*2) + ") = ??? ",
+                es: "Costo nuevo = " +answerbef +" - ("+ (priceOfDessert*2) + ") = ??? ",
+            },{
+                en: answerbef +" - ("+ (priceOfDessert*2) + ") = " + (answerbef-(priceOfDessert*2)),
+                es: answerbef +" - ("+ (priceOfDessert*2) + ") = " + (answerbef-(priceOfDessert*2)),
+            }],
             "wholeNumber",
         ))
 
@@ -107,7 +158,10 @@ function generateLevel2BQuestions(dishes,order,randomInt){
             es:`El restaurante recibe dos mil trescientas cincuenta libras (2,350 lbs.) de arroz y frijoles por mes para abastecer la cocina. El próximo mes, el restaurante aumentará su suministro de arroz y frijoles en 10 veces. ¿Cuál es el suministro del próximo mes?`,
         },
         answer,
-        [],
+        [{
+            en:  "Next Month Supply = 2350 " + " x 10  ", 
+            es:  "Suministro del siguiente mes = 2350 " + " x 10  "
+        }],
         "wholeNumber",
     ))
 
@@ -127,7 +181,10 @@ function generateLevel2BQuestions(dishes,order,randomInt){
             es:`Si el restaurante ordena mil doscientos quince kilogramos de tomates y mil quince kilogramos de harina, ¿cuál es la cantidad más grande? Escriba el número de cantidad correcto en el cuadro de respuesta.`,
         },
         answer,
-        [],
+        [{
+            en:  "1,215 kg of tomatoes and 1,015 kg of flour" , 
+            es:  "1,215 kg de tomates y 1,015 kg de harina",
+        }],
         "wholeNumber",
     ))
 
@@ -155,7 +212,13 @@ function generateLevel2BQuestions(dishes,order,randomInt){
             es:`El propietario del restaurante realizó un nuevo pedido de ${x} libras de naranjas y ${y} libras de papas. ¿Cuántas libras totales de naranjas y papas hay en este pedido?`,
         },
         answer,
-        [],
+        [{
+            en:  "Total pounds = " + "ponds of oranges "  + " + " + "pounds of potatoes" , 
+            es:  "Libras totales = " + "libras de naranjas"  + " + " + "libras de papas" ,
+        },{
+            en:  "Total pounds = " + x  + " + " + y , 
+            es:   "Libras totales = " + x  + " + " + y ,
+        }],
         "wholeNumber",
     ))
 
@@ -183,7 +246,13 @@ function generateLevel2BQuestions(dishes,order,randomInt){
             es:`El chef notó que le quedaban ${x} libras de pollo al final de la semana. Si el suministro inicial de pollo fue de ${y} libras, ¿cuántas libras de pollo debe pedir el chef para no tener pollo sobrante la próxima semana?`,
         },
         answer,
-        [],
+        [{
+            en:  "New supply = " + "initial supply "  + " - " + "left over chicken" , 
+            es:  "Suministro nuevo = " + "suministro inicial"  + " - " + "sobras de pollo" ,
+        },{
+            en:  "New supply = " + y  + " - " + x , 
+            es:  "Suministro nuevo = " + y  + " - " + x ,
+        }],
         "wholeNumber",
     ))
 
@@ -215,7 +284,16 @@ function generateLevel2BQuestions(dishes,order,randomInt){
             es:`Al final del mes, el propietario del restaurante calcula los ingresos de ese mes respectivo. Este mes, las ventas de comida del restaurante fueron iguales a ${x} dólares, las ventas de postres fueron ${y} dólares y las ventas de bebidas fueron ${z} dólares. ¿Cuáles son los ingresos totales del restaurante este mes?`,
         },
         answer,
-        [],
+        [{
+            en:  "Total revenue = " + "(food sales) "  + " + " + " (drink sales)" + " + " + " (dessert sales)" , 
+            es:  "Ingresos totales = " + "(venta de comida) "  + " + " + " (venta de bebidas)" + " + " + " (ventas de postre)" , 
+        },{
+            en:  "Total revenue = " + x  + " + " + y + " + " + z , 
+            es:  "Ingresos totales = " + x  + " + " + y + " + " + y , 
+        },{
+            en:  "Total revenue = " + (x+y+z), 
+            es:  "Ingresos totales = "+ (x+y+z), 
+        }],
         "wholeNumber",
     ))
 
@@ -243,7 +321,16 @@ function generateLevel2BQuestions(dishes,order,randomInt){
             es:`Ayer el restaurante recibió ${x} pedidos de comida. Si el recuento diario de pedidos permanece igual, ¿cuántos pedidos totales tendrá el restaurante después de ${y} días?`,
         },
         answer,
-        [],
+        [{
+            en:  "Total orders "  + "= " + " (initial orders)" + " x " + " (day count)" , 
+            es:  "Ordenes totales = " + "(venta de comida) "  + " x " + " (cantidad de días)" , 
+        },{
+            en:   "Total orders  = " + x + " x " + y , 
+            es:  "Ordenes totales = " + x  + " x " + y , 
+        },{
+            en:  "Total orders = " + (x*y), 
+            es:  "Ordenes totales = "+ (x*y), 
+        }],
         "wholeNumber",
     ))
 
@@ -271,7 +358,16 @@ function generateLevel2BQuestions(dishes,order,randomInt){
             es:`El chef suele preparar ${x} platos de entrada por día. ¿Cuántos platos de entrada preparará el chef después de ${y} días?`,
         },
         answer,
-        [],
+        [{
+            en:  "Total dishes "  + "= " + " (daily dishes)" + " x " + " (day count)" , 
+            es:  "Platos totales = " + "(platos diarios) "  + " x " + " (cantidad de días)" , 
+        },{
+            en:   "Total dishes  = " + x + " x " + y , 
+            es:  "Platos totales = " + x  + " x " + y , 
+        },{
+            en:  "Total dishes = " + (x*y), 
+            es:  "Platos totales = "+ (x*y), 
+        }],
         "wholeNumber",
     ))
 
@@ -290,7 +386,7 @@ function generateLevel2BQuestions(dishes,order,randomInt){
     answer = 900 / x;
 
     // round answer to 2 decimal places
-    answer = answer.toFixed(2);
+    answer = parseFloat(answer.toFixed(2));
 
 
     // create question
@@ -300,12 +396,19 @@ function generateLevel2BQuestions(dishes,order,randomInt){
             es:`Elena notó que el chef está preparando ${x} porciones de arroz. Si el chef tiene un total de 900 gramos de arroz, ¿cuántos gramos de arroz tendrá cada porción? Suponga que el chef divide el arroz por igual para cada porción.`,
         },
         answer,
-        [
-        {
+        [{
+            en:  "Grams per serving "  + "= " + " (total grams of rice)" + " ÷ " + " (number of serving)" , 
+            es:  "Gramos por porción = " + "(gramos de arroz totales)) "  + " ÷ " + " (cantidad de porciones)" , 
+        },{
             en:"Use 2 decimal places, e.g. 1.00",
             es:"Use 2 decimal places, e.g. 1.00",
-        }
-        ],
+        },{
+            en:  "Grams per serving "  + "= " + "900" + " ÷ " + x , 
+            es:  "Gramos por porción = " + "900"  + " ÷ " + x , 
+        },{
+            en:  "Grams per serving = " + (900/x), 
+            es:  "Gramos por porción = "+ (900/x), 
+        }],
         "decimal",
     ))
 
@@ -340,10 +443,23 @@ function generateLevel2BQuestions(dishes,order,randomInt){
     generatedQuestions.push(createGameQuestion(
         {
             en:`You and Elena decided to calculate the mean restaurant order value during the dinner period. To find the mean, you need to divide the total sum of all orders by the total number of orders. The dinner orders are included in the table below. What is the mean order value during the dinner period?`,
-            es:`Usted y Elena decidieron calcular el valor medio del pedido del restaurante durante el período de la cena. Para encontrar la media, debe dividir la suma total de todos los pedidos por el número total de pedidos. Los pedidos de cena se incluyen en la tabla a continuación. ¿Cuál es el valor medio del pedido durante el período de la cena?`,
+            es:`Usted y Elena decidieron calcular el valor promedio del pedido del restaurante durante el período de la cena. Para encontrar la media, debe dividir la suma total de todos los pedidos por el número total de pedidos. Los pedidos de cena se incluyen en la tabla a continuación. ¿Cuál es el valor medio del pedido durante el período de la cena?`,
         },
         answer,
-        [],
+        [{
+            en:  "Step 1: Find total order sum = (order 1) + (order 2) + (order 3) + (order 4) + (order 5) + (order 6)",
+            es:  "Paso 1: Encontrar la suma de todas las ordenes = (orden 1) + (orden 2) + (orden 3) + (orden 4) + (orden 5) + (orden 6)",
+        },{
+            en: "Step 2: Find Mean order value = (total order sum)  ÷ (number of orders)",
+            es: "Paso 2: Encontrar el valor promedio = (suma de todas las ordenes)  ÷ (número de ordenes)",
+        },{
+            en: "Mean: " + (sum/count),
+            es: "Promedio: " + (sum/count),
+        },{
+
+            en: "Round to the nearest hundredth, for example 1.00",
+            es: "Redondear a la centésima más cercana, por ejemplo 1,00",
+        }],
         "decimal",
         null,
         "tableLevel2BRestaurant"
@@ -374,7 +490,7 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
     answer = x / 100;
 
     // tp 2 decimal places
-    answer = answer.toFixed(2);
+    answer = parseFloat(answer.toFixed(2));
 
     // create question
     generatedQuestions.push(createGameQuestion(
@@ -383,7 +499,10 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
             es:`Si 20/100 es la cantidad que paga y se representa como .20 en decimales, ¿cómo representaría ${x}/100 de su factura como un decimal?`,
         },
         answer,
-        [],
+        [{
+            en:"Write your answer as a decimal" ,
+            es:"Escribe tu respuesta como un decimal" ,
+        }],
         "decimal",
     ))
 
@@ -436,7 +555,10 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
             es:`Con impuestos, su total final es ${numberStr}. El total final de Elena es ${numberStr2}. ¿Qué número es mayor? ${number1} __ ${number2} `,
         },
         answer,
-        [],
+        [{
+            en: "",
+            es: "",
+        }],
         "inequality",
     ))
     
@@ -462,7 +584,7 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
     number1 = number1.toFixed(3);
 
     // answer
-    answer = (number1*1.00).toFixed(2);
+    answer = parseFloat((number1*1.00).toFixed(2));
 
     // create question
     generatedQuestions.push(createGameQuestion(
@@ -471,7 +593,13 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
             es:`Si su total es $${number1}, ¿cuánto debe pagar si redondea al centésimo más cercano?`,
         },
         answer,
-        [],
+        [{
+            en: "Hint 1: Round using the second digit to the right of the decimal",
+            es: "Pista 1: Redondea usando el segundo dígito a la derecha del decimal",
+        },{
+            en: "Hint 2: Answer has two digits after the decimal" , 
+            es: "Pista 2: la respuesta tiene dos dígitos después del decimal",
+        }],
         "decimal",
     ))
 
@@ -506,8 +634,8 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
         answer,
         [
             {
-                en:"Round to 2 decimal places. eg. 15.00",
-                es:"Redondear a 2 decimales. por ejemplo. 15.00",
+                en: "Total = (times the dish was orded) x (cost of dish)",
+                es:"Total = (veces que se ordeno el plato) x (costo del plato)",
             }
         ],
         "wholeNumber",
@@ -543,8 +671,9 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
         answer,
         [
             {
-                en:"Round to 2 decimal places. eg. 15.00",
-                es:"Redondear a 2 decimales. por ejemplo. 15.00",
+               
+                en: "Total = (times the drink was orded) x (cost of drink)",
+                es:"Total = (veces que se ordeno la bebida) x (costo de la bebida)",
             }
         ],
         "wholeNumber",
@@ -597,7 +726,10 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
             es:`¿Cuál es su total si compra ${x} ${nameOfDish1Es} y ${y} ${nameOfDish2Es}?`,
         },
         answer,
-        [],
+        [{
+            en: "Total = (Cost of " +nameOfDish1En+" x " + x + " ) + (Cost of " + nameOfDish2En + " x " + y + ") ",
+            es: "Total = (Costo de " +nameOfDish1Es+" x " + x + " ) + (Costo de " + nameOfDish2Es + " x " + y + ") ",
+        }],
         "wholeNumber",
     ))
 
@@ -636,7 +768,11 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
             es:`¿Cuál es su total si compra ${x} ${order["mainDish"].es}, ${y} ${order["drink"].es}, y ${z} ${order["dessert"].es}?`,
         },
         answer,
-        [],
+        [{
+            en: "Total = (Cost of " +order["mainDish"].en+" x " + x + " ) + (Cost of " + order["drink"].en + " x " + y + ") + (Cost of " + order["dessert"].en + " x " + z + ") ",
+            es: "Total = (Costo de " +order["mainDish"].es+" x " + x + " ) + (Costo de " + order["drink"].es + " x " + y + ") + (Costo de " + order["dessert"].es + " x " + z + ") ",
+        }
+        ],
         "wholeNumber",
     ))
 

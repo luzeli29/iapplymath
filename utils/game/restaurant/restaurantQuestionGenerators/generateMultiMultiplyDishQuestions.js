@@ -118,7 +118,7 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena would like to taste half of your entrée. How much of your food will you be sharing with her?`,
+            en:`Elena would like to taste half of your main dish. How much of your food will you be sharing with her?`,
             es:`Elena quiere probar la mitad de tu plato principal. ¿Cuánta comida compartirás con ella?`,
         },
         answer,
@@ -163,7 +163,7 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena would like to taste a ${randomFractionNameEnglish} of your entrée. How much of your food will you be sharing with her?`,
+            en:`Elena would like to taste a ${randomFractionNameEnglish} of your main dish. How much of your food will you be sharing with her?`,
             es:`Elena quiere probar un ${randomFractionNameSpanish} de tu plato principal. ¿Cuánta comida compartirás con ella?`,
         },
         answer,
@@ -286,6 +286,7 @@ function generateLevel1CQuestions(dishes,order,randomInt){
 
     // answer
     answer = `${randomNumber}/${randomValue}`;
+    answer = simplifyFraction(randomNumber,randomValue);
 
     // hint
     hint = {
@@ -296,7 +297,7 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`The server divided your entrée dish into ${randomValueStrEn} equal portions. If you eat ${randomNumber} portions, what is the total amount of food you ate?`,
+            en:`The server divided your main dish into ${randomValueStrEn} equal portions. If you eat ${randomNumber} portions, what is the total amount of food you ate?`,
             es:`El mesero dividió tu plato principal en ${randomValueStrEs} porciones iguales. Si tú comes ${randomNumber} porciones, ¿cuánta comida comiste en total?`,
         },
         answer,
@@ -337,11 +338,14 @@ function generateLevel2CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena’s entrée was bigger than she expected, and she only ate ${x} of her food. If you ate ${y} of your food, which quantity is smaller?  x __ y  `,
+            en:`Elena’s main dish was bigger than she expected, and she only ate ${x} of her food. If you ate ${y} of your food, which quantity is smaller?  x __ y  `,
             es:`El plato principal de Elena era más grande de lo que esperaba, y solo comió ${x} de su comida. Si usted comió ${y} de su comida, ¿qué cantidad es menor? x __ y`,
         },
         answer,
-        [],
+        [{
+            en: "Evaluate fractions to determine which quantity is smaller.",
+            es: "Evalua las fracciones para determinar cual es menor",
+        }],
         "inequality",
     ))
 
@@ -379,7 +383,17 @@ function generateLevel2CQuestions(dishes,order,randomInt){
             es:`A Elena le gusta comer ${x} tazas de sopa por día. Ella decidió que comerá sopa todos los días durante los próximos ${y} días. ¿Cuántas tazas de sopa comió en total? simplifica tu respuesta.`,
         },
         answer,
-        [],
+        [{
+            en:" Total cups of soup = (daily cups) x (days)",
+            es:"Total de tazas de sopa = (tazas diarias) x (días)",
+
+        },{
+            en: " Total cups of soup = " + x + " x " + y,
+            es: " Total de tazas de sopa = " + x + " x " + y,
+        },{
+            en: " Total cups of soup = " + answer,
+            es: " Total de tazas de sopa = "  +answer,
+        }],
         "fraction",
     ))
 
@@ -418,7 +432,17 @@ function generateLevel2CQuestions(dishes,order,randomInt){
             es:`Tu mascota bebe ${x} tazas de agua todos los días. ¿Cuánta agua bebe tu mascota después de ${y} días? simplifica tu respuesta.`,
         },
         answer,
-        [],
+        [{
+            en:" Total cups of water = (daily cups) x (days)",
+            es:"Total de tazas de agua= (tazas diarias) x (días)",
+
+        },{
+            en: " Total cups of water = " + x + " x " + y,
+            es: " Total de tazas de agua = " + x + " x " + y,
+        },{
+            en: " Total cups of water = " + answer,
+            es: " Total de tazas de agua = "  +answer,
+        }],
         "fraction",
     ))
 
@@ -438,7 +462,11 @@ function generateLevel2CQuestions(dishes,order,randomInt){
             es:`Elige el símbolo correcto: 7 décimos + 17 centésimos  __  3 décimos + 29 centésimos`,
         },
         answer,
-        [],
+        [{
+            en:"7/10 + 17/100  or 3/10 + 29/100",
+            es:"7/10 + 17/100  ó  3/10 + 29/100",
+
+        }],
         "inequality",
     ))
 
@@ -458,7 +486,11 @@ function generateLevel2CQuestions(dishes,order,randomInt){
             es:`Elige el símbolo correcto: 9 centésimos + 7 décimos  __  79 centésimos + 0 décimos`,
         },
         answer,
-        [],
+        [{
+            en:"9/100 + 7/10  or 79/100 + 0/10",
+            es:"9/100 + 7/10  or 79/100 + 0/10",
+
+        }],
         "inequality",
     ))
 
@@ -478,7 +510,11 @@ function generateLevel2CQuestions(dishes,order,randomInt){
             es:`Elige el símbolo correcto: 0.78  __  0.87`,
         },
         answer,
-        [],
+        [{
+            en:"78/100   or 87/100",
+            es:"78/100  ó 87/100",
+
+        }],
         "inequality",
     ))
 
@@ -498,7 +534,11 @@ function generateLevel2CQuestions(dishes,order,randomInt){
             es:`Elige el símbolo correcto: 0.93  __  0.6`,
         },
         answer,
-        [],
+        [{
+            en:"93/100   or 60/100",
+            es:"93/100  ó 60/100",
+
+        }],
         "inequality",
     ))
 
@@ -518,7 +558,11 @@ function generateLevel2CQuestions(dishes,order,randomInt){
             es:`67 centésimos + 0 décimos __ 7 centésimos + 6 décimos`,
         },
         answer,
-        [],
+        [{
+            en:"67/100 + 0/10  or 7/100 + 6/10",
+            es:"67/100 + 0/10  ó 7/100 + 6/10",
+
+        }],
         "inequality",
     ))
 
@@ -538,7 +582,11 @@ function generateLevel2CQuestions(dishes,order,randomInt){
             es:`1 décimo + 33 centésimos __ 8 décimos + 6 centésimos`,
         },
         answer,
-        [],
+        [{
+            en:"1/10 + 33/100  or 8/10 + 6/100",
+            es:"1/10 + 33/100  ó 8/10 + 6/100",
+
+        }],
         "inequality",
     ))
 
@@ -570,7 +618,10 @@ function generateLevel3CQuestions(dishes,order,randomInt){
             es:`Si tu total cuesta $100 y tienes ${x} amigos contigo, calcula cuánto pagaría cada persona si dividieras la cuenta.`,
         },
         answer,
-        [],
+        [{
+            en: "Cost = 100 ÷ " + x,
+            es: "Costo = 100 ÷ " + x,
+        }],
         "decimal",
     ))
 
@@ -594,7 +645,10 @@ function generateLevel3CQuestions(dishes,order,randomInt){
             es:`Si te comes la mitad de tu plato principal, ¿cuánto costó esa parte de tu plato principal?`,
         },
         answer,
-        [],
+        [{
+            en: "(Cost of main dish) x 0.5" ,
+            es: "(Costo del plato fuerte) x 0.5" ,
+        }],
         "decimal",
     ))
 
@@ -619,7 +673,10 @@ function generateLevel3CQuestions(dishes,order,randomInt){
             es:`Si te comes un cuarto de tu plato principal, ¿cuánto costó esa parte de tu plato principal?`,
         },
         answer,
-        [],
+        [{
+            en: "(Cost of main dish) x 0.25" ,
+            es: "(Costo del plato fuerte) x 0.25" ,
+        }],
         "decimal",
     ))
 

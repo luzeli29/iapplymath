@@ -26,7 +26,7 @@ const AyuDialogContent = ({stage,line}) => {
     const ayuSrc = line.ayuSrc ? line.ayuSrc : stage.ayuSrc
     
     return (
-        <div  style={{width: '375px', height:'40vh', position: 'relative', marginTop: '10vh'}}>
+        <div  style={{width: '250px', height:'250px', position: 'relative', marginTop: '10vh'}}>
             <Image 
                 priority={true}
                 layout={"fill"}
