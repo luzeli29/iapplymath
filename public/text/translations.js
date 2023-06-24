@@ -559,6 +559,10 @@ const translations = {
         en: "Make sure anwser is in kilograms",
         es: "Asegúrate de que la respuesta esté en kilogramos",
     },
+      clear: {
+        en: "Clear",
+        es: "Limpiar"
+    }
 
 }
 
