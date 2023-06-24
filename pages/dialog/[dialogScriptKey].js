@@ -40,9 +40,9 @@ export async function getStaticProps(context){
 
 const DialogScreen = ({user,settings,dialogScript,dialogScriptError}) => {
 
-  const lang = settings.lang
+  const lang = settings?.lang
   const router = useRouter()
-  const avatarId = user.data.avatarId
+  const avatarId = user?.data?.avatarId
   if(!dialogScript) {
     DevErr('No "dialogScript" given, setting as dialog error...')
     dialogScript = dialogScriptError

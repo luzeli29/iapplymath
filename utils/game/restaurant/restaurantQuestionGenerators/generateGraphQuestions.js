@@ -87,11 +87,18 @@ function generateLevel1DQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`You and Elena arrive at the restaurant at ${randomTimeHour}pm. If it takes you both ${randomNumberMinutes} minutes to order, at what time will you place the order?`,
-            es:`Tú y Elena llegan al restaurante a las ${randomTimeHour}pm. Si les toma ${randomNumberMinutes} minutos ordenar, ¿a qué hora harán el pedido?`,
+            en:`You and Elena arrive at the restaurant at ${randomTimeHour}. If it takes you both ${randomNumberMinutes} minutes to order, at what time will you place the order?`,
+            es:`Tú y Elena llegan al restaurante a las ${randomTimeHour}. Si les toma ${randomNumberMinutes} minutos ordenar, ¿a qué hora harán el pedido?`,
         },
         answer,
-        [hint],
+        [{
+            en:  "Add minutes to the hour when you arrive at the restaurant. If you arrive at 2  and it takes you 12 minutes to order, you will place the order at 2:00  + 12 minutes which is 2:12 ." ,
+            es: "Agregue minutos a la hora cuando llegue al restaurante. Si llega a las 14:00 y tarda 12 minutos en hacer el pedido, hará el pedido a las 14:00 + 12 minutos, que son las 14:12 .",
+        },{
+            en: "Write your answer in the format HH:MM. For example, 13:30.",
+            es: "Escribe tu respuesta en el formato HH:MM. Por ejemplo, 13:30.",
+        
+        }],
         "time",
     ))
 
@@ -120,18 +127,25 @@ function generateLevel1DQuestions(dishes,order,randomInt){
     
     // hint
     hint = {
-        en: "Write your answer in the format HH:MMpm. For example, 13:30.",
-        es: "Escribe tu respuesta en el formato HH:MMpm. Por ejemplo, 13:30.",
+        en: "Write your answer in the format HH:MM. For example, 13:30.",
+        es: "Escribe tu respuesta en el formato HH:MM. Por ejemplo, 13:30.",
     }
 
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`If you and Elena arrived at the restaurant at ${randomTimeHour}pm and spent ${randomNumberMinutes} minutes to eat and pay, at what time will you leave the restaurant?`,
-            es:`Si tú y Elena llegaron al restaurante a las ${randomTimeHour}pm y se tardaron ${randomNumberMinutes} minutos en comer y pagar, ¿a qué hora saldrán del restaurante?`,
+            en:`If you and Elena arrived at the restaurant at ${randomTimeHour} and spent ${randomNumberMinutes} minutes to eat and pay, at what time will you leave the restaurant?`,
+            es:`Si tú y Elena llegaron al restaurante a las ${randomTimeHour} y se tardaron ${randomNumberMinutes} minutos en comer y pagar, ¿a qué hora saldrán del restaurante?`,
         },
         answer,
-        [hint],
+        [{
+            en:  "Add minutes to the hour when you arrive at the restaurant. If you arrive at 2  and it takes you 12 minutes to eat and pay, you will leave at 2:00  + 12 minutes which is 2:12." ,
+            es: "Agregue minutos a la hora cuando llegue al restaurante. Si llega a las 14:00 y tarda 12 minutos en hacer comer y pagar, saldrán del restaurante a las 14:00 + 12 minutos, que son las 14:12.",
+        },{
+            en: "Write your answer in the format HH:MM. For example, 13:30.",
+            es: "Escribe tu respuesta en el formato HH:MM. Por ejemplo, 13:30.",
+        
+        }],
         "time",
     ))
     
@@ -167,18 +181,28 @@ function generateLevel1DQuestions(dishes,order,randomInt){
     
     // hint
     hint = {
-        en: "Write your answer in the format HH:MMpm. For example, 13:30.",
-        es: "Escribe tu respuesta en el formato HH:MMpm. Por ejemplo, 13:30.",
+        en: "Write your answer in the format HH:MM. For example, 13:30.",
+        es: "Escribe tu respuesta en el formato HH:MM. Por ejemplo, 13:30.",
     }
 
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`The server tells you and Elena that your food will be ready in ${foodReadyTime} minutes. If your food order took ${foodOrderTime} minutes and you arrived at the restaurant at ${randomTimeHour}pm, at what time was it when you received your food?`,
-            es:`El mesero les dice a ti y a Elena que su comida estará lista en ${foodReadyTime} minutos. Si su orden tardó ${foodOrderTime} minutos y llegaron al restaurante a las ${randomTimeHour}pm, ¿a qué hora recibieron su comida?`,
+            en:`The server tells you and Elena that your food will be ready in ${foodReadyTime} minutes. If your food order took ${foodOrderTime} minutes and you arrived at the restaurant at ${randomTimeHour}, at what time was it when you received your food?`,
+            es:`El mesero les dice a ti y a Elena que su comida estará lista en ${foodReadyTime} minutos. Si su orden tardó ${foodOrderTime} minutos y llegaron al restaurante a las ${randomTimeHour}, ¿a qué hora recibieron su comida?`,
         },
         answer,
-        [hint],
+        [{
+            en:  "Step 1. Total Time = Food Ready Time + Order Time",
+            es: "Paso 1. Tiempo total = Tiempo de comida lista + Tiempo de pedido",
+        },{
+            en: "Step 2. Add total time to the hour when you arrived at restaurant to calculate what time it is when you receive your order",
+            es: "Paso 2. Sume el tiempo total a la hora en que llegó al restaurante para calcular qué hora es cuando reciben su pedido",
+        },{
+            en: "Write your answer in the format HH:MM. For example, 13:30.",
+            es: "Escribe tu respuesta en el formato HH:MM. Por ejemplo, 13:30.",
+        
+        }],
         "time",
         ))
 
@@ -222,12 +246,16 @@ let answer = "";
             es:`El restaurante recibe ${x} kilogramos de arroz fresco todos los días. Si el chef cocinó ${y} kilogramos de arroz hoy, ¿cuánto arroz fresco queda al final del día?`,
         },
         answer+"kg",
-        [
-            {
-                en: `Answer using the unit "kg". example answer: 5kg`,
-                es: `Responde usando la unidad "kg". ejemplo de respuesta: 5kg`,
-            }
-        ],
+        [{
+            en: "Fresh Rice Remaining = (initial fresh rice) - (rice cooked)",
+            es: "Arroz fresco restante = (arroz fresco inicial) - (arroz cocinado)",
+        },{
+            en: "Fresh Rice Remaining = " + x + " - "  + y,
+            es: "Arroz fresco restante = " + x + " - "  + y,
+        },{
+            en: `Answer using the unit "kg". example answer: 5kg`,
+            es: `Responde usando la unidad "kg". ejemplo de respuesta: 5kg`,
+        }],
         "unitKiloGrams",
     ))
     
@@ -245,7 +273,8 @@ let answer = "";
     answer =parseFloat( 1000 / x);
 
     // fix answer to 2 decimal place
-    answer = answer.toFixed(2);
+    answer =parseFloat(answer.toFixed(2));
+
 
     // generate question
     generatedQuestions.push(createGameQuestion(
@@ -254,12 +283,19 @@ let answer = "";
             es:`Elena recibió una nueva botella de agua de sus padres. Su botella puede contener hasta 1,000 mililitros de agua. Si llena su botella usando un recipiente de ${x} mililitros, ¿cuántos recipientes necesitará para llenar completamente su botella?`,
         },
         answer+"ml",
-        [
-            {
-                en: `Answer using the unit "millimiters". example answer: 5.2ml`,
-                es: `Responde usando la unidad "mililitros". ejemplo de respuesta: 5.2ml`,
-            }
-        ],
+        [{
+            en: "Containers required = (bottle capacity) ÷ (container size)",
+            es: "Contenedores requeridos = (capacidad de la botella) ÷ (tamaño del recipiente)",
+        },{
+            en: "Containers required = 1000 " + " ÷ " + x,
+            es: "Contenedores requeridos = 1000 " + " ÷ " + x,
+        },{
+            en: `Answer using the unit "millimiters". example answer: 5.2ml`,
+            es: `Responde usando la unidad "mililitros". ejemplo de respuesta: 5.2ml`,
+        },{
+            en: answer,
+            es: answer,
+        }],
         "unitMilliLiters",
     ))
 
@@ -285,12 +321,13 @@ let answer = "";
             es:`Tu casa está a ${x} kilómetros de distancia del restaurante. Calcula la misma distancia en metros. (Pista: 1 kilómetro = 1,000 metros o 1 metro = 0.001 kilómetros).`,
         },
         answer+"m",
-        [
-            {
-                en: `Answer using the unit "meters". example answer: 5.2m`,
-                es: `Responde usando la unidad "metros". ejemplo de respuesta: 5.2m`,
-            }
-        ],
+        [{
+            en: "Multiply the distance from your house to the restaurant by 1,000 since 1 kilometer equals 1,000 meters.",
+            es: "Multiplica la distancia de tu casa al restaurante por 1.000 ya que 1 kilómetro equivale a 1.000 metros.",
+        },{
+            en: `Answer using the unit "meters". example answer: 5.2m`,
+            es: `Responde usando la unidad "metros". ejemplo de respuesta: 5.2m`,
+        }],
         "unitMeters",
     ))
 
@@ -314,11 +351,16 @@ let answer = "";
             es:`Tu botella puede contener hasta 1.5 litros de líquido. Si llenaste tu botella con agua y bebiste ${x} mililitros, ¿cuántos mililitros de agua quedan en la botella?`,
         },
         answer+"ml",
-        [
-            {
-                en: `Answer using the unit "milliliters". example answer: 5.2ml`,
-                es: `Responde usando la unidad "mililitros". ejemplo de respuesta: 5.2ml`,
-            }
+        [{
+            en: "Step 1: You must first convert initial water from liters to milliliters by multiplying the bottle capacity by 1,000 since 1 liter equals 1,000 milliliters. ",
+            es:  "Paso 1: Primero debes convertir el agua inicial de litros a mililitros multiplicando la capacidad de la botella por 1,000 ya que 1 litro equivale a 1,000 mililitros",
+        },{
+            en: "Step 2: Calculate milliliters of water left in bottle. Water left = Initial water – (water drank)",            
+            es: "Paso 2: Calcular los mililitros de agua que quedan en la botella. Agua que queda = Agua inicial – (agua bebida)",
+        },{
+            en: `Answer using the unit "milliliters". example answer: 5.2ml`,
+            es: `Responde usando la unidad "mililitros". ejemplo de respuesta: 5.2ml`,
+        }
         ], 
         "unitMilliLiters",
     ))
@@ -347,9 +389,16 @@ let answer = "";
             es:`La mesa del restaurante es rectangular. Despues de medirla, determinaste que la mesa tiene ${x} centímetros de largo y ${y} centímetros de ancho. ¿Cuál es el perímetro de tu mesa?`,
         },
         answer,
-        [
+        [{
+            en: "Perimeter of table = (2 x length) + (2 x width)",
+            es: "Perímetro de la mesa = (2 x largo) + (2 x ancho)",
 
-        ],
+        },
+        {
+            en: "Perimeter of table = (2 x "+ x+ " ) + (2 x " +  y + ")",
+            es: "Perímetro de la mesa = (2 x "+ x+ " ) + (2 x " +  y + ")",
+
+        }],
         "wholeNumber",
 
     ))
@@ -369,7 +418,10 @@ let answer = "";
             es:`Elena te pidió ayuda con uno de sus problemas de matemáticas y te dio el diagrama de ángulos a continuación. El ángulo ∠ABC mide 120° y el ángulo ∠ABD mide 37°. ¿Cuál es la medida del ángulo ∠DBC en grados?`,
         },
         answer,
-        [
+        [{
+            en: "∠DBC = ∠ABC - ∠ABD ",
+            es:  "∠DBC = ∠ABC - ∠ABD ",
+        }
 
         ],
         "wholeNumber",
@@ -417,12 +469,11 @@ let answer = "";
 
     generatedQuestions.push(createGameQuestion(
         {
-            en:`If you and Elena arrived at the restaurant at ${x}PM and spent ${y} minutes to eat and pay, at what time would you leave the restaurant?`,
-            es:`Si tú y Elena llegaron al restaurante a las ${x}PM y pasaron ${y} minutos para comer y pagar, ¿a qué hora saldrían del restaurante?`,
+            en:`If you and Elena arrived at the restaurant at ${x}and spent ${y} minutes to eat and pay, at what time would you leave the restaurant?`,
+            es:`Si tú y Elena llegaron al restaurante a las ${x} y pasaron ${y} minutos para comer y pagar, ¿a qué hora saldrían del restaurante?`,
         },
         answer,
-        [
-            {
+        [{
                 en: `Answer using the unit "hours". example answer: 13:09`,
                 es: `Responde usando la unidad "horas". ejemplo de respuesta: 13:09`,
             }

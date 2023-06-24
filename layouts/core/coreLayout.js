@@ -4,13 +4,16 @@ import React, {useEffect, useState} from "react";
 import Loading from "@comps/screens/loading";
 import { useRouter } from "next/router";
 import { useUserContext } from "@hooks/siteContext/useUserContext";
+import RetrieveUserContext from "@hooks/HOF/retrieveUserContext";
 
-export default function Layout({ children }) {
+const Layout = ({user,settings, children }) => {
 
     //standard layout of every page
     //has a header with title and lang select,
     //then the children displayed in the box of the view container
-    const {user,settings,loading, error} = useUserContext()
+    //const {user,settings} = useUserContext()
+    const [loading, setLoading] = useState(false)
+
     const router = useRouter()
     const feedback = [
         {
@@ -26,6 +29,7 @@ export default function Layout({ children }) {
     const [fontFamily, setFontFamily] = useState();
     const [musicSrc, setMusicSrc] = useState("/sound/null.mp3");
     const mapLocation = '' //TODO: get this from the router filepath
+
     useEffect(() => {
             if (mapLocation === "auntHouse") {
                 setMusicSrc("/sound/salsa_bg.mp3");
@@ -54,9 +58,6 @@ export default function Layout({ children }) {
         }
     }, [font])
 
-    if(loading || !router.isReady) return <Loading/>
-    if(error) return <Error error={error}/>
-
     return (
         <>
             <ReactHowler
@@ -79,3 +80,5 @@ export default function Layout({ children }) {
         </>
     );
 }
+
+export default RetrieveUserContext(Layout);

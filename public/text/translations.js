@@ -394,7 +394,22 @@ const translations = {
         en: "This is a do nothing break, so try to sit still in your seat and listen to the music until time is up",
         es: "Este es un descanso para no hacer nada, así que trate de quedarse quieto en su asiento y escuche la música hasta que se acabe el tiempo",
     },
-
+    moveBodyTitle: {
+        en:"Move Your Body",
+        es:"Move Your Body",
+    },
+    moveBodyDescription1: {
+        en:"You can reach your arms over your head as you breathe in and then move your arms down as you breathe out",
+        es:"Puedes estirar tus brazos sobre tú cabeza mientras inhalas y luego mueve los brazos hacia abajo mientras exhalas",
+    },
+    moveBodyDescription2: {
+        en:"Try squeezing your fists tightly when you breathe in and release your fists when you breathe out",
+        es:"Intenta apretar tus puños con fuerza cuando inhales y sueltalos cuando exhales",
+    },
+    moveBodyDescription3: {
+        en:"Wiggle in your seat or stand up and wiggle if you can",
+        es:"Muévete en tu asiento o ponte de pie y muévete si puedes",
+    },
     // types of answers
     franctions_only:{
         en:"Your answer must be a fraction",
@@ -451,6 +466,15 @@ const translations = {
         es:"Enviar",
     },
 
+    pet_tooltip : {
+        en:"Change Pet",
+        es:"Cambiar Mascota",
+    },
+
+    background_tooltip : {
+        en:"Change Background",
+        es:"Cambiar Fondo",
+    },
 
     // Buttons translations
 
@@ -462,6 +486,7 @@ const translations = {
         en:"False",
         es:"Falso",
     },
+
     "<":{
         en:"<",
         es:"<",
@@ -471,14 +496,74 @@ const translations = {
         en:">",
         es:">",
     },
+    
     "=":{
         en:"=",
         es:"=",
     },
-
-
-
+    yes: {
+        en: "Yes",
+        es: "Sí",
+    },
+    no: {
+        en: "No",
+        es: "No",
+    },
+    
+    show_tutorial_prompt: {
+        en: "Would you like to see the tutorial?",
+        es: "¿Te gustaría ver el tutorial?",
+    },
+    
+    invalid_whole_number: {
+        en: "Invalid whole number",
+        es: "Número entero inválido",
+    },
+    invalid_fraction: {
+        en: "Invalid fraction",
+        es: "Fracción inválida",
+    },
+    invalid_decimal: {
+        en: "Invalid decimal",
+        es: "Decimal inválido",
+    },
+    invalid_time: {
+        en: "Invalid time",
+        es: "Tiempo inválido",
+    },
+    invalid_money: {
+        en: "Invalid money",
+        es: "Dinero inválido",
+    },
+    invalid_unit_meters: {
+        en: "Make sure anwser is in meters",
+        es: "Asegúrate de que la respuesta esté en metros",
+    },
+    invalid_unit_centimeters: {
+        en: "Make sure anwser is in centimeters",
+        es: "Asegúrate de que la respuesta esté en centímetros",
+    },
+    invalid_unit_liters: {
+        en: "Make sure anwser is in liters",
+        es: "Asegúrate de que la respuesta esté en litros",
+    },
+    invalid_unit_milliliters: {
+        en: "Make sure anwser is in milliliters",
+        es: "Asegúrate de que la respuesta esté en mililitros",
+    },
+    invalid_unit_grams: {
+        en: "Make sure anwser is in grams",
+        es: "Asegúrate de que la respuesta esté en gramos",
+    },
+    invalid_unit_kilograms: {
+        en: "Make sure anwser is in kilograms",
+        es: "Asegúrate de que la respuesta esté en kilogramos",
+    },
+      clear: {
+        en: "Clear",
+        es: "Limpiar"
+    }
 
 }
 
-export default translations;
+export default translations
