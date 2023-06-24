@@ -499,7 +499,10 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
             es:`Si 20/100 es la cantidad que paga y se representa como .20 en decimales, ¿cómo representaría ${x}/100 de su factura como un decimal?`,
         },
         answer,
-        [],
+        [{
+            en:"Write your answer as a decimal" ,
+            es:"Escribe tu respuesta como un decimal" ,
+        }],
         "decimal",
     ))
 
@@ -552,7 +555,10 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
             es:`Con impuestos, su total final es ${numberStr}. El total final de Elena es ${numberStr2}. ¿Qué número es mayor? ${number1} __ ${number2} `,
         },
         answer,
-        [],
+        [{
+            en: "",
+            es: "",
+        }],
         "inequality",
     ))
     
@@ -587,7 +593,13 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
             es:`Si su total es $${number1}, ¿cuánto debe pagar si redondea al centésimo más cercano?`,
         },
         answer,
-        [],
+        [{
+            en: "Hint 1: Round using the second digit to the right of the decimal",
+            es: "Pista 1: Redondea usando el segundo dígito a la derecha del decimal",
+        },{
+            en: "Hint 2: Answer has two digits after the decimal" , 
+            es: "Pista 2: la respuesta tiene dos dígitos después del decimal",
+        }],
         "decimal",
     ))
 
@@ -622,8 +634,8 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
         answer,
         [
             {
-                en:"Round to 2 decimal places. eg. 15.00",
-                es:"Redondear a 2 decimales. por ejemplo. 15.00",
+                en: "Total = (times the dish was orded) x (cost of dish)",
+                es:"Total = (veces que se ordeno el plato) x (costo del plato)",
             }
         ],
         "wholeNumber",
@@ -659,8 +671,9 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
         answer,
         [
             {
-                en:"Round to 2 decimal places. eg. 15.00",
-                es:"Redondear a 2 decimales. por ejemplo. 15.00",
+               
+                en: "Total = (times the drink was orded) x (cost of drink)",
+                es:"Total = (veces que se ordeno la bebida) x (costo de la bebida)",
             }
         ],
         "wholeNumber",
@@ -713,7 +726,10 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
             es:`¿Cuál es su total si compra ${x} ${nameOfDish1Es} y ${y} ${nameOfDish2Es}?`,
         },
         answer,
-        [],
+        [{
+            en: "Total = (Cost of " +nameOfDish1En+" x " + x + " ) + (Cost of " + nameOfDish2En + " x " + y + ") ",
+            es: "Total = (Costo de " +nameOfDish1Es+" x " + x + " ) + (Costo de " + nameOfDish2Es + " x " + y + ") ",
+        }],
         "wholeNumber",
     ))
 
@@ -752,7 +768,11 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
             es:`¿Cuál es su total si compra ${x} ${order["mainDish"].es}, ${y} ${order["drink"].es}, y ${z} ${order["dessert"].es}?`,
         },
         answer,
-        [],
+        [{
+            en: "Total = (Cost of " +order["mainDish"].en+" x " + x + " ) + (Cost of " + order["drink"].en + " x " + y + ") + (Cost of " + order["dessert"].en + " x " + z + ") ",
+            es: "Total = (Costo de " +order["mainDish"].es+" x " + x + " ) + (Costo de " + order["drink"].es + " x " + y + ") + (Costo de " + order["dessert"].es + " x " + z + ") ",
+        }
+        ],
         "wholeNumber",
     ))
 
