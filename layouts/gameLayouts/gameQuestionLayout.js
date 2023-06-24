@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import style from "@styles/game_layout.module.css";
 import translations from "@translations";
@@ -66,38 +66,10 @@ const GameQuestionLayout = ({
   const onFinish = quizData.onFinish;
   const isFinished = questionNum >= questions.length;
 
-  const questionDiv = useRef(null);
-  const ayuDiv = useRef(null);
+ 
 
   useEffect(() => {
-    if (questionDiv.current && ayuDiv.current) {
-      const handleQuestionDivAtMouseOver = () => {
-        if (questionDiv.current) {
-          questionDiv.current.style.zIndex = 4;
-        }
-        if (ayuDiv.current) {
-          ayuDiv.current.style.zIndex = 1;
-        }
-      };
-
-      const handleQuestionDivAtMouseOut = () => {
-        if (questionDiv.current) {
-          questionDiv.current.style.zIndex = 2;
-        }
-        if (ayuDiv.current) {
-          ayuDiv.current.style.zIndex = 3;
-        }
-      };
-
-      questionDiv.current.addEventListener(
-        "mouseover",
-        handleQuestionDivAtMouseOver
-      );
-      questionDiv.current.addEventListener(
-        "mouseout",
-        handleQuestionDivAtMouseOut
-      );
-    }
+    
 
     const exitingFunction = () => {
       if (!isFinished) {
@@ -110,14 +82,7 @@ const GameQuestionLayout = ({
     return () => {
       DevLog("Unmounting GameQuestionLayout");
       router.events.off("routeChangeStart", exitingFunction);
-      questionDiv.current.removeEventListener(
-         "mouseover",
-         handleQuestionDivAtMouseOver
-      );
-      questionDiv.current.removeEventListener(
-         "mouseout",
-         handleQuestionDivAtMouseOut
-      );
+     
     };
   }, []);
 
@@ -244,7 +209,7 @@ const GameQuestionLayout = ({
             <tr>
               <td className={style.child_container}>{children}</td>
 
-              <td className={style.question_container} ref={questionDiv}>
+              <td className={style.question_container} >
                 <QuestionBox
                   className={style.question_box}
                   questionData={questions[questionNum]}
@@ -261,7 +226,7 @@ const GameQuestionLayout = ({
                   handleSubmitAnswer={handleSubmitAnswer}
                 />
               </td>
-              <td className={style.ayu_block} ref={ayuDiv}>
+              <td className={style.ayu_block}>
                 <Ayu handleAyuClick={() => handleAyuClick()}  />
               </td>
             </tr>
