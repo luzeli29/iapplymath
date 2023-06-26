@@ -13,11 +13,10 @@ export default function FreeSyleArtBreak() {
     const canvas = useRef()
     const [promp] = useState(() => {
       const ideas = ['food', 'animal', 'sport', 'people', 'place']
-      const randomIndex = Math.floor(Math.random() * ideas.length)
-      return ideas[randomIndex]
+      const randomIndex = Math.floor(Math.random() * ideas?.length)
+      return ideas[randomIndex ?? 0]
     });
-    const [] = useState(['food', 'animal', 'sport', 'people', 'place']);
-    const { formattedTime } = useTimer(180); // 3 minutes in seconds
+    const { formattedTime } = useTimer(60); 
 
     // Utils for free style art break
     const [color, setColor] = useState('#0008ff');
@@ -53,37 +52,41 @@ export default function FreeSyleArtBreak() {
 
 
     function saveImage(image) {
-      // Cadena de datos base64 de la imagen PNG
-      var base64Image = image;
-    
-      // Convertir la cadena base64 en un objeto Blob
-      var byteCharacters = atob(base64Image.split(',')[1]);
-      var byteArrays = [];
-    
-      for (var i = 0; i < byteCharacters.length; i++) {
-        byteArrays.push(byteCharacters.charCodeAt(i));
-      }
-    
-      var byteArray = new Uint8Array(byteArrays);
-      var blob = new Blob([byteArray], { type: 'image/png' });
-    
-      // Crear una URL de objeto para la imagen
-      var url = URL.createObjectURL(blob);
-    
-      // Descargar la imagen
-      var link = document.createElement('a');
-      link.href = url;
-      link.download = 'image.png';
-      link.click();
-    
-      // Liberar la URL del objeto
-      URL.revokeObjectURL(url);
+      try {
+         // Cadena de datos base64 de la imagen PNG
+          var base64Image = image;
+        
+          // Convertir la cadena base64 en un objeto Blob
+          var byteCharacters = atob(base64Image.split(',')[1]);
+          var byteArrays = [];
+        
+          for (var i = 0; i < byteCharacters.length; i++) {
+            byteArrays.push(byteCharacters.charCodeAt(i));
+          }
+        
+          var byteArray = new Uint8Array(byteArrays);
+          var blob = new Blob([byteArray], { type: 'image/png' });
+        
+          // Crear una URL de objeto para la imagen
+          var url = URL.createObjectURL(blob);
+        
+          // Descargar la imagen
+          var link = document.createElement('a');
+          link.href = url;
+          link.download = 'image.png';
+          link.click();
+        
+          // Liberar la URL del objeto
+          URL.revokeObjectURL(url);
+      } catch (error) {
+        alert("Error")
+      }     
     }
 
     return (
         <>
             <h1 className={style.art_title_container}>
-              {formattedTime()}  -  
+              {formattedTime() ?? ''}  -  
               <span>Draw your favorite {promp}</span>  -  
               <input type="color" value={color} onChange={handleChangeColor} />
               {/* <button onClick={()=> canvas.clearCanvas()}>Clear</button> */}
@@ -96,8 +99,8 @@ export default function FreeSyleArtBreak() {
               <button
                 className={style.goBack_button}
                 onClick={() => {
-                  canvas.current
-                    .clearCanvas()
+                  canvas?.current
+                    ?.clearCanvas()
                 }}
               >
                {translations.clear[lang]}
@@ -118,7 +121,7 @@ export default function FreeSyleArtBreak() {
                 className={style.continue_button}
                 onClick={() => {
                   canvas.current
-                    .exportImage("png")
+                    ?.exportImage("png")
                     .then(data => {
                       saveImage(data)
                     })
@@ -127,7 +130,7 @@ export default function FreeSyleArtBreak() {
                     });
                 }}
               >
-               {translations.save[lang]}
+               {translations?.save[lang]}
               </button>
         </>
     )
