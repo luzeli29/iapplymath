@@ -12,7 +12,7 @@ import useTimer from '@hooks/useTimer';
 
 export default function MandalaArtBreak() {
     const canvas = useRef()
-    const { formattedTime } = useTimer(180); // 3 minutes in seconds
+    const { formattedTime } = useTimer(60); 
 
     // Utils for free style art break
     const [mandala_list] = useState([

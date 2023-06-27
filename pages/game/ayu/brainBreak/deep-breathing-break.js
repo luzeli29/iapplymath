@@ -14,7 +14,7 @@ export default function DeepBreathingBreak() {
     const {user,settings,loading, error} = useUserContext()
     const isLoggedIn = user.loggedIn
 
-    const { formattedTime } = useTimer(180); // 3 minutes in seconds
+    const { formattedTime } = useTimer(60);
 
     const router = useRouter()
 

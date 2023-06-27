@@ -13,7 +13,7 @@ export default function ChillOutBreak() {
     const {user,settings,loading, error} = useUserContext()
     const isLoggedIn = user.loggedIn
 
-    const { formattedTime } = useTimer(180);
+    const { formattedTime } = useTimer(60);
  
     const router = useRouter()
 
