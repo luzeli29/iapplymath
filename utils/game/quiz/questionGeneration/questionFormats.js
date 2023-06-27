@@ -57,7 +57,9 @@ const QuestionFormats = {
         groupWidth: 3,
     },
     'time' : {
-        validationRegex : /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/i,
+        // validationRegex : /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/i,
+        // new regex to allow for 12:00AM and 12:00PM
+        validationRegex: /^(0?[1-9]|1[0-2]):[0-5][0-9]([AP]M)?$/i,
         validationFailMessage: 'invalid_time',
         answerBoxType: 'textInput',
         answerBoxMessage: 'time_only',
