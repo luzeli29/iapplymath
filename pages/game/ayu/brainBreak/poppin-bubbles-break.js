@@ -12,7 +12,7 @@ import useTimer from '@hooks/useTimer';
 export default function PoppinBubblesBreak({ setView }) {
     const [bubbleCount, setBubbleCount] = useState(0)
     const bubblesContainerRef = useRef()
-    const { time, formattedTime } = useTimer(180); // 3 minutes in seconds
+    const { time, formattedTime } = useTimer(60);
     const { time:bubbleTime, resetTimer:resetBubbleTimer } = useTimer(5);
 
 
