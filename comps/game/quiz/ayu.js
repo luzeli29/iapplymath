@@ -42,16 +42,21 @@ export default function Ayu ({handleAyuClick = null}) {
 
    return (
       <div className="fill_container"> 
-         <div className={style.ayu_speech_bubble_container}>
-            {isHovering ? 
-               <div className={style.ayu_speech_bubble}>
-                  <div className={style.ayu_speech_bubble_triangle} ></div>
-                  <p className={style.speech_bubble_text}>{translations.ayu_affermations[afNum][lang]}</p>
-               </div> : <></>}
-         </div>
+
+         {handleAyuClick &&
+            <div className={style.ayu_speech_bubble_container}>
+               {isHovering ? 
+                  <div className={style.ayu_speech_bubble}>
+                     <div className={style.ayu_speech_bubble_triangle} ></div>
+                     <p className={style.speech_bubble_text}>{translations.ayu_affermations[afNum][lang]}</p>
+                  </div> : <></>}
+            </div>
+         }
+
          
+         
+         {handleAyuClick ? 
          <div className={style.ayu_image_container}>
-            {handleAyuClick ? 
             <button className={style.ayu_breathe} onClick={() => handleClick()}>
             <Tooltip type={3}  text={translations.pet_ayu[lang]}>
                <GiHand className={style.breathe} ></GiHand>
@@ -66,19 +71,7 @@ export default function Ayu ({handleAyuClick = null}) {
                   width = {110}
                   />
 
-            </button>:
-            <div>
-               <Image
-                  priority={true}
-                  //style={{zIndex:-1}}
-                  //layout={"fill"}
-                  src={"/img/ayu/ayu_idle.gif"}
-                  alt={"ayu idle gif"}
-                  height = {110}
-                  width = {110}
-                  />
-            </div>
-            }
+            </button>
             <div  className={style.pet_img} >              
                <Image
                   priority={true}
@@ -91,7 +84,18 @@ export default function Ayu ({handleAyuClick = null}) {
                   src = {"/img/pets/pet" + petId + ".png"}
                   alt = {"You haven't selected your pet!"}/>
             </div>
+         </div> : 
+         <div>
+            <Image
+               src={"/img/ayu/ayu_deepBreathing.gif"}
+               alt={"ayu idle gif"}
+               height = {500}
+               width = {500}
+               />
          </div>
+      }
+
+        
          
       </div>
    )
