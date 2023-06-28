@@ -559,11 +559,33 @@ const translations = {
         en: "Make sure anwser is in kilograms",
         es: "Asegúrate de que la respuesta esté en kilogramos",
     },
-      clear: {
+    clear: {
         en: "Clear",
         es: "Limpiar"
+    },
+
+    deep_breathing_title: {
+        en: "Breathe in slowly. Breathe out slowly",
+        es: "Limpiar"
+    },
+    deep_breathing_subtitle: {
+        en: "Pro tip: Try breathing OUT slower than you breathe IN",
+        es: "Limpiar"
+    },
+    brain_break_alert_title: {
+        en: "Time is over! Do you want to return to the main menu?",
+        es: "¡Se acabó el tiempo! ¿Quieres volver al menú principal?"
+    },
+    brain_break_alert_button1: {
+        en: "Go back",
+        es: "Volver"
+    },
+    brain_break_alert_button2: {
+        en: "Stay here",
+        es: "Quedarse aquí"
     }
 
+    
 }
 
 export default translations

@@ -1,6 +1,7 @@
 import ClickableIcon from '@comps/clickableIcon'
 import LevelDisplay from '@comps/game/levelDisplay'
 import IconGroup from '@comps/iconGroup'
+import { useDispatch } from 'react-redux'
 import Loading from '@comps/screens/loading'
 import { useUserContext } from '@hooks/siteContext/useUserContext'
 import CreateParamString from '@utils/createParamString'
@@ -9,6 +10,7 @@ import Error from 'pages/error'
 import Login from 'pages/user/login'
 import React, { useState } from 'react'
 import getText from '@utils/text/getText'
+import { setLocation } from 'store/Slices/musicSlice'
 
 
 const brainBreaksList = {
@@ -46,6 +48,7 @@ export default function LevelSelect({location =""}) {
     
     const router = useRouter()
     const [selectedLevel, setSelectedLevel] = useState()
+    const dispatch = useDispatch()
 
 
     const isLoggedIn = user.loggedIn    
@@ -65,12 +68,10 @@ export default function LevelSelect({location =""}) {
     }
 
     function handleLevelSelect() {
-        // alert(selectedLevel)
-
         let url = router?.query?.url ?? false
-
         if(selectedLevel && url) {
             const key = findKeyByValue(brainBreaksList, selectedLevel);
+            if(key === 'chill-out-break') dispatch(setLocation('chilloutbreak'))
             router.push('/game/ayu/brainBreak/' + key + '?url=' + encodeURIComponent(url))
         }
     }
