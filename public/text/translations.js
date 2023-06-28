@@ -387,8 +387,8 @@ const translations = {
         
     ],
     brain_break: {
-        en:"Brain Break select",
-        es:"Selecciona un Brain Break",
+        en:"Break time",
+        es:"Break time",
     },
     chillOutBreak: {
         en: "This is a do nothing break, so try to sit still in your seat and listen to the music until time is up",

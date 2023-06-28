@@ -58,7 +58,7 @@ export default function LevelSelect({location =""}) {
         return (
             <div className='m-2'>
             <ClickableIcon selected={selectedLevel == value.value} onClick={() => setSelectedLevel(value.value)}> 
-                    <LevelDisplay level={value.value} lang={lang}/>
+                    <LevelDisplay alt level={value.value} lang={lang}/>
             </ClickableIcon>
             </div>
         )
