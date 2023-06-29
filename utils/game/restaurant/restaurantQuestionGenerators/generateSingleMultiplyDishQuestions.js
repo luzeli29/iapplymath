@@ -495,8 +495,8 @@ function generateLevel3BQuestions(dishes,order,randomInt) {
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`If 20/100 is the amount you pay and is represented as .20 in decimals, how would you represent ${x}/100 of your bill as a decimal?`,
-            es:`Si 20/100 es la cantidad que paga y se representa como .20 en decimales, ¿cómo representaría ${x}/100 de su factura como un decimal?`,
+            en:`If 20/100 is the amount you pay and is represented as .20 in decimals, how would you represent ${x}/100 as a decimal?`,
+            es:`Si 20/100 es la cantidad que paga y se representa como .20 en decimales, ¿cómo representaría ${x}/100 como un decimal?`,
         },
         answer,
         [{
