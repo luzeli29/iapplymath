@@ -7,14 +7,34 @@ import Loading from '@comps/screens/loading';
 import Error from 'pages/error';
 import Login from '../../../user/login';
 import useTimer from '@hooks/useTimer';
+import { useDispatch } from 'react-redux';
+import { setLocation } from 'store/Slices/musicSlice';
+import Swal from 'sweetalert2';
 // import music from '../../public/sound/salsa2_bg.mp3';
 
 export default function ChillOutBreak() {
     const {user,settings,loading, error} = useUserContext()
     const isLoggedIn = user.loggedIn
 
-    const { formattedTime } = useTimer(60);
+    const dispatch = useDispatch()
+
+    const { time, formattedTime } = useTimer(60);
  
+    useEffect(() => {
+        if(time <= 0) {
+            Swal.fire({
+                title: translations?.brain_break_alert_title[lang],
+                showDenyButton: true,
+                confirmButtonText: translations?.brain_break_alert_button1[lang],
+                denyButtonText: translations?.brain_break_alert_button2[lang],
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    handleBack()
+                }
+              })
+        }
+    })
+
     const router = useRouter()
 
     if(loading || !router.isReady) return <Loading/>
@@ -31,11 +51,13 @@ export default function ChillOutBreak() {
 
         if(redirect) {
           router.push(decodeURIComponent(redirect))
+          dispatch(setLocation('restaurant'))
         }else {
           router.push('/game/map')
-          
+            dispatch(setLocation('map'))
         }
     };
+
 
     return (
         <>
