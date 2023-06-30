@@ -10,8 +10,7 @@
                 "es" : "Zanahorias" 
             },
             "imgSrc" : "carrots"
-        }
-        ,
+        },
         "orange" : {
             "nameSingular" : {
                 "en" : "Orange",
@@ -122,7 +121,8 @@
                 "es": "Frijoles Negros Licuados"
             },
             "imgSrc" : "black_beans"
-        },"onion" : {
+        },
+        "onion" : {
             "nameSingular" : {
                 "en" : "Onion",
                 "es" : "Cebolla"
@@ -132,7 +132,8 @@
                 "es" : "Cebollas"
             },
             "imgSrc" : "onions"
-        },"mashedSweetPotato" : {
+        },
+        "mashedSweetPotato" : {
             "nameSingular" : {
                 "en" : "Mashed Sweet Potato",
                 "es": "Puré de Camote"
@@ -142,7 +143,8 @@
                 "es": "Puré de Camote"
             },
             "imgSrc" : "mashed_sweet_potato"
-        },"tomatilloSauce" : {
+        },
+        "tomatilloSauce" : {
             "nameSingular" : {
                 "en" : "Tomatillo Sauce",
                 "es" : "Salsa de Tomatillos"
@@ -152,7 +154,8 @@
                 "es" : "Salsa de Tomatillos"
             },
             "imgSrc" : "tomatillo_sauce"
-        },"papaya" : {
+        },
+        "papaya" : {
             "nameSingular" : {
                 "en" : "Papaya",
                 "es" : "Papaya"
@@ -162,7 +165,8 @@
                 "es" : "Papayas"
             },
             "imgSrc" : "papaya"
-        },"strawberry" : {
+        },
+        "strawberry" : {
             "nameSingular" : {
                 "en" : "Strawberry",
                 "es" : "Fresa"
@@ -172,7 +176,8 @@
                 "es" : "Fresas"
             },
             "imgSrc" : "strawberry"
-        },"kiwi" : {
+        },
+        "kiwi" : {
             "nameSingular" : {
                 "en" : "Kiwi",
                 "es" : "Kiwi"
@@ -182,7 +187,8 @@
                 "es" : "Kiwis"
             },
             "imgSrc" : "kiwi"
-        },"tortilla" : {
+        },
+        "tortilla" : {
             "nameSingular" : {
                 "en" : "Tortilla",
                 "es": "Tortilla"
@@ -192,7 +198,8 @@
                 "es": "Tortillas"
             },
             "imgSrc" : "tortillas"
-        },"mango" : {
+        },
+        "mango" : {
             "nameSingular" : {
                 "en" : "Mango",
                 "es" : "Mango"
@@ -202,6 +209,138 @@
                 "es" : "Mangos"
             },
             "imgSrc" : "mango"
+        },
+        "lime" : {
+            "nameSingular" : {
+                "en" : "lime",
+                "es" : "limón"
+            },
+            "namePlural" : {
+                "en" : "limes",
+                "es" : "limones"
+            },
+            "imgSrc" : "lime"
+        },
+        "sugar" : {
+            "nameSingular" : {
+                "en" : "Sugar",
+                "es" : "Azúcar"
+            },
+            "namePlural" : {
+                "en" : "Sugar",
+                "es" : "Azúcar"
+            },
+            "imgSrc" : "sugar"
+        },
+        "water" : {
+            "nameSingular" : {
+                "en" : "Water",
+                "es" : "Agua"
+            },
+            "namePlural" : {
+                "en" : "Water",
+                "es" : "Agua"
+            },
+            "imgSrc" : "water"
+        },
+        "ice" : {
+            "nameSingular" : {
+                "en" : "Ice",
+                "es" : "Hielo"
+            },
+            "namePlural" : {
+                "en" : "Ice",
+                "es" : "Hielos"
+            },
+            "imgSrc" : "ice"
+        },
+        "frozenStrawberries" : {
+            "nameSingular" : {
+                "en" : "frozen strawberries",
+                "es" : "fresas congeladas"
+            },
+            "namePlural" : {
+                "en" : "frozen strawberries",
+                "es" : "fresas congeladas"
+            },
+            "imgSrc" : "strawberry"
+        },
+        "milk" : {
+            "nameSingular" : {
+                "en" : "milk",
+                "es" : "leche"
+            },
+            "namePlural" : {
+                "en" : "milk",
+                "es" : "leche"
+            },
+            "imgSrc" : "milk"
+        },
+        "vanillaIceCream" : {
+            "nameSingular" : {
+                "en" : "vanilla ice cream",
+                "es" : "helado de vainilla"
+            },
+            "namePlural" : {
+                "en" : "vanilla ice cream",
+                "es" : "helado de vainilla"
+            },
+            "imgSrc" : "vanillaicecream"
+        },
+        "whippedCream" : {
+            "nameSingular" : {
+                "en" : "whipped cream",
+                "es" : "crema batida"
+            },
+            "namePlural" : {
+                "en" : "whipped cream",
+                "es" : "crema batida"
+            },
+            "imgSrc" : "whippedcream"
+        },
+        "cherry" : {
+            "nameSingular" : {
+                "en" : "cherry",
+                "es" : "cereza"
+            },
+            "namePlural" : {
+                "en" : "cherries",
+                "es" : "cerezas"
+            },
+            "imgSrc" : "cherry"
+        },
+        "salt" : {
+            "nameSingular" : {
+                "en" : "salt",
+                "es" : "sal"
+            },
+            "namePlural" : {
+                "en" : "salt",
+                "es" : "sal"
+            },
+            "imgSrc" : "salt_pepper"
+        },
+        "rice" : {
+            "nameSingular" : {
+                "en" : "rice",
+                "es" : "arroz"
+            },
+            "namePlural" : {
+                "en" : "rice",
+                "es" : "arroz"
+            },
+            "imgSrc" : "rice"
+        },
+        "vanillaExtract" : {
+            "nameSingular" : {
+                "en" : "vanilla extract",
+                "es" : "extracto de vainilla"
+            },
+            "namePlural" : {
+                "en" : "vanilla extract",
+                "es" : "extracto de vainilla"
+            },
+            "imgSrc" : "vanillaextract"
         }
     }
 }
