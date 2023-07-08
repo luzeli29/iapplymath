@@ -635,6 +635,63 @@ function generateLevel2AQuestions(dishes, order, randomInt){
     // choose random number between 2 and 5
     // randomNum2 = Math.floor(Math.random() * 4 + 2);
     randomNum2 = randomInt(2,6);
+    // randomNum2 = 5;
+    
+    
+    let textT = {
+        2:{
+            less:{
+
+                en:"half",
+                es:"la mitad"
+            },
+            more:{
+                en:"double",
+                es:"el doble"
+            }
+        },
+        3:{
+            less:{
+                en:"a third",
+                es:"un tercio"
+            },
+            more:{
+                en:"triple",
+                es:"el triple"
+            }
+        },
+        4:{
+            less:{
+                en:"a fourth",
+                es:"un cuarto"
+            },
+            more:{
+                en:"quadruple",
+                es:"el cuádruple"
+            }
+        },
+        5:{
+            less:{
+                en:"a fifth",
+                es:"un quinto"
+            },
+            more:{
+                en:"quintuple",
+                es:"el quíntuple"
+            }
+        },
+        6:{
+            less:{
+                en:"a sixth",
+                es:"un sexto"
+            },
+            more:{
+                en:"sextuple",
+                es:"el séxtuple"
+            }
+        },
+    }
+
 
     let traduccion = {
         "less":"menos",
@@ -644,6 +701,7 @@ function generateLevel2AQuestions(dishes, order, randomInt){
     let options = ["less", "more"];
     // choose random option
     let randomOption = options[Math.floor(Math.random() * options.length)];
+    // let randomOption = "less";
 
     if(randomOption === "less"){
         // answer
@@ -669,8 +727,8 @@ function generateLevel2AQuestions(dishes, order, randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Today your parents gave you ${randomNum} dollars to order food at the restaurant. If next time they gave you ${randomNum2} times ${randomOption} money, what is your new budget?`,
-            es:`Hoy tus padres te dieron ${randomNum} dólares para ordenar comida en el restaurante. Si la próxima vez te dieran ${randomNum2} veces ${traduccion[randomOption]} dinero, ¿cuál es tu nuevo presupuesto?`,
+            en:`Today your parents gave you ${randomNum} dollars to order food at the restaurant. If next time they gave you ${textT[randomNum2][randomOption].en} of that money, what is your new budget?`,
+            es:`Hoy tus padres te dieron ${randomNum} dólares para ordenar comida en el restaurante. Si la próxima vez te dieran ${textT[randomNum2][randomOption].es} de ese dinero, ¿cuál es tu nuevo presupuesto?`,
         },
         answer,
         [{

@@ -8,14 +8,29 @@ import Error from 'pages/error';
 import Login from '../../../user/login';
 import useTimer from '@hooks/useTimer';
 import Ayu from '@comps/game/quiz/ayu';
+import Swal from 'sweetalert2';
 // import music from '../../public/sound/salsa2_bg.mp3';
 
 export default function DeepBreathingBreak() {
     const {user,settings,loading, error} = useUserContext()
     const isLoggedIn = user.loggedIn
 
-    const { formattedTime } = useTimer(60);
-
+    const { time, formattedTime } = useTimer(60);
+ 
+    useEffect(() => {
+        if(time <= 0) {
+            Swal.fire({
+                title: translations?.brain_break_alert_title[lang],
+                showDenyButton: true,
+                confirmButtonText: translations?.brain_break_alert_button1[lang],
+                denyButtonText: translations?.brain_break_alert_button2[lang],
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    handleBack()
+                }
+              })
+        }
+    })
     const router = useRouter()
 
     if(loading || !router.isReady) return <Loading/>
@@ -49,8 +64,8 @@ export default function DeepBreathingBreak() {
 
                 <div className={style.chillout_text}>
                     <h1 style={{textAlign: 'center'}}>
-                    Breathe in slowly. Breathe out slowly
-                    <h3>Pro tip: Try breathing OUT slower than you breathe IN</h3>
+                    {translations?.deep_breathing_title[lang]}
+                    <h3>{translations?.deep_breathing_subtitle[lang]}</h3>
                     </h1>
                     <h2 style={{textAlign: 'center', marginTop: '30px'}}>
                     {formattedTime()}
@@ -61,7 +76,7 @@ export default function DeepBreathingBreak() {
             <button
                 className={style.continue_button}
                 onClick={() => handleBack()}
-            >{translations.back[lang]}</button>
+            >{translations?.back[lang]}</button>
         </>
     )
 }

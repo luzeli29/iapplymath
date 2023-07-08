@@ -184,9 +184,9 @@ const GameQuestionLayout = ({
       return <Loading />;
     }
 
-    const correctAnswer = questions[questionNum].answer;
-    const questionFormatKey = questions[questionNum].questionFormatKey;
-    const progress = Math.round((questionNum / questions.length) * 100);
+    const correctAnswer = questions?.[questionNum]?.answer;
+    const questionFormatKey = questions?.[questionNum]?.questionFormatKey;
+    const progress = Math.round((questionNum / questions?.length) * 100);
     return (
       <>
         <div className="back_button_container">

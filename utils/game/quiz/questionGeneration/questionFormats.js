@@ -65,7 +65,7 @@ const QuestionFormats = {
         answerBoxMessage: 'time_only',
     },
     'decimal': {
-        validationRegex : /^-?(?:0|[1-9]\d*)(?:\.\d+)?$/,
+        validationRegex : /^[+-]?(\d*\.)?\d+$/,
         validationFailMessage: 'invalid_decimal',
         answerBoxType: 'textInput',
         answerBoxMessage: 'decimals_only',

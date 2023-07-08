@@ -9,10 +9,26 @@ import Error from 'pages/error';
 import Login from '../../../user/login';
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import useTimer from '@hooks/useTimer';
+import Swal from 'sweetalert2';
 
 export default function MandalaArtBreak() {
     const canvas = useRef()
-    const { formattedTime } = useTimer(60); 
+    const { time, formattedTime } = useTimer(180);
+ 
+    useEffect(() => {
+        if(time <= 0) {
+            Swal.fire({
+                title: translations?.brain_break_alert_title[lang],
+                showDenyButton: true,
+                confirmButtonText: translations?.brain_break_alert_button1[lang],
+                denyButtonText: translations?.brain_break_alert_button2[lang],
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    handleBack()
+                }
+              })
+        }
+    }) 
 
     // Utils for free style art break
     const [mandala_list] = useState([
