@@ -8,13 +8,29 @@ import Error from 'pages/error';
 import Login from '../../../user/login';
 import useTimer from '@hooks/useTimer';
 import imgBanner from '@public/img/brainBreaks/moveYourBody.gif'
+import Swal from 'sweetalert2';
 // import music from '../../public/sound/salsa2_bg.mp3';
 
 export default function MoveBodyBreak() {
     const {user,settings,loading, error} = useUserContext()
     const isLoggedIn = user.loggedIn
 
-    const { formattedTime } = useTimer(60); 
+    const { time, formattedTime } = useTimer(180);
+ 
+    useEffect(() => {
+        if(time <= 0) {
+            Swal.fire({
+                title: translations?.brain_break_alert_title[lang],
+                showDenyButton: true,
+                confirmButtonText: translations?.brain_break_alert_button1[lang],
+                denyButtonText: translations?.brain_break_alert_button2[lang],
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    handleBack()
+                }
+              })
+        }
+    })
 
     const router = useRouter()
 
