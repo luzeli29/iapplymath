@@ -124,8 +124,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
   
+.mandala_container svg {
+    zoom: 0.8;
+}
 
 .mandala_items {
     width: 20%;
@@ -134,5 +137,6 @@
     margin-top: 40px;
 }
 .item {
-    width: 100%;
+    width: 50%;
+    zoom: 0.3;
 }

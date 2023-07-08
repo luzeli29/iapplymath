@@ -7,9 +7,12 @@ import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
 import Error from 'pages/error';
 import Login from '../../../user/login';
-import { ReactSketchCanvas } from "react-sketch-canvas";
 import useTimer from '@hooks/useTimer';
 import Swal from 'sweetalert2';
+import { Mandala1 } from '../mandalas/mandala1';
+import { Mandala2 } from '../mandalas/mandala2';
+import { saveAs } from 'file-saver';
+
 
 export default function MandalaArtBreak() {
     const canvas = useRef()
@@ -17,34 +20,46 @@ export default function MandalaArtBreak() {
  
     useEffect(() => {
         if(time <= 0) {
-            Swal.fire({
-                title: translations?.brain_break_alert_title[lang],
-                showDenyButton: true,
-                confirmButtonText: translations?.brain_break_alert_button1[lang],
-                denyButtonText: translations?.brain_break_alert_button2[lang],
-              }).then((result) => {
-                if (result.isConfirmed) {
-                    handleBack()
-                }
-              })
+
+
+          Swal.fire({
+            title: translations?.brain_break_alert_title[lang],
+            html: 'Go back in 5 seconds.',
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading()
+            },
+          
+          }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+              handleBack()
+            }
+          })
         }
     }) 
 
-    // Utils for free style art break
-    const [mandala_list] = useState([
-      "https://previews.123rf.com/images/queertrade/queertrade1811/queertrade181100050/111754678-simple-mandala-print-easy-coloring-page-illustration-for-kids-and-adult-beginners.jpg",
-      "https://coloringhome.com/coloring/RiA/ykq/RiAykqg6T.png",
-      "https://follen.org/wp-content/uploads/2020/04/free-mandalas-to-color-for-adults-with-kids-mandala-designs-beginners-print-and-672x870-1.png",
-      "https://www.justcolor.net/kids/wp-content/uploads/sites/12/nggallery/mandalas/Coloring-for-kids-mandalas-69780.jpg",
-      "https://www.creativefabrica.com/wp-content/uploads/2021/11/15/Simple-Mandala-Coloring-Page-Graphics-20223669-1.jpg"
-    ]);
-    const [mandala, setMandala] = useState(mandala_list[0]);
+    // Utils for madala art break
+
     const [color, setColor] = useState('#0008ff');
-  
+    const [fillColors, setFillColors] = useState(Array(22).fill('white'))
+
     const handleChangeColor = (e) => {
       setColor(e.target.value);
     };
+    
+        
+    const onFillColor = (i) => {
+      let newFillColors = fillColors.slice(0)
+      newFillColors[i] = color
+      setFillColors(newFillColors)
+    }
 
+    const [mandala_items] = useState([
+      <Mandala1 key={1} fillColors={fillColors} />,
+      <Mandala2 key={1} fillColors={fillColors}/>
+    ])
+    const [currentMandala, setcurrentMandala] = useState(0);
 
     // Utils
     const {user, settings, loading , error} = useUserContext()
@@ -69,11 +84,19 @@ export default function MandalaArtBreak() {
       }
     };
 
-    const handleSelectDesign = (url) => {
-      setMandala(url)
-      canvas.current.clearCanvas()
-    }
+    // const handleSelectDesign = (url) => {
+    //   setMandala(url)
+    //   canvas.current.clearCanvas()
+    // }
 
+
+      const handleSaveSVG = () => {
+        const svgString = new XMLSerializer().serializeToString(
+          document.querySelector('svg')
+        );
+        const blob = new Blob([svgString], { type: 'image/svg+xml' });
+        saveAs(blob, 'mandala.svg');
+      };
 
 
       const saveSVG = (svgCode) => {
@@ -86,6 +109,7 @@ export default function MandalaArtBreak() {
         URL.revokeObjectURL(url);
       };
 
+     
     return (
         <>
             <h1 className={style.art_title_container}>
@@ -99,7 +123,7 @@ export default function MandalaArtBreak() {
               >
                 {translations.back[lang]}
               </button>
-              <button
+              {/* <button
                 className={style.goBack_button}
                 onClick={() => {
                   canvas.current
@@ -123,31 +147,34 @@ export default function MandalaArtBreak() {
                 }}
               >
                {translations.save[lang]}
-              </button>
+              </button> */}
+              {/* <button
+                className={style.goBack_button}
+                onClick={handleSaveSVG}
+              >
+               {translations.save[lang]}
+              </button> */}
             </h1>
             <div class={style.mandala_container}>
-            <div className={style.mandala_items}>
-              {mandala_list.map((item, i) => <img 
+            {/* <div className={style.mandala_items}>
+              {mandala_items.map((item, i) => <span 
                 key={i}
-                onClick={()=>handleSelectDesign(item)}
-                alt={`mandala art ${i}`}
+                onClick={()=>setcurrentMandala(i)}
+                // alt={`mandala art ${i}`}
                 className={style.item}
-                src={item}
-                />)}
+                // src={item}
+                >
+                  {item}
+                </span>)}
+            </div> */}
+            {/* setcurrentMandala */}
+
+            <div className={style.mandala_container}>
+
+                {currentMandala === 0 && <Mandala1 fillColors={fillColors} onFill={onFillColor} />}
+                {currentMandala === 1 && <Mandala2 fillColors={fillColors} onFill={onFillColor} />}
+
             </div>
-            <ReactSketchCanvas
-                backgroundImage={mandala}
-                exportWithBackgroundImage={true}
-                preserveBackgroundImageAspectRatio=""
-                width='650px'
-                height='650px'
-                // className={style.mandala_container}
-                ref={canvas}
-                strokeWidth={8}
-                strokeColor={color}
-                undo={true}
-                redo={true}
-            />
             </div>
         </>
     )
