@@ -15,9 +15,9 @@ function Order({order, budget, handleOrderMenu = null}) {
     if(!isLoggedIn) return <Login/>
     const lang = settings.lang
 
-    const mdText = order.mainDishIndex >= 0 ? menuOptions.mainDish[order.mainDishIndex][lang] + ' - $ ' + menuOptions.mainDish[order.mainDishIndex].price + '.00' : ''
-    const drinkText = order.drinkIndex >= 0 ? menuOptions.drink[order.drinkIndex][lang] + ' - $ ' + menuOptions.drink[order.drinkIndex].price + '.00' : ''
-    const dessertText = order.dessertIndex >= 0 ? menuOptions.dessert[order.dessertIndex][lang] + ' - $ ' + menuOptions.dessert[order.dessertIndex].price + '.00' : ''
+    const mdText = order.mainDishIndex >= 0 ? menuOptions.mainDish[order.mainDishIndex][lang] + ' - $' + menuOptions.mainDish[order.mainDishIndex].price + '.00' : ''
+    const drinkText = order.drinkIndex >= 0 ? menuOptions.drink[order.drinkIndex][lang] + ' - $' + menuOptions.drink[order.drinkIndex].price + '.00' : ''
+    const dessertText = order.dessertIndex >= 0 ? menuOptions.dessert[order.dessertIndex][lang] + ' - $' + menuOptions.dessert[order.dessertIndex].price + '.00' : ''
 
     return (
         <div>        
