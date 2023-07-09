@@ -10,8 +10,6 @@ const levelBoundaries = {
 }
 
 const generateSchoolQuestion = (schoolTopic, level,randomGenerator) => {
-    let firstNumber = randomGenerator.randomInt(levelBoundaries[level].min, levelBoundaries[level].max)
-    let secondNumber = randomGenerator.randomInt(levelBoundaries[level].min, firstNumber)
 
     let answer, template, sign, topic;
 
@@ -19,6 +17,16 @@ const generateSchoolQuestion = (schoolTopic, level,randomGenerator) => {
         topic = randomGenerator.randomSchoolTopic()
     } else {
         topic = schoolTopic.name
+    }
+
+    let firstNumber = randomGenerator.randomInt(levelBoundaries[level].min, levelBoundaries[level].max)
+    let secondNumber = 0
+    if(topic == 'division') {
+        const factor = randomGenerator.randomInt(1,13)
+        secondNumber = firstNumber
+        firstNumber = secondNumber * factor
+    } else {
+        secondNumber = randomGenerator.randomInt(levelBoundaries[level].min, firstNumber)
     }
 
     switch(topic) {
