@@ -341,6 +341,51 @@
                 "es" : "extracto de vainilla"
             },
             "imgSrc" : "vanillaextract"
+        },
+        "caramel" : {
+            "nameSingular" : {
+                "en" : "caramel candy piece",
+                "es" : "trozo de caramelo"
+            },
+            "namePlural" : {
+                "en" : "caramel candy pieces",
+                "es" : "trozos de caramelo"
+            },
+            "imgSrc" : "caramelpieces"
+        },
+        "chocolateChips" : {
+            "nameSingular" : {
+                "en" : "chocolate chips",
+                "es" : "chispas de chocolate"
+            },
+            "namePlural" : {
+                "en" : "chocolate chips",
+                "es" : "chispas de chocolate"
+            },
+            "imgSrc" : "chocolatechips"
+        },
+        "pretzel" : {
+            "nameSingular" : {
+                "en" : "pretzel stick",
+                "es" : "palito de pretzel"
+            },
+            "namePlural" : {
+                "en" : "pretzel sticks",
+                "es" : "palitos de pretzel"
+            },
+            "imgSrc" : "pretzelsticks"
+        },
+        "coconuts" : {
+            "nameSingular" : {
+                "en" : "toasted coconut",
+                "es" : "coco tostado"
+            },
+            "namePlural" : {
+                "en" : "toasted coconuts",
+                "es" : "cocos tostados"
+            },
+            "imgSrc" : "coconut"
         }
+
     }
 }
