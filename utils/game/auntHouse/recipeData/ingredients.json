@@ -385,6 +385,17 @@
                 "es" : "cocos tostados"
             },
             "imgSrc" : "coconut"
+        },
+        "mangoChunks" : {
+            "nameSingular" : {
+                "en" : "mango chunks",
+                "es" : "mango chunks"
+            },
+            "namePlural" : {
+                "en" : "mango chunks",
+                "es" : "mango chunks"
+            },
+            "imgSrc" : "mango"
         }
 
     }

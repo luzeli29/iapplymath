@@ -521,7 +521,7 @@
         "vegetarianEnchilada" :{
             "level" : "3",
             "name" : {
-                "en" : "Vegetarian enchilada s",
+                "en" : "Vegetarian enchiladas",
                 "es": "Enchiladas vegetarianas"
             },
             "instructions" : {
@@ -559,6 +559,124 @@
                 "coconuts" :{
                     "ingredient" : "coconuts",
                     "amount" : "5/2",
+                    "servingType" : "cup"
+
+                }
+            },
+            "defaultIngredientMultiQuestions" : [
+                {
+                    "ingredientCode" : "carrot",
+                    "factor" : 1
+                },{
+                    "ingredientCode" : "orange",
+                    "factor" : 1
+                },{
+                    "ingredientCode" : "carrot",
+                    "factor" : 2
+                },{
+                    "ingredientCode" : "orange",
+                    "factor" : 2
+                }
+            ],
+            "defaultFamilyQuestionIngredients" : [
+                "carrot",
+                "orange"
+            ]
+        },
+        "mangoJuice" :{
+            "level" : "3",
+            "name" : {
+                "en" : "Mango Juice",
+                "es": "Jugo de Mango"
+            },
+            "instructions" : {
+                "en" : "Prepare the juice and sirve in a glass",
+                "es" : "Prepare el jugo y sirvalo en en vaso"
+            },
+            "imgSrc" : "orange_carrot_juice",
+            "servingSize" : 1,
+            "recipeMakesAmount" : 6,
+            "servingType" : "cup",
+            "ingredients" : {
+                "mango chunks" :{
+                    "ingredient" : "mangoChunks",
+                    "amount" : "6",
+                    "servingType" : "cup"
+                },
+                "water" :{
+                    "ingredient" : "water",
+                    "amount" : "3",
+                    "servingType" : "cup"
+
+                },
+                "sugar" :{
+                    "ingredient" : "sugar",
+                    "amount" : "3",
+                    "servingType" : "tablespoon"
+
+                }
+            },
+            "defaultIngredientMultiQuestions" : [
+                {
+                    "ingredientCode" : "carrot",
+                    "factor" : 1
+                },{
+                    "ingredientCode" : "orange",
+                    "factor" : 1
+                },{
+                    "ingredientCode" : "carrot",
+                    "factor" : 2
+                },{
+                    "ingredientCode" : "orange",
+                    "factor" : 2
+                }
+            ],
+            "defaultFamilyQuestionIngredients" : [
+                "carrot",
+                "orange"
+            ]
+        },
+        "vanillaIceCream" :{
+            "level" : "3",
+            "name" : {
+                "en" : "Vanilla Ice Cream",
+                "es": "Helado de Vainilla"
+            },
+            "instructions" : {
+                "en" : "Prepare the vanilla ice cream and eat in a bowl",
+                "es" : "Prepare el helado de vainilla y coma en un plato."
+            },
+            "imgSrc" : "coconut_icecream",
+            "servingSize" : 1,
+            "recipeMakesAmount" : 6,
+            "servingType" : "bowl",
+            "ingredients" : {
+                "milk" :{
+                    "ingredient" : "milk",
+                    "amount" : "3/2",
+                    "servingType" : "cup"
+                },
+                "sugar" :{
+                    "ingredient" : "sugar",
+                    "amount" : "3/4",
+                    "servingType" : "cup"
+
+                },
+                "salt" :{
+                    "ingredient" : "salt",
+                    "amount" : "1/8",
+                    "servingType" : "tablespoon"
+
+                },
+                "vanilla extract" :{
+                    "ingredient" : "vanillaExtract",
+                    "amount" : "2",
+                    "servingType" : "tablespoon"
+
+                },
+                "whipped cream" :{
+                    "ingredient" : "whippedCream",
+                    "amount" : "1",
                     "servingType" : "cup"
 
                 }
