@@ -275,6 +275,7 @@
             },
             "imgSrc" : "aguas_frescas_coconut_lime",
             "servingSize" : 9,
+            "time" : 5,
             "recipeMakesAmount" : 1,
             "servingType" : "cup",
             "ingredients" : {
@@ -429,6 +430,136 @@
                     "ingredient" : "vanillaExtract",
                     "amount" : "2",
                     "servingType" : "tablespoon"
+
+                }
+            },
+            "defaultIngredientMultiQuestions" : [
+                {
+                    "ingredientCode" : "carrot",
+                    "factor" : 1
+                },{
+                    "ingredientCode" : "orange",
+                    "factor" : 1
+                },{
+                    "ingredientCode" : "carrot",
+                    "factor" : 2
+                },{
+                    "ingredientCode" : "orange",
+                    "factor" : 2
+                }
+            ],
+            "defaultFamilyQuestionIngredients" : [
+                "carrot",
+                "orange"
+            ]
+        },
+        "pretzel" :{
+            "level" : "2",
+            "name" : {
+                "en" : "Samoa Pretzel Stick",
+                "es": "Churros"
+            },
+            "instructions" : {
+                "en" : "Prepare the Samoa Pretzel Sticks.",
+                "es" : "Prepare los churros."
+            },
+            "imgSrc" : "churros",
+            "servingSize" : 1,
+            "recipeMakesAmount" : 15,
+            "servingType" : "self",
+            "ingredients" : {
+                "caramel candy pieces" :{
+                    "ingredient" : "caramel",
+                    "amount" : "11",
+                    "servingType" : "self"
+                },
+                "water" :{
+                    "ingredient" : "water",
+                    "amount" : "2",
+                    "servingType" : "tablespoon"
+
+                },
+                "chocolate chips" :{
+                    "ingredient" : "chocolateChips",
+                    "amount" : "3",
+                    "servingType" : "cup"
+
+                },
+                "pretzel stick" :{
+                    "ingredient" : "pretzel",
+                    "amount" : "1",
+                    "servingType" : "bag"
+
+                },
+                "coconuts" :{
+                    "ingredient" : "coconuts",
+                    "amount" : "5/2",
+                    "servingType" : "cup"
+
+                }
+            },
+            "defaultIngredientMultiQuestions" : [
+                {
+                    "ingredientCode" : "carrot",
+                    "factor" : 1
+                },{
+                    "ingredientCode" : "orange",
+                    "factor" : 1
+                },{
+                    "ingredientCode" : "carrot",
+                    "factor" : 2
+                },{
+                    "ingredientCode" : "orange",
+                    "factor" : 2
+                }
+            ],
+            "defaultFamilyQuestionIngredients" : [
+                "carrot",
+                "orange"
+            ]
+        },
+        "vegetarianEnchilada" :{
+            "level" : "3",
+            "name" : {
+                "en" : "Vegetarian enchilada s",
+                "es": "Enchiladas vegetarianas"
+            },
+            "instructions" : {
+                "en" : "Fill the enchiladas",
+                "es" : "Rellene enchiladas."
+            },
+            "imgSrc" : "vegetarian_enchiladas",
+            "servingSize" : 1,
+            "recipeMakesAmount" : 2,
+            "servingType" : "self",
+            "ingredients" : {
+                "caramel candy pieces" :{
+                    "ingredient" : "caramel",
+                    "amount" : "11",
+                    "servingType" : "self"
+                },
+                "water" :{
+                    "ingredient" : "water",
+                    "amount" : "2",
+                    "servingType" : "tablespoon"
+
+                },
+                "chocolate chips" :{
+                    "ingredient" : "chocolateChips",
+                    "amount" : "1",
+                    "servingType" : "cup"
+
+                },
+                "pretzel stick" :{
+                    "ingredient" : "pretzel",
+                    "amount" : "1",
+                    "servingType" : "bag"
+
+                },
+                "coconuts" :{
+                    "ingredient" : "coconuts",
+                    "amount" : "5/2",
+                    "servingType" : "cup"
 
                 }
             },
