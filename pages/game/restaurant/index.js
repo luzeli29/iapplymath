@@ -52,6 +52,7 @@ const Resturant = ({user,settings}) => {
     }
 
     function handleDishClick(dishType, dishIndex) {
+        setHoveredDish(menu[dishType][dishIndex])
         switch(dishType) {
             case 'mainDish':
                 updateOrder({mainDishIndex: dishIndex})
