@@ -194,7 +194,7 @@ async function saveGameData(username,gamedata,index,db) {
     }
 
     const pushText = "sessions." + index + ".games_played"
-
+    gamedata.date_saved = Date.now()
     const updateResult = await db.collection('users').findOneAndUpdate(
       filter,
       { $push : { 

@@ -108,8 +108,8 @@ function generateLevel1CQuestions(dishes,order,randomInt){
 
     // Hint
     let hint = {
-        en: "Write your answer as a fraction.",
-        es: "Escribe tu respuesta como una fracción.",
+        en: "half = 1/2",
+        es: "mitad = 1/2",
     }
 
     // answer
@@ -118,8 +118,8 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena would like to taste half of your main dish. How much of your food will you be sharing with her?`,
-            es:`Elena quiere probar la mitad de tu plato principal. ¿Cuánta comida compartirás con ella?`,
+            en:`Elena would like to taste half of your main dish. How much of your food will you be sharing with her? Hint: write your answer as a fraction`,
+            es:`Elena quiere probar la mitad de tu plato principal. ¿Cuánta comida compartirás con ella? Pista: escribe tu respuesta como una fracción`,
         },
         answer,
         [hint],
@@ -160,14 +160,21 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // answer
     answer = randomFraction[randomFractionName].answer;
 
+
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena would like to taste a ${randomFractionNameEnglish} of your main dish. How much of your food will you be sharing with her?`,
-            es:`Elena quiere probar un ${randomFractionNameSpanish} de tu plato principal. ¿Cuánta comida compartirás con ella?`,
+            en:`Elena would like to taste a ${randomFractionNameEnglish} of your main dish. How much of your food will you be sharing with her? Hint: write your answer as a fraction`,
+            es:`Elena quiere probar un ${randomFractionNameSpanish} de tu plato principal. ¿Cuánta comida compartirás con ella? Pista: escribe tu respuesta como una fracción`,
         },
         answer,
-        [hint],
+        [{
+            en: randomFractionNameEnglish + " = " + answer,
+            es: randomFractionNameSpanish + " = " + answer,
+        },{
+            en:answer+"",
+            es:answer+"",
+        }],
         "fraction",
     ))
 
@@ -183,11 +190,17 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena would like to taste an eighth of your main dish. How much of your food will you be sharing with her?`,
-            es:`Elena quiere probar un octavo de tu plato principal. ¿Cuánta comida compartirás con ella?`,
+            en:`Elena would like to taste an eighth of your main dish. How much of your food will you be sharing with her? Hint: write your answer as a fraction`,
+            es:`Elena quiere probar un octavo de tu plato principal. ¿Cuánta comida compartirás con ella? Pista: escribe tu respuesta como una fracción`,
         },
         answer,
-        [hint],
+        [{
+            en: "eighth = 1/8",
+            es: "octavo = 1/8",
+        },{
+            en:answer+"",
+            es:answer+"",
+        }],
         "fraction",
     ))
 
@@ -225,8 +238,8 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`If you ate ${randomFraction1} and Elena ate ${randomFraction2}. Who ate more, you or Elena? ${randomFraction1} __ ${randomFraction2}`,
-            es:`Si tú comiste ${randomFraction1} y Elena comió ${randomFraction2}. ¿Quién comió más, tú o Elena? ${randomFraction1} __ ${randomFraction2}`,
+            en:`If you ate ${randomFraction1} and Elena ate ${randomFraction2}. Who ate more, you or Elena? Compare them using <,>,= (i.e. 1/3 < 1/2). ${randomFraction1} __ ${randomFraction2}`,
+            es:`Si tú comiste ${randomFraction1} y Elena comió ${randomFraction2}. ¿Quién comió más, tú o Elena? Comparalas usando <,>,= (ejemplo. 1/3 < 1/2). ${randomFraction1} __ ${randomFraction2}`,
         },
         answer,
         [hint],
@@ -297,11 +310,18 @@ function generateLevel1CQuestions(dishes,order,randomInt){
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`The server divided your main dish into ${randomValueStrEn} equal portions. If you eat ${randomNumber} portions, what is the total amount of food you ate?`,
-            es:`El mesero dividió tu plato principal en ${randomValueStrEs} porciones iguales. Si tú comes ${randomNumber} porciones, ¿cuánta comida comiste en total?`,
+            en:`The server divided your main dish into ${randomValueStrEn} equal portions. If you eat ${randomNumber} portions, what is the total amount of food you ate?  Hint: write your answer as a simplified fraction`,
+            es:`El mesero dividió tu plato principal en ${randomValueStrEs} porciones iguales. Si tú comes ${randomNumber} porciones, ¿cuánta comida comiste en total? Pista: escribe tu respuesta como una fracción simplificada.`,
         },
         answer,
-        [hint],
+        [{
+            en:"Step 1. If there are (x) equal portions, each portion represents 1/(x) of the whole dish."+"\n"+" Step 2. Total food if you eat (y) out of (x) portions = y/x",
+            es:"Paso 1. Si hay (x) porciones iguales, cada porción representa 1/(x) del plato completo."+"\n"+" Paso 2. Cantidad total de comida si comes (y) de (x) porciones = y/x",
+        },
+        {
+            en:answer+"",
+            es:answer+"",
+        }],
         "fraction",
     ))
 
@@ -334,18 +354,22 @@ function generateLevel2CQuestions(dishes,order,randomInt){
 
     // answer
     answer = xNumber < yNumber ? "less_than" : xNumber > yNumber ? "greater_than" : "equal_to";
-
+    let symbol = answer == "less_than" ? "<" : answer == "greater_than" ? ">" : "=";
     // create question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena’s main dish was bigger than she expected, and she only ate ${x} of her food. If you ate ${y} of your food, which quantity is smaller?  x __ y  `,
-            es:`El plato principal de Elena era más grande de lo que esperaba, y solo comió ${x} de su comida. Si usted comió ${y} de su comida, ¿qué cantidad es menor? x __ y`,
+            en:`Elena ate ${x} of her food and you ate ${y} of your food,  Someone ate less, which amount is less? Please select your answer using <,> or = signs. ${x} __ ${y}`,
+            es:`Elena comió ${x} de su comida y tú comiste ${y} de tu comida, alguien comió menos, ¿cuál cantidad es menor? Por favor selecciona tu respuesta usando los signos <,> o =. ${x} __ ${y}`,
         },
         answer,
         [{
-            en: "Evaluate fractions to determine which quantity is smaller.",
-            es: "Evalua las fracciones para determinar cual es menor",
-        }],
+            en: `(${x}) ? (${y})`,
+            es: `(${x}) ? (${y})`,
+        },{
+            en: `${x} ${symbol} ${y}`,
+            es: `${x} ${symbol} ${y}`,
+        }
+        ],
         "inequality",
     ))
 
@@ -353,7 +377,7 @@ function generateLevel2CQuestions(dishes,order,randomInt){
 
     // question 2
 
-    // Elena likes to eat [x = 5/8, ¾, 4/5, 7/10, 6/12, 80/100, 40/100, 2/3] cups of soup per day. She decided that she will have soup every day for the next [range: y = 2-9]. How many cups of soup did she eat in total? 
+    // Elena likes having [x = 5/8, ¾, 4/5, 7/10, 6/12, 80/100, 40/100, 2/3] of her meal be vegetables. She decided that she will have that amount of vegetables every day for the next [range: y = 2-9] days. How much vegetables did she eat in total? 
 
     // declare possible values
     possibleValuesX = ["5/8", "3/4", "4/5", "7/10", "6/12", "80/100", "40/100", "2/3"];
@@ -379,20 +403,17 @@ function generateLevel2CQuestions(dishes,order,randomInt){
     // generate question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`Elena likes to eat ${x} cups of soup per day. She decided that she will have soup every day for the next ${y} days. How many cups of soup did she eat in total? simplify your answer.`,
-            es:`A Elena le gusta comer ${x} tazas de sopa por día. Ella decidió que comerá sopa todos los días durante los próximos ${y} días. ¿Cuántas tazas de sopa comió en total? simplifica tu respuesta.`,
+            en:`Elena likes having ${x} of her meal be vegetables. She decided that she will have that amount of vegetables every day for the next ${y} days. How much vegetables did she eat in total?`,
+            es:`A Elena le gusta que ${x} de su comida sean vegetales. Ella decidió que tendrá esa cantidad de vegetales todos los días durante los próximos ${y} días. ¿Cuántos vegetales comió en total?`,
         },
         answer,
         [{
-            en:" Total cups of soup = (daily cups) x (days)",
-            es:"Total de tazas de sopa = (tazas diarias) x (días)",
+            en:"Total amount of vegetables = (daily cups) x (days)",
+            es:"Cantidad total de vegetales = (tazas diarias) x (días)",
 
         },{
-            en: " Total cups of soup = " + x + " x " + y,
-            es: " Total de tazas de sopa = " + x + " x " + y,
-        },{
-            en: " Total cups of soup = " + answer,
-            es: " Total de tazas de sopa = "  +answer,
+            en: "Total amount of vegetables = "+answer,
+            es: "Cantidad total de vegetales = "+answer,
         }],
         "fraction",
     ))
@@ -400,196 +421,7 @@ function generateLevel2CQuestions(dishes,order,randomInt){
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    // question 3
-
-    // Your pet drinks [x = 7/8, ¾, 3/5, 4/10, 7/12, 90/100, 50/100, 1/3] cups of water every day. How much water does your pet drink after [range: y = 2-9] days?
-
-    // declare possible values
-    possibleValuesX = ["7/8", "3/4", "3/5", "4/10", "7/12", "90/100", "50/100", "1/3"];
-
-    // choose a random value from possibleValuesX
-    // x = possibleValuesX[Math.floor(Math.random() * possibleValuesX.length)];
-    x = possibleValuesX[randomInt(0,possibleValuesX.length)];
-
-    // choose a random number from 2 to 9
-    // random number represents the number of days
-    // y = Math.floor(Math.random() * 8) + 2;
-    y = randomInt(2,10);
-
-    // answer
-    numerator = x.split("/")[0];
-    denominator = x.split("/")[1];
-
-    answerNumerator = numerator * y;
-
-    answer = `${answerNumerator}/${denominator}`;
-    answer = simplifyFraction(answerNumerator,denominator);
-
-    // generate question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en:`Your pet drinks ${x} cups of water every day. How much water does your pet drink after ${y} days? simplify your answer.`,
-            es:`Tu mascota bebe ${x} tazas de agua todos los días. ¿Cuánta agua bebe tu mascota después de ${y} días? simplifica tu respuesta.`,
-        },
-        answer,
-        [{
-            en:" Total cups of water = (daily cups) x (days)",
-            es:"Total de tazas de agua= (tazas diarias) x (días)",
-
-        },{
-            en: " Total cups of water = " + x + " x " + y,
-            es: " Total de tazas de agua = " + x + " x " + y,
-        },{
-            en: " Total cups of water = " + answer,
-            es: " Total de tazas de agua = "  +answer,
-        }],
-        "fraction",
-    ))
-
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    // question 4
-
-    // Choose the correct symbol: 7 tenths + 17 hundredths  __  3 tenths + 29 hundredths
-
-    // answer
-    answer = "greater_than";
-
-    // generate question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en:`Choose the correct symbol: 7 tenths + 17 hundredths  __  3 tenths + 29 hundredths`,
-            es:`Elige el símbolo correcto: 7 décimos + 17 centésimos  __  3 décimos + 29 centésimos`,
-        },
-        answer,
-        [{
-            en:"7/10 + 17/100  or 3/10 + 29/100",
-            es:"7/10 + 17/100  ó  3/10 + 29/100",
-
-        }],
-        "inequality",
-    ))
-
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    // question 5
-
-    // Choose the correct symbol: 9 hundredths + 7 tenths  __  79 hundredths + 0 tenths
-
-    // answer
-    answer = "equal_to";
-
-    // generate question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en:`Choose the correct symbol: 9 hundredths + 7 tenths  __  79 hundredths + 0 tenths`,
-            es:`Elige el símbolo correcto: 9 centésimos + 7 décimos  __  79 centésimos + 0 décimos`,
-        },
-        answer,
-        [{
-            en:"9/100 + 7/10  or 79/100 + 0/10",
-            es:"9/100 + 7/10  or 79/100 + 0/10",
-
-        }],
-        "inequality",
-    ))
-
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    // question 6
-
-    // Choose the correct symbol: 0.78  __  0.87
-
-    // answer
-    answer = "less_than";
-
-    // generate question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en:`Choose the correct symbol: 0.78  __  0.87`,
-            es:`Elige el símbolo correcto: 0.78  __  0.87`,
-        },
-        answer,
-        [{
-            en:"78/100   or 87/100",
-            es:"78/100  ó 87/100",
-
-        }],
-        "inequality",
-    ))
-
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    // question 7
-
-    // Choose the correct symbol: 0.93  __  0.6
-
-    // answer
-    answer = "greater_than";
-
-    // generate question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en:`Choose the correct symbol: 0.93  __  0.6`,
-            es:`Elige el símbolo correcto: 0.93  __  0.6`,
-        },
-        answer,
-        [{
-            en:"93/100   or 60/100",
-            es:"93/100  ó 60/100",
-
-        }],
-        "inequality",
-    ))
-
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    // question 8
-
-    // 67 hundredths + 0 tenths __ 7 hundredths + 6 tenths
-
-    // answer
-    answer = "equal_to";
-
-    // generate question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en:`67 hundredths + 0 tenths __ 7 hundredths + 6 tenths`,
-            es:`67 centésimos + 0 décimos __ 7 centésimos + 6 décimos`,
-        },
-        answer,
-        [{
-            en:"67/100 + 0/10  or 7/100 + 6/10",
-            es:"67/100 + 0/10  ó 7/100 + 6/10",
-
-        }],
-        "inequality",
-    ))
-
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    // question 9
-
-    // 1 tenths + 33 hundredths __ 8 tenths + 6 hundredths
-
-    // answer
-    answer = "less_than";
-
-    // generate question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en:`1 tenths + 33 hundredths __ 8 tenths + 6 hundredths`,
-            es:`1 décimo + 33 centésimos __ 8 décimos + 6 centésimos`,
-        },
-        answer,
-        [{
-            en:"1/10 + 33/100  or 8/10 + 6/100",
-            es:"1/10 + 33/100  ó 8/10 + 6/100",
-
-        }],
-        "inequality",
-    ))
-
+    
 
     return generatedQuestions;
 }
@@ -599,30 +431,33 @@ function generateLevel3CQuestions(dishes,order,randomInt){
     let answer;
     // question 1
 
-    // If your total costs $100 and you have x[any whole number between 1-5] friends with you, express your answer as a fraction to calculate how much each person would pay if you split the bill?
+    // If your total at the restaurant is $100 and you have x[any whole number between 1-5] friends with you, express your answer as a fraction to calculate how much each person would pay if you split the bill?
 
     // let x = Math.floor(Math.random() * 5) + 1;
     let x = randomInt(1,6);
     // answer
-    let numerator = 100;
-    let denominator = x;
+    let denominator = x+1;
+    let numerator = 1;
     answer = numerator/denominator;
 
-    // round answer to 2 decimal places
-    answer = parseFloat(answer.toFixed(2));
+    answer = simplifyFraction(numerator,denominator);
+
 
     // generate question
     generatedQuestions.push(createGameQuestion(
         {
-            en:`If your total costs $100 and you have ${x} friends with you, calculate how much each person would pay if you split the bill?`,
-            es:`Si tu total cuesta $100 y tienes ${x} amigos contigo, calcula cuánto pagaría cada persona si dividieras la cuenta.`,
+            en:`If your total at the restaurant is $100 and you have ${x} friends with you. How much does each person pay if you all split the bill? express your answer as a fraction.`,
+            es:`Si tu total en el restaurante es de $100 y tienes ${x} amigos contigo. ¿Cuánto paga cada persona si dividen la cuenta? expresa tu respuesta como una fracción.`,
         },
         answer,
         [{
-            en: "Cost = 100 ÷ " + x,
-            es: "Costo = 100 ÷ " + x,
+            en: "Express your answer as a fraction",
+            es: "Expresa tu respuesta como una fracción",
+        },{
+            en:answer+"",
+            es:answer+"",
         }],
-        "decimal",
+        "fraction",
     ))
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -646,8 +481,11 @@ function generateLevel3CQuestions(dishes,order,randomInt){
         },
         answer,
         [{
-            en: "(Cost of main dish) x 0.5" ,
-            es: "(Costo del plato fuerte) x 0.5" ,
+            en: "0.5 X (main dish) or (main dish)/2" ,
+            es: "0.5 X (plato principal) o (plato principal)/2" ,
+        },{
+            en:answer+"",
+            es:answer+"",
         }],
         "decimal",
     ))
@@ -674,8 +512,57 @@ function generateLevel3CQuestions(dishes,order,randomInt){
         },
         answer,
         [{
-            en: "(Cost of main dish) x 0.25" ,
-            es: "(Costo del plato fuerte) x 0.25" ,
+            en: "0.25 X (main dish) or (main dish)/4" ,
+            es: "0.25 X (plato principal) o (plato principal)/4" ,
+        },{
+            en:answer+"",
+            es:answer+"",
+        }],
+        "decimal",
+    ))
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    // question 4
+
+    // What is your total if you buy [5-15] [main dish/drink/dessert]?
+
+    let randomNumber = randomInt(5,16);
+    let randomDish = dishes[randomInt(0,3)];
+
+    let dishNameP = {
+        mainDish:{
+            en:"main dishes",
+            es:"platos principales",
+        },
+        drink:{
+            en:"drinks",
+            es:"bebidas",
+        },
+        dessert:{
+            en:"desserts",
+            es:"postres",
+        },
+
+    }
+
+    // answer
+    cost = order[randomDish].price;
+    answer = cost*randomNumber;
+
+    // generate question
+    generatedQuestions.push(createGameQuestion(
+        {
+            en:`What is your total if you buy ${randomNumber} ${dishNameP[randomDish].en}?`,
+            es:`¿Cuál es tu total si compras ${randomNumber} ${dishNameP[randomDish].es}?`,
+        },
+        answer,
+        [{
+            en: "Total = (number of items) X (price of item)" ,
+            es: "Total = (número de artículos) X (precio del artículo)" ,
+        },{
+            en:answer+"",
+            es:answer+"",
         }],
         "decimal",
     ))
