@@ -64,12 +64,13 @@ function setUtteranceByReader(reader, synth, lang,text) {
         "es":[],
         "en":[],
     }
-
-    voices.forEach((voice) => {
-        if(acceptedLangs.includes(voice.lang)) {
-            dictionaryOfVoices[voice.lang.slice(0,2)].push(voice)
-        }
-    })
+    if(voices) {
+        voices.forEach((voice) => {
+            if(acceptedLangs.includes(voice.lang)) {
+                dictionaryOfVoices[voice.lang.slice(0,2)].push(voice)
+            }
+        })
+    }
 
     let voice = dictionaryOfVoices[lang][0]
 

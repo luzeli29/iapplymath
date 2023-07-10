@@ -10,10 +10,7 @@ const levelBoundaries = {
 }
 
 const generateSchoolQuestion = (schoolTopic, level,randomGenerator) => {
-    let firstNumber = randomGenerator.randomInt(levelBoundaries[level].min, levelBoundaries[level].max)
-    let secondNumber = randomGenerator.randomInt(levelBoundaries[level].min, firstNumber)
-
-    let answer, template, sign, topic;
+    let answer, template, sign, topic, firstNumber, secondNumber;
 
     if(schoolTopic.name == 'random') {
         topic = randomGenerator.randomSchoolTopic()
@@ -23,21 +20,30 @@ const generateSchoolQuestion = (schoolTopic, level,randomGenerator) => {
 
     switch(topic) {
         case 'addition':
+            firstNumber = randomGenerator.randomInt(levelBoundaries[level].min, levelBoundaries[level].max)
+            secondNumber = randomGenerator.randomInt(levelBoundaries[level].min, levelBoundaries[level].max)
             answer = firstNumber + secondNumber
             template = schoolQuestionTemplates.nonFraction
             sign = '+'
             break;
         case 'subtraction':
+            firstNumber = randomGenerator.randomInt(levelBoundaries[level].min, levelBoundaries[level].max)
+            secondNumber = randomGenerator.randomInt(levelBoundaries[level].min, firstNumber)
             answer = firstNumber - secondNumber
             template = schoolQuestionTemplates.nonFraction
             sign = '-'
             break;
         case 'multiplication':
+            firstNumber = randomGenerator.randomInt(levelBoundaries[level].min, levelBoundaries[level].max)
+            secondNumber = randomGenerator.randomInt(levelBoundaries[level].min, levelBoundaries[level].max)
             answer = firstNumber * secondNumber
             template = schoolQuestionTemplates.nonFraction
             sign = 'x'
             break;
         case 'division':
+            secondNumber = randomGenerator.randomInt(levelBoundaries[level].min, levelBoundaries[level].max)
+            const factor = randomGenerator.randomInt(1,level*4)
+            firstNumber = factor * secondNumber
             answer = simplifyFraction(firstNumber,secondNumber)
             template = schoolQuestionTemplates.fraction
             sign = '÷'

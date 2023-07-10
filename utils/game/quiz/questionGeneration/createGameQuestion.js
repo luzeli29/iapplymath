@@ -25,18 +25,20 @@ export default function createGameQuestion(questionText,answer,hints,questionFor
 
     var hintArray = [];
     hintArray[0] = translations.try_again;
-
-    hints.forEach((hint, index) => {
-        if(!hint.en) {
-            throwError('No english translation for question hint at index ' + index + ' was found in func CreateGameQuestion(). Setting as basic hint.')
-            hint.en = translations.try_again
-        }
-        if(!hint.es) {
-            throwError('No spanish translation for question hint at index ' + index + ' was found in func CreateGameQuestion(). Setting spanish as given english text.')
-            hint.es = hint.en
-        }
-        hintArray.push(hint);
-    });
+    
+    if(hints) {
+        hints.forEach((hint, index) => {
+            if(!hint.en) {
+                throwError('No english translation for question hint at index ' + index + ' was found in func CreateGameQuestion(). Setting as basic hint.')
+                hint.en = translations.try_again
+            }
+            if(!hint.es) {
+                throwError('No spanish translation for question hint at index ' + index + ' was found in func CreateGameQuestion(). Setting spanish as given english text.')
+                hint.es = hint.en
+            }
+            hintArray.push(hint);
+        });
+    }
 
     const question = {
         en: questionText.en,

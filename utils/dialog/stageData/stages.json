@@ -29,6 +29,7 @@
         "school" : {
             "dialogType" : "speakerAndPlayer",
             "backgroundSrc" : "/img/school/school_bg.png",
+            "speakerSrc" : "/img/school/school_speaker.png",
             "isLogginRequired" : true,
             "isAvatarRequired" : true
         }
