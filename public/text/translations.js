@@ -118,8 +118,8 @@ const translations = {
     },
 
     type_select: {
-        en: "Ecuation Type Select",
-        es: "Seleccionar Tipo de Ecuación",
+        en: "Study Again",
+        es: "Estudia Otra Vez"
     },
 
     // ----- General Translations -----

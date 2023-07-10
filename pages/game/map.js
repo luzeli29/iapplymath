@@ -160,10 +160,10 @@ const Map = ({user,settings}) => {
                             src={"/img/map/my_house.png"}/>
                 </div>
 
-                <p className={style.school_text}>{translations.coming_soon[lang]}</p>
-                <button>
+                <p className={style.school_text}>{translations.school[lang]}</p>
+                <button onClick={() => handleSchoolClick()}>
                   <div
-                      className={style.icon} 
+                      className={style.icon_button} 
                       id={style.school}>
                         <Image 
                         layout={"fill"}
