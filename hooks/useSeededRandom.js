@@ -134,6 +134,7 @@ export default function useSeededRandom(initSeed) {
     }
 
     const randomGenerator = {
+        seed: seed,
         randomInt: randomInt,
         randomHr: randomHr,
         randomDishType: randomDishType,
