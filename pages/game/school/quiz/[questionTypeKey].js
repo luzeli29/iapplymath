@@ -44,6 +44,11 @@ const SchoolQuiz = ({user,settings,schoolTopics}) => {
         return generatedQuestions
     }
 
+    const handleFinish = () => {
+        router.push('/dialog/schoolOutro')
+        setLoading(true)
+    }
+
     useEffect(()=> {
         if(seed) {
             const questions = generatedQuestions()
@@ -73,7 +78,9 @@ const SchoolQuiz = ({user,settings,schoolTopics}) => {
     if(!router.isReady) return <Loading/>
   
     const lang = settings.lang
-
+    if(loading) {
+        return <Loading/>
+    }
     return (
         <GameQuestionLayout
             user={user}
