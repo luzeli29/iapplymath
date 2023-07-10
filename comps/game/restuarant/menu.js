@@ -21,7 +21,6 @@ const Menu = ({menu, handleHover, handleDishClick}) => {
         return (
             <button className={style.menu_button}
                 onMouseEnter={() => handleHover(dish)}
-                onMouseLeave={() => handleHover()}
                 onClick={() => handleDishClick(dishType,dishIndex)}> 
                 <img 
                     src={"/img/food/" + dish.img} 
