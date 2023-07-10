@@ -3,6 +3,7 @@ import style from '@styles/restaurant.module.css'
 import { err } from '@utils/debug/devLog'
 import menuOptions from "@public/text/menuOptions"
 import translations from "@translations";
+import getText from '@utils/text/getText';
 
 //order component that shows what the user has ordered
 //used both in QuestionLayout and in MenuSelect
@@ -13,13 +14,19 @@ function Order({order, budget, handleOrderMenu = null}) {
     if(error) return <Error error={error}/>
     if(!isLoggedIn) return <Login/>
     const lang = settings.lang
+
+    const mdText = order.mainDishIndex >= 0 ? menuOptions.mainDish[order.mainDishIndex][lang] + ' - $' + menuOptions.mainDish[order.mainDishIndex].price + '.00' : ''
+    const drinkText = order.drinkIndex >= 0 ? menuOptions.drink[order.drinkIndex][lang] + ' - $' + menuOptions.drink[order.drinkIndex].price + '.00' : ''
+    const dessertText = order.dessertIndex >= 0 ? menuOptions.dessert[order.dessertIndex][lang] + ' - $' + menuOptions.dessert[order.dessertIndex].price + '.00' : ''
+
     return (
         <div>        
             <div className={style.order_container}>    
                 <p className={style.order_text}>{translations.order_2[lang]}</p>
-                {order.mainDishIndex != -1 ? <p className={style.order_text}>{menuOptions.mainDish[order.mainDishIndex][lang]} - ${menuOptions.mainDish[order.mainDishIndex].price}.00</p> : <></>}
-                {order.drinkIndex != -1 ? <p className={style.order_text}>{menuOptions.drink[order.drinkIndex][lang]} - ${menuOptions.drink[order.drinkIndex].price}.00</p> : <></>}
-                {order.dessertIndex != -1 ? <p className={style.order_text}>{menuOptions.dessert[order.dessertIndex][lang]} - ${menuOptions.dessert[order.dessertIndex].price}.00</p> : <></>}
+                <p className={style.order_text}> {getText('mainDish',lang) + ' - ' + mdText}</p>
+                <p className={style.order_text}> {getText('drink',lang) + ' - ' + drinkText}</p>
+                <p className={style.order_text}> {getText('dessert',lang) + ' - ' + dessertText}</p>
+
                 
                 {/* Re-add if you want to show total or keep it hidden
                 !budget ? 
