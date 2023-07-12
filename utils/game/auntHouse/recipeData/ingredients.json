@@ -407,6 +407,50 @@
                 "es" : "mashed black beans"
             },
             "imgSrc" : "black_beans"
+        },
+        "oliveOil" : {
+            "nameSingular" : {
+                "en" : "olive oil",
+                "es" : "aceite de oliva"
+            },
+            "namePlural" : {
+                "en" : "olive oil",
+                "es" : "aceite de oliva"
+            },
+            "imgSrc" : "fryingOil"
+        },
+        "lentil" : {
+            "nameSingular" : {
+                "en" : "lentil",
+                "es" : "lenteja"
+            },
+            "namePlural" : {
+                "en" : "lentils",
+                "es" : "lentejas"
+            },
+            "imgSrc" : "lentils"
+        },
+        "vegetableBroth" : {
+            "nameSingular" : {
+                "en" :"vegetable broth",
+                "es" : "caldo de verduras"
+            },
+            "namePlural" : {
+                "en" :"vegetable broth",
+                "es" : "caldo de verduras"
+            },
+            "imgSrc" : "veggiebroth"
+        },
+        "kale" : {
+            "nameSingular" : {
+                "en" :"kale",
+                "es" : "col rizada"
+            },
+            "namePlural" : {
+                "en" :"kale",
+                "es" : "coles rizadas"
+            },
+            "imgSrc" : "kale"
         }
 
     }

@@ -2232,6 +2232,39 @@ function generateLevel3AuntQuestions(recipe, randomInt){
       ))
     }
 
+    //Lentil 1
+    if (recipe.name.en == "Lentil soup"){
+
+      let randomNum = randomInt(4,15)
+      let servings = '3/4'
+      let serving_size = recipe.recipeMakesAmount
+      let fractionOrInteger1 = convertToFraction(servings)
+      let multipliedResult = multiplyOrDivide( fractionOrInteger1,serving_size, 'divide')
+      let part1 = simplifyFraction(multipliedResult.result)
+      let multipliedResult1 = multiplyOrDivide( multipliedResult.result,randomNum, 'multiply')
+      let answer = simplifyFraction(multipliedResult1.result)
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `How many cups of olive oil are in ${randomNum} servings of Lentil Soup? Type your answer in fraction format (ex. 1/2)`,
+            es: `¿Cuántas tazas de aceite de oliva hay en ${randomNum} porciones de sopa de lentejas? Escribe tu respuesta en formato de fracción (ej. 1/2).`,
+        
+        },
+        answer.result,
+        [{
+            en:  `1) Calculate how many cups of olive oil are in 1 serving: y = (3/4) /  ${serving_size}) 2) Multiply y by the number of servings required: y x ${randomNum} = ???`,
+            es:  `1) Calcula cuantas tazas de aceite de oliva hay en 1 porción: y = (3/4) /  ${serving_size}) 2) Multiplique y por el número de porciones requeridas: y x ${randomNum} = ???`,
+        },
+        {
+          en:  `Cups of olive oil = ${part1.result} x ${randomNum} = ${answer.result}`,
+          es:   `Tazas de aceite de oliva = ${part1.result} x ${randomNum} = ${answer.result}`,
+      }],
+        answer.types,
+  
+      ))
+    }
+
     
 
 
