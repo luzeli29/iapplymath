@@ -685,6 +685,78 @@
                 "carrot",
                 "orange"
             ]
+        },
+        "lentilSoup" :{
+            "level" : "3",
+            "name" : {
+                "en" : "Lentil soup",
+                "es": "Sopa de lentejas"
+            },
+            "instructions" : {
+                "en" : "Prepare the soup and eat in a bowl",
+                "es" : "Prepare la sopa y coma en un plato hondo"
+            },
+            "imgSrc" : "lentil_soup",
+            "servingSize" : 1,
+            "prepTime": 10,
+            "cookTime" : 45,
+            "recipeMakesAmount" : 12,
+            "servingType" : "self",
+            "ingredients" : {
+                "olive oli" :{
+                    "ingredient" : "oliveOil",
+                    "amount" : "3/4",
+                    "servingType" : "cup"
+                },
+                "onion" :{
+                    "ingredient" : "onion",
+                    "amount" : "2",
+                    "servingType" : "cup"
+
+                },
+                "carrot" :{
+                    "ingredient" : "carrot",
+                    "amount" : "6",
+                    "servingType" : "self"
+
+                },
+                "garlic cloves" :{
+                    "ingredient" : "garlic",
+                    "amount" : "10",
+                    "servingType" : "self"
+
+                },
+                "lentils" :{
+                    "ingredient" : "lentil",
+                    "amount" : "3",
+                    "servingType" : "cup"
+
+                },
+                "vegetable broth" :{
+                    "ingredient" : "vegetableBroth",
+                    "amount" : "12",
+                    "servingType" : "cup"
+
+                },
+                "water" :{
+                    "ingredient" : "water",
+                    "amount" : "6",
+                    "servingType" : "cup"
+
+                },
+                "kale" :{
+                    "ingredient" : "kale",
+                    "amount" : "3",
+                    "servingType" : "cup"
+
+                },
+                "lemon juice" :{
+                    "ingredient" : "freshLimeJuice",
+                    "amount" : "5",
+                    "servingType" : "tablespoon"
+
+                }
+            }
         }
         
     }
