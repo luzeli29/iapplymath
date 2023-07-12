@@ -170,8 +170,7 @@ function addOrSubtract(fractionOrInteger1, fractionOrInteger2, operation) {
   } else if (typeof fractionOrInteger1 === 'number' && typeof fractionOrInteger2 === 'object') {
     const numerator = fractionOrInteger2.numerator;
     const denominator = fractionOrInteger2.denominator;
-
-    
+  
 
     if (operation === 'add') {
       const commonDenominator = denominator;
@@ -215,7 +214,7 @@ function addOrSubtract(fractionOrInteger1, fractionOrInteger2, operation) {
     if (denominator === 1) {
       return {
         result: numerator,
-        type: 'integer',
+        type: 'wholeNumber',
       };
     } else {
       return {
@@ -1735,9 +1734,310 @@ let randomNum;
     return generatedQuestions;
 }
 
-function generateLevel3AuntQuestions(dishes,order, randomInt){
+function generateLevel3AuntQuestions(recipe, randomInt){
     let generatedQuestions = [];
     let answer = null;
+
+
+    //Mango Juice 1
+    if (recipe.name.en == "Mango Juice"){
+        let randomNum = randomInt(10,31);
+        let randomNum2 = randomInt(10,21);
+
+        answer = randomNum*randomNum2
+  
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `You are preparing ${randomNum} servings everyday for ${randomNum2} days. How many total minutes have you spent preparing mango juice?`,
+            es: `Estás preparando ${randomNum} porciones todos los días durante ${randomNum2} días. ¿Cuántos minutos totales has pasado preparando jugo de mango?`
+        
+        },
+        answer,
+        [{
+            en:  randomNum + " x " + randomNum2 + " = ??? " ,
+            es:  randomNum + " x " + randomNum2 + " = ??? " , 
+        },
+        {
+          en:  randomNum + " x " + randomNum2 + " = " + answer ,
+          es:  randomNum + " x " + randomNum2 + " = " + answer , 
+      }],
+        "wholeNumber",
+  
+      ))
+    }
+
+    //Mango Juice 2
+    if (recipe.name.en == "Mango Juice"){
+
+    let cookTime = 5//recipe.cookTime
+    let prepTime = 5//recipe.prepTime
+    let totalTime = cookTime+prepTime
+
+      answer = (35*totalTime) - (35*(totalTime/2))
+
+
+     // create question
+     generatedQuestions.push(createGameQuestion(
+      {
+          en: `You’re super fast at this recipe and it will take you half the amount of time to make 1 mango juice. Your friend takes the normal amount of time to make 1 mango juice. After making 35 juices, how much less time did it take you to make the mango juice than your friend? (Cook time = ${cookTime}, Preparation time = ${prepTime}) Type your answer in minutes.`,
+          es: `Eres súper rápido con esta receta y te tomará la mitad de tiempo hacer 1 jugo de mango. Tu amigo se toma la cantidad normal de tiempo para hacer 1 jugo de mango. Después de hacer 35 jugos, ¿cuánto tiempo menos te tomó  a ti hacer el jugo de mango que tu amigo? Escriba su respuesta en minutos`
+      
+      },
+      answer,
+      [{
+          en:  "35 x (" + totalTime + ") - 35 x ("+totalTime+"/2)= ??? " ,
+          es:  "35 x (" + totalTime + ") - 35 x ("+totalTime+"/2)= ??? " ,
+      },
+      {
+        en:  "35 x (" + totalTime + ") - 35 x ("+totalTime+"/2)= " + answer + " minutes",
+        es:  "35 x (" + totalTime + ") - 35 x ("+totalTime+"/2)= " + answer + " minutos" , 
+    }],
+      "wholeNumber",
+
+    ))
+  }
+
+    //Mango Juice 3
+    if (recipe.name.en == "Mango Juice"){
+
+      let randomNum = randomInt(10,31);
+
+  
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      answer = randomNum*100*first_ingredient_key_amount
+  
+  
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `The only measuring cup you have is a one-hundredth cup. You want to make ${randomNum} mango juices. How many one-hundredth cups of water do you need to make the mango juices? Hint: 1 one-hundredth cup = 0.01 cups.`,
+            es: `La única taza de medir que tienes es una taza de una centésima. Quieres hacer ${randomNum} jugos de mango. ¿Cuántas tazas de una centésima de agua necesitas para hacer los jugos de mango? Pista: 1 centésima taza = 0.01 tazas`,
+        
+        },
+        answer,
+        [{
+          en: first_ingredient_key_amount +" x "+randomNum+" x 100 = ??? " ,
+          es: first_ingredient_key_amount+" x "+randomNum+" x 100 = ??? " ,
+        },
+        {
+          en:  first_ingredient_key_amount+" x "+randomNum+" x 100 = " + answer ,
+          es:  first_ingredient_key_amount+" x "+randomNum+" x 100 = " + answer,
+      }],
+        "wholeNumber",
+  
+      ))
+    }
+
+    //Mango Juice 4
+    if (recipe.name.en == "Mango Juice"){
+
+      let randomNum = randomInt(20,31);
+      let randomNum2 = randomInt(30,51);
+      let cookTime = 5//recipe.cookTime
+
+      answer = cookTime*randomNum*randomNum2
+  
+  
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `Based on your recipe’s cook time (5 minutes), if you made ${randomNum} servings every day for ${randomNum2} days, how much time did you spend cooking?`,
+            es: `Según el tiempo de cocción de su receta (5 minutos), si preparó ${randomNum} porciones todos los días durante ${randomNum2} días, ¿cuánto tiempo pasó cocinando?`,
+        
+        },
+        answer,
+        [{
+          en: cookTime+" x "+randomNum+" x " +randomNum2+" = ??? " ,
+          es: cookTime+" x "+randomNum+" x " +randomNum2+" = ??? " ,
+        },
+        {
+          en:  cookTime+" x "+randomNum+" x " +randomNum2+" = " + answer ,
+          es:  cookTime+" x "+randomNum+" x " +randomNum2+" = " + answer ,
+      }],
+        "wholeNumber",
+  
+      ))
+    }
+
+    //Mango Juice 5
+    if (recipe.name.en == "Mango Juice"){
+
+      const fractions = ["1/2", "1/4", "1/5","1/6"];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];  
+
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(randomFraction)
+      let fractionOrInteger1 = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, first_ingredient_key_amount, 'multiply')
+      let addedResult = addOrSubtract(fractionOrInteger1, multipliedResult.result, 'subtract')
+      let simplify = simplifyFraction(addedResult.result)
+      answer = simplify
+  
+  
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `Your recipe calls for a specific amount of water. Your friend uses a different recipe that requires ${randomFraction} of the amount of water you use. How much more water do you use than your friend? Type your answer as a fraction.`,
+            es: `Su receta requiere una cantidad específica de agua. Tu amigo usa una receta diferente que requiere ${randomFraction} de la cantidad de agua que usas. ¿Cuánta más agua usas tú que tu amigo? Escriba su respuesta como una fracción.`,
+        
+        },
+        simplify.result,
+        [{
+          en: first_ingredient_key_amount+" - ("+randomFraction+" x " +first_ingredient_key_amount+") = ??? " ,
+          es: first_ingredient_key_amount+" - ("+randomFraction+" x " +first_ingredient_key_amount+") = ??? " ,
+        },
+        {
+          en:  first_ingredient_key_amount+" - ("+randomFraction+" x " +first_ingredient_key_amount+") = " + simplify.result  ,
+          es:  first_ingredient_key_amount+" - ("+randomFraction+" x " +first_ingredient_key_amount+") = ??? "+ simplify.result ,
+      }],
+        simplify.types,
+  
+      ))
+    }
+
+    //Mango Juice 6
+    if (recipe.name.en == "Mango Juice"){
+
+      const denominator = Math.floor(Math.random() * 9) + 2;
+      const numerator = Math.floor(Math.random() * (denominator - 1)) + 1;
+      const randomFraction = numerator + '/' + denominator;
+
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(randomFraction)
+      let fractionOrInteger1 = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, fractionOrInteger1,  'multiply')
+      let simplify = simplifyFraction(multipliedResult.result)
+  
+  
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `Auntie Maria asks you to make ${randomFraction} of one mango juice. How many cups of mango chunks will you need to make the mango juice?`,
+            es: `La tía María te pide que hagas ${randomFraction} de un jugo de mango. ¿Cuántas tazas de trozos de mango necesitarás para hacer el jugo de mango?`,
+        
+        },
+        simplify.result,
+        [{
+          en: first_ingredient_key_amount + " x " + randomFraction + " = ???",
+          es: first_ingredient_key_amount + " x " + randomFraction + " = ???",
+        },
+        {
+          en:  first_ingredient_key_amount + " x " + randomFraction + " = " + simplify.result,
+          es:  first_ingredient_key_amount + " x " + randomFraction + " = " + simplify.result,
+      }],
+        simplify.types,
+  
+      ))
+    }
+
+    //Mango Juice 7
+    if (recipe.name.en == "Mango Juice"){
+
+      let randomNum = randomInt(1,7);
+      let randomNum3 = randomInt(10,30)
+      let randomNum2 = randomInt(10,31)
+      let cookTime = 10
+      let randomNum1 = randomNum + ":"+  randomNum3
+
+            // Convert start time to minutes
+      let totalMinutes = randomNum * 60 + randomNum3;
+
+      let part1 = cookTime*randomNum2
+
+            // Add the desired number of minutes
+            totalMinutes += part1;
+      
+            // Calculate the new hours and minutes
+            let newHours = Math.floor(part1 / 60);
+            let newMinutes = part1 % 60;
+      
+            let finalTimeHr = (randomNum+newHours)
+            let finalTimeSec = (randomNum3+newMinutes)
+            let done = finalTimeHr + ":" + finalTimeSec
+      
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `If you start making mango juice at ${randomNum1} PM, and you make ${randomNum2} juices (cook time is 5 minutes, prep time is 5 minutes), at what time will you finish? Hint: 1 hour = 60 minutes. Type your answer in time format (ex. HH:MM)`,
+            es: `Si comienza a hacer jugo de mango a las ${randomNum1} PM y hace ${randomNum2} jugos (tiempo de preparación 5 minutos, tiempo de cocción 5 minutos), ¿a qué hora terminarás? Pista: 1 hora = 60 minutos. Escriba su respuesta en formato de tiempo (ej. HH:MM)`,
+      
+        },
+        done,
+        [{
+          en: `1) Total Time = (prep + cook time) * juices needed
+               2) Finish Time = Start Time + Total Time`,
+          es: `1) Tiempo total = (preparación + tiempo de cocción) * jugos necesarios
+              2) Hora de finalización = Hora de inicio + Tiempo total`
+        },{
+          en: "1) Total time = " + cookTime+ " x " + randomNum2 + " = "+part1+" minutes 2) Finish Time = " + randomNum1 + " PM + "+part1+" = " + done,
+          es: "1) Tiempo total = " + cookTime+ " x " + randomNum2 + " = "+part1+" minutos 2) Tiempo de finalización = " + randomNum1 + " PM + "+part1+" = " + done,
+        }],
+        "time",
+  
+      ))
+    }
+
+    //Mango Juice 8
+    if (recipe.name.en == "Mango Juice"){
+
+      let randomNum = randomInt(1,7);
+      let randomNum3 = randomInt(10,30)
+      let randomNum2 = randomInt(20,41)
+      let cookTime = 10
+      let cookTime2 = 5
+      let randomNum1 = randomNum + ":"+  randomNum3
+
+            // Convert start time to minutes
+      let totalMinutes = randomNum * 60 + randomNum3;
+
+      let part1 = (cookTime+cookTime2)*randomNum2
+
+            // Add the desired number of minutes
+            totalMinutes += part1;
+      
+            // Calculate the new hours and minutes
+            let newHours = Math.floor(part1 / 60);
+            let newMinutes = part1 % 60;
+      
+            let finalTimeHr = (randomNum+newHours)
+            let finalTimeSec = (randomNum3+newMinutes)
+            let done = finalTimeHr + ":" + finalTimeSec
+      
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `You made ${randomNum2} mango juices. This time it took you double the amount of time to prep the recipes but the same amount of time to cook them (original prep time 5 minutes, cook time 5 minutes). If you started making the mango juices at ${randomNum1} PM, at what time did you finish? Hint: 1 hour = 60 minutes. Type your answer in time format (ex. HH:MM)`,
+            es: `Hiciste ${randomNum2} jugos de mango. Esta vez te tomó el doble de tiempo preparar las recetas pero la misma cantidad de tiempo para cocinarlas (tiempo original de preparación 5 minutos y tiempo de cocción 5 minutos). Si comenzaste a hacer los jugos de mango a las ${randomNum1} PM, ¿a qué hora terminaste? Pista: 1 hora = 60 minutos. Escriba su respuesta en formato de tiempo (ej. HH:MM)`,
+      
+        },
+        done,
+        [{
+          en: `1) Total Time = (prep + cook time) * juices quantity
+               2) Finish Time = Start Time + Total Time`,
+          es: `1) Tiempo total = (preparación + tiempo de cocción) * cantidad de jugo
+              2) Hora de finalización = Hora de inicio + Tiempo total`
+        },{
+          en: "1) Total time = (" + cookTime+ " + 5) x " + randomNum2 + " = "+part1+" minutes 2) Finish Time = " + randomNum1 + " PM + "+part1+" = " + done,
+          es: "1) Tiempo total = (" + cookTime+ " + 5) x " + randomNum2 + " = "+part1+" minutos 2) Tiempo de finalización = " + randomNum1 + " PM + "+part1+" = " + done,
+        }],
+        "time",
+  
+      ))
+    }
+
+
+    
+
+  
+
+    
+    
 
 
 

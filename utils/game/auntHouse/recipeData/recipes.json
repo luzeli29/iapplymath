@@ -593,6 +593,8 @@
                 "en" : "Prepare the juice and sirve in a glass",
                 "es" : "Prepare el jugo y sirvalo en en vaso"
             },
+            "prepTime": 5,
+            "cookTime": 5,
             "imgSrc" : "orange_carrot_juice",
             "servingSize" : 1,
             "recipeMakesAmount" : 6,
