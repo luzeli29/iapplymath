@@ -396,6 +396,17 @@
                 "es" : "mango chunks"
             },
             "imgSrc" : "mango"
+        },
+        "blackBeans" : {
+            "nameSingular" : {
+                "en" : "mashed black beans",
+                "es" : "mashed black beans"
+            },
+            "namePlural" : {
+                "en" : "mashed black beans",
+                "es" : "mashed black beans"
+            },
+            "imgSrc" : "black_beans"
         }
 
     }

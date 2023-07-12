@@ -2031,8 +2031,216 @@ function generateLevel3AuntQuestions(recipe, randomInt){
       ))
     }
 
+    //Enchiladas 1
+    if (recipe.name.en == "Vegetarian enchiladas"){
+      const denominator = Math.floor(Math.random() * 9) + 2;
+      const numerator = Math.floor(Math.random() * (denominator - 1)) + 1;
+      const randomFraction = numerator + '/' + denominator;
+
+      let servings = '1/2'
+      let fractionOrInteger = convertToFraction(randomFraction)
+      let fractionOrInteger1 = convertToFraction(servings)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, fractionOrInteger1, 'multiply')
+      let answer = simplifyFraction(multipliedResult.result)
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `How many cups of black beans are in a ${randomFraction} of one recipe serving? Type your answer as a fraction.`,
+            es: `¿Cuántas tazas de frijoles negros hay en una ${randomFraction} de una porción de la receta? Escriba su respuesta como una fracción`,
+        
+        },
+        answer.result,
+        [{
+            en:  "1) Cup of beans per 1 serving = 1 cup / 2 servings  2) Final answer = Cup of beans per 1 serving x " + randomFraction ,
+            es:  "1) Taza de frijoles por 1 porción = 1 taza / 2 porciones 2) Respuesta final = taza de frijoles por 1 porción x " + randomFraction , 
+        },
+        {
+          en:  "1) Cup of beans per 1 serving = 1/2 cups  2) Final answer = (1/2) x " + randomFraction + " = "  + answer.result,
+          es:  "1) Taza de frijoles por 1 porción = 1/2 tazas 2) Respuesta final = (1/2) x " + randomFraction  + " = "+ answer.result, 
+      }],
+        answer.types,
+  
+      ))
+    }
+
+    //Enchiladas 2
+    if (recipe.name.en == "Vegetarian enchiladas"){
+      const denominator = Math.floor(Math.random() * 9) + 2;
+      const numerator = Math.floor(Math.random() * (denominator - 1)) + 1;
+      const randomFraction = numerator + '/' + denominator;
+
+      let servings = '1/4'
+      let fractionOrInteger = convertToFraction(randomFraction)
+      let fractionOrInteger1 = convertToFraction(servings)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, fractionOrInteger1, 'multiply')
+      let answer = simplifyFraction(multipliedResult.result)
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `How many onions are in a ${randomFraction} of one recipe serving? Type your answer as a fraction.`,
+            es: `¿Cuántas cebollas hay en una ${randomFraction} de una porción de receta? Escriba su respuesta como una fracción.`,
+        
+        },
+        answer.result,
+        [{
+            en:  "1) Onions per 1 serving = 1/2 onion / 2 servings   2) Final answer = Onions per 1 serving x " + randomFraction ,
+            es:  "1) Cebollas por 1 ración = 1/2 cebolla / 2 porciones 2) Respuesta final = Cebollas por 1 porción x " + randomFraction , 
+        },
+        {
+          en:  "1) Onions per 1 serving = 1/4 onion   2) Final answer = (1/4) x " + randomFraction + " = "  + answer.result,
+          es:  "1) Cebollas por 1 porción = 1/4 cebolla 2) Respuesta final = (1/4) x " + randomFraction  + " = "+ answer.result, 
+      }],
+        answer.types,
+  
+      ))
+    }
+
+    //Enchiladas 3
+    if (recipe.name.en == "Vegetarian enchiladas"){
+      let randomNum = randomInt(4,31);
+
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger1 = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide( fractionOrInteger1,randomNum,  'multiply')
+      let simplify2 = simplifyFraction(multipliedResult.result)
+      let multipliedResult1 = multiplyOrDivide(multipliedResult.result,170, 'multiply')
+      let simplify = simplifyFraction(multipliedResult1.result)
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `The average weight of a medium-sized onion is around 170 grams. You and Auntie Maria decide to make ${randomNum} vegetarian enchiladas. How many grams of onions will you need?`,
+            es: `El peso medio de una cebolla de tamaño mediano es de aproximadamente 170 gramos. La tía María y tú deciden hacer ${randomNum} enchiladas vegetarianas. ¿Cuántos gramos de cebolla necesitarás?`,
+        
+        },
+        simplify.result,
+        [{
+            en:  "1) Total onions needed = onions amount for 1 recipe * number of enchiladas 2) Grams of onions = total onions needed * grams per 1 onion",
+            es:  "1) Total de cebollas necesarias = cantidad de cebollas para 1 receta * cantidad de enchiladas 2) Gramos de cebollas = total de cebollas necesarias * gramos por 1 cebolla",
+        },
+        {
+          en:  "Total onions needed = "+first_ingredient_key_amount+  " x " + randomNum +" = " + simplify2.result  + " 2) Grams of onions = "+simplify2.result+" x 170 = " + simplify.result,
+          es:  "Total de cebollas necesarias = "+first_ingredient_key_amount+  " x " + randomNum +" = " + simplify2.result  + " 2) Gramos de cebolla = "+simplify2.result+" x 170 = " + simplify.result,
+      }],
+        simplify.types,
+  
+      ))
+    }
+
+    //Enchiladas 4
+    if (recipe.name.en == "Vegetarian enchiladas"){
+      let randomNum = randomInt(2,11);
+      let first_step = randomNum*3
+
+      let servings = '1/8'
+
+      let fractionOrInteger1 = convertToFraction(servings)
+      let multipliedResult = multiplyOrDivide( first_step,fractionOrInteger1,  'divide')
+      let simplify = simplifyFraction(multipliedResult.result)
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `One container of tomatillo sauce contains 3 cups. If Auntie Maria has ${randomNum} containers of tomatillo sauce, how many servings of vegetarian enchiladas can she make? Round your answer down to the nearest whole number`,
+            es: `Un recipiente de salsa de tomatillo contiene 3 tazas. Si la tía María tiene ${randomNum} recipientes de salsa de tomatillo, ¿cuántas porciones de enchiladas vegetarianas puede preparar? Redondea tu respuesta al número entero más cercano`,
+        
+        },
+        simplify.result,
+        [{
+            en:  "1) Tomatillo sauce per serving = recipe amount / number of servings 2) Total cups of tomatillo sauce = containers * cups per 1 container 3) Total servings = Total cups of tomatillo sauce / Tomatillo sauce per serving",
+            es:  "1) Salsa de tomatillo por porción = cantidad de la receta / número de porciones 2) Total de tazas de salsa de tomatillo = recipientes * tazas por 1 recipiente 3) Total de porciones = Tazas totales de salsa de tomatillo / Salsa de tomatillo por porción",
+        },
+        {
+          en:  "1) Tomatillo sauce per seving = 1/4 / 2 = 1/8 2) Total cups of tomatillo sauce = "+randomNum +" x 3 = "+first_step+" 3) Total servings = "+first_step+" /(1/8) = " + simplify.result,
+          es:  "1) Salsa de tomatillo por porción = 1/4 / 2 = 1/8 2) Total de tazas de salsa de tomatillo = "+randomNum +" x 3 = "+first_step+" 3) Total de porciones = "+first_step+" /(1/8) = " + simplify.result
+      }],
+        simplify.types,
+  
+      ))
+    }
+
+  
+    //Enchiladas 5
+    if (recipe.name.en == "Vegetarian enchiladas"){
+      let tort;
+      let serving;  
+      let randomNum = Math.random() < 0.5 ? 8 : 10;
+      let randomNum1 = randomNum + ":00"
+
+      if (randomNum === 8) {
+        tort = 4;
+        serving = 24;
+      } else if (randomNum === 10) {
+        tort = 8;
+        serving = 28;
+      }
+     
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {en: `This schedules shows how many servings of vegetarian enchilada we should make during the day: If we follow the schedule throughout the day, how many servings should we have done by ${randomNum1} PM?`,
+        es: `Estos horarios muestran cuántas porciones de enchiladas vegetariana debemos hacer durante el día: Si seguimos el horario a lo largo del día, ¿cuántas porciones deberíamos haber hecho para las ${randomNum1} PM?`,
+        },
+        serving,
+        [{
+          en:  "Hint: Table shows that we make 4 servings every 2 hours.",
+          es:  "Pista: La tabla muestra que hacemos 4 porciones cada 2 horas.",
+         },
+        {
+          en: `At ${randomNum1} PM we will have ${tort} more servings for a total of ${serving}` ,
+          es: `A las ${randomNum1} PM tendremos ${tort} porciones más para un total de ${serving}.`,
+         }],
+        "wholeNumber",
+        null,
+        "level3_enchilada",
+  
+      ))
+    }
+
+    //Enchiladas 6
+    if (recipe.name.en == "Vegetarian enchiladas"){
+      let randomNum = randomInt(10,21);
+      let randomNum1 = randomInt(15,51);
+      let serving = "1/8"
+      let part1 =  randomNum*randomNum1
+      let fractionOrInteger = convertToFraction(serving)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, part1, 'multiply')
+      let simplify = simplifyFraction(multipliedResult.result)
+
+
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+          en: `You and Auntie Maria are making ${randomNum} servings of vegetarian enchiladas at a time. You do this ${randomNum1} times to meet your goal for the week. How many cups of tomatillo sauce did you use to meet your goal for the week?`,
+          es: `La tía María y tú están haciendo ${randomNum} porciones de enchiladas vegetarianas a la vez. Haces esto ${randomNum1} veces para alcanzar tu meta de la semana. ¿Cuántas tazas de salsa de tomatillo usaste para alcanzar tu meta de la semana?`,
+        },
+        simplify.result,
+        [{
+          en:  `((1/4) / 2) x ${randomNum} x ${randomNum1}  = ???`,
+          es:  `((1/4) / 2) x ${randomNum} x ${randomNum1}  = ???`,
+         },
+        {
+          en:`((1/4) / 2) x ${randomNum} x ${randomNum1}  = ${simplify.result}`,
+          es: `((1/4) / 2) x ${randomNum} x ${randomNum1}  = ${simplify.result}`,
+         }],
+        simplify.types,
+  
+      ))
+    }
 
     
+
+
+
+
+
+
+ 
+     
 
   
 

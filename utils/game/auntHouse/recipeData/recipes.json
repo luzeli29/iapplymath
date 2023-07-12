@@ -525,63 +525,46 @@
                 "es": "Enchiladas vegetarianas"
             },
             "instructions" : {
-                "en" : "Fill the enchiladas",
-                "es" : "Rellene enchiladas."
+                "en" : "Fill the tortillas with mashed black beans and sweet potatoes then roll up each tortilla into a singular tube. Pour the tomatillo sauce on top of the tortillas and then bake for 30 minutes at 350 degrees. ",
+                "es" : ": Rellena las tortillas con los frijoles negros machacados y el puré de camote, luego enrolla cada tortilla en un tubo individual. Vierte la salsa de tomatillo encima de las tortillas y hornea durante 30 minutos a 350 grados."
             },
             "imgSrc" : "vegetarian_enchiladas",
             "servingSize" : 1,
+            "prepTime": 15,
+            "cookTime" : 30,
             "recipeMakesAmount" : 2,
             "servingType" : "self",
             "ingredients" : {
-                "caramel candy pieces" :{
-                    "ingredient" : "caramel",
-                    "amount" : "11",
+                "mashed black beans" :{
+                    "ingredient" : "blackBeans",
+                    "amount" : "1",
+                    "servingType" : "cup"
+                },
+                "onion" :{
+                    "ingredient" : "onion",
+                    "amount" : "1/2",
                     "servingType" : "self"
+
                 },
-                "water" :{
-                    "ingredient" : "water",
+                "large tortillas" :{
+                    "ingredient" : "tortilla",
                     "amount" : "2",
-                    "servingType" : "tablespoon"
+                    "servingType" : "self"
 
                 },
-                "chocolate chips" :{
-                    "ingredient" : "chocolateChips",
-                    "amount" : "1",
+                "tomatillo sauce" :{
+                    "ingredient" : "tomatilloSauce",
+                    "amount" : "1/4",
                     "servingType" : "cup"
 
                 },
-                "pretzel stick" :{
-                    "ingredient" : "pretzel",
-                    "amount" : "1",
-                    "servingType" : "bag"
-
-                },
-                "coconuts" :{
-                    "ingredient" : "coconuts",
-                    "amount" : "5/2",
-                    "servingType" : "cup"
+                "salt and spices to taste" :{
+                    "ingredient" : "saltAndSpiceForTaste",
+                    "amount" : "",
+                    "servingType" : "self"
 
                 }
-            },
-            "defaultIngredientMultiQuestions" : [
-                {
-                    "ingredientCode" : "carrot",
-                    "factor" : 1
-                },{
-                    "ingredientCode" : "orange",
-                    "factor" : 1
-                },{
-                    "ingredientCode" : "carrot",
-                    "factor" : 2
-                },{
-                    "ingredientCode" : "orange",
-                    "factor" : 2
-                }
-            ],
-            "defaultFamilyQuestionIngredients" : [
-                "carrot",
-                "orange"
-            ]
+            }
         },
         "mangoJuice" :{
             "level" : "3",
@@ -590,7 +573,7 @@
                 "es": "Jugo de Mango"
             },
             "instructions" : {
-                "en" : "Prepare the juice and sirve in a glass",
+                "en" : "Prepare the juice and serve in a glass",
                 "es" : "Prepare el jugo y sirvalo en en vaso"
             },
             "prepTime": 5,
