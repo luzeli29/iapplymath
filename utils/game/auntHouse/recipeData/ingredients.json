@@ -11,6 +11,17 @@
             },
             "imgSrc" : "carrots"
         },
+        "choppedCarrot" : {
+            "nameSingular" : {
+                "en" : "chopped carrot",
+                "es" : "zanahoria picada"
+            },
+            "namePlural" : {
+                "en" : "Chopped carrots",
+                "es" : "Zanahorias picadas" 
+            },
+            "imgSrc" : "carrots"
+        },
         "orange" : {
             "nameSingular" : {
                 "en" : "Orange",
@@ -495,6 +506,94 @@
                 "es" : "fresas"
             },
             "imgSrc" : "strawberry"
+        },
+        "noodle" : {
+            "nameSingular" : {
+                "en" :"noodle",
+                "es" : "fideo"
+            },
+            "namePlural" : {
+                "en" :"noodles",
+                "es" : "fideos"
+            },
+            "imgSrc" : "noodles"
+        },
+        "freshCilantro" : {
+            "nameSingular" : {
+                "en" : "Fresh Cilantro",
+                "es": "Cilantro fresco"
+            },
+            "namePlural" : {
+                "en" : "Fresh Cilantro",
+                "es": "Cilantro fresco"
+            },
+            "imgSrc" : "cilantro"
+        },
+        "butter" : {
+            "nameSingular" : {
+                "en" : "Butter",
+                "es": "Mantequilla"
+            },
+            "namePlural" : {
+                "en" : "Butter",
+                "es": "Mantequilla"
+            },
+            "imgSrc" : "butter"
+        },
+        "greenPlantains" : {
+            "nameSingular" : {
+                "en" : "Green Plantain",
+                "es": "Plátano Verde"
+            },
+            "namePlural" : {
+                "en" : "Green Plantains",
+                "es": "Plátanos Verdes"
+            },
+            "imgSrc" : "plantain"
+        },
+        "cheeseStrips" : {
+            "nameSingular" : {
+                "en" : "Fried cheese strips",
+                "es": "Tiras de queso frito"
+            },
+            "namePlural" : {
+                "en" : "Fried cheese strips",
+                "es": "Tiras de queso frito"
+            },
+            "imgSrc" : "friedcheese"
+        },
+        "salami" : {
+            "nameSingular" : {
+                "en" : "salami slice",
+                "es": "rodaja de salami"
+            },
+            "namePlural" : {
+                "en" : "salami slices",
+                "es": "rodajas de salami"
+            },
+            "imgSrc" : "salami"
+        },
+        "pinneapleChunks" : {
+            "nameSingular" : {
+                "en" : "Pineapple chunk",
+                "es": "Trozo de piña"
+            },
+            "namePlural" : {
+                "en" : "Pineapple chunks",
+                "es": "Trozos de piña"
+            },
+            "imgSrc" : "pineapplechunks"
+        },
+        "ginger" : {
+            "nameSingular" : {
+                "en" : "Ginger",
+                "es": "Jengibre"
+            },
+            "namePlural" : {
+                "en" : "Ginger",
+                "es": "Jengibre"
+            },
+            "imgSrc" : "ginger"
         }
 
     }
