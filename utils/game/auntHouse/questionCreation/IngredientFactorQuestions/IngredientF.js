@@ -2237,7 +2237,7 @@ function generateLevel3AuntQuestions(recipe, randomInt){
 
       let randomNum = randomInt(4,15)
       let servings = '3/4'
-      let serving_size = recipe.recipeMakesAmount
+      let serving_size = recipe.servingSize
       let fractionOrInteger1 = convertToFraction(servings)
       let multipliedResult = multiplyOrDivide( fractionOrInteger1,serving_size, 'divide')
       let part1 = simplifyFraction(multipliedResult.result)
@@ -2265,22 +2265,673 @@ function generateLevel3AuntQuestions(recipe, randomInt){
       ))
     }
 
-    
+    //Lentil 2
+    if (recipe.name.en == "Lentil soup"){
 
+      const fractions = [24,36,48,60,72,84,96];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
 
+      let firstpart = randomFraction/12
+      let secondpart = firstpart*55
+      let answer = secondpart/60
+      answer = Number(answer.toFixed(2));
 
-
-
-
- 
-     
-
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `How many hours will it take to make ${randomFraction} servings? (Cook time is 45 minutes and prep time is 10 minutes ) Include both prep time and cook time in your calculation. Type your final answer in decimal form and round to the nearest tenth. Hint: 1 hour = 60 minutes`,
+            es: `¿Cuántas horas tomará hacer ${randomFraction} porciones? (Tiempo de preparación es de 10 minutos y tiempo de cocción es 45 minutos) Incluya tanto el tiempo de preparación como el tiempo de cocción en su cálculo. Escribe tu respuesta final en forma decimal y redondea a la décima más cercana. Pista: 1 hora = 60 minutos.`,
+        
+        },
+        answer,
+        [{
+            en:  `1) Convert the total number of servings to total number of lentil soups: Y = ${randomFraction} / 12 
+            2) Calculate the total time in minutes: Z = (prep time + cook time) * Y 
+            3) Convert minutes to hours: Hours = Z / 60 `,
+            es:  `1) Convierta el número total de porciones al número total de sopas de lentejas: Z = ${randomFraction} / 12
+            2) Calcula el tiempo total en minutos: Z = (tiempo de preparación + tiempo de cocción) * Y
+            3) Convertir minutos a horas: Horas = Z / 60 `,
+        },
+        {
+          en:  `1) Convert the total number of servings to total number of lentil soups: ${firstpart} = ${randomFraction } / 12 
+          2) Calculate the total time in minutes: ${secondpart} = 55 x ${firstpart}
+          3) Convert minutes to hours: Hours = ${secondpart} / 60 = ${answer}`,
+          es:   `1) Convierta el número total de porciones al número total de sopas de lentejas: ${firstpart} = ${randomFraction} / 12
+          2) Calcula el tiempo total en minutos: ${secondpart} = 55 * ${firstpart}
+          3) Convertir minutos a horas: Horas = ${secondpart} / 60 = ${answer}`,
+      }],
+        "decimal",
   
+      ))
+    }
 
+    //Lentil 3
+    if (recipe.name.en == "Lentil soup"){
+
+      let randomNum = randomInt(3,9);
+      let first_ingredient_key = Object.keys(recipe.ingredients)[8];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let firstPart = first_ingredient_key_amount*3
+      let answer = firstPart*randomNum
+
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `Auntie Maria doesn’t have a tablespoon but knows that 1 tablespoon is equivalent to 3 teaspoons. How many teaspoons of lemon juice will she need to make ${randomNum} lentil soups?`,
+            es: `La tía María no tiene una cucharada pero sabe que 1 cucharada equivale a 3 cucharaditas. ¿Cuántas cucharaditas de jugo de limón necesitará para hacer ${randomNum} sopas de lentejas?`,
+        
+        },
+        answer,
+        [{
+            en: `1) Teaspoons per 1 soup = ${first_ingredient_key_amount} * 3 
+            2) Total teaspoons = Teaspoons per 1 soup * number of soups`,
+            es:   `1) Cucharaditas por 1 sopa = ${first_ingredient_key_amount} * 3
+            2) Total de cucharaditas = cucharaditas por 1 sopa * número de sopas`,
+        },
+        {
+          en:  `1) Teaspoons per 1 soup = ${first_ingredient_key_amount} * 3 = ${firstPart}
+          2) Total teaspoons = ${firstPart} x ${randomNum} = ${answer}`,
+          es:   `1) Cucharaditas por 1 sopa = ${first_ingredient_key_amount} * 3 = ${firstPart}
+          2) Total de cucharaditas = ${firstPart} x ${randomNum} = ${answer}`,
+      }],
+        "wholeNumber",
+  
+      ))
+    }
+
+    //Lentil 4
+    if (recipe.name.en == "Lentil soup"){
+
+      let randomNum = randomInt(20,41);
+      let serving_size = recipe.servingSize
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fract = convertToFraction(first_ingredient_key_amount+"/"+serving_size)
+      let simplify = simplifyFraction(fract)
+      let multipliedResult = multiplyOrDivide(fract, randomNum, 'multiply')
+      let simplify2 = simplifyFraction(multipliedResult.result)
+      let fraction = convertToFraction("1/2")
+      let multipliedResult1 = multiplyOrDivide(multipliedResult.result, fraction, 'divide' )
+      let answer = simplifyFraction(multipliedResult1.result)
+      let answer2 = Math.ceil(multipliedResult1.result.numerator/multipliedResult1.result.denominator)
+
+
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `If one onion can fill ½ of a cup, how many onions are needed to make ${randomNum} servings of lentil soup? Round your answer up to the nearest whole number.`,
+            es: `La tía María no tiene una cucharada pero sabe que 1 cucharada equivale a 3 cucharaditas. ¿Cuántas cucharaditas de jugo de limón necesitará para hacer ${randomNum} sopas de lentejas?`,
+        
+        },
+        answer2,
+        [{
+            en: `1) Cups of onion per 1 serving = ${first_ingredient_key_amount} / ${serving_size} =${simplify.result}
+            2) Total cups of onion = ${simplify.result} x ${randomNum} = y
+            3) Total onions = y / (1/2) 
+            `,
+            es:   `1) Tazas de cebolla por 1 porción = ${first_ingredient_key_amount} /${serving_size} = ${simplify.result}
+            2) Total de tazas de cebolla =${simplify.result} x ${randomNum} = y
+            3) Total de cebollas = y /(1/2)
+            `,
+        },
+        {
+          en: `1) Cups of onion per 1 serving = ${first_ingredient_key_amount} / ${serving_size} =${simplify.result}
+            2) Total cups of onion = ${simplify.result} x ${randomNum} = ${simplify2.result}
+            3) Total onions = ${simplify2.result} / (1/2) = ${answer.result} = ${answer2}
+            `,
+            es:   `1) Tazas de cebolla por 1 porción = ${first_ingredient_key_amount} /${serving_size} = ${simplify.result}
+            2) Total de tazas de cebolla =${simplify.result} x ${randomNum} = ${simplify2.result}
+            3) Total de cebollas = ${simplify2.result} /(1/2) = ${answer.result} = ${answer2}
+            `,
+      }],
+        "wholeNumber",
+  
+      ))
+    }
+
+    //Lentil 5
+        if (recipe.name.en == "Lentil soup"){
+
+          let randomNum = randomInt(15,41);
+          let firstStep = randomNum*3
+          let secondStep = firstStep*210
+          let answer = Math.ceil(secondStep/454)
     
+           // create question
+           generatedQuestions.push(createGameQuestion(
+            {
+                en: `Auntie Maria says one cup of lentils is about 210 grams. She makes a total of ${randomNum} lentil soups. If 1 pound is roughly equal to 454 grams, how many total pounds of lentils were used? Round your answer to the nearest whole number.`,
+                es: `La tía María dice que una taza de lentejas son unos 210 gramos. Hace un total de ${randomNum} sopas de lentejas. Si 1 libra equivale aproximadamente a 454 gramos, ¿cuántas libras de lentejas se usaron en total? Redondea tu respuesta al número entero más cercano. `,
+            
+            },
+            answer,
+            [{
+                en: `1) Total cups of lentils used = 3 x ${randomNum} 
+                2) Total grams of lentils used = total cups of lentils x 210 = z
+                3) Convert grams to pounds = total grams of lentils / 454
+                4) Round up to the nearest whole number 
+                `,
+                es:   `1) Total de tazas de lentejas usadas = 3 x ${randomNum}
+                2) Gramos totales de lentejas usadas = tazas totales de lentejas x 210 = z
+                3) Convertir gramos a libras = gramos totales de lentejas / 454
+                4) Redondea al número entero más cercano
+                `,
+            },
+            {
+              en: `1) Total cups of lentils used = 3 x ${randomNum} = ${firstStep}
+              2) Total grams of lentils used = ${firstStep} * 210 = ${secondStep}
+              3) Convert grams to pounds = ${secondStep} / 454 = ${answer}
+              `,
+                es:   `1) Total de tazas de lentejas usadas = 3 x ${randomNum} = ${firstStep}
+                2) Gramos totales de lentejas utilizadas = ${firstStep} x 210 = ${secondStep}
+                3) Convertir gramos a libras = ${secondStep} / 454 = ${answer}
+                `,
+          }],
+            "wholeNumber",
+      
+          ))
+        }
+
+    //Lentil 6
+    if (recipe.name.en == "Lentil soup"){
+
+      let randomNum = randomInt(60,121);
+      let firstStep = randomNum *220;
+      let answer = firstStep/1000
+      answer = Number(answer.toFixed(1));
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `If each serving of lentil soup is about 220 milliliters, how many liters of soup are in ${randomNum} servings? Hint: 1L = 1,000 mL. Round to the nearest tenth.`,
+            es: `Si cada porción de sopa de lentejas tiene aproximadamente 220 mililitros, ¿cuántos litros de sopa hay en ${randomNum} porciones? Sugerencia: 1L = 1000 mL. Redondea a la décima más cercana.`,
+        
+        },
+        answer,
+        [{
+            en: `1) Total mL soup = number of servings * mL per serving
+            2) Total L soup = Total mL soup / 1,000`,
+            es:   `1) Total mL de sopa = número de porciones * mL por porción
+            2) Total L sopa = Total mL de sopa / 1,000
+            `,
+        },
+        {
+          en: `1) Total mL soup = ${randomNum} * 220 = ${firstStep}
+          2) Total L soup = ${firstStep} / 1,000 = ${answer}`,
+            es:   `1) Total mL de sopa= ${randomNum} * 220 = ${firstStep}
+            2) Total L sopa = ${firstStep} / 1,000 = ${answer}
+            `,
+      }],
+        "decimal",
+  
+      ))
+    }
     
+    //Lentil 7
+    if (recipe.name.en == "Lentil soup"){
+
+      let randomNum = randomInt(15,61);
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(250, fractionOrInteger, 'divide')
+      let simplify = simplifyFraction(multipliedResult.result)
+      let multipliedResult1 = multiplyOrDivide(multipliedResult.result, randomNum, 'multiply')
+      let simplify2 = simplifyFraction(multipliedResult1.result)
+      //answer = Number(answer.toFixed(1));
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `If one cup of olive oil is about 250 milliliters, how many milliliters of olive oil are needed to make ${randomNum} lentil soups?`,
+            es: `Si una taza de aceite de oliva tiene aproximadamente 250 mililitros, ¿cuántos mililitros de aceite de oliva se necesitan para hacer ${randomNum} sopas de lentejas?`,
+        
+        },
+        simplify2.result,
+        [{
+            en: `1 ) mL olive oil in ${first_ingredient_key_amount} cup = 250 / (${first_ingredient_key_amount})
+            2) Total mL = mL olive oil in ${first_ingredient_key_amount} cup x ${randomNum}
+            `,
+            es:   `1) mL  aceite de oliva en ${first_ingredient_key_amount} taza = 250 / (${first_ingredient_key_amount})
+            2) Total mL = mL aceite de oliva en ${first_ingredient_key_amount} taza x ${randomNum}
+            `,
+        },
+        {
+          en: `1) mL olive oil in ${first_ingredient_key_amount} cup = 250 /(${first_ingredient_key_amount}) = ${simplify.result}
+          2) Total mL = ${simplify.result} x ${randomNum} = ${simplify2.result}`,
+            es:   `1) mL aceite de oliva en ${first_ingredient_key_amount} taza = 250 / (${first_ingredient_key_amount} )= ${simplify.result}
+            2) mL totales = ${simplify.result} x ${randomNum} = ${simplify2.result}
+            `,
+      }],
+        simplify2.types,
+  
+      ))
+    }
 
 
+    //Lentil 8
+    if (recipe.name.en == "Lentil soup"){
+
+      let randomNum = randomInt(40,71);
+      let servingSize = recipe.servingSize
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let amoutn = '5/12'
+      let fractionOrInteger = convertToFraction(amoutn)
+      let multipliedResult = multiplyOrDivide( fractionOrInteger, randomNum, 'multiply')
+      let simplify = simplifyFraction(multipliedResult.result)
+      let multipliedResult1 = multiplyOrDivide(multipliedResult.result, 3, 'multiply')
+      let simplify2 = simplifyFraction(multipliedResult1.result)
+      //answer = Number(answer.toFixed(1));
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `If a big pot can hold ${randomNum} lentil soup servings, how many teaspoons of lemon juice were used in this big pot? Remember, 1 tablespoon (tbsp) = 3 teaspoons (tsp)! `,
+            es: `Si una olla grande puede contener ${randomNum} porciones de sopa de lentejas, ¿cuántas cucharaditas de jugo de limón se usaron en esta olla grande? ¡Recuerde, 1 cucharada (tbsp) = 3 cucharaditas (tsp)!`,
+        
+        },
+        simplify2.result,
+        [{
+            en: `1) Tbsp of lemon juice per 1 serving = 5/12 tbsp
+            2) Total tbsp of lemon juice = 5/12 x ${randomNum} = y
+            3) Total tsp of lemon juice = y x 3
+            `,
+            es:   `1) Cucharada de jugo de limón por 1 porción = 5/12 cucharadas
+            2) Cucharada total de jugo de limón = 5/12 x ${randomNum} = y
+            3) Cucharadita total de jugo de limón = y x 3
+            `,
+        },
+        {
+          en: `1) Tbsp of lemon juice per 1 serving = 5/12 tbsp
+          2) Total tbsp of lemon juice = 5/12 x ${randomNum} = ${simplify.result}
+          3) Total tsp of lemon juice = ${simplify.result} x 3 = ${simplify2.result} 
+          `,
+            es:   `Cucharada de jugo de limón por 1 porción = 5/12 cucharadas
+            Cucharada total de jugo de limón = 5/12 x ${randomNum} = ${simplify.result}
+            Total de cucharaditas de jugo de limón = ${simplify.result} x 3 = ${simplify2.result}
+            `,
+      }],
+        simplify2.types,
+  
+      ))
+    }
+
+    //Lentil 9
+    if (recipe.name.en == "Lentil soup"){
+
+      const fractions = ["1/2", "3/4", "5/6", "1/3", "7/8"];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+
+      let amoutn = '1/2'
+      let fractionOrInteger = convertToFraction(amoutn)
+      let fractionOrInteger1 = convertToFraction(randomFraction)
+      let multipliedResult = multiplyOrDivide( fractionOrInteger, fractionOrInteger1, 'multiply')
+      let simplify = simplifyFraction(multipliedResult.result)
+
+      //answer = Number(answer.toFixed(1));
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `How many cups of water are needed to make ${randomFraction} of a serving of Lentil Soup? Type your answer as a fraction (ex. 1/2).`,
+            es: `¿Cuántas tazas de agua se necesitan para hacer ${randomFraction} de una porción de sopa de lentejas? Escriba su respuesta como una fracción (ej. 1/2)`,
+        
+        },
+        simplify.result,
+        [{
+            en: `1) Cups of water for 1 serving = 6 / 12 = (1/2) 
+            2) Cups of water needed for ${randomFraction} serving = (1/2) x ${randomFraction}
+            `,
+            es:  `1) Tazas de agua por 1 porción = 6 / 12 = (1/2)
+            2) Tazas de agua necesarias para ${randomFraction} porción = (1/2) x ${randomFraction}
+            `,
+        },
+        {
+          en: `1) Cups of water needed for ${randomFraction} serving = (1/2) * ${randomFraction} = ${simplify.result}`,
+            es:   `2) Tazas de agua necesarias para ${randomFraction} porción = (1/2) x ${randomFraction} = ${simplify.result}`,
+      }],
+        "fraction",
+  
+      ))
+    }
+
+
+    //Lentil 10
+    if (recipe.name.en == "Lentil soup"){
+
+      let randomNum = randomInt(10,41);
+      let firststep = randomNum*12
+      let fractionOrInteger = convertToFraction(firststep+"/15")
+      let simplify = simplifyFraction(fractionOrInteger)
+
+      //answer = Number(answer.toFixed(1));
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `One box of vegetable broth is equal to exactly 15 cups. How many boxes of vegetable broth are needed to make ${randomNum} lentil soups? Type your answer as a fraction. Hint: Simplify your answer.`,
+            es: `Una caja de caldo de verduras equivale exactamente a 15 tazas. ¿Cuántas cajas de caldo de verduras se necesitan para hacer ${randomNum} sopas de lentejas? Escriba su respuesta como una fracción. Pista: simplifica tu respuesta.`,
+        
+        },
+        simplify.result,
+        [{
+            en: `1) Total cups of broth = cups per 1 soup x number of soups 
+            2) Total boxes = total cups of broth / cups per 1 box 
+            `,
+            es:  `1) Total de tazas de caldo = tazas por 1 sopa x número de sopas
+            2) Total de cajas de caldo = tazas totales de caldo / tazas por 1 caja
+            `,
+        },
+        {
+          en: `1) Total cups of broth = 12 x ${randomNum} = ${firststep}
+          2) Total boxes = ${firststep} / 15 = ${simplify.result}
+          `,
+            es:  `1) Total de tazas de caldo = 12 x ${randomNum} = ${firststep}
+            2) Total de cajas de caldo = ${firststep} / 15 = ${simplify.result}
+            `,
+      }],
+        "fraction",
+  
+      ))
+    }
+
+    //Strawberry Cake 1
+    if (recipe.name.en == "Strawberry cake"){
+
+      const fractions = ["1/2", "3/4", "5/8", "2/3","7/8", "3/8"];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+
+      let first_ingredient_key = Object.keys(recipe.ingredients)[4];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(randomFraction)
+      let fractionOrInteger1 = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, fractionOrInteger1, 'multiply')
+      let answer = simplifyFraction(multipliedResult.result)
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `Following the recipe, how many cups of sugar will we need for ${randomFraction} of the recipe? Type your answer as a fraction. `,
+            es: `Siguiendo la receta, ¿cuántas tazas de azúcar necesitaremos para ${randomFraction} de la receta? Escriba su respuesta como una fracción.`,
+        
+        },
+        answer.result,
+        [{
+            en:  `${first_ingredient_key_amount}  x ${randomFraction} = ???`,
+            es:  `${first_ingredient_key_amount}  x ${randomFraction} = ???`,
+        },
+        {
+          en:  `${first_ingredient_key_amount}  x ${randomFraction} = ${answer.result}`,
+          es:  `${first_ingredient_key_amount}  x ${randomFraction} = ${answer.result}`,
+      }],
+        answer.types,
+  
+      ))
+    }
+
+    //Strawberry Cake 2
+    if (recipe.name.en == "Strawberry cake"){
+
+      let randomNum = randomInt(10,21);
+      let randomNum1 = randomInt(30,50);
+
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      //let fractionOrInteger = convertToFraction(randomFraction)
+      let serving_size = recipe.servingSize
+      let fractionOrInteger1 = convertToFraction(first_ingredient_key_amount+"/"+serving_size)
+      let simplify = simplifyFraction(fractionOrInteger1)
+      let multipliedResult = multiplyOrDivide( fractionOrInteger1,randomNum1, 'multiply')
+      let simplify2 = simplifyFraction(multipliedResult.result)
+      let multipliedResult1 = multiplyOrDivide(multipliedResult.result, randomNum, 'multiply')
+      let answer = simplifyFraction(multipliedResult1.result)
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `You and Auntie Maria are making ${randomNum1} servings of strawberry cake every day for ${randomNum} days. How many cups of flour did you use?`,
+            es: `Tú y la tía María prepararán ${randomNum1} porciones de pastel de fresa todos los días durante ${randomNum} días. ¿Cuántas tazas de harina usaste? `,
+        
+        },
+        answer.result,
+        [{
+            en:  `1) Cups flour for 1 serving = ${first_ingredient_key_amount}/${serving_size}
+            2) Total cups of flour for 1 day = ${first_ingredient_key_amount}/${serving_size} x number of servings 
+            3) Total cups of flour = Total cups of flour for 1 day x number of days
+            `,
+            es:  `1) Tazas de harina para 1 porción = ${first_ingredient_key_amount}/${serving_size}
+            2) Total de tazas de harina para 1 día = ${first_ingredient_key_amount}/${serving_size} x número de porciones
+            3) Total de tazas de harina = Total de tazas de harina para 1 día x número de días
+            `,
+        },
+        {
+          en:  `1) Cups flour for 1 serving = ${first_ingredient_key_amount}/${serving_size} = ${simplify.result}
+          2) Total cups of flour for 1 day = ${simplify.result} x ${randomNum1} = ${simplify2.result}
+          3) Total cups of flour = ${simplify2.result} * ${randomNum} = ${answer.result}
+          `,
+          es:  `1) Tazas de harina para 1 porción =${first_ingredient_key_amount}/${serving_size} = ${simplify.result}
+          2) Total de tazas de harina para 1 día = ${simplify.result} x ${randomNum1} = ${simplify2.result}
+          3) Total de tazas de harina =  ${simplify2.result} * ${randomNum} = ${answer.result}
+          `,
+      }],
+        answer.types,
+  
+      ))
+    }
+
+    //Strawberry Cake 3
+    if (recipe.name.en == "Strawberry cake"){
+
+      let randomNum = randomInt(10,21);
+      let randomNum1 = randomInt(15,51);
+
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let serving_size = recipe.servingSize
+      let randoms = randomNum*randomNum1
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      //let fractionOrInteger1 = convertToFraction(first_ingredient_key_amount+"/"+serving_size)
+      //let simplify = simplifyFraction(fractionOrInteger1)
+      let multipliedResult = multiplyOrDivide( fractionOrInteger,serving_size, 'divide')
+      let simplify2 = simplifyFraction(multipliedResult.result)
+      let multipliedResult1 = multiplyOrDivide(multipliedResult.result, randoms, 'multiply')
+      let answer = simplifyFraction(multipliedResult1.result)
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `You are making ${randomNum} servings of strawberry cake at a time. You do this ${randomNum1} times to meet your goal for the day. How many cups of milk did you use to meet your goal for the day?`,
+            es: `Estás haciendo ${randomNum} porciones de pastel de fresa a la vez. Haces esto ${randomNum1} veces para alcanzar tu objetivo del día. ¿Cuántas tazas de leche usaste para alcanzar tu meta del día?`,
+        
+        },
+        answer.result,
+        [{
+            en:  `1) Cups of milk per serving = ${first_ingredient_key_amount} / ${serving_size} = ${simplify2.result}
+            2) Total cups of milk = Cups of milk per serving x servings * goal requirement
+            `,
+            es:  `1) Tazas de leche por porción = ${first_ingredient_key_amount} / ${serving_size} = ${simplify2.result}
+            2) Total de tazas de leche = tazas de leche por porción * porciones * objetivo requerido
+            `,
+        },
+        {
+          en:  `1) Cups of milk per serving = ${first_ingredient_key_amount} / ${serving_size} = ${simplify2.result}
+          2) Total cups of milk = ${simplify2.result} x ${randomNum} x ${randomNum1} = ${answer.result}
+          `,
+          es:  `Tazas de leche por porción = ${first_ingredient_key_amount} / ${serving_size} = ${simplify2.result}
+          Total de tazas de leche = ${simplify2.result} x ${randomNum} x ${randomNum1} = ${answer.result}
+          `,
+      }],
+        answer.types,
+  
+      ))
+    }
+
+    //Strawberry Cake 4
+    if (recipe.name.en == "Strawberry cake"){
+      const fractions = [8,16,24,32];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let cookTime = recipe.cookTime
+      let prepTime = recipe.prepTime
+      let totalTimes = cookTime + prepTime*3
+      let serving_size = recipe.servingSize
+      let firstStep = randomFraction/serving_size
+      let second_step = firstStep*totalTimes
+
+      let randomNum2 = randomInt(1,4);
+      let randomNum3 = randomInt(10,30)
+      let randomNum4 = randomNum2 + ":"+  randomNum3
+
+            // Convert start time to minutes
+      let totalMinutes = randomNum2 * 60 + randomNum3;
+
+            // Add the desired number of minutes
+            totalMinutes += second_step;
+      
+            // Calculate the new hours and minutes
+            let newHours = Math.floor(second_step / 60);
+            let newMinutes = second_step % 60;
+      
+            let finalTimeHr = (randomNum2+newHours)
+            let finalTimeSec = (randomNum3+newMinutes)
+            let done = finalTimeHr + ":" + finalTimeSec
+
+
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `You and Auntie Maria start making strawberry cake at ${randomNum4}PM. Today, it takes you triple the amount of prep time and the same amount of cook time to make the strawberry cake. The original prep time is 10 minutes and cook time is 15 minutes. If you made ${randomFraction} servings, at what time did you finish? Type your answer in time format (ex. HH:MM). Hint: 1 hour = 60 minutes. `,
+            es: `La tía María y tú empiezan a hacer pastel de fresas a las ${randomNum4}PM. Hoy en día, se necesita el triple de tiempo de preparación y la misma cantidad de tiempo de cocción para hacer el pastel de fresas.El tiempo original de preparación es de 10 minutos y de coccción 15 minutos. Si hiciste ${randomFraction} porciones, ¿a qué hora terminaste? Escriba su respuesta en formato de hora (por ejemplo, HH:MM). Pista: 1 hora = 60 minutos.`,
+        
+        },
+        done,
+        [{
+            en:  `1) Time per cake = new prep time + cook time 
+            2) Total cakes = total servings / servings for 1 cake  
+            3) Total Time = total cakes x time per cake 
+            4) Finish Time = Start Time + Total Time
+            `,
+            es:  `1) Tiempo por pastel = nuevo tiempo de preparación + tiempo de cocción
+            2) Total de tortas = porciones totales / porciones para 1 torta
+            3) Tiempo total = total de tortas x tiempo por torta
+            4) Hora de finalización = Hora de inicio + Tiempo total
+            `,
+        },
+        {
+          en:  `Time per cake = (${prepTime}x3) + ${cookTime} = ${totalTimes} 
+          Total cakes = ${randomFraction} / ${serving_size} = ${firstStep}  
+          Total Time = ${firstStep}  x ${totalTimes} = ${second_step}
+          Finish Time = ${randomNum4}PM + ${second_step} = ${done}
+          `,
+          es:  `Tiempo por torta = (${prepTime}x3) + ${cookTime} = ${totalTimes} 
+          Tortas totales =  ${randomFraction} / ${serving_size} = ${firstStep}
+          Tiempo Total = ${firstStep}  x ${totalTimes} = ${second_step}
+          Hora de finalización = ${randomNum4}PM + ${second_step} = ${done}
+          `,
+      }],
+        "time",
+  
+      ))
+    }
+
+    //Strawberry Cake 5
+    if (recipe.name.en == "Strawberry cake"){
+      let randomNum = randomInt(2,9);
+      let randomNum1 = randomInt(2,11);
+
+      let first_ingredient_key = Object.keys(recipe.ingredients)[5];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, randomNum, 'multiply')
+      let simplify = simplifyFraction(multipliedResult.result)
+      let multipliedResult1 = multiplyOrDivide(multipliedResult.result, randomNum1, 'multiply')
+      let answer = simplifyFraction(multipliedResult1.result)
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `Auntie Maria’s recipe uses a specific amount of strawberries. Your friend uses a different recipe that uses ${randomNum} times as many strawberries as Auntie’s recipe. If your friend made ${randomNum1} cakes, how many cups of strawberries did your friend use? Write your answer in decimal form. Round to the nearest tenth.`,
+            es: `La receta de la tía María utiliza una cantidad específica de fresas. Tu amigo utiliza una receta diferente que utiliza ${randomNum} veces más fresas que la receta de la tía María. Si tu amigo hizo ${randomNum1} pasteles, ¿cuántas tazas de fresas utilizó tu amigo? Escribe tu respuesta en forma decimal. Redondea al décimo más cercano.`,
+        
+        },
+        answer.result,
+        [{
+            en:  `1) Friend cups of strawberry per cake = Auntie’s cups of strawberries x ${randomNum}
+            2) Total cups of strawberry for friend = Friend cups of strawberry per cake x ${randomNum1}
+            `,
+            es:  `1) Tazas de fresas del amigo por pastel = Tazas de fresas de la tía María x ${randomNum}
+            2) Total de tazas de fresas para el amigo = Tazas de fresas del amigo por pastel x ${randomNum1}
+            `,
+        },
+        {
+          en:  `1) Friend cups of strawberry per cake = ${first_ingredient_key_amount} x ${randomNum} = ${simplify.result}
+          2) Total cups of strawberry for friend = ${simplify.result} x ${randomNum1} = ${answer.result}
+          `,
+          es:  `1) Tazas de fresas del amigo por pastel = ${first_ingredient_key_amount} x ${randomNum} = ${simplify.result}
+          2) Total de tazas de fresas para el amigo = ${simplify.result} x ${randomNum1} = ${answer.result} 
+          `,
+      }],
+        answer.types,
+  
+      ))
+    }
+    
+    //Strawberry Cake 6
+    if (recipe.name.en == "Strawberry cake"){
+      let cookTime = recipe.cookTime
+      let prepTime = recipe.prepTime
+      let totalTime = cookTime*2 + prepTime*2
+      const fractions = [8,16,24,32,40,48,56];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      const servingSize = recipe.servingSize
+      let fractionOrInteger = convertToFraction(randomFraction+"/"+servingSize)
+      let simplify = simplifyFraction(fractionOrInteger)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, totalTime, 'multiply')
+      let simplify2 = simplifyFraction(multipliedResult.result)
+
+
+
+
+       // create question
+       generatedQuestions.push(createGameQuestion(
+        {
+            en: `The original prep time is 10 minutes and cook time is 15. Yesterday you took double the amount of prep time and double the amount of cook time to make 8 servings of strawberry cake following the recipe. You’re making ${randomFraction} servings today. How many minutes will it take you to make these servings if you are working at the same speed as yesterday?`,
+            es: `El tiempo original de preparación 10 minutos y 15 de cocción. Ayer te tomaste el doble de tiempo en la preparación y el doble de tiempo en la cocción para hacer 8 porciones de pastel de fresas siguiendo la receta. Hoy estás haciendo ${randomFraction} porciones. ¿Cuántos minutos te llevará hacer estas porciones si estás trabajando a la misma velocidad que ayer?`,
+        
+        },
+        simplify2.result,
+        [{
+            en:  `1) Time per cake = new prep time + new cook time 
+            2) Total cakes = total servings / servings for 1 cake  
+            3) Total Time = total cakes * time per cake
+            `,
+            es:  `1) Tiempo por pastel = nuevo tiempo de preparación + nuevo tiempo de cocción
+            2) Total de pasteles = total de porciones / porciones por 1 pastel
+            3) Tiempo total = total de pasteles * tiempo por pastel
+            `,
+        },
+        {
+          en:  `1) Time per cake = (${cookTime}x2) + (${prepTime}x2) = ${totalTime} minutes 
+          2) Total cakes = ${randomFraction} / ${servingSize} = ${simplify.result}  
+          3) Total Time = ${simplify.result} x ${totalTime} = ${simplify2.result} minutes 
+          `,
+          es:  `1) Tiempo por pastel = (${cookTime}x2) + (${prepTime}x2) = ${totalTime} minutes 
+          2) Total de pasteles = ${randomFraction} / ${servingSize} = ${simplify.result}
+          3) Tiempo total = ${simplify.result} x ${totalTime} = ${simplify2.result} minutos 
+          `,
+      }],
+        simplify2.types,
+  
+      ))
+    }
 
     return generatedQuestions;
 }

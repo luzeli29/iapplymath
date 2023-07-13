@@ -451,6 +451,50 @@
                 "es" : "coles rizadas"
             },
             "imgSrc" : "kale"
+        },
+        "flour" : {
+            "nameSingular" : {
+                "en" :"flour",
+                "es" : "harina"
+            },
+            "namePlural" : {
+                "en" :"flour",
+                "es" : "harina"
+            },
+            "imgSrc" : "flour"
+        },
+        "oil" : {
+            "nameSingular" : {
+                "en" :"oil",
+                "es" : "aceite"
+            },
+            "namePlural" : {
+                "en" :"oil",
+                "es" : "aceite"
+            },
+            "imgSrc" : "fryingOil"
+        },
+        "egg" : {
+            "nameSingular" : {
+                "en" :"egg",
+                "es" : "huevo"
+            },
+            "namePlural" : {
+                "en" :"eggs",
+                "es" : "huevos"
+            },
+            "imgSrc" : "Egg"
+        },
+        "strawberries" : {
+            "nameSingular" : {
+                "en" :"strawberry",
+                "es" : "fresa"
+            },
+            "namePlural" : {
+                "en" :"strawberries",
+                "es" : "fresas"
+            },
+            "imgSrc" : "strawberry"
         }
 
     }

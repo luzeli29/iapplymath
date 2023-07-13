@@ -621,71 +621,6 @@
                 "orange"
             ]
         },
-        "vanillaIceCream" :{
-            "level" : "3",
-            "name" : {
-                "en" : "Vanilla Ice Cream",
-                "es": "Helado de Vainilla"
-            },
-            "instructions" : {
-                "en" : "Prepare the vanilla ice cream and eat in a bowl",
-                "es" : "Prepare el helado de vainilla y coma en un plato."
-            },
-            "imgSrc" : "coconut_icecream",
-            "servingSize" : 1,
-            "recipeMakesAmount" : 6,
-            "servingType" : "bowl",
-            "ingredients" : {
-                "milk" :{
-                    "ingredient" : "milk",
-                    "amount" : "3/2",
-                    "servingType" : "cup"
-                },
-                "sugar" :{
-                    "ingredient" : "sugar",
-                    "amount" : "3/4",
-                    "servingType" : "cup"
-
-                },
-                "salt" :{
-                    "ingredient" : "salt",
-                    "amount" : "1/8",
-                    "servingType" : "tablespoon"
-
-                },
-                "vanilla extract" :{
-                    "ingredient" : "vanillaExtract",
-                    "amount" : "2",
-                    "servingType" : "tablespoon"
-
-                },
-                "whipped cream" :{
-                    "ingredient" : "whippedCream",
-                    "amount" : "1",
-                    "servingType" : "cup"
-
-                }
-            },
-            "defaultIngredientMultiQuestions" : [
-                {
-                    "ingredientCode" : "carrot",
-                    "factor" : 1
-                },{
-                    "ingredientCode" : "orange",
-                    "factor" : 1
-                },{
-                    "ingredientCode" : "carrot",
-                    "factor" : 2
-                },{
-                    "ingredientCode" : "orange",
-                    "factor" : 2
-                }
-            ],
-            "defaultFamilyQuestionIngredients" : [
-                "carrot",
-                "orange"
-            ]
-        },
         "lentilSoup" :{
             "level" : "3",
             "name" : {
@@ -697,10 +632,10 @@
                 "es" : "Prepare la sopa y coma en un plato hondo"
             },
             "imgSrc" : "lentil_soup",
-            "servingSize" : 1,
+            "servingSize" : 12,
             "prepTime": 10,
             "cookTime" : 45,
-            "recipeMakesAmount" : 12,
+            "recipeMakesAmount" : 1,
             "servingType" : "self",
             "ingredients" : {
                 "olive oli" :{
@@ -754,6 +689,60 @@
                     "ingredient" : "freshLimeJuice",
                     "amount" : "5",
                     "servingType" : "tablespoon"
+
+                }
+            }
+        },
+        "strawberryCake" :{
+            "level" : "3",
+            "name" : {
+                "en" : "Strawberry cake",
+                "es": "Pastel de fresa"
+            },
+            "instructions" : {
+                "en" : "Prepare the dough and bake at 350 degrees.",
+                "es" : "Prepare la masa y hornee a 350 grados."
+            },
+            "imgSrc" : "strawberry_cake",
+            "servingSize" : 8,
+            "prepTime": 10,
+            "cookTime" : 15,
+            "recipeMakesAmount" : 1,
+            "servingType" : "self",
+            "ingredients" : {
+                "milk" :{
+                    "ingredient" : "milk",
+                    "amount" : "2/3",
+                    "servingType" : "cup"
+                },
+                "flour" :{
+                    "ingredient" : "flour",
+                    "amount" : "2",
+                    "servingType" : "cup"
+
+                },
+                "oil" :{
+                    "ingredient" : "oil",
+                    "amount" : "2",
+                    "servingType" : "cup"
+
+                },
+                "egg" :{
+                    "ingredient" : "egg",
+                    "amount" : "1",
+                    "servingType" : "self"
+
+                },
+                "sugar" :{
+                    "ingredient" : "sugar",
+                    "amount" : "1/3",
+                    "servingType" : "cup"
+
+                },
+                "strawberries" :{
+                    "ingredient" : "strawberries",
+                    "amount" : "3/4",
+                    "servingType" : "cup"
 
                 }
             }
