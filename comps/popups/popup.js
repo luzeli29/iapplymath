@@ -6,7 +6,7 @@ import { ResizableBox } from 'react-resizable';
 
 const Popup = ({ icon, content, lang }) => {
   lang = lang ? lang : 'en'
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [size, setSize] = useState({ width: 320, height: 470 });
 
@@ -58,6 +58,11 @@ const Popup = ({ icon, content, lang }) => {
             </button>
             </div>
             <div className="app">{content}</div>
+            
+            <div style={{ marginLeft: size.width, position: 'absolute'}}>
+              <textarea style={{ height: size.height + 40, width: parseInt(size?.width ?? 370) }}/>
+            </div>
+
           </ResizableBox>
         </Draggable>
       )}
