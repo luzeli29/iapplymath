@@ -9,6 +9,7 @@ import Login from '../../../user/login';
 import useTimer from '@hooks/useTimer';
 import imgBanner from '@public/img/brainBreaks/moveYourBody.gif'
 import Swal from 'sweetalert2';
+import TextReader from '@comps/accessibility/textReader';
 // import music from '../../public/sound/salsa2_bg.mp3';
 
 export default function MoveBodyBreak() {
@@ -46,17 +47,17 @@ export default function MoveBodyBreak() {
 
         let redirect = router?.query?.url ?? ''
 
-        if(redirect) {
-          router.push(decodeURIComponent(redirect))
-        }else {
-          router.push('/game/map')
+        // if(redirect) {
+        //   router.push(decodeURIComponent(redirect))
+        // }else {
+        //   router.push('/game/map')
           
-        }
+        // }
     }
 
     return (
         <>
-            <h1 className={style.as_title_container}>{translations.moveBodyTitle[lang]}</h1>
+            <h1 className={style.move_your_body_title_container}>{translations.moveBodyTitle[lang]}</h1>
             <div className={style.chillout_container}>
 
                 <div className={style.move_your_body_img}>
@@ -66,9 +67,9 @@ export default function MoveBodyBreak() {
                 <div className={style.chillout_text}>
 
                     <ol>
-                        <li><h5>{translations.moveBodyDescription1[lang]}</h5></li>
-                        <li><h5>{translations.moveBodyDescription2[lang]}</h5></li>
-                        <li><h5>{translations.moveBodyDescription3[lang]}</h5></li>
+                        <li><h5><TextReader text={translations.moveBodyDescription1[lang]} reader={'ayu'}/> {translations.moveBodyDescription1[lang]}</h5></li>
+                        <li><h5><TextReader text={translations.moveBodyDescription2[lang]} reader={'ayu'}/> {translations.moveBodyDescription2[lang]}</h5></li>
+                        <li><h5><TextReader text={translations.moveBodyDescription3[lang]} reader={'ayu'}/> {translations.moveBodyDescription3[lang]}</h5></li>
                     </ol>
                     
                     <h2 style={{textAlign: 'center', marginTop: '30px'}}>
