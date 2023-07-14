@@ -40,7 +40,7 @@ export default function QuestionBox({ questionData, incorrectNum }) {
 
   DevLog("Question:" + questionData);
 
-  const questionSrc = questionData.imgSrc;
+  const questionSrc = questionData?.imgSrc;
   const path = "/img/questionExamples/" + questionSrc + ".png";
   return (
     <div className={style.question_text_container}>
