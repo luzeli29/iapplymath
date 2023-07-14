@@ -261,1467 +261,1412 @@ function compareNumbers(fractionOrInteger, fractionOrInteger2) {
 
 function generateLevel2AuntQuestions(recipe, randomInt){
     let generatedQuestions = [];
-
-
-    // ***********************************************************************************************************************
-    // question 1
-
-    // Aunt Maria needs to make a total of (number between 200-500 that is divisible by 2) servings of Strawberry Milkshake. How many cups of vanilla ice cream will be needed?  (NC.4.NF.3, NC.4.NF.4) (Hard) (word problem) 
-    //Aunt Maria is preparing to make [15-35] limeades. How many total cups of lime juice does she need? (NC.4.NF.4) (Medium) (word problem) 
-
-    // choose random number between 15 and 35
-    // let randomNum = Math.floor(Math.random() * 41 + 10);
-let randomNum;
-
-    if (recipe.name.en == "Limeade"){
-      randomNum = randomInt(15,36);
-    }else if (recipe.name.en == "Milkshake"){
-       randomNum = randomInt(200,501);
-       if (randomNum % 2 !== 0) {
-        randomNum += 1; // Add 1 to make it even
-      }
-    }else if (recipe.name.en == "Pudding"){
-      randomNum = randomInt(10,21);
-    }else if (recipe.name.en == "Samoa Pretzel Stick"){
-        randomNum = randomInt(20,26);
-    }else{
-      randomNum = randomInt(10,21);
-    }
-
-    let first_ingredient_key = Object.keys(recipe.ingredients)[0];
-    let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-
-    // Convert the amount to a fraction or integer
-    let fractionOrInteger = convertToFraction(first_ingredient_key_amount);
-
-    //multiply integer of fraction y random
-    const multipliedResult = multiplyOrDivide(fractionOrInteger, randomNum, 'multiply');
-
-    
-
-    //let first_ingredient = recipe["ingredients"][first_ingredient_key]["ingredient"]
-    // answer
-    
-    let result ;
-    let types  = 'wholeNumber';
-    
-
-    const simplifiedMultipliedResult = simplifyFraction(multipliedResult.result);
-
-
-    // create question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `Aunt Maria is preparing to make ${randomNum} ${recipe.name.en}s. How many total cups of ${first_ingredient_key} does she need?`,
-            es: `Tía Maria está preparando ${randomNum} ${recipe.name.es}s. ¿Cuántas tazas de ${first_ingredient_key} necesita en total?`,
-        
-        },
-        simplifiedMultipliedResult.result,
-        [{
-            en:  randomNum + " x " + (first_ingredient_key_amount) + " = ???" ,
-            es:  randomNum + " x " + (first_ingredient_key_amount) + " = ???" 
-        },{
-            en: randomNum + " x " + (first_ingredient_key_amount) + " = " + simplifiedMultipliedResult.result ,
-            es: randomNum + " x " + (first_ingredient_key_amount) + " = " + simplifiedMultipliedResult.result ,
-        }],
-        simplifiedMultipliedResult.types,
-    ))
-
-    // ***********************************************************************************************************************
-    // question 2
-
-    //Aunt Maria is preparing the ingredients needed to make (random number between 2-8) Strawberry Milkshakes. Combine the total cups of whipped cream and frozen strawberries she will use. (NC.4.NF.3, NC.4.NF.4) (Hard) (word problem) 
-    // choose random number between 15 and 35
-    // let randomNum = Math.floor(Math.random() * 41 + 10);
-    
-    if (recipe.name.en == 'Milkshake') {
-      randomNum = randomInt(2,9);
-
-      let ing1 ;
-      let ing2 ; 
-      let ing1_amount;
-      let ing2_amount;
-
-      ing1 =  Object.keys(recipe.ingredients)[0];
-      ing1_amount = recipe.ingredients[ing1].amount;
-      ing2 =  Object.keys(recipe.ingredients)[3];
-      ing2_amount = recipe.ingredients[ing2].amount;
-
-      let fractionOrInteger1 = convertToFraction(ing1_amount);
-      let fractionOrInteger2 = convertToFraction(ing2_amount);
-
-      //multiply integer of fraction y random
-      const multipliedResult1 = multiplyOrDivide(fractionOrInteger1, randomNum, 'multiply');
-      const multipliedResult2 = multiplyOrDivide(fractionOrInteger2, randomNum, 'multiply');
-
-    
-      //let first_ingredient = recipe["ingredients"][first_ingredient_key]["ingredient"]
-      // answer
-      
-      
-      let types  = 'wholeNumber';
-    
-      const simplifiedMultipliedResult1 = simplifyFraction(multipliedResult1.result);
-      const simplifiedMultipliedResult2 = simplifyFraction(multipliedResult2.result);
-
+  
+    //question 1 vegetable soup 
+    if (recipe.name.en == "Vegetable Noodle Soup") {
+      let randomNum = randomInt(5,9)
+      let randomNum1 = randomInt(3,10)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, randomNum, 'multiply')
+      let simplify  = simplifyFraction(multipliedResult.result)
+      let multipliedResult2 = multiplyOrDivide(fractionOrInteger, randomNum1, 'multiply')
+      let simplify2  = simplifyFraction(multipliedResult2.result)
+      let addedResult = addOrSubtract(multipliedResult.result,multipliedResult2.result, 'add')
+      let answer = simplifyFraction(addedResult.result)
      
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria made ${randomNum} vegetable noodle soups on Monday and ${randomNum1} soups on Tuesday. How many cups of chopped carrots did she use in total?`,
+              es:  `Tía María hizo ${randomNum} sopas de fideos con verduras el lunes y ${randomNum1} sopas el martes. ¿Cuántas tazas de zanahoria picada utilizó en total?`,
+          
+          },
+          answer.result,
+          [{
+            en: `1) Monday = ${randomNum} x ${first_ingredient_key_amount}  
+           2)  Tuesday = ${randomNum1} x ${first_ingredient_key_amount}  
+           3)  Total Cups = Monday + Tuesday 
+            `,
+            es: `1) Lunes = ${randomNum} x ${first_ingredient_key_amount}  
+            2) Martes = ${randomNum1} x ${first_ingredient_key_amount}  
+            3) Tazas Totales = Lunes + Martes
+            `,
+          },
+            {
+            en:  `1) Monday = ${randomNum} x ${first_ingredient_key_amount} = ${simplify.result} 
+            2) Tuesday = ${randomNum1} x ${first_ingredient_key_amount} = ${simplify2.result} 
+            3) Total Cups = ${simplify.result} + ${simplify2.result} = ${answer.result}
+            `,
+            es:  `1) Lunes = ${randomNum} x ${first_ingredient_key_amount} = ${simplify.result} 
+            2) Martes = ${randomNum1} x ${first_ingredient_key_amount} = ${simplify2.result} 
+            3) Tazas Totales = ${simplify.result} + ${simplify2.result} = ${answer.result}
+            `,
+          }],
+        answer.types,
+    
+        ))
+    
+        }
 
-      const convert1 = convertToFraction(simplifiedMultipliedResult1.result)
-      const convert2 = convertToFraction(simplifiedMultipliedResult2.result)
+    //question 2 vegetable soup 
+    if (recipe.name.en == "Vegetable Noodle Soup") {
+      let randomNum = randomInt(5,9)
+      let randomNum1 = [4,6,8][Math.floor(Math.random() * 6)]
+      let serving_size = recipe.servingSize
+      let firstStep = randomNum* serving_size
+      let secondStep = firstStep- randomNum1
+      let amount = convertToFraction(secondStep+"/"+firstStep)
+      let answer = simplifyFraction(amount)
 
-      let casiresult = addOrSubtract(convert1, convert2, 'add')
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria made ${randomNum} vegetable noodle soups today. If you eat ${randomNum1} servings, what fraction of the total servings will be left? Please type your answer as a fraction.`,
+              es:  `Tía María hizo ${randomNum} sopas de fideos con verduras hoy. Si consumes ${randomNum1} porciones, ¿qué fracción de las porciones totales quedará? Por favor escribe la respuesta en fracción`,
+          
+          },
+          answer.result,
+          [{
+            en: `1) ${randomNum} vegetable soups x ${serving_size} = total servings
+            2) Total servings - ${randomNum1} = servings left
+            3)  Fraction of the total servings left = servings left/ total servings
+            `,
+            es: `1) ${randomNum} sopas de verduras x ${serving_size} = porciones totales
+            2) Total de porciones - ${randomNum1} = porciones restantes
+              3) Fracción del total de porciones restantes = porciones restantes/total de porciones
+            `,
+          },
+            {
+            en:  `1) ${randomNum} vegetable soups x ${serving_size} = ${firstStep}
+            2) ${firstStep} - ${randomNum1} = ${secondStep}
+            3)  Fraction of the total servings left =${secondStep}/${firstStep} = ${answer.result}
+            `,
+            es:  `1) ${randomNum} sopas de verduras x ${serving_size} = ${firstStep}
+            2) ${firstStep} - ${randomNum1} = ${secondStep}
+              3) Fracción del total de porciones restantes = ${secondStep}/${firstStep} = ${answer.result}
+            `,
+          }],
+        answer.types,
+    
+        ))
+    
+        }
 
-      result = simplifyFraction(casiresult.result)
-      
-
-      //result = fractionOrInteger1 * randomNum
-     // create question
-     generatedQuestions.push(createGameQuestion(
-      {
-          en: `Aunt Maria is preparing to make ${randomNum} ${recipe.name.en}s. How many total cups of ${ing1} and ${ing2} will she need?`,
-          es: `Tía Maria está preparando ${randomNum} ${recipe.name.es}s. ¿Cuántas tazas de ${ing1} y ${ing2} necesita en total?`,
-      
-      },
-      result.result,
-      [{
-          en:  randomNum + " x " + (ing1_amount) + " = Amount of " + ing1 ,
-          es:  randomNum + " x " + (ing1_amount) + " = Cantidad de  " + ing1 
-      },{
-        en:  randomNum + " x " + (ing1_amount) + " = " + simplifiedMultipliedResult1.result ,
-        es:   randomNum + " x " + (ing1_amount) + " = " + simplifiedMultipliedResult1.result ,
-      },{
-          en: randomNum + " x " + (ing2_amount) + " = Amount of " + ing2 ,
-          es:  randomNum + " x " + (ing2_amount) + " = Cantidad de  " + ing2
-      },{
-        en: randomNum + " x " + (ing2_amount) + " = "  + simplifiedMultipliedResult2.result ,
-        es:  randomNum + " x " + (ing2_amount) + " = " + simplifiedMultipliedResult2.result  ,
-      },{
-        en: simplifiedMultipliedResult1.result  + " + " +  simplifiedMultipliedResult2.result + " = " + result.result,
-        es: simplifiedMultipliedResult1.result  + " + " +  simplifiedMultipliedResult2.result + " = ",
-      }],
-      result.types,
-
-    ))
-
-    }
-
-    // ***********************************************************************************************************************
-    // question 3
-
-    //Aunt Maria measures that following this recipe makes [1-2] liters of strawberry milkshake. How many milliliters of strawberry milkshake are in one serving?
-    if (recipe.name.en == 'Milkshake') {
-      randomNum = randomInt(1,3);
-
-      let result1 = randomNum * 1000
-      result = result1/2
- 
-     // create question
-     generatedQuestions.push(createGameQuestion(
-      {
-          en: `Aunt Maria measures that following this recipe makes ${randomNum} liters of ${recipe.name.en}. How many milliliters of ${recipe.name.en} are in one serving?`,
-          es: `Tía Maria mide que al preparar esta receta se hacen ${randomNum} litros de  ${recipe.name.es}. ¿Cuántos mililitros de  ${recipe.name.es} hay en una servida?`,
-      
-      },
-      result,
-      [{
-          en:  "Hint: 1 L= 1000 mL",
-          es:  "Pista: 1 L = 1000 mL"
-      },{
-        en:  randomNum + " x 1000 = ???" ,
-        es:  randomNum + " x 1000 = ???" ,
-      },{
-        en:  randomNum + " x 1000 = " + result1 + "(two servings)",
-        es:  randomNum + " x 1000 = " + result1 + "(dos porciones)",
-      },{
-        en:  result1+ " ÷ 2 = " + result + "mL" ,
-        es:  result1 + " ÷ 2 = " + result + "mL",
-      }],
-      "wholeNumber",
-
-    ))
-
-    }
-
-        // ***********************************************************************************************************************
-    // question 4
-
-    // One bag of frozen strawberries contains [3-9] cups of strawberries per bag. If one bag of frozen strawberries weighs (a random whole number 450-999), how much does each cup of strawberries weigh? If any, include remainders in your answer!
-    if (recipe.name.en == 'Milkshake') {
-      randomNum = randomInt(3,10);
-      let randomNum2 = randomInt(450,1000);
-
-      first_ingredient_key = Object.keys(recipe.ingredients)[0];
-
-      result = Math.round((randomNum2 / randomNum),2)
-      
-     // create question
-     generatedQuestions.push(createGameQuestion(
-      {
-          en: `One bag of  ${first_ingredient_key} contains ${randomNum} cups per bag. If one bag of ${first_ingredient_key} weighs ${randomNum2}, how much does each cup weigh?`,
-          es: `Una bolsa de ${first_ingredient_key} contiene ${randomNum} tazas por bolsa. Si una bolsa de ${first_ingredient_key} pesa ${randomNum2}, cuánto pesa cada taza?`,
-      },
-      result,
-      [{
-        en:  "Round to the nearest whole number",
-        es:  "Redondea al número entero más cercano",
-      },{
-          en:  randomNum2+ " ÷ "+ randomNum + " = ???",
-          es:  randomNum2+ " ÷ "+ randomNum + " = ???",
-      },{
-        en:  randomNum2+ " ÷ "+ randomNum + " = " + result ,
-        es:  randomNum2+ " ÷ "+ randomNum + " = "+ result,
-      }],
-      "wholeNumber",
-
-    ))
-
-    }
-
-        // question 5
-
-    // One bag of cherries contains [20-35] cherries. How many cherries does Aunt Maria have if she buys [11-30] bags?
-    if (recipe.name.en == 'Milkshake') {
-      randomNum = randomInt(20,36);
-      let randomNum2 = randomInt(11,31);
-
-      first_ingredient_key = Object.keys(recipe.ingredients)[4];
-
-      result = randomNum * randomNum2
-      
-     // create question
-     generatedQuestions.push(createGameQuestion(
-      {
-          en: `One bag of  ${first_ingredient_key}s contains ${randomNum}  ${first_ingredient_key}s. How many  ${first_ingredient_key}s does Aunt Maria have is she buys  ${randomNum2} bags?`,
-          es: `Una bolsa de ${first_ingredient_key} contiene ${randomNum}  ${first_ingredient_key}s. ¿Cuántas ${first_ingredient_key} tiene Tía Maria si compra ${randomNum2} bolsas?`,
-      },
-      result,
-      [{
-          en:  randomNum+ " x "+ randomNum2 + " = ???",
-          es:  randomNum+ " x "+ randomNum2 + " = ???",
-      },{
-        en:  randomNum+ " x "+ randomNum2 + " = " + result ,
-        es:  randomNum+ " x "+ randomNum2 + " = "+ result,
-      }],
-      "wholeNumber",
-
-    ))
-
-    }
-
-    // question 6
-
-    //Aunt Maria has [a mixed fraction between 2-5 w/ denominators 3,4,5,6,8,10,12,or100] cups of milk inside the fridge. How many cups of milk will she have after making 1 strawberry milkshake?
-    if (recipe.name.en == 'Milkshake') {
-      randomNum = randomInt(2,6);
-      let randomNum2 = randomInt(3,7);
-
-      first_ingredient_key = Object.keys(recipe.ingredients)[1];
+    //question 3 vegetable soup 
+    if (recipe.name.en == "Vegetable Noodle Soup") {
+      let randomNum = randomInt(2,6)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
       let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-
-      let strings = randomNum + "/" + randomNum2
-  
-      // Convert the amount to a fraction or integer
-      let fractionOrInteger = convertToFraction(first_ingredient_key_amount);
-      let fractionOrIntegerStrings = convertToFraction(strings);
-  
-      //multiply integer of fraction y random
-      let preresult = addOrSubtract(fractionOrIntegerStrings, fractionOrInteger, 'subtract')
-
-      result = simplifyFraction(preresult.result)
-
-      
-     // create question
-     generatedQuestions.push(createGameQuestion(
-      {
-          en: `Aunt Maria has  ${strings} cups of ${first_ingredient_key} inside the fridge. How many cups of ${first_ingredient_key} does she have left after making 1 ${recipe.name.en}?`,
-          es: `Tía Maria tiene  ${strings} tazas de ${first_ingredient_key} en el refrigerador. ¿Cuántas tazas de ${first_ingredient_key} tiene después de haber hecho 1 ${recipe.name.es}?`,
-      },
-      result.result,
-      [{
-          en:  strings+ " - "+ first_ingredient_key_amount + " = ???",
-          es:  strings+ " - "+ first_ingredient_key_amount + " = ???",
-      },{
-        en:  strings+ " - "+ first_ingredient_key_amount + " = " + result.result,
-        es:  strings+ " - "+ first_ingredient_key_amount + " = " + result.result,
-      }],
-      result.types,
-
-    ))
-
-    }
-
-    // question 7
-
-    //On the first night, Aunt made [2-4] milkshakes. On the second night, Aunt made [2-6] milkshakes. Compare how many cups of milk were used on the first day to how many cups of whipped cream were used on the second day. Compare the fractions using >, =, or <. 
-    if (recipe.name.en == 'Milkshake') {
-      randomNum = randomInt(2,5);
-      let randomNum2 = randomInt(2,7);
-
-      first_ingredient_key = Object.keys(recipe.ingredients)[1];
-      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-      let second_ingredient_key = Object.keys(recipe.ingredients)[3];
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let second_ingredient_key = Object.keys(recipe.ingredients)[2];
       let second_ingredient_key_amount = recipe.ingredients[second_ingredient_key].amount;
+      let fractionOrInteger1 = convertToFraction(second_ingredient_key_amount)
+      let third_ingredient_key = Object.keys(recipe.ingredients)[4];
+      let third_ingredient_key_amount = recipe.ingredients[third_ingredient_key].amount;
+      let fractionOrInteger2 = convertToFraction(third_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, randomNum, 'multiply')
+      let multipliedResult1 = multiplyOrDivide(fractionOrInteger1, randomNum, 'multiply')
+      let multipliedResult2 = multiplyOrDivide(fractionOrInteger2, randomNum, 'multiply')
+      let addedResult = addOrSubtract(multipliedResult1.result, multipliedResult.result, 'add')
+      let addedResult2 = addOrSubtract(addedResult.result, multipliedResult2.result, 'add')
+      let simplify = simplifyFraction(multipliedResult.result)
+      let simplify1 = simplifyFraction(multipliedResult1.result)
+      let simplify2 = simplifyFraction(multipliedResult2.result)
+      let answer = simplifyFraction(addedResult2.result)
 
-  
-      // Convert the amount to a fraction or integer
-      let fractionOrInteger = convertToFraction(first_ingredient_key_amount);
-      let fractionOrInteger2 = convertToFraction(second_ingredient_key_amount);
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `If Auntie Maria makes  ${randomNum} vegetable noodle soups, what is the total amount of cups of chopped carrots, noodles, and cilantro she will need?`,
+              es:  `Si Tía María hace ${randomNum} sopas de fideos con verduras, ¿cuántas tazas de zanahoria picada, fideos y cilantro necesitará en total?`,
+          
+          },
+          answer.result,
+          [{
+            en: `1) Total carrots: ${randomNum} * ${first_ingredient_key_amount} 
+            2) Total noodles: ${randomNum} * ${second_ingredient_key_amount} 
+            3) Total cilantro: ${randomNum} * ${third_ingredient_key_amount}
+            4) Total cups = add the three fractions together 
+            `,
+            es: `Total de zanahorias: ${randomNum} * ${first_ingredient_key_amount} 
+            Total de fideos: ${randomNum} * ${second_ingredient_key_amount} 
+            Total de cilantro:${randomNum} * ${third_ingredient_key_amount}
+            Total de tazas = sumar las tres fracciones
+            `,
+          },
+            {
+            en:  `1) Total carrots:  ${randomNum} * ${first_ingredient_key_amount} = ${simplify.result}
+            2) Total noodles:   ${randomNum} * ${second_ingredient_key_amount} =${simplify1.result}
+            3) Total cilantro: ${randomNum} * ${third_ingredient_key_amount} =${simplify2.result}
+            4) Total Cups = ${simplify.result} + ${simplify1.result} + ${simplify2.result} = ${answer.result}
+            `,
+            es:  `Total de zanahorias: ${randomNum} * ${first_ingredient_key_amount}  = ${simplify.result}
+            Total de fideos: ${randomNum} * ${second_ingredient_key_amount} = ${simplify1.result}
+            Total de cilantro:${randomNum} * ${third_ingredient_key_amount} =${simplify2.result}
+            Total de tazas =  ${simplify.result} + ${simplify1.result} + ${simplify2.result} = ${answer.result}
+            `,
+          }],
+        answer.types,
+    
+        ))
+    
+        }
 
-      let first_day = multiplyOrDivide(fractionOrInteger,randomNum, 'multiply')
-      let second_day = multiplyOrDivide( fractionOrInteger2,randomNum2, 'multiply')
+    //question 4 vegetable soup 
+    if (recipe.name.en == "Vegetable Noodle Soup") {
+      let randomNum = randomInt(6,9)
+      let serving_size = recipe.servingSize
+      let firstStep = randomNum*serving_size
+      let secondStep = firstStep*2
+      let answer = firstStep + secondStep
 
-      let simplifiedMultipliedResult1 = simplifyFraction(first_day.result)
-      let simplifiedMultipliedResult2 = simplifyFraction(second_day.result)
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `On Wednesday, Auntie Maria made ${randomNum} vegetable soups. On Saturday, she made double the amount of vegetable soups as she did on Wednesday. How many total cups of vegetable broth did she use?`,
+              es:  `El miércoles, Tía María hizo ${randomNum} sopas de verduras. El sábado, hizo el doble de la cantidad de sopas de verduras que hizo el miércoles. ¿Cuántas tazas de caldo de verduras en total utilizó?`,
+          
+          },
+          answer,
+          [{
+            en: `1) ${randomNum} x ${serving_size} = total of wednesday
+            2) 2 x (total of wednesday) = total of saturday
+            3) Total cups broth = Total of wednesday + total of saturday 
+            `,
+            es: `1) ${randomNum} x ${serving_size} = total del miércoles
+            2) 2 x (total del miércoles) = total del sábado
+            3) Total de tazas de caldo = Total del miércoles + total del sábado
+            `,
+          },
+            {
+            en:   `1) ${randomNum} x ${serving_size} = ${firstStep}
+            2) 2 x ${firstStep} = ${secondStep}
+            3) Total cups of vegetable broth  = ${firstStep} + ${secondStep} = ${answer}
+            `,
+            es:  `1) ${randomNum} x ${serving_size} = ${firstStep}
+            2) 2 x ${firstStep} = ${secondStep}
+            3) Total de tazas de caldo = ${firstStep} + ${secondStep} = ${answer}
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
 
-      let compare = compareNumbers(simplifiedMultipliedResult1.result, simplifiedMultipliedResult2.result)
+    //question 5 vegetable soup 
+    if (recipe.name.en == "Vegetable Noodle Soup") {
+      let randomNum = randomInt(1,3);
+      let randomNum3 = randomInt(10,30)
 
+      let cookTime = 10
+      let randomNum1 = randomNum + ":"+  randomNum3
 
-
-     // create question
-     generatedQuestions.push(createGameQuestion(
-      {
-          en: `On the first night, Aunt made ${randomNum} ${recipe.name.en}. On the second night, Aunt made ${randomNum2} ${recipe.name.en}s. Compare how many cups of ${first_ingredient_key} were used on the first day to how many cups of ${second_ingredient_key} were used on the second day.`,
-          es: `En la primera noche, tía Maria hizo ${randomNum} ${recipe.name.es}. En la segunda noche, Maria hizo ${randomNum2} ${recipe.name.es}s. Compare cuantas tazas de ${first_ingredient_key}se utilizaron en el primer día a cuantas tazas de ${second_ingredient_key} se utilizaron en el segundo día.`,
-      },
-      compare,
-      [{
-        en: "Choose the correct symbol to compare the fractions.",
-        es: "Elige el símbolo correcto para comparar las fracciones.",
-      },{
-        en: simplifiedMultipliedResult1.result + " {< , = , > } " + simplifiedMultipliedResult2.result ,
-        es: "Elige el símbolo correcto para comparar las fracciones.",
-      }],
-      "inequality",
-
-    ))
-
-    }
-
-        // question 8
-
-    //The base of one milk carton has the following width: [a mixed number between 5-8 with fraction denominator 2,3,4,5,6,8,10,12 = “width”] cm, and a length of “x.” The area of the milk carton base is [10-30, can be a mixed number= “Area”].
-    if (recipe.name.en == 'Milkshake') {
-      randomNum = randomInt(5,9);
-      let randomNum2 = randomInt(2,7);
-      let randomNum3 = randomInt(10,31);
-
-      let strings = randomNum + "/" + randomNum2
-  
-      // Convert the amount to a fraction or integer
-      let fractionOrIntegerStrings = convertToFraction(strings);
-  
-      //multiply integer of fraction y random
-      let preresult = multiplyOrDivide(fractionOrIntegerStrings, randomNum3, 'multiply')
-
-      result = simplifyFraction(preresult.result)
-
+            // Convert start time to minutes
+      let totalMinutes = randomNum * 60 + randomNum3;
+            // Add the desired number of minutes
+            totalMinutes += 90;
       
-     // create question
-     generatedQuestions.push(createGameQuestion(
-      {
-          en: `The base of one milk carton has the following width: ${strings} cm, and a length of ${randomNum3}. What is the area of the milk cartons`,
-          es: `La base de un cartón de leche tiene el siguiente ancho: ${strings} cm, y ${randomNum3} de largo. ¿Cuál es el área de el cartón de leche?`,
-      },
-      result.result,
-      [{
-          en: "Area = width x height",
-          es:  "Área = ancho x largo",
-      },{
-        en:  strings+ " x " +randomNum3+ " = " + result.result ,
-        es:  strings + " x " +randomNum3+ " = " + result.result,
-      }],
-      result.types,
+            // Calculate the new hours and minutes
+            let newHours = Math.floor(90 / 60);
+            let newMinutes = 90 % 60;
+      
+            let finalTimeHr = (randomNum+newHours)
+            let finalTimeSec = (randomNum3+newMinutes)
+            let done = finalTimeHr + ":" + finalTimeSec + "PM"
 
-    ))
-
-    }
-
-
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `The vegetable noodle soup cook time takes double the amount of prep time. Auntie Maria spent a total of 60 minutes cooking (NOT including prep time) on Sunday. If Auntie Maria started at ${randomNum1} PM, what time would she have finished? Include prep time and cook time in your calculation! Hint: 1 hour = 60 minutes.`,
+              es:  `El tiempo de cocción de la sopa de fideos con verduras suele ser el doble del tiempo de preparación. Tía María pasó un total de 60 minutos cocinando, (sin incluir el tiempo de preparación), el domingo. Si Tía María comenzó a las ${randomNum1}PM, ¿a qué hora habría terminado? ¡Incluye el tiempo de preparación y el tiempo de cocción en tu cálculo! Pista: 1 hora = 60 minutos.`,
+          
+          },
+          done,
+          [{
+            en: `1) Total prep time: Cook Time / 2
+            2) Total time = prep time + cook time 
+            3) Finish Time = Start Time + Total Time
+            Hint: type your answer using this format: HH:MM AM or PM
+            `,
+            es: `1) Tiempo total de preparación: Tiempo de cocción / 2
+            2) Tiempo total = tiempo de preparación + tiempo de cocción
+            3) Hora de finalización = Hora de inicio + Tiempo total
+            Sugerencia: escriba su respuesta usando este formato: HH:MM AM o PM
+            `,
+          },
+            {
+            en:   `1) Total prep time: 60 / 2 = 30 minutes
+            2) Total time = 30 + 60 = 90 minutes OR 1 hour 30 mins
+            3) Finish Time = ${randomNum1} + 1 hour 30 mins = ${done}
+            `,
+            es:  `1) Tiempo total de preparación: 60 / 2 = 30 minutos
+            2) Tiempo total = 30 + 60 = 90 minutos O 1 hora 30 minutos
+            3) Hora de finalización = ${randomNum1} + 1 hora 30 minutos = ${done}
+            `,
+          }],
+        "time",
     
-
-    //question 2 limeade 
-    //Aunt Maria wants to make a total of [100-230] servings of Limeade for an event. How many cups of water does she need?
+        ))
     
-    if (recipe.name.en == "Limeade"){
-      randomNum = randomInt(100,231);
+        }
+
+    //question 6 vegetable soup 
+    if (recipe.name.en == "Vegetable Noodle Soup") {
+      let randomNum = randomInt(300,500)
+      let randomNum1 = randomInt(5,10)
+      let firstStep = randomNum*randomNum1
+      let answer = firstStep/1000
+      //answer = Number(answer.toFixed(2));
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `One bag of fresh cilantro weighs about ${randomNum} grams. If Auntie Maria purchased ${randomNum1} bags, how many kilograms of cilantro does she have? Hint: 1 kilogram = 1,000 grams.`,
+              es:  `Una bolsa de cilantro fresco pesa alrededor de ${randomNum} gramos. Si Tía María compró ${randomNum1} bolsas, ¿cuántos kilogramos de cilantro tiene? Pista: 1 kilogramo = 1000 gramos.`,
+          
+          },
+          answer,
+          [{
+            en: `1) Total weight grams = One bag weight * bag amount
+            2) Total weight kilograms = Total weight grams / 1000
+            `,
+            es: `1) Peso total de gramos = peso de una bolsa * cantidad de bolsa
+                2) Peso total de kilogramos = peso total de gramos / 1000
+                `,
+          },
+            {
+            en:   `1) Total weight grams =  ${randomNum} * ${randomNum1} = ${firstStep}
+            2) Total weight kilograms = ${firstStep}/ 1000 = ${answer}
+            `,
+            es:  `1) Peso total de gramos = ${randomNum} * ${randomNum1} = ${firstStep}
+            2) Peso total de kilogramos = ${firstStep}/ 1000 = ${answer}
+            `,
+          }],
+        "decimal",
+    
+        ))
+    
+        }
+
+    //question 7 vegetable soup 
+    if (recipe.name.en == "Vegetable Noodle Soup") {
+      let randomNum = randomInt(4,17)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[3];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, randomNum, 'multiply')
+      let simplify  = simplifyFraction(multipliedResult.result)
+      let multipliedResult1 = multiplyOrDivide(multipliedResult.result, 6, 'divide')
+      let answer  = simplifyFraction(multipliedResult1.result)
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `One bag of onions contains 6 medium onions. Auntie Maria makes ${randomNum} Vegetable soups. Represent the total fraction of onions used from the total of 6 medium onions. Please type your answer as a fraction.`,
+              es:  `Una bolsa de cebollas contiene 6 cebollas medianas. La tía María hace ${randomNum} sopas de verduras. Representa la fracción total de cebollas usadas del total de 6 cebollas medianas. Por favor escriba su respuesta como una fracción.`,
+          
+          },
+          answer.result,
+          [{
+            en: `1) Total onions used = Vegetables soups * onions per soup
+            2) Total fraction of onions used = Total onions used / Total onions`,
+            
+            es:`1) Total de cebollas utilizadas = sopas de verduras * cebollas por sopa
+            2) Fracción total de cebollas utilizadas = Total de cebollas utilizadas / Total de cebollas
+            `,
+          },
+          {
+          en:   `1) Total onions used = ${randomNum} * ${first_ingredient_key_amount} = (${simplify.result})
+          2) Total fraction of onions used = (${simplify.result}) / 6 = ${answer.result}
+          `,
+          es:  `1) Total de cebollas usadas = ${randomNum} * ${first_ingredient_key_amount} = (${simplify.result})
+          2) Fracción total de cebollas usadas = (${simplify.result}) / 6 = ${answer.result}
+          `,
+        }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 8 vegetable soup 
+    if (recipe.name.en == "Vegetable Noodle Soup") {
+      let randomNum = randomInt(8,16)
+      let randomNum1 = randomInt(6,15)
 
       let first_ingredient_key = Object.keys(recipe.ingredients)[2];
       let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-      let serving_size = recipe.servingSize
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
 
-
-      // Convert the amount to a fraction or integer
-      let fractionOrInteger = convertToFraction(first_ingredient_key_amount);
-
-      //multiply integer of fraction y random
-      let multipliedResult = multiplyOrDivide(randomNum, serving_size, 'divide');
-
-      let simplifiedMultipliedResult = simplifyFraction(multipliedResult.result);
-
-      let fractionOrInteger2 = convertToFraction(simplifiedMultipliedResult.result)
-
-      let multipliedResult2 = multiplyOrDivide(fractionOrInteger2, first_ingredient_key_amount, 'multiply')
-
-      let simplifiedMultipliedResult2 = simplifyFraction(multipliedResult2.result)
-
-
-    // create question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `Aunt Maria wants to make a total of ${randomNum} ${recipe.name.en}s. How many total cups of ${first_ingredient_key} will she need?`,
-            es: `Tía Maria quiere hacer un total de ${randomNum} ${recipe.name.en}s. ¿Cuántas tazas de ${first_ingredient_key} va a necesitar?`,
-        
-        },
-        simplifiedMultipliedResult2.result,
-        [{
-            en:  randomNum + " ÷ " + serving_size + " = ???" ,
-            es:  randomNum + " ÷ " + serving_size + " = ???" ,
-        },{
-          en:  randomNum + " ÷ " + serving_size + " = " + simplifiedMultipliedResult.result ,
-          es:  randomNum + " ÷ " + serving_size + " = " + simplifiedMultipliedResult.result,
-        },{
-          en:  simplifiedMultipliedResult.result + " x " + first_ingredient_key_amount + " = ???" ,
-          es:  simplifiedMultipliedResult.result + " x " + first_ingredient_key_amount + " = ???",
-        },{
-          en:  simplifiedMultipliedResult.result + " x " + first_ingredient_key_amount + " = " + simplifiedMultipliedResult2.result ,
-          es:  simplifiedMultipliedResult.result + " x " + first_ingredient_key_amount + " = " + simplifiedMultipliedResult2.result,
-        }],
-        simplifiedMultipliedResult2.types,
-    ))
-
-    }
-
-    //question 3 limeade 
-    //Aunt Maria spent a total of [3-8] hours of prep time to make limeades. According to the recipe, how many limeades did she prepare in total? 
-    
-    if (recipe.name.en == "Limeade"){
-      randomNum = randomInt(3,9);
-
-      let serving_time = recipe.time
-      let mintohours= 60 * randomNum
-    
-
-      //multiply integer of fraction y random
-      let multipliedResult = multiplyOrDivide(mintohours, serving_time, 'divide');
-
-      let simplifiedMultipliedResult = simplifyFraction(multipliedResult.result);
-
-
-    // create question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `Aunt Maria takes ${serving_time} minutes to make one recipe. She took ${randomNum} hours to make ${recipe.name.en}. How many ${recipe.name.en} did she prepare in total?`,
-            es: `Tía Maria se toma ${serving_time} minutos hacer una receta. Se tomo ${randomNum} horas para hacer  ${recipe.name.es}. ¿Cuántas ${recipe.name.es} preparo en total?`,
-        
-        },
-        simplifiedMultipliedResult.result,
-        [{
-            en:  "( " + randomNum + " x 60 ) " + " ÷ " + serving_time + " = ???" ,
-            es:  "( " + randomNum + " x 60 ) " + " ÷ " + serving_time + " = ???" ,
-        },{
-          en:  "( " + randomNum + " x 60 ) " + " ÷ " + serving_time + " = " + simplifiedMultipliedResult.result ,
-          es:  "( " + randomNum + " x 60 ) " + " ÷ " + serving_time + " = " + simplifiedMultipliedResult.result ,
-        }],
-        simplifiedMultipliedResult.types,
-    ))
-
-    }
-
-      //question 4 limeade 
-     //A cup of ice is nearly equal to half a pound of ice. However, ice is only sold in 3 lb bags. To make [5-25] limeades, how many 3 lb ice bags will Aunt Maria need to buy?
-    
-    if (recipe.name.en == "Limeade"){
-      randomNum = randomInt(5,26);
-
-      first_ingredient_key = Object.keys(recipe.ingredients)[3];
-      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-      
-
-      //multiply integer of fraction y random
-      let amoutn = convertToFraction(first_ingredient_key_amount)
-      let first_step = multiplyOrDivide(amoutn, randomNum, 'multiply') 
-      let simplifiedMultipliedResult = simplifyFraction(first_step.result)
-
-      let second_step =multiplyOrDivide(simplifiedMultipliedResult.result, 2 , 'divide')
-      let simplifiedMultipliedResult2 = simplifyFraction(second_step.result)
-
-      let fractionOrInteger1 = convertToFraction(simplifiedMultipliedResult2.result)
-      let third_step =multiplyOrDivide(fractionOrInteger1, 3 , 'divide')
-
-      let simplifiedMultipliedResult3 = simplifyFraction(third_step.result)
-
-      let done =  Math.ceil(third_step.result.numerator/third_step.result.denominator)
-     // create question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `A cup of ${first_ingredient_key} is nearly equal to half a pound of ${first_ingredient_key}. However, ${first_ingredient_key} is only sold in 3 lb bags. To make ${randomNum} ${recipe.name.en}, how many  3 lb ${first_ingredient_key} bags will Aunt Maria need?`,
-            es:`Una taza de ${first_ingredient_key} es casi igual a media libra de  ${first_ingredient_key}. El ${first_ingredient_key} solo lo venden en bolsas de 3 libras. Para hacer ${randomNum} ${recipe.name.es}, cuantas bolsas de 3 lb ${first_ingredient_key}  necesita Tía Maria?`,
-        
-        },
-        done,
-        [{
-            en:  first_ingredient_key_amount + " x " + randomNum + " = Total cups of ice nededed"  ,
-            es:  first_ingredient_key_amount + " x " + randomNum + " = Total de tazas hielo a utilizar"  ,
-        },{
-          en:  first_ingredient_key_amount + " x " + randomNum + " = " + simplifiedMultipliedResult.result ,
-          es:  first_ingredient_key_amount + " x " + randomNum + " = " + simplifiedMultipliedResult.result   ,
-        },{
-          en:  simplifiedMultipliedResult.result + " ÷  2  = Total pounds of ice nededed"  ,
-          es:  simplifiedMultipliedResult.result + " ÷  2  = Total de libras hielo a utilizar"  ,
-      },{
-        en:  simplifiedMultipliedResult.result + " ÷  2  = " + simplifiedMultipliedResult2.result ,
-        es:  simplifiedMultipliedResult.result + " ÷  2  = " + simplifiedMultipliedResult2.result ,
-      },{
-        en:  simplifiedMultipliedResult2.result + " ÷  3  = Total ice bags needed"  ,
-        es:  simplifiedMultipliedResult2.result + " ÷  3  = Total de bolsas de huelo"  ,
-    },{
-      en:  simplifiedMultipliedResult2.result + " ÷  3  = " + simplifiedMultipliedResult3.result  ,
-      es:  simplifiedMultipliedResult2.result + " ÷  3  = " + simplifiedMultipliedResult3.result ,
-    },{
-      en: "Round to the nearest whole number  " ,
-      es:  "Redondea al número completo más cercano"
-    },{
-      en: (third_step.result.numerator) + " ÷ " + (third_step.result.denominator) + " = " + (third_step.result.numerator/third_step.result.denominator),
-      es: (third_step.result.numerator) + " ÷ " + (third_step.result.denominator) + " = " + (third_step.result.numerator/third_step.result.denominator),
-    }],
-        "wholeNumber",
-    ))
-
-    }
-
-      //question 5 limeade 
-     //One bottle of lime juice is equal to 2 ½ cups of lime juice. In order to make [5-25] lime juices, how many bottles of lime juice will Aunt Maria use?
-     if (recipe.name.en == "Limeade"){
-      randomNum = randomInt(5,26);
-      let amount = '5/2'
-
-      //get ingredient and amount
-      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
-      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-
-
-      //convert to fraction or decimal
-      fractionOrInteger = convertToFraction(amount)
-      let fractionOrInteger1 = convertToFraction(first_ingredient_key_amount)
+      let second_ingredient_key = Object.keys(recipe.ingredients)[3];
+      let second_ingredient_key_amount = recipe.ingredients[second_ingredient_key].amount;
+      let fractionOrInteger1 = convertToFraction(second_ingredient_key_amount)
 
       let multipliedResult = multiplyOrDivide(fractionOrInteger, randomNum, 'multiply')
-      let simplifiedMultipliedResult = simplifyFraction(multipliedResult.result)
+      let simplify  = simplifyFraction(multipliedResult.result)
+      let multipliedResult1 = multiplyOrDivide(fractionOrInteger1, randomNum1, 'multiply')
+      let simplify2  = simplifyFraction(multipliedResult1.result)
 
-      let multipliedResult1 = convertToFraction(simplifiedMultipliedResult.result)
-      let multipliedResult2 = multiplyOrDivide(multipliedResult1, fractionOrInteger1, 'divide')
-      let simplifiedMultipliedResult1 = simplifyFraction(multipliedResult2.result)
+      let compare = compareNumbers(multipliedResult.result, multipliedResult1.result)
+      let symbol;
 
-      let done =  Math.ceil(multipliedResult2.result.numerator/multipliedResult2.result.denominator)
-
-
-    // create question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `One bottle of ${first_ingredient_key} juice is equal to 2 and 1/2 cups (or 5/2 cups) of ${first_ingredient_key}. In order to make ${randomNum} ${first_ingredient_key} juices, how many bottles of ${first_ingredient_key} juice will Aunt Maria use? `,
-            es: `Una botella de jugo de  ${first_ingredient_key} es igual a 2  1/2 tazas ( o 5/2 tazas) de  ${first_ingredient_key}. Para hacer ${randomNum} jugos de ${first_ingredient_key}. ¿Cuántas botellas de jugo de  ${first_ingredient_key} necesitara Tía Maria? `,
-        
-        },
-        done,
-        [{
-            en: '(5/2) x ' + randomNum + " = Total cups "+ first_ingredient_key +" juice",
-            es: '(5/2) x ' + randomNum + " = Tazas totales de jugo de "+ first_ingredient_key ,
-        },{
-          en: '(5/2) x ' + randomNum + " = " + simplifiedMultipliedResult.result,
-          es: '(5/2) x ' + randomNum + " = " + simplifiedMultipliedResult.result,
-      },{
-        en: simplifiedMultipliedResult.result +" ÷ "+ first_ingredient_key_amount + " = Total bottles of "+ first_ingredient_key +" juice",
-        es: simplifiedMultipliedResult.result +" ÷ "+first_ingredient_key_amount + " = Botellas totales de jugo de "+ first_ingredient_key ,
-    },{
-      en: simplifiedMultipliedResult.result +" ÷ "+ first_ingredient_key_amount + " = " + simplifiedMultipliedResult1.result,
-      es: simplifiedMultipliedResult.result +" ÷ "+first_ingredient_key_amount + " =  " + simplifiedMultipliedResult1.result,
-  },{
-    en: "Round to the nearest whole number  " ,
-    es:  "Redondea al número completo más cercano"
-  },{
-    en: (multipliedResult2.result.numerator) + " ÷ " + (multipliedResult2.result.denominator) + " = " + (multipliedResult2.result.numerator/multipliedResult2.result.denominator),
-    es: (multipliedResult2.result.numerator) + " ÷ " + (multipliedResult2.result.denominator) + " = " + (multipliedResult2.result.numerator/multipliedResult2.result.denominator),
-  }],
-        "wholeNumber",
-    ))
-
-    }
-
-
-      //question 6 limeade 
-     // One bag of sugar contains about 34 ½ cups of sugar. If Aunt has [2-6] bags of sugar, how many servings of limeade can she make with them? 
+      switch (compare) {
+        case "greater_than":
+          symbol = ">";
+          break;
+        case "less_than":
+          symbol = "<";
+          break;
+        case "equal_to":
+          symbol = "=";
+          break;
+        default:
+          symbol = "";
+          break;
+      }
+      
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria made ${randomNum} soups on Monday, and ${randomNum1} soups on Tuesday. Compare the total amount of noodles used on Monday with the total amount of onions used on Tuesday. Type your answer using >, =, or < symbols.`,
+              es:  `Tía María hizo ${randomNum} porciones de sopa el lunes y ${randomNum1} porciones el martes. Compara la cantidad total de fideos utilizados el lunes con la cantidad total de cebollas utilizadas el martes. Escribe tu respuesta utilizando los símbolos >, = o <. `,
+          
+          },
+          compare,
+          [{
+            en: `1)Total noodles Monday = Monday soups * cups of noodles per soup 
+            2) Total onions Tuesday = Tuesday soups * onions per soup 
+            3) Compare answer from (i) to answer from (ii) using >,=,<
+            `,
+            
+            es:`1) Total de fideos el lunes = sopas del lunes * tazas de fideos por sopa
+            2) Total de cebollas el martes = sopas del martes* cebollas por sopa
+            3) Compare la respuesta de (i) con la respuesta de (ii) usando >,=,<
+            `,
+          },
+          {
+          en:   `1) Total noodles Monday = ${randomNum} * ${first_ingredient_key_amount} = ${simplify.result}
+          2) Total onions Tuesday = ${randomNum1} * ${second_ingredient_key_amount} = ${simplify2.result}
+          3) ${simplify.result}  ${symbol} ${simplify2.result} 
+          `,
+          es:  `1) Total de fideos el lunes =  ${randomNum} * ${first_ingredient_key_amount} = ${simplify.result}
+          2) Total de cebollas el martes =  ${randomNum1} * ${second_ingredient_key_amount} = ${simplify2.result}
+          3)${simplify.result}  ${symbol} ${simplify2.result} 
+          `,
+        }],
+        "inequality",
     
-     if (recipe.name.en == "Limeade"){
-      randomNum = randomInt(2,7);
-      let amount = '69/2'
+        ))
+    
+        }
 
-      //get ingredient and amount
+    //question 1 Mangu
+    if (recipe.name.en == "Mangu with salami and fried cheese") {
+      let randomNum = randomInt(3,10)
+
       let first_ingredient_key = Object.keys(recipe.ingredients)[1];
       let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-      let serving_size = recipe.servingSize
-
-      //convert to fraction or decimal
-      fractionOrInteger = convertToFraction(amount)
-      let fractionOrInteger1 = convertToFraction(first_ingredient_key_amount)
-
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
       let multipliedResult = multiplyOrDivide(fractionOrInteger, randomNum, 'multiply')
-      let simplifiedMultipliedResult = simplifyFraction(multipliedResult.result)
-
-      let multipliedResult1 = convertToFraction(simplifiedMultipliedResult.result)
-      let multipliedResult2 = multiplyOrDivide(multipliedResult1, serving_size, 'multiply')
-      let simplifiedMultipliedResult1 = simplifyFraction(multipliedResult2.result)
-
-      let done =  Math.ceil(multipliedResult2.result.numerator/multipliedResult2.result.denominator)
-
-
-    // create question
-    
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `One bag of ${first_ingredient_key} is equal to 34 and 1/2 cups (or 69/2 cups) of ${first_ingredient_key}. If Aunt has ${randomNum} bags of ${first_ingredient_key},  how many servings of ${recipe.name.en} can she make with them?`,
-            es: `Una bolsa de ${first_ingredient_key} es igual a 34 tazas y  1/2 (o 69/2 tazas) de ${first_ingredient_key}. Si Tía Maria tiene ${randomNum} bolsas de ${first_ingredient_key}, ¿Cuántas porciones de ${recipe.name.es} se pueden hacer?`,
-        
-        },
-        done,
-        [{
-            en: '(69/2) x ' + randomNum + " = Total cups "+ first_ingredient_key,
-            es: '(69/2) x ' + randomNum + " = Tazas totales de "+ first_ingredient_key ,
-        },{
-          en: '(69/2) x ' + randomNum + " = " + simplifiedMultipliedResult.result,
-          es: '(69/2) x ' + randomNum + " = " + simplifiedMultipliedResult.result,
-      },{
-        en: simplifiedMultipliedResult.result +" x "+ serving_size + " = Total servings",
-        es: simplifiedMultipliedResult.result +" x "+ serving_size + " = Porciones totales" ,
-    },{
-      en: simplifiedMultipliedResult.result +" x "+ serving_size + " = " + simplifiedMultipliedResult1.result,
-      es: simplifiedMultipliedResult.result +" x "+ serving_size + " =  " + simplifiedMultipliedResult1.result,
-  },{
-    en: (multipliedResult2.result.numerator) + " ÷ " + (multipliedResult2.result.denominator) + " = " + (multipliedResult2.result.numerator/multipliedResult2.result.denominator),
-    es: (multipliedResult2.result.numerator) + " ÷ " + (multipliedResult2.result.denominator) + " = " + (multipliedResult2.result.numerator/multipliedResult2.result.denominator),
-  },{
-    en: "Round to the nearest whole number  = " + done  ,
-    es:  "Redondea al número completo más cercano =" + done,
-  }],
-        "wholeNumber",
-    ))
-
-    }
-
-          //question 7 limeade 
-     //  If one limeade is equal to [2.5 - 3.5] liters, how many mL are in each serving?
-    
-     if (recipe.name.en == "Limeade"){
-
-      const generateRandomNum = () => {
-        const randomNum = 2.5 + Math.random() * (3.5 - 2.5);
-        return randomNum.toFixed(1);
-      };
-      randomNum = generateRandomNum()
-
-      let done = randomNum * 1000
-      let done2 = (done/9).toFixed(0)
-
-      
-
-    // create question
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `If one ${recipe.name.en} is equal to ${randomNum} liters, how many mL are in each serving?`,
-            es: `Si una ${recipe.name.es} es igual a  ${randomNum} litros, ¿ Cuántos mL hay en cada porción?`,
-        
-        },
-        done2,
-        [{
-            en: "Hint: 1 liter = 1,000 milliliters",
-            es: "Pista: 1 litro = 1,000 millilitros",
-        },{
-          en: randomNum + " x 1000 = ???", 
-          es: randomNum + " x 1000 = ???", 
-      },{
-        en: randomNum + " x 1000 = " + done, 
-        es: randomNum + " x 1000 = " + done, 
-    },{
-      en:  done + " ÷ 9 = ???", 
-      es:  done + " ÷ 9 = ???", 
-    },{
-      en:  "Round to the nearest whole number: "+ done + " ÷ 9 = " + done2, 
-      es:  "Redonda al número entero más cercano:  " + done + " ÷ 9 = " + done2, 
-  }],
-        "wholeNumber",
-    ))
-
-    }
-
-      //question 8 limeade 
-     // Aunt Maria finished preparing limeades at 4:36pm with a [25-40] minute break. If she began at [anytime between 2:00 pm to 3:30 pm], how many limeades did she prepare in total?
-    
-     if (recipe.name.en == "Limeade"){
-      randomNum = randomInt(25,40);
-      let randomNum1 = randomInt(2,5);
-      let randomNum2 = randomInt(10,31);
-      let finishTime = 4
-      let finishTimeSec = 36
-
-      let time = finishTime - randomNum1
-      let time2 = finishTimeSec - randomNum2
-      let time3 = time*60+time2
-      let time4 = time3- randomNum
-      let time5 = time4/5
-
-
-      let done =  Math.floor(time5)
-
-     
-
-    // create question
-    //Aunt Maria finished preparing limeades at 4:36pm with a [25-40] minute break. If she began at [anytime between 2:00 pm to 3:30 pm], how many limeades did she prepare in total?
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `Aunt Maria finished preparing ${recipe.name.en} at 4:36 pm with a ${randomNum} minute break. If she began at ${randomNum1}:${randomNum2}, how many ${recipe.name.en} did she prepare in total? Each ${recipe.name.en} takes 5 minutes`,
-            es: `Tía Maria termino de preparar ${recipe.name.es} a las 4:36 pm tomandos un descanso de ${randomNum} minutos. Si empezó a preparar las ${randomNum1}:${randomNum2}, ¿ cuántas ${recipe.name.es} preparó en total? Cada limonada toma ${recipe.name.es} 5 minutos`,
-        
-        },
-        done,
-        [{
-          en: (finishTime)+":"+finishTimeSec + " - " + (randomNum1)+":"+randomNum2 + "= " + time+" hours and "+time2 + " minutes making " + recipe.name.en + " without taking a break",
-          es: (finishTime)+":"+finishTimeSec + " - " + (randomNum1)+":"+randomNum2 + "= " + time+" horas y "+time2 + " minutos haciendo " + recipe.name.es + " sin tomar un descanso",
-      },{
-        en: "Convert time spent to minutes " + time+ " x " + 60 +" + "+time2 + " = "+ time3 + " minutes",
-        es: "Convertir tiempo utilizado a minutos " + time+ " x " + 60 +" + "+time2 + " = "+ time3 + " minutos",
-    },{
-      en: "Subract break time: " + time3+ " - " + randomNum +" = "+ time4 + " minutes",
-      es: "Restar tiempo de descanso: " + time3+ " - " + randomNum +" = "+ time4 + " minutos",
-  },{
-    en: "Divide time left by 5: " + time4+ " ÷ 5 = "+ time5 + " recipes",
-    es: "Divide time left by 5: " + time4+ " ÷ 5 = "+ time5 + " recetas",
-  },{
-    en: "Round down to the nearest whole number = " + done ,
-    es: "Redondea al número entero más pequeño = " + done ,
-  }],
-        "wholeNumber",
-    ))
-}
-
-      //question 9 limeade 
-     // One cup of fresh lime juice can be made from 8 limes. About 12 limes weigh 1 kg. If Aunt Maria buys [2000-7000] grams of limes, how many limeades can Aunt Maria make?
-    
-     if (recipe.name.en == "Limeade"){
-      randomNum = randomInt(2000,70001);
-      
-      first_ingredient_key = Object.keys(recipe.ingredients)[0];
-      //let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-      
-      let firstCalc = randomNum/1000
-      let firstCalc2 = Math.floor(firstCalc*12)
-      let firstCalc3 = Math.floor(firstCalc2/8)
-      let firstCalc4 = Math.floor(firstCalc3/(9/4))
-      
-
-    // create question
-    
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `One cup of lime juice can be made from 8 limes. About 12 limes weigh 1 kg. If Aunt Maria buys ${randomNum} grams of ${first_ingredient_key}, how many ${recipe.name.en} can Aunt Maria make?`,
-            es: `Una taza de jugo de limón se puede hacer con 8 limones. 12 limones pesan 1 kg. Si Tía Maria compra ${randomNum} gramos de ${first_ingredient_key}, cuántas ${recipe.name.es} puede hacer Tía Maria?`,
-        
-        },
-        firstCalc4,
-        [{
-          en: randomNum + " ÷ 1000 = "+ firstCalc+" total kg of limes",
-          es: randomNum + " ÷ 1000 =  "+ firstCalc+" total kg de limones",
-        },{
-          en: firstCalc + " x 12 = "+ firstCalc2+" total limes hint: round down to the nearest whole number", 
-          es: firstCalc + " x 12 =  "+ firstCalc2+" limones totales: redondea al número entero pequeño más cercano", 
-        },{
-          en: firstCalc2 + " ÷ 8 = "+ firstCalc3+ " total cups of lime juice made",
-          es: firstCalc2 + " ÷ 8 =  "+ firstCalc3+" tazas totales de jugo de limón",
-        },{
-          en: firstCalc3 + " ÷ (9/4) = "+ firstCalc4+ " total limeades made",
-          es: firstCalc3 + " ÷ (9/4) =  "+ firstCalc4+" tazas de limonadas hechas",
-        }],
-            "wholeNumber",
-      ))
-
-    }
-
-      //question 1 pudding 
-     //If Aunt Maria calculates that she used a total of [72, 84, 96, or 120] cups of milk, how many total teaspoons of vanilla extract did she also use?
-     if (recipe.name.en == "Pudding"){
-      function getRandomNumber() {
-        const numbers = [72, 84, 96, 120];
-        const randomIndex = Math.floor(Math.random() * numbers.length);
-        return numbers[randomIndex];
-      }
-      const randomNum = getRandomNumber();
-
-      first_ingredient_key = Object.keys(recipe.ingredients)[0];
-      //let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-      
-      let firstCalc = Math.floor(randomNum/12)
-      let firstCalc2 = firstCalc*2
-
-      
-
-    // create question
-    
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `If Aunt Maria calculates that she used a total of ${randomNum} cups of milk, how many total teaspons of vanilla extract did she use?`,
-            es: `Si Tía Maria calcula haber usado un total de ${randomNum} tazas de leche, cuantas cucharadas de vainilla utilizó?`,
-        
-        },
-        firstCalc2,
-        [{
-          en: randomNum + " ÷ 12 = "+ firstCalc+" how many rice puddings she made",
-          es: randomNum + " ÷ 12 =  "+ firstCalc+" cantidad de arroz en leche que hizo",
-        },{
-          en: firstCalc+ " x 2 = "+ firstCalc2+" total vanilla extract used",
-          es: firstCalc + " x 2 =  "+ firstCalc2+" total de extracto de vainilla usado",
-        }],
-            "wholeNumber",
-      ))
-
-    }
-
-      //question 2 pudding 
-     //How many total cups of rice and sugar did Aunt Maria use to make [5-25] rice puddings? 
-     if (recipe.name.en == "Pudding"){
-      randomNum = randomInt(5,26);
-      
-      first_ingredient_key = Object.keys(recipe.ingredients)[3];
-      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-      let second_ingredient_key = Object.keys(recipe.ingredients)[1];
-      let second_ingredient_key_amount = recipe.ingredients[second_ingredient_key].amount;
-      
-      let firstCalc = randomNum*first_ingredient_key_amount
-      let secondCalc = randomNum*second_ingredient_key_amount
-      let thirdcalc = firstCalc+ secondCalc
-      //let firstCalc2 = firstCalc*2
-
-      
-
-    // create question
-    
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `How many cups of ${first_ingredient_key} and ${second_ingredient_key} did Aunt Maria use to make ${randomNum} ${recipe.name.en}?`,
-            es:  `¿ Cuántas tazas de  ${first_ingredient_key} y ${second_ingredient_key} utilizó Tía Maria para hacer ${randomNum} ${recipe.name.es}?`,
-        
-        },
-        thirdcalc,
-        [{
-          en: "Rice: " + first_ingredient_key_amount + " x " + randomNum+" = " + firstCalc ,
-          es: "Arroz: " + first_ingredient_key_amount + " x " + randomNum+  " = " + firstCalc ,
-        },
-        {
-          en: "Sugar: " + second_ingredient_key_amount + " x " + randomNum + " = " + secondCalc ,
-          es: "Azúcar: " + second_ingredient_key_amount + " x " + randomNum + " = " + secondCalc ,
-        },
-        {
-          en: "Total: " + firstCalc + " + " + secondCalc + " = " + thirdcalc,
-          es: "Total: "+ firstCalc + " + " + secondCalc + " = " + thirdcalc,
-        }],
-            "wholeNumber",
-      ))
-
-    }
-
-    //question 3 pudding 
-     //A 25 lb bag of rice is equivalent to (random whole number btwn 100-125) cups of rice. How many total rice pudding servings can Aunt Maria make from (2-3) 25 lb bags?
-     if (recipe.name.en == "Pudding"){
-      randomNum = randomInt(2,4);
-      let randomNum2 = randomInt(100,126);
-      
-
-      let firstCalc = randomNum*randomNum2
-      let secondCalc = firstCalc*8
-
-      //let firstCalc2 = firstCalc*2
-
-      
-
-    // create question
-    
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `A 25 lb bag of rice is equivalent to ${randomNum2} cups of rice. How many total ${recipe.name.en} servings can Aunt Maria make from ${randomNum} 25 lb bags?`,
-            es: `Una bolsa de arróz de 25 lb equivale a ${randomNum2} tazas de arróz. ¿Cuántas porciones de  ${recipe.name.es} puede hacer Tía Maria de ${randomNum} bolsas de 25 lb?`,
-        
-        },
-        secondCalc,
-        [{
-          en: randomNum2 + " x " + randomNum + " = " +randomNum*randomNum2 +" Total cups of rice",
-          es: randomNum2 + " x " + randomNum + " = " + randomNum*randomNum2 +" Total de tazas de arróz",
-        },
-        {
-          en: firstCalc + " x 8  = " +secondCalc+ " Total servings",
-          es: firstCalc + " x 8  = " +secondCalc+" Total de porciones",
-        }],
-            "wholeNumber",
-      ))
-
-    }
-
-      //question 4 pudding 
-     // Aunt Maria decides to create additional recipes according to the desired sweetness. For the “less sweet” option, she will use ⅓ less cups of sugar than the original recipe. If Aunt Maria makes [10-15] rice puddings using the original and less sweet recipe, how much less sugar will she use compared to the original recipe? In other words, calculate the difference!
-     if (recipe.name.en == "Pudding"){
-      randomNum = randomInt(10,16);
-      
-      first_ingredient_key = Object.keys(recipe.ingredients)[1];
-      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-
-      let firstCalc = randomNum*first_ingredient_key_amount
-      //let secondCalc = first_ingredient_key_amount*(2/3)
-      let fractionOrInteger = convertToFraction('2/3')
-      let multipliedResult = multiplyOrDivide(fractionOrInteger,firstCalc, "multiply" )
-      let thirdCalc = simplifyFraction(multipliedResult.result)
-
-      let fourthcald = convertToFraction(thirdCalc.result) 
-      let fifthcald = addOrSubtract(firstCalc, fourthcald, 'subtract')
-      let done = simplifyFraction(fifthcald.result)
-      //let firstCalc2 = firstCalc*2
-      //let done = multipliedResult.result.numerator+"/"+multipliedResult.result.denominator"
-      
-
-    // create question
-    
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `Aunt Maria decides to create additional recipes according to the desired sweetness. For the “less sweet” option, she will use ⅓ less cups of sugar than the original recipe. If Aunt Maria makes ${randomNum} ${recipe.name.en} using the original and less sweet recipe, how much less sugar will she use compared to the original recipe? `,
-            es: `La tía María decide crear recetas adicionales según el nivel de dulzura deseado. Para la opción "menos dulce", utilizará ⅓ de taza menos de azúcar que la receta original. Si la tía María prepara ${randomNum} ${recipe.name.es} utilizando la receta original y la receta menos dulce, ¿cuánta menos cantidad de azúcar utilizará en comparación con la receta original? `,
-        
-        },
-        done.result,
-        [{
-          en: randomNum + " x " + "1" + " = " +firstCalc+ " original ",
-          es: randomNum + " x " + "1" + " = " +firstCalc+ " original ",
-        },
-        {
-          en: randomNum + " x (2/3) = "  + thirdCalc.result + " less sweet",
-          es: randomNum + " x (2/3) = "  + thirdCalc.result + " menos dulce",
-        },
-        {
-          en: firstCalc + " - "+ thirdCalc.result+" = "  + done.result + " less sugar ",
-          es: firstCalc + " - "+ thirdCalc.result+" = "  + done.result + " menos azúcar ",
-        }
-        ],
-          done.types,
-      ))
-
-    }
-
-
-      //question 5 pudding 
-     // Aunt Maria decides to create additional recipes according to the desired sweetness. For the “less sweet” option, she will use ⅓ less cups of sugar than the original recipe. For the “more sweet” recipe, she will use ⅔ more cups of sugar than the original recipe. If Aunt Maria makes [10-15] rice puddings using each original, less sweet, and more sweet recipe, what is the total amount of sugar she used?
-     if (recipe.name.en == "Pudding"){
-      randomNum = randomInt(10,16);
-      
-      first_ingredient_key = Object.keys(recipe.ingredients)[1];
-      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-
-      let firstCalc = randomNum*first_ingredient_key_amount
-      //let secondCalc = first_ingredient_key_amount*(2/3)
-      let fractionOrInteger = convertToFraction('2/3')
-      let multipliedResult = multiplyOrDivide(fractionOrInteger,firstCalc, "multiply" )
-      let thirdCalc = simplifyFraction(multipliedResult.result)
-
-      let fractionOrInteger2 = convertToFraction('5/3')
-      let multipliedResult2 = multiplyOrDivide(fractionOrInteger2,firstCalc, "multiply" )
-      let fifthCalc = simplifyFraction(multipliedResult2.result)
-
-      let fourthcald = convertToFraction(thirdCalc.result) 
-      let seventh = convertToFraction(fifthCalc.result)
-
-    
-      //let sixthcalc = simplifyFraction(fifthcald.result)
-
-
-
-      let multipliedResult1 = addOrSubtract( fourthcald , seventh  , 'add')
-      let fifthcald = addOrSubtract(multipliedResult1.result, firstCalc, 'add')
-
-      let done = simplifyFraction(fifthcald.result)
-      
-  
-
-    // create question
-    
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `Aunt Maria decides to create additional recipes according to the desired sweetness. For the “less sweet” option, she will use ⅓ less cups of sugar than the original recipe. For the “more sweet” recipe, she will use ⅔ more cups of sugar than the original recipe. If Aunt Maria makes ${randomNum} rice puddings using each original, less sweet, and more sweet recipe, what is the total amount of sugar she used?`,
-            es: `La tía María decide crear recetas adicionales según el nivel de dulzura deseado. Para la opción "menos dulce", utilizará ⅓ de taza menos de azúcar que la receta original. Para la opción "más dulce" utiliza ⅔ más de azúcar. Si la tía María prepara ${randomNum} ${recipe.name.es} utilizando la receta original la receta menos dulce y la receta más dulce, ¿cuánta es el total de cantidad de azúcar utilizada? `,
-        
-        },
-        done.result,
-        [{
-          en: randomNum + " x " + "1" + " = " +firstCalc+ " original ",
-          es: randomNum + " x " + "1" + " = " +firstCalc+ " original ",
-        },
-        {
-          en: randomNum + " x (2/3) = "  + thirdCalc.result + " less sweet",
-          es: randomNum + " x (2/3) = "  + thirdCalc.result + " menos dulce",
-        },
-        ,
-        {
-          en: randomNum + " x (5/3) = "  + fifthCalc.result + " sweeter",
-          es: randomNum + " x (5/3) = "  + fifthCalc.result + " más dulce",
-        },
-        {
-          en: firstCalc + " + "+ thirdCalc.result+ " + "+ fifthCalc.result+" = "  + done.result + " total sugar ",
-          es: firstCalc + " + "+ thirdCalc.result+ " + "+ fifthCalc.result+" = "  + " azúcar total ",
-        }
-        ],
-          done.types,
-      ))
-
-    }
-
-      //question 6 pudding 
-      // A tablespoon of vanilla extract is roughly equal to 0.015 Liters. How many milliliters of vanilla extract is used if Aunt Maria makes (10-15) rice puddings? 
-      if (recipe.name.en == "Pudding"){
-        randomNum = randomInt(10,16);
-        
-        first_ingredient_key = Object.keys(recipe.ingredients)[4];
-        let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-        
-        let value1 = 15*1000
-
-  
-      // create question
-      
-      generatedQuestions.push(createGameQuestion(
+      let answer  = simplifyFraction(multipliedResult.result)
+         // create question
+         generatedQuestions.push(createGameQuestion(
           {
-              en: `A tablespoon of vanilla extract is roughly equal to 0.015 Liters. How many milliliters of vanilla extract is used if Aunt Maria makes ${randomNum} ${recipe.name.en}?`,
-              es:  `Una cucharada de extracto de vainilla equivale aproximadamente a 0.015 litros. ¿Cuántos mililitros de extracto de vainilla se utilizan si la tía María prepara ${randomNum} ${recipe.name.es}?`,
+              en: `How many tablespoons of salt are needed to make this recipe ${randomNum} times?`,
+              es:  `¿Cuántas cucharadas de sal se necesitan para hacer esta receta ${randomNum} veces?`,
           
           },
-          value1,
+          answer.result,
           [{
-            en: "0.015 liters x 1000 = 15 mL",
-            es: "0.015 litros x 1000 = 15 mL",
-          },{
-            en: "15 mL x " + randomNum + " = " + value1,
-            es: "15 mL x " + randomNum + " = " + value1,
+            en: `Total tablespoons = times recipe is made * tablespoon of salt for 1 recipe`,
+            es: `Total de cucharadas = veces que se hace la receta * cucharada de sal para 1 receta`,
+          },
+            {
+            en:  `Total tablespoons = ${randomNum} * ${first_ingredient_key_amount} = ${answer.result}`,
+            es:  `Total de cucharadas = ${randomNum} * ${first_ingredient_key_amount} = ${answer.result}`,
           }],
-              "wholeNumber",
-        ))
-  
-      }
-
-
-      //question 7 pudding 
-      // Over the course of the month, Aunt Maria bought a total of (30-45) half-gallons of milk. There are 12 cups of milk in each gallon. How many servings of rice pudding was she able to make this month?
-      if (recipe.name.en == "Pudding"){
-        randomNum = randomInt(30,46);
-        
-        first_ingredient_key = Object.keys(recipe.ingredients)[0];
-        let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-        
-        let value1 = (randomNum*6)/12
-        let done = value1*8
+        answer.types,
     
-      
-  
-        
-  
-      // create question
-      
-      generatedQuestions.push(createGameQuestion(
+        ))
+    
+        }
+
+    //question 2 Mangu
+    if (recipe.name.en == "Mangu with salami and fried cheese") {
+      let randomNum = randomInt(20,81)
+
+      let serving_size = recipe.servingSize
+      let first_ingredient_key = Object.keys(recipe.ingredients)[6];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult1 = fractionOrInteger/serving_size
+      let multipliedResult = multiplyOrDivide(multipliedResult1, randomNum, 'multiply')
+      let answer  = simplifyFraction(multipliedResult.result)
+         // create question
+         generatedQuestions.push(createGameQuestion(
           {
-              en: `Over the course of the month, Aunt Maria bought a total of ${randomNum} half-gallons of milk. There are 12 cups of milk in each gallon. How many servings of rice pudding was she able to make this month?`,
-              es:  `Una cucharada de extracto de vainilla equivale aproximadamente a 0.015 litros. ¿Cuántos mililitros de extracto de vainilla se utilizan si la tía María prepara ${randomNum} ${recipe.name.es}?`,
+              en: `How many slices of salami does Auntie Maria need to make ${randomNum} servings of mangu with salami and fried cheese?`,
+              es: `¿Cuántas rebanadas de salami necesita la tía María para hacer ${randomNum} porciones de mangu con salami y queso frito?`,
+          
+          },
+          answer.result,
+          [{
+            en: `1) Salami slice for 1 serving = recipe salami amount / servings per recipe 
+            2) Total salami needed = ${randomNum} x Salami slice for 1 serving `,
+            es: `1) Rebanada de salami para 1 porción = cantidad de salami por receta / porciones por receta
+            2) Total de salami necesario = ${randomNum} x rebanada de salami para 1 porción
+            `,
+          },
+            {
+            en:  `1) Salami slice for 1 serving = ${first_ingredient_key_amount} slices / ${serving_size} servings = ${multipliedResult1} slices
+            2) Total salami needed = ${randomNum} x ${multipliedResult1} slices = ${answer.result}`,
+            es:  `1) Rebanada de salami para 1 porción = ${first_ingredient_key_amount} rebanadas / ${serving_size} porciones = ${multipliedResult1} rebanadas
+            2) Total de salami necesario= ${randomNum} x ${multipliedResult1} rebanadas = ${answer.result}`,            
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 3 Mangu
+    if (recipe.name.en == "Mangu with salami and fried cheese") {
+      let randomNum = randomInt(4,6)
+      let first_step = randomNum*18
+      let fractionOrInteger = convertToFraction('1/6')
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, first_step, 'multiply')
+      let answer  = simplifyFraction(multipliedResult.result)
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `A large carton of eggs contains 18 eggs. Auntie Maria finds that 1/6 of all the eggs she bought were damaged. If she bought ${randomNum} large cartons of eggs that day, how many eggs were damaged?`,
+              es: `Un cartón grande de huevos contiene 18 huevos. La tía María descubre que 1/6 de todos los huevos que compró estaban dañados. Si compró ${randomNum} cartones grandes de huevos ese día, ¿cuántos huevos se dañaron?`,
+          
+          },
+          answer.result,
+          [{
+            en: `1) Total eggs bought = number of cartons of eggs * eggs per 1 carton
+            2) Total eggs damaged = total eggs bought * fraction of damaged eggs`,
+            es: `1) Total de huevos comprados = número de cajas de huevos * huevos por 1 caja
+            2) Total de huevos dañados = total de huevos comprados * fracción de huevos dañados
+            `,
+          },
+            {
+            en:  `Total eggs bought = 18 * ${randomNum} = = ${first_step}
+            Total eggs damaged = ${first_step} * (1/6) = ${answer.result}`,
+            es:  `1) Total de huevos comprados = 18 * ${randomNum} = ${first_step}
+            2) Total de huevos dañados = ${first_step} * (1/6) = ${answer.result}`,            
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 4 Mangu
+    if (recipe.name.en == "Mangu with salami and fried cheese") {
+      let randomNum = randomInt(300,700)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let answer  = Math.floor(randomNum/fractionOrInteger)
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `If Auntie Maria uses ${randomNum} plantains for this recipe in a month, how many times has she made this recipe? Please round your answer down to the nearest whole number.`,
+              es: `Si la tía María usa ${randomNum} plátanos para esta receta en un mes, ¿cuántas veces ha hecho esta receta? Por favor redondee su respuesta al número entero más cercano.`,
+          
+          },
+          answer,
+          [{
+            en: `Total recipes made = Total plantains / plantains per recipe`,
+            es: `Total de recetas hechas = Total plátanos/plátanos por receta`,
+          },
+            {
+            en:  `Total recipes made = ${randomNum} / ${first_ingredient_key_amount} = ${answer}`,
+            es:  `Total de recetas hechas = ${randomNum} / ${first_ingredient_key_amount} = ${answer}`,            
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 5 Mangu
+    if (recipe.name.en == "Mangu with salami and fried cheese") {
+      let randomNum = randomInt(2,6)
+      let first_step = randomNum*4*8
+      let first_ingredient_key = Object.keys(recipe.ingredients)[3];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let answer  = Math.floor(first_step/fractionOrInteger)
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `One pack of butter contains 4 sticks of butter. If each stick of butter is equivalent to 8 tablespoons of butter, how many total times can Auntie Maria make this recipe if she has ${randomNum} packs of butter?`,
+              es: `Un paquete de mantequilla contiene 4 barras de mantequilla. Si cada barra de mantequilla equivale a 8 cucharadas de mantequilla, ¿cuántas veces en total puede hacer esta receta la tía María si tiene ${randomNum} paquetes de mantequilla?`,
+          
+          },
+          answer,
+          [{
+            en: `1) Total tablespoons of butter = packs of butter * sticks per 1 pack * tablespoons per 1 stick 
+            2) Total recipes made = total tablespoons butter / tablespoons needed for 1 recipe
+            `,
+            es: `1) Total de cucharadas de mantequilla = paquetes de mantequilla * barras por 1 paquete * cucharadas por 1 barra
+            2) Total de recetas hechas = total de cucharadas de mantequilla / cucharadas necesarias para 1 receta
+            `,
+          },
+            {
+            en:  `Total tablespoons of butter = ${randomNum} * 4 * 8 = ${first_step}
+            Total recipes made = ${first_step} / ${first_ingredient_key_amount} = ${answer}`,
+            es:  `1) Total de cucharadas de mantequilla = ${randomNum} * 4 * 8 = ${first_step}
+            2) Total de recetas hechas =${first_step} / ${first_ingredient_key_amount} = ${answer}`, 
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 6 Mangu
+    if (recipe.name.en == "Mangu with salami and fried cheese") {
+      let randomNum = randomInt(10,16)
+      let cookTime = recipe.cookTime
+      let prepTime = recipe.prepTime
+      let cookTime2 = cookTime*2
+      let timeTotal = cookTime2+prepTime
+      let answer1 = timeTotal* randomNum
+
+      let totalMinutes = 9 * 60 + 15;
+
+      let part1 = answer1
+
+            // Add the desired number of minutes
+            totalMinutes += part1;
+      
+            // Calculate the new hours and minutes
+            let newHours = Math.floor(part1 / 60);
+            let newMinutes = part1 % 60;
+
+            // Handle the case when the minutes exceed 59
+            if (newMinutes > 59) {
+              newHours += Math.floor(newMinutes / 60);
+              newMinutes %= 60;
+            }
+      
+            let finalTimeHr = (9+newHours)
+            let finalTimeSec = (15+newMinutes)
+
+              // Adjust the finalTimeHr and finalTimeMin if necessary
+            if (finalTimeSec >= 60) {
+              finalTimeHr += Math.floor(finalTimeSec / 60);
+              finalTimeSec %= 60;
+            }
+            // Convert finalTimeHr to 12-hour format and add AM or PM
+            let formattedTimeHr = finalTimeHr % 12 || 12;
+            let amPm = finalTimeHr < 12 ? 'AM' : 'PM';
+            // Add leading zeros if finalTimeMin is 9 or less
+            finalTimeSec = finalTimeSec.toString().padStart(2, '0');
+            let done = formattedTimeHr + ":" + finalTimeSec + amPm
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria’s goal is to prepare the mangu with salami and fried cheese recipe ${randomNum} times. However, half of her stovetops are not working. This means it takes her double the amount of cooking time than normal. The normal prep time is 10 minutes and the normal cook time is 20  minutes. If Auntie Maria began making the food at 9:15 A.M, at what time did she finish? Hint: 1 hour = 60 minutes. Please type your answer in time format (HH:MM AM or PM)`,
+              es: `El objetivo de la tía María es preparar la receta de mangu con salami y queso frito ${randomNum} veces. Sin embargo, la mitad de sus estufas no funcionan. Esto significa que le toma el doble de tiempo de cocción de lo normal. El tiempo normal de preparación es de 10  minutos y el tiempo de cocción de 20 minutos. Si la tía María comenzó a preparar la comida a las 9:15 a. m., ¿a qué hora terminó? Pista: 1 hora = 60 minutos. Escriba su respuesta en formato de hora (HH:MM AM o PM).`,
           
           },
           done,
           [{
-            en: randomNum + " x 6 = "+randomNum*6+" total cups of milk",
-            es: randomNum + " x 6 = "+randomNum*6+" total cups of milk",
-          },{
-            en: randomNum*6 + " ÷ "+ first_ingredient_key_amount + " = " +value1+" total recipes made",
-            es: randomNum*6 + " ÷ "+ first_ingredient_key_amount + " = " +value1+" total recetas hechas",
-          },{
-            en: value1 + " x "+recipe.recipeMakesAmount + " = " + done + " total servings",
-            es: value1 + " x "+recipe.recipeMakesAmount + " = " + done + " porciones totales",
+            en: `1) New cook time per recipe = original cook time * 2
+            2) Total time per recipe = new cook time per recipe + prep time
+            3) Total time for all recipes = total time per recipe * number of recipes made
+            4) Finish Time = Start time + total time for all recipes 
+            `,
+            es: `1) Nuevo tiempo de cocción por receta = tiempo de cocción original * 2
+            2) Tiempo total por receta = nuevo tiempo de cocción por receta + tiempo de preparación
+            3) Tiempo total para todas las recetas = tiempo total por receta * número de recetas hechas
+            4) Hora de finalización = Hora de inicio + tiempo total para todas las recetas
+            `,
+          },
+            {
+            en:  `1) New cook time per recipe = ${cookTime} * 2= ${cookTime2} minutes
+            2) Total time per recipe = ${cookTime2} + ${prepTime} = ${timeTotal} minutes
+            3) Total time for all recipes = ${timeTotal} * ${randomNum} = ${answer1} minutes
+            4) Finish Time = 9:15 AM + ${answer1} minutes = ${done}
+            `,
+            es:  `1) Nuevo tiempo de cocción por receta = ${cookTime} * 2 = ${cookTime2} minutos
+            2) Tiempo total por receta = ${cookTime2} + ${prepTime} = ${timeTotal} minutos
+            3) Tiempo total para todas las recetas = ${timeTotal} * ${randomNum} = ${answer1} minutos
+            4) Hora de finalización = 9:15 a. m. + ${answer1} minutos = ${done}
+            `, 
           }],
-              "wholeNumber",
+        "time",
+    
         ))
-  
+    
+        }
+
+    //question 7 Mangu
+    if (recipe.name.en == "Mangu with salami and fried cheese") {
+      let randomNum = randomInt(4,81)
+      let serving_size = recipe.servingSize
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, serving_size, 'divide')
+      let simplify = simplifyFraction(multipliedResult.result)
+      let multipliedResult1 = multiplyOrDivide(multipliedResult.result, randomNum, 'multiply')
+      let answer = simplifyFraction(multipliedResult1.result)
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `How many plantains did Auntie Maria use to make ${randomNum} servings? Represent your answer in a fraction form and make sure to simplify!`,
+              es: `¿Cuántos plátanos usó la tía María para hacer ${randomNum} porciones? ¡Represente su respuesta en forma de fracción y asegúrese de simplificar!`,
+          
+          },
+          answer.result,
+          [{
+            en: `1) Plantains per serving = plantains for 1 recipe / servings for 1 recipe
+            2) Total plantains used = Plantains per serving * total servings 
+            `,
+            es: `1) Plátanos por porción = plátanos para 1 receta / porciones para 1 receta
+            2) Total de plátanos usados= Plátanos por porción * porciones totales
+            `,
+          },
+            {
+            en:  `1) Plantains per serving = ${first_ingredient_key_amount} plantains / ${serving_size} servings = ${simplify.result}
+            2) Total plantains used = ${simplify.result} * ${randomNum} = ${answer.result}
+            `,
+            es:  `1)Plátanos por porción = ${first_ingredient_key_amount} plátanos / ${serving_size} porciones = ${simplify.result}
+            2) Total de plátanos usados = ${simplify.result} * ${randomNum} = ${answer.result}
+            `, 
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 8 Mangu
+    if (recipe.name.en == "Mangu with salami and fried cheese") {
+      let randomNum = randomInt(10,31)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[5];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let amount = "3/2"
+      let fractionOrInteger1 = convertToFraction(amount)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger1,fractionOrInteger, 'multiply')
+      let simplify = simplifyFraction(multipliedResult.result)
+      let multipliedResult1 = multiplyOrDivide(multipliedResult.result, randomNum, 'multiply')
+      let answer = simplifyFraction(multipliedResult1.result)
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Today, Auntie Maria has decided to increase the amount of fried cheese in this recipe by 1 ½ times. Using this updated amount of cheese, calculate how many fried cheese strips were used to make the mangu with salami and fried cheese recipe ${randomNum} times?`,
+              es: `Hoy, la tía María ha decidido aumentar 1 ½ veces la cantidad de queso frito en esta receta. Usando esta cantidad actualizada de queso, ¿cuántas tiras de queso frito se usaron para hacer la receta de mangu con salami y queso frito ${randomNum} veces?`,
+          
+          },
+          answer.result,
+          [{
+            en: `1) New cheese amount = original cheese amount * increase factor ${first_ingredient_key_amount} x 1 ½ = ${simplify.result}
+            2) Total cheese strips = new cheese amount * desired recipe amount`,
+            es: `1) Nueva cantidad de queso = cantidad de queso original * factor de aumento ${first_ingredient_key_amount} x 1 ½ = ${simplify.result}
+            2) Total de tiras de queso = nueva cantidad de queso  * cantidad de receta deseada
+            `,
+          },
+            {
+            en:  `1) New cheese amount = ${first_ingredient_key_amount} * 1 ½ = ${simplify.result} cheese strips 
+            2) Total cheese strips = ${simplify.result} * ${randomNum} = ${answer.result} 
+            `,
+            es:  `1) Nueva cantidad de queso  = ${first_ingredient_key_amount} * 1 ½ = ${simplify.result} tiras de queso
+           2)  Total de tiras de queso = ${simplify.result} * ${randomNum} = ${answer.result}
+            `, 
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 1 Fruit Salad
+    if (recipe.name.en == "Fruit Salad") {
+      let randomNum = randomInt(10,21)
+
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, randomNum, 'multiply')
+      let answer  = simplifyFraction(multipliedResult.result)
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `How many total whole papayas will Auntie Maria need to purchase to make ${randomNum} servings of fruit salad? Round up to the nearest whole number.`,
+              es: `¿Cuántas papayas enteras en total necesitará comprar la tía María para hacer ${randomNum} porciones de ensalada de frutas? Redondea al número entero más cercano.`,
+          
+          },
+          answer.result,
+          [{
+            en: `Total papayas = papayas per serving * number of servings  `,
+            es: `Total de papayas = papayas por porción * número de porciones `,
+          },
+            {
+            en:  `Total papayas = ${randomNum} * (${first_ingredient_key_amount}) = ${answer.result} `,
+            es:  `Total de papayas = ${randomNum}] * (${first_ingredient_key_amount}) = ${answer.result}`,            
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 2 Fruit Salad
+    if (recipe.name.en == "Fruit Salad") {
+      let randomNum = randomInt(5,25)
+
+      let first_ingredient_key = Object.keys(recipe.ingredients)[2];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, randomNum, 'multiply')
+      let answer  = simplifyFraction(multipliedResult.result)
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `How many cups of berries will Auntie use to make ${randomNum} servings of fruit salad? Please type your answer as a fraction.`,
+              es: `¿Cuántas tazas de bayas usará la tía para hacer ${randomNum} porciones de ensalada de frutas? Por favor escriba su respuesta como una fracción.`,
+          
+          },
+          answer.result,
+          [{
+            en: `Total cups berries = berries per 1 serving * number of servings   `,
+            es: `Total de tazas de bayas = bayas por 1 porción * número de porciones `,
+          },
+            {
+            en:  `Total cups berries = ${randomNum} x (${first_ingredient_key_amount})  = ${answer.result}  `,
+            es:  `Total de tazas de bayas = ${randomNum} x (${first_ingredient_key_amount})  = ${answer.result}  
+            `,            
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 3 Fruit Salad
+    if (recipe.name.en == "Fruit Salad") {
+      let randomNum = randomInt(5,7)
+      let randomNum1 = randomInt(2,5)
+      let first_step = randomNum*randomNum1
+      let first_ingredient_key = Object.keys(recipe.ingredients)[3];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(first_step, fractionOrInteger, 'divide')
+      let answer  = simplifyFraction(multipliedResult.result)
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `In one box of kiwis, there are ${randomNum} kiwis. How many servings of fruit salad can Auntie Maria make if she buys ${randomNum1} kiwi boxes?`,
+              es: `En una caja de kiwis, hay ${randomNum} kiwis. ¿Cuántas porciones de ensalada de frutas puede hacer Tía María si compra ${randomNum1} cajas de kiwis?`,
+          
+          },
+          answer.result,
+          [{
+            en: `1) Total kiwis = kiwi boxes * number of kiwis per 1 box 
+            2) Total servings = total kiwis / kiwi amount per 1 serving
+              `,
+            es: `1) Total de kiwis = cajas de kiwi x número de kiwis por 1 caja
+            2) Total de porciones = cantidad total de kiwis / kiwi por 1 porción
+             `,
+          },
+            {
+            en:  `Total kiwis = ${randomNum} x ${randomNum1} = ${first_step}
+            Total servings = ${first_step}/ (${first_ingredient_key_amount}) = ${answer.result}
+             `,
+            es:  `1) Total de kiwis  = ${randomNum} x ${randomNum1} = ${first_step}
+            2) Total de porciones= ${first_step}/ (${first_ingredient_key_amount}) = ${answer.result}
+            `,            
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 4 Fruit Salad
+    if (recipe.name.en == "Fruit Salad") {
+      let randomNum = randomInt(10,20)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[3];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide( fractionOrInteger, randomNum, 'multiply')
+      let answer  = simplifyFraction(multipliedResult.result)
+      if (answer.types == "fraction"){
+        answer.result = Math.ceil(multipliedResult.result.numerator/multipliedResult.result.denominator)
+      }
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `How many kiwis are used to make ${randomNum} servings? Round your answer up to the nearest whole number.`,
+              es: `¿Cuántos kiwis se usan para hacer ${randomNum} porciones? Redondea tu respuesta al número entero más cercano`,
+          
+          },
+          answer.result,
+          [{
+            en: `Total kiwis = number of servings * kiwi amount per 1 serving `,
+            es: `Total de kiwis = número de porciones * cantidad de kiwi por 1 porción`,
+          },
+            {
+            en:  `Total kiwis = ${randomNum} *${first_ingredient_key_amount} = ${answer.result}`,
+            es:  `Total de kiwis = ${randomNum} * ${first_ingredient_key_amount} = ${answer.result}`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 5 Fruit Salad
+    if (recipe.name.en == "Fruit Salad") {
+      let randomNum = randomInt(5,26)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide( fractionOrInteger, randomNum, 'multiply')
+      let answer  = simplifyFraction(multipliedResult.result)
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `How many cups of mango are used to make ${randomNum} servings?`,
+              es: `¿Cuántas tazas de mango se usan para hacer ${randomNum} porciones?`,
+          
+          },
+          answer.result,
+          [{
+            en: `Total cups of mango = number of servings * cups of mango per 1 serving `,
+            es: `Total de tazas de mango = número de porciones * tazas de mango por 1 porción`,
+          },
+            {
+            en:  `Total cups of mango = ${randomNum} x (${first_ingredient_key_amount}) = ${answer.result}`,
+            es:  `Total de tazas de mango = ${randomNum} x (${first_ingredient_key_amount}) = ${answer.result}`,
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 6 Fruit Salad
+    if (recipe.name.en == "Fruit Salad") {
+      let randomNum = randomInt(25,41)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide( fractionOrInteger, randomNum, 'multiply')
+      let answer  = simplifyFraction(multipliedResult.result)
+      if (answer.types == "fraction"){
+        answer.result = Math.ceil(multipliedResult.result.numerator/multipliedResult.result.denominator)
       }
 
-      //question 8 pudding
-     // Aunt Maria begins to work at 9:45 a.m. If she has to make (5-9) rice pudding that day, when is the earliest time she will finish, if she takes no breaks in between?
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `How many whole mangoes will Auntie Maria need to buy to make ${randomNum} servings of fruit salad? Assume 1 mango equals 1 cup of mango. Round up to the nearest whole number. `,
+              es: `¿Cuántos mangos enteros necesitará comprar la tía María para hacer ${randomNum} porciones de ensalada de frutas? Suponga que 1 mango equivale a 1 taza de mango. Redondea al número entero más cercano.`,
+          
+          },
+          answer.result,
+          [{
+            en: `Total mangoes = number of servings * cups of mango per 1 serving`,
+            es: `Total de mangos = número de porciones * tazas de mango por 1 porción`,
+          },
+            {
+            en:  `Total mangoes =${randomNum} x (${first_ingredient_key_amount}) = ${answer.result}`,
+            es:  `Total de mangos  =${randomNum} x (${first_ingredient_key_amount}) = ${answer.result}`,
+          }],
+        "wholeNumber",
     
-     if (recipe.name.en == "Pudding"){
-      randomNum = randomInt(5,10);
-      let totalrecipes = randomNum * 10
-      let startTime = 9
-      let startTimeSec = 45
-      let finishTime = 18
-      let finishTimeSec = 45
+        ))
+    
+        }
 
-            // Convert start time to minutes
-      let totalMinutes = startTime * 60 + startTimeSec;
+    //question 7 Fruit Salad
+    if (recipe.name.en == "Fruit Salad") {
+      let randomNum = randomInt(20,50)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[3];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide( fractionOrInteger, randomNum, 'multiply')
+      let answer  = simplifyFraction(multipliedResult.result)
+      if (answer.types == "fraction"){
+        answer.result = Math.ceil(multipliedResult.result.numerator/multipliedResult.result.denominator)
+      }
 
-      // Add the desired number of minutes
-      totalMinutes += totalrecipes;
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `How many whole kiwis are needed to make ${randomNum} servings of fruit salad? Round up to the nearest whole number. `,
+              es: `¿Cuántos kiwis enteros se necesitan para hacer ${randomNum} porciones de ensalada de frutas? Redondea al número entero más cercano.`,
+          
+          },
+          answer.result,
+          [{
+            en: `Total kiwis = number of servings * kiwis per 1 serving`,
+            es: `Total de kiwis = número de porciones * kiwis por 1 porción `,
+          },
+            {
+            en:  `Total kiwis =${randomNum} x (${first_ingredient_key_amount}) = ${answer.result}`,
+            es:  `Total de kiwi  =${randomNum} x (${first_ingredient_key_amount}) = ${answer.result}`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 8 Fruit Salad
+    if (recipe.name.en == "Fruit Salad") {
+      let randomNum = randomInt(5,10)
+      let answer = randomNum * 4
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `If Auntie Maria used a total of ${randomNum} whole mangoes last week to make fruit salad, how many total servings did she make? Assume 1 mango equals 1 cup of mango. `,
+              es: `Si la tía María usó un total de ${randomNum} mangos enteros la semana pasada para hacer una ensalada de frutas, ¿cuántas porciones hizo en total? Suponga que 1 mango equivale a 1 taza de mango.`,
+          
+          },
+          answer,
+          [{
+            en: `Hint: 1 mango makes 4 servings of fruit salad!
+             Total servings = number of mangoes * 4 servings for 1 mango`,
+            es: `Pista: ¡1 mango rinde 4 porciones de ensalada de frutas!
+            Total de porciones = número de mangos * 4 porciones por 1 mango
+            `,
+          },
+            {
+            en:  `Total servings = ${randomNum} * 4 = ${answer}`,
+            es:  `Total de porciones = ${randomNum} * 4 = ${answer}`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 9 Fruit Salad
+    if (recipe.name.en == "Fruit Salad") {
+      let randomNum = randomInt(3,12)
+      let prepTime = recipe.prepTime
+      let first_step = randomNum *10
+      let answer = first_step * 60
+
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `How many total seconds will it take Auntie Maria to prep ${randomNum} servings of fruit salad? The prep time for one recipe es 10 minutes Hint: there are 60 seconds in 1 minute.  `,
+              es: `¿Cuántos segundos en total le tomará a la tía María preparar ${randomNum} porciones de ensalada de frutas? El tiempo de preparación de una receta es de 10 minutos. Pista: hay 60 segundos en 1 minuto.`,
+          
+          },
+          answer,
+          [{
+            en: `1) Total minutes = prep time for 1 serving * number of servings 
+            2) Total seconds = total minutes * 60 seconds per 1 minute
+            `,
+            es: `1) Total de minutos = tiempo de preparación para 1 porción * número de porciones
+            2) Total de segundos = total de minutos * 60 segundos por 1 minuto
+             `,
+          },
+            {
+            en:  `Total minutes =  ${prepTime} * ${randomNum} = ${first_step}
+            Total seconds = ${first_step} * 60 = ${answer}
+            `,
+            es:  `1) Total de minutos = ${prepTime} * ${randomNum} = ${first_step}
+            2) Total de segundos = ${first_step} * 60 = ${answer}
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 10 Fruit Salad
+    if (recipe.name.en == "Fruit Salad") {
+      let length = 19.5 
+      let width = 9
+      let answer = length*2 + width*2
+
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `To cut all the fruit, Auntie Maria uses a rectangular cutting board. The dimensions of the cutting board are as follows: Width 9 cm, Length 19.5 cm. What is the perimeter of this board in cm? `,
+              es: `Para cortar toda la fruta, la tía María usa una tabla de cortar rectangular. Las dimensiones de la tabla de cortar son las siguientes: Ancho 9 cm, Largo 19.5 cm. ¿Cuál es el perímetro de esta tabla en cm?`,
+          
+          },
+          answer,
+          [{
+            en: `Hint: Perimeter = sum of all sides
+            Perimeter = Width + Width + Length + Length  OR (2*Length) + (2*Width)
+             `,
+            es: `Pista: Perímetro = suma de todos los lados
+            Perímetro = Ancho + Ancho + Largo + Largo O (2*Largo) + (2*Ancho)
+            `,
+          },
+            {
+            en:  `Board perimeter = ${length} + ${length} + ${width} + ${width} = ${answer} centimeters  `,
+            es:  `Perímetro del tablero  = ${length} + ${length} + ${width} + ${width} = ${answer} centímetros`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 1 ginger juice
+    if (recipe.name.en == "Pineapple ginger juice") {
+      let randomNum = randomInt(10,21)
+      let answer = randomNum* 16
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `One gallon of pineapple juice is equal to 16 cups of juice. How many total cups of juice are in ${randomNum} gallons?`,
+              es: `Un galón de jugo de piña equivale a 16 tazas de jugo. ¿Cuántas tazas de jugo hay en total en ${randomNum} galones?`,
+          
+          },
+          answer,
+          [{
+            en: `Total cups juice = total gallons * cups of juice per 1 gallon`,
+            es: `Total de tazas de jugo = total de galones * tazas de jugo por 1 galón `,
+          },
+            {
+            en:  `Total cups juice = ${randomNum} * 16 = ${answer}  `,
+            es:  `Total de tazas de jugo = ${randomNum} * 16 = ${answer}`,            
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 2 ginger juice
+    if (recipe.name.en == "Pineapple ginger juice") {
+      let randomNum = randomInt(10,21)
+      let serving_size = recipe.servingSize
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount+"/"+serving_size)
+      let simplify = simplifyFraction(fractionOrInteger)
+      let multipliedResult = multiplyOrDivide( fractionOrInteger, randomNum, 'multiply')
+      let answer  = simplifyFraction(multipliedResult.result)
+
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `How many total cups of water will Auntie Maria need to make ${randomNum} servings of pineapple ginger juice?`,
+              es: `¿Cuántas tazas de agua en total necesitará la tía María para hacer ${randomNum} porciones de jugo de piña y jengibre?`,
+          
+          },
+          answer.result,
+          [{
+            en: `1) Cups of water per 1 serving = recipe water amount / recipe servings 
+            2) Total cups of water = cups of water per 1 serving * number of servings needed`,
+            es: `1) Tazas de agua por 1 porción = cantidad de agua de la receta / porciones de la receta
+            2) Total de tazas de agua = tazas de agua por 1 porción * número de porciones necesarias
+             `,
+          },
+            {
+            en:  `1) Cups of water per 1 serving = ${first_ingredient_key_amount} cups / ${serving_size} recipe servings =  ${simplify.result} cups 
+            2) Total cups of water = (${simplify.result}) * ${randomNum} = ${answer.result}
+             `,
+            es:  `1) Tazas de agua por 1 porción = ${first_ingredient_key_amount} tazas / ${serving_size} porciones de recetas =  ${simplify.result} tazas
+            2) Total de tazas de agua =(${simplify.result}) * ${randomNum} = ${answer.result}
+            `,            
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 3 ginger juice
+    if (recipe.name.en == "Pineapple ginger juice") {
+      const fractions = [6,12,18,24,30];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let serving_size = recipe.servingSize
+      let first_ingredient_key = Object.keys(recipe.ingredients)[2];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount+"/"+serving_size)
+      let simplify = simplifyFraction(fractionOrInteger)
+      let multipliedResult = multiplyOrDivide( fractionOrInteger, randomFraction, 'multiply')
+      let answer  = simplifyFraction(multipliedResult.result)
+
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `How many total inches of ginger will Auntie Maria need to make ${randomFraction} servings of pineapple ginger juice?`,
+              es: `¿Cuántas pulgadas en total de jengibre necesitará la tía María para hacer ${randomFraction} porciones de jugo de piña y jengibre?`,
+          
+          },
+          answer.result,
+          [{
+            en: `1) Ginger per 1 serving = recipe ginger amount / recipe servings 
+            2) Total ginger inches = Ginger per 1 serving * needed servings 
+            `,
+            es: `1) Jengibre por 1 porción = cantidad de jengibre por receta  / porciones de receta
+            2) Pulgadas totales de jengibre = Jengibre por 1 porción * porciones necesarias
+            `,
+          },
+            {
+            en:  `1) Ginger per 1 serving = (${first_ingredient_key_amount}) / ${serving_size} = ${simplify.result} inches
+            2) Total ginger inches = (${simplify.result}) *${randomFraction} = ${answer.result}
+            `,
+            es:  `1) Jengibre por 1 porción = (${first_ingredient_key_amount}) / ${serving_size} = ${simplify.result} pulgadas
+            2) Pulgadas de jengibre totales = (${simplify.result}) * ${randomFraction} = ${answer.result}
+            `,            
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 4 ginger juice
+    if (recipe.name.en == "Pineapple ginger juice") {
+      let randomNum = randomInt(200,401)
+      let randomNum1 = randomInt(2,6)
+      let serving_size = recipe.servingSize
+      let first_step = randomNum/serving_size
+      let first_step2 = Number(first_step.toFixed(2));
+      let answer1 = first_step2* randomNum1
+      let answer = Number(answer1.toFixed(2));
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `If six servings of pineapple ginger juice contain ${randomNum} grams of sugar, how many grams of sugar are in ${randomNum1} servings?`,
+              es: `Si seis porciones de jugo de piña y jengibre contienen ${randomNum} gramos de azúcar, ¿cuántos gramos de azúcar hay en ${randomNum1} porciones?`,
+          
+          },
+          answer,
+          [{
+            en: `1) Sugar grams per 1 serving = sugar grams per 6 servings / ${serving_size} juice servings
+            2) Total grams of sugar = sugar grams per 1 serving * needed servings
+            `,
+            es: `1) Gramos de azúcar por 1 porción = gramos de azúcar por 6 porciones / ${serving_size} porciones de jugo
+            2) Total de gramos de azúcar = gramos de azúcar por 1 porción * porciones necesarias
+            `,
+          },
+            {
+            en:  `1) Sugar grams per 1 serving = ${randomNum} / ${serving_size} = ${first_step2}
+            2) Total grams of sugar = ${first_step2} * ${randomNum1} =  ${answer} grams
+            `,
+            es:  `1) Gramos de azúcar por 1 porción = ${randomNum} / ${serving_size} = ${first_step2}
+            Total de gramos de azúcar = ${first_step2} *  ${randomNum1} = ${answer} gramos
+            `,            
+          }],
+        "decimal",
+    
+        ))
+    
+        }
+
+    //question 5 ginger juice
+    if (recipe.name.en == "Pineapple ginger juice") {
+      let randomNum = randomInt(5,31)
+      let prepTime = recipe.prepTime
+      let first_step = randomNum * prepTime
+      
+
+      let totalMinutes = 16 * 60 + 30;
+
+
+            // Subtract the desired number of minutes
+      totalMinutes -= first_step;
 
       // Calculate the new hours and minutes
-      let newHours = Math.floor(totalrecipes / 60);
-      let newMinutes = totalrecipes % 60;
+      let newHours = Math.floor(totalMinutes / 60);
+      let newMinutes = totalMinutes % 60;
 
-      let finalTimeHr = (startTime+newHours)
-      let finalTimeSec = (startTimeSec+newMinutes)
-      let done = finalTimeHr + ":" + finalTimeSec
+      // Handle the case when the minutes exceed 59
+      if (newMinutes < 0) {
+        newHours -= Math.ceil(Math.abs(newMinutes) / 60);
+        newMinutes = 60 - Math.abs(newMinutes) % 60;
+      }
+      if (newHours < 0) {
+        newHours = 24 - Math.abs(newHours) % 24;
+      }
 
-    // create question
-    
-    generatedQuestions.push(createGameQuestion(
-        {
-            en: `Aunt Maria begins to work at 9:45 a.m. If she has to make ${randomNum} ${recipe.name.en} that day (10 min per recipe), when is the earliest time she will finish, if she takes no breaks in between?`,
-            es: `La tía María comienza a trabajar a las 9:45 a. m. Si ella tiene que hacer ${randomNum} ${recipe.name.en} ese día (10 minutos por receta), ¿a qué hora terminará más temprano si no toma descansos en el medio?`,
-        
-        },
-        done,
-        [{
-          en: randomNum + " x " + 10 + " = " + randomNum*10 +" total time it would take",
-          es: randomNum + " x " + 10 + " = " + randomNum*10 +" tiempo que tomaría",
-      },{
-        en: "Add " +randomNum*10 +" minutes to 9:45 a.m. =  " + finalTimeHr + ":" + finalTimeSec,
-        es: "Sumar " +randomNum*10 +" minutos a las 9:45 a.m. =  "+ finalTimeHr + ":" + finalTimeSec,
-      }],
-        "time",
-    ))
-}
-
-      //question 9 pudding
-     //How many total rice puddings can Aunt Maria make from 10:30 a.m. to 6:45 p.m. if she takes a (10-30) minute break?
-     if (recipe.name.en === "Pudding") {
-      let randomNum = randomInt(10, 31);
-      let totalRecipes = randomNum * 10;
-      let startTime = 10;
-      let startTimeSec = 30;
-      let finishTime = 18;
-      let finishTimeSec = 45;
-      let totalTimeSec = finishTimeSec- startTimeSec
-      let totalTimeHr = finishTime - startTime
-      let minutes = totalTimeHr*60 + totalTimeSec
-      let worked = minutes- randomNum
-      let done = Math.floor(worked/10)
+            // Adjust the finalTimeHr and finalTimeMin if necessary
+      if (newMinutes >= 60) {
+        newHours += Math.floor(newMinutes / 60);
+        newMinutes %= 60;
+      } else if (newMinutes < 0) {
+        newHours -= Math.ceil(Math.abs(newMinutes) / 60);
+        newMinutes = 60 - Math.abs(newMinutes) % 60;
+      }
 
 
+      // Convert finalTimeHr to 12-hour format and add AM or PM
+      let formattedTimeHr = newHours % 12 || 12;
+      let amPm = newHours < 12 ? 'AM' : 'PM';
 
-    
-      // Create question
-      generatedQuestions.push(
-        createGameQuestion(
+      // Add leading zeros if finalTimeMin is 9 or less
+      let formattedTimeMin = newMinutes.toString().padStart(2, '0');
+      let done = formattedTimeHr + ":" + formattedTimeMin  + amPm;
+
+         // create question
+         generatedQuestions.push(createGameQuestion(
           {
-            en: `How many total ${recipe.name.en} can Aunt Maria make from 10:30 a.m (each recipe takes 10 minutes). to 6:45 p.m. if she takes a (${randomNum}-30) minute break?`,
-            es: `¿Cuántos ${recipe.name.es} en total puede hacer la tía María desde las 10:30 a.m (cada receta tarda 10 minutos). hasta las 6:45 p.m. si toma un descanso de (${randomNum}-30) minutos?`,
+              en: `Aunt Maria wants to prepare ${randomNum} pineapple ginger juices by 4:30 PM. Prep time for each recipe is 5 minutes What is the latest time Aunt Maria can start prepping to make this recipe? Hint: 1 hour = 60 minutes. Type your answer in an hour-minute format (ex. 1:15 PM).`,
+              es: `La tía María quiere preparar ${randomNum} jugos de piña y jengibre para las 4:30 p. m. El tiempo de preparación por receta es de 5 minutos.  ¿A que hora por mas tardar puede la tía María comenzar a prepararse para hacer esta receta? Pista: 1 hora = 60 minutos. Escriba su respuesta en un formato de hora y minuto (por ejemplo, 1:15 p. m.).`,
+          
           },
           done,
-          [
+          [{
+            en: `1) Total prep time = prep time for 1 juice * number of juices 
+            2) Start time = Finish time - Total prep time needed`,
+            es: `1) Tiempo total de preparación = tiempo de preparación para 1 jugo * número de jugos
+             2) Hora de inicio = Hora de finalización - Tiempo total de preparación necesario
+            `,
+          },
             {
-              en: "10:30 am to 6:45 p.m = "+ totalTimeHr + " hrs and " + totalTimeSec + " minutes = "+ minutes,
-              es: "10:30 am a 6:45 p.m = "+ totalTimeHr + " hrs y " + totalTimeSec + " minutos = " + minutes,
-            },
-            {
-              en: minutes + " mins - " + randomNum +" = " +worked+ " total minutes worked",
-              es: minutes + " mins - " + randomNum +" = " +worked+ " total minutos trabajados",
-            },{
-              en: worked + " ÷ 10 = " +done+ " recipes made",
-              es: worked + " ÷ 10 = " +done+ " recetas hechas",
+            en:  `1) Total prep time = 5 * ${randomNum} = ${first_step} minutes
+            2) Start time = 4:30 PM - ${first_step} minutes = ${done}
+            `,
+            es:  `1) Tiempo total de preparación = 5 * ${randomNum} = ${first_step} minutos
+            2) Hora de inicio = 4:30 p. m. - ${first_step} minutos = ${done}
+            `,            
+          }],
+        "time",
+    
+        ))
+    
+        }
+
+    //question 6 ginger juice
+    if (recipe.name.en == "Pineapple ginger juice") {
+      let randomNum = randomInt(10,41)
+      let prepTime = recipe.prepTime
+      let cookTime = recipe.cookTime
+      let first_step =  prepTime + cookTime
+      let second_step = first_step*randomNum
+      let third_step = second_step + 45
+      
+      let totalMinutes = 11 * 60 + 0;
+
+      let part1 = third_step
+
+            // Add the desired number of minutes
+            totalMinutes += part1;
+      
+            // Calculate the new hours and minutes
+            let newHours = Math.floor(part1 / 60);
+            let newMinutes = part1 % 60;
+
+            // Handle the case when the minutes exceed 59
+            if (newMinutes > 59) {
+              newHours += Math.floor(newMinutes / 60);
+              newMinutes %= 60;
             }
-          ],
-          "wholeNumber"
-        )
-      );
-    }
-
-    //question 2 pretzel
-    //How many total cups of toasted coconut does Aunt Maria need to make [a random multiple of 15, up to 105] pretzel servings?
-    if (recipe.name.en == "Samoa Pretzel Stick") {
-      let randomNum;
-
-    do {
-      randomNum = Math.floor(Math.random() * (105 / 15 + 1)) * 15;
-    } while (randomNum === 0);
-      let result1 = randomNum/15
-
-      first_ingredient_key = Object.keys(recipe.ingredients)[4];
-      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-
-      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
-      let multipliedResult = multiplyOrDivide(fractionOrInteger, result1, 'multiply')
-      let simplify = simplifyFraction(multipliedResult.result)
-     
-         // create question
-         generatedQuestions.push(createGameQuestion(
-          {
-              en: `How many total cups of toasted coconut does Aunt Maria need to make ${randomNum} pretzel servings?`,
-              es: `¿Cuántas tazas en total de coco tostado necesita la tía María para hacer ${randomNum} porciones de pretzel?`,
-          
-          },
-          simplify.result,
-          [{
-            en:  randomNum + " ÷  15 = " +result1+ " total number of pretzels" ,
-            es:  randomNum + " ÷  15 = " +result1+ " número total de pretzels" ,
-          },{
-            en:  first_ingredient_key_amount + " x "+result1+ " = " + simplify.result ,
-            es:  first_ingredient_key_amount + " x "+result1+ " = " + simplify.result ,
-          }],
-          simplify.types,
-    
-        ))
-    
-        }
-
-    //question 3 pretzel
-    //A box of pretzels contains 22 bags per box. Aunt Maria buys a total of [2-4] pretzel boxes. How many total servings can she make?
-    if (recipe.name.en == "Samoa Pretzel Stick") {
-      let randomNum = randomInt(2,5)
-
-      let result1 = randomNum*22
-      let result = result1*15
-
- 
-         // create question
-         generatedQuestions.push(createGameQuestion(
-          {
-              en: `A box of pretzels contains 22 bags per box. Aunt Maria buys a total of ${randomNum} pretzel boxes. How many total servings can she make?`,
-              es:  `Una caja de pretzels contiene 22 bolsas por caja. La tía María compra un total de ${randomNum} cajas de pretzels. ¿Cuántas porciones totales puede hacer?`,
-          
-          },
-          result,
-          [{
-            en:  randomNum + " x  22 = " +result1+ " total number of pretzel bags" ,
-            es:  randomNum + " x  22 = " +result1+ " número total de bolsas de pretzels" ,
-          },{
-            en:  result1+ " x 15 = " + result + " total servings" ,
-            es:  result1 + " x 15 = " + result + " porciones totales",
-          }],
-          "wholeNumber",
-    
-        ))
-    
-        }
-
-    //question 4 pretzel
-    //Aunt Maria’s goal is to make [15-20] samoa pretzel sticks.The original preparation time is 10 minutes and the cook time is 20 minutes. However, it takes Aunt Maria an additional 15 minutes of cook time per recipe. How many total minutes will Aunt Maria need to meet her goal?
-    if (recipe.name.en == "Samoa Pretzel Stick") {
-      let randomNum = randomInt(15,21)
-
-      let result1 = randomNum*45
-
-
- 
-         // create question
-         generatedQuestions.push(createGameQuestion(
-          {
-              en: `Aunt Maria’s goal is to make ${randomNum} samoa pretzel sticks recipes.The original preparation time is 10 minutes and the cook time is 20 minutes. However, it takes Aunt Maria an additional 15 minutes of cook time per recipe. How many total minutes will Aunt Maria need to meet her goal?`,
-              es:  `La meta de la tía María es hacer ${randomNum} recetas de palitos de pretzel al estilo samoa. El tiempo de preparación original es de 10 minutos y el tiempo de cocción es de 20 minutos. Sin embargo, la tía María requiere 15 minutos adicionales de tiempo de cocción por cada receta. ¿Cuántos minutos totales necesitará la tía María para alcanzar su meta?`,
-          
-          },
-          result1,
-          [{
-            en: "10 + 15 + 20 = 45 mins (new total prep and cook time)",
-            es: "10 + 15 + 20 = 45 mins (nuevo tiempo de preparación y cocción)"
-          },
-            {
-            en:  randomNum + " x  45 = " +result1+ " minutes" ,
-            es:  randomNum + " x  45 = " +result1+ " minutos" ,
-          }],
-          "wholeNumber",
-    
-        ))
-    
-        }
-
-
-    //question 5 pretzel
-    //How many tablespoons of water did Aunt Maria use to make (3-13) samoa pretzel stick recipes?
-    if (recipe.name.en == "Samoa Pretzel Stick") {
-      let randomNum = randomInt(3,14)
-
-      first_ingredient_key = Object.keys(recipe.ingredients)[1];
-      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-
       
-      let result1 = randomNum*first_ingredient_key_amount
+            let finalTimeHr = (9+newHours)
+            let finalTimeSec = (15+newMinutes)
 
+              // Adjust the finalTimeHr and finalTimeMin if necessary
+            if (finalTimeSec >= 60) {
+              finalTimeHr += Math.floor(finalTimeSec / 60);
+              finalTimeSec %= 60;
+            }
+            // Convert finalTimeHr to 12-hour format and add AM or PM
+            let formattedTimeHr = finalTimeHr % 12 || 12;
+            let amPm = finalTimeHr < 12 ? 'AM' : 'PM';
+            // Add leading zeros if finalTimeMin is 9 or less
+            finalTimeSec = finalTimeSec.toString().padStart(2, '0');
+            let done = formattedTimeHr + ":" + finalTimeSec + amPm
+    
 
- 
          // create question
          generatedQuestions.push(createGameQuestion(
           {
-              en: `How many tablespoons of water did Aunt Maria use to make ${randomNum} samoa pretzel stick recipes?`,
-              es:  `¿Cuántas cucharadas de agua utilizó la tía María para hacer ${randomNum} recetas de palitos de pretzel al estilo samoa?`,
+              en: `Aunt Maria wants to make pineapple ginger juice ${randomNum} times today. Prep time for one recipe is 5 minutes and blend time is 2 minutes. She starts prepping at 11:00 AM but she takes a 45 minute break at 12:00 PM. At what time will she finish? Type your answer in an hour-minute format (ex. 1:15 PM).`,
+              es: `La tía María quiere hacer jugo de piña y jengibre ${randomNum} veces hoy. El tiempo de preparación de una receta es 5 minutos y el tiempo de licuado es de 2 minutos. Comienza a prepararse a las 11:00 a. m. pero toma un descanso de 45 minutos a las 12:00 p. m. ¿A qué hora terminará? Escriba su respuesta en un formato de hora y minuto (por ejemplo, 1:15 p. m.).`,
           
           },
-          result1,
-          [
-            {
-            en:  randomNum + " x "+first_ingredient_key_amount+" = " +result1+ " tablespoons" ,
-            es:  randomNum + " x "+first_ingredient_key_amount+" = " +result1+ " cucharadas" ,
-          }],
-          "wholeNumber",
-    
-        ))
-    
-        }
-
-    //question 6 pretzel
-    //One day, Aunt Maria decided to increase the amount of chocolate chips in each recipe by ⅓ cup. Using this updated recipe, calculate how cups of cocoa were used to make (11-27) samoa pretzel sticks.
-    if (recipe.name.en == "Samoa Pretzel Stick") {
-      let randomNum = randomInt(11,28)
-
-      first_ingredient_key = Object.keys(recipe.ingredients)[2];
-      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-      let amount2 = "1/3"
-      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
-      let fractionOrInteger2 = convertToFraction(amount2)
-
-      let addedResult = addOrSubtract(fractionOrInteger, fractionOrInteger2 , 'add')
-      let simplifiedMultipliedResult = simplifyFraction(addedResult.result)
-
-      let fractionOrInteger3 = convertToFraction(simplifiedMultipliedResult.result)
-      let multipliedResult = multiplyOrDivide(fractionOrInteger3, randomNum, 'multiply')
-      let simplifiedMultipliedResult2 = simplifyFraction(multipliedResult.result)
-
-
- 
-         // create question
-         generatedQuestions.push(createGameQuestion(
-          {
-              en: `One day, Aunt Maria decided to increase the amount of chocolate chips in each recipe by ⅓ cup. Using this updated recipe, calculate how cups of chocolate chips were used to make ${randomNum} samoa pretzel sticks.`,
-              es:  `Un día, la tía María decidió aumentar la cantidad de chispas de chocolate en cada receta en ⅓ de taza. Utilizando esta receta actualizada, calcula cuántas tazas de chispas de chocolate se utilizaron para hacer ${randomNum} palitos de pretzel al estilo samoa.`,
-          
-          },
-          simplifiedMultipliedResult2.result,
+          done,
           [{
-            en: first_ingredient_key_amount + " + 1/3 = " + simplifiedMultipliedResult.result,
-            es: first_ingredient_key_amount + " + 1/3 = " + simplifiedMultipliedResult.result,
-          },{
-            en: simplifiedMultipliedResult.result + " x " + randomNum + " = " + simplifiedMultipliedResult2.result,
-            es: simplifiedMultipliedResult.result + " x " + randomNum + " = " + simplifiedMultipliedResult2.result,
-          }],
-          simplifiedMultipliedResult2.types,
-    
-        ))
-    
-        }
-
-
-    //question 7 pretzel
-    //Over the course of the month, Aunt Maria bought a total of (25-40) bags of caramel candies. There are [50-55] caramel candy pieces per bag. How many samoa pretzel sticks could she have made this month? 
-    if (recipe.name.en == "Samoa Pretzel Stick") {
-      let randomNum = randomInt(3,14)
-      let randomNum2 = randomInt(3,14)
-
-      first_ingredient_key = Object.keys(recipe.ingredients)[0];
-      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-
-      
-      let result1 = randomNum*randomNum2
-
-      let result = Math.floor(result1/first_ingredient_key_amount)
-
- 
-         // create question
-         generatedQuestions.push(createGameQuestion(
-          {
-              en: `Over the course of the month, Aunt Maria bought a total of ${randomNum} bags of caramel candies. There are ${randomNum2} caramel candy pieces per bag. How many samoa pretzel sticks could she have made this month?`,
-              es: `Durante el transcurso del mes, la tía María compró un total de ${randomNum} bolsas de caramelos de caramelo. Hay ${randomNum2} piezas de caramelos de caramelo por bolsa. ¿Cuántos palitos de pretzel al estilo samoa podría haber hecho este mes?`,
-          
+            en: `1) Time for 1 juice = prep time + blend time 
+            2) Time for all juices = juice quantity * time for 1 juice
+           3)  Total time needed = time for all juices + break time 
+            4) Finish time = Start time + total time needed
+            `,
+            es: `1)Tiempo para 1 jugo = tiempo de preparación + tiempo de licuado
+            2) Tiempo para todos los jugos = cantidad de jugo * tiempo para 1 jugo
+            3) Tiempo total necesario = tiempo para todos los jugos + tiempo de descanso
+           4)  Hora de finalización = hora de inicio + tiempo total necesario
+            `,
           },
-          result,
-          [
             {
-            en:  randomNum + " x "+randomNum2+" = " +result1+ " total pieces of caramel candy" ,
-            es:  randomNum + " x "+randomNum2+" = " +result1+ " total pedazos de dulce de caramelo" ,
-          },
-          {
-            en:  result1 + " ÷  "+first_ingredient_key_amount+" = " +result+ " total recipes" ,
-            es:  result1 + " ÷  "+first_ingredient_key_amount+" = " +result+ " recetas totales" ,
+            en:  `1) Time for 1 juice = ${prepTime} minutes + ${cookTime} minutes = ${first_step} minutes
+            2) Time for all juices = ${randomNum} * ${first_step} = ${second_step} minutes
+           3) Total time needed = ${second_step} + 45 minutes = ${third_step} minutes
+            4) Finish time = 11:00 AM + ${third_step} minutes = ${done}
+            `,
+            es:  `1) Tiempo para 1 jugo = ${prepTime} minutos + ${cookTime} minutos = ${first_step} minutos
+            2) Tiempo para todos los jugos = ${randomNum} * ${first_step} = ${second_step} minutos
+           3)  Tiempo total necesario = ${second_step} + 45 minutos = ${third_step} minutos
+           4)  Hora de finalización = 11:00 a. m. + ${third_step} minutos = ${done}
+            `,            
           }],
-          "wholeNumber",
+        "time",
     
         ))
     
         }
 
-    //question 8 pretzel
-    //One serving of samoa pretzels contains about 35 calories. How many total calories will you intake if you eat [3-22] servings?
-    if (recipe.name.en == "Samoa Pretzel Stick") {
-      let randomNum = randomInt(3,23)
-
-      let result1 = randomNum*35
-
+    //question 7 ginger juice
+    if (recipe.name.en == "Pineapple ginger juice") {
+      let answer = 28.272
 
          // create question
          generatedQuestions.push(createGameQuestion(
           {
-              en: `One serving of samoa pretzels contains about 35 calories. How many total calories will you intake if you eat ${randomNum} servings?`,
-              es:  `Una porción de pretzels samoa contiene aproximadamente 35 calorías. ¿Cuántas calorías totales consumirás si comes ${randomNum} porciones?`,
+              en: `Aunt Maria bought three gingers from the store and then she weighed them. What is the weight of the heaviest ginger, in grams, from the table below? Hint: 1 milligram = 1000 grams; 1 kilogram = 1000 grams.`,
+              es: `La tía María compró tres jengibres en la tienda y luego los pesó. ¿Cuál es el peso del jengibre más pesado, en gramos, de la siguiente tabla? Pista: 1 miligramo = 1000 gramos; 1 kilogramo = 1000 gramos. `,
           
           },
-          result1,
-          [
-            {
-            en:  randomNum + " x 35 = " +result1+ " total calories" ,
-            es:  randomNum + " x 35 = " +result1+ " calorías totales" ,
-          }],
-          "wholeNumber",
-    
-        ))
-    
-        }
-
-    //question 9 pretzel
-    //How many total cups of toasted coconuts and chocolate chips are needed to make [15, 30, 45, 60, 75, 90] servings of chocolate banana cake? 
-    if (recipe.name.en == "Samoa Pretzel Stick") {
-      let randomNum = [15, 30, 45, 60, 75, 90][Math.floor(Math.random() * 6)];
-
-      let result1 = randomNum/15
-      let amount = "5/2"
-
-      first_ingredient_key = Object.keys(recipe.ingredients)[2];
-      //second_ingredient_key = Object.keys(recipe.ingredients)[3];
-      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
-
-      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
-      let fractionOrInteger2 = convertToFraction(amount)
-
-      let multipliedResult = addOrSubtract(fractionOrInteger,fractionOrInteger2, 'add')
-      let simplifiedMultipliedResult = simplifyFraction(multipliedResult.result)
-     
-      let multipliedResult2 = multiplyOrDivide(multipliedResult.result, result1, 'multiply')
-      let simplifiedMultipliedResult2 = simplifyFraction(multipliedResult2.result)
-      //convert
-      
-      //let fractionOrInteger2 = convertToFraction(second_ingredient_key_amount)
-         // create question
-         generatedQuestions.push(createGameQuestion(
-          {
-              en: `How many total cups of toasted coconuts and chocolate chips are needed to make ${randomNum} servings of samoan pretzels? `,
-              es:  `¿Cuántas tazas en total de coco tostado y chispas de chocolate se necesitan para hacer ${randomNum} porciones de samoan pretzels?`,
-          
-          },
-          simplifiedMultipliedResult2.result,
+          answer,
           [{
-            en: "Hint: " +randomNum+ " is a multiple of 15",
-            es: "Pista: " +randomNum+ " es un multiplo de 15"
+            en: `1) Convert weight of Ginger C to grams (multiply by 1000)
+            2) Convert weight of Ginger B to grams (divide by 1000)
+            3) Compare weights of Ginger A, Ginger B, Ginger C. 
+            `,
+            es: `Convertir peso de Jengibre C a gramos (multiplicar por 1000)
+            Convertir peso de Jengibre B a gramos (dividir por 1000)
+            Compara los pesos de Jengibre A, Jengibre B, Jengibre C.
+            `,
           },
             {
-            en:  randomNum + " ÷ 15 = " +result1+ " total plates made" ,
-            es:  randomNum + " ÷ 15 = " +result1+ " total platos hechos" ,
-          },
-          {
-          en:  first_ingredient_key_amount + " + (5/2) " + " = " +simplifiedMultipliedResult.result + " total cups per plate",
-          es: first_ingredient_key_amount + " + (5/2) " + " = " +simplifiedMultipliedResult.result + " total tazas por plato",
-        },{
-          en: result1 + " x " + simplifiedMultipliedResult.result + " = " + simplifiedMultipliedResult2.result ,
-          es: result1 + " x " + simplifiedMultipliedResult.result + " = " + simplifiedMultipliedResult2.result ,
-        }],
-        simplifiedMultipliedResult2.types,
+            en:  `1) Ginger A = 27.32 g, Ginger B = 28.272 g , Ginger C =  28 g  -> Answer is Ginger B = 28.272 g`,
+            es:  `1) Jengibre A = 27.32 g, Jengibre B = 28.272 g, Jengibre C = 28 g  -> Respuesta es Jengibre B = 28.272 g  `,            
+          }],
+        "decimal",
+        null,
+        "gingerTable"
     
         ))
     
@@ -1729,7 +1674,14 @@ let randomNum;
 
 
 
-   
+
+
+
+
+
+
+
+
 
     return generatedQuestions;
 }

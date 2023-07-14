@@ -594,6 +594,17 @@
                 "es": "Jengibre"
             },
             "imgSrc" : "ginger"
+        },
+        "berries" : {
+            "nameSingular" : {
+                "en" : "Berry",
+                "es": "Baya"
+            },
+            "namePlural" : {
+                "en" : "berries",
+                "es": "bayas"
+            },
+            "imgSrc" : "strawberry"
         }
 
     }
