@@ -47,6 +47,15 @@
     border-radius: 15px;   
 }
 
+.move_your_body_title_container{
+    position: absolute;
+    z-index: 1000;
+    top:20px;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
 
 /* ----- Poppin Bubbles Break -----*/
 
