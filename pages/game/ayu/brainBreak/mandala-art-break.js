@@ -13,20 +13,25 @@ import Swal from 'sweetalert2';
 
 export default function MandalaArtBreak() {
     const canvas = useRef()
-    const { time, formattedTime } = useTimer(180);
- 
+    const { time, formattedTime } = useTimer(5);
+    
     useEffect(() => {
         if(time <= 0) {
-            Swal.fire({
-                title: translations?.brain_break_alert_title[lang],
-                showDenyButton: true,
-                confirmButtonText: translations?.brain_break_alert_button1[lang],
-                denyButtonText: translations?.brain_break_alert_button2[lang],
-              }).then((result) => {
-                if (result.isConfirmed) {
-                    handleBack()
-                }
-              })
+          Swal.fire({
+            title: translations?.brain_break_alert_title[lang],
+            html: 'Go back in 5 seconds.',
+            timer: 5000,
+            timerProgressBar: true,
+            allowOutsideClick: false,
+            didOpen: () => {
+              Swal.showLoading()
+            },
+
+          }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+              handleBack()
+            }
+          })
         }
     }) 
 
@@ -58,15 +63,7 @@ export default function MandalaArtBreak() {
     if(!isLoggedIn) return <Login/>
 
     const handleBack = () => {
-
-      let redirect = router?.query?.url ?? ''
-
-      if(redirect) {
-        router.push(decodeURIComponent(redirect))
-      }else {
-        router.push('/game/map')
-        
-      }
+      router.back()
     };
 
     const handleSelectDesign = (url) => {
