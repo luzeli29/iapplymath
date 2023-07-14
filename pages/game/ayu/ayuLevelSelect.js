@@ -32,7 +32,7 @@ const brainBreaksList = {
         "value": "Move Body"
     },
     "poppin-bubbles-break" : {
-        "value": "Popping Bubbles Break"
+        "value": "Popping Bubbles"
     }
 }
 
