@@ -9,31 +9,17 @@ import Error from 'pages/error';
 import Login from '../../../user/login';
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import useTimer from '@hooks/useTimer';
-import Swal from 'sweetalert2';
+import { GoBackAlert } from '@utils/ayu/goBackAlert';
 
 export default function MandalaArtBreak() {
     const canvas = useRef()
     const { time, formattedTime } = useTimer(5);
     
     useEffect(() => {
-        if(time <= 0) {
-          Swal.fire({
-            title: translations?.brain_break_alert_title[lang],
-            html: 'Go back in 5 seconds.',
-            timer: 5000,
-            timerProgressBar: true,
-            allowOutsideClick: false,
-            didOpen: () => {
-              Swal.showLoading()
-            },
-
-          }).then((result) => {
-            if (result.dismiss === Swal.DismissReason.timer) {
-              handleBack()
-            }
-          })
-        }
-    }) 
+      if(time <= 0) {
+          GoBackAlert(handleBack, 10, lang)
+      }
+  })
 
     // Utils for free style art break
     const [mandala_list] = useState([

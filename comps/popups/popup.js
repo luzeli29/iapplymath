@@ -6,7 +6,7 @@ import { ResizableBox } from 'react-resizable';
 
 const Popup = ({ icon, content, lang }) => {
   lang = lang ? lang : 'en'
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [size, setSize] = useState({ width: 320, height: 470 });
 
