@@ -1,267 +1,176 @@
 
 {
     "recipe" : {
-        "carrotOrangeJuice" :{
+        "vanillaMilkShake" :{
             "level" : "1",
             "name" : {
-                "en" : "Carrot-Orange Juice",
-                "es": "Jugo de zanahoria y naranja"
+                "en" : "Vanilla milkshake",
+                "es": "Batido de vainilla"
             },
             "instructions" : {
-                "en" : "Blend the oranges and the carrots in a blender.",
-                "es" : "Mezcla las naranjas y las zanahorias en la licuadora."
+                "en" : "Prepare the milkshake and sirve in a glass.",
+                "es" : "Prepare el batido y sirva ."
             },
-            "imgSrc" : "orange_carrot_juice",
+            "imgSrc" : "vanillamilkshake",
             "servingSize" : 1,
             "recipeMakesAmount" : 1,
             "servingType" : "cup",
             "ingredients" : {
-                "carrot" :{
-                    "ingredient" : "carrot",
-                    "amount" : "3",
-                    "servingType" : "self"
+                "vanilla ice cream" :{
+                    "ingredient" : "vanillaIceCream",
+                    "amount" : "2",
+                    "servingType" : "cup"
 
                 },
-                "orange" :{
-                    "ingredient" : "orange",
+                "milk" :{
+                    "ingredient" : "milk",
                     "amount" : "2",
-                    "servingType" : "self"
-                }
-            },
-            "defaultIngredientMultiQuestions" : [
-                {
-                    "ingredientCode" : "carrot",
-                    "factor" : 1
-                },{
-                    "ingredientCode" : "orange",
-                    "factor" : 1
-                },{
-                    "ingredientCode" : "carrot",
-                    "factor" : 2
-                },{
-                    "ingredientCode" : "orange",
-                    "factor" : 2
-                }
-            ],
-            "defaultFamilyQuestionIngredients" : [
-                "carrot",
-                "orange"
-            ]
-        },
-        "tomatilloSauceAndChips" :{
-            "level" : "1",
-            "name" : {
-                "en" : "Tomatillo Sauce and Tortilla Chips",
-                "es": "Salsa de Tomatillo con Chips de Tortilla"
-            },
-            "instructions" : {
-                "en" : "Put ingredients for the sauce in a blender. Pour the tomatillo sauce in a bowl with tortilla chips.",
-                "es" : "Ponga todos los ingredientes para la salsa en una licuadora."
-            },
-            "imgSrc" : "tomatillo_chips",
-            "servingSize" : 6,
-            "recipeMakesAmount" : 1,
-            "servingType" : "dish",
-            "ingredients" : {
-                "tomatillos" :{
-                    "ingredient" : "tomatillos",
-                    "amount" : "1",
-                    "servingType" : "pound"
-                },
-                "choppedWhiteOnion" :{
-                    "ingredient" : "choppedWhiteOnion",
-                    "amount" : "1/2",
                     "servingType" : "cup"
                 },
-                "choppedCilantro" :{
-                    "ingredient" : "choppedCilantro",
-                    "amount" : "1/2",
-                    "servingType" : "cup"
-                },
-                "garlic" :{
-                    "ingredient" : "garlic",
-                    "amount" : "6",
-                    "servingType" : "clove"
-                },
-                "freshLimeJuice" :{
-                    "ingredient" : "freshLimeJuice",
+                "vanilla extract" :{
+                    "ingredient" : "vanillaExtract",
                     "amount" : "1",
                     "servingType" : "tablespoon"
-                },
-                "jalapenoOrSerranoPeppers" :{
-                    "ingredient" : "jalapenoOrSerranoPeppers",
-                    "amount" : "1-2",
-                    "servingType" : "self"
-                },
-                "tortillaChips" :{
-                    "ingredient" : "tortillaChips",
-                    "amount" : "1",
-                    "servingType" : "bag"
-
-                },
-                "saltAndSpiceForTaste" :{
-                    "ingredient" : "saltAndSpiceForTaste",
-                    "amount" : "",
-                    "servingType" : "self"
                 }
-            },
-            "defaultIngredientMultiQuestions" : [
-                {
-                    "ingredientCode" : "garlic",
-                    "factor" : 6
-                },{
-                    "ingredientCode" : "garlic",
-                    "factor" : 3
-                },{
-                    "ingredientCode" : "choppedWhiteOnion",
-                    "factor" : 3
-                },{
-                    "ingredientCode" : "freshLimeJuice",
-                    "factor" : 3
-                },{
-                    "ingredientCode" : "choppedWhiteOnion",
-                    "factor" : 3
-                }
-            ],
-            "defaultFamilyQuestionIngredients" : [
-                "tomatillos",
-                "garlic",
-                "choppedWhiteOnion"
-            ]
+            }
+        
         },
-        "blackBeanSweetPotatoEnchiladas" :{
+        "baleadas" :{
             "level" : "1",
             "name" : {
-                "en" : "Black Bean and Sweet Potato Enchiladas",
-                "es": "Enchilada de Frijol Negro y Camote"
+                "en" : "Baleadas",
+                "es": "Baleadas"
             },
             "instructions" : {
-                "en" : "Fill the tortillas with mashed black beans and sweet potatoes then roll up each tortilla into a singular tube. Pour the tomatillo sauce on top of the tortillas and then bake for 30 minutes at 350 degrees.",
-                "es" : "Rellene las tortillas con frijoles negros y camote, luego enrolle cada tortilla en forma de tubito. Póngale la salsa de tomatillo encima de las tortillas y luego hornee por 30 minutos a 350 grados."
+                "en" : "Prepare the baleada and serve on a dish.",
+                "es" : "Prepare las baleadas y sirva en un plato."
             },
-            "imgSrc" : "burritos",
-            "servingSize" : 2,
+            "imgSrc" : "baleadas",
+            "servingSize" : 1,
+            "recipeMakesAmount" : 2,
+            "servingType" : "self",
+            "ingredients" : {
+                "flour tortillas" :{
+                    "ingredient" : "flourTortillas",
+                    "amount" : "2",
+                    "servingType" : "self"
+
+                },
+                "refried beans" :{
+                    "ingredient" : "refriedBeans",
+                    "amount" : "1",
+                    "servingType" : "cup"
+                },
+                "cheese" :{
+                    "ingredient" : "cheese",
+                    "amount" : "2",
+                    "servingType" : "cup"
+                }
+            }
+        
+        },
+        "churros" :{
+            "level" : "1",
+            "name" : {
+                "en" : "Churros",
+                "es": "Churros"
+            },
+            "instructions" : {
+                "en" : "Prepare the dough and fry the churros in oil",
+                "es" : "Prepare la masa y fría los churros en aceite."
+            },
+            "imgSrc" : "churros",
+            "servingSize" : 1,
             "recipeMakesAmount" : 4,
             "servingType" : "self",
             "ingredients" : {
-                "mashedBlackBeans" :{
-                    "ingredient" : "mashedBlackBeans",
+                "all purpose flour" :{
+                    "ingredient" : "allPurposeFlour",
+                    "amount" : "1",
+                    "servingType" : "self"
+
+                },
+                "water" :{
+                    "ingredient" : "water",
                     "amount" : "1",
                     "servingType" : "cup"
                 },
-                "onion" :{
-                    "ingredient" : "onion",
-                    "amount" : "1/2",
-                    "servingType" : "self"
+                "cinnamon" :{
+                    "ingredient" : "cinnamon",
+                    "amount" : "1",
+                    "servingType" : "tablespoon"
                 },
-                "mashedSweetPotato" :{
-                    "ingredient" : "mashedSweetPotato",
+                "salt" :{
+                    "ingredient" : "salt",
                     "amount" : "1/2",
+                    "servingType" : "tablespoon"
+                },
+                "frying oil" :{
+                    "ingredient" : "fryingOil",
+                    "amount" : "8",
                     "servingType" : "cup"
                 },
-                "tortilla" :{
-                    "ingredient" : "tortilla",
-                    "amount" : "4",
-                    "servingType" : "self"
-                },
-                "tomatilloSauce" :{
-                    "ingredient" : "tomatilloSauce",
-                    "amount" : "1/4",
-                    "servingType" : "cup"
-                },
-                "saltAndSpiceForTaste" :{
-                    "ingredient" : "saltAndSpiceForTaste",
-                    "amount" : "",
-                    "servingType" : "self"
+                "sugar" :{
+                    "ingredient" : "sugar",
+                    "amount" : "5/2",
+                    "servingType" : "tablespoon"
                 }
-            },
-            "defaultIngredientMultiQuestions" : [
-                {
-                    "ingredientCode" : "onion",
-                    "factor" : "4"
-                },{
-                    "ingredientCode" : "mashedBlackBeans",
-                    "factor" : "4"
-                },{
-                    "ingredientCode" : "onion",
-                    "factor" : "8"
-                },{
-                    "ingredientCode" : "mashedSweetPotatos",
-                    "factor" : "2"
-                },{
-                    "ingredientCode" : "tomatilloSauce",
-                    "factor" : "4"
-                }
-            ],
-            "defaultFamilyQuestionIngredients" : [
-                "mashedSweetPotatos",
-                "mashedBlackBeans",
-                "tortillas",
-                "tomatilloSauce"
-            ]
+            }
+        
         },
-        "fruitSalad" :{
+        "browniesWithIceCream" :{
             "level" : "1",
             "name" : {
-                "en": "Fruit Salad",
-                "es": "Ensalada de Frutas"
+                "en" : "Brownie with ice cream",
+                "es": "Brownie con helado"
             },
             "instructions" : {
-                "en" : "Cut the fruit into small pieces and serve on a plate.",
-                "es" : "Corte la fruta en pedazos pequeños y sirva en un plato."
+                "en" : "Prepare the dough and bake at 350 degrees",
+                "es" : "Prepara la mase y hornea a 350 grados"
             },
-            "imgSrc" : "fruit_salad",
-            "servingSize" : 1,
+            "imgSrc" : "brownieIce",
+            "servingSize" : 8,
             "recipeMakesAmount" : 1,
-            "servingType" : "bowl",
+            "servingType" : "self",
             "ingredients" : {
-                "papaya" :{
-                    "ingredient" : "papaya",
-                    "amount" : "1/4",
+                "flour" :{
+                    "ingredient" : "allPurposeFlour",
+                    "amount" : "2",
                     "servingType" : "self"
+
                 },
-                "mango" :{
-                    "ingredient" : "mango",
-                    "amount" : "1/4",
-                    "servingType" : "self"
-                },
-                "strawberry" :{
-                    "ingredient" : "strawberry",
-                    "amount" : "1/3",
-                    "servingType" : "self"
-                },
-                "kiwi" :{
-                    "ingredient" : "kiwi",
+                "butter" :{
+                    "ingredient" : "butter",
                     "amount" : "1/2",
+                    "servingType" : "cup"
+                },
+                "cocoa powder" :{
+                    "ingredient" : "cocoaPowder",
+                    "amount" : "1/2",
+                    "servingType" : "cup"
+                },
+                "sugar" :{
+                    "ingredient" : "sugar",
+                    "amount" : "1",
+                    "servingType" : "cup"
+                },
+                "egg" :{
+                    "ingredient" : "egg",
+                    "amount" : "1",
+                    "servingType" : "self"
+                },
+                "vanilla extract" :{
+                    "ingredient" : "vanillaExtract",
+                    "amount" : "1",
+                    "servingType" : "tablespoon"
+                },
+                "ice cream " :{
+                    "ingredient" : "vanillaIceCream",
+                    "amount" : "8",
                     "servingType" : "self"
                 }
-            },
-            "defaultIngredientMultiQuestions" : [
-                {
-                    "ingredientCode" : "mango",
-                    "factor" : "1"
-                },{
-                    "ingredientCode" : "mango",
-                    "factor" : "3"
-                },{
-                    "ingredientCode" : "strawberry",
-                    "factor" : "2"
-                },{
-                    "ingredientCode" : "papaya",
-                    "factor" : "2"
-                },{
-                    "ingredientCode" : "papaya",
-                    "factor" : "2"
-                },{
-                    "ingredientCode" : "mango",
-                    "factor" : "4"
-                }
-            ],
-            "defaultFamilyQuestionIngredients" : [
-                "papaya",
-                "strawberry",
-                "kiwi"
-            ]
+            }
+        
         },
         "vegetableNoodleSoup" :{
             "level" : "2",
