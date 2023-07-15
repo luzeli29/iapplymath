@@ -17,21 +17,7 @@ export default function aHQuestionFactory(questionType,recipe,randomGenerator,fa
     DevLog('Recipe: ' + recipe.name.en)
     DevLog("questiontype: " + questionType)
 
-    if (recipe.level == 1){
-    switch(questionType) {
-        case "basic":
-            return generateBasicAHQuestions(recipe)
-        case "familySize":
-            return generateFamilySizeQuestion()
-        case "familyQuestion":
-            if(familySize == undefined) {
-                return generateFamilyQuestions(recipe,3)
-            }
-            return generateFamilyQuestions(recipe,familySize)
-        default:
-            return [createGameQuestion()]
-        }
-    }else if (recipe.level == 2 || recipe.level == 3 ){
+    if (recipe.level == 2 || recipe.level == 3 || recipe.level == 1){
         var questions = [];
 
         let operationsAndAlgebra = generateAuntOperationsAndAlgebraQuestions(recipe, randomGenerator);

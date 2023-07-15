@@ -605,6 +605,83 @@
                 "es": "bayas"
             },
             "imgSrc" : "strawberry"
+        },
+        "flourTortillas" : {
+            "nameSingular" : {
+                "en" : "Flour tortilla",
+                "es": "Tortilla de harina"
+            },
+            "namePlural" : {
+                "en" : "Flour tortillas",
+                "es": "Tortillas de harina"
+            },
+            "imgSrc" : "tortillas"
+        },
+        "refriedBeans" : {
+            "nameSingular" : {
+                "en" : "Refried bean",
+                "es": "Frijol frito"
+            },
+            "namePlural" : {
+                "en" : "Refried beans",
+                "es": "Frijoles fritos"
+            },
+            "imgSrc" : "refriedbeans"
+        },
+        "cheese" : {
+            "nameSingular" : {
+                "en" : "Cheese",
+                "es": "Queso"
+            },
+            "namePlural" : {
+                "en" : "Cheeses",
+                "es": "Quesos"
+            },
+            "imgSrc" : "cheese"
+        },
+        "allPurposeFlour" : {
+            "nameSingular" : {
+                "en" : "All purpose flour",
+                "es": "Harina para todo uso"
+            },
+            "namePlural" : {
+                "en" : "All purpose flour",
+                "es": "Harina para todo uso"
+            },
+            "imgSrc" : "flour"
+        },
+        "cinnamon" : {
+            "nameSingular" : {
+                "en" : "Cinnamon",
+                "es": "Canela"
+            },
+            "namePlural" : {
+                "en" : "Cinnamon",
+                "es": "Canela"
+            },
+            "imgSrc" : "cinnamon"
+        },
+        "fryingOil" : {
+            "nameSingular" : {
+                "en" : "Frying oil",
+                "es": "Aceite para freir"
+            },
+            "namePlural" : {
+                "en" : "Frying oil",
+                "es": "Aceite para freir"
+            },
+            "imgSrc" : "fryingOil"
+        },
+        "cocoaPowder" : {
+            "nameSingular" : {
+                "en" : "Cocoa powder",
+                "es": "Cacao en polvo"
+            },
+            "namePlural" : {
+                "en" : "Cocoa powder",
+                "es": "Cacao en polvo"
+            },
+            "imgSrc" : "cocoa"
         }
 
     }

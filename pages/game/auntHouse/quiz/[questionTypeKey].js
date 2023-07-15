@@ -148,18 +148,9 @@ function getFinishRoute(questionTypeKey, recipeKey,familySize, level) {
         return '/'
     }
 
-    if (level === "1"){
-        switch(questionTypeKey) {
-            case 'basic':
-                return '/game/auntHouse/quiz/familySize?recipeKey=' + recipeKey
-            case "familySize":
-                return '/game/auntHouse/quiz/familyQuestion?recipeKey=' + recipeKey + '&familySize=' + familySize
-            case "familyQuestion":
-                return '/dialog/auntHouseOutro'
-        }
-    } else {
+   
         return '/dialog/auntHouseOutro'
-    }
+    
 
 }
 

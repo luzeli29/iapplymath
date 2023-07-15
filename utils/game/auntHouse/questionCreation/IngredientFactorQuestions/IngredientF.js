@@ -258,6 +258,1481 @@ function compareNumbers(fractionOrInteger, fractionOrInteger2) {
   }
 }
 
+function generateLevel1AuntQuestions(recipe, randomInt){
+  let generatedQuestions = [];
+
+    //question 1 vanilla milkshake
+    if (recipe.name.en == "Vanilla milkshake") {
+      let randomNum = randomInt(2,10)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer = randomNum* first_ingredient_key_amount
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria will make Vanilla Milkshakes for you and ${randomNum} of your friends. Each milkshake requires 2 cups of ice cream. How many cups of ice cream does Auntie Maria need in total?`,
+              es:  `La Tía María hará Batidos de Vainilla para ti y ${randomNum} de tus amigos. Cada batido requiere 2 tazas de helado. ¿Cuántas tazas de helado necesita la Tía María en total?`,
+          
+          },
+          answer,
+          [{
+            en: `Total cups of ice cream = (total milkshakes) * ice cream cups per milkshake `,
+            es: `Tazas totales de helado = (total de batidos) * tazas de helado por batido`,
+          },
+            {
+            en:  `Total cups of ice cream = (${randomNum}) * ${first_ingredient_key_amount} = ${answer}`,
+            es:  `Tazas totales de helado = (${randomNum}) * ${first_ingredient_key_amount} = ${answer}`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 2 vanilla milkshake
+    if (recipe.name.en == "Vanilla milkshake") {
+      let randomNum = randomInt(2,10)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[2];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer =  first_ingredient_key_amount * 3
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria wants to triple the recipe to make Vanilla Milkshakes for a party. How many teaspoons of vanilla extract does she need for the tripled recipe?`,
+              es:  `La Tía María quiere triplicar la receta para hacer Batidos de Vainilla para una fiesta. ¿Cuántas cucharaditas de extracto de vainilla necesita para la receta triplicada?`,
+          
+          },
+          answer,
+          [{
+            en: `t = initial teaspoons of vanilla extract
+            Teaspoons vanilla extract = t * 3 OR ( t + t + t )
+             `,
+            es: `t = cucharaditas iniciales de extracto de vainilla
+            Cucharaditas de extracto de vainilla = t * 3 O ( t + t + t )
+            `,
+          },
+            {
+            en:  `Teaspoons vanilla extract = (${first_ingredient_key_amount}*3) OR (${first_ingredient_key_amount}+${first_ingredient_key_amount}+${first_ingredient_key_amount}) = ${answer} teaspoons`,
+            es:  `Cucharaditas de extracto de vainilla = (${first_ingredient_key_amount}*3) O (${first_ingredient_key_amount}+${first_ingredient_key_amount}+${first_ingredient_key_amount}) =  ${answer} cucharaditas`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 3 vanilla milkshake
+    if (recipe.name.en == "Vanilla milkshake") {
+      let randomNum = randomInt(2,11)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer = randomNum* first_ingredient_key_amount
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `You and Auntie Maria decided to make Vanilla Milkshakes for a school event. If you need to prepare ${randomNum} servings using this recipe, how many cups of vanilla ice cream do you need to use?`,
+              es:  `La Tía María y tú decidieron hacer Batidos de Vainilla para un evento escolar. Si necesitas preparar ${randomNum} porciones utilizando esta receta, ¿cuántas tazas de helado de vainilla necesitas usar?`,
+          
+          },
+          answer,
+          [{
+            en: `Total cups of ice cream = number of servings * cups of ice cream per serving `,
+            es: `Tazas totales de helado = número de porciones * tazas de helado por porción`,
+          },
+            {
+            en:  `Total cups of ice cream = ${randomNum} servings * ${first_ingredient_key_amount} cups of ice cream per serving = ${answer} `,
+            es:  `Tazas totales de helado = ${randomNum} porciones * ${first_ingredient_key_amount} tazas de helado por porción = ${answer}
+
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 4 vanilla milkshake
+    if (recipe.name.en == "Vanilla milkshake") {
+      const fractions = [2,4,6,8,10];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer = randomFraction/ first_ingredient_key_amount
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria wants to make Vanilla Milkshakes using ${randomFraction} cups of ice cream. If each serving requires 2 cups of ice cream, how many servings can she make? `,
+              es:  `La Tía María quiere hacer Batidos de Vainilla usando ${randomFraction} tazas de helado. Si cada porción requiere 2 tazas de helado, ¿cuántas porciones puede hacer?`,
+          
+          },
+          answer,
+          [{
+            en: `Servings = available cups of ice cream / cups required per serving `,
+            es: `Porciones = tazas de helado disponibles / tazas requeridas por porción`,
+          },
+            {
+            en:  `Servings = ${randomFraction} / ${first_ingredient_key_amount} = ${answer}`,
+            es:  `Porciones = ${randomFraction} / ${first_ingredient_key_amount} = ${answer}`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 5 vanilla milkshake
+    if (recipe.name.en == "Vanilla milkshake") {
+      const fractions = [5,10];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let answer = randomFraction/5
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria made ${randomFraction} cups of Vanilla Milkshake and wants to pour an equal amount into 5 glasses. How many cups of milkshake will be poured into each glass?               `,
+              es:  `La Tía María preparó ${randomFraction} tazas de Batido de Vainilla y quiere servir una cantidad igual en 5 vasos. ¿Cuántas tazas de batido se servirán en cada vaso?`,
+          
+          },
+          answer,
+          [{
+            en: `Cups per glass = quantity available / number of glasses`,
+            es: `Tazas por vaso = cantidad disponible / número de vasos`,
+          },
+            {
+            en:  `Cups per glass = ${randomFraction} / 5 = ${answer}`,
+            es:  `Tazas por vaso = ${randomFraction} / 5 = ${answer}`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 6 vanilla milkshake
+    if (recipe.name.en == "Vanilla milkshake") {
+      let randomNum = randomInt(7,11)
+      let serving_size = recipe.servingSize
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer = randomNum * first_ingredient_key_amount
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `You and Auntie Maria are making an extra-large batch of Vanilla Milkshakes for a school event. If ${serving_size} serving requires ${first_ingredient_key_amount} cups of vanilla ice cream and you need to make ${randomNum} servings, how many cups of ice cream do you need in total`,
+              es:  `La Tía María y tú están haciendo una gran cantidad de Batidos de Vainilla para un evento escolar. Si ${serving_size} porción requiere ${first_ingredient_key_amount} tazas de helado de vainilla y necesitas hacer ${randomNum} porciones, ¿cuántas  tazas de helado necesitas en total?`,
+          
+          },
+          answer,
+          [{
+            en: `Total cups of ice cream = servings required * cups of ice cream per serving `,
+            es: `Total de tazas de helado = porciones requeridas * tazas de helado por porción`,
+          },
+            {
+            en:  `Total cups of ice cream = ${randomNum} * ${first_ingredient_key_amount} cups ice cream = ${answer}  `,
+            es:  `Total de tazas de helado = ${randomNum} * ${first_ingredient_key_amount} tazas de helado = ${answer}`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 7 vanilla milkshake
+    if (recipe.name.en == "Vanilla milkshake") {
+      let randomNum = randomInt(2,5)
+      let randomNum1 = randomInt(2,11)
+      let answer = randomNum * randomNum1
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `You are helping Auntie Maria make Vanilla Milkshakes batches. If each batch requires ${randomNum} cups of milk and you make ${randomNum1} batches, how many cups of milk will you use in total?`,
+              es:  `Estás ayudando a la tía María a hacer lotes de batidos de vainilla. Si cada lote requiere ${randomNum} tazas de leche y haces ${randomNum1} lotes, ¿cuántas tazas de leche usarás en total?`,
+          
+          },
+          answer,
+          [{
+            en: `Total cups of milk = cups of milk per batch * number of batches `,
+            es: `Total de tazas de leche = tazas de leche por lote * número de lotes`,
+          },
+            {
+            en:  `Total cups of milk = ${randomNum} * ${randomNum1} = ${answer}  `,
+            es:  `Total de tazas de leche = ${randomNum} * ${randomNum1} = ${answer}`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 8 vanilla milkshake
+    if (recipe.name.en == "Vanilla milkshake") {
+      let amount = '5/8'
+      let amount1 = '3/8'
+      let answer = amount
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria prepared 2 servings of Vanilla Milkshake and poured it in two glasses, one for you and one for her. If you drank 5/8 of your glass and she drank 3/8 of her glass, who drank more milkshake? Please type your answer in fraction form (example: 1/4).`,
+              es:  `La tía Maria preparó 2 porciones de batido de vainilla y las sirvió en dos vasos, uno para ti y otro para ella. Si tú bebiste 5/8 de tu vaso y ella bebió 3/8 de su vaso, ¿quién tomó más batido? Por favor, escribe tu respuesta en forma de fracción (ejemplo: 1/4).`,
+          
+          },
+          answer,
+          [{
+            en: `1) Compare the numerators of the 2 fractions →${amount} vs ${amount1}
+            2) Is ${amount} larger, smaller, or equal to ${amount1}?
+            `,
+            es: `1) Compara las dos fracciones → ${amount} vs ${amount1}
+            2) ¿${amount} es mayor, menor o igual a ${amount1}?
+            `,
+          },
+            {
+            en:  `The fractions share a common denominator which is 8. Comparing numerators: 5 > (larger than) 3 so the correct answer is ${answer}. `,
+            es:  `1) Las fracciones tienen un denominador común que es 8.
+            2) Comparando los numeradores: 5 > (mayor que) 3, así que la respuesta correcta es ${answer}.
+            `,
+          }],
+        "fraction",
+    
+        ))
+    
+        }
+
+    //question 9 vanilla milkshake
+    if (recipe.name.en == "Vanilla milkshake") {
+      let hour = 4
+      let minute = randomInt(10,51)
+      let prepTime = 5
+      let newMin = prepTime*2
+      let minutes = minute-newMin
+      let finalTimeMin = minutes.toString().padStart(2, '0');
+      let original = hour+":"+minute
+      let answer  = hour + ":" + finalTimeMin + "PM" ;
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria wants to serve Vanilla Milkshakes at ${original} PM for you and your friend. If it takes her ${prepTime} minutes to prepare 1 milkshake, at what time should Auntie Maria start preparing the milkshakes?`,
+              es:  `La tía María quiere servir batidos de vainilla a las ${original} PM. para ti y tu amigo. Si le toma ${prepTime} minutos preparar 1 batido, ¿a qué hora debe la tía María comenzar a preparar los batidos?`,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: calculate total milkshakes Auntie Maria needs to serve 
+            Step 2: calculate total minutes required for Auntie Maria to prepare milkshakes 
+            Step 3: Prep start time = given time - total minutes needed to prepare milkshakes
+            `,
+            es: `Paso 1: calcula el total de batidos que la tía María necesita servir
+            Paso 2: calcula el total de minutos necesarios para que la tía María prepare los batidos
+            Paso 3: Hora de inicio de preparación = hora dada - minutos totales necesarios para preparar batidos
+            `,
+          },
+            {
+            en:  `Step 1: Total milkshakes = 1 + 1 = 2
+            Step 2: Total minutes = ${prepTime} min. per milkshake * 2 milkshakes OR ${prepTime} + ${prepTime} = ${newMin} min.
+            Step 3: ${original} - ${newMin} minutes = ${answer}
+            `,
+            es:  `Paso 1: Batidos totales = 1 + 1 = 2
+            Paso 2: Minutos totales = ${prepTime} min. por batido * 2 batidos O ${prepTime} + ${prepTime} = ${newMin} min.
+            Paso 3: ${original} - ${newMin} minutos = ${answer}
+            `,
+          }],
+        "time",
+    
+        ))
+    
+        }
+
+    //question 10 vanilla milkshake
+    if (recipe.name.en == "Vanilla milkshake") {
+      let randomNum = randomInt(2,11)
+      let first_step = randomNum*2
+      let answer = 1* first_step
+
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `You are helping Auntie Maria measure milk for the Vanilla Milkshakes using a measuring cup. If you fill the measuring cup to the 1-cup mark each time, how many times do you need to fill it to have enough milk for ${randomNum} servings of milkshakes? Hint: 2 cups of milk are needed for 2 servings.`,
+              es:  `Estás ayudando a la tía María a medir la leche para los batidos de vainilla con una taza medidora. Si llena la taza medidora hasta la marca de 1 taza cada vez, ¿cuántas veces necesita llenarla para tener suficiente leche para ${randomNum} porciones de malteadas? Pista: se necesitan 2 tazas de leche para 2 porciones`,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Milk cups needed = Milk cups per 1 serving * ${randomNum} 
+            Step 2: Times filling measuring cup = measuring cup capacity * Milk cups needed 
+            `,
+            es: `Paso 1: Tazas de leche necesarias = Tazas de leche por 1 porción * ${randomNum}
+            Paso 2: Tiempos de llenado de la taza medidora = capacidad de la taza medidora * Tazas de leche necesarias
+            `,
+          },
+            {
+            en:  `Step 1: Milk cups needed = 2 *  ${randomNum}= ${first_step} milk cups  
+            Step 2: Times filling measuring cup = 1 cup * ${first_step} milk cups = ${answer}  
+             `,
+            es:  `Paso 1: Tazas de leche necesarias = 2 * ${randomNum} = ${first_step} tazas de leche
+            Paso 2: Tiempos de llenado de la taza medidora = 1 taza * ${first_step} = ${answer}
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 1 baleadas
+    if (recipe.name.en == "Baleadas") {
+      let randomNum = randomInt(2,11)
+      let randomNum1 = randomInt(2,6)
+      let answer = randomNum* randomNum1
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `You invite ${randomNum} friends to Auntie Maria’s house for a Baleadas party. If each friend eats ${randomNum1} servings, how many servings of Baleadas should you prepare for your friends?`,
+              es:  `Invitas a  ${randomNum} amigos a la casa de la tía María para una fiesta de Baleadas. Si cada amigo come ${randomNum1} porciones, ¿cuántas porciones de Baleadas deberías preparar para tus amigos? `,
+          
+          },
+          answer,
+          [{
+            en: `Total baleadas servings = Number of friends * Servings for each friend `,
+            es: `Porciones de baleadas en total = Número de amigos * Porciones para cada amigo`,
+          },
+            {
+            en:  `Total baleadas servings = ${randomNum} * ${randomNum1} = ${answer} `,
+            es:  `Porciones de baleadas en total= ${randomNum} * ${randomNum1} = ${answer} `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 2 baleadas
+    if (recipe.name.en == "Baleadas") {
+      const fractions = [4,6,8,10];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let serving_size = recipe.recipeMakesAmount
+      let answer = randomFraction/serving_size
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria is helping you make Baleadas for a school field trip. Auntie Maria only has ${randomFraction} flour tortillas and you want to serve 2 Baleadas per person. How many people can have 2 baleadas if you use all flour tortillas?`,
+              es:  `La tía María te está ayudando a hacer Baleadas para una excursión escolar. La tía María solo tiene ${randomFraction} tortillas de harina y quiere servir 2 Baleadas por persona. ¿Cuántas personas pueden tener 2 baleadas si usas todas las tortillas de harina?`,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Flour tortillas for 1 baleada = recipe amount / recipe servings 
+            Step 2: Total baleadas = flour tortillas available * flour tortilla for 1 baleada 
+            Step 3: Total people = total baleadas / number of baleadas for each person
+            `,
+            es: `Paso 1: Tortillas de harina para 1 baleada = cantidad de la receta / porciones de la receta
+            Paso 2: Baleadas en total = tortillas de harina disponibles * tortilla de harina para 1 baleada
+            Paso 3: Total de personas = total de baleadas / número de baleadas de cada persona
+             `,
+          },
+            {
+            en:  `Step 1: Flour tortillas per baleada = 2 tortillas / 2 servings = 1 tortilla per baleada 
+            Step 2: Total baleadas = ${randomFraction} tortillas available * 1 tortilla per baleada = ${randomFraction}
+            Step 3: Total people = ${randomFraction} total baleadas / ${serving_size} baleadas per person = ${answer}
+             `,
+            es:  `Paso 1: Tortillas de harina por baleada = 2 tortillas / 2 porciones = 1 tortilla por baleada
+            Paso 2: Baleadas totales = ${randomFraction} tortillas disponibles * 1 tortilla por baleada = ${randomFraction}
+            Paso 3: Total personas = ${randomFraction} total baleadas / ${serving_size} baleadas por persona = ${answer}
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 3 baleadas
+    if (recipe.name.en == "Baleadas") {
+      const fractions = [6,8,10];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let first_ingredient_key = Object.keys(recipe.ingredients)[2];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer = randomFraction/first_ingredient_key_amount
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria has a large bag that holds ${randomFraction} cups of cheese. If the bag is full, how many servings of Baleadas can you make? Hint: assume you use the whole bag. `,
+              es:  `La tía María tiene una bolsa grande que contiene ${randomFraction} tazas de queso. Si la bolsa está llena, ¿cuántas porciones de Baleadas puedes hacer? Sugerencia: suponga que usa toda la bolsa. `,
+          
+          },
+          answer,
+          [{
+            en: `Total baleadas servings = ${randomFraction} cups of cheese / ${first_ingredient_key_amount} cups of cheese per serving  `,
+            es: `Total de porciones de baleadas = ${randomFraction} tazas de queso / ${first_ingredient_key_amount} tazas de queso por porción`,
+          },
+            {
+            en:  `Total baleadas servings = ${randomFraction} / ${first_ingredient_key_amount} = ${answer} `,
+            es:  `Total de porciones de baleadas = ${randomFraction} / ${first_ingredient_key_amount} = ${answer}`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 4 baleadas
+    if (recipe.name.en == "Baleadas") {
+      const fractions = [10,20,30];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let serving_size = recipe.recipeMakesAmount
+      let answer = randomFraction* serving_size
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `For your birthday you decided to bring Baleadas to school and share them with ${randomFraction} friends. If each friend has 1 serving, how many Baleadas do you and Auntie Maria need to prepare?`,
+              es: `Para tu cumpleaños decidiste traer Baleadas a la escuela y compartirlas con ${randomFraction} amigos. Si cada amigo tiene 1 porción, ¿cuántas Baleadas necesitan preparar la tía María y tú ? `,
+          
+          },
+          answer,
+          [{
+            en: `Total baleadas = total servings * baleadas per serving  `,
+            es: `Total de Baleadas = porciones totales * baleadas por porción`,
+          },
+            {
+            en:  `Total baleadas = ${randomFraction} servings * ${serving_size} baleadas per serving = ${answer} `,
+            es:  `Total de baleadas = ${randomFraction} porciones * ${serving_size} baleadas por porción  = ${answer}`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 5 baleadas
+    if (recipe.name.en == "Baleadas") {
+      const fractions = [20,30,40,50];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let serving_size = recipe.recipeMakesAmount
+      let first_step = randomFraction/serving_size
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer = first_step* first_ingredient_key_amount
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria needs to prepare ${randomFraction} Baleadas for a family gathering. How many cups of refried beans does Auntie Maria need for all Baleadas?`,
+              es: `La tía María necesita preparar ${randomFraction} Baleadas para una reunión familiar. ¿Cuántas tazas de frijoles refritos necesita la tía María para todas las baleadas? `,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Baleadas servings = number of baleadas / baleadas per serving
+            Step 2: Total cups of refried beans = baleadas servings * cups of refried beans per serving 
+             `,
+            es: `Paso 1: Porciones de baleadas = número de baleadas / baleadas por porción
+          Paso 2: Total de tazas de frijoles refritos = porciones de baleadas * tazas de frijoles refritos por porción
+          `,
+          },
+            {
+            en:  `Step 1: Baleadas servings = ${randomFraction} / ${serving_size} = ${first_step}
+            Step 2: Total cups of refried beans = ${first_step} baleadas servings * ${first_ingredient_key_amount} cup of refried beans per serving = ${answer}
+             `,
+            es:  `Paso 1: Porciones de baleadas = ${randomFraction} / ${serving_size} = ${first_step}
+            Paso 2: Total de tazas de frijoles refritos = ${first_step} porciones de baleadas * ${first_ingredient_key_amount} taza de frijoles refritos por porción = ${answer}
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 6 baleadas
+    if (recipe.name.en == "Baleadas") {
+      const fractions = [4,6,8,10,20,30];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer = randomFraction/ first_ingredient_key_amount
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria bought a pack of flour tortillas to make Baleadas. If the pack brings ${randomFraction} flour tortillas, how many Baleadas servings can she make? `,
+              es: `La tía María compró un paquete de tortillas de harina para hacer Baleadas. Si el paquete trae ${randomFraction} tortillas de harina, ¿cuántas porciones de Baleadas puede hacer?`,
+          
+          },
+          answer,
+          [{
+            en: `Total baleadas servings = number of tortillas / tortillas required for 1 serving`,
+            es: `Total de porciones de baleadas = número de tortillas / tortillas requeridas para 1 porción`,
+          },
+            {
+            en:  `Total baleadas servings = ${randomFraction} / ${first_ingredient_key_amount} = ${answer} `,
+            es:  `Total de porciones de baleadas = ${randomFraction} / ${first_ingredient_key_amount} = ${answer} `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 7 baleadas
+    if (recipe.name.en == "Baleadas") {
+      const fractions = [4,6,8,10,20,30];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let originalHr = 5
+      let originalMin = randomInt(45,60)
+      let original = originalHr+":"+originalMin+"PM"
+      let people = 3
+      let serving_size = recipe.recipeMakesAmount
+      let first_step = people*serving_size
+      let second_step = first_step/serving_size
+      let cookTime = 10
+      let prepTime = 5
+      let third_step = (cookTime+prepTime)*second_step
+      let newMins = originalMin-third_step 
+      let finalTimeMin = newMins.toString().padStart(2, '0');
+      let answer = originalHr + ":" + finalTimeMin + "PM" ;
+     
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `You and your friend are going to Auntie Maria’s house at ${original}. Auntie Maria is preparing Baleadas for dinner. If you, your friend, and Auntie will have 2 Baleadas each, at what time should Auntie Maria start making the Baleadas so that they are ready when you arrive? The prep time is 5 minutes and the cook time is 10 minutes for each recipe.`,
+              es: `Tu amiga y tú irán a la casa de la tía María a las ${original}. La tía María está preparando Baleadas para la cena. Si,  tu amigo,  la tía y tú van a tener 2 baleadas cada uno, ¿a qué hora debe empezar la tía María a hacer las baleadas para que estén listas cuando llegues? El tiempo de preparación es de 5 minutos  y el tiempo de cocción es de 10 minutos por receta `,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Total baleadas = (number of people * baleadas per person) 
+            Step 2: Total servings = total baleadas / baleadas per serving
+            Step 3: Total time required = (prep time + cook time) * total servings 
+            Step 4: Start time = your arrival time - total time required 
+            `,
+            es: `Paso 1: Total de baleadas = (número de personas * baleadas por persona)
+            Paso 2: Total de porciones = total de baleadas / baleadas por porción
+            Paso 3: Tiempo total requerido = (tiempo de preparación + tiempo de cocción) * porciones totales
+            Paso 4: Hora de inicio = tu hora de llegada - tiempo total requerido
+            `,
+          },
+            {
+            en:  `Step 1: Total baleadas = ${people} people * ${serving_size} baleadas each = ${first_step} 
+            Step 2: Total servings = ${first_step} baleadas / ${serving_size} baleadas per serving = ${second_step}
+            Step 3: Total time required = (${prepTime} minutes + ${cookTime} minutes) * ${second_step} servings = ${third_step} minutes
+            Step 4: Start time = ${original} - ${third_step} minutes = ${answer}
+             `,
+            es:  `Paso 1: Total de baleadas = ${people} personas * ${serving_size} baleadas cada uno = ${first_step}
+            Paso 2: Total de porciones = ${first_step} baleadas / ${serving_size} baleadas por porción = ${second_step}
+            Paso 3: Tiempo total requerido = (${prepTime} minutos + ${cookTime} minutos) * ${second_step} porciones = ${third_step} minutos
+            Paso 4: Hora de inicio = ${original} - ${third_step} minutos = ${answer}
+             `,
+          }],
+        "time",
+    
+        ))
+    
+        }
+
+    //question 8 baleadas
+    if (recipe.name.en == "Baleadas") {
+      const fractions = [2,4,6,8];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let originalHr = 2
+      let originalMin = 0
+      let original = originalHr+":"+originalMin+"PM"
+      let people = 3
+      let serving_size = recipe.recipeMakesAmount
+      let first_step = randomFraction/serving_size
+      let cookTime = 10
+      let prepTime = 5
+      let third_step = (cookTime+prepTime)*first_step
+      let newMins = originalMin-third_step 
+
+        let totalMinutes = 2 * 60 + 0;
+        let part1 = third_step;
+
+        // Add the desired number of minutes
+        totalMinutes += part1;
+
+        // Calculate the new hours and minutes
+        let newHours = Math.floor(totalMinutes / 60);
+        let newMinutes = totalMinutes % 60;
+
+        // Handle the case when the minutes exceed 59
+        if (newMinutes > 59) {
+          newHours += Math.floor(newMinutes / 60);
+          newMinutes %= 60;
+        }
+
+        let finalTimeHr = newHours;
+        let finalTimeMin = newMinutes;
+
+        // Adjust the finalTimeHr and finalTimeMin if necessary
+        if (finalTimeMin >= 60) {
+          finalTimeHr += Math.floor(finalTimeMin / 60);
+          finalTimeMin %= 60;
+        }
+
+        // Add leading zeros if finalTimeMin is 9 or less
+        finalTimeMin = finalTimeMin.toString().padStart(2, '0');
+
+        let answer = finalTimeHr + ":" + finalTimeMin+ "PM";
+;
+  
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria wants to prepare  ${randomFraction} Baleadas for her neighbors. If she begins cooking at 2:00PM, at what time will she finish all the Baleadas? Please type your answer in hour format (H:MM AM/PM).The prep time is 5 minutes and the cook time is 10 minutes for each recipe.`,
+              es: `La tía María quiere preparar ${randomFraction} Baleadas para sus vecinos. Si comienza a cocinar a las 2:00 p. m., ¿a qué hora terminará todas las baleadas? Escriba su respuesta en formato de hora (H:MM AM/PM). El tiempo de preparación es de 5 minutos  y el tiempo de cocción es de 10 minutos por receta `,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Total servings = number of baleadas / baleadas per serving 
+            Step 2: Total time for all servings = (prep time + cook time) * total servings
+            Step 3: Finish time = Start time + total time for all servings  
+            `,
+            es: `Paso 1: Total de porciones = número de baleadas / baleadas por porción
+            Paso 2: Tiempo total para todas las porciones = (tiempo de preparación + tiempo de cocción) * porciones totales
+            Paso 3: Hora de finalización = Hora de inicio + tiempo total para todas las porciones
+            `,
+          },
+            {
+            en:  `Step 1: Total servings = ${randomFraction} baleadas / ${serving_size} baleadas per serving = ${first_step}
+            Step 2: Total time for all servings = (${prepTime} minutes + ${cookTime} minutes) * ${first_step} = ${third_step} minutes
+            Step 3: Finish time = 2:00 PM + ${third_step} minutes = ${answer}
+            `,
+            es:  `Paso 1: Total de porciones = ${randomFraction} baleadas / ${serving_size} baleadas por porción = ${first_step}
+            Paso 2: Tiempo total para todas las porciones = (${prepTime} minutos + ${cookTime} minutos) * ${first_step} = ${third_step} minutos
+            Paso 3: Hora de finalización = 2:00 p. m. + ${third_step} minutos = ${answer}
+            `,
+          }],
+        "time",
+    
+        ))
+    
+        }
+
+    //question 9 baleadas
+    if (recipe.name.en == "Baleadas") {
+      const fractions = [4,6,8,10];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let serving_size = recipe.recipeMakesAmount
+      let first_step = randomFraction/serving_size
+      let first_ingredient_key = Object.keys(recipe.ingredients)[2];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer = first_step* first_ingredient_key_amount
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria asked you to prepare the cheese required for ${randomFraction} baleadas using a measuring cup. How many cups of cheese will you need to measure for Auntie Maria?`,
+              es: `La tía María te pidió que prepararas el queso necesario para ${randomFraction} baleadas usando una taza medidora. ¿Cuántas tazas de queso necesitarás medir para la tía María?`,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Servings needed = number of baleadas / baleadas per serving 
+            Step 2: Total cups of cheese = servings needed * cups of cheese per serving 
+            `,
+            es: `Paso 1: Porciones necesarias = número de baleadas / baleadas por porción
+            Paso 2: Total de tazas de queso = porciones necesarias * tazas de queso por porción
+            `,
+          },
+            {
+            en:  `Step 1: Servings needed = ${randomFraction} baleadas / ${serving_size} baleadas per serving = ${first_step}
+            Step 2: Total cups of cheese = ${first_step} servings needed * ${first_ingredient_key_amount} cups of cheese per serving = ${answer} 
+            `,
+            es:  `Paso 1: Porciones necesarias = ${randomFraction} baleadas / ${serving_size} baleadas por porción = ${first_step}
+            Paso 2: Total de tazas de queso = ${first_step} porciones necesarias * ${first_ingredient_key_amount} tazas de queso por porción = ${answer}
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 10 baleadas
+    if (recipe.name.en == "Baleadas") {
+      let serving_size = recipe.recipeMakesAmount
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount+"/"+serving_size)
+      let answer = simplifyFraction(fractionOrInteger)
+
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `You found 1 Baleada left over in the fridge. How many cups of refried beans are in this Baleada? Hint: type your answer in fraction format.`,
+              es: `Encontraste 1 Baleada sobrante en el refrigerador. ¿Cuántas tazas de frijoles refritos hay en esta Baleada? Pista: escribe tu respuesta en formato de fracción`,
+          
+          },
+          answer.result,
+          [{
+            en: `Since 1 baleada is half a serving, cups of refried beans for 1 baleada is half of the amount required for 2 baleadas.  `,
+            es: `Dado que 1 baleada es la mitad de una porción, las tazas de frijoles refritos para 1 baleada es la mitad de la cantidad requerida para 2 baleadas.`,
+          },
+            {
+            en:  `${first_ingredient_key_amount} cup of refried beans required for ${serving_size} baleadas → ${answer.result} cup of refried beans required for 1 baleada`,
+            es:  `${first_ingredient_key_amount} taza de frijoles refritos se requiere para ${serving_size} baleadas → ${answer.result} taza de frijoles refritos se requiere para 1 baleada`,
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 1 Churros
+    if (recipe.name.en == "Churros") {
+      let first_ingredient_key = Object.keys(recipe.ingredients)[3];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer = 2
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria is helping you make churros but she only has 1 tablespoon of salt. How many churros recipes can you make with this much salt? Assume Tia Maria has all other ingredients`,
+              es:  `Tía María te está ayudando a hacer churros, pero solo tiene 1 cucharada de sal. ¿Cuántas porciones churros puedes hacer con esta cantidad de sal? Supón que Tía María tiene todos los demás ingredientes`,
+          
+          },
+          answer,
+          [{
+            en: `1 tablespoon is twice as much as 1/2 tablespoon → two halves make 1 whole`,
+            es: `1 cucharada es el doble que 1/2 cucharada → dos mitades hacen 1 entero`,
+          },
+            {
+            en:  `1 churros serving requires 1/2 tablespoon salt. Since you have 1 tablespoon available, you can make 2 churros recipes. `,
+            es:  `1 porción de churros requiere 1/2 cucharada de sal. Dado que tienes 1 cucharada disponible, puedes hacer 2 porciones. `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 2 Churros
+    if (recipe.name.en == "Churros") {
+      let randomNum = randomInt(3,10)
+      let random2 = randomNum+ 1
+      let serving_size = recipe.recipeMakesAmount
+      let first_ingredient_key = Object.keys(recipe.ingredients)[4];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer = random2* first_ingredient_key_amount
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `The word is out! Your friends found out about Auntie Maria’s delicious Churros and they decided to join you at her house to have some. If ${randomNum} friends join you, and you all have ${serving_size} churros each, how many cups of oil does Auntie Maria need to cook all churros? Remember, 1 serving = 4 churros.`,
+              es:  `¡Se corrió la voz! Tus amigos se enteraron de los deliciosos churros de la tía María y decidieron acompañarte a su casa para comer unos. Si ${randomNum} amigos se unen a ti y todos tienen ${serving_size} churros cada uno, ¿cuántas tazas de aceite necesita la tía María para cocinar todos los churros? Recuerda, 1 ración equivale a 4 churros. `,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Each person has 1 serving (${serving_size} churros). Total people = total servings
+            Step 2:  Cups of Oil = total servings * cups of oil per 1 serving
+            `,
+            es: `Paso 1: Cada persona tiene 1 porción (${serving_size} churros). Total de personas = total de porciones 
+            Paso 2: Tazas de aceite = total de porciones* tazas de aceite por 1 porción
+            `,
+          },
+            {
+            en:  `Step 1: Total people = total servings = ${randomNum} +1 = ${random2}
+            Step 2:  Cups of Oil = ${random2} servings * ${first_ingredient_key_amount} cups of oil for 1 serving = ${answer}
+             `,
+            es:  `Paso 1: Total de personas = total de porciones = ${randomNum}+ 1 = ${random2}
+            Paso 2: Tazas de aceite = ${random2} porciones * ${first_ingredient_key_amount} tazas de aceite por 1 porción = ${answer}
+             `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 3 Churros
+    if (recipe.name.en == "Churros") {
+      let randomNum = randomInt(3,10)
+      let random2 = randomNum+ 1
+      let serving_size = recipe.recipeMakesAmount
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger= convertToFraction(first_ingredient_key_amount+"/2")
+      let answer = simplifyFraction(fractionOrInteger)
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `If you need ${first_ingredient_key_amount} cup of flour to make ${serving_size} Churros, how many cups of flour do you need for 2 Churros? Please write your answer as a fraction.`,
+              es:  `Si necesitas ${first_ingredient_key_amount} taza de harina para hacer ${serving_size} Churros, ¿cuántas tazas de harina necesitas para 2 Churros? Por favor, escribe tu respuesta como una fracción.`,
+          
+          },
+          answer.result,
+          [{
+            en: `Hint: 2 churros are half as many as ${serving_size} churros. You need half the amount of flour than you need for ${serving_size} churros.`,
+            es: `Pista: 2 churros son la mitad de ${serving_size} churros. Necesitas la mitad de la cantidad de harina que necesitas para ${serving_size} churros.`,
+          },
+            {
+            en:  `${serving_size} Churros require ${first_ingredient_key_amount} cup of flour. 2 Churros require half as much flour → ${answer.result} cups`,
+            es:  `${serving_size} Churros requieren ${first_ingredient_key_amount} taza de harina. 2 Churros requieren la mitad de la cantidad de harina → ${answer.result} tazas `,
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 4 Churros
+    if (recipe.name.en == "Churros") {
+      let randomNum = randomInt(2,5)
+      const fractions = [10,20,30,40];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let answer = randomFraction*randomNum
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `You decide to sell Auntie Maria’s delicious churros to your classmates. If you charge ${randomNum} dollars for one churro and you sell ${randomFraction} churros, how much money did you make?`,
+              es:  `Decides vender los deliciosos churros de la tía María a tus compañeros de clase. Si cobras ${randomNum} dólares por un churro y vendes ${randomFraction} churros, ¿cuánto dinero ganaste?`,
+          
+          },
+          answer,
+          [{
+            en: `Total money = money for 1 churro * churros sold `,
+            es: `Total de dinero = dinero por 1 churro * churros vendidos`,
+          },
+            {
+            en:  `Total money = ${randomNum} dollars * ${randomFraction} churros sold = ${answer} `,
+            es:  `Total de dinerol = ${randomNum} dólares * ${randomFraction} churros vendidos = ${answer}`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 5 Churros
+    if (recipe.name.en == "Churros") {
+      let randomNum = randomInt(3,10)
+      let random2 = randomNum*4
+      let serving_size = recipe.recipeMakesAmount
+      let answer = random2 * 4
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `You need 1 cup of water to make ${serving_size} Churros. How many Churros can you make with ${randomNum} quarts of water? Hint: 1 quart = 4 cups.`,
+              es: `Necesitas 1 taza de agua para hacer ${serving_size} Churros. ¿Cuántos churros puedes hacer con ${randomNum} cuartos de galón de agua? Pista: 1 cuarto es igual a 4 tazas.`,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Cups of water = quarts of water * 4 cups per quart
+            Step 2: Total churros = cups of water * churros for 1 cup of water
+            `,
+            es: `Paso 1: Tazas de agua = cuartos de galón de agua * 4 tazas por cuarto
+            Paso 2: Total de churros  = tazas de agua * churros por 1 taza de agua
+            `,
+          },
+            {
+            en:  `Step 1: Cups of water = ${randomNum} quarts * 4 cups per quart = ${random2} cups 
+            Step 2: Total churros = ${random2} cups * 4 churros for 1 cup of water = ${answer}
+            `,
+            es:  `Paso 1: Tazas de agua = ${randomNum} cuartos * 4 tazas por cuarto = ${random2} tazas
+            Paso 2: Total de churros = ${random2} tazas * 4 churros por 1 taza de agua = ${answer}
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 6 Churros
+    if (recipe.name.en == "Churros") {
+      const fractions = [4,6,8];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let random2 = randomFraction*2
+      let serving_size = recipe.recipeMakesAmount
+      let first_step = random2/serving_size
+      let prepTime = 10
+      let cookTime = 20
+      let answer = (prepTime+cookTime)*first_step
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria and you are preparing Churros for your parents. If each of them will have ${randomFraction} churros, how many minutes will it take to prepare and cook the churros? The prep time for one recipe is 10 minutes and cook time is 20.`,
+              es: `La tía María y tú están preparando churros para tus padres. Si cada uno de ellos tendrá ${randomFraction} churros, ¿cuántos minutos tardarán en preparar y cocinar los churros? El tiempo de preparación es de 10 minutos y el tiempo de cocción es de 20 minutos por receta.`,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Total churros = churros for Mom + churros for Dad
+            Step 2: Total servings = total churros / number of churros per serving 
+            Step 3: Total time = (prep time + cook time) * total servings 
+            `,
+            es: `Paso 1: Total de churros = churros para mamá + churros para papá
+            Paso 2: Total de porciones = total de churros / número de churros por porción 
+            Paso 3: Tiempo total = (tiempo de preparación + tiempo de cocción) * porciones totales
+            `,
+          },
+            {
+            en:  `Step 1: Total churros =  ${randomFraction} churros for Mom + ${randomFraction} churros for Dad =${random2}
+            Step 2: Total servings = ${random2} total churros / ${serving_size} = ${first_step} servings 
+            Step 3: Total time = (${prepTime} minutes + ${cookTime} minutes) * ${first_step} servings = ${answer} minutes
+            `,
+            es:  `Paso 1: Total de churros  = ${randomFraction} churros para mamá + ${randomFraction} churros para papá = ${random2}
+            Paso 2: Total de porciones = ${random2} total de churros / ${serving_size} = ${first_step} de porciones
+            Paso 3: Tiempo total = (${prepTime} minutos + ${cookTime} minutos) * ${first_step} porciones = ${answer} minutos
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 7 Churros
+    if (recipe.name.en == "Churros") {
+      let hrs = 1
+      let min = randomInt(0,30)
+      let prepTime = 10
+      let cookTime = 20
+      let first_step = prepTime+cookTime
+      let newMins = min+first_step
+      min = min.toString().padStart(2, '0');
+      let original = hrs+":"+min+"PM"
+      let answer = hrs+":"+newMins+"PM"
+      let serving_size = recipe.recipeMakesAmount
+
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `If Auntie Maria started making churros at ${original} and she is making 4 Churros, at what time will she finish cooking? Remember, ${serving_size} churros = 1 serving. Prep time is 10 minutes and cook time is 20 minutes for 1 serving.`,
+              es: `Si la tía María comenzó a hacer churros a las ${original} y está haciendo 4 churros, ¿a qué hora terminará de cocinar? Recuerda, 4 churros equivalen a 1 porción. El tiempo de preparación es de 10 minutos y el tiempo de cocción es de 20  minutos para una porción `,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Time required = prep time + cook time 
+            Step 2: Finish time = start time + time required 
+            `,
+            es: `Paso 1: Tiempo requerido = tiempo de preparación + tiempo de cocción
+            Paso 2: Hora de finalización = hora de inicio + tiempo requerido
+            `,
+          },
+            {
+            en:  `Step 1: Time required = ${prepTime} minutes + ${cookTime} minutes = ${first_step} minutes 
+            Step 2: Finish time = ${original} + ${first_step} minutes = ${answer}
+            `,
+            es:  `Paso 1: Tiempo requerido = ${prepTime} minutos + ${cookTime} minutos = ${first_step} minutos
+            Paso 2: Hora de finalización = ${original} + ${first_step} minutos = ${answer}
+            `,
+          }],
+        "time",
+    
+        ))
+    
+        }
+
+    //question 8 Churros
+    if (recipe.name.en == "Churros") {
+      const fractions = [8,12,16,20,24];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let serving_size = recipe.recipeMakesAmount
+      let first_step = randomFraction/serving_size
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer = first_step* first_ingredient_key_amount
+
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `How many cups of water do you need to prepare ${randomFraction} Churros?`,
+              es: `¿Cuántas tazas de agua necesitas para preparar ${randomFraction} Churros?`,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Total servings required = # of churros needed / # of churros per serving
+            Step 2: Cups of water = total servings * cups of water for 1 serving 
+            `,
+            es: `Paso 1: Total de porciones requeridas = # de churros necesarios / # de churros por porción
+            Paso 2: Tazas de agua = total de porciones * tazas de agua por 1 porción
+            `,
+          },
+            {
+            en:  `Step 1: Total servings required = ${randomFraction} churros / ${serving_size} churros per serving = ${first_step} servings
+            Step 2: Cups of water = ${first_step} servings * ${first_ingredient_key_amount} cup of water per serving = ${answer}
+            `,
+            es:  `Paso 1: Total de porciones requeridas = ${randomFraction} churros / ${serving_size} churros por ración = ${first_step} porciones
+            Paso 2: Tazas de agua = ${first_step} porciones * ${first_ingredient_key_amount} taza de agua por porción = ${answer}
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 9 Churros
+    if (recipe.name.en == "Churros") {
+      const fractions = [16,24,32,40,48];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let first_step = randomFraction/8
+      let answer = first_step* 5
+
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `If you need 5 tablespoons of sugar to make 8 Churros, how many tablespoons of sugar do you need for ${randomFraction} Churros?`,
+              es: `Si necesitas 5 cucharadas de azúcar para hacer 8 Churros, ¿cuántas cucharadas de azúcar necesitas para ${randomFraction} Churros?`,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Multiplying factor = churros needed / given churros 
+            Step 2: Tablespoons of sugar = tablespoons of sugar for 8 churros * multiplying factor
+            `,
+            es: `Paso 1: Factor multiplicador = churros necesarios / churros dados
+            Paso 2: Cucharadas de azúcar = cucharadas de azúcar para 8 churros * factor multiplicador
+            `,
+          },
+            {
+            en:  `Step 1: Multiplying factor = ${randomFraction} churros / 8 churros = ${first_step} 
+            Step 2: Tablespoons of sugar = 5 * ${first_step} = ${answer}
+            `,
+            es:  `Paso 1: Factor multiplicador = ${randomFraction} churros / 8 churros = ${first_step}
+            Paso 2: Cucharadas de azúcar = 5 * ${first_step} = ${answer}
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 10 Churros
+    if (recipe.name.en == "Churros") {
+      let answer = '1/6'
+
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria has 1/4 cup of flour, 1/2 cup of water, and 1/6 teaspoon of salt. Which of these 3 fractions is the smallest? Hint: type your answer in fraction form (example: 1/8).`,
+              es: `Tía María tiene 1/4 de taza de harina, 1/2 taza de agua y 1/6 de cucharadita de sal. ¿Cuál de estas 3 fracciones es la más pequeña? Pista: escribe tu respuesta en forma de fracción (ejemplo: 1/8).`,
+          
+          },
+          answer,
+          [{
+            en: `Unit fractions get smaller as the denominator increases. Think of it like sharing a pizza with more friends—the more friends you have, the smaller the slice each person gets. Similarly, as the denominator in a unit fraction gets bigger, the unit fraction becomes smaller. In a similar way, as the denominator of a unit fraction gets smaller, the fraction becomes bigger. `,
+            es: `Las fracciones unitarias se vuelven más pequeñas a medida que el denominador aumenta. Piénsalo como compartir una pizza con más amigos: cuantos más amigos tengas, más pequeña será la porción que le toque a cada persona. De manera similar, a medida que el denominador de una fracción unitaria se hace más grande, la fracción unitaria se vuelve más pequeña. De manera similar, a medida que el denominador de una fracción unitaria se hace más pequeño, la fracción se vuelve más grande`,
+          },
+            {
+            en:  `All values are unit fractions. Comparing the three fractions, the largest denominator is 6. This means that the unit fraction representing the teaspoon of salt is the smallest - Answer: 1/6 `,
+            es:  `Todos los valores son fracciones unitarias. Comparando las tres fracciones, el denominador más grande es 6. Esto significa que la fracción unitaria que representa la cucharadita de sal es la más pequeña. Respuesta: 1/6`,
+          }],
+        "fraction",
+    
+        ))
+    
+        }
+
+    //question 1 Brownie
+    if (recipe.name.en == "Brownie with ice cream") {
+      let randomNum = randomInt(2,7)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let answer = first_ingredient_key_amount* randomNum
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria wants to make ${randomNum} servings of brownies with ice cream for Christmas. How many cups of flour will she need?`,
+              es:  `Tía María quiere hacer ${randomNum} porciones de brownies con helado para Navidad. ¿Cuántas tazas de harina necesitará?`,
+          
+          },
+          answer,
+          [{
+            en: `Total cups of flour = (${first_ingredient_key_amount} cups of flour per serving) * servings needed`,
+            es: `Total de tazas de harina = (${first_ingredient_key_amount} tazas de harina por porción) * porciones necesarias`,
+          },
+            {
+            en:  `Total cups of flour = (${first_ingredient_key_amount} cups of flour per serving) * ${randomNum} = ${answer} `,
+            es:  `Total de tazas de harina= (${first_ingredient_key_amount} tazas de harina por porción) * ${randomNum} = ${answer} `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 2 Brownie
+    if (recipe.name.en == "Brownie with ice cream") {
+      let randomNum = randomInt(2,9)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[6];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let first_step = first_ingredient_key_amount/2
+      let answer = randomNum
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `You and Auntie Maria are making ${randomNum} servings of brownies with ice cream. At the market, 1 container of ice cream holds 4 cups. How many ice cream containers will Auntie need to buy to make ${randomNum} servings? Hint: 1 cup of ice cream = 2 scoops.`,
+              es: `Tía María y tú están haciendo ${randomNum} porciones de brownies con helado. En el mercado, 1 envase de helado contiene 4 tazas. ¿Cuántos envases de helado deberá comprar Tía María para hacer ${randomNum} porciones? Pista: 1 taza de helado equivale a 2 bolas.`,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Cups of ice cream per serving = scoops per serving / scoops in a cup 
+            Step 2: Cups in container = cups per serving 
+            Step 3: Total Containers = total servings 
+            `,
+            es: `Paso 1: Tazas de helado por porción = bolas por porción / bolas en una taza
+            Paso 2: Tazas en el envase = tazas por porción
+            Paso 3: Envases totales = porciones totales
+            `,
+          },
+            {
+            en:  `Step 1: Cups of ice cream per serving = ${first_ingredient_key_amount} / 2 = ${first_step} cups 
+            Step 2: Cups in container = cups per serving = ${first_step} cups
+            Step 3: Total Containers = total servings = ${randomNum} containers 
+            `,
+            es:  `Paso 1: Tazas de helado por porción = 8 / 2 = 4 tazas
+            Paso 2: Tazas en el envase = tazas por porción = 4 tazas
+            Paso 3: Envases totales = porciones totales = ${randomNum} envases
+             `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 3 Brownie
+    if (recipe.name.en == "Brownie with ice cream") {
+      let randomNum = randomInt(2,11)
+      let prepTime = 5
+      let answer = randomNum*prepTime
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `You are helping Auntie Maria prepare ${randomNum} servings of brownies with ice cream. If each serving takes 5 minutes to prepare, how long will it take you to prepare all servings? Please type your answer in minutes. `,
+              es: `Estás ayudando a Tía María a preparar ${randomNum} porciones de brownies con helado. Si cada porción lleva 5 minutos de preparación, ¿cuánto tiempo te llevará preparar todas las porciones? Por favor, escribe tu respuesta en minutos. `,
+          
+          },
+          answer,
+          [{
+            en: `Preparation time = prep time for 1 serving * required servings`,
+            es: `Tiempo de preparación = tiempo de preparación por 1 porción * porciones requeridas`,
+          },
+            {
+            en:  `Preparation time = ${prepTime} minutes * ${randomNum} servings = ${answer} minutes`,
+            es:  `Tiempo de preparación = ${prepTime} minutos * ${randomNum} porciones = ${answer} minutos`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 4 Brownie
+    if (recipe.name.en == "Brownie with ice cream") {
+      let randomNum = randomInt(2,11)
+      let serving_size = recipe.servingSize
+      let answer = randomNum*serving_size
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `
+              Auntie Maria needs to make ${randomNum} servings of brownies with ice cream. Each serving has ${serving_size} brownies. How many brownies does she need to bake in total?`,
+              es: `Tía María necesita hacer ${randomNum} porciones de brownies con helado. Cada porción tiene ${serving_size} brownies. ¿Cuántos brownies necesita hornear en total? `,
+          
+          },
+          answer,
+          [{
+            en: `Total brownies = brownie servings * brownies per serving `,
+            es: `Total de brownies = porciones de brownies * brownies por porción`,
+          },
+            {
+            en:  `Total brownies = ${randomNum} servings * ${serving_size} = ${answer}`,
+            es:  `Total de brownies= ${randomNum} porciones * ${serving_size} = ${answer}`,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 5 Brownie
+    if (recipe.name.en == "Brownie with ice cream") {
+      let randomNum = randomInt(2,11)
+      let prepTime = 20
+      let start = randomInt(0,39)
+      let finalTimeMin = start.toString().padStart(2, '0');
+      let original = "10:"+finalTimeMin+"AM"
+      let newTime = start+20
+      let answer = "10:"+newTime+"AM"
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria's brownies take ${prepTime} minutes to bake. If she starts baking at ${original}, at what time will the brownies be ready to come out of the oven?  `,
+              es: `Los brownies de Tía María tardan ${prepTime} minutos en hornearse. Si ella comienza a hornear a las ${original}, ¿a qué hora estarán listos los brownies para sacarlos del horno?`,
+          
+          },
+          answer,
+          [{
+            en: `Ready time = Start time + ${prepTime} minutes  `,
+            es: `Hora de finalización = Hora de inicio + ${prepTime} minutos`,
+          },
+            {
+            en:  `Ready time = ${original} + ${prepTime} minutes = ${answer} `,
+            es:  `Hora de finalización = ${original} + ${prepTime} minutos = ${answer}`,
+          }],
+        "time",
+    
+        ))
+    
+        }
+
+    //question 6 Brownie
+    if (recipe.name.en == "Brownie with ice cream") {
+      const fractions = [20,40,60,80];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let first_step = randomFraction*2
+      let answer = first_step/8
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `If Auntie Maria wants to bake enough brownies with ice cream to serve ${randomFraction} people, and each person gets 2 brownies, how many servings of brownies with ice cream does she need to make?`,
+              es: `Si Tía María quiere hornear suficientes brownies con helado para servir a ${randomFraction} personas, y cada persona recibe 2 brownies, ¿cuántas porciones de brownies con helado necesita hacer?`,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Total brownies = number of people * brownies per person 
+            Step 2: Total servings = total brownies / brownies per serving 
+            `,
+            es: `Paso 1: Total de brownies = número de personas * brownies por persona
+            Paso 2: Total de porciones = total de brownies / brownies por porción
+            `,
+          },
+            {
+            en:  `Step 1: Total brownies = ${randomFraction} people * 2 brownies per person = ${first_step}
+            Step 2: Total servings = ${first_step} total brownies / 8  = ${answer}
+            `,
+            es:  `Paso 1: Total de brownies = ${randomFraction} personas * 2 brownies por persona = ${first_step}
+            Paso 2: Total de porciones =${first_step} total de brownies / 8 = ${answer}
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 7 Brownie
+    if (recipe.name.en == "Brownie with ice cream") {
+      const fractions = [2,4,6,8,10];
+      const randomIndex = Math.floor(Math.random() * fractions.length);
+      const randomFraction = fractions[randomIndex];
+      let first_ingredient_key = Object.keys(recipe.ingredients)[1];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let multipliedResult = multiplyOrDivide(fractionOrInteger, randomFraction, 'multiply')
+      let answer = simplifyFraction(multipliedResult.result)
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `You and Auntie Maria are cooking a batch of brownies with ice cream that yields ${randomFraction} recipe servings. If the original recipe calls for ${first_ingredient_key_amount} cup of butter per serving, how much butter do you need in total for the batch? Please type your answer in cups.`,
+              es: `Tía María y tú están cocinando una tanda de brownies con helado que rinde ${randomFraction} porciones de la receta. Si la receta original requiere ${first_ingredient_key_amount} taza de mantequilla por porción, ¿cuánta mantequilla necesitas en total para la tanda? Por favor, escribe tu respuesta en tazas.`,
+          
+          },
+          answer.result,
+          [{
+            en: `Total cups of butter = batch servings * (${first_ingredient_key_amount}) cup of butter per serving`,
+            es: `Total de tazas de mantequilla = porciones de la tanda * (${first_ingredient_key_amount}) taza de mantequilla por porción`,
+          },
+            {
+            en:  `Total de tazas de mantequilla = ${randomFraction} porciones de la tanda * (${first_ingredient_key_amount}) taza de mantequilla por porción = ${answer.result}`,
+            es:  `Total cups of butter = ${randomFraction} batch servings * ${first_ingredient_key_amount} cup of butter per serving = ${answer.result} `,
+          }],
+        answer.types,
+    
+        ))
+    
+        }
+
+    //question 8 Brownie
+    if (recipe.name.en == "Brownie with ice cream") {
+      let randomNum = randomInt(2,11)
+      let prepTime = 5
+      let cookTime = 20
+      let time = prepTime+cookTime
+      let start = randomInt(0,35)
+      let finalTimeMin = start.toString().padStart(2, '0');
+      let original = "1:"+finalTimeMin+"PM"
+      let newTime = start+time
+      let answer = "1:"+newTime+"PM"
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `If Auntie Marie starts preparing 1 serving of brownies with ice cream at ${original}, at what time will she finish making the recipe? The prep time is 5 minutes and the cook time is 20 minutes per recipe. `,
+              es: `Si Tía María comienza a preparar 1 porción de brownies con helado a las ${original}, ¿a qué hora terminará de hacer la receta? El tiempo de preparación es de 5 minutos y el tiempo de cocción es de 20 minutos por receta.`,
+          
+          },
+          answer,
+          [{
+            en: `Step 1: Total Time for 1 serving = prep time + cook time 
+            Step 2: Finish Time = Start Time + total time for 1 serving 
+             `,
+            es: `Paso 1: Tiempo total para 1 porción = tiempo de preparación + tiempo de cocción
+            Paso 2: Hora de finalización = Hora de inicio + tiempo total para 1 porción
+            `,
+          },
+            {
+            en:  `
+            Step 1: Total Time for 1 serving = ${prepTime} min + ${cookTime} min = ${time} minutes 
+            Step 2: Finish Time = ${original} + ${time} minutes = ${answer}
+             `,
+            es:  `Paso 1: Tiempo total para 1 porción = ${prepTime} min + ${cookTime} min = ${time} minutos
+            Paso 2: Hora de finalización = ${original} + ${time} minutos = ${answer}
+            `,
+          }],
+        "time",
+    
+        ))
+    
+        }
+
+    //question 9 Brownie
+    if (recipe.name.en == "Brownie with ice cream") {
+      let randomNum = randomInt(2,11)
+      let first_ingredient_key = Object.keys(recipe.ingredients)[0];
+      let first_ingredient_key_amount = recipe.ingredients[first_ingredient_key].amount;
+      let fractionOrInteger = convertToFraction(first_ingredient_key_amount)
+      let second_ingredient_key = Object.keys(recipe.ingredients)[3];
+      let second_ingredient_key_amount = recipe.ingredients[second_ingredient_key].amount;
+      let fractionOrInteger1 = convertToFraction(second_ingredient_key_amount)
+      let first_step = randomNum* fractionOrInteger
+      let second_step = randomNum* fractionOrInteger1
+      let answer = first_step+ second_step
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `Auntie Maria is baking ${randomNum} servings of brownies with ice cream for your school event. Each serving requires 2 cups of flour and 1 cup of sugar. How many total cups of flour and sugar does she need in total? Hint: type your answer in cups.`,
+              es: `Tía María está horneando ${randomNum} porciones de brownies con helado para el evento de tu escuela. Cada porción requiere 2 tazas de harina y 1 taza de azúcar. ¿Cuántas tazas de harina y azúcar necesita en total? Pista: escribe tu respuesta en tazas.`,
+          
+          },
+          answer,
+          [{
+            en: `
+            Step 1: Cups of flour  = servings * cups of flour per serving 
+            Step 2: Cups of sugar = servings * cups of sugar per serving
+            Step 3: Total cups = cups of flour + cups of sugar 
+            `,
+            es: `Paso 1: Tazas de harina = porciones * tazas de harina por porción
+            Paso 2: Tazas de azúcar = porciones * tazas de azúcar por porción
+            Paso 3: Total de tazas= tazas de harina + tazas de azúcar
+            `,
+          },
+            {
+            en:  `Step 1: Cups of flour  = ${randomNum} servings * ${first_ingredient_key_amount} cups flour per serving = ${first_step}
+            Step 2: Cups of sugar = ${randomNum} servings * ${second_ingredient_key_amount} cup sugar per serving = ${second_step}
+            Step 3: Total cups = ${first_step} cups of flour + ${second_step} cups of sugar = ${answer}
+            `,
+            es:  `Paso 1: Tazas de harina = ${randomNum} porciones * ${first_ingredient_key_amount} tazas de harina por porción = ${first_step}
+            Paso 2: Tazas de azúcar = ${randomNum} porciones * ${second_ingredient_key_amount} taza de azúcar por porción = ${second_step}
+            Paso 3: Total de tazas= ${first_step} tazas de harina + ${second_step} tazas de azúcar= ${answer}
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    //question 10 Brownie
+    if (recipe.name.en == "Brownie with ice cream") {
+      let answer = 2
+     
+         // create question
+         generatedQuestions.push(createGameQuestion(
+          {
+              en: `
+              Auntie Maria is running low on butter and cocoa powder. She uses a measuring cup to see if she has enough for one serving of brownies with ice cream. She discovers that she has 1/6 cup of butter and 1/8 cup of cocoa powder. Are these quantities enough for her to make one serving of brownies with ice cream? Type 1 for ‘yes’ or  2 for ‘no’ in the answer box`,
+              es: `A Tía María le queda poca mantequilla y cacao en polvo. Usa una taza medidora para ver si tiene suficiente para una porción de brownies con helado. Descubre que tiene 1/6 de taza de mantequilla y 1/8 de taza de cacao en polvo. ¿Son estas cantidades suficientes para hacer una porción de brownies con helado? Escribe 1 para responder "sí" o 2 para responder "no" en el cuadro de respuesta`,
+          
+          },
+          answer,
+          [{
+            en: `Compare the fractions from Auntie’s amounts with the fractions from the recipe. Remember, unit fractions get smaller as the denominator increases. In a similar way, as the denominator of a unit fraction gets smaller, the fraction becomes bigger. `,
+            es: `Compara las fracciones de las cantidades de Tía María con las fracciones de la receta. Recuerda que las fracciones unitarias son más pequeñas a medida que el denominador aumenta. De manera similar, a medida que el denominador de una fracción unitaria se hace más pequeño, la fracción se vuelve más grande.`,
+          },
+            {
+            en:  `
+            Comparing the four fractions: 
+            1/6 cup of butter is less than (<) 1/2 cup of butter 
+            1/4 cup of cocoa powder is less than (<) 1/2 cup of cocoa powder
+            Answer: No = 2
+            `,
+            es:  `
+            Comparando las cuatro fracciones:
+            1/6 de taza de mantequilla es menor (<) que 1/2 de taza de mantequilla
+            1/4 de taza de cacao en polvo es menor (<) que 1/2 de taza de cacao en polvo
+            Respuesta: No = 2
+            `,
+          }],
+        "wholeNumber",
+    
+        ))
+    
+        }
+
+    
+    
+
+
+  return generatedQuestions;
+}
+
 
 function generateLevel2AuntQuestions(recipe, randomInt){
     let generatedQuestions = [];
@@ -1673,16 +3148,6 @@ function generateLevel2AuntQuestions(recipe, randomInt){
         }
 
 
-
-
-
-
-
-
-
-
-
-
     return generatedQuestions;
 }
 
@@ -2896,15 +4361,16 @@ export default function generateAuntOperationsAndAlgebraQuestions(recipe,randomG
     const { randomInt } = randomGenerator;
 
     // random number to choose a dish
-
-
-
+    if (recipe.level == 1) {
+      // add the A section
+      let generatedQuestions = generateLevel1AuntQuestions(recipe, randomInt);
+      questions = questions.concat(generatedQuestions);
+  }
     if (recipe.level == 2) {
         // add the A section
         let generatedQuestions = generateLevel2AuntQuestions(recipe, randomInt);
         questions = questions.concat(generatedQuestions);
-    }
-
+    }  
     if (recipe.level == 3) {
 
         // add the A section
