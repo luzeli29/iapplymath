@@ -11,6 +11,8 @@ import Login from 'pages/user/login'
 import React, { useState } from 'react'
 import getText from '@utils/text/getText'
 import { setLocation } from 'store/Slices/musicSlice'
+import Creator from 'pages/user/checkIn'
+import translations from '@public/text/translations'
 
 
 const brainBreaksList = {
@@ -30,7 +32,7 @@ const brainBreaksList = {
         "value": "Move Body"
     },
     "poppin-bubbles-break" : {
-        "value": "Popping Bubbles Break"
+        "value": "Popping Bubbles"
     }
 }
 
@@ -48,6 +50,7 @@ export default function LevelSelect({location =""}) {
     
     const router = useRouter()
     const [selectedLevel, setSelectedLevel] = useState()
+    const [showFeelingsView, setShowFeelingsView] = useState(true)
     const dispatch = useDispatch()
 
 
@@ -76,6 +79,13 @@ export default function LevelSelect({location =""}) {
         }
     }
 
+    const handleGoBack = () => {
+        let url = router?.query?.url ?? false
+        router.push(url)
+    }
+
+    if(showFeelingsView) return <Creator onEnd={setShowFeelingsView} />
+
     return (
         <div>
             <div>
@@ -96,6 +106,7 @@ export default function LevelSelect({location =""}) {
                 <button className='basic_button mx-auto' onClick={() => handleLevelSelect()} disabled={!selectedLevel}>
                     {getText('start',lang)}
                 </button>
+                <button className='basic_button mx-auto' onClick={handleGoBack}>{translations?.back?.[lang]}</button>
             </div>
         </div>
     )
