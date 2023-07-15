@@ -104,9 +104,9 @@ const AuntHouseQuestions = ({user,settings,recipes}) => {
         if(questionTypeKey == 'familySize') {
             tempFamilySize = window.sessionStorage.getItem('FAMILY_SIZE')
             window.sessionStorage.removeItem('FAMILY_SIZE')
-            route = getFinishRoute(questionTypeKey, recipeKey,tempFamilySize)
+            route = getFinishRoute(questionTypeKey, recipeKey,tempFamilySize, recipe.level)
         } else {
-            route = getFinishRoute(questionTypeKey, recipeKey,familySize)
+            route = getFinishRoute(questionTypeKey, recipeKey,familySize ,recipe.level)
         }
         router.push(route)
         setLoading(true)
@@ -143,19 +143,15 @@ const AuntHouseQuestions = ({user,settings,recipes}) => {
     return render()
 }
 
-function getFinishRoute(questionTypeKey, recipeKey,familySize) {
+function getFinishRoute(questionTypeKey, recipeKey,familySize, level) {
     if (!questionTypeKey) {
         return '/'
     }
 
-    switch(questionTypeKey) {
-        case 'basic':
-            return '/game/auntHouse/quiz/familySize?recipeKey=' + recipeKey
-        case "familySize":
-            return '/game/auntHouse/quiz/familyQuestion?recipeKey=' + recipeKey + '&familySize=' + familySize
-        case "familyQuestion":
-            return '/dialog/auntHouseOutro'
-    }
+   
+        return '/dialog/auntHouseOutro'
+    
+
 }
 
 export default RetrieveUserContext(AuntHouseQuestions,['gameReady','hasActiveGame'])
