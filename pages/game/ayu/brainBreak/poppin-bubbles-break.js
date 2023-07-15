@@ -7,8 +7,8 @@ import Loading from '@comps/screens/loading';
 import Error from 'pages/error';
 import Login from '../../../user/login';
 import useTimer from '@hooks/useTimer';
-import Swal from 'sweetalert2';
-// import music from '../../public/sound/salsa2_bg.mp3';
+import { GoBackAlert } from '@utils/ayu/goBackAlert';
+
 
 export default function PoppinBubblesBreak({ setView }) {
     const [bubbleCount, setBubbleCount] = useState(0)
@@ -17,19 +17,10 @@ export default function PoppinBubblesBreak({ setView }) {
     const { time:bubbleTime, resetTimer:resetBubbleTimer } = useTimer(5);
 
     useEffect(() => {
-        if(time <= 0) {
-            Swal.fire({
-                title: translations?.brain_break_alert_title[lang],
-                showDenyButton: true,
-                confirmButtonText: translations?.brain_break_alert_button1[lang],
-                denyButtonText: translations?.brain_break_alert_button2[lang],
-              }).then((result) => {
-                if (result.isConfirmed) {
-                    handleBack()
-                }
-              })
-        }
-    })
+      if(time <= 0) {
+          GoBackAlert(handleBack, 10, lang)
+      }
+  })
 
     // Implementation
     useEffect(() => {
@@ -63,15 +54,7 @@ export default function PoppinBubblesBreak({ setView }) {
     if(!isLoggedIn) return <Login/>
 
     const handleBack = () => {
-
-      let redirect = router?.query?.url ?? ''
-
-      if(redirect) {
-        router.push(decodeURIComponent(redirect))
-      }else {
-        router.push('/game/map')
-        
-      }
+      router.back()
     };
 
     return (

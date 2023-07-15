@@ -58,6 +58,11 @@ const Popup = ({ icon, content, lang }) => {
             </button>
             </div>
             <div className="app">{content}</div>
+            
+            <div style={{ marginLeft: size.width, position: 'absolute'}}>
+              <textarea style={{ height: size.height + 40, width: parseInt(size?.width ?? 370) }}/>
+            </div>
+
           </ResizableBox>
         </Draggable>
       )}
