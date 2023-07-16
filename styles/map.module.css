@@ -112,7 +112,6 @@
     top: 1vh;
     left: 10vw;
     margin-left: 10px;
-    color: white;
 }
 
 .restaurant_text {
@@ -170,7 +169,6 @@
 #aunt_house {
     position: absolute;
     top: 10%;
-    opacity: 30%;
     left: 14%;
 }
 

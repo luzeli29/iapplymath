@@ -3161,7 +3161,7 @@ function generateLevel3AuntQuestions(recipe, randomInt){
         let randomNum = randomInt(10,31);
         let randomNum2 = randomInt(10,21);
 
-        answer = randomNum*randomNum2
+        answer = randomNum*randomNum2*recipe.prepTime
   
 
        // create question
@@ -3173,12 +3173,12 @@ function generateLevel3AuntQuestions(recipe, randomInt){
         },
         answer,
         [{
-            en:  randomNum + " x " + randomNum2 + " = ??? " ,
-            es:  randomNum + " x " + randomNum2 + " = ??? " , 
+            en:  randomNum + " x " + randomNum2  + ' X ' + recipe.prepTime + " = ??? " ,
+            es:  randomNum + " x " + randomNum2 + ' X ' + recipe.prepTime + " = ??? " , 
         },
         {
-          en:  randomNum + " x " + randomNum2 + " = " + answer ,
-          es:  randomNum + " x " + randomNum2 + " = " + answer , 
+          en:  randomNum + " x " + randomNum2 + ' X ' + recipe.prepTime +  " = " + answer ,
+          es:  randomNum + " x " + randomNum2 + ' X ' + recipe.prepTime + " = " + answer , 
       }],
         "wholeNumber",
   
@@ -3198,7 +3198,7 @@ function generateLevel3AuntQuestions(recipe, randomInt){
      // create question
      generatedQuestions.push(createGameQuestion(
       {
-          en: `You’re super fast at this recipe and it will take you half the amount of time to make 1 mango juice. Your friend takes the normal amount of time to make 1 mango juice. After making 35 juices, how much less time did it take you to make the mango juice than your friend? (Cook time = ${cookTime}, Preparation time = ${prepTime}) Type your answer in minutes.`,
+          en: `You’re super fast at this recipe and it will take you half the amount of time to make 1 mango juice. Your friend takes the normal amount of time to make 1 mango juice. After making 35 juices, how much less time did it take you to make the mango juice than your friend? Type your answer in minutes.`,
           es: `Eres súper rápido con esta receta y te tomará la mitad de tiempo hacer 1 jugo de mango. Tu amigo se toma la cantidad normal de tiempo para hacer 1 jugo de mango. Después de hacer 35 jugos, ¿cuánto tiempo menos te tomó  a ti hacer el jugo de mango que tu amigo? Escriba su respuesta en minutos`
       
       },
@@ -3211,7 +3211,7 @@ function generateLevel3AuntQuestions(recipe, randomInt){
         en:  "35 x (" + totalTime + ") - 35 x ("+totalTime+"/2)= " + answer + " minutes",
         es:  "35 x (" + totalTime + ") - 35 x ("+totalTime+"/2)= " + answer + " minutos" , 
     }],
-      "wholeNumber",
+      "decimal",
 
     ))
   }
@@ -3253,26 +3253,25 @@ function generateLevel3AuntQuestions(recipe, randomInt){
 
       let randomNum = randomInt(20,31);
       let randomNum2 = randomInt(30,51);
-      let cookTime = 5//recipe.cookTime
 
-      answer = cookTime*randomNum*randomNum2
+      answer = recipe.cookTime*randomNum*randomNum2
   
   
        // create question
        generatedQuestions.push(createGameQuestion(
         {
-            en: `Based on your recipe’s cook time (5 minutes), if you made ${randomNum} servings every day for ${randomNum2} days, how much time did you spend cooking?`,
-            es: `Según el tiempo de cocción de su receta (5 minutos), si preparó ${randomNum} porciones todos los días durante ${randomNum2} días, ¿cuánto tiempo pasó cocinando?`,
+            en: `Based on your recipe’s cook time, if you made ${randomNum} servings every day for ${randomNum2} days, how much time did you spend cooking?`,
+            es: `Según el tiempo de cocción de su receta, si preparó ${randomNum} porciones todos los días durante ${randomNum2} días, ¿cuánto tiempo pasó cocinando?`,
         
         },
         answer,
         [{
-          en: cookTime+" x "+randomNum+" x " +randomNum2+" = ??? " ,
-          es: cookTime+" x "+randomNum+" x " +randomNum2+" = ??? " ,
+          en: recipe.cookTime+" x "+randomNum+" x " +randomNum2+" = ??? " ,
+          es: recipe.cookTime+" x "+randomNum+" x " +randomNum2+" = ??? " ,
         },
         {
-          en:  cookTime+" x "+randomNum+" x " +randomNum2+" = " + answer ,
-          es:  cookTime+" x "+randomNum+" x " +randomNum2+" = " + answer ,
+          en:  recipe.cookTime+" x "+randomNum+" x " +randomNum2+" = " + answer ,
+          es:  recipe.cookTime+" x "+randomNum+" x " +randomNum2+" = " + answer ,
       }],
         "wholeNumber",
   
