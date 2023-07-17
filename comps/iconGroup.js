@@ -2,6 +2,7 @@ import getText from "@utils/text/getText"
 import { useState } from "react"
 import Tooltip from "./accessibility/tooltip"
 import ClickableIcon from "./clickableIcon"
+import styles from "@styles/aunt_house.module.css";
 
 export default function IconGroup({lang,icons,selectedIcon, selectIcon,getContentFromValue,width,height}) {
     const [pageNumber, setPageNumber] = useState(0)
@@ -78,7 +79,7 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
 
             <div className="col-1 mx-auto">
                 {pageNumber != 0 ? 
-                <button cl onClick={() => prevPage()}>{'<'}</button>
+                <button className={styles.next_previous_button} onClick={() => prevPage()}>{'<'}</button>
                 :
                     null
                 }
@@ -89,7 +90,7 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
             </div>
             <div className="col-1 mx-auto">
                 {pageNumber < maxPage - 1 ? 
-                <button onClick={() => nextPage()}>{'>'}</button>
+                <button className={styles.next_previous_button} onClick={() => nextPage()}>{'>'}</button>
                 :
                     null
                 }
