@@ -8,9 +8,7 @@ import Error from 'pages/error';
 import Login from '../../../user/login';
 import useTimer from '@hooks/useTimer';
 import { useDispatch } from 'react-redux';
-import { setLocation } from 'store/Slices/musicSlice';
-import Swal from 'sweetalert2';
-// import music from '../../public/sound/salsa2_bg.mp3';
+import { GoBackAlert } from '@utils/ayu/goBackAlert';
 
 export default function ChillOutBreak() {
     const {user,settings,loading, error} = useUserContext()
@@ -22,16 +20,7 @@ export default function ChillOutBreak() {
  
     useEffect(() => {
         if(time <= 0) {
-            Swal.fire({
-                title: translations?.brain_break_alert_title[lang],
-                showDenyButton: true,
-                confirmButtonText: translations?.brain_break_alert_button1[lang],
-                denyButtonText: translations?.brain_break_alert_button2[lang],
-              }).then((result) => {
-                if (result.isConfirmed) {
-                    handleBack()
-                }
-              })
+            GoBackAlert(handleBack, 10, lang)
         }
     })
 
@@ -46,17 +35,8 @@ export default function ChillOutBreak() {
     //This is called when the player is done creating
     //Should handle anything to be done in order to use avatar in game
     const handleBack = () => {
-
-        let redirect = router?.query?.url ?? ''
-
-        if(redirect) {
-          router.push(decodeURIComponent(redirect))
-          dispatch(setLocation('restaurant'))
-        }else {
-          router.push('/game/map')
-            dispatch(setLocation('map'))
-        }
-    };
+        router.back()
+      };
 
 
     return (

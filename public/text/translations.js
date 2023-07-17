@@ -123,6 +123,18 @@ const translations = {
     },
 
     // ----- General Translations -----
+    minutes: {
+        en: "Minutes",
+        es: "Minutos",
+    },
+    cooktime: {
+        en: "Cook Time",
+        es: "Tiempo de Cocción",
+    },
+    preptime: {
+        en: "Prep Time",
+        es: "Tiempo de Preparación",
+    },
     drag_me: {
         en: "Drag me!",
         es: "¡Arrástrame!",
@@ -573,8 +585,8 @@ const translations = {
         es: "Limpiar"
     },
     brain_break_alert_title: {
-        en: "Time is over! Do you want to return to the main menu?",
-        es: "¡Se acabó el tiempo! ¿Quieres volver al menú principal?"
+        en: "Time is over!",
+        es: "¡Se acabó el tiempo!"
     },
     brain_break_alert_button1: {
         en: "Go back",

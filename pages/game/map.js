@@ -114,12 +114,12 @@ const Map = ({user,settings}) => {
                            
                 />
             
-                <p className={style.aunt_house_text}>{translations.coming_soon[lang]}</p>
+                /<p className={style.aunt_house_text}>{translations.aunt_house[lang]}</p> 
 
                 <p className={style.restaurant_text}>{translations.restaurant[lang]}</p> 
                 
-                <button
-                        className={style.icon_small} id={style.aunt_house}> 
+                <button onClick={() => handleAuntsHouse()}
+                        className={style.icon_button_small} id={style.aunt_house}> 
                     <Image 
                         layout={"fill"}
                         quality={100}

@@ -8,7 +8,7 @@ import Error from 'pages/error';
 import Login from '../../../user/login';
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import useTimer from '@hooks/useTimer';
-import Swal from 'sweetalert2';
+import { GoBackAlert } from '@utils/ayu/goBackAlert';
 
 export default function FreeSyleArtBreak() {
     const canvas = useRef()
@@ -20,19 +20,10 @@ export default function FreeSyleArtBreak() {
     const { time, formattedTime } = useTimer(180)
  
     useEffect(() => {
-        if(time <= 0) {
-            Swal.fire({
-                title: translations?.brain_break_alert_title[lang],
-                showDenyButton: true,
-                confirmButtonText: translations?.brain_break_alert_button1[lang],
-                denyButtonText: translations?.brain_break_alert_button2[lang],
-              }).then((result) => {
-                if (result.isConfirmed) {
-                    handleBack()
-                }
-              })
-        }
-    })
+      if(time <= 0) {
+          GoBackAlert(handleBack, 10, lang)
+      }
+  })
 
     // Utils for free style art break
     const [color, setColor] = useState('#0008ff');
@@ -54,17 +45,8 @@ export default function FreeSyleArtBreak() {
     if(!isLoggedIn) return <Login/>
 
     const handleBack = () => {
-
-      let redirect = router?.query?.url ?? ''
-
-      if(redirect) {
-        router.push(decodeURIComponent(redirect))
-      }else {
-        router.push('/game/map')
-        
-      }
+      router.back()
     };
-
 
 
     function saveImage(image) {
