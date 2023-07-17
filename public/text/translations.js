@@ -123,6 +123,18 @@ const translations = {
     },
 
     // ----- General Translations -----
+    minutes: {
+        en: "Minutes",
+        es: "Minutos",
+    },
+    cooktime: {
+        en: "Cook Time",
+        es: "Tiempo de Cocción",
+    },
+    preptime: {
+        en: "Prep Time",
+        es: "Tiempo de Preparación",
+    },
     drag_me: {
         en: "Drag me!",
         es: "¡Arrástrame!",
