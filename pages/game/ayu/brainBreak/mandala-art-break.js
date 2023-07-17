@@ -7,43 +7,64 @@ import { useUserContext } from '@hooks/siteContext/useUserContext';
 import Loading from '@comps/screens/loading';
 import Error from 'pages/error';
 import Login from '../../../user/login';
-import { ReactSketchCanvas } from "react-sketch-canvas";
 import useTimer from '@hooks/useTimer';
-import Swal from 'sweetalert2';
+import { GoBackAlert } from '@utils/ayu/goBackAlert';
+import Mandala1 from '../mandalas/mandala1';
+import Mandala2 from '../mandalas/mandala2';
+
 
 export default function MandalaArtBreak() {
     const canvas = useRef()
     const { time, formattedTime } = useTimer(180);
- 
+    
     useEffect(() => {
-        if(time <= 0) {
-            Swal.fire({
-                title: translations?.brain_break_alert_title[lang],
-                showDenyButton: true,
-                confirmButtonText: translations?.brain_break_alert_button1[lang],
-                denyButtonText: translations?.brain_break_alert_button2[lang],
-              }).then((result) => {
-                if (result.isConfirmed) {
-                    handleBack()
-                }
-              })
-        }
-    }) 
+      if(time <= 0) {
+          GoBackAlert(handleBack, 10, lang)
+      }
+  })
 
     // Utils for free style art break
-    const [mandala_list] = useState([
-      "https://previews.123rf.com/images/queertrade/queertrade1811/queertrade181100050/111754678-simple-mandala-print-easy-coloring-page-illustration-for-kids-and-adult-beginners.jpg",
-      "https://coloringhome.com/coloring/RiA/ykq/RiAykqg6T.png",
-      "https://follen.org/wp-content/uploads/2020/04/free-mandalas-to-color-for-adults-with-kids-mandala-designs-beginners-print-and-672x870-1.png",
-      "https://www.justcolor.net/kids/wp-content/uploads/sites/12/nggallery/mandalas/Coloring-for-kids-mandalas-69780.jpg",
-      "https://www.creativefabrica.com/wp-content/uploads/2021/11/15/Simple-Mandala-Coloring-Page-Graphics-20223669-1.jpg"
-    ]);
-    const [mandala, setMandala] = useState(mandala_list[0]);
     const [color, setColor] = useState('#0008ff');
   
+
+    // Mandala colors
+    const [fillColors, setFillColors] = useState(Array(22).fill('white'))
+    const [fillColors2, setFillColors2] = useState(Array(22).fill('white'))
+
+    // Mandala List
+    const [mandala_items] = useState([
+      <Mandala1 key={1} fillColors={fillColors} />,
+      <Mandala2 key={2} fillColors={fillColors2}/>
+    ])
+
+    // Utils
+    const [currentMandala, setcurrentMandala] = useState(0);
+
     const handleChangeColor = (e) => {
       setColor(e.target.value);
     };
+
+    const handleSaveSVG = () => {
+      const svgString = new XMLSerializer().serializeToString(
+        document.querySelector('svg')
+      );
+      const blob = new Blob([svgString], { type: 'image/svg+xml' });
+      saveAs(blob, 'mandala.svg');
+    };
+
+
+    const onFillColor = (i) => {
+      if (currentMandala == 0) {
+        let newFillColors = fillColors.slice(0)
+        newFillColors[i] = color
+        setFillColors(newFillColors)
+      }else if(currentMandala == 1){
+        let newFillColors = fillColors2.slice(0)
+        newFillColors[i] = color
+        setFillColors2(newFillColors)
+      }
+     
+    }
 
 
     // Utils
@@ -58,15 +79,7 @@ export default function MandalaArtBreak() {
     if(!isLoggedIn) return <Login/>
 
     const handleBack = () => {
-
-      let redirect = router?.query?.url ?? ''
-
-      if(redirect) {
-        router.push(decodeURIComponent(redirect))
-      }else {
-        router.push('/game/map')
-        
-      }
+      router.back()
     };
 
     const handleSelectDesign = (url) => {
@@ -75,20 +88,9 @@ export default function MandalaArtBreak() {
     }
 
 
-
-      const saveSVG = (svgCode) => {
-        const blob = new Blob([svgCode], { type: 'image/svg+xml' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'mandalaArt.svg';
-        link.click();
-        URL.revokeObjectURL(url);
-      };
-
     return (
         <>
-            <h1 className={style.art_title_container}>
+            <h1 className={`${style.art_title_container} ${style.hiddenPrint}`}>
               {formattedTime()}  -  
               <span> Pick a design to color</span>  -  
               <input type="color" value={color} onChange={handleChangeColor} />
@@ -99,7 +101,7 @@ export default function MandalaArtBreak() {
               >
                 {translations.back[lang]}
               </button>
-              <button
+              {/* <button
                 className={style.goBack_button}
                 onClick={() => {
                   canvas.current
@@ -107,47 +109,33 @@ export default function MandalaArtBreak() {
                 }}
               >
                {translations.clear[lang]}
-              </button>
+              </button> */}
               <button
                 className={style.goBack_button}
                 onClick={() => {
-                  canvas.current
-                    .exportSvg("svg")
-                    .then(data => {
-                      // console.log(data)
-                      saveSVG(data)
-                    })
-                    .catch(e => {
-                      console.log(e)
-                    });
+                  window.print()
                 }}
               >
                {translations.save[lang]}
               </button>
             </h1>
             <div class={style.mandala_container}>
-            <div className={style.mandala_items}>
-              {mandala_list.map((item, i) => <img 
+            <div  className={`${style.mandala_items} ${style.hiddenPrint}`}>
+              {mandala_items.map((item, i) => <span 
                 key={i}
-                onClick={()=>handleSelectDesign(item)}
-                alt={`mandala art ${i}`}
+                onClick={()=>setcurrentMandala(i)}
                 className={style.item}
-                src={item}
-                />)}
+                >
+                  {item}
+                </span>
+                )}
             </div>
-            <ReactSketchCanvas
-                backgroundImage={mandala}
-                exportWithBackgroundImage={true}
-                preserveBackgroundImageAspectRatio=""
-                width='650px'
-                height='650px'
-                // className={style.mandala_container}
-                ref={canvas}
-                strokeWidth={8}
-                strokeColor={color}
-                undo={true}
-                redo={true}
-            />
+             <div className={style.mandala_container}>
+
+              {currentMandala === 0 && <Mandala1 fillColors={fillColors} onFill={onFillColor} />}
+              {currentMandala === 1 && <Mandala2 fillColors={fillColors2} onFill={onFillColor} />}
+
+            </div>
             </div>
         </>
     )

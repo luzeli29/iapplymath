@@ -14,6 +14,7 @@ import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
 import useSeededRandom from '@hooks/useSeededRandom'
 import DevErr from '@utils/debug/devErr'
 import GameQuestionLayout from '@layouts/gameLayouts/gameQuestionLayout'
+import getText from '@utils/text/getText'
 
 
 export async function getStaticPaths() {
@@ -104,9 +105,9 @@ const AuntHouseQuestions = ({user,settings,recipes}) => {
         if(questionTypeKey == 'familySize') {
             tempFamilySize = window.sessionStorage.getItem('FAMILY_SIZE')
             window.sessionStorage.removeItem('FAMILY_SIZE')
-            route = getFinishRoute(questionTypeKey, recipeKey,tempFamilySize)
+            route = getFinishRoute(questionTypeKey, recipeKey,tempFamilySize, recipe.level)
         } else {
-            route = getFinishRoute(questionTypeKey, recipeKey,familySize)
+            route = getFinishRoute(questionTypeKey, recipeKey,familySize ,recipe.level)
         }
         router.push(route)
         setLoading(true)
@@ -125,6 +126,9 @@ const AuntHouseQuestions = ({user,settings,recipes}) => {
 
         const recipeTitle = generateRecipeTitleText(recipe,lang)
         const recipeServingText = generateRecipeServingText(recipe,lang)
+        const prepTime = recipe.prepTime > 0 ? getText('preptime', lang) + ' : ' +  recipe.prepTime + ' ' + getText('minutes', lang) : ''
+        const cookTime = recipe.cookTime > 0 ? getText('cooktime', lang) + ' : ' +  recipe.cookTime + ' ' + getText('minutes', lang) : ''
+
         return (
             <GameQuestionLayout
                 user={user}
@@ -134,6 +138,14 @@ const AuntHouseQuestions = ({user,settings,recipes}) => {
                 <div>
                     <p className='text-center'>{recipeTitle}</p>
                     <p className='text-center'>{recipeServingText}</p>
+                    <div className='row mx-auto'>
+                        <div className='col-6 text-center'>
+                            <p className=''>{prepTime}</p>
+                        </div>
+                        <div className='col-6 text-center'>
+                            <p className=''>{cookTime}</p>
+                        </div>
+                    </div>
                     <IngredientList ingredients={recipe.ingredients} lang={lang}/>
                 </div>
             </GameQuestionLayout>
@@ -143,19 +155,15 @@ const AuntHouseQuestions = ({user,settings,recipes}) => {
     return render()
 }
 
-function getFinishRoute(questionTypeKey, recipeKey,familySize) {
+function getFinishRoute(questionTypeKey, recipeKey,familySize, level) {
     if (!questionTypeKey) {
         return '/'
     }
 
-    switch(questionTypeKey) {
-        case 'basic':
-            return '/game/auntHouse/quiz/familySize?recipeKey=' + recipeKey
-        case "familySize":
-            return '/game/auntHouse/quiz/familyQuestion?recipeKey=' + recipeKey + '&familySize=' + familySize
-        case "familyQuestion":
-            return '/dialog/auntHouseOutro'
-    }
+   
+        return '/dialog/auntHouseOutro'
+    
+
 }
 
 export default RetrieveUserContext(AuntHouseQuestions,['gameReady','hasActiveGame'])

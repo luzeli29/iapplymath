@@ -1,6 +1,7 @@
 import createGameQuestion from '@utils/game/quiz/questionGeneration/createGameQuestion'
 import DevLog from '@utils/debug/devLog'
 import generateBasicAHQuestions from './basic/generateBasicAHQuestions'
+import generateAuntOperationsAndAlgebraQuestions from './IngredientFactorQuestions/IngredientF'
 import generateFamilyQuestions from './familyQuestions/generateFamilyQuestions'
 
 export default function aHQuestionFactory(questionType,recipe,randomGenerator,familySize) {
@@ -14,20 +15,22 @@ export default function aHQuestionFactory(questionType,recipe,randomGenerator,fa
     DevLog('Generating Aunt House Questions')
     DevLog('Question Type: ' + questionType)
     DevLog('Recipe: ' + recipe.name.en)
+    DevLog("questiontype: " + questionType)
 
-    switch(questionType) {
-        case "basic":
-            return generateBasicAHQuestions(recipe)
-        case "familySize":
-            return generateFamilySizeQuestion()
-        case "familyQuestion":
-            if(familySize == undefined) {
-                return generateFamilyQuestions(recipe,3)
-            }
-            return generateFamilyQuestions(recipe,familySize)
-        default:
-            return [createGameQuestion()]
-        }
+    if (recipe.level == 2 || recipe.level == 3 || recipe.level == 1){
+        var questions = [];
+
+        let operationsAndAlgebra = generateAuntOperationsAndAlgebraQuestions(recipe, randomGenerator);
+
+        questions = questions.concat(operationsAndAlgebra);
+        DevLog("QUESTIONS: " + questions);
+        return questions;
+    }
+    
+    return [createGameQuestion()]
+
+
+
 
 }
 
