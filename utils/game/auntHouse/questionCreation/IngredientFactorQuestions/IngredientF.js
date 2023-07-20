@@ -1994,8 +1994,8 @@ function generateLevel2AuntQuestions(recipe, randomInt){
       let randomNum1 = randomInt(5,10)
       let firstStep = randomNum*randomNum1
       let answer = firstStep/1000
-      //answer = Number(answer.toFixed(2));
 
+      answer = parseFloat(answer.toFixed(2))
          // create question
          generatedQuestions.push(createGameQuestion(
           {
@@ -3115,7 +3115,7 @@ function generateLevel2AuntQuestions(recipe, randomInt){
 
     //question 7 ginger juice
     if (recipe.name.en == "Pineapple ginger juice") {
-      let answer = 28.272
+      let answer = 28.27
 
          // create question
          generatedQuestions.push(createGameQuestion(
