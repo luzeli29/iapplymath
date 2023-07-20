@@ -5,6 +5,7 @@ import { useUserContext } from '@hooks/siteContext/useUserContext'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
+import getText from '@utils/text/getText';
 export default function FinishLayout ({gameName,restart_text,handleRestart}) {
     const {user,settings,loading, error} = useUserContext()
     const router = useRouter()
@@ -20,8 +21,8 @@ export default function FinishLayout ({gameName,restart_text,handleRestart}) {
       <>
           <img className="view_background_image_container" src={"/img/" + gameName + "/" + gameName + "_bg.png"}/>
           <div className="end_container">
+              <button className="end_button" onClick={() => handleRestart()}>{getText(restart_text,lang)}</button>
               <button className="end_button" onClick={() => router.push('/game/map')}>{translations.back_to_map[lang]}</button>
-              <button className="end_button" onClick={() => handleRestart()}>{translations[restart_text][lang]}</button>
           </div>
       </>
   )

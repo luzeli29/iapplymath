@@ -123,6 +123,12 @@ const translations = {
     },
 
     // ----- General Translations -----
+
+    groceryStore: {
+        en: "Grocery Store",
+        es: "Supermercado",
+    },
+
     minutes: {
         en: "Minutes",
         es: "Minutos",
