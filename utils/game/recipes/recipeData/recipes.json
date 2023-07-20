@@ -1,6 +1,6 @@
 
 {
-    "recipes" : {
+    "recipe" : {
         "vanillaMilkShake" :{
             "showInAuntHouse" : true,
             "level" : "1",
