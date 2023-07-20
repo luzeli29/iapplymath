@@ -46,8 +46,8 @@ export default function createGameQuestion(questionText,answer,hints,questionFor
         answer: answer,
         questionFormatKey: questionFormatKey,
         hints: hintArray,
-        onAnswer: onAnswer,
-        imgSrc: imgSrc
+        onAnswer: onAnswer ? onAnswer : null,
+        imgSrc: imgSrc ? imgSrc : null,
     }
 
     return question
