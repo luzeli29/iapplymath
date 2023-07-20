@@ -50,7 +50,7 @@ const serverSeededRandom = (initSeed) => {
             case 3: return 'division'
         }
     }
-
+    
     const randomGenerator = {
         seed: seed,
         randomInt: randomInt,

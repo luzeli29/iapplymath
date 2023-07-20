@@ -1,7 +1,8 @@
 
 {
-    "recipe" : {
+    "recipes" : {
         "vanillaMilkShake" :{
+            "showInAuntHouse" : true,
             "level" : "1",
             "name" : {
                 "en" : "Vanilla milkshake",
@@ -36,6 +37,7 @@
         
         },
         "baleadas" :{
+            "showInAuntHouse" : true,
             "level" : "1",
             "name" : {
                 "en" : "Baleadas",
@@ -70,6 +72,7 @@
         
         },
         "churros" :{
+            "showInAuntHouse" : true,
             "level" : "1",
             "name" : {
                 "en" : "Churros",
@@ -119,6 +122,7 @@
         
         },
         "browniesWithIceCream" :{
+            "showInAuntHouse" : true,
             "level" : "1",
             "name" : {
                 "en" : "Brownie with ice cream",
@@ -173,6 +177,7 @@
         
         },
         "vegetableNoodleSoup" :{
+            "showInAuntHouse" : true,
             "level" : "2",
             "name" : {
                 "en" : "Vegetable Noodle Soup",
@@ -222,6 +227,7 @@
             
         },
         "manguSalami" :{
+            "showInAuntHouse" : true,
             "level" : "2",
             "name" : {
                 "en" : "Mangu with salami and fried cheese",
@@ -283,6 +289,7 @@
             
         },
         "fruitSalads" :{
+            "showInAuntHouse" : true,
             "level" : "2",
             "name" : {
                 "en" : "Fruit Salad",
@@ -324,6 +331,7 @@
             
         },
         "pineappleGingerJuice" :{
+            "showInAuntHouse" : true,
             "level" : "2",
             "name" : {
                 "en" : "Pineapple ginger juice",
@@ -360,6 +368,7 @@
             
         },
         "vegetarianEnchilada" :{
+            "showInAuntHouse" : true,
             "level" : "3",
             "name" : {
                 "en" : "Vegetarian enchiladas",
@@ -408,6 +417,7 @@
             }
         },
         "mangoJuice" :{
+            "showInAuntHouse" : true,
             "level" : "3",
             "name" : {
                 "en" : "Mango Juice",
@@ -463,6 +473,7 @@
             ]
         },
         "lentilSoup" :{
+            "showInAuntHouse" : true,
             "level" : "3",
             "name" : {
                 "en" : "Lentil soup",
@@ -535,6 +546,7 @@
             }
         },
         "strawberryCake" :{
+            "showInAuntHouse" : true,
             "level" : "3",
             "name" : {
                 "en" : "Strawberry cake",
@@ -587,7 +599,23 @@
 
                 }
             }
+        },
+        "mangoPineappleJuice" :{
+            "name" : {
+                "en" : "Mango-Pineapple Juice",
+                "es" : "Jugo de mango y piña"
+            },
+            "imgSrc" : "strawberry_cake",
+            "servingSize" : 1,
+            "recipeMakesAmount" : 2,
+            "servingType" : "cup",
+            "ingredients" : {
+                "mango" :{
+                    "ingredient" : "milk",
+                    "amount" : "2",
+                    "servingType" : "cup"
+                }
+            }
         }
-        
     }
 }

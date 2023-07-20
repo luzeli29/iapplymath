@@ -1,4 +1,4 @@
-import generateIngredientLineText from '@utils/game/auntHouse/textCreation/generateIngredientLineText'
+import generateIngredientLineText from '@utils/game/recipes/textCreation/generateIngredientLineText'
 import React from 'react'
 import Image from 'next/image'
 import IconGroup from '@comps/iconGroup'
