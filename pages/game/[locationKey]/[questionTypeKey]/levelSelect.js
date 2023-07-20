@@ -11,6 +11,7 @@ import Error from 'pages/error'
 import Login from 'pages/user/login'
 import React, { useState } from 'react'
 import getText from '@utils/text/getText'
+import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
 
 export async function getStaticPaths() {
     const locationsObj = await loadLocations()
@@ -42,17 +43,11 @@ export async function getStaticProps(context){
     }
 }
 
-export default function LevelSelect({location,levels}) {
-    const {user,settings,loading, error} = useUserContext()
+const LevelSelect = ({user,settings,location,levels}) => {
     
     const router = useRouter()
     const [selectedLevel, setSelectedLevel] = useState()
-
-
-    const isLoggedIn = user.loggedIn    
-    if(loading) return <Loading/> 
-    if(error) return <Error error={error}/>
-    if(!isLoggedIn) return <Login/>
+    const [loading, setLoading] = useState(false)
     const lang = settings.lang
     const routerQuery = router.query
     
@@ -79,29 +74,39 @@ export default function LevelSelect({location,levels}) {
             params.level = selectedLevel
             const paramString = CreateParamString(params)
             router.push('/game/' + locationKey + '/quiz/' + questionTypeKey + paramString)
+            setLoading(true)
         }
     }
 
-    return (
-        <div>
+    const render = () => {
+        return (
             <div>
-                <h1 className='text-center pb-3'>
-                    {getText('level_select',lang)}
-                </h1>
+                <div>
+                    <h1 className='text-center pb-3'>
+                        {getText('level_select',lang)}
+                    </h1>
+                </div>
+                <IconGroup 
+                        lang={lang}
+                        icons={levels}
+                        selectIcon={(level) => setSelectedLevel(level)}
+                        selectedIcon={selectedLevel}
+                        getContentFromValue={(key,value) => getLevelIcon(key,value)}
+                        width={3}
+                        height={1}/>
+                <div className='row pt-5'>
+                    <button className='basic_button mx-auto' onClick={() => handleLevelSelect()} disabled={!selectedLevel}>
+                        {getText('start',lang)}
+                    </button>
+                </div>
             </div>
-            <IconGroup 
-                    lang={lang}
-                    icons={levels}
-                    selectIcon={(level) => setSelectedLevel(level)}
-                    selectedIcon={selectedLevel}
-                    getContentFromValue={(key,value) => getLevelIcon(key,value)}
-                    width={3}
-                    height={1}/>
-            <div className='row pt-5'>
-                <button className='basic_button mx-auto' onClick={() => handleLevelSelect()} disabled={!selectedLevel}>
-                    {getText('start',lang)}
-                </button>
-            </div>
-        </div>
-    )
+        )
+    }
+
+    if(loading) {
+        return <Loading/>
+    } else {
+        return render()
+    }
 }
+export default RetrieveUserContext(LevelSelect,['gameReady','hasActiveGame'])

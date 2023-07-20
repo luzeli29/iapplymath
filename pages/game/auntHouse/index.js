@@ -6,14 +6,15 @@ import { useUserContext } from '@hooks/siteContext/useUserContext'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
-import loadRecipes from '@utils/game/auntHouse/recipeData/loadRecipes'
+import loadRecipes from '@utils/game/recipes/recipeData/loadRecipes'
 import IconGroup from '@comps/iconGroup'
 import ClickableIcon from '@comps/clickableIcon'
 import LevelDisplay from '@comps/game/levelDisplay'
 import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
+import loadAuntHouseRecipes from '@utils/game/auntHouse/loadAuntHouseRecipes'
 
 export async function getStaticProps(){
-    const recipes = await loadRecipes()
+    const recipes = await loadAuntHouseRecipes()
     return {
       props: {
         recipes,
