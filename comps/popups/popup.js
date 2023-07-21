@@ -12,7 +12,7 @@ const Popup = ({ icon, content, lang }) => {
 
   const handleTogglePopup = () => {
     setIsOpen(!isOpen);
-    setPosition({ x: 0, y: 0 })
+    setPosition({ x: 50, y: 20 })
   };
 
   const handleDrag = (e, { x, y }) => {
