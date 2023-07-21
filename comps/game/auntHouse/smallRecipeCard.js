@@ -17,7 +17,6 @@ export default function SmallRecipeCard({recipeIndex}) {
     if(!isLoggedIn) return <Login/>
     const lang = settings.lang
     const recipe = recipes[recipeIndex]
-    console.log(recipeIndex)
     const prepTime = recipe.prep_time > 0 ? getText('preptime', lang) + ' : ' +  recipe.prepTime + ' ' + getText('minutes', lang) : ''
     const cookTime = recipe.prep_time > 0 ? getText('preptime', lang) + ' : ' +  recipe.cookTime + ' ' + getText('minutes', lang) : ''
 

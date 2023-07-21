@@ -78,8 +78,16 @@
                 "en": "Dishes",
                 "es": "Platos"
             }
-        },
-        "self": {
+        }, "slice" : {
+            "nameSingular": {
+                "en": "Slice",
+                "es": "Rebanada"
+            },
+            "namePlural": {
+                "en": "Slices",
+                "es": "Rebanadas"
+            }
+        },"self": {
             "nameSingular": {
                 "en": "",
                 "es": ""
@@ -87,6 +95,15 @@
             "namePlural": {
                 "en": "",
                 "es": ""
+            }
+        }, "box" : {
+            "nameSingular": {
+                "en": "Box",
+                "es": "Caja"
+            },
+            "namePlural": {
+                "en": "Boxes",
+                "es": "Cajas"
             }
         }
     }

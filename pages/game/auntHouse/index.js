@@ -11,10 +11,9 @@ import IconGroup from '@comps/iconGroup'
 import ClickableIcon from '@comps/clickableIcon'
 import LevelDisplay from '@comps/game/levelDisplay'
 import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
-import loadAuntHouseRecipes from '@utils/game/auntHouse/loadAuntHouseRecipes'
 
 export async function getStaticProps(){
-    const recipes = await loadAuntHouseRecipes()
+    const recipes = await loadRecipes("auntHouse")
     return {
       props: {
         recipes,

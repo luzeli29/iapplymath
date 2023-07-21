@@ -3,6 +3,8 @@ import React from 'react'
 import Image from 'next/image'
 import IconGroup from '@comps/iconGroup'
 export default function IngredientList({ingredients, lang}) {
+    console.log(ingredients)
+
     let _lang
     if(lang) {
         _lang = lang
@@ -12,6 +14,7 @@ export default function IngredientList({ingredients, lang}) {
 
     function getContentFromValue(key,value) {
         const ingredient = ingredients[key]
+        console.log(ingredient)
         const ingredientLineText = generateIngredientLineText(ingredient,lang)
         const ingredientSrc = '/img/ing/' + value.ingredient.imgSrc + '.png'
         return (
