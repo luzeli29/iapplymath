@@ -2,7 +2,10 @@
 {
     "recipe" : {
         "vanillaMilkShake" :{
-            "showInAuntHouse" : true,
+            "locations" : [
+                "auntHouse",
+                "groceryStore"
+            ],
             "level" : "1",
             "name" : {
                 "en" : "Vanilla milkshake",
@@ -17,7 +20,7 @@
             "recipeMakesAmount" : 1,
             "servingType" : "cup",
             "ingredients" : {
-                "vanilla ice cream" :{
+                "vanillaIceCream" :{
                     "ingredient" : "vanillaIceCream",
                     "amount" : "2",
                     "servingType" : "cup"
@@ -37,7 +40,9 @@
         
         },
         "baleadas" :{
-            "showInAuntHouse" : true,
+            "locations" : [
+                "auntHouse"
+            ],
             "level" : "1",
             "name" : {
                 "en" : "Baleadas",
@@ -72,7 +77,9 @@
         
         },
         "churros" :{
-            "showInAuntHouse" : true,
+            "locations" : [
+                "auntHouse"
+            ],
             "level" : "1",
             "name" : {
                 "en" : "Churros",
@@ -122,7 +129,9 @@
         
         },
         "browniesWithIceCream" :{
-            "showInAuntHouse" : true,
+            "locations" : [
+                "auntHouse"
+            ],
             "level" : "1",
             "name" : {
                 "en" : "Brownie with ice cream",
@@ -163,12 +172,12 @@
                     "amount" : "1",
                     "servingType" : "self"
                 },
-                "vanilla extract" :{
+                "vanillaExtract" :{
                     "ingredient" : "vanillaExtract",
                     "amount" : "1",
                     "servingType" : "tablespoon"
                 },
-                "ice cream " :{
+                "vanillaIceCream" :{
                     "ingredient" : "vanillaIceCream",
                     "amount" : "8",
                     "servingType" : "self"
@@ -177,7 +186,9 @@
         
         },
         "vegetableNoodleSoup" :{
-            "showInAuntHouse" : true,
+            "locations" : [
+                "auntHouse"
+            ],
             "level" : "2",
             "name" : {
                 "en" : "Vegetable Noodle Soup",
@@ -227,7 +238,9 @@
             
         },
         "manguSalami" :{
-            "showInAuntHouse" : true,
+            "locations" : [
+                "auntHouse"
+            ],
             "level" : "2",
             "name" : {
                 "en" : "Mangu with salami and fried cheese",
@@ -282,14 +295,17 @@
                 "salami slices" :{
                     "ingredient" : "salami",
                     "amount" : "16",
-                    "servingType" : "self"
+                    "servingType" : "slice"
 
                 }
             }
             
         },
         "fruitSalads" :{
-            "showInAuntHouse" : true,
+            "locations" : [
+                "auntHouse",
+                "groceryStore"
+            ],
             "level" : "2",
             "name" : {
                 "en" : "Fruit Salad",
@@ -319,7 +335,7 @@
                 "berries" :{
                     "ingredient" : "berries",
                     "amount" : "1/3",
-                    "servingType" : "self"
+                    "servingType" : "cup"
                 },
                 "kiwi" :{
                     "ingredient" : "kiwi",
@@ -331,7 +347,9 @@
             
         },
         "pineappleGingerJuice" :{
-            "showInAuntHouse" : true,
+            "locations" : [
+                "auntHouse"
+            ],
             "level" : "2",
             "name" : {
                 "en" : "Pineapple ginger juice",
@@ -348,8 +366,8 @@
             "cookTime": 2,
             "servingType" : "cup",
             "ingredients" : {
-                "pinneaple chunks" :{
-                    "ingredient" : "pinneapleChunks",
+                "pinneapleChunks" :{
+                    "ingredient" : "pinneapleChunk",
                     "amount" : "2",
                     "servingType" : "cup"
                 },
@@ -368,7 +386,9 @@
             
         },
         "vegetarianEnchilada" :{
-            "showInAuntHouse" : true,
+            "locations" : [
+                "auntHouse"
+            ],
             "level" : "3",
             "name" : {
                 "en" : "Vegetarian enchiladas",
@@ -385,8 +405,8 @@
             "recipeMakesAmount" : 2,
             "servingType" : "self",
             "ingredients" : {
-                "mashed black beans" :{
-                    "ingredient" : "blackBeans",
+                "mashedBlackBeans" :{
+                    "ingredient" : "mashedBlackBeans",
                     "amount" : "1",
                     "servingType" : "cup"
                 },
@@ -417,7 +437,10 @@
             }
         },
         "mangoJuice" :{
-            "showInAuntHouse" : true,
+            "locations" : [
+                "auntHouse",
+                "groceryStore"
+            ],
             "level" : "3",
             "name" : {
                 "en" : "Mango Juice",
@@ -434,8 +457,8 @@
             "recipeMakesAmount" : 6,
             "servingType" : "cup",
             "ingredients" : {
-                "mango chunks" :{
-                    "ingredient" : "mangoChunks",
+                "mangoChunk" :{
+                    "ingredient" : "mangoChunk",
                     "amount" : "6",
                     "servingType" : "cup"
                 },
@@ -473,7 +496,10 @@
             ]
         },
         "lentilSoup" :{
-            "showInAuntHouse" : true,
+            "locations" : [
+                "auntHouse",
+                "groceryStore"
+            ],
             "level" : "3",
             "name" : {
                 "en" : "Lentil soup",
@@ -546,7 +572,10 @@
             }
         },
         "strawberryCake" :{
-            "showInAuntHouse" : true,
+            "locations" : [
+                "auntHouse",
+                "groceryStore"
+            ],
             "level" : "3",
             "name" : {
                 "en" : "Strawberry cake",
@@ -592,8 +621,8 @@
                     "servingType" : "cup"
 
                 },
-                "strawberries" :{
-                    "ingredient" : "strawberries",
+                "strawberry" :{
+                    "ingredient" : "strawberry",
                     "amount" : "3/4",
                     "servingType" : "cup"
 
@@ -605,14 +634,510 @@
                 "en" : "Mango-Pineapple Juice",
                 "es" : "Jugo de mango y piña"
             },
-            "imgSrc" : "strawberry_cake",
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "1",
+            "imgSrc" : "pineappleGinger",
             "servingSize" : 1,
             "recipeMakesAmount" : 2,
             "servingType" : "cup",
             "ingredients" : {
                 "mango" :{
-                    "ingredient" : "milk",
+                    "ingredient" : "mango",
                     "amount" : "2",
+                    "servingType" : "self"
+                },
+                "pinneapleChunk" :{
+                    "ingredient" : "pinneapleChunk",
+                    "amount" : "4",
+                    "servingType" : "cup"
+                },
+                "lime" :{
+                    "ingredient" : "lime",
+                    "amount" : "2",
+                    "servingType" : "self"
+                }
+            }
+        },
+        "hamAndCheeseArepas" : {
+            "name" : {
+                "en" : "Ham and Cheese Arepas",
+                "es" : "Arepas de jamón y queso"
+            },
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "1",
+            "imgSrc" : "arepas",
+            "servingSize" : 1,
+            "recipeMakesAmount" : 3,
+            "servingType" : "self",
+            "ingredients" : {
+                "ham" :{
+                    "ingredient" : "ham",
+                    "amount" : "3",
+                    "servingType" : "slice"
+                },
+                "cheese" :{
+                    "ingredient" : "cheese",
+                    "amount" : "3",
+                    "servingType" : "slice"
+                },
+                "arepas" :{
+                    "ingredient" : "arepas",
+                    "amount" : "3",
+                    "servingType" : "self"
+                }
+            }
+        },
+        "caesarSalad" : {
+            "name" : {
+                "en" : "Caesar Salad",
+                "es" : "Ensalada César"
+            },
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "1",
+            "imgSrc" : "caesar_salad",
+            "servingSize" : 6,
+            "recipeMakesAmount" : 1, 
+            "servingType" : "self",
+            "ingredients" : {
+                "lettus" :{
+                    "ingredient" : "lettus",
+                    "amount" : "12",
+                    "servingType" : "cup"
+                },
+                "parmesanCheese" :{
+                    "ingredient" : "parmesanCheese",
+                    "amount" : "1/3",
+                    "servingType" : "cup"
+                },
+                "caesarDressing" :{
+                    "ingredient" : "caesarDressing",
+                    "amount" : "1/2",
+                    "servingType" : "cup"
+                },
+                "crouton" :{
+                    "ingredient" : "crouton",
+                    "amount" : "2",
+                    "servingType" : "cup"
+                }
+            }          
+        },
+        "ricePudding" : {
+            "name" : {
+                "en" : "Rice Pudding",
+                "es" : "Arroz con leche"
+            },
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "2",
+            "imgSrc" : "ricePudding",
+            "servingSize" : 1,
+            "recipeMakesAmount" : 8,
+            "servingType" : "cup",
+            "ingredients" : {
+                "milk" :{
+                    "ingredient" : "milk",
+                    "amount" : "12",
+                    "servingType" : "cup"
+                },"sugar" :{
+                    "ingredient" : "sugar",
+                    "amount" : "1",
+                    "servingType" : "cup"
+                },"salt" :{
+                    "ingredient" : "salt",
+                    "amount" : "1",
+                    "servingType" : "teaspoon"
+                },"rice" :{
+                    "ingredient" : "rice",
+                    "amount" : "1",
+                    "servingType" : "cup"
+                },"vanillaExtract" :{
+                    "ingredient" : "vanillaExtract",
+                    "amount" : "2",
+                    "servingType" : "teaspoon"
+                }
+                
+            }    
+        },
+        "peruvianFriedRice" : {
+            "name" : {
+                "en" : "Peruvian Fried Rice",
+                "es" : "Arroz Chaufa"
+            },
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "2",
+            "imgSrc" : "peruvianFriedRice",
+            "servingSize" : 3,
+            "recipeMakesAmount" : 1, 
+            "servingType" : "plate",
+            "ingredients" : {
+                "onion" :{
+                    "ingredient" : "onion",
+                    "amount" : "1/2",
+                    "servingType" : "cup"
+                },"colorfulPepper" :{
+                    "ingredient" : "colorfulPepper",
+                    "amount" : "3",
+                    "servingType" : "self"
+                },"chickenBreast" :{
+                    "ingredient" : "chickenBreast",
+                    "amount" : "2",
+                    "servingType" : "self"
+                },"egg" :{
+                    "ingredient" : "egg",
+                    "amount" : "4",
+                    "servingType" : "self"
+                },"rice" :{
+                    "ingredient" : "rice",
+                    "amount" : "2",
+                    "servingType" : "cup"
+                },"ginger" :{
+                    "ingredient" : "ginger",
+                    "amount" : "3",
+                    "servingType" : "teaspoon"
+                },"soySauce" :{
+                    "ingredient" : "soySauce",
+                    "amount" : "5",
+                    "servingType" : "tablespoon"
+                }
+            }     
+        },
+        "strawberryMilkShake" :{
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "2",
+            "name" : {
+                "en" : "Strawberry milkshake",
+                "es": "Batido de fresa"
+            },
+    
+            "imgSrc" : "strawberryMilkShake",
+            "servingSize" : 2,
+            "recipeMakesAmount" : 1,
+            "servingType" : "cup",
+            "ingredients" : {
+                "vanilla ice cream" :{
+                    "ingredient" : "vanillaIceCream",
+                    "amount" : "4",
+                    "servingType" : "cup"
+
+                },
+                "milk" :{
+                    "ingredient" : "milk",
+                    "amount" : "1",
+                    "servingType" : "cup"
+                },
+                "frozenStrawberry" :{
+                    "ingredient" : "frozenStrawberry",
+                    "amount" : "1/2",
+                    "servingType" : "cup"
+                },"whippedCream" :{
+                    "ingredient" : "whippedCream",
+                    "amount" : "1/4",
+                    "servingType" : "cup"
+                },"cherry" :{
+                    "ingredient" : "cherry",
+                    "amount" : "1",
+                    "servingType" : "self"
+                }
+            }
+        
+        },
+        "pineappleCake" :{
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "2",
+            "name" : {
+                "en" : "Pineapple Cake",
+                "es": "Pastel de piña"
+            },
+    
+            "imgSrc" : "flan",
+            "servingSize" : 12,
+            "recipeMakesAmount" : 1,
+            "servingType" : "cup",
+            "ingredients" : {
+                "cakeMix" :{
+                    "ingredient" : "cakeMix",
+                    "amount" : "1",
+                    "servingType" : "box"
+                },"pineapple" :{
+                    "ingredient" : "pineapple",
+                    "amount" : "12",
+                    "servingType" : "slice"
+                },"butter" :{
+                    "ingredient" : "butter",
+                    "amount" : "1/4",
+                    "servingType" : "cup"
+                },"brownSugar" :{
+                    "ingredient" : "brownSugar",
+                    "amount" : "5/4",
+                    "servingType" : "cup"
+                },"cinnamon" :{
+                    "ingredient" : "cinnamon",
+                    "amount" : "1/2",
+                    "servingType" : "tablespoon"
+                },"nutmeg" :{
+                    "ingredient" : "nutmeg",
+                    "amount" : "1/2",
+                    "servingType" : "tablespoon"
+                }
+            }
+        
+        },
+        "carrotJuice" :{
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "2",
+            "name" : {
+                "en" : "Carrot Juice",
+                "es": "Jugo de Zanahoria"
+            },
+    
+            "imgSrc" : "carrotJuice",
+            "servingSize" : 3,
+            "recipeMakesAmount" : 3,
+            "servingType" : "cup",
+            "ingredients" : {
+                "carrot" :{
+                    "ingredient" : "carrot",
+                    "amount" : "12",
+                    "servingType" : "self"
+                },"water" :{
+                    "ingredient" : "water",
+                    "amount" : "9/4",
+                    "servingType" : "cup"
+                }
+            }
+        
+        },
+        "chocolateBananaCake" : {
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "2",
+            "name" : {
+                "en" : "Chocolate Banana Cake",
+                "es": "Pastel de Chocolate y Banana"
+            },
+    
+            "imgSrc" : "chocolateBananaCake",
+            "servingSize" : 12,
+            "recipeMakesAmount" : 1,
+            "servingType" : "self",
+            "ingredients" : {
+                "butter" :{
+                    "ingredient" : "butter",
+                    "amount" : "1/2",
+                    "servingType" : "cup"
+                },"sugar" :{
+                    "ingredient" : "sugar",
+                    "amount" : "1",
+                    "servingType" : "cup"
+                },"egg" :{
+                    "ingredient" : "egg",
+                    "amount" : "2",
+                    "servingType" : "self"
+                },"vanillaExtract" :{
+                    "ingredient" : "vanillaExtract",
+                    "amount" : "1",
+                    "servingType" : "teaspoon"
+                },"banana" :{
+                    "ingredient" : "banana",
+                    "amount" : "3",
+                    "servingType" : "self"
+                },"flour" :{
+                    "ingredient" : "flour",
+                    "amount" : "3/2",
+                    "servingType" : "cup"
+                },"bakingPowder" :{
+                    "ingredient" : "bakingPowder",
+                    "amount" : "1",
+                    "servingType" : "teaspoon"
+                },"salt" :{
+                    "ingredient" : "bakingPowder",
+                    "amount" : "1/2",
+                    "servingType" : "teaspoon"
+                },"cocoaPowder" :{
+                    "ingredient" : "cocoaPowder",
+                    "amount" : "1/2",
+                    "servingType" : "cup"
+                },"vanillaIceCream" :{
+                    "ingredient" : "vanillaIceCream",
+                    "amount" : "12",
+                    "servingType" : "cup"
+                }
+            }
+        },
+        "strawberryLimeade" : {
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "3",
+            "name" : {
+                "en" : "StrawBerry Limeade",
+                "es": "Limonada de Fresa"
+            },
+    
+            "imgSrc" : "strawberryLimeade",
+            "servingSize" : 1,
+            "recipeMakesAmount" : 1,
+            "servingType" : "cup",
+            "ingredients" : {
+                "strawberry" :{
+                    "ingredient" : "strawberry",
+                    "amount" : "1/2",
+                    "servingType" : "cup"
+                },"lime" :{
+                    "ingredient" : "lime",
+                    "amount" : "1",
+                    "servingType" : "self"
+                },"greenApple" :{
+                    "ingredient" : "greenApple",
+                    "amount" : "3/2",
+                    "servingType" : "self"
+                },"redApple" :{
+                    "ingredient" : "redApple",
+                    "amount" : "2/3",
+                    "servingType" : "self"
+                },"water" :{
+                    "ingredient" : "water",
+                    "amount" : "1",
+                    "servingType" : "cup"
+                }
+            }
+        },
+        "tomatilloSauceAndTortillaChips" : {
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "3",
+            "name" : {
+                "en" : "Tomatillo Sauce and Tortilla Chips",
+                "es": "Salsa de Tomatillo y Tortilla Chips"
+            },
+            "imgSrc" : "tomatilloSauceAndTortillaChips",
+            "servingSize" : 3,
+            "recipeMakesAmount" : 1,
+            "servingType" : "bowl",
+            "ingredients" : {
+                "tomatillos" :{
+                    "ingredient" : "tomatillos",
+                    "amount" : "1",
+                    "servingType" : "pound"
+                },"choppedWhiteOnion" :{
+                    "ingredient" : "choppedWhiteOnion",
+                    "amount" : "1/2",
+                    "servingType" : "cup"
+                },"choppedCilantro" :{
+                    "ingredient" : "choppedCilantro",
+                    "amount" : "1/2",
+                    "servingType" : "cup"
+                },"garlic" :{
+                    "ingredient" : "garlic",
+                    "amount" : "2",
+                    "servingType" : "clove"
+                },"freshLimeJuice" :{
+                    "ingredient" : "freshLimeJuice",
+                    "amount" : "1",
+                    "servingType" : "tablespoon"
+                },"tortillaChips" :{
+                    "ingredient" : "tortillaChips",
+                    "amount" : "1",
+                    "servingType" : "bag"
+                }
+            }
+        },
+        "OJCitrusCooler": {
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "3",
+            "name" : {
+                "en" : "Orange Juice Citrus Cooler",
+                "es": "Jugo de Naranja"
+            },
+            "imgSrc" : "OJCitrusCooler",
+            "servingSize" : 1,
+            "recipeMakesAmount" : 1,
+            "servingType" : "cup",
+            "ingredients" : {
+                "orange" :{
+                    "ingredient" : "orange",
+                    "amount" : "7/2",
+                    "servingType" : "self"
+                },"pinneapleChunk" :{
+                    "ingredient" : "pinneapleChunk",
+                    "amount" : "3/2",
+                    "servingType" : "cup"
+                },"freshLimeJuice" :{
+                    "ingredient" : "freshLimeJuice",
+                    "amount" : "1/3",
+                    "servingType" : "cup"
+                },"ginger" :{
+                    "ingredient" : "ginger",
+                    "amount" : "3/4",
+                    "servingType" : "tablespoon"
+                },"carrot" :{
+                    "ingredient" : "carrot",
+                    "amount" : "3/4",
+                    "servingType" : "self"
+                },"sugar" :{
+                    "ingredient" : "sugar",
+                    "amount" : "2",
+                    "servingType" : "tablespoon"
+                }
+            }
+
+        },"lemonVanillaCake" : {
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "3",
+            "name" : {
+                "en" : "Lemon Vanilla Cake",
+                "es": "Pastel de Limón y Vainilla"
+            },
+    
+            "imgSrc" : "flan",
+            "servingSize" : 10,
+            "recipeMakesAmount" : 1,
+            "servingType" : "self",
+            "ingredients" : {
+                "sugar" :{
+                    "ingredient" : "sugar",
+                    "amount" : "1",
+                    "servingType" : "cup"
+                },"egg" :{
+                    "ingredient" : "egg",
+                    "amount" : "1",
+                    "servingType" : "self"
+                },"vanillaExtract" :{
+                    "ingredient" : "vanillaExtract",
+                    "amount" : "1",
+                    "servingType" : "teaspoon"
+                },"oil" :{
+                    "ingredient" : "oil",
+                    "amount" : "3/4",
+                    "servingType" : "cup"
+                },"lemonJuice" :{
+                    "ingredient" : "lemonJuice",
+                    "amount" : "1",
+                    "servingType" : "cup"
+                },"water" :{
+                    "ingredient" : "water",
+                    "amount" : "3/4",
                     "servingType" : "cup"
                 }
             }

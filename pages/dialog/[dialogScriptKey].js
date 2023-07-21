@@ -55,7 +55,6 @@ const DialogScreen = ({user,settings,dialogScript}) => {
   }
 
   const verifyNeededStageData = () => {
-    console.log(stage)
     if(stage.isLogginRequired && !user.loggedIn) {
       DevLog('User is not logged in, but "stage.isLogginRequired" is true.')
       router.push('/user/login')

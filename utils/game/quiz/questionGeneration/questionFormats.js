@@ -1,4 +1,8 @@
 const QuestionFormats = {
+    'error' : {
+        validationRegex : /^-?(?:0|[1-9]\d*)$/,
+        answerBoxType: 'textInput',
+    },
     'fraction': {
         validationRegex : /^-?(?:0|[1-9]\d*)(?:\/[1-9]\d*)?$/,
         validationFailMessage: 'invalid_fraction',

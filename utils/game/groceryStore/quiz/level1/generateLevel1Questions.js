@@ -1,21 +1,17 @@
-import createGameQuestion from "@utils/game/quiz/questionGeneration/createGameQuestion"
+import createGameQuestion, { ErrorQuestion } from "@utils/game/quiz/questionGeneration/createGameQuestion"
+import { GenerateFriendContainerQuestion } from "@utils/game/recipes/questionGeneration/containerQuestionGenerators"
 
-const generateLevel1Questions = (questionType,randomGenerator) => {
+const recipesQuizzedOn = 2
+
+const generateLevel1Questions = (recipes,questionType,randomGenerator) => {
     let questions = []
     // create question
-    questions.push(
-        createGameQuestion(
-        {
-            en: 'test',
-            es: 'test',
-        },
-        4,
-        [
-        ],
-        "wholeNumber"
-    ))
-    console.log(questions)
-    return questions
+    questions.push(ErrorQuestion)
+
+    Object.keys(recipes).forEach((recipeKey, index) => {
+        questions.push(GenerateFriendContainerQuestion(recipes[recipeKey],0,3,4))
+    })
+     return questions
 }
 
 export default generateLevel1Questions

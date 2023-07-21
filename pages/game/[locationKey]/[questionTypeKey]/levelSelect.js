@@ -61,7 +61,7 @@ const LevelSelect = ({user,settings,location,levels}) => {
         )
     }
 
-    function handleLevelSelect() {
+    const handleLevelSelect = () => {
         if(selectedLevel){
             const locationKey = routerQuery.locationKey
             const questionTypeKey = routerQuery.questionTypeKey
