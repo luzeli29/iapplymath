@@ -39,6 +39,9 @@ const GenerateFriendContainerQuestion = (recipe, ingredientIndex, friendCnt, con
     
     const answer = 5
     const ingredientText = generateIngredientText(ingredient)
+    const ingredientTextAmount = generateIngredientText(ingredient,ingredient.amount )
+
+    const containerSoldText = GenerateContainerSoldText(ingredient, containerFactor)
 
     const question = createGameQuestion(
         {
@@ -46,7 +49,16 @@ const GenerateFriendContainerQuestion = (recipe, ingredientIndex, friendCnt, con
             es:questionText.es
         },
         answer,
-        null,
+        [
+            {
+               en: ingredientText.en + ' per 1 serving = ' + ingredientTextAmount + ' / ' + recipe.servingSize + '\n' + 
+                    'Total ' + ingredientText.en + ' needed = servings needed * ' + ingredientText.en + ' per 1 serving \n' +
+                    'Total ' + basicContainerText.en + ' = Total ' + ingredientText.en + 'needed / ' + containerSoldText.en,
+                es: ingredientText.es + ' por 1 porción = ' + ingredientTextAmount + ' / ' + recipe.servingSize + '\n' +
+                    'Total ' + ingredientText.es + ' necesitado = porciones necesitadas * ' + ingredientText.es + ' por 1 porción \n' +
+                    'Total ' + basicContainerText.es + ' = Total ' + ingredientText.es + ' necesitado / ' + containerSoldText.es,
+            },
+        ],
         'fraction',
         null,
         null
