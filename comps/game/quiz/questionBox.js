@@ -68,8 +68,8 @@ export default function QuestionBox({ questionData, incorrectNum }) {
             content={
               <Image
                 priority={true}
-                width={180}
-                height={180}
+                width={250}
+                height={250}
                 src={path}
                 alt={"example image"}
               />
