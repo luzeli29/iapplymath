@@ -9,6 +9,7 @@ import Login from '../../../user/login';
 import useTimer from '@hooks/useTimer';
 import { useDispatch } from 'react-redux';
 import { GoBackAlert } from '@utils/ayu/goBackAlert';
+import { setLocation } from 'store/Slices/musicSlice';
 
 export default function ChillOutBreak() {
     const {user,settings,loading, error} = useUserContext()
@@ -35,6 +36,7 @@ export default function ChillOutBreak() {
     //This is called when the player is done creating
     //Should handle anything to be done in order to use avatar in game
     const handleBack = () => {
+        dispatch(setLocation('restaurant'))
         router.back()
       };
 
