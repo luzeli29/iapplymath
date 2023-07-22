@@ -78,7 +78,8 @@
         },
         "churros" :{
             "locations" : [
-                "auntHouse"
+                "auntHouse",
+                "groceryStore"
             ],
             "level" : "1",
             "name" : {
@@ -639,7 +640,7 @@
             ],
             "level" : "1",
             "imgSrc" : "pineappleGinger",
-            "servingSize" : 1,
+            "servingSize" : 2,
             "recipeMakesAmount" : 2,
             "servingType" : "cup",
             "ingredients" : {
@@ -670,7 +671,7 @@
             ],
             "level" : "1",
             "imgSrc" : "arepas",
-            "servingSize" : 1,
+            "servingSize" : 3,
             "recipeMakesAmount" : 3,
             "servingType" : "self",
             "ingredients" : {
@@ -1138,6 +1139,39 @@
                 },"water" :{
                     "ingredient" : "water",
                     "amount" : "3/4",
+                    "servingType" : "cup"
+                }
+            }
+        },"flan" : {
+            "locations" : [
+                "groceryStore"
+            ],
+            "level" : "1",
+            "name" : {
+                "en" : "Flan",
+                "es": "Flan"
+            },
+    
+            "imgSrc" : "flan",
+            "servingSize" : 8,
+            "recipeMakesAmount" : 1,
+            "servingType" : "self",
+            "ingredients" : {
+                "sugar" :{
+                    "ingredient" : "sugar",
+                    "amount" : "3/2",
+                    "servingType" : "cup"
+                },"egg" :{
+                    "ingredient" : "egg",
+                    "amount" : "6",
+                    "servingType" : "self"
+                },"vanillaExtract" :{
+                    "ingredient" : "vanillaExtract",
+                    "amount" : "2",
+                    "servingType" : "teaspoon"
+                },"milk" : {
+                    "ingredient" : "milk",
+                    "amount" : "3",
                     "servingType" : "cup"
                 }
             }
