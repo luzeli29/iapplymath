@@ -20,7 +20,7 @@ const generateLevel1Questions = (recipes,questionType,randomGenerator) => {
             case 'hamAndCheeseArepas':
                 hamAndCheeseArepasQuestions(questions,recipes[recipeKey],randomGenerator)
                 break;
-            case 'caesarSalad': //NOT DONE
+            case 'caesarSalad':
                 caesarSaladQuestions(questions,recipes[recipeKey],randomGenerator)
                 break
             case 'churros': //NOT DONE
@@ -295,9 +295,82 @@ const vanillaMilkShakeQuestions = (questions,recipe,randomGenerator) => {
 }
 
 const caesarSaladQuestions = (questions,recipe,randomGenerator) => {
-    //Friend Container unit conversion question
-    //Cheapest Brand Question
-    //ammout of servings with x question
+    const q1Arr1 = [2,5,11]
+    const q1num1 = q1Arr1[randomGenerator.randomInt(0,q1Arr1.length-1)]
+    const q1Answer = Math.ceil(((q1num1+1)*2)/6)
+    //Unit price question
+    questions.push(createGameQuestion(
+        {
+            en: 'You are making Caesar salad for you and ' +q1num1+' friends. If one lettuce head makes 6 cups when chopped, how many heads do you need to buy?',
+            es: 'Estás haciendo ensalada César para ti y tus ' +q1num1+' amigos. Si una lechuga hace 6 tazas cuando se pica, ¿cuántas lechugas necesitas comprar?'
+        },
+        q1Answer,
+        [
+            {
+                en: 'Lettuce cups per 1 serving = cups in 1 recipe / recipe servings\nTotal servings = # of friends + you\nTotal cups =  Lettuce cups per 1 serving * Total servings\nTotal heads = Total Cups / cups per 1 lettuce head',
+                es: 'Tazas de lechuga por 1 porción = tazas en 1 receta / porciones de receta\nPorciones totales = # de amigos + tú\nTazas totales = Tazas de lechuga por 1 porción * Porciones totales\nTotal de lechugas = Tazas totales / tazas por 1 lechuga'
+            },
+            {
+                en: 'Lettuce cups per 1 serving = 12 / 6 = 2 cups\nTotal servings = '+q1num1+' + 1 = “x”\nTotal cups =  2 * “x” = “y”\nTotal heads = “y” / 6 = ' + q1Answer, 
+                es: 'Tazas de lechuga por 1 porción = 12 / 6 = 2 tazas\nPorciones totales = '+q1num1+' + 1 = “x”\nTazas totales =  2 * “x” = “y”\nTotal de lechugas = “y” / 6 = ' + q1Answer
+            }
+        ],
+        'wholeNumber',
+        null,
+        null
+    ))
+
+    const q2Arr1 = [2,4,6]
+    const q2num1 = q2Arr1[randomGenerator.randomInt(0,q2Arr1.length-1)]
+    const q2Arr2 = [3,6]
+    const q2num2 = q2Arr2[randomGenerator.randomInt(0,q2Arr2.length-1)]
+    const q2Answer = Math.round((Math.min((q2num1/10),(q2num2/12)) + Number.EPSILON) * 100) / 100
+    //Unit price question
+    questions.push(createGameQuestion(
+        {
+            en: ' You are shopping for ingredients to make Caesar salad and want to compare prices of dressings. Happy Cow sells organic caesar dressing in a 10 ounce bottle and costs '+q2num1+' dollars. Sunshine Farm sells caesar dressing in a 12 ounce bottle and costs '+q2num2+' dollars. What is the per ounce price for the cheapest brand? Type your answer in price format (ex: 2 dollars and 35 cents would be 2.35).',
+            es: 'Estás comprando ingredientes para hacer ensalada César y quieres comparar los precios de los aderezos. Happy Cow vende aderezo orgánico César en una botella de 10 onzas y cuesta '+q2num1+' dólares. Sunshine Farm vende aderezo César en una botella de 12 onzas y cuesta '+q2num2+' dólares. ¿Cuál es el precio por onza de la marca más barata? Escribe tu respuesta en formato de precio (por ejemplo, 2 dólares y 35 centavos sería 2.35).'
+        },
+        q2Answer,
+        [
+            {
+                en: 'Unit Price = total price / total ounces per 1 bottle\nWhich is the cheapest (lowest) price?',
+                es: 'Precio por unidad = precio total / onzas totales por 1 botella\n¿Cuál es el precio más barato (más bajo)?'
+            },
+            {
+                en: 'Happy Cow Unit Price = '+q2num1+' / 10 = Value A\nSunshine Farm Unit Price = '+q2num2+' / 12 = Value B\n[Lowest number between Value A & Value B] = ' + q2Answer,
+                es: 'Precio por unidad de Happy Cow = '+q2num1+' / 10 = Valor A\nPrecio por unidad de Sunshine Farm = '+q2num2+' / 12 = Valor B\n[El número más bajo entre Valor A y Valor B] = ' + q2Answer
+            }
+        ],
+        'money',
+        null,
+        null
+    ))
+
+    const q3Arr1 = [2,4,6,8,10]
+    const q3num1 = q3Arr1[randomGenerator.randomInt(0,q3Arr1.length-1)]
+    const q3Answer = q3num1*3
+    //Unit price question
+    questions.push(createGameQuestion(
+        {
+            en: 'You bought '+q3num1+' cups of crouton. How many servings of Caesar salad can you make with this amount?',
+            es: 'Compraste '+q3num1+' tazas de crouton. ¿Cuántas porciones de ensalada César puedes hacer con esta cantidad?'
+        },
+        q3Answer,
+        [
+            {
+                en: 'Servings per 1 cup of croutons = recipe servings / recipe cups of croutons\nTotal servings = total cups bought * servings per 1 cup of croutons',
+                es: 'Porciones por 1 taza de croutons = porciones de receta / tazas de croutons de receta\nPorciones totales = tazas totales compradas * porciones por 1 taza de croutons'
+            },
+            {
+                en: 'Servings per 1 cup of croutons = 6 / 2 = 3 servings\nTotal servings = '+q3num1+' * 3 = ' + q3Answer,                
+                es: 'Porciones por 1 taza de croutons = 6 / 2 = 3 porciones\nPorciones totales = '+q3num1+' * 3 = ' + q3Answer
+            }
+        ],
+        'money',
+        null,
+        null
+    ))
 
 }
 const churrosQuestions = (questions,recipe,randomGenerator) => {
