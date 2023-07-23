@@ -375,7 +375,57 @@ const caesarSaladQuestions = (questions,recipe,randomGenerator) => {
 }
 const churrosQuestions = (questions,recipe,randomGenerator) => {
     //Friend unit conversion question
+    const q1Arr1 = [7,15,23]
+    const q1num1 = q1Arr1[randomGenerator.randomInt(0,q1Arr1.length-1)]
+    const q1Answer = Math.ceil(((q1num1+1)*2)/16)
+    //Unit price question
+    questions.push(createGameQuestion(
+        {
+            en: 'You are shopping for ingredients to make churros for you and '+q1num1+' friends. If oil is sold in 1 gallon containers, how many containers do you need to buy to make enough churros? Hint: 1 gallon = 16 cups.',
+            es: 'Estás comprando ingredientes para hacer churros para ti y tus '+q1num1+' amigos. Si el aceite se vende en contenedores de 1 galón, ¿cuántos contenedores necesitas comprar para hacer suficientes churros? Pista: 1 galón = 16 tazas.'
+        },
+        q1Answer,
+        [
+            {
+                en: 'Oil cups per 1 serving = recipe cups / recipe servings\nTotal servings = # friends + you\nTotal Cups = Oil cups per 1 serving * Total servings\nTotal containers = total cups / cups in 1 container',                
+                es: 'Tazas de aceite por 1 porción = tazas de receta / porciones de receta\nPorciones totales = # amigos + tú\nTazas totales = Tazas de aceite por 1 porción * Porciones totales\nTotal de contenedores = tazas totales / tazas en 1 contenedor'
+            },
+            {
+                en: 'Oil cups per 1 serving = 8 / 4 = 2 cups\nTotal servings = '+q1Answer+' + 1 = “x”\nTotal Cups = 2 * “x” = “y”\nTotal containers = “y” / 16 = ' + q1Answer,
+                es: 'Tazas de aceite por 1 porción = 8 / 4 = 2 tazas\nPorciones totales = '+q1Answer+' + 1 = “x”\nTazas totales = 2 * “x” = “y”\nTotal de contenedores = “y” / 16 = ' + q1Answer
+            }
+        ],
+        'wholeNumber',
+        null,
+        null
+    ))
     //Cheapest Brand Question
+    const q2Arr1 = [8,12]
+    const q2num1 = q2Arr1[randomGenerator.randomInt(0,q2Arr1.length-1)]
+    const q2Arr2 = [2,4,5,6]
+    const q2num2 = q2Arr2[randomGenerator.randomInt(0,q2Arr2.length-1)]
+    const q2Answer = Math.round((Math.min((q2num1/16),(q2num2/2)) + Number.EPSILON) * 100) / 100
+    //Unit price question
+    questions.push(createGameQuestion(
+        {
+            en: 'When shopping for ingredients to make churros you found two different brands of cinnamon. Sunshine Farm brand costs '+q2num1+' dollars and is sold in 16 ounce containers. Happy Cinnamon brand costs '+q2num2+' dollars and is sold in 2 ounce containers. What is the unit price for the cheapest brand?',
+            es: 'Al comprar ingredientes para hacer churros, encontraste dos marcas diferentes de canela. La marca Sunshine Farm cuesta '+q2num1+' dólares y se vende en contenedores de 16 onzas. La marca Happy Cinnamon cuesta '+q2num2+' dólares y se vende en contenedores de 2 onzas. ¿Cuál es el precio por unidad de la marca más barata?'
+        },
+        q2Answer,
+        [
+            {
+                en: 'Unit Price = total price / total ounces per 1 container\nWhich is the cheapest (lowest) price?',
+                es: 'Precio por unidad = precio total / total de onzas por 1 contenedor\n¿Cuál es el precio más barato (más bajo)?'
+            },
+            {
+                en: 'Sunshine Farm Unit Price = '+q2num1+' / 16 = Value A\nHappy Cinnamon Unit Price = '+q2num2+' / 2 = Value B\nValue A = ' + q2Answer,              
+                es: 'Precio por unidad de Sunshine Farm = '+q2num1+' / 16 = Valor A\nPrecio por unidad de Happy Cinnamon = '+q2num2+' / 2 = Valor B\nValor A = ' + q2Answer
+            }
+        ],
+        'money',
+        null,
+        null
+    ))
     //image question
 }
 
