@@ -22,7 +22,7 @@ export async function getServerSideProps(context){
     const { questionTypeKey, level, initSeed, initQnNum } = context.query
     const {seed, randomGenerator} = serverSeededRandom(initSeed)
     const allRecipes = await loadRecipes("groceryStore",level)
-    const shuffled = Object.keys(allRecipes).sort(() => 0.5 - Math.random());
+    const shuffled = Object.keys(allRecipes).sort(() => 0.5 - randomGenerator.getRandom());
     const selected = shuffled.slice(0, recipesQuizzedOn);
     let recipes = {}
     selected.forEach((recipeKey, index) => {

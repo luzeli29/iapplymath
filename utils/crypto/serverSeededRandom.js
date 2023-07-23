@@ -53,6 +53,7 @@ const serverSeededRandom = (initSeed) => {
     
     const randomGenerator = {
         seed: seed,
+        getRandom: getRandom,
         randomInt: randomInt,
         randomHr: randomHr,
         randomDishType: randomDishType,
