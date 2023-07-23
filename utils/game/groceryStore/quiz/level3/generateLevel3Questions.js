@@ -15,6 +15,19 @@ const generateLevel3Questions = (recipes,questionType,randomGenerator) => {
             case 'lemonVanillaCake':
                 lemonVanillaCakeQuestions(questions,recipes[recipeKey],randomGenerator)
                 break;
+            case 'tomatilloSauceAndTortillaChips':
+                tomatilloSauceAndTortillaChipsQuestions(questions,recipes[recipeKey],randomGenerator)
+                break;
+            case 'mangoJuice':
+                mangoJuiceQuestions(questions,recipes[recipeKey],randomGenerator)
+                break;
+            case 'OJCitrusCooler':
+                OJCitrusCoolerQuestions(questions,recipes[recipeKey],randomGenerator)
+                break;
+            case 'lentilSoup':
+                lentilSoupQuestions(questions,recipes[recipeKey],randomGenerator)
+                break;
+            
             default:
                 questions.push(ErrorQuestion)
         }
@@ -99,7 +112,51 @@ const strawberryLimeadeQuestions = (questions,recipe,randomGenerator) => {
 
 const strawberryCakeQuestions = (questions,recipe,randomGenerator) => {
     //Friend Container Cost question
+    const q1num1 = randomGenerator.randomInt(6,11)
+    const q1Answer = Math.round(((.45*q1num1*.45)+ Number.EPSILON) * 100) / 100
+    questions.push(createGameQuestion(
+        {
+            en: 'You want to make this strawberry cake recipe '+q1num1+' times. The grocery store sells 2 cups of flour for $0.90. How much do you need to spend on flour?',
+            es: 'Quieres hacer esta receta de pastel de fresa '+q1num1+' veces. La tienda de comestibles vende 2 tazas de harina por $0.90. ¿Cuánto necesitas gastar en harina?'
+        },
+        q1Answer,
+        [
+            {
+                en: 'Price per cup = total price / number of cups\nTotal cups needed = recipe cups * recipe amount needed (round up)\nTotal price = price per cup * total cups needed',                
+                es: 'Precio por taza = precio total / número de tazas\nTazas totales necesarias = tazas de receta * cantidad de receta necesaria (redondear hacia arriba)\nPrecio total = precio por taza * tazas totales necesarias'
+            },
+            {
+                en: 'Price per cup = 0.90 / 2 = 0.45\nTotal cups needed = 1 ½  * '+q1num1+' = “x” (round up)\nTotal price = 0.45 * “x” = Answer',                
+                es: 'Precio por taza = 0.90 / 2 = 0.45\nTazas totales necesarias = 1 ½  * '+q1num1+' = “x” (redondear hacia arriba)\nPrecio total = 0.45 * “x” = Respuesta'
+            }
+        ],
+        'money',
+        null,
+        null
+    ))
     //budget questions
+    const q2num1 = randomGenerator.randomInt(16,31)
+    const q2Answer = Math.round(((q2num1*4*8)+ Number.EPSILON) * 100) / 100
+    questions.push(createGameQuestion(
+        {
+            en: 'You have $'+q2num1+' to spend on milk for this recipe. If a quart of milk costs $2.00, how many servings can you make with the total amount of money you have? Hint: 1 quart = 4 cups.',
+            es: 'Tienes $'+q2num1+' para gastar en leche para esta receta. Si un cuarto de galón de leche cuesta $2.00, ¿cuántas porciones puedes hacer con la cantidad total de dinero que tienes? Sugerencia: 1 cuarto de galón = 4 tazas.'
+        },
+        q2Answer,
+        [
+            {
+                en: 'Total quarts = budget / price per 1 quart  (round down)\nTotal cups = total quarts * cups per 1 quart\nTotal Servings = (total cups / cups per 1 recipe) * servings per 1 recipe',
+                es: 'Cuartos totales = presupuesto / precio por 1 cuarto (redondear hacia abajo)\nTazas totales = cuartos totales * tazas por 1 cuarto\nPorciones totales = (tazas totales / tazas por 1 receta) * porciones por 1 receta'
+            },
+            {
+                en: 'Total quarts = '+q2num1+' / 2 = “x”  (round down)\nTotal cups = “x” * 4 = “y”\nTotal Servings = (“y” / 1) * 8 = ' + q2Answer,
+                es: 'Cuartos totales = '+q2num1+' / 2 = “x”  (redondear hacia abajo)\nTazas totales = “x” * 4 = “y”\nPorciones totales = (“y” / 1) * 8 = ' + q2Answer
+            }
+        ],
+        'money',
+        null,
+        null
+    ))
     //Image Question
 }
 
@@ -176,5 +233,62 @@ const lemonVanillaCakeQuestions = (questions,recipe,randomGenerator) => {
     ))
 }
 
+const tomatilloSauceAndTortillaChipsQuestions = (questions,recipe,randomGenerator) => {
+    const q1num1 = randomGenerator.randomInt(4,8)
+    const q1Answer = Math.ceil((q1num1/.89) *12)
+    questions.push(createGameQuestion(
+        {
+            en: 'You only have $'+q1num1+' to spend on garlic. One garlic bulb has 12 garlic cloves and costs $0.89 each. How many garlic cloves can you buy? Round down to the nearest whole number.',
+            es: 'Solo tienes $'+q1num1+' para gastar en ajo. Un bulbo de ajo tiene 12 dientes de ajo y cuesta $0.89 cada uno. ¿Cuántos dientes de ajo puedes comprar? Redondea al número entero más cercano.'
+        },
+        q1Answer,
+        [
+            {
+                en: 'Total bulbs = budget / price per 1 bulb\nTotal cloves = Total bulbs * cloves per 1 bulb',                
+                es: 'Bulbos totales = presupuesto / precio por 1 bulbo\nDientes totales = Bulbos totales * dientes por 1 bulbo'
+            },
+            {
+                en: 'Total bulbs = '+q1num1+' / 0.89 = “x”\nTotal cloves = “x” * 12 = ' + q1Answer,
+                es: 'Bulbos totales = '+q1num1+' / 0.89 = “x”\nDientes totales = “x” * 12 = ' + q1Answer
+            }
+        ],
+        'wholeNumber',
+        null,
+        null
+    ))
+
+    const q2num1 = randomGenerator.randomInt(10,21)
+    const q2Answer = Math.round((q2num1 * 1.56 + Number.EPSILON) * 100) / 100
+    questions.push(createGameQuestion(
+        {
+            en: 'You need to buy tomatillos for this recipe and you have $'+q2num1+' to spend. If tomatillos cost $1.56 per pound, how many pounds of tomatillos can you buy? Round down to the nearest tenth.',
+            es: 'Necesitas comprar tomatillos para esta receta y tienes $'+q2num1+' para gastar. Si los tomatillos cuestan $1.56 por libra, ¿cuántas libras de tomatillos puedes comprar? Redondea al décimo más cercano.'
+
+        },
+        q2Answer,
+        [
+            {
+                en: 'Total pounds = budget / price per pound',
+                es: 'Libras totales = presupuesto / precio por libra'
+            },
+            {
+                en: 'Total pounds = '+q2num1+' / 1.56 = ' + q2Answer,
+                es: 'Libras totales = '+q2num1+' / 1.56 = ' + q2Answer
+            }
+        ],
+        'money',
+        null,
+        null
+    ))
+}
+
+const mangoJuiceQuestions = (questions,recipe,randomGenerator) => {
+}
+
+const OJCitrusCoolerQuestions = (questions,recipe,randomGenerator) => {
+}
+
+const lentilSoupQuestions = (questions,recipe,randomGenerator) => {
+}
 
 export default generateLevel3Questions
