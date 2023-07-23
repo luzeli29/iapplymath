@@ -3,7 +3,8 @@
     "recipe" : {
         "vanillaMilkShake" :{
             "locations" : [
-                "auntHouse"
+                "auntHouse",
+                "groceryStore"
             ],
             "level" : "1",
             "name" : {

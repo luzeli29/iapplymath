@@ -11,7 +11,7 @@ const generateLevel1Questions = (recipes,questionType,randomGenerator) => {
     let questions = []
     Object.keys(recipes).forEach((recipeKey, index) => {
         switch(recipeKey) {
-            case 'vanillaMilkShake': //NOT DONE
+            case 'vanillaMilkShake':
                 vanillaMilkShakeQuestions(questions,recipes[recipeKey],randomGenerator)
                 break;
             case 'mangoPineappleJuice':
@@ -220,13 +220,9 @@ const hamAndCheeseArepasQuestions = (questions,recipe,randomGenerator) => {
 
     const q4Arr1 = [6,10,12,15]
     const q4Arr2 = [10,12,15,18,25]
-
     const q4num1 = q4Arr1[randomGenerator.randomInt(0,q4Arr1.length-1)]
     const q4num2 = q4Arr2[randomGenerator.randomInt(0,q4Arr2.length-1)]
-
     const q4Answer = Math.round((Math.min((3/q4num1),(4.5/q4num2)) + Number.EPSILON) * 100) / 100
-    
-    
     questions.push(createGameQuestion(
         {
             en: 'The Happy Farm cheese brand is sold in packages of ' + q4num1 + ' slices for $3.00 per package. The Fancy Cow brand of cheese is sold in packages of ' + q4num2 + ' slices for $4.50 per package. What is the per unit price of the cheapest brand? Type your answer in price format (ex: 2 dollars and 35 cents would be 2.35).',
@@ -250,9 +246,52 @@ const hamAndCheeseArepasQuestions = (questions,recipe,randomGenerator) => {
 }
 
 const vanillaMilkShakeQuestions = (questions,recipe,randomGenerator) => {
-    //Unit price question
-    //Friend Container unit conversion question
-    //image question
+    const q1Answer = 0.25
+    questions.push(createGameQuestion(
+        {
+            en: 'You are planning to make vanilla milkshakes. The Happy Cow brand of milk is sold in cartons that are 1/2 gallon for $2.00. If 1 gallon of milk equals 16 cups, what is the price per cup of Happy Cow brand milk? Type your answer in price format (ex: 2 dollars and 35 cents would be 2.35).',
+            es: 'Estás planeando hacer batidos de vainilla. La marca de leche Happy Cow se vende en cajas de 1/2 galón por $2.00. Si 1 galón de leche equivale a 16 tazas, ¿cuál es el precio por taza de leche de la marca Happy Cow? Escriba su respuesta en formato de precio (por ejemplo, 2 dólares y 35 centavos serían 2,35)'
+        },
+        q1Answer,
+        [
+            {
+                en: 'Cups per milk carton = cups in 1 gallon * carton quantity\nUnit price = milk carton price / Cups per milk carton',                
+                es: 'Tazas por caja de leche = tazas en 1 galón * cantidad de caja\nPrecio unitario = precio del cartón de leche / Tazas por cartón de leche'
+            },
+            {
+                en: 'Cups per milk carton = 16 * 1/2 = 8 cups\nUnit price = 2 / 8 = 1/4 = 0.25',
+                es: 'Tazas por caja de leche = 16 * 1/2 = 8 tazas\nPrecio unitario = 2 / 8 = 1/4 = 0,25'
+            }
+        ],
+        'money',
+        null,
+        null
+    ))
+
+    const q2Arr1 = [3,5,7]
+    const q2num1 = q2Arr1[randomGenerator.randomInt(0,q2Arr1.length-1)]
+    const q2Answer = Math.ceil((q2num1+1) /2)
+    questions.push(createGameQuestion(
+        {
+            en: 'You decide to shop for ingredients to make vanilla milkshakes for yourself and '+q2num1+' friends. Happy Cow ice cream is sold in 1 pint containers. If 1 pint equals 2 cups, how many pints do you need to buy to make milkshakes for you and your friends?',
+            es: 'Decides comprar ingredientes para hacer batidos de vainilla para ti y '+q2num1+' amigos. El helado Happy Cow se vende en envases de 1 pinta. Si 1 pinta equivale a 2 tazas, ¿cuántas pintas necesitas comprar para hacer batidos para ti y tus amigos?'
+        },
+        q2Answer,
+        [
+            {
+                en: 'Ice Cream cups per 1 serving = recipe cups / recipe servings\nTotal Servings = # of friends + you\nTotal Cups = Ice Cream cups per 1 serving * total servings\nTotal Pints = total cups / 2',
+                es: 'Tazas de helado por 1 porción = tazas de receta / porciones de receta\nPorciones totales = # de amigos + tú\nTazas totales = tazas de helado por 1 porción * porciones totales\nTotal de pintas = total de tazas / 2'
+            },
+            {
+                en: 'Ice Cream cups per 1 serving = 2 cups / 2 servings = 1 cup\nTotal Servings = [3,5,7] + 1 = “x”\nTotal Cups = 1 * “x” = “y”\nTotal Pints = “y” / 2 = ' + q2Answer, 
+                es: 'Tazas de helado por 1 porción = 2 tazas / 2 porciones = 1 taza\nPorciones totales = [3,5,7] + 1 = “x”\nTazas totales = 1 * “x” = “y”\nTotal de pintas = “y” / 2 = ' + q2Answer             
+            }
+        ],
+        'wholeNumber',
+        null,
+        null
+    ))
+    //Graph questin
 }
 
 const caesarSaladQuestions = (questions,recipe,randomGenerator) => {
