@@ -46,8 +46,8 @@ export default function QuestionBox({ questionData, incorrectNum }) {
     <div className={style.question_text_container}>
       <div className="row">
         <div className="col-lg-2"></div>
-        <div className="col-lg-10 ">
-          <p>{questionData[lang]}</p>
+        <div className="col-lg-10">
+          <p className="small-font new-line-compatible">{questionData[lang]}</p>
           <TextReader text={questionData[lang]} reader={"restaurant"} />
         </div>
       </div>
@@ -84,7 +84,7 @@ export default function QuestionBox({ questionData, incorrectNum }) {
         <div className="row">
           <div className="col-lg-2"></div>
           <div className="col-lg-10">
-            <p>{hintText}</p>
+            <p className="small-font new-line-compatible">{hintText}</p>
           </div>
         </div>
       ) : (

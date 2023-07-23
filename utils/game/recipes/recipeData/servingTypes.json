@@ -105,6 +105,16 @@
                 "en": "Boxes",
                 "es": "Cajas"
             }
+        },
+        "teaspoon": {
+            "nameSingular": {
+                "en": "Teaspoon",
+                "es": "Cucharadita"
+            },
+            "namePlural": {
+                "en": "Teaspoons",
+                "es": "Cucharaditas"
+            }
         }
     }
 }
