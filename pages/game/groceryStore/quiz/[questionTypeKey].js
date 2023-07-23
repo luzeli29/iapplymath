@@ -67,7 +67,7 @@ const GroceryStoreQuiz = ({user,settings,questions,seed,recipes}) => {
             quizDataBuilderSetters.setParams()
             quizDataBuilderSetters.setQuestionTypeKey(questionTypeKey)
             quizDataBuilderSetters.setOnFinish(() => () => handleFinish())
-            quizDataBuilderSetters.setLocationKey('grocertStore')
+            quizDataBuilderSetters.setLocationKey('groceryStore')
             initQnNum ? quizDataBuilderSetters.setQuestionNum(initQnNum) 
                 : quizDataBuilderSetters.setQuestionNum(0)
             quizDataBuilderSetters.setParams({level})

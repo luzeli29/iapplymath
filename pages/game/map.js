@@ -75,7 +75,7 @@ const Map = ({user,settings}) => {
     }
 
     const handleGroceryStoreClick = () => {
-      router.push('/dialog/groceryStoreIntro');
+      router.push('/game/groceryStore/basic/levelSelect');
     }
     
     
