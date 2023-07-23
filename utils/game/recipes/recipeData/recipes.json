@@ -3,8 +3,7 @@
     "recipe" : {
         "vanillaMilkShake" :{
             "locations" : [
-                "auntHouse",
-                "groceryStore"
+                "auntHouse"
             ],
             "level" : "1",
             "name" : {
@@ -78,8 +77,7 @@
         },
         "churros" :{
             "locations" : [
-                "auntHouse",
-                "groceryStore"
+                "auntHouse"
             ],
             "level" : "1",
             "name" : {
@@ -439,8 +437,7 @@
         },
         "mangoJuice" :{
             "locations" : [
-                "auntHouse",
-                "groceryStore"
+                "auntHouse"
             ],
             "level" : "3",
             "name" : {
@@ -498,8 +495,7 @@
         },
         "lentilSoup" :{
             "locations" : [
-                "auntHouse",
-                "groceryStore"
+                "auntHouse"
             ],
             "level" : "3",
             "name" : {
@@ -574,8 +570,7 @@
         },
         "strawberryCake" :{
             "locations" : [
-                "auntHouse",
-                "groceryStore"
+                "auntHouse"
             ],
             "level" : "3",
             "name" : {
@@ -698,7 +693,6 @@
                 "es" : "Ensalada César"
             },
             "locations" : [
-                "groceryStore"
             ],
             "level" : "1",
             "imgSrc" : "caesar_salad",
@@ -1021,7 +1015,6 @@
         },
         "tomatilloSauceAndTortillaChips" : {
             "locations" : [
-                "groceryStore"
             ],
             "level" : "3",
             "name" : {
@@ -1062,7 +1055,6 @@
         },
         "OJCitrusCooler": {
             "locations" : [
-                "groceryStore"
             ],
             "level" : "3",
             "name" : {
@@ -1120,10 +1112,10 @@
                     "ingredient" : "sugar",
                     "amount" : "1",
                     "servingType" : "cup"
-                },"egg" :{
-                    "ingredient" : "egg",
+                },"cakeMix" :{
+                    "ingredient" : "cakeMix",
                     "amount" : "1",
-                    "servingType" : "self"
+                    "servingType" : "box"
                 },"vanillaExtract" :{
                     "ingredient" : "vanillaExtract",
                     "amount" : "1",
