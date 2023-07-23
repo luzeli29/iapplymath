@@ -27,7 +27,7 @@ export default function IngredientList({ingredients, lang}) {
                         alt={'ing'}/>
                 </div>   
                 <div className='ps-5 pt-2 col-10'>
-                    <p>{ingredientLineText}</p>
+                    <p className=''>{ingredientLineText}</p>
                 </div>           
             </div>
         )
@@ -36,7 +36,7 @@ export default function IngredientList({ingredients, lang}) {
     
     return (
         <ul className='list-group list-group-flush mx-auto ps-1'>
-            <IconGroup width={1} height={4} icons={ingredients} getContentFromValue={(key,value) => getContentFromValue(key,value)}/>
+            <IconGroup width={1} height={3} icons={ingredients} getContentFromValue={(key,value) => getContentFromValue(key,value)}/>
         </ul>
     )
 }

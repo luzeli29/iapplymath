@@ -618,8 +618,8 @@
                     "servingType" : "cup"
 
                 },
-                "strawberry" :{
-                    "ingredient" : "strawberry",
+                "slicedStrawberry" :{
+                    "ingredient" : "slicedStrawberry",
                     "amount" : "3/4",
                     "servingType" : "cup"
 
@@ -1016,6 +1016,7 @@
         },
         "tomatilloSauceAndTortillaChips" : {
             "locations" : [
+                "groceryStore"
             ],
             "level" : "3",
             "name" : {

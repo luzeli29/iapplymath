@@ -180,6 +180,19 @@
             "countable" : true,
             "imgSrc" : "mashed_sweet_potato"
         },
+        "slicedStrawberry" : {
+            "nameSingular" : {
+                "en" : "Sliced Strawberry",
+                "es" : "Fresa en Rodajas"
+            },
+            "namePlural" : {
+                "en" : "Sliced Strawberry",
+                "es" : "Fresa en Rodajas"
+            },
+            "container" : "container",
+            "countable" : true,
+            "imgSrc" : "strawberrySliced"
+        },
         "tomatilloSauce" : {
             "nameSingular" : {
                 "en" : "Tomatillo Sauce",
@@ -824,7 +837,7 @@
             },
             "container" : "container",
             "countable" : false,
-            "imgSrc" : "parmesanCheese"
+            "imgSrc" : "parmesan"
         },
         "caesarDressing" : {
             "nameSingular" : {
@@ -870,7 +883,7 @@
             }, 
             "container" : "container",
             "countable" : true,
-            "imgSrc" : "chicken"
+            "imgSrc" : "chickenBreast"
         }, "soySauce" :{
             "nameSingular" : {
                 "en" : "Soy Sauce",
