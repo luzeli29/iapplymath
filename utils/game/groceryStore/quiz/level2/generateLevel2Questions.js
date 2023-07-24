@@ -9,7 +9,9 @@ const generateLevel2Questions = (recipes,questionType,randomGenerator) => {
     Object.keys(recipes).forEach((recipeKey, index) => {
         switch(recipeKey) {
             case 'ricePudding':
-                ricePuddingQuestions(questions,recipes[recipeKey],randomGenerator)
+                // ricePuddingQuestions(questions,recipes[recipeKey],randomGenerator)
+                fruitSaladQuestions(questions,recipes['fruitSalad'],randomGenerator)
+
                 break;
             case 'peruvianFriedRice':
                 peruvianFriedRiceQuestions(questions,recipes[recipeKey],randomGenerator)
@@ -21,13 +23,16 @@ const generateLevel2Questions = (recipes,questionType,randomGenerator) => {
                 pineappleCakeQuestions(questions,recipes[recipeKey],randomGenerator)
                 break
             case 'carrotJuice':
-                carrotJuiceQuestions(questions,recipes[recipeKey],randomGenerator)
+                // carrotJuiceQuestions(questions,recipes[recipeKey],randomGenerator)
+                fruitSaladQuestions(questions,recipes['fruitSalad'],randomGenerator)
                 break
             case 'fruitSalad':
                 fruitSaladQuestions(questions,recipes[recipeKey],randomGenerator)
                 break
             case 'chocolateBananaCake':
-                chocolateBananaCakeQuestions(questions,recipes[recipeKey],randomGenerator)
+                // chocolateBananaCakeQuestions(questions,recipes[recipeKey],randomGenerator)
+                fruitSaladQuestions(questions,recipes['fruitSalad'],randomGenerator)
+                
                 break
             default:
                 questions.push(ErrorQuestion)
@@ -219,11 +224,11 @@ const peruvianFriedRiceQuestions = (questions,recipe,randomGenerator) => {
 
     const q7NumList = [[6, 8], [2, 5], [4, 7]];
     const q7PriceList = [[12, 16], [7, 9], [11, 14]];
-    const q7Index = randomGenerator.randomInt(0, 2);
+    const q7Index = randomGenerator?.randomInt(0, 2) || 1;
     const q7NumRange = q7NumList[q7Index];
     const q7PriceRange = q7PriceList[q7Index];
-    const q7Num = randomGenerator.randomInt(q7NumRange[0], q7NumRange[1]);
-    const q7Price = randomGenerator.randomFloat(q7PriceRange[0], q7PriceRange[1]);
+    const q7Num = randomGenerator?.randomInt(q7NumRange[0], q7NumRange[1]) ?? 6 ;
+    const q7Price = randomGenerator?.randomFloat(q7PriceRange[0], q7PriceRange[1]);
     const q7Answer = q7Price / q7Num;
 
     questions.push(createGameQuestion(

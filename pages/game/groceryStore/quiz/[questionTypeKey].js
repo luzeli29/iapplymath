@@ -13,6 +13,7 @@ import loadRecipes from '@utils/game/recipes/recipeData/loadRecipes';
 import generateRecipeServingText from '@utils/game/recipes/textCreation/generateRecipeServingText';
 import generateRecipeTitleText from '@utils/game/recipes/textCreation/generateRecipeTitleText';
 import LoadSchoolTopics from '@utils/game/school/quiz/schoolTopics/loadSchoolTopics';
+import getText from '@utils/text/getText';
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
@@ -85,11 +86,11 @@ const GroceryStoreQuiz = ({user,settings,questions,seed,recipes}) => {
     }
 
     const renderRecipe = (key,value) => {
-        const ingredients = value.ingredients
+        const ingredients = value?.ingredients
         const recipeTitle = generateRecipeTitleText(value,lang)
         const recipeServingText = generateRecipeServingText(value,lang)
-        const prepTime = value.prepTime > 0 ? getText('preptime', lang) + ' : ' +  value.prepTime + ' ' + getText('minutes', lang) : ''
-        const cookTime = value.cookTime > 0 ? getText('cooktime', lang) + ' : ' +  value.cookTime + ' ' + getText('minutes', lang) : ''
+        const prepTime = value?.prepTime > 0 ? getText('preptime', lang) + ' : ' +  value?.prepTime + ' ' + getText('minutes', lang) : ''
+        const cookTime = value?.cookTime > 0 ? getText('cooktime', lang) + ' : ' +  value?.cookTime + ' ' + getText('minutes', lang) : ''
 
         return (
                 <div>
