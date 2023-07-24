@@ -71,6 +71,7 @@ export default function Creator({onEnd}) {
                     height={80}
                     src={imgSrc}
                     alt={text}/>
+                <h4>{emotion[lang]}</h4>
             </ClickableIcon>
             </Tooltip>
         )

@@ -38,7 +38,7 @@ function App({ Component, pageProps }) {
   return (
     <>
       <ReactHowler src={song} playing={gameLocation==="restaurant"} loop={true} volume={0.5} mute={musicMuteState}/>
-      <ReactHowler src={song2} playing={gameLocation==="chilloutbreak"} loop={true} volume={0.5}/>
+      <ReactHowler src={song2} playing={gameLocation==="chilloutbreak"} loop={true} volume={0.5} mute={musicMuteState}/>
       <Head>
         <title>I Apply Math in my World</title>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
