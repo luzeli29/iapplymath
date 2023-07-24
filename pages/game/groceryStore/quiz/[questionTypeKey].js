@@ -16,9 +16,46 @@ import LoadSchoolTopics from '@utils/game/school/quiz/schoolTopics/loadSchoolTop
 import getText from '@utils/text/getText';
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import loadLocations from '@utils/game/loadLocations';
 
 const recipesQuizzedOn = 2
 
+export async function getStaticPaths() {
+    const locationsObj = await loadLocations()
+    const groceryStoreObj = locationsObj.groceryStore
+    const keyPaths = [];
+
+    for (let questionTypeKey of Object.keys(groceryStoreObj.questionTypes)){
+        keyPaths.push({ params: { questionTypeKey: questionTypeKey, level : 1}});
+        keyPaths.push({ params: { questionTypeKey: questionTypeKey, level : 2}});
+        keyPaths.push({ params: { questionTypeKey: questionTypeKey, level : 3}});
+
+    }
+
+    console.log(keyPaths)
+
+    return {
+        paths: keyPaths,
+        fallback: false,
+    };
+}
+
+export async function getStaticProps(context){
+    const  {params}  = context
+    console.log('params')
+    console.log(params)
+    const level = params.level ? params.level : 1
+    const recipes = await loadRecipes("groceryStore",level)
+
+    return {
+      props: {
+        recipes,
+      },
+    }
+}
+
+
+/*
 export async function getServerSideProps(context){
     const { questionTypeKey, level, initSeed, initQnNum } = context.query
     const {seed, randomGenerator} = serverSeededRandom(initSeed)
@@ -39,15 +76,15 @@ export async function getServerSideProps(context){
         },
     }
   }
-  
-
-const GroceryStoreQuiz = ({user,settings,questions,seed,recipes}) => {
+*/
+const GroceryStoreQuiz = ({user,settings,questions,recipes}) => {
     const {buildQuizData, quizDataBuilderSetters} = useQuizDataBuilder()
 
     const [loading, setLoading] = useState(true)
     const router = useRouter()
 
-    const { questionTypeKey, level, initQnNum } = router.query
+    const { questionTypeKey, level, initQnNum,initSeed } = router.query
+    const {seed,setSeed,regenerateSeed, randomGenerator} = useSeededRandom(initSeed)
 
     const handleFinish = () => {
         router.push('/game/groceryStore/finished')
@@ -56,10 +93,24 @@ const GroceryStoreQuiz = ({user,settings,questions,seed,recipes}) => {
 
     useEffect(()=> {
         if(seed) {
+            const questions = generateQuestions()
             createQuizData(questions)
             setLoading(false)
         }
     },[seed])
+
+    const generateQuestions = () => {
+        if(!seed) return null
+        DevLog('---Generating questions w/ Seed ' + seed + '---')
+        try {
+            const questions = generateGroceryStoreQuestions(recipes,questionTypeKey,level,randomGenerator)
+            DevLog(questions)
+            return questions
+        } catch(e) {
+            DevErr('Error generating questions ' + e)
+            return null
+        }
+    }
 
     const createQuizData = (questions) => {
         try{

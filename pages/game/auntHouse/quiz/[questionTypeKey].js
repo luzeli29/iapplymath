@@ -2,7 +2,6 @@ import React, {useState,useEffect,useMemo} from 'react'
 import {useRouter} from 'next/router'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
-import loadRecipes from '@public/data/recipeData/loadRecipes'
 import aHQuestionFactory from '@utils/game/auntHouse/questionCreation/aHQuestionFactory'
 import IngredientList from '@comps/game/auntHouse/ingredientList'
 import generateRecipeTitleText from '@utils/game/recipes/textCreation/generateRecipeTitleText'
@@ -15,10 +14,11 @@ import useSeededRandom from '@hooks/useSeededRandom'
 import DevErr from '@utils/debug/devErr'
 import GameQuestionLayout from '@layouts/gameLayouts/gameQuestionLayout'
 import getText from '@utils/text/getText'
+import loadRecipes from '@public/data/recipeData/loadRecipes'
 
 
 export async function getStaticPaths() {
-    const recipes = await loadRecipes()
+    const recipes = await loadRecipes("auntHouse")
     const recipeKeys = Object.keys(recipes)
     const locationsObj = await loadLocations()
     const auntHouseObj = locationsObj.auntHouse
@@ -30,6 +30,7 @@ export async function getStaticPaths() {
         }
     }
 
+    console.log(keyPaths)
     return {
         paths: keyPaths,
         fallback: false,
