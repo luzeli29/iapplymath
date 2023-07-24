@@ -123,7 +123,10 @@ const translations = {
     },
 
     // ----- General Translations -----
-
+    replay: {
+        en: "Replay",
+        es: "Repetir",
+    },
     groceryStore: {
         en: "Grocery Store",
         es: "Supermercado",
