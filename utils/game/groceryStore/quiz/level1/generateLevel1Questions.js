@@ -10,6 +10,7 @@ const evens = [2,4,8,10]
 const generateLevel1Questions = (recipes,questionType,randomGenerator) => {
     let questions = []
     Object.keys(recipes).forEach((recipeKey, index) => {
+        console.log(recipeKey)
         switch(recipeKey) {
             case 'vanillaMilkShake':
                 vanillaMilkShakeQuestions(questions,recipes[recipeKey],randomGenerator)

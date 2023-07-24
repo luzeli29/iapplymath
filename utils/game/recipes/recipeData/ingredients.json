@@ -813,7 +813,7 @@
             },
             "container" : "container",
             "countable" : true,
-            "imgSrc" : "arepas"
+            "imgSrc" : "arepa"
         },"lettus" : {
             "nameSingular" : {
                 "en" : "Lettus",
@@ -825,7 +825,7 @@
             },
             "container" : "bag",
             "countable" : false,
-            "imgSrc" : "lettus"
+            "imgSrc" : "lettuce"
         }, "parmesanCheese" : {
             "nameSingular" : {
                 "en" : "Parmesan Cheese",
@@ -850,7 +850,7 @@
             },
             "container" : "bottle",
             "countable" : false,
-            "imgSrc" : "caesarDressing"
+            "imgSrc" : "caesar"
         }, "crouton" : {
             "nameSingular" : {
                 "en" : "Crouton",
@@ -861,7 +861,7 @@
             }, 
             "container" : "bag",
             "countable" : true,
-            "imgSrc" : "crouton"
+            "imgSrc" : "croutons"
         }, "colorfulPepper" : {
             "nameSingular" : {
                 "en" : "Colorful Pepper",
