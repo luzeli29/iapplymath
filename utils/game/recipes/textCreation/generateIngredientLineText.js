@@ -1,7 +1,6 @@
 import getText from '@utils/text/getText'
 
 export default function generateIngredientLineText(ingredient, lang) {
-    console.log(ingredient)
     let _lang
     if(lang) {
         _lang = lang
@@ -15,7 +14,6 @@ export default function generateIngredientLineText(ingredient, lang) {
     let ingredientName = ''
 
     if(amountEval > 1) {
-        console.log(ingredient.servingType)
         servingText = ingredient.servingType.namePlural[lang]
         if(servingText) {
             servingText += ' ' + getText('of',lang).toLowerCase() + ' '
