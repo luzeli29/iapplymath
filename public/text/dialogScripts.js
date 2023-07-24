@@ -187,7 +187,41 @@ const dialog_scripts = {
             },
             
         ]
-    }
+    },
+    stadium_intro: {
+        stage: "stadium",
+        lines: [
+            {
+                en: "Hey, welcome to the stadium!",
+                es: "¡Hola, estoy muy feliz de verte por aquí!"
+            },{
+                en: "Thanks for coming! Delicia is my favorite restaurant!",
+                es: "¡Gracias por venir! ¡Delicia es mi restaurante favorito!"
+            },{
+                en: "All right, let’s explore their menu. I heard the menu changes every time you visit!",
+                es: "Exploremos el menú. ¡Escuché que el menú cambia cada vez que visitas!"
+            },
+        ]
+    },
+
+    stadium_outro: {
+        stage: "sradium",
+        lines: [
+            {
+                en: "Wow, I’m so full!",
+                es: "Guau, estoy muy satisfecha!"
+            },{
+                en: "The food was really good!",
+                es: "La comida estaba muy buena!"
+            },{
+                en: "It was! Let’s come again soon.",
+                es: "Sí siempre, cuando quieras volvemos!"
+            },{
+                en: "Sure! I’ll see you later!",
+                es: "¡Claro, nos vemos luego!"
+            }
+        ]
+    },
     
 }
 
