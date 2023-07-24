@@ -2,8 +2,6 @@ import DevErr from '@utils/debug/devErr';
 import DevLog from '@utils/debug/devLog';
 import loadJSONFromUrl from '@utils/staticData/loadJSONFromUrl';
 import mergeObjectsIntoObjectByKeys from '@utils/staticData/mergeObjectsIntoObjectByKeys';
-import { promises as fs } from 'fs';
-import path from 'path';
 
 export default async function loadDialogScripts() {
 
@@ -41,13 +39,21 @@ export default async function loadDialogScripts() {
     } else {
         DevErr('No school dialog scripts loaded...')
     }
+
+    let groceryStoreDS = await loadJSONFromUrl('utils/game/groceryStore/dialog/groceryStoreScripts.json')
+    if(groceryStoreDS) {
+        groceryStoreDS = groceryStoreDS.dialogScript
+    } else {
+        DevErr('No grocery store dialog scripts loaded...')
+    }
     
     //Make sure to add dialog after loading it...
     const dialogScripts = { ...generalDS,
                             ...ayuDS,
                             ...auntHouseDS,
                             ...restaurantDS,
-                            ...schoolDS
+                            ...schoolDS,
+                            ...groceryStoreDS
                         }
 
 

@@ -32,6 +32,13 @@
             "speakerSrc" : "/img/school/school_speaker.png",
             "isLogginRequired" : true,
             "isAvatarRequired" : true
+        },
+        "groceryStore" : {
+            "dialogType" : "speakerAndPlayer",
+            "backgroundSrc" : "/img/groceryStore/groceryStore_bg.png",
+            "speakerSrc" : "/img/school/groceryStoreClerk.png",
+            "isLogginRequired" : true,
+            "isAvatarRequired" : true
         }
     }
 }

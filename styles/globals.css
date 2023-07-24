@@ -580,3 +580,10 @@ h4{
   url("../public/fonts/OpenDyslexic-Regular.otf");
 }
 
+.small-font {
+  font-size: 14px;
+}
+
+.new-line-compatible {
+  white-space: pre-line;
+}

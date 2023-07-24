@@ -35,7 +35,7 @@ const SNPDialogContent = ({avatarId,stage,line}) => {
                             layout = {'fill'}
                             quality={100}
                             src={backgroundSrc}
-                            alt={"background inage"}/>
+                            alt={"background image"}/>
                         : <></>}
                         <div className={style.player_img}>
                             <Image

@@ -1,0 +1,36 @@
+{
+    "dialogScript" : {
+
+        "groceryStoreIntro" : {
+            "stage" : "groceryStore",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/game/groceryStore/basic/levelSelect"
+
+            },
+            "lines" : [
+                {
+                    "text" : {
+                        "en": "Welcome to the grocery store",
+                        "es" : "Bienvenido a la tienda de comestibles"
+                    }
+                }
+            ]
+        },
+        "groceryStoreOutro" : {
+            "stage" : "groceryStore",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/game/groceryStore/finished"
+            },
+            "lines" : [
+                {
+                    "text" : {
+                        "en": "Goodbye",
+                        "es" : "Adios"
+                    }
+                }
+            ]
+        }
+    }
+}
