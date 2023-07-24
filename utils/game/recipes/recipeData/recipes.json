@@ -1059,6 +1059,7 @@
         },
         "OJCitrusCooler": {
             "locations" : [
+                "groceryStore"
             ],
             "level" : "3",
             "name" : {
