@@ -5,10 +5,10 @@ import { useUserContext } from '@hooks/siteContext/useUserContext'
 import Loading from '@comps/screens/loading'
 import Error from 'pages/error'
 import Login from 'pages/user/login'
-import loadRecipes from '@utils/game/auntHouse/recipeData/loadRecipes'
+import loadRecipes from '@utils/game/recipes/recipeData/loadRecipes'
 import getText from '@utils/text/getText'
-import generateRecipeTitleText from '@utils/game/auntHouse/textCreation/generateRecipeTitleText'
-import generateRecipeServingText from '@utils/game/auntHouse/textCreation/generateRecipeServingText'
+import generateRecipeTitleText from '@utils/game/recipes/textCreation/generateRecipeTitleText'
+import generateRecipeServingText from '@utils/game/recipes/textCreation/generateRecipeServingText'
 import IngredientList from '@comps/game/auntHouse/ingredientList'
 
 export async function getStaticPaths() {

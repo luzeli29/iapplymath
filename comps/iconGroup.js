@@ -2,8 +2,9 @@ import getText from "@utils/text/getText"
 import { useState } from "react"
 import Tooltip from "./accessibility/tooltip"
 import ClickableIcon from "./clickableIcon"
+import styles from "@styles/aunt_house.module.css";
 
-export default function IconGroup({lang,icons,selectedIcon, selectIcon,getContentFromValue,width,height}) {
+export default function IconGroup({lang,icons,selectedIcon, selectIcon,getContentFromValue,width,height,disableToolTip}) {
     const [pageNumber, setPageNumber] = useState(0)
     lang = lang ? lang : 'en'
     if(icons == undefined || !icons) return <></>
@@ -55,9 +56,14 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
             <div style={containerStyle}>
               {keyArr.map((key, index) => (
                 <div key={index} className="mx-auto">
+                    {disableToolTip ? 
+                    <IconButton keyCode={key} value={valueArr[index]}/>
+                    :
                     <Tooltip type={true} text={valueArr[index].name ? valueArr[index].name[lang] : ''}>
                         <IconButton keyCode={key} value={valueArr[index]}/>
                     </Tooltip>
+                    }
+                    
                 </div>
               ))}
             </div>
@@ -78,7 +84,7 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
 
             <div className="col-1 mx-auto">
                 {pageNumber != 0 ? 
-                <button cl onClick={() => prevPage()}>{'<'}</button>
+                <button className={styles.next_previous_button} onClick={() => prevPage()}>{'<'}</button>
                 :
                     null
                 }
@@ -89,7 +95,7 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
             </div>
             <div className="col-1 mx-auto">
                 {pageNumber < maxPage - 1 ? 
-                <button onClick={() => nextPage()}>{'>'}</button>
+                <button className={styles.next_previous_button} onClick={() => nextPage()}>{'>'}</button>
                 :
                     null
                 }

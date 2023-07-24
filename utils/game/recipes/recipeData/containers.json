@@ -1,0 +1,80 @@
+{
+    "container" : {
+        "bag" : {
+            "nameSingular" : {
+                "en" : "Bag",
+                "es" : "Bolsa"
+            },
+            "namePlural" : {
+                "en" : "Bags",
+                "es" : "Bolsas" 
+            }
+        },
+        "package" : {
+            "nameSingular" : {
+                "en" : "Package",
+                "es" : "Paquete"
+            },
+            "namePlural" : {
+                "en" : "Packages",
+                "es" : "Paquetes" 
+            }
+        },
+        "container" : {
+            "nameSingular" : {
+                "en" : "Container",
+                "es" : "Contenedor"
+            },
+            "namePlural" : {
+                "en" : "Containers",
+                "es" : "Contenedores" 
+            }
+        },
+        "bottle" : {
+            "nameSingular" : {
+                "en" : "Bottle",
+                "es" : "Botella"
+            },
+            "namePlural" : {
+                "en" : "Bottles",
+                "es" : "Botellas" 
+            }
+        },"can" : {
+            "nameSingular" : {
+                "en" : "Can",
+                "es" : "Lata"
+            },
+            "namePlural" : {
+                "en" : "Cans",
+                "es" : "Latas" 
+            }
+        }, "box" : {
+            "nameSingular" : {
+                "en" : "Box",
+                "es" : "Caja"
+            },
+            "namePlural" : {
+                "en" : "Boxes",
+                "es" : "Cajas" 
+            }
+        }, "tub" : {
+            "nameSingular" : {
+                "en" : "Tub",
+                "es" : "Tina"
+            },
+            "namePlural" : {
+                "en" : "Tubs",
+                "es" : "Tinas" 
+            }
+        }, "carton" : {
+            "nameSingular" : {
+                "en" : "Carton",
+                "es" : "Cartón"
+            },
+            "namePlural" : {
+                "en" : "Cartons",
+                "es" : "Cartones" 
+            }
+        }
+    }
+}

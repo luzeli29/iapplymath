@@ -436,8 +436,8 @@ function generateLevel3CQuestions(dishes,order,randomInt){
     // let x = Math.floor(Math.random() * 5) + 1;
     let x = randomInt(1,6);
     // answer
-    let denominator = x+1;
-    let numerator = 1;
+    let denominator = x;
+    let numerator = 100;
     answer = numerator/denominator;
 
     answer = simplifyFraction(numerator,denominator);

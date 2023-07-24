@@ -13,6 +13,7 @@ import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
 
 import { useDispatch } from 'react-redux'
 import { setLocation } from 'store/Slices/musicSlice'
+import getText from '@utils/text/getText'
 
 const Map = ({user,settings}) => {
   const dispatch = useDispatch()
@@ -61,9 +62,7 @@ const Map = ({user,settings}) => {
     const mapLocation = 0
 
     const handleRestaurant = () => {
-
         dispatch(setLocation('restaurant'))
-
         router.push('/dialog/restaurantIntro');
     }
 
@@ -73,6 +72,10 @@ const Map = ({user,settings}) => {
 
     const handleSchoolClick = () => {
       router.push('/dialog/schoolIntro');
+    }
+
+    const handleGroceryStoreClick = () => {
+      router.push('/game/groceryStore/basic/levelSelect');
     }
     
     
@@ -173,10 +176,12 @@ const Map = ({user,settings}) => {
                         alt={"school image"}/>
                   </div>
                 </button>
-                <p className={style.grocery_store_text}>{translations.coming_soon[lang]}</p>
-                <img className={style.icon} 
-                    id={style.grocery_store}
-                    src={"/img/map/grocery_store.png"}/>
+                <p className={style.grocery_store_text}>{getText('groceryStore',lang)}</p>
+                <button onClick={() => handleGroceryStoreClick()}>
+                  <img className={style.icon_button} 
+                      id={style.grocery_store}
+                      src={"/img/map/grocery_store.png"}/>
+                </button>
             </div>
         </>
     );
