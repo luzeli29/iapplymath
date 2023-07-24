@@ -695,6 +695,7 @@
                 "es" : "Ensalada César"
             },
             "locations" : [
+                "groceryStore"
             ],
             "level" : "1",
             "imgSrc" : "caesar_salad",
