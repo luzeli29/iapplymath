@@ -438,7 +438,8 @@
         },
         "mangoJuice" :{
             "locations" : [
-                "auntHouse"
+                "auntHouse",
+                "groceryStore"
             ],
             "level" : "3",
             "name" : {
