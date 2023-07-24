@@ -9,7 +9,7 @@ import serverSeededRandom from '@utils/crypto/serverSeededRandom';
 import DevErr from '@utils/debug/devErr';
 import DevLog from '@utils/debug/devLog';
 import generateGroceryStoreQuestions from '@utils/game/groceryStore/quiz/generateGroceryStoreQuestions';
-import loadRecipes from '@utils/game/recipes/recipeData/loadRecipes';
+import loadRecipes from '@public/data/recipeData/loadRecipes';
 import generateRecipeServingText from '@utils/game/recipes/textCreation/generateRecipeServingText';
 import generateRecipeTitleText from '@utils/game/recipes/textCreation/generateRecipeTitleText';
 import LoadSchoolTopics from '@utils/game/school/quiz/schoolTopics/loadSchoolTopics';

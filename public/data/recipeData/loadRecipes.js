@@ -4,12 +4,12 @@ import DevLog from "@utils/debug/devLog";
 
 const loadRecipes = async (locationCode, level) => {
 
-    let recipes = await loadJSONFromUrl('utils/game/recipes/recipeData/recipes.json')
+    let recipes = await loadJSONFromUrl('public/data/recipeData/recipes.json')
     recipes = recipes.recipe
     //Filter to only AH Recipes
     if(locationCode) {
         Object.keys(recipes).forEach(key => {
-            if (recipes[key].locations && !recipes[key]?.locations?.includes(locationCode)) delete recipes[key];
+            if (!recipes[key]?.locations?.includes(locationCode)) delete recipes[key];
         });
     }
 
@@ -19,9 +19,9 @@ const loadRecipes = async (locationCode, level) => {
         });
     }
    
-    const ingredients = await loadJSONFromUrl('utils/game/recipes/recipeData/ingredients.json')
-    const servingTypes = await loadJSONFromUrl('utils/game/recipes/recipeData/servingTypes.json')
-    const containers = await loadJSONFromUrl('utils/game/recipes/recipeData/containers.json')
+    const ingredients = await loadJSONFromUrl('public/data/recipeData/ingredients.json')
+    const servingTypes = await loadJSONFromUrl('public/data/recipeData/servingTypes.json')
+    const containers = await loadJSONFromUrl('public/data/recipeData/containers.json')
     mergeObjectsIntoObjectByKeys(ingredients,{...containers})
     mergeObjectsIntoObjectByKeys(recipes,{...ingredients,...servingTypes})
 
