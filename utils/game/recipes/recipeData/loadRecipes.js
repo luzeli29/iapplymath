@@ -7,9 +7,9 @@ const loadRecipes = async (locationCode, level) => {
     let recipes = await loadJSONFromUrl('utils/game/recipes/recipeData/recipes.json')
     recipes = recipes.recipe
     //Filter to only AH Recipes
-    if(locationCode) {
+    if(locationCode && recipes[key].locations != null) {
         Object.keys(recipes).forEach(key => {
-            if (!recipes[key].locations.includes(locationCode)) delete recipes[key];
+            if (!recipes[key]?.locations?.includes(locationCode)) delete recipes[key];
         });
     }
 
