@@ -18,9 +18,18 @@ const translations = {
     },grocery_store: {
         en:"Grocery Store",
         es:"Supermercado"
+    },stadium: {
+        en:"Stadium",
+        es:"Estadio"
     },coming_soon: {
         en:"Coming Soon!",
         es:"Próximamente!"
+    },
+
+    // -------- Stadium Translations ------
+    stadium_welcome: {
+        en: "Welcome to the stadium! Choose the recipe you’d like to try making.",
+        es: "¡Bienvenidos a el estadio! Elige la receta que te gustaría intentar hacer.",
     },
     
     // ----- Aunt House Translations -----

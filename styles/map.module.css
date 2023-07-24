@@ -72,6 +72,11 @@
     height: 20vh;
     position: absolute;
 }
+.icon2 {
+    width: 20vw;
+    height: 20vh;
+    position: absolute;
+}
 
 .icon_small {
     width: 6vw;
@@ -101,6 +106,10 @@
     transform:scale(1.5) ;
     background-size:cover;
 }
+.icon2:hover {
+    transform:scale(1.5) ;
+    background-size:cover;
+}
 
 .icon_button:hover {
     transform:scale(1.5) ;
@@ -123,7 +132,7 @@
 .home_text {
     position: absolute;
     left: 40%;
-    top:30%;
+    top:42%;
     color: white;
 }
 
@@ -139,10 +148,16 @@
     left: 10%;
     top:57%;
 }
+.stadium_text {
+    position: absolute;
+    left: 48%;
+    top:1%;
+    color: white;
+}
 
 #home {
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 32%;
     opacity: 50%;
 }
@@ -181,4 +196,10 @@
     position: absolute;
     top: 12%;
     left: 70%;
+}
+
+#stadium {
+    position: absolute;
+    top: 11%;
+    left: 40%;
 }
