@@ -954,7 +954,7 @@
             },
             "container" : "bag",
             "countable" : true,
-            "imgSrc" : "redApple"
+            "imgSrc" : "apple"
         },"greenApple" : {
             "nameSingular" : {
                 "en" :"Green Apple",

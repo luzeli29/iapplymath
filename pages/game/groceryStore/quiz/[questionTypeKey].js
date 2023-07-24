@@ -49,7 +49,7 @@ const GroceryStoreQuiz = ({user,settings,questions,seed,recipes}) => {
     const { questionTypeKey, level, initQnNum } = router.query
 
     const handleFinish = () => {
-        router.push('/dialog/groceryStoreOutro')
+        router.push('/game/groceryStore/finished')
         setLoading(true)
     }
 

@@ -13,8 +13,7 @@
                     "text" : {
                         "en": "Welcome to the grocery store",
                         "es" : "Bienvenido a la tienda de comestibles"
-                    },
-                    "speaker" : "groceryStoreClerk"
+                    }
                 }
             ]
         },
@@ -29,8 +28,7 @@
                     "text" : {
                         "en": "Goodbye",
                         "es" : "Adios"
-                    },
-                    "speaker" : "groceryStoreClerk"
+                    }
                 }
             ]
         }
