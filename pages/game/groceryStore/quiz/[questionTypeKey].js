@@ -115,13 +115,13 @@ const GroceryStoreQuiz = ({user,settings,questions,seed,recipes}) => {
             quizData={buildQuizData()}
             initQuestionNum={initQnNum}> 
             <IconGroup 
-                    lang={lang}
-                    icons={recipes}
-                    getContentFromValue={(key,value) => renderRecipe(key,value)}
-                    width={1}
-                    height={1}
-                    disableToolTip={true}/>
-
+                lang={lang}
+                icons={recipes}
+                getContentFromValue={(key,value) => renderRecipe(key,value)}
+                width={1}
+                height={1}
+                disableToolTip={true}
+                />
         </GameQuestionLayout>
     )
 }
