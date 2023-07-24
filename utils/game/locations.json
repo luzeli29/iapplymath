@@ -40,6 +40,15 @@
                     }
                }
             }
+        },
+        "groceryStore" : {
+            "questionTypes": {
+               "basic" : {
+                    "questionParams": {
+                        "level" : "int"
+                    }
+               }
+            }
         }
     }
 }

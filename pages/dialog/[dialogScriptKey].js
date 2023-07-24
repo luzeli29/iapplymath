@@ -3,7 +3,7 @@ import DevLog from '@utils/debug/devLog';
 
 import loadDialogScripts from '@utils/dialog/loadDialogScripts';
 import Error from 'pages/error';
-import React from 'react'
+import React, { useState } from 'react'
 import retrieveUserContext from '@hooks/HOF/retrieveUserContext';
 import { useRouter } from 'next/router';
 import Dialog from '../../comps/dialog/dialog';
@@ -28,30 +28,30 @@ export async function getStaticProps(context){
   const dialogScriptKey = context.params.dialogScriptKey
   const dialogScripts = await loadDialogScripts()
   const dialogScript = dialogScripts[dialogScriptKey]
-  const dialogScriptError = dialogScripts.error
-
   return {
     props: {
-      dialogScript,
-      dialogScriptError
+      dialogScript
     },
   }
 }
 
-const DialogScreen = ({user,settings,dialogScript,dialogScriptError}) => {
+const DialogScreen = ({user,settings,dialogScript}) => {
 
   const lang = settings?.lang
   const router = useRouter()
   const avatarId = user?.data?.avatarId
+  const stage = dialogScript?.stage
+  
   if(!dialogScript) {
-    DevErr('No "dialogScript" given, setting as dialog error...')
-    dialogScript = dialogScriptError
+    DevErr('No "dialogScript" given, rendering error...')
+    router.push('/dialog/error')
+    return <Loading/>
   }
-
-  let stage = dialogScript.stage
+  
   if(!stage) {
-    DevErr('No "stage" in "dialogScript", setting as dialog error...')
-    dialogScript = dialogScriptError
+    DevErr('No "stage" given, rendering error...')
+    router.push('/dialog/error')
+    return <Loading/>
   }
 
   const verifyNeededStageData = () => {

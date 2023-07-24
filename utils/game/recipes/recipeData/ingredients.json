@@ -9,6 +9,8 @@
                 "en" : "Carrots",
                 "es" : "Zanahorias" 
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "carrots"
         },
         "choppedCarrot" : {
@@ -20,6 +22,8 @@
                 "en" : "Chopped carrots",
                 "es" : "Zanahorias picadas" 
             },
+            "container" : "container",
+            "countable" : true,
             "imgSrc" : "carrots"
         },
         "orange" : {
@@ -31,6 +35,8 @@
                 "en" : "Oranges",
                 "es" : "Naranjas" 
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "oranges"
         },
         "tomatillos" : {
@@ -42,6 +48,8 @@
                 "en" : "Tomatillos",
                 "es" : "Tomatillos"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "tomatillo"
         },
         "choppedWhiteOnion" : {
@@ -53,6 +61,8 @@
                 "en" : "Chopped White Onions",
                 "es" : "Cebolla Blanca Picadas"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "onions"
         },
         "choppedCilantro" : {
@@ -64,6 +74,8 @@
                 "en" : "Chopped Cilantro",
                 "es": "Cilantro picado"
             },
+            "container" : "container",
+            "countable" : false,
             "imgSrc" : "cilantro"
         },
         "garlic" : {
@@ -75,6 +87,8 @@
                 "en" : "Garlic",
                 "es": "Ajo"
             },
+            "container" : "bag",
+            "countable" : false,
             "imgSrc" : "garlic"
         },
         "freshLimeJuice" : {
@@ -86,6 +100,8 @@
                 "en" : "Fresh Lime Juice",
                 "es": "Jugo de Limón"
             },
+            "container" : "bottle",
+            "countable" : false,
             "imgSrc" : "lime"
         },
         "jalapenoOrSerranoPeppers" : {
@@ -109,6 +125,8 @@
                 "en" : "Tortilla Chips",
                 "es": "Chips de Tortilla"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "tortillas"
         },
         "saltAndSpiceForTaste" : {
@@ -120,7 +138,8 @@
                 "en" : "Salt and Spices to Taste",
                 "es": "Sal y Especias al Gusto"
             },
-            "imgSrc" : "salt_pepper"
+            "imgSrc" : "salt_pepper",
+            "notQuizable" : true
         },
         "mashedBlackBeans" : {
             "nameSingular" : {
@@ -131,6 +150,8 @@
                 "en" : "Mashed Black Beans",
                 "es": "Frijoles Negros Licuados"
             },
+            "container" : "can",
+            "countable" : true,
             "imgSrc" : "black_beans"
         },
         "onion" : {
@@ -142,6 +163,8 @@
                 "en" : "Onions",
                 "es" : "Cebollas"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "onions"
         },
         "mashedSweetPotato" : {
@@ -150,10 +173,25 @@
                 "es": "Puré de Camote"
             },
             "namePlural" : {
-                "en" : "Mashed Sweet Potato",
-                "es": "Puré de Camote"
+                "en" : "Mashed Sweet Potatos",
+                "es": "Puré de Camotes"
             },
+            "container" : "can",
+            "countable" : true,
             "imgSrc" : "mashed_sweet_potato"
+        },
+        "slicedStrawberry" : {
+            "nameSingular" : {
+                "en" : "Sliced Strawberry",
+                "es" : "Fresa en Rodajas"
+            },
+            "namePlural" : {
+                "en" : "Sliced Strawberry",
+                "es" : "Fresa en Rodajas"
+            },
+            "container" : "container",
+            "countable" : true,
+            "imgSrc" : "strawberrySliced"
         },
         "tomatilloSauce" : {
             "nameSingular" : {
@@ -164,6 +202,8 @@
                 "en" : "Tomatillo Sauce",
                 "es" : "Salsa de Tomatillos"
             },
+            "container" : "bottle",
+            "countable" : false,
             "imgSrc" : "tomatillo_sauce"
         },
         "papaya" : {
@@ -175,18 +215,9 @@
                 "en" : "Papayas",
                 "es" : "Papayas"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "papaya"
-        },
-        "strawberry" : {
-            "nameSingular" : {
-                "en" : "Strawberry",
-                "es" : "Fresa"
-            },
-            "namePlural" : {
-                "en" : "Strawberries",
-                "es" : "Fresas"
-            },
-            "imgSrc" : "strawberry"
         },
         "kiwi" : {
             "nameSingular" : {
@@ -197,6 +228,8 @@
                 "en" : "Kiwis",
                 "es" : "Kiwis"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "kiwi"
         },
         "tortilla" : {
@@ -208,6 +241,8 @@
                 "en" : "Tortillas",
                 "es": "Tortillas"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "tortillas"
         },
         "mango" : {
@@ -219,6 +254,8 @@
                 "en" : "Mangos",
                 "es" : "Mangos"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "mango"
         },
         "lime" : {
@@ -230,6 +267,8 @@
                 "en" : "limes",
                 "es" : "limones"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "lime"
         },
         "sugar" : {
@@ -241,6 +280,8 @@
                 "en" : "Sugar",
                 "es" : "Azúcar"
             },
+            "container" : "box",
+            "countable" : false,
             "imgSrc" : "sugar"
         },
         "water" : {
@@ -252,6 +293,8 @@
                 "en" : "Water",
                 "es" : "Agua"
             },
+            "container" : "bottle",
+            "countable" : false,
             "imgSrc" : "water"
         },
         "ice" : {
@@ -263,6 +306,8 @@
                 "en" : "Ice",
                 "es" : "Hielos"
             },
+            "container" : "bag",
+            "countable" : false,
             "imgSrc" : "ice"
         },
         "frozenStrawberries" : {
@@ -274,6 +319,8 @@
                 "en" : "frozen strawberries",
                 "es" : "fresas congeladas"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "strawberry"
         },
         "milk" : {
@@ -285,39 +332,47 @@
                 "en" : "milk",
                 "es" : "leche"
             },
+            "container" : "bottle",
+            "countable" : false,
             "imgSrc" : "milk"
         },
         "vanillaIceCream" : {
             "nameSingular" : {
-                "en" : "vanilla ice cream",
-                "es" : "helado de vainilla"
+                "en" : "Vanilla Ice Cream",
+                "es" : "Helado de Vainilla"
             },
             "namePlural" : {
-                "en" : "vanilla ice cream",
-                "es" : "helado de vainilla"
+                "en" : "Vanilla Ice Cream",
+                "es" : "Helado de Vainilla"
             },
+            "container" : "tub",
+            "countable" : false,
             "imgSrc" : "vanillaicecream"
         },
         "whippedCream" : {
             "nameSingular" : {
-                "en" : "whipped cream",
-                "es" : "crema batida"
+                "en" : "Whipped Cream",
+                "es" : "Crema Batida"
             },
             "namePlural" : {
-                "en" : "whipped cream",
-                "es" : "crema batida"
+                "en" : "Whipped Cream",
+                "es" : "Crema Batida"
             },
+            "container" : "can",
+            "countable" : false,
             "imgSrc" : "whippedcream"
         },
         "cherry" : {
             "nameSingular" : {
-                "en" : "cherry",
-                "es" : "cereza"
+                "en" : "Cherry",
+                "es" : "Cereza"
             },
             "namePlural" : {
-                "en" : "cherries",
-                "es" : "cerezas"
+                "en" : "Cherries",
+                "es" : "Cerezas"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "cherry"
         },
         "salt" : {
@@ -329,6 +384,8 @@
                 "en" : "salt",
                 "es" : "sal"
             },
+            "container" : "box",
+            "countable" : false,
             "imgSrc" : "salt_pepper"
         },
         "rice" : {
@@ -340,6 +397,8 @@
                 "en" : "rice",
                 "es" : "arroz"
             },
+            "container" : "bag",
+            "countable" : false,
             "imgSrc" : "rice"
         },
         "vanillaExtract" : {
@@ -351,6 +410,8 @@
                 "en" : "vanilla extract",
                 "es" : "extracto de vainilla"
             },
+            "container" : "bottle",
+            "countable" : false,
             "imgSrc" : "vanillaextract"
         },
         "caramel" : {
@@ -362,6 +423,8 @@
                 "en" : "caramel candy pieces",
                 "es" : "trozos de caramelo"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "caramelpieces"
         },
         "chocolateChips" : {
@@ -373,6 +436,8 @@
                 "en" : "chocolate chips",
                 "es" : "chispas de chocolate"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "chocolatechips"
         },
         "pretzel" : {
@@ -384,6 +449,8 @@
                 "en" : "pretzel sticks",
                 "es" : "palitos de pretzel"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "pretzelsticks"
         },
         "coconuts" : {
@@ -395,29 +462,22 @@
                 "en" : "toasted coconuts",
                 "es" : "cocos tostados"
             },
+            "container" : "container",
+            "countable" : false,
             "imgSrc" : "coconut"
         },
         "mangoChunks" : {
             "nameSingular" : {
-                "en" : "mango chunks",
-                "es" : "mango chunks"
+                "en" : "Mango Chunk",
+                "es" : "Trozo de Mango"
             },
             "namePlural" : {
-                "en" : "mango chunks",
-                "es" : "mango chunks"
+                "en" : "Mango Chunks",
+                "es" : "Trozos de Mango"
             },
+            "container" : "container",
+            "countable" : true,
             "imgSrc" : "mango"
-        },
-        "blackBeans" : {
-            "nameSingular" : {
-                "en" : "mashed black beans",
-                "es" : "mashed black beans"
-            },
-            "namePlural" : {
-                "en" : "mashed black beans",
-                "es" : "mashed black beans"
-            },
-            "imgSrc" : "black_beans"
         },
         "oliveOil" : {
             "nameSingular" : {
@@ -428,6 +488,8 @@
                 "en" : "olive oil",
                 "es" : "aceite de oliva"
             },
+            "container" : "bottle",
+            "countable" : false,
             "imgSrc" : "fryingOil"
         },
         "lentil" : {
@@ -439,6 +501,8 @@
                 "en" : "lentils",
                 "es" : "lentejas"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "lentils"
         },
         "vegetableBroth" : {
@@ -450,17 +514,21 @@
                 "en" :"vegetable broth",
                 "es" : "caldo de verduras"
             },
+            "container" : "container",
+            "countable" : false,
             "imgSrc" : "veggiebroth"
         },
         "kale" : {
             "nameSingular" : {
-                "en" :"kale",
-                "es" : "col rizada"
+                "en" :"Kale",
+                "es" : "Col Rizada"
             },
             "namePlural" : {
-                "en" :"kale",
-                "es" : "coles rizadas"
+                "en" :"Kale",
+                "es" : "Coles Rizadas"
             },
+            "container" : "container",
+            "countable" : true,
             "imgSrc" : "kale"
         },
         "flour" : {
@@ -472,6 +540,8 @@
                 "en" :"flour",
                 "es" : "harina"
             },
+            "container" : "bag",
+            "countable" : false,
             "imgSrc" : "flour"
         },
         "oil" : {
@@ -483,39 +553,47 @@
                 "en" :"oil",
                 "es" : "aceite"
             },
+            "container" : "bottle",
+            "countable" : false,
             "imgSrc" : "fryingOil"
         },
         "egg" : {
             "nameSingular" : {
-                "en" :"egg",
-                "es" : "huevo"
+                "en" :"Egg",
+                "es" : "Huevo"
             },
             "namePlural" : {
-                "en" :"eggs",
-                "es" : "huevos"
+                "en" :"Eggs",
+                "es" : "Huevos"
             },
+            "container" : "carton",
+            "countable" : true,
             "imgSrc" : "Egg"
         },
-        "strawberries" : {
+        "strawberry" : {
             "nameSingular" : {
-                "en" :"strawberry",
-                "es" : "fresa"
+                "en" :"Strawberry",
+                "es" : "Fresa"
             },
             "namePlural" : {
-                "en" :"strawberries",
-                "es" : "fresas"
+                "en" :"Strawberries",
+                "es" : "Fresas"
             },
+            "container" : "container",
+            "countable" : true,
             "imgSrc" : "strawberry"
         },
         "noodle" : {
             "nameSingular" : {
-                "en" :"noodle",
-                "es" : "fideo"
+                "en" :"Noodle",
+                "es" : "Fideo"
             },
             "namePlural" : {
-                "en" :"noodles",
-                "es" : "fideos"
+                "en" :"Noodles",
+                "es" : "Fideos"
             },
+            "container" : "package",
+            "countable" : true,
             "imgSrc" : "noodles"
         },
         "freshCilantro" : {
@@ -527,6 +605,8 @@
                 "en" : "Fresh Cilantro",
                 "es": "Cilantro fresco"
             },
+            "container" : "package",
+            "countable" : false,
             "imgSrc" : "cilantro"
         },
         "butter" : {
@@ -538,6 +618,8 @@
                 "en" : "Butter",
                 "es": "Mantequilla"
             },
+            "container" : "package",
+            "countable" : false,
             "imgSrc" : "butter"
         },
         "greenPlantains" : {
@@ -549,6 +631,8 @@
                 "en" : "Green Plantains",
                 "es": "Plátanos Verdes"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "plantain"
         },
         "cheeseStrips" : {
@@ -557,31 +641,37 @@
                 "es": "Tiras de queso frito"
             },
             "namePlural" : {
-                "en" : "Fried cheese strips",
+                "en" : "Fried Cheese Strips",
                 "es": "Tiras de queso frito"
             },
+            "container" : "container",
+            "countable" : true,
             "imgSrc" : "friedcheese"
         },
         "salami" : {
             "nameSingular" : {
-                "en" : "salami slice",
-                "es": "rodaja de salami"
+                "en" : "Salami",
+                "es": "Salami"
             },
             "namePlural" : {
-                "en" : "salami slices",
-                "es": "rodajas de salami"
+                "en" : "Salami",
+                "es": "Salami"
             },
+            "container" : "package",
+            "countable" : true,
             "imgSrc" : "salami"
         },
-        "pinneapleChunks" : {
+        "pinneapleChunk" : {
             "nameSingular" : {
-                "en" : "Pineapple chunk",
-                "es": "Trozo de piña"
+                "en" : "Pineapple Chunk",
+                "es": "Trozo de Piña"
             },
             "namePlural" : {
-                "en" : "Pineapple chunks",
-                "es": "Trozos de piña"
+                "en" : "Pineapple Chunks",
+                "es": "Trozos de Piña"
             },
+            "container" : "can",
+            "countable" : true,
             "imgSrc" : "pineapplechunks"
         },
         "ginger" : {
@@ -595,6 +685,8 @@
             },
             "imgSrc" : "ginger"
         },
+        "container" : "package",
+        "countable" : false,
         "berries" : {
             "nameSingular" : {
                 "en" : "Berry",
@@ -615,6 +707,8 @@
                 "en" : "Flour tortillas",
                 "es": "Tortillas de harina"
             },
+            "container" : "bag",
+            "countable" : true,
             "imgSrc" : "tortillas"
         },
         "refriedBeans" : {
@@ -626,6 +720,8 @@
                 "en" : "Refried beans",
                 "es": "Frijoles fritos"
             },
+            "container" : "can",
+            "countable" : true,
             "imgSrc" : "refriedbeans"
         },
         "cheese" : {
@@ -634,9 +730,11 @@
                 "es": "Queso"
             },
             "namePlural" : {
-                "en" : "Cheeses",
-                "es": "Quesos"
+                "en" : "Cheese",
+                "es": "Queso"
             },
+            "container" : "package",
+            "countable" : false,
             "imgSrc" : "cheese"
         },
         "allPurposeFlour" : {
@@ -648,6 +746,8 @@
                 "en" : "All purpose flour",
                 "es": "Harina para todo uso"
             },
+            "container" : "bag",
+            "countable" : false,
             "imgSrc" : "flour"
         },
         "cinnamon" : {
@@ -659,6 +759,8 @@
                 "en" : "Cinnamon",
                 "es": "Canela"
             },
+            "container" : "container",
+            "countable" : false,
             "imgSrc" : "cinnamon"
         },
         "fryingOil" : {
@@ -670,6 +772,8 @@
                 "en" : "Frying oil",
                 "es": "Aceite para freir"
             },
+            "container" : "bottle",
+            "countable" : false,
             "imgSrc" : "fryingOil"
         },
         "cocoaPowder" : {
@@ -681,8 +785,200 @@
                 "en" : "Cocoa powder",
                 "es": "Cacao en polvo"
             },
+            "container" : "container",
+            "countable" : false,
             "imgSrc" : "cocoa"
+        },
+        "ham" : {
+            "nameSingular" : {
+                "en" : "Ham",
+                "es": "Jamón"
+            },
+            "namePlural" : {
+                "en" : "Ham",
+                "es": "Jamón"
+            },
+            "container" : "package",
+            "countable" : false,
+            "imgSrc" : "ham"
+        },
+        "arepas" : {
+            "nameSingular" : {
+                "en" : "Arepa",
+                "es": "Arepa"
+            },
+            "namePlural" : {
+                "en" : "Arepas",
+                "es": "Arepas"
+            },
+            "container" : "container",
+            "countable" : true,
+            "imgSrc" : "arepas"
+        },"lettus" : {
+            "nameSingular" : {
+                "en" : "Lettus",
+                "es": "Lechuga"
+            },
+            "namePlural" : {
+                "en" : "Lettus",
+                "es": "Lechuga"
+            },
+            "container" : "bag",
+            "countable" : false,
+            "imgSrc" : "lettus"
+        }, "parmesanCheese" : {
+            "nameSingular" : {
+                "en" : "Parmesan Cheese",
+                "es": "Queso parmesano"
+            },
+            "namePlural" : {
+                "en" : "Parmesan Cheese",
+                "es": "Queso parmesano"
+            },
+            "container" : "container",
+            "countable" : false,
+            "imgSrc" : "parmesan"
+        },
+        "caesarDressing" : {
+            "nameSingular" : {
+                "en" : "Caesar Dressing",
+                "es": "Aderezo César"
+            },
+            "namePlural" : {
+                "en" : "Caesar Dressing",
+                "es": "Aderezo César"
+            },
+            "container" : "bottle",
+            "countable" : false,
+            "imgSrc" : "caesarDressing"
+        }, "crouton" : {
+            "nameSingular" : {
+                "en" : "Crouton",
+                "es": "Crotones"
+            },"namePlural" : {
+                "en" : "Croutons",
+                "es": "Crotones"
+            }, 
+            "container" : "bag",
+            "countable" : true,
+            "imgSrc" : "crouton"
+        }, "colorfulPepper" : {
+            "nameSingular" : {
+                "en" : "Colorful Pepper",
+                "es": "Pimiento de Colores"
+            },"namePlural" : {
+                "en" : "Colorful Peppers",
+                "es": "Pimientos de Colores"
+            }, 
+            "container" : "container",
+            "countable" : true,
+            "imgSrc" : "colorfulPepper"
+        }, "chickenBreast" : {
+            "nameSingular" : {
+                "en" : "Chicken Breast",
+                "es": "Pechuga de Pollo"
+            },"namePlural" : {
+                "en" : "Chicken Breasts",
+                "es": "Pechugas de Pollo"
+            }, 
+            "container" : "container",
+            "countable" : true,
+            "imgSrc" : "chickenBreast"
+        }, "soySauce" :{
+            "nameSingular" : {
+                "en" : "Soy Sauce",
+                "es": "Salsa de Soya"
+            },"namePlural" : {
+                "en" : "Soy Sauce",
+                "es": "Salsa de Soya"
+            }, 
+            "container" : "bottle",
+            "countable" : false,
+            "imgSrc" : "soySauce"
+        },"frozenStrawberry" : {
+            "nameSingular" : {
+                "en" :"Frozen Strawberry",
+                "es" : "Fresa Congelada"
+            },
+            "namePlural" : {
+                "en" :"Frozen Strawberries",
+                "es" : "Fresas Congeladas"
+            },
+            "container" : "bag",
+            "countable" : true,
+            "imgSrc" : "strawberry"
+        }, "nutmeg" : {
+            "nameSingular" : {
+                "en" :"Nutmeg",
+                "es" : "Nuez Moscada"
+            },
+            "namePlural" : {
+                "en" :"Nutmeg",
+                "es" : "Nuez Moscada"
+            },
+            "container" : "container",
+            "countable" : false,
+            "imgSrc" : "nutmeg"
+        }, "brownSugar" : {
+            "nameSingular" : {
+                "en" :"Brown Sugar",
+                "es": "Azúcar Morena"
+            },
+            "namePlural" : {
+                "en" :"Brown Sugar",
+                "es" : "Azúcar Morena"
+            },
+            "container" : "box",
+            "countable" : false,
+            "imgSrc" : "brownSugar"
+        }, "cakeMix" : {
+            "nameSingular" : {
+                "en" :"Cake Mix",
+                "es": "Mezcla para Pastel"
+            },
+            "namePlural" : {
+                "en" :"Cake Mix",
+                "es": "Mezcla para Pastel"
+            },
+            "container" : "box",
+            "countable" : false,
+            "imgSrc" : "cakeMix"
+        }, "redApple" : {
+            "nameSingular" : {
+                "en" :"Red Apple",
+                "es": "Manzana Roja"
+            },
+            "namePlural" : {
+                "en" :"Red Apples",
+                "es": "Manzanas Rojas"
+            },
+            "container" : "bag",
+            "countable" : true,
+            "imgSrc" : "apple"
+        },"greenApple" : {
+            "nameSingular" : {
+                "en" :"Green Apple",
+                "es": "Manzana Verde"
+            },
+            "namePlural" : {
+                "en" :"Green Apples",
+                "es": "Manzanas Verde"
+            },
+            "container" : "bag",
+            "countable" : true,
+            "imgSrc" : "greenApple"
+        }, "lemonJuice" : {
+            "nameSingular" : {
+                "en" :"Lemon Juice",
+                "es": "Jugo de Limón"
+            },
+            "namePlural" : {
+                "en" :"Lemon Juice",
+                "es": "Jugo de Limón"
+            },
+            "container" : "bottle",
+            "countable" : false,
+            "imgSrc" : "lemonJuice"
         }
-
     }
 }

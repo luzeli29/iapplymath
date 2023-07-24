@@ -1,16 +1,16 @@
 import throwError from '@utils/error/throwError';
 import translations from '@public/text/translations'
 
-export default function createGameQuestion(questionText,answer,hints,questionFormatKey, onAnswer, imgSrc) {
+const createGameQuestion = (questionText,answer,hints,questionFormatKey, onAnswer, imgSrc) => {
     //Check empty question text
     if(!questionText) {
         throwError('No question text was found in func CreateGameQuestion(). Returning error question.')
-        return errorQuestion;
+        return ErrorQuestion;
     }
 
     if(!questionText.en) {
         throwError('No english translation for question text was found in func CreateGameQuestion(). Returning error question.')
-        return errorQuestion;
+        return ErrorQuestion;
     }
 
     if(!questionText.es) {
@@ -20,7 +20,7 @@ export default function createGameQuestion(questionText,answer,hints,questionFor
 
     if(answer == 'fill_in' && !onAnswer) {
         throwError('Answer was a fill_in answer with no onAnswer. Returning error question.')
-        return errorQuestion;
+        return ErrorQuestion;
     }
 
     var hintArray = [];
@@ -46,8 +46,8 @@ export default function createGameQuestion(questionText,answer,hints,questionFor
         answer: answer,
         questionFormatKey: questionFormatKey,
         hints: hintArray,
-        onAnswer: onAnswer,
-        imgSrc: imgSrc
+        onAnswer: onAnswer ? onAnswer : null,
+        imgSrc: imgSrc ? imgSrc : null,
     }
 
     return question
@@ -55,8 +55,11 @@ export default function createGameQuestion(questionText,answer,hints,questionFor
 }
 
 
-const errorQuestion = {
+export const ErrorQuestion = {
     en:"There was an error in creating questions. Answer is 1.",
     es:"There was an error in creating questions. Answer is 1.",
     answer: 1,
+    questionFormatKey: 'error',
 }
+
+export default createGameQuestion;

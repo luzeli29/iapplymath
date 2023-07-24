@@ -4,7 +4,7 @@ import Tooltip from "./accessibility/tooltip"
 import ClickableIcon from "./clickableIcon"
 import styles from "@styles/aunt_house.module.css";
 
-export default function IconGroup({lang,icons,selectedIcon, selectIcon,getContentFromValue,width,height}) {
+export default function IconGroup({lang,icons,selectedIcon, selectIcon,getContentFromValue,width,height,disableToolTip}) {
     const [pageNumber, setPageNumber] = useState(0)
     lang = lang ? lang : 'en'
     if(icons == undefined || !icons) return <></>
@@ -56,9 +56,14 @@ export default function IconGroup({lang,icons,selectedIcon, selectIcon,getConten
             <div style={containerStyle}>
               {keyArr.map((key, index) => (
                 <div key={index} className="mx-auto">
+                    {disableToolTip ? 
+                    <IconButton keyCode={key} value={valueArr[index]}/>
+                    :
                     <Tooltip type={true} text={valueArr[index].name ? valueArr[index].name[lang] : ''}>
                         <IconButton keyCode={key} value={valueArr[index]}/>
                     </Tooltip>
+                    }
+                    
                 </div>
               ))}
             </div>
