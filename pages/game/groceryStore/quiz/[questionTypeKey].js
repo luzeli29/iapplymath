@@ -32,8 +32,6 @@ export async function getStaticPaths() {
 
     }
 
-    console.log(keyPaths)
-
     return {
         paths: keyPaths,
         fallback: false,
@@ -42,14 +40,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context){
     const  {params}  = context
-    console.log('params')
-    console.log(params)
-    const level = params.level ? params.level : 1
-    const recipes = await loadRecipes("groceryStore",level)
+    const recipes = await loadRecipes("groceryStore")
 
     return {
       props: {
-        recipes,
+        recipes
       },
     }
 }
@@ -83,8 +78,14 @@ const GroceryStoreQuiz = ({user,settings,questions,recipes}) => {
     const [loading, setLoading] = useState(true)
     const router = useRouter()
 
-    const { questionTypeKey, level, initQnNum,initSeed } = router.query
+    const { questionTypeKey, initQnNum,initSeed,level } = router.query
     const {seed,setSeed,regenerateSeed, randomGenerator} = useSeededRandom(initSeed)
+
+    let levelRecipes = {}
+
+    Object.keys(recipes).forEach(key => {
+        if (recipes[key].level == level) levelRecipes[key] =  recipes[key];
+    });
 
     const handleFinish = () => {
         router.push('/game/groceryStore/finished')
@@ -102,8 +103,8 @@ const GroceryStoreQuiz = ({user,settings,questions,recipes}) => {
     const generateQuestions = () => {
         if(!seed) return null
         DevLog('---Generating questions w/ Seed ' + seed + '---')
-        try {
-            const questions = generateGroceryStoreQuestions(recipes,questionTypeKey,level,randomGenerator)
+        try {           
+            const questions = generateGroceryStoreQuestions(levelRecipes,questionTypeKey,level,randomGenerator)
             DevLog(questions)
             return questions
         } catch(e) {
@@ -168,7 +169,7 @@ const GroceryStoreQuiz = ({user,settings,questions,recipes}) => {
             initQuestionNum={initQnNum}> 
             <IconGroup 
                 lang={lang}
-                icons={recipes}
+                icons={levelRecipes}
                 getContentFromValue={(key,value) => renderRecipe(key,value)}
                 width={1}
                 height={1}

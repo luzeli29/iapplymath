@@ -30,7 +30,6 @@ export async function getStaticPaths() {
         }
     }
 
-    console.log(keyPaths)
     return {
         paths: keyPaths,
         fallback: false,
