@@ -15,49 +15,13 @@ import useSeededRandom from '@hooks/useSeededRandom'
 import DevErr from '@utils/debug/devErr'
 import GameQuestionLayout from '@layouts/gameLayouts/gameQuestionLayout'
 import getText from '@utils/text/getText'
+import loadSports from '@utils/game/stadium/sportData/loadSports'
+import GenerateStadiumQuestions from '@utils/game/stadium/questionCreation/generateStadiumQuestions'
 
 
-export async function getStaticPaths() {
-    const recipes = await loadRecipes()
-    const recipeKeys = Object.keys(recipes)
-    const locationsObj = await loadLocations()
-    const auntHouseObj = locationsObj.auntHouse
-    const keyPaths = [];
-
-    for (let questionTypeKey of Object.keys(auntHouseObj.questionTypes)){
-        for (let recipeKey of recipeKeys) {
-            keyPaths.push({ params: { questionTypeKey: questionTypeKey, recipeKey : recipeKey}});
-        }
-    }
-
-    return {
-        paths: keyPaths,
-        fallback: false,
-    };
-}
-
-export async function getStaticProps(context){
-    const  {params}  = context
-    const recipeKey = params.recipeKey
-
-    const recipes = await loadRecipes()
-
-    let recipe = recipes.carrotOrangeJuice
-    if(recipes[recipeKey]) {
-        recipe = recipes[recipeKey]
-    }
-
-    return {
-      props: {
-        recipes,
-      },
-    }
-}
-
-const AuntHouseQuestions = ({user,settings,recipes}) => {
+const StadiumQuestions = ({user,settings}) => {
     const router = useRouter()
-    const { questionTypeKey, recipeKey, familySize, initSeed,initQnNum} = router.query
-    const recipe = recipes[recipeKey]
+    const { questionTypeKey, sportKey, level, initSeed,initQnNum} = router.query
     const {seed,setSeed,regenerateSeed, randomGenerator} = useSeededRandom(initSeed)
 
     const {buildQuizData, quizDataBuilderSetters} = useQuizDataBuilder()
@@ -70,9 +34,9 @@ const AuntHouseQuestions = ({user,settings,recipes}) => {
         if(!seed) return null
         DevLog('---Generating questions w/ Seed ' + seed + '---')
         try {
-            const generatedQuestions = aHQuestionFactory(questionTypeKey, recipe, randomGenerator,familySize)
-            DevLog(generatedQuestions)
-            return generatedQuestions
+            const questions = GenerateStadiumQuestions(sportKey,level,randomGenerator)
+            DevLog(questions)
+            return questions
         } catch(e) {
             DevErr('Error generating questions ' + e)
             return null
@@ -88,8 +52,7 @@ const AuntHouseQuestions = ({user,settings,recipes}) => {
             initQnNum ? quizDataBuilderSetters.setQuestionNum(initQnNum) 
                 : quizDataBuilderSetters.setQuestionNum(0)
             quizDataBuilderSetters.setParams({
-                recipeKey: recipeKey,
-                familySize: familySize
+                sportKey: sportKey,
             })
             quizDataBuilderSetters.setQuestionTypeKey(questionTypeKey)
             quizDataBuilderSetters.setOnFinish(() => () => handleFinish())
@@ -100,16 +63,7 @@ const AuntHouseQuestions = ({user,settings,recipes}) => {
     }
 
     const handleFinish = () => {
-        let tempFamilySize
-        let route
-        if(questionTypeKey == 'familySize') {
-            tempFamilySize = window.sessionStorage.getItem('FAMILY_SIZE')
-            window.sessionStorage.removeItem('FAMILY_SIZE')
-            route = getFinishRoute(questionTypeKey, recipeKey,tempFamilySize, recipe.level)
-        } else {
-            route = getFinishRoute(questionTypeKey, recipeKey,familySize ,recipe.level)
-        }
-        router.push(route)
+        router.push('/dialog/stadiumOutro')
         setLoading(true)
     }
 
@@ -123,31 +77,12 @@ const AuntHouseQuestions = ({user,settings,recipes}) => {
 
     const render = () => {
         if(loading) return <Loading/>
-
-        const recipeTitle = generateRecipeTitleText(recipe,lang)
-        const recipeServingText = generateRecipeServingText(recipe,lang)
-        const prepTime = recipe.prepTime > 0 ? getText('preptime', lang) + ' : ' +  recipe.prepTime + ' ' + getText('minutes', lang) : ''
-        const cookTime = recipe.cookTime > 0 ? getText('cooktime', lang) + ' : ' +  recipe.cookTime + ' ' + getText('minutes', lang) : ''
-
         return (
             <GameQuestionLayout
                 user={user}
                 settings={settings}
                 quizData={buildQuizData()}
                 initQuestionNum={initQnNum}> 
-                <div>
-                    <p className='text-center'>{recipeTitle}</p>
-                    <p className='text-center'>{recipeServingText}</p>
-                    <div className='row mx-auto'>
-                        <div className='col-6 text-center'>
-                            <p className=''>{prepTime}</p>
-                        </div>
-                        <div className='col-6 text-center'>
-                            <p className=''>{cookTime}</p>
-                        </div>
-                    </div>
-                    <IngredientList ingredients={recipe.ingredients} lang={lang}/>
-                </div>
             </GameQuestionLayout>
         )
     }
@@ -155,15 +90,4 @@ const AuntHouseQuestions = ({user,settings,recipes}) => {
     return render()
 }
 
-function getFinishRoute(questionTypeKey, recipeKey,familySize, level) {
-    if (!questionTypeKey) {
-        return '/'
-    }
-
-   
-        return '/dialog/stadiumOutro'
-    
-
-}
-
-export default RetrieveUserContext(AuntHouseQuestions,['gameReady','hasActiveGame'])
+export default RetrieveUserContext(StadiumQuestions,['gameReady','hasActiveGame'])
