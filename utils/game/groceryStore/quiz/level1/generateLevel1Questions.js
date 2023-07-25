@@ -1,3 +1,5 @@
+import DevErr from "@utils/debug/devErr"
+import DevLog from "@utils/debug/devLog"
 import generateAHSimpleMultiQuestion from "@utils/game/auntHouse/questionCreation/auntHouseQuestionGenerators/generateAHSimpleMultiQuestion"
 import createGameQuestion, { ErrorQuestion } from "@utils/game/quiz/questionGeneration/createGameQuestion"
 import { GenerateFriendContainerQuestion } from "@utils/game/recipes/questionGeneration/containerQuestionGenerators"
@@ -5,6 +7,7 @@ import { GenerateFriendContainerQuestion } from "@utils/game/recipes/questionGen
 const recipesQuizzedOn = 2
 const triples = [6,9,12,15,18]
 const evens = [2,4,8,10]
+var Fraction = require('fractional').Fraction
 
 
 const generateLevel1Questions = (recipes,questionType,randomGenerator) => {
@@ -23,11 +26,14 @@ const generateLevel1Questions = (recipes,questionType,randomGenerator) => {
             case 'caesarSalad':
                 caesarSaladQuestions(questions,recipes[recipeKey],randomGenerator)
                 break
-            case 'churros': //NOT DONE
+            case 'churros':
                 churrosQuestions(questions,recipes[recipeKey],randomGenerator)
+                break
             case 'flan':
                 flanQuestions(questions,recipes[recipeKey],randomGenerator)
+                break
             default:
+                DevErr('generateLevel1Questions recipeKey not found')
                 questions.push(ErrorQuestion)
         }
     })
@@ -62,7 +68,7 @@ const mangoPineappleJuiceQuestions = (questions,recipe,randomGenerator) => {
     const q2Arr2 = [6,8,10]
     const q2num1 = q2Arr1[randomGenerator.randomInt(0,q2Arr1.length-1)]
     const q2num2 = q2Arr2[randomGenerator.randomInt(0,q2Arr2.length-1)]
-    const q2Answer = q2num1/q2num2
+    const q2Answer = Math.round((q2num1/q2num2 + Number.EPSILON) * 100) / 100
     //Unit price question
     questions.push(createGameQuestion(
         {
@@ -137,7 +143,7 @@ const mangoPineappleJuiceQuestions = (questions,recipe,randomGenerator) => {
                 es: 'Precio por unidad de Happy Farm = ' + q4num2 + ' / ' + q4num1 + ' = Valor A\nPrecio por unidad de Sunshine Mango = ' + q4num4 + ' / ' + q4num3 + ' = Valor B\nEl número más bajo entre Valor A y Valor B = ' + q4Answer,
             }
         ],
-        'fraction',
+        'money',
         null,
         null
     ))
