@@ -6,7 +6,6 @@ const triples = [6,9,12,15,18,21,24,27,30]
 
 const generateLevel2Questions = (recipes,questionType,randomGenerator) => {
     let questions = []
-    console.log("recipes",recipes)
     Object.keys(recipes).forEach((recipeKey, index) => {
         switch(recipeKey) {
             case 'peruvianFriedRice':
