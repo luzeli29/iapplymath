@@ -360,18 +360,19 @@ const pineappleCakeQuestions = (questions, recipe, randomGenerator) => {
 
 const carrotJuiceQuestions = (questions, recipe, randomGenerator) => {
     const q1Arr = [3, 4, 6, 12];
+    const q1Index = randomGenerator.randomInt(0, q1Arr.length - 1)
 
     const q1ServingsList = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30];
     const q1ServingsNeeded = q1ServingsList[randomGenerator.randomInt(0, q1ServingsList.length - 1)];
 
     const q1CarrotsPerServing = recipe / recipe.servings;
     const q1TotalCarrots = q1CarrotsPerServing * q1ServingsNeeded;
-    const q1NumBags = Math.ceil(q1TotalCarrots / q1Arr[randomGenerator.randomInt(0, q1Arr.length - 1)]);
+    const q1NumBags = Math.ceil(q1TotalCarrots / q1Arr[q1Index]);
 
     questions.push(createGameQuestion(
         {
-            en: `At the grocery store, a bag of carrots has [3, 4, 6, 12] carrots. How many bags of carrots do you need to buy to make ${q1ServingsNeeded} servings of carrot juice?`,
-            es: `En el supermercado, una bolsa de zanahorias tiene [3, 4, 6, 12] zanahorias. ¿Cuántas bolsas de zanahorias necesitas comprar para hacer ${q1ServingsNeeded} porciones de jugo de zanahoria?`
+            en: `At the grocery store, a bag of carrots has ${q1Arr[q1Index]} carrots. How many bags of carrots do you need to buy to make ${q1ServingsNeeded} servings of carrot juice?`,
+            es: `En el supermercado, una bolsa de zanahorias tiene ${q1Arr[q1Index]} zanahorias. ¿Cuántas bolsas de zanahorias necesitas comprar para hacer ${q1ServingsNeeded} porciones de jugo de zanahoria?`
         },
         q1NumBags,
         [
@@ -515,27 +516,42 @@ const fruitSaladQuestions = (questions, recipe, randomGenerator) => {
 
 
 const chocolateBananaCakeQuestions = (questions, recipe, randomGenerator) => {
-    const q18PriceList = [3.69, 4.29, 5.49];
+
+    const q18QWords = ["Happy Farm Flour", "Special Farm Flour", "Fancy Farm Organic Flour"]
+    const q18Index = randomGenerator.randomInt(0, 2)
+    const q18Word = q18QWords[q18Index]
+
     const q18NumList = [2, 4, 6, 8, 10, 12];
-    const q18Index = randomGenerator.randomInt(0, 2);
-    const q18Price = q18PriceList[q18Index];
-    const q18SavingsFactor = q18NumList.map(num => num / 2);
-    const q18Answer = q18SavingsFactor.map(factor => (factor * q18Price).toFixed(2));
+    const q18Num1 = q18NumList[randomGenerator.randomInt(0, q18NumList.length - 1)]
+
+
+    const q18Answer = [q18Num1 * 3.69, q18Num1 * 4.29, q18Num1 * 5.49]
+
 
     questions.push(createGameQuestion(
         {
-            en: `Today the grocery store has a buy-one-get-one-free sale for [Happy Farm Flour, Special Farm Flour, Fancy Farm Organic Flour]. How much money do you save with this sale if you buy [2, 4, 6, 8, 10, 12] bags of flour?`,
-            es: `Hoy el supermercado tiene una promoción de compra uno y lleva uno gratis para [Harina Happy Farm, Harina Special Farm, Harina Orgánica Fancy Farm]. ¿Cuánto dinero ahorras con esta promoción si compras [2, 4, 6, 8, 10, 12] bolsas de harina?`
+            en: `Today the grocery store has a buy-one-get-one-free sale for ${q18Word}. How much money do you save with this sale if you buy ${q18Num1} bags of flour?`,
+            es: `Hoy el supermercado tiene una promoción de compra uno y lleva uno gratis para ${q18Word}. ¿Cuánto dinero ahorras con esta promoción si compras ${q18Num1} bolsas de harina?\n
+            Happy Farm Flour: $3.69 por bolsa\n
+            Special Farm Flour: $4.29 por bolsa\n
+            Fancy Farm Organic Flour: $5.49 por bolsa
+            `
         },
-        q18Answer,
+        q18Answer[q18Index],
         [
             {
-                en: 'Buy-one-get-one-free sales mean that you can buy 2 items for the price of 1.\nMoney saved per 2 items = price for 2 items - price for 1 item\nSavings factor = total bags / minimum bags to get sale\nTotal savings = Savings factor * Money saved per 2 items',
-                es: 'Las promociones de compra uno y lleva uno gratis significan que puedes comprar 2 artículos por el precio de 1.\nDinero ahorrado por 2 artículos = precio de 2 artículos - precio de 1 artículo\nFactor de ahorro = bolsas totales / bolsas mínimas para obtener la promoción\nAhorro total = Factor de ahorro * Dinero ahorrado por 2 artículos'
+                en: 'Try again! Hint: Buy-one-get-one-free sales mean that you can buy 2 items for the price of 1.',
+                es: '¡inténtalo  otra vez! Sugerencia: las ventas de compre uno y obtenga uno gratis significan que puede comprar 2 artículos por el precio de 1.',
             },
             {
-                en: `Happy Farm\nMoney saved = (${q18Price} * 2) - ${q18Price} = ${q18Price}\nSavings factor = [2, 4, 6, 8, 10, 12] / 2 = [${q18SavingsFactor.join(', ')}]\nTotal savings = [${q18Answer.join(', ')}] (2 decimals)`,
-                es: `Harina Happy Farm\nDinero ahorrado = (${q18Price} * 2) - ${q18Price} = ${q18Price}\nFactor de ahorro = [2, 4, 6, 8, 10, 12] / 2 = [${q18SavingsFactor.join(', ')}]\nAhorro total = [${q18Answer.join(', ')}] (2 decimales)`
+                en: `Money saved per 2 items = price for 2 items - price for 1 item \n
+                Savings factor = total bags / minimum bags to get sale \n
+                Total savings = Savings factor * Money saved per 2 items
+                `,
+                es: `Dinero ahorrado por 2 artículos = precio por 2 artículos - precio por 1 artículo\n
+                Factor de ahorro = bolsas totales / bolsas mínimas para obtener la venta\n
+                Ahorro total = Factor de ahorro * Dinero ahorrado por 2 artículos
+                `
             },
         ],
         'decimal',
@@ -543,18 +559,20 @@ const chocolateBananaCakeQuestions = (questions, recipe, randomGenerator) => {
         null
     ));
 
-    const q19ContainerPriceList = [6, 7, 8, 9];
+    const q19ContainerPriceList = [6, 7, 8, 9]
+    const q19PricePerContainer = q19ContainerPriceList[randomGenerator.randomInt(0, 3)];
+
     const q19CupsPerRecipe = 12;
     const q19NumOfRecipes = randomGenerator.randomInt(2, 16);
-    const q19TotalCups = q19CupsPerRecipe * q19NumOfRecipes;
-    const q19Containers = Math.ceil(q19TotalCups / 16);
-    const q19PricePerContainer = q19ContainerPriceList[randomGenerator.randomInt(0, 3)];
+    const q19Y = q19CupsPerRecipe * q19NumOfRecipes;
+    const q19Containers = Math.ceil(q19Y / 16);
+
     const q19Answer = (q19Containers * q19PricePerContainer).toFixed(2);
 
     questions.push(createGameQuestion(
         {
-            en: `The grocery store only sells ice cream in one gallon containers for [$6, $7, $8, $9]. Using this recipe, how much money will you spend on ice cream if you need to make the recipe [2-16] times? 1 gallon equals 16 cups.`,
-            es: `El supermercado solo vende helado en envases de un galón por [$6, $7, $8, $9]. Usando esta receta, ¿cuánto dinero gastarás en helado si necesitas hacer la receta [2-16] veces? 1 galón equivale a 16 tazas.`
+            en: `The grocery store only sells ice cream in one gallon containers for $${q19PricePerContainer}. Using this recipe, how much money will you spend on ice cream if you need to make the recipe ${q19NumOfRecipes} times? 1 gallon equals 16 cups.`,
+            es: `El supermercado solo vende helado en envases de un galón por $${q19PricePerContainer}. Usando esta receta, ¿cuánto dinero gastarás en helado si necesitas hacer la receta ${q19NumOfRecipes} veces? 1 galón equivale a 16 tazas.`
         },
         q19Answer,
         [
