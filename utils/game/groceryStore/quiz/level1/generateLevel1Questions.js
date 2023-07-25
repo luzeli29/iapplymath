@@ -89,7 +89,8 @@ const mangoPineappleJuiceQuestions = (questions,recipe,randomGenerator) => {
     const q3Arr2 = [6,12,16]
     const q3num1 = q3Arr1[randomGenerator.randomInt(0,q3Arr1.length-1)]
     const q3num2 = q3Arr2[randomGenerator.randomInt(0,q3Arr2.length-1)]
-    const q3Answer = (16*q3num1)/q3num2
+    const q3Answer = Math.ceil((16*q3num1)/q3num2)
+
     questions.push(createGameQuestion(
         {
             en: 'You need to purchase enough pineapple chunks to make the recipe for you and ' + q3num1 + ' friends. You decide to purchase the Happy Pineapple brand, which comes in containers of ' + q3num2 + ' ounces. If one cup of pineapple chunks equals 8 ounces, how many containers do you need to purchase to make mango-pineapple juice for you and your friends?',
@@ -102,8 +103,8 @@ const mangoPineappleJuiceQuestions = (questions,recipe,randomGenerator) => {
                 es: 'Total de oz. por 1 porción = # tazas por 1 porción * # oz. por taza \nTotal de oz. necesitados = Total de oz. por 1 porción * # porciones necesitadas \nTotal de latas = Total de oz. / # oz. por contenedor'
             },
             {
-                en: 'Total oz. per 1 serving = 2 * 8 = 16 oz \nTotal oz. = 16 * ' + q3num1 + ' = “x”\nTotal cans = “x” / ' + q3num2 + ' = (Answer)',
-                es: 'Total de oz. por 1 porción = 2 * 8 = 16 oz \nTotal de oz. = 16 * ' + q3num1 + ' = “x”\nTotal de latas = “x” / ' + q3num2 + ' = (Respuesta)'
+                en: 'Total oz. per 1 serving = 2 * 8 = 16 oz \nTotal oz. = 16 * ' + q3num1 + ' = “x”\nTotal cans = “x” / ' + q3num2 + ' = ' + q3Answer,
+                es: 'Total de oz. por 1 porción = 2 * 8 = 16 oz \nTotal de oz. = 16 * ' + q3num1 + ' = “x”\nTotal de latas = “x” / ' + q3num2 + ' = ' + q3Answer,
             }
         ],
         'wholeNumber',
