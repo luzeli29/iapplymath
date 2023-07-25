@@ -223,8 +223,8 @@ const lemonVanillaCakeQuestions = (questions,recipe,randomGenerator) => {
                 es: 'Tazas de azúcar por 1 porción = tazas de receta / porciones de receta\nTazas totales de azúcar = Tazas de azúcar por 1 porción * número de porciones\nCucharadas totales de azúcar = tazas totales de azúcar * cucharadas por 1 taza\nCosto total = cucharadas totales de azúcar * precio por 1 cucharada'
             },
             {
-                en: 'Cups sugar per 1 serving = 1 / 10 = 0.10\nTotal cups sugar = 0.10 * '+q3num1+' = “x”\nTotal tbsp sugar = “x” * 16 = “y”\nTotal cost = “y” * 0.16 = Answer',
-                es: 'Tazas de azúcar por 1 porción = 1 / 10 = 0.10\nTazas totales de azúcar = 0.10 * '+q3num1+' = “x”\nCucharadas totales de azúcar = “x” * 16 = “y”\nCosto total = “y” * 0.16 = Respuesta'
+                en: 'Cups sugar per 1 serving = 1 / 10 = 0.10\nTotal cups sugar = 0.10 * '+q3num1+' = “x”\nTotal tbsp sugar = “x” * 16 = “y”\nTotal cost = “y” * 0.16 = ' +q3Answer,
+                es: 'Tazas de azúcar por 1 porción = 1 / 10 = 0.10\nTazas totales de azúcar = 0.10 * '+q3num1+' = “x”\nCucharadas totales de azúcar = “x” * 16 = “y”\nCosto total = “y” * 0.16 = ' + q3Answer
             }
         ],
         'money',
