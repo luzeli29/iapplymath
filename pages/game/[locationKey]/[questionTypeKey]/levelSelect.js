@@ -23,6 +23,7 @@ export async function getStaticPaths() {
             keyPaths.push({ params: { locationKey, questionTypeKey}});
         }
     }
+    console.log(keyPaths)
     return {
         paths: keyPaths,
         fallback: false,

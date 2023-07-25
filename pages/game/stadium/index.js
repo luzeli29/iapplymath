@@ -34,7 +34,7 @@ const SportSelect = ({user,settings,sports}) => {
             setInstructionText("no_sport_selected")
             return false
         }
-        router.push('/game/stadium/levelSelect?sport=' + selectedSport)
+        router.push('/game/stadium/basic/levelSelect?sportKey=' + selectedSport)
     }
 
     const getSportIcon = (key,value) => {
@@ -47,11 +47,10 @@ const SportSelect = ({user,settings,sports}) => {
                     <Image className='h-1 w-1'
                             priority={true}
                             width={60}
-                            height={45}
+                            height={80}
                             objectFit = {'contain'}
                             src={imgSrc}
                             alt={value.imgSrc}/>
-                    <LevelDisplay pic={true} level={value.level} lang={lang}/>
                 </div>
             </ClickableIcon>
         )
