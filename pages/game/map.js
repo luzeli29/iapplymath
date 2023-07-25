@@ -146,7 +146,7 @@ const Map = ({user,settings}) => {
                     id={style.house_2}
                     src={"/img/map/aunt_house.png"}/>
 
-                <button //onClick={() => handleStadium()}
+                <button onClick={() => handleStadium()}
                         className={style.icon2} id={style.stadium}> 
                     <Image 
                         layout={"fill"}

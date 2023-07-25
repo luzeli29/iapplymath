@@ -11,36 +11,37 @@ import IconGroup from '@comps/iconGroup'
 import ClickableIcon from '@comps/clickableIcon'
 import LevelDisplay from '@comps/game/levelDisplay'
 import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
+import loadSports from '@utils/game/stadium/sportData/loadSports'
 
 export async function getStaticProps(){
-    const recipes = await loadRecipes("stadium")
+    const sports = await loadSports("stadium")
     return {
       props: {
-        recipes,
+        sports,
       },
     }
 }
 
-const RecipeSelect = ({user,settings,recipes}) => {
+const SportSelect = ({user,settings,sports}) => {
     const router = useRouter()
-    const [selectedRecipe, setSelectedRecipe] = useState()
+    const [selectedSport, setSelectedSport] = useState()
     const [instructionText, setInstructionText] = useState("stadium_welcome");
 
     const lang = settings.lang
 
-    function handleRecipeSubmit() {
-        if(selectedRecipe == null) {
-            setInstructionText("no_recipe_selected")
+    function handleSportSubmit() {
+        if(selectedSport == null) {
+            setInstructionText("no_sport_selected")
             return false
         }
-        router.push('/game/stadium/recipeCard/' + selectedRecipe)
+        router.push('/game/stadium/levelSelect?sport=' + selectedSport)
     }
 
-    const getRecipeIcon = (key,value) => {
-        if(value.imgSrc == undefined) return <></>
-        const imgSrc = '/img/food/' + value.imgSrc + '.png'
+    const getSportIcon = (key,value) => {
+        if(value.imgSrc == undefined) return <p></p>
+        const imgSrc = '/img/stadium/' + value.imgSrc + '.png'
         return (
-            <ClickableIcon selected={selectedRecipe == key} onClick={() => setSelectedRecipe(key)}> 
+            <ClickableIcon selected={selectedSport == key} onClick={() => setSelectedSport(key)}> 
                 <div className='mx-auto px-2' style={{position:'relative'}}>
             
                     <Image className='h-1 w-1'
@@ -61,15 +62,15 @@ const RecipeSelect = ({user,settings,recipes}) => {
                 lang={lang}
                 gameName={"stadium"}
                 instruction_text={instructionText}
-                submit_text={"cook"}
-                handleSubmit={() => handleRecipeSubmit()}>
+                submit_text={"play"}
+                handleSubmit={() => handleSportSubmit()}>
                 <div className=''>
                 <IconGroup 
                     lang={lang}
-                    icons={recipes}
-                    selectIcon={(recipe) => setSelectedRecipe(recipe)}
-                    selectedIcon={selectedRecipe}
-                    getContentFromValue={(key,value) => getRecipeIcon(key,value)}
+                    icons={sports}
+                    selectIcon={(sport) => setSelectedSport(sport)}
+                    selectedIcon={selectedSport}
+                    getContentFromValue={(key,value) => getSportIcon(key,value)}
                     width={2}
                     height={2}/>
                 </div>
@@ -77,4 +78,4 @@ const RecipeSelect = ({user,settings,recipes}) => {
     )
 }
 
-export default RetrieveUserContext(RecipeSelect, ['gameReady','hasActiveGame'])
+export default RetrieveUserContext(SportSelect, ['gameReady','hasActiveGame'])

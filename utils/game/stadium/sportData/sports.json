@@ -1,0 +1,10 @@
+{
+    "sport" : {
+        "soccor": {
+            "name": {
+                "en": "Soccor",
+                "es": "Fútbol"
+            }
+        }
+    }
+}
