@@ -108,6 +108,50 @@ const strawberryLimeadeQuestions = (questions,recipe,randomGenerator) => {
         null
     ))
     //Table Question
+    const q3Seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
+    const q3Prices = {
+        Winter:{
+            amount:1,
+            price: 4.50
+        },
+        Spring:{
+            amount:2,
+            price: 3.25
+        },
+        Summer:{
+            amount:5,
+            price: 4.50
+        },
+        Fall:{
+            amount:4,
+            price: 3.75
+        }
+    };
+
+    const q3Season = q3Seasons[randomGenerator.randomInt(0, q3Seasons.length - 1)];
+    const q3PricePerPound = q3Prices[q3Season].price / q3Prices[q3Season].amount;
+    const q3BagPrice = 3 * q3PricePerPound;
+
+    questions.push(createGameQuestion(
+        {
+            en: `You need a 3 pound (lb) bag of apples for this recipe. The price of apples is different every season. How much does a 3 lb bag of apples cost in the ${q3Season.toLowerCase()}? Round to the nearest hundredth.`,
+            es: `Necesitas una bolsa de manzanas de 3 libras (lb) para esta receta. El precio de las manzanas es diferente en cada temporada. ¿Cuánto cuesta una bolsa de manzanas de 3 lb en el ${q3Season.toLowerCase()}? Redondea al centésimo más cercano.`
+        },
+        q3BagPrice,
+        [
+            {
+                en: 'Price per 1 pound = total price / amount given',
+                es: 'Precio por 1 libra = precio total / cantidad dada'
+            },
+            {
+                en: `Solution: Price per pound = ${q3Prices[q3Season].price} / ${q3Prices[q3Season].amount} = ${q3PricePerPound} \n Bag Price = 3 * ${q3PricePerPound} = ${q3BagPrice}`,
+                es: `Solución: Precio por libra = ${q3Prices[q3Season].price} / ${q3Prices[q3Season].amount}  = ${q3PricePerPound} \n Precio de la bolsa = 3 * ${q3PricePerPound} = ${q3BagPrice}`
+            },
+        ],
+        'decimal',
+        null,
+        "level3GroceryStoreq4"
+    ));
 }
 
 const strawberryCakeQuestions = (questions,recipe,randomGenerator) => {
@@ -158,6 +202,31 @@ const strawberryCakeQuestions = (questions,recipe,randomGenerator) => {
         null
     ))
     //Image Question
+    //  You finished shopping for ingredients to make strawberry cakes. The cashier scanned all of your items and gave you the receipt below. How much money did you spend in total?
+    const q13Answer = 29.95
+    questions.push(createGameQuestion(
+        {
+            en: 'You finished shopping for ingredients to make strawberry cakes. The cashier scanned all of your items and gave you the receipt below. How much money did you spend in total?',
+            es: 'Terminaste de comprar los ingredientes para hacer pasteles de fresa. El cajero escaneó todos tus artículos y te dio el recibo a continuación. ¿Cuánto dinero gastaste en total?'
+        },
+        q13Answer,
+        [
+            {
+                en:"Try again!",
+                es:"¡Inténtalo de nuevo!"
+            },
+            {
+                en:"Total Cost = Sum of prices for all items on receipt",
+                es:"Costo total = Suma de precios de todos los artículos en el recibo"
+            },{
+                en:"Total Cost = 2.89 + 1.79 + 4.45 + 2.39 + 1.99 + 6.00 + 7.99 + 2.45 = 29.95 dollars",
+                es:"Costo total = 2.89 + 1.79 + 4.45 + 2.39 + 1.99 + 6.00 + 7.99 + 2.45 = 29.95 dólares"
+            }
+        ],
+        "money",
+        null,
+        "level3GroceryStoreq13"
+    ));
 }
 
 const lemonVanillaCakeQuestions = (questions,recipe,randomGenerator) => {

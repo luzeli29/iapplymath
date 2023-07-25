@@ -56,6 +56,19 @@ const useSeededRandom = (initSeed) => {
         return Math.floor(getRandom() * (max - min) + min);
     }
 
+    const randomFloat = (min, max) => {
+        if (max == undefined || max <= 0) {
+            return 0
+        }
+
+        if (min == undefined || min <= 0) {
+            return getRandom() * max
+        }
+
+        return getRandom() * (max - min) + min;
+    }
+
+
     const hoursArray = [12, 1, 2, 3, 4, 5, 6];
 
     function randomHr() {
@@ -88,7 +101,8 @@ const useSeededRandom = (initSeed) => {
         randomInt: randomInt,
         randomHr: randomHr,
         randomDishType: randomDishType,
-        randomSchoolTopic: randomSchoolTopic
+        randomSchoolTopic: randomSchoolTopic,
+        randomFloat: randomFloat,
     }
 
     return {
