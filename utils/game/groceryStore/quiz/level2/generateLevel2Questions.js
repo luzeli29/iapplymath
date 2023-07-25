@@ -6,6 +6,7 @@ const triples = [6,9,12,15,18,21,24,27,30]
 
 const generateLevel2Questions = (recipes,questionType,randomGenerator) => {
     let questions = []
+    console.log("recipes",recipes)
     Object.keys(recipes).forEach((recipeKey, index) => {
         switch(recipeKey) {
             case 'peruvianFriedRice':
@@ -20,7 +21,7 @@ const generateLevel2Questions = (recipes,questionType,randomGenerator) => {
             case 'carrotJuice':
                 carrotJuiceQuestions(questions,recipes[recipeKey],randomGenerator)
                 break
-            case 'fruitSalad':
+            case 'fruitSalads':
                 fruitSaladQuestions(questions,recipes[recipeKey],randomGenerator)
                 break
             case 'chocolateBananaCake':
@@ -228,6 +229,35 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
         null,
         null
     ));
+
+    // You finished shopping for your special dinner. The cashier scanned all of your items and gave you the receipt below. How much money did you spend in total?
+    const q8Answer = 30;
+    questions.push(createGameQuestion(
+        {
+            en:"You finished shopping for your special dinner. The cashier scanned all of your items and gave you the receipt below. How much money did you spend in total?",
+            es:"Terminaste de comprar para tu cena especial. El cajero escaneó todos tus artículos y te dio el recibo a continuación. ¿Cuánto dinero gastaste en total?"
+        },
+        q8Answer,
+        [
+            {
+                en:"Try again! Hint: Add the price of all the purchased items to find the total cost.",
+                es:"¡Inténtalo de nuevo! Pista: Suma el precio de todos los artículos comprados para encontrar el costo total."
+            },
+            {
+                en:"Total Cost = Sum of prices for all items on receipt",
+                es:"Costo total = Suma de precios de todos los artículos en el recibo"
+            },
+            {
+                en:"Total Cost = 2.80 + 3.50 + 2.00 + 4.50 + 6.00 + 9.20 + 2.00 = 30.00 dollars",
+                es:"Costo total = 2.80 + 3.50 + 2.00 + 4.50 + 6.00 + 9.20 + 2.00 = 30.00 dólares"
+            }
+        ],
+        "money",
+        null,
+        "level2GroceryStoreq8",
+    ));
+
+
 }
 
 
@@ -420,7 +450,7 @@ const carrotJuiceQuestions = (questions, recipe, randomGenerator) => {
         ],
         'decimal',
         null,
-        null
+        "level2GroceryStoreq14"
     ));
 }
 
@@ -437,8 +467,8 @@ const fruitSaladQuestions = (questions, recipe, randomGenerator) => {
 
     questions.push(createGameQuestion(
         {
-            en: `A container of mixed berries has 2 ½ cups of berries. If one container costs $${q15Price}, how much money will it cost to buy berries to make ${q15ServingsNeeded} fruit salads?`,
-            es: `Un recipiente de bayas mixtas tiene 2 ½ tazas de bayas. Si un recipiente cuesta $${q15Price}, ¿cuánto dinero costará comprar bayas para hacer ${q15ServingsNeeded} ensaladas de frutas?`
+            en: `A container of mixed berries has 2 1/2 cups of berries. If one container costs $${q15Price}, how much money will it cost to buy berries to make ${q15ServingsNeeded} fruit salads?`,
+            es: `Un recipiente de bayas mixtas tiene 2 1/2 tazas de bayas. Si un recipiente cuesta $${q15Price}, ¿cuánto dinero costará comprar bayas para hacer ${q15ServingsNeeded} ensaladas de frutas?`
         },
         q15Answer,
         [
@@ -566,7 +596,7 @@ const chocolateBananaCakeQuestions = (questions, recipe, randomGenerator) => {
     const q19NumOfRecipes = randomGenerator.randomInt(2, 16);
     const q19Y = q19CupsPerRecipe * q19NumOfRecipes;
     const q19Containers = Math.ceil(q19Y / 16);
-
+    const q19TotalCups = q19Y;
     const q19Answer = (q19Containers * q19PricePerContainer).toFixed(2);
 
     questions.push(createGameQuestion(
@@ -589,6 +619,34 @@ const chocolateBananaCakeQuestions = (questions, recipe, randomGenerator) => {
         null,
         null
     ));
+
+    //  You finished shopping for ingredients to make chocolate banana cakes. The cashier scanned all of your items and gave you the receipt below. How much money did you spend in total?
+    const q20Answer = 34.70;
+    questions.push(createGameQuestion(
+        {
+            en:"You finished shopping for ingredients to make chocolate banana cakes. The cashier scanned all of your items and gave you the receipt below. How much money did you spend in total?",
+            es:"Terminaste de comprar los ingredientes para hacer pasteles de plátano con chocolate. El cajero escaneó todos tus artículos y te dio el recibo a continuación. ¿Cuánto dinero gastaste en total?"
+        },
+        q20Answer,
+        [
+            {
+                en:"Try again! Hint: Add the price of all the purchased items to find the total cost.",
+                es:"¡Inténtalo de nuevo! Pista: Suma el precio de todos los artículos comprados para encontrar el costo total."
+            },
+            {
+                en:"Total Cost = Sum of prices for all items on receipt",
+                es:"Costo total = Suma de precios de todos los artículos en el recibo"
+            },
+            {
+                en:"Total Cost = 2.50 + 1.60 + 3.90 + 1.50 + 5.50 + 6.00 + 4.70 + 3.00 + 4.50 + 1.50 = 34.70 dollars",
+                es:"Costo total = 2.50 + 1.60 + 3.90 + 1.50 + 5.50 + 6.00 + 4.70 + 3.00 + 4.50 + 1.50 = 34.70 dólares"
+            }
+        ],
+        "money",
+        null,
+        "level2GroceryStoreq20"
+    ));
+
 }
 
 
