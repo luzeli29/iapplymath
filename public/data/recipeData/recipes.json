@@ -366,8 +366,8 @@
             "cookTime": 2,
             "servingType" : "cup",
             "ingredients" : {
-                "pinneapleChunks" :{
-                    "ingredient" : "pinneapleChunk",
+                "pineapleChunk" :{
+                    "ingredient" : "pineapleChunk",
                     "amount" : "2",
                     "servingType" : "cup"
                 },
@@ -646,8 +646,8 @@
                     "amount" : "2",
                     "servingType" : "self"
                 },
-                "pinneapleChunk" :{
-                    "ingredient" : "pinneapleChunk",
+                "pineapleChunk" :{
+                    "ingredient" : "pineapleChunk",
                     "amount" : "4",
                     "servingType" : "cup"
                 },
@@ -775,7 +775,7 @@
             "imgSrc" : "peruvianFriedRice",
             "servingSize" : 3,
             "recipeMakesAmount" : 1, 
-            "servingType" : "plate",
+            "servingType" : "bowl",
             "ingredients" : {
                 "onion" :{
                     "ingredient" : "onion",
@@ -964,7 +964,7 @@
                     "amount" : "1",
                     "servingType" : "teaspoon"
                 },"salt" :{
-                    "ingredient" : "bakingPowder",
+                    "ingredient" : "salt",
                     "amount" : "1/2",
                     "servingType" : "teaspoon"
                 },"cocoaPowder" :{
@@ -1075,8 +1075,8 @@
                     "ingredient" : "orange",
                     "amount" : "7/2",
                     "servingType" : "self"
-                },"pinneapleChunk" :{
-                    "ingredient" : "pinneapleChunk",
+                },"pineapleChunk" :{
+                    "ingredient" : "pineapleChunk",
                     "amount" : "3/2",
                     "servingType" : "cup"
                 },"freshLimeJuice" :{
