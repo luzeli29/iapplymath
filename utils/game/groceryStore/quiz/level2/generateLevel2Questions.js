@@ -26,9 +26,15 @@ const generateLevel2Questions = (recipes,questionType,randomGenerator) => {
             case 'chocolateBananaCake':
                 chocolateBananaCakeQuestions(questions,recipes[recipeKey],randomGenerator)
                 break
+            case 'ricePudding': {
+                ricePuddingQuestions(questions,recipes[recipeKey],randomGenerator)
+                break
+            }
             default:
                 questions.push(ErrorQuestion)
         }
+        console.log(recipeKey)
+        console.log(questions)
     })
      return questions
 }
@@ -89,8 +95,8 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
                 es: 'Total de tazas de arroz = # porciones * tazas por 1 porción \n Calcula para todas las marcas y compara cada cantidad para encontrar la cantidad más grande.'
             },
             {
-                en: `Total Cups Happy Farm = ${q2num1} * 1/4 = Value A \n Total Cups Fancy Farm = ${q2num2} * 1/2 = Value B \n Total Cups Special Farm = ${q2num3} * 3/4 = Value C \n `,
-                es: `Copas totales de Happy Farm = ${q2num1} * 1/4 = Valor A \n Copas totales de Fancy Farm = ${q2num2} * 1/2 = Valor B \n Copas totales de Special Farm Rice = ${q2num3} * 3/4 = Valor C \n `
+                en: `Total Cups Happy Farm = ${q2num1} * 1/4 = `+q2ValA+`\n Total Cups Fancy Farm = ${q2num2} * 1/2 = `+q2ValB+` \n Total Cups Special Farm = ${q2num3} * 3/4 =  \n ` + q2ValC,
+                es: `Total de tazas de Happy Farm = ${q2num1} * 1/4 = `+q2ValA+`\n Total de tazas de Fancy Farm = ${q2num2} * 1/2 = `+q2ValB+` \n Total de tazas de Special Farm = ${q2num3} * 3/4 =  \n ` + q2ValC
             },
         ],
         'wholeNumber',
@@ -102,7 +108,7 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
     const q3num1 = q3NumList1[randomGenerator.randomInt(0, q3NumList1.length - 1)];
 
     const q3num2 = randomGenerator.randomInt(10, 20);
-    const q3Answer = q3num1 * q3num2;
+    const q3Answer = Math.ceil(q3num1 * q3num2);
 
     questions.push(createGameQuestion(
         {
@@ -116,8 +122,8 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
                 es: `Costo total = precio por bolsa * bolsas necesarias`
             },
             {
-                en: `Total cost = ${q3num1} * ${q3num2} = Answer`,
-                es: `Costo total = ${q3num1} * ${q3num2} = Respuesta`
+                en: `Total cost = ${q3num1} * ${q3num2} = ` + q3Answer,
+                es: `Costo total = ${q3num1} * ${q3num2} = Respuesta` + q3Answer
             },
         ],
         'wholeNumber',
@@ -206,7 +212,8 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
     const q7PriceRange = q7PriceList[q7Index];
     const q7Num = randomGenerator?.randomInt(q7NumRange[0], q7NumRange[1]) ?? 6 ;
     const q7Price = randomGenerator?.randomFloat(q7PriceRange[0], q7PriceRange[1]);
-    const q7Answer = q7Price / q7Num;
+    const q7Answer = Math.round((q7Price / q7Num+ Number.EPSILON) * 100) / 100
+
 
     questions.push(createGameQuestion(
         {
@@ -326,6 +333,11 @@ const strawberryMilkShakeQuestions = (questions, recipe, randomGenerator) => {
         null
     ));
 }
+
+const ricePuddingQuestions = (questions, recipe, randomGenerator) => {
+    //TODO -- ADD!
+}
+
 
 
 const pineappleCakeQuestions = (questions, recipe, randomGenerator) => {
@@ -518,8 +530,7 @@ const fruitSaladQuestions = (questions, recipe, randomGenerator) => {
     const q17PoundsList = [5, 6, 7, 8, 9];
     const q17Price = q17PriceList[randomGenerator.randomInt(0, 4)];
     const q17Pounds = q17PoundsList[randomGenerator.randomInt(0, 4)];
-    const q17Answer = q17Price / q17Pounds;
-
+    const q17Answer = Math.round((q17Price / q17Pounds + Number.EPSILON) * 100) / 100;
     questions.push(createGameQuestion(
         {
             en: `If you spend $${q17Price} on ${q17Pounds} pounds (lbs) of fruit today, how much did you spend per pound (lb) on fruit?`,
@@ -645,7 +656,6 @@ const chocolateBananaCakeQuestions = (questions, recipe, randomGenerator) => {
         null,
         "level2GroceryStoreq20"
     ));
-
 }
 
 

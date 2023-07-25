@@ -661,7 +661,7 @@
             "countable" : true,
             "imgSrc" : "salami"
         },
-        "pinneapleChunk" : {
+        "pineapleChunk" : {
             "nameSingular" : {
                 "en" : "Pineapple Chunk",
                 "es": "Trozo de Piña"
@@ -671,6 +671,19 @@
                 "es": "Trozos de Piña"
             },
             "container" : "can",
+            "countable" : true,
+            "imgSrc" : "pineapplechunks"
+        },
+        "pineapple" : {
+            "nameSingular" : {
+                "en" : "Pineapple",
+                "es": "Piña"
+            },
+            "namePlural" : {
+                "en" : "Pineapple",
+                "es": "Piña"
+            },
+            "container" : "bag",
             "countable" : true,
             "imgSrc" : "pineapplechunks"
         },
@@ -872,7 +885,7 @@
             }, 
             "container" : "container",
             "countable" : true,
-            "imgSrc" : "colorfulPepper"
+            "imgSrc" : "peppers"
         }, "chickenBreast" : {
             "nameSingular" : {
                 "en" : "Chicken Breast",
@@ -979,6 +992,30 @@
             "container" : "bottle",
             "countable" : false,
             "imgSrc" : "limeJuice"
+        },
+        "banana": {
+            "nameSingular" : {
+                "en" :"Banana",
+                "es": "Plátano"
+            },
+            "namePlural" : {
+                "en" :"Bananas",
+                "es": "Plátanos"
+            },"container" : "bag",
+            "countable" : true,
+            "imgSrc" : "banana"
+        },
+        "bakingPowder": {
+            "nameSingular" : {
+                "en" :"Baking Powder",
+                "es": "Polvo para Hornear"
+            },
+            "namePlural" : {
+                "en" :"Baking Powder",
+                "es": "Polvo para Hornear"
+            },"container" : "container",
+            "countable" : false,
+            "imgSrc" : "bakingSoda"
         }
     }
 }
