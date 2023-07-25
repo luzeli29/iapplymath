@@ -21,7 +21,7 @@ function generateDefaultGraphQuestion(randomGenerator) {
             const question = createGameQuestion(
                 {
                     en:'This is a graph that shows the cost for each main dish. The x-axis represents the different main dishes on the menu and the y-axis is the price for each main dish. How much was main dish ' + index + '.',
-                    es:""
+                    es:'Este es un gráfico que muestra el costo de cada plato principal. El eje x representa los diferentes platos principales del menú y el eje y es el precio de cada plato principal. ¿Cuánto fue el plato principal ' + index + '.',
                 },
                 answer,
                 [{
