@@ -466,7 +466,7 @@
             "countable" : false,
             "imgSrc" : "coconut"
         },
-        "mangoChunks" : {
+        "mangoChunk" : {
             "nameSingular" : {
                 "en" : "Mango Chunk",
                 "es" : "Trozo de Mango"
@@ -978,7 +978,7 @@
             },
             "container" : "bottle",
             "countable" : false,
-            "imgSrc" : "lemonJuice"
+            "imgSrc" : "limeJuice"
         }
     }
 }
