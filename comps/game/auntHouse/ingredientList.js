@@ -12,9 +12,6 @@ export default function IngredientList({ingredients, lang}) {
     }
 
     function getContentFromValue(key,value) {
-        console.log(key)
-        console.log(value)
-
         const ingredient = ingredients[key]
         const ingredientLineText = generateIngredientLineText(ingredient,lang)
         const ingredientSrc = '/img/ing/' + value.ingredient.imgSrc + '.png'

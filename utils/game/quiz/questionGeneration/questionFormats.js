@@ -1,3 +1,5 @@
+import simplifyFraction from "../simplifyFraction"
+
 const QuestionFormats = {
     'error' : {
         validationRegex : /^-?(?:0|[1-9]\d*)$/,
@@ -8,8 +10,8 @@ const QuestionFormats = {
         validationFailMessage: 'invalid_fraction',
         simplifyAnswer: (fraction) => {
             if(isNaN(fraction)) { 
-                var numer = userAnswer.split("/")[0]
-                var dinomi = userAnswer.split("/")[1]
+                var numer = fraction.split("/")[0]
+                var dinomi = fraction.split("/")[1]
                 const simplifiedAnswer = simplifyFraction(numer, dinomi)
                 return simplifiedAnswer
             } else {
