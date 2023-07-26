@@ -65,10 +65,17 @@ const QuestionFormats = {
     'time' : {
         // validationRegex : /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/i,
         // new regex to allow for 12:00AM and 12:00PM
-        validationRegex: /^(0?[1-9]|1[0-2]):[0-5][0-9]([AP]M)?$/i,
+        validationRegex:/^(0?[1-9]\s*|1[0-2]\s*):\s*[0-5]\s*[0-9]\s*([AP]M)?$/i,
         validationFailMessage: 'invalid_time',
         answerBoxType: 'textInput',
         answerBoxMessage: 'time_only',
+        simplifyAnswer: (time) => {
+            // remove all spaces
+            time = time.replace(/\s/g, '')
+            time = time.toLowerCase()
+
+            return time
+        }
     },
     'decimal': {
         validationRegex : /^[+-]?(\d*\.)?\d+$/,
