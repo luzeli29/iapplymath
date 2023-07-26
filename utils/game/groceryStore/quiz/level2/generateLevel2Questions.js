@@ -26,9 +26,15 @@ const generateLevel2Questions = (recipes,questionType,randomGenerator) => {
             case 'chocolateBananaCake':
                 chocolateBananaCakeQuestions(questions,recipes[recipeKey],randomGenerator)
                 break
+            case 'ricePudding': {
+                ricePuddingQuestions(questions,recipes[recipeKey],randomGenerator)
+                break
+            }
             default:
                 questions.push(ErrorQuestion)
         }
+        console.log(recipeKey)
+        console.log(questions)
     })
      return questions
 }
@@ -63,13 +69,13 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
     ));
 
     const q2NumList1 = [40, 60, 80];
-    const q2num1 = q2NumList1[randomGenerator.randomInt(0, 2)];
+    const q2num1 = q2NumList1[randomGenerator.randomInt(0, q2NumList1.length)];
 
     const q2NumList2 = [58, 60, 66];
-    const q2num2 = q2NumList2[randomGenerator.randomInt(0, 2)];
+    const q2num2 = q2NumList2[randomGenerator.randomInt(0, q2NumList2.length)];
 
     const q2NumList3 = [64, 68, 72];
-    const q2num3 = q2NumList3[randomGenerator.randomInt(0, 2)];
+    const q2num3 = q2NumList3[randomGenerator.randomInt(0, q2NumList3.length)];
 
     const q2ValA = q2num1 * (1 / 4);
     const q2ValB = q2num2 * (1 / 2);
@@ -89,8 +95,8 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
                 es: 'Total de tazas de arroz = # porciones * tazas por 1 porción \n Calcula para todas las marcas y compara cada cantidad para encontrar la cantidad más grande.'
             },
             {
-                en: `Total Cups Happy Farm = ${q2num1} * 1/4 = Value A \n Total Cups Fancy Farm = ${q2num2} * 1/2 = Value B \n Total Cups Special Farm = ${q2num3} * 3/4 = Value C \n `,
-                es: `Copas totales de Happy Farm = ${q2num1} * 1/4 = Valor A \n Copas totales de Fancy Farm = ${q2num2} * 1/2 = Valor B \n Copas totales de Special Farm Rice = ${q2num3} * 3/4 = Valor C \n `
+                en: `Total Cups Happy Farm = ${q2num1} * 1/4 = `+q2ValA+`\n Total Cups Fancy Farm = ${q2num2} * 1/2 = `+q2ValB+` \n Total Cups Special Farm = ${q2num3} * 3/4 =  \n ` + q2ValC,
+                es: `Total de tazas de Happy Farm = ${q2num1} * 1/4 = `+q2ValA+`\n Total de tazas de Fancy Farm = ${q2num2} * 1/2 = `+q2ValB+` \n Total de tazas de Special Farm = ${q2num3} * 3/4 =  \n ` + q2ValC
             },
         ],
         'wholeNumber',
@@ -99,10 +105,10 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
     ));
 
     const q3NumList1 = [3.29, 4.39, 4.59, 4.95];
-    const q3num1 = q3NumList1[randomGenerator.randomInt(0, q3NumList1.length - 1)];
+    const q3num1 = q3NumList1[randomGenerator.randomInt(0, q3NumList1.length)];
 
     const q3num2 = randomGenerator.randomInt(10, 20);
-    const q3Answer = q3num1 * q3num2;
+    const q3Answer = Math.ceil(q3num1 * q3num2);
 
     questions.push(createGameQuestion(
         {
@@ -116,8 +122,8 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
                 es: `Costo total = precio por bolsa * bolsas necesarias`
             },
             {
-                en: `Total cost = ${q3num1} * ${q3num2} = Answer`,
-                es: `Costo total = ${q3num1} * ${q3num2} = Respuesta`
+                en: `Total cost = ${q3num1} * ${q3num2} = ` + q3Answer,
+                es: `Costo total = ${q3num1} * ${q3num2} = ` + q3Answer
             },
         ],
         'wholeNumber',
@@ -127,8 +133,8 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
 
     questions.push(createGameQuestion(
         {
-            en: `The 3 rice brands at the grocery store sell their rice in bags of different sizes. The prices and weights of each brand are listed below. What is the price per unit of the cheapest rice brand? Round your answer to the nearest hundredth (cent).`,
-            es: `Las 3 marcas de arroz en el supermercado venden su arroz en bolsas de diferentes tamaños. Los precios y pesos de cada marca se enumeran a continuación. ¿Cuál es el precio por unidad de la marca de arroz más barata? Redondea tu respuesta a la centésima (centavo) más cercana.`
+            en: `The 3 rice brands at the grocery store sell their rice in bags of different sizes. The prices and weights of each brand are listed below. What is the price per unit of the cheapest rice brand? Round your answer to the nearest hundredth (cent).\n Happy Farm Rice: $3.49 for a 12 ounce (oz) bag\nSpecial Farm Rice: $4.29 for a 16 ounce (oz) bag\nFancy Farm Rice: $4.99 for a 20 ounce (oz) bag            `,
+            es: `Las 3 marcas de arroz en el supermercado venden su arroz en bolsas de diferentes tamaños. Los precios y pesos de cada marca se enumeran a continuación. ¿Cuál es el precio por unidad de la marca de arroz más barata? Redondea tu respuesta a la centésima (centavo) más cercana.\nHappy Farm Rice: $ 3.49 por una bolsa de 12 onzas (oz)\nSpecial Farm Rice: $ 4.29 por una bolsa de 16 onzas (oz)\nFancy Farm Rice: $ 4.99 por una bolsa de 20 onzas (oz)`
         },
         0.25,
         [
@@ -145,15 +151,17 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
         null,
         null
     ));
-
+    const q5GroceryList = ['Happy Farm Rice', 'Special Farm Rice', 'Fancy Farm Rice'];
     const q5NumList = [3.69, 4.29, 5.49];
-    const q5num = q5NumList[randomGenerator.randomInt(0, q5NumList.length - 1)];
+    const q5index = randomGenerator.randomInt(0, q5GroceryList.length);
+    const q5num = q5NumList[q5index];
+    const q5Grocery = q5GroceryList[q5index];
     const q5Answer = (q5num * 2) - q5num;
 
     questions.push(createGameQuestion(
         {
-            en: `Today the grocery store has a buy-one-get-one-free sale for [Happy Farm Rice, Special Farm Rice Rice, Fancy Farm Rice]. How much money do you save with this sale?\nHappy Farm Rice: $${q5num} per bag\nSpecial Farm Rice: $4.29 per bag\nFancy Farm Rice: $5.49 per bag`,
-            es: `Hoy el supermercado tiene una venta de compra uno y llévate uno gratis para [Happy Farm Rice, Special Farm Rice Rice, Fancy Farm Rice]. ¿Cuánto dinero te ahorras con esta venta?\nHappy Farm Rice: $${q5num} por una bolsa\nSpecial Farm Rice: $4.29 por una bolsa\nFancy Farm Rice: $5.49 por una bolsa`
+            en: `Today the grocery store has a buy-one-get-one-free sale for ${q5Grocery}. How much money do you save with this sale?\nHappy Farm Rice: $3.69 per bag\nSpecial Farm Rice: $4.29 per bag\nFancy Farm Rice: $5.49 per bag`,
+            es: `Hoy el supermercado tiene una venta de compra uno y llévate uno gratis para ${q5Grocery}. ¿Cuánto dinero te ahorras con esta venta?\nHappy Farm Rice: $3.69 por una bolsa\nSpecial Farm Rice: $4.29 por una bolsa\nFancy Farm Rice: $5.49 por una bolsa`
         },
         q5Answer,
         [
@@ -170,18 +178,22 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
         null,
         null
     ));
-
+    const q6BrandList = ['Chicken Farm Brand', 'Happy Farm Brand', 'Lucky Farm Brand'];
     const q6NumList = [8, 3, 5];
     const q6PriceList = [12, 9, 11];
-    const q6Index = randomGenerator.randomInt(0, 2);
+    const q6Index = randomGenerator.randomInt(0, q6BrandList.length);
+
+
+
     const q6num = q6NumList[q6Index];
     const q6Price = q6PriceList[q6Index];
-    const q6Answer = q6Price / q6num;
-
+    const q6Brand = q6BrandList[q6Index];
+    let q6Answer = q6Price / q6num;
+    q6Answer = parseFloat(q6Answer.toFixed(2));
     questions.push(createGameQuestion(
         {
-            en: `What is the unit price per chicken breast for [Chicken Farm Brand, Happy Farm Brand, Lucky Farm Brand]?\nChicken Farm Brand: ${q6num} chicken breasts for $${q6Price}\nHappy Farm Brand: 3 chicken breasts for $9\nLucky Farm Brand: 5 chicken breast for $11`,
-            es: `¿Cuál es el precio unitario por pechuga de pollo para [Marca Chicken Farm, Marca Happy Farm, Marca Lucky Farm]?\nMarca Chicken Farm: ${q6num} pechugas de pollo por $${q6Price}\nMarca Happy Farm: 3 pechugas de pollo por $9\nMarca Lucky Farm: 5 pechugas de pollo por $11`
+            en: `What is the unit price per chicken breast for ${q6Brand}?\nChicken Farm Brand: 8 chicken breasts for $12\nHappy Farm Brand: 3 chicken breasts for $9\nLucky Farm Brand: 5 chicken breast for $11`,
+            es: `¿Cuál es el precio unitario por pechuga de pollo para ${q6Brand}?\nMarca Chicken Farm: 8 pechugas de pollo por $12\nMarca Happy Farm: 3 pechugas de pollo por $9\nMarca Lucky Farm: 5 pechugas de pollo por $11`
         },
         q6Answer,
         [
@@ -201,17 +213,33 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
 
     const q7NumList = [[6, 8], [2, 5], [4, 7]];
     const q7PriceList = [[12, 16], [7, 9], [11, 14]];
-    const q7Index = randomGenerator?.randomInt(0, 2) || 1;
+    const q7Index = randomGenerator?.randomInt(0, q7NumList.length);
     const q7NumRange = q7NumList[q7Index];
     const q7PriceRange = q7PriceList[q7Index];
-    const q7Num = randomGenerator?.randomInt(q7NumRange[0], q7NumRange[1]) ?? 6 ;
-    const q7Price = randomGenerator?.randomFloat(q7PriceRange[0], q7PriceRange[1]);
-    const q7Answer = q7Price / q7Num;
+
+
+    let numbersPerStore = [];
+    let pricesPerStore = [];
+    let pricesPerUnitPerStore = [];
+    for (let i = 0; i < q7NumList.length; i++) {
+        const numRange = q7NumList[i];
+        const priceRange = q7PriceList[i];
+        const num = randomGenerator?.randomInt(numRange[0], numRange[1]+1);
+        const price = randomGenerator?.randomInt(priceRange[0], priceRange[1]+1);
+        numbersPerStore.push(num);
+        pricesPerStore.push(price);
+        pricesPerUnitPerStore.push(Math.round((price / num + Number.EPSILON) * 100) / 100);
+    }
+
+    let lowestPricePerUnit = Math.min(...pricesPerUnitPerStore);
+
+    const q7Answer = lowestPricePerUnit;
+
 
     questions.push(createGameQuestion(
         {
-            en: `What is the price per unit for the cheapest chicken brand?\nChicken Farm Brand: [${q7NumRange[0]}-${q7NumRange[1]}] chicken breasts for $[${q7PriceRange[0]}-${q7PriceRange[1]}]\nHappy Farm Brand: [2-5] chicken breasts for $[7-9]\nLucky Farm Brand: [4-7] chicken breast for $[11-14]`,
-            es: `¿Cuál es el precio por unidad de la marca de pollo más barata?\nMarca Chicken Farm: [${q7NumRange[0]}-${q7NumRange[1]}] pechugas de pollo por $[${q7PriceRange[0]}-${q7PriceRange[1]}]\nMarca Happy Farm: [2-5] pechugas de pollo por $[7-9]\nMarca Lucky Farm: [4-7] pechuga de pollo por $[11-14]`
+            en: `What is the price per unit for the cheapest chicken brand?\nChicken Farm Brand: ${numbersPerStore[0]} chicken breasts for $${pricesPerStore[0]}\nHappy Farm Brand: ${numbersPerStore[1]} chicken breasts for $${pricesPerStore[1]}\nLucky Farm Brand: ${numbersPerStore[2]} chicken breast for $${pricesPerStore[2]}`,
+            es: `¿Cuál es el precio por unidad de la marca de pollo más barata?\nMarca Chicken Farm:${numbersPerStore[0]} pechugas de pollo por  $${pricesPerStore[0]}\nMarca Happy Farm: ${numbersPerStore[1]} pechugas de pollo por $${pricesPerStore[1]}\nMarca Lucky Farm: ${numbersPerStore[2]} pechuga de pollo por $${pricesPerStore[2]}`
         },
         q7Answer,
         [
@@ -220,8 +248,8 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
                 es: 'Precio unitario = precio total / unidad de medida'
             },
             {
-                en: `Chicken Farm Unit Price = [${q7PriceRange[0]}-${q7PriceRange[1]}] / [${q7NumRange[0]}-${q7NumRange[1]}] = $${q7Answer}`,
-                es: `Precio unitario de la granja de pollos = [${q7PriceRange[0]}-${q7PriceRange[1]}] / [${q7NumRange[0]}-${q7NumRange[1]}] = $${q7Answer}`
+                en: `Chicken Farm Unit Price = ${pricesPerStore[0]} / ${numbersPerStore[0]} = $${Math.round((pricesPerStore[0] / numbersPerStore[0] + Number.EPSILON) * 100) / 100} per 1 chicken breast\nHappy Farm Unit Price = ${pricesPerStore[1]} / ${numbersPerStore[1]} = $${Math.round((pricesPerStore[1] / numbersPerStore[1] + Number.EPSILON) * 100) / 100} per 1 chicken breast\nLucky Farm Unit Price = ${pricesPerStore[2]} / ${numbersPerStore[2]} = $${Math.round((pricesPerStore[2] / numbersPerStore[2] + Number.EPSILON) * 100) / 100} per 1 chicken breast`,
+                es: `Precio unitario de Chicken Farm = ${pricesPerStore[0]} / ${numbersPerStore[0]} = $${Math.round((pricesPerStore[0] / numbersPerStore[0] + Number.EPSILON) * 100) / 100} por 1 pechuga de pollo\nPrecio unitario de Happy Farm = ${pricesPerStore[1]} / ${numbersPerStore[1]} = $${Math.round((pricesPerStore[1] / numbersPerStore[1] + Number.EPSILON) * 100) / 100} por 1 pechuga de pollo\nPrecio unitario de Lucky Farm = ${pricesPerStore[2]} / ${numbersPerStore[2]} = $${Math.round((pricesPerStore[2] / numbersPerStore[2] + Number.EPSILON) * 100) / 100} por 1 pechuga de pollo`
             },
         ],
         'decimal',
@@ -263,7 +291,7 @@ const peruvianFriedRiceQuestions = (questions, recipe, randomGenerator) => {
 const strawberryMilkShakeQuestions = (questions, recipe, randomGenerator) => {
 
     const q9NumList = [16, 24, 32, 40, 48, 56];
-    const q9TotalServings = q9NumList[randomGenerator.randomInt(0, q9NumList.length - 1)];
+    const q9TotalServings = q9NumList[randomGenerator.randomInt(0, q9NumList.length)];
     const q9MilkCupsPerServing = 1 / 2;
     const q9TotalMilkCups = q9MilkCupsPerServing * q9TotalServings;
     const q9TotalMilkGallons = Math.ceil(q9TotalMilkCups / 16);
@@ -289,36 +317,44 @@ const strawberryMilkShakeQuestions = (questions, recipe, randomGenerator) => {
         null
     ));
 
-    const q10NumList1 = [3, 4, 5, 6];
-    const q10PriceList1 = [2, 3, 4];
-    const q10NumRange2 = [10, 14];
-    const q10PriceRange2 = [6, 8];
+    const brandList = ['Happy Farm', 'Sweet Farm'];
+    const q10CupsList = [[3,6], [10,14]];
+    const q10PriceList = [[2,4], [6,8]];
+    const q10Index = randomGenerator.randomInt(0, brandList.length);
 
-    const q10Index1 = randomGenerator.randomInt(0, q10NumList1.length - 1);
-    const q10Index2 = randomGenerator.randomInt(0, q10NumRange2[1] - q10NumRange2[0]);
 
-    const q10Num1 = q10NumList1[q10Index1];
-    const q10Price1 = q10PriceList1[q10Index1];
-    const q10Num2 = q10NumRange2[0] + q10Index2;
-    const q10Price2 = q10PriceRange2[q10Index2];
+    let q10NumbersPerStore = [];
+    let q10PricesPerStore = [];
+    let q10PricesPerUnitPerStore = [];
+    for (let i = 0; i < brandList.length; i++) {
+        const numRange = q10CupsList[i];
+        const priceRange = q10PriceList[i];
+        const num = randomGenerator.randomInt(numRange[0], numRange[1]+1);
+        const price = randomGenerator.randomInt(priceRange[0], priceRange[1]+1);
+        q10NumbersPerStore.push(num);
+        q10PricesPerStore.push(price);
+        q10PricesPerUnitPerStore.push(Math.round((price / num + Number.EPSILON) * 100) / 100);
+    }
 
-    const q10Answer1 = q10Price1 / q10Num1;
-    const q10Answer2 = q10Price2 / q10Num2;
+    let pricePerUnitOfSaidBrand = q10PricesPerUnitPerStore[q10Index];
+
+    const q10Answer = pricePerUnitOfSaidBrand;
 
     questions.push(createGameQuestion(
         {
-            en: `There are two brands of frozen strawberries. Each brand sells packages of different prices and sizes as shown below. What is the price per unit for the [Happy Farm, Sweet Farm] brand? \n Happy Farm organic frozen strawberries = [${q10NumList1.join('-')}] cups of strawberries for $[${q10PriceList1.join('-')}] \n Sweet Farm frozen strawberries  = [${q10NumRange2.join('-')}] cups of strawberries for $[${q10PriceRange2.join('-')}]`,
-            es: `Hay dos marcas de fresas congeladas. Cada marca vende paquetes de diferentes precios y tamaños como se muestra a continuación. ¿Cuál es el precio por unidad de la marca [Happy Farm, Sweet Farm]? \n Fresas orgánicas congeladas Happy Farm = [${q10NumList1.join('-')}] tazas de fresas por $[${q10PriceList1.join('-')}] \n Fresas congeladas de Sweet Farm = [${q10NumRange2.join('-')}] tazas de fresas por $[${q10PriceRange2.join('-')}]`
+            en: `There are two brands of frozen strawberries. Each brand sells packages of different prices and sizes as shown below. What is the price per unit for the ${brandList[q10Index]} brand? \n ${brandList[0]} organic frozen strawberries = ${q10NumbersPerStore[0]} cups of strawberries for $${q10PricesPerStore[0]} \n ${brandList[1]} frozen strawberries  = ${q10NumbersPerStore[1]} cups of strawberries for $${q10PricesPerStore[1]}`,
+            es: `Hay dos marcas de fresas congeladas. Cada marca vende paquetes de diferentes precios y tamaños como se muestra a continuación. ¿Cuál es el precio por unidad de la marca ${brandList[q10Index]}? \n Fresas orgánicas congeladas $${q10NumbersPerStore[0]} tazas de fresas por $${q10PricesPerStore[0]}  \n Fresas congeladas ${brandList[1]} = ${q10NumbersPerStore[1]} tazas de fresas por $${q10PricesPerStore[1]}`
+
         },
-        [q10Answer1, q10Answer2],
+        q10Answer,
         [
             {
                 en: 'Unit price = total price / measurement unit',
                 es: 'Precio unitario = precio total / unidad de medida'
             },
             {
-                en: `Happy Farm Unit Price = [${q10PriceList1.join('-')}] / [${q10NumList1.join('-')}] = ${q10Answer1}\nSweet Farm Unit Price = [${q10PriceRange2.join('-')}] / [${q10NumRange2.join('-')}] = ${q10Answer2}`,
-                es: `Precio unitario de Happy Farm = [${q10PriceList1.join('-')}] / [${q10NumList1.join('-')}] = ${q10Answer1} \n O \n Precio unitario de Sweet Farm = [${q10PriceRange2.join('-')}] / [${q10NumRange2.join('-')}] = ${q10Answer2}`
+                en: `${brandList[q10Index]} Unit Price = $${q10PricesPerStore[q10Index]} / ${q10NumbersPerStore[q10Index]} = $${q10Answer} per 1 cup of strawberries\n`,
+                es: `Precio unitario de ${brandList[q10Index]} = $${q10PricesPerStore[q10Index]} / ${q10NumbersPerStore[q10Index]} = $${q10Answer} por 1 taza de fresas`
             },
         ],
         'decimal',
@@ -327,10 +363,15 @@ const strawberryMilkShakeQuestions = (questions, recipe, randomGenerator) => {
     ));
 }
 
+const ricePuddingQuestions = (questions, recipe, randomGenerator) => {
+    //TODO -- ADD!
+}
+
+
 
 const pineappleCakeQuestions = (questions, recipe, randomGenerator) => {
     const q11NumList = [8, 12, 16, 20, 24, 28, 32];
-    const q11num = q11NumList[randomGenerator.randomInt(0, q11NumList.length - 1)];
+    const q11num = q11NumList[randomGenerator.randomInt(0, q11NumList.length)];
     const q11TotalCups = q11num * (1 / 4);
     const q11TotalSticks = q11TotalCups / (1 / 2);
     const q11TotalPacks = Math.ceil(q11TotalSticks / 4);
@@ -358,7 +399,7 @@ const pineappleCakeQuestions = (questions, recipe, randomGenerator) => {
     ));
 
     const q12NumList = [24, 48, 72, 96];
-    const q12Index = randomGenerator.randomInt(0, q12NumList.length - 1);
+    const q12Index = randomGenerator.randomInt(0, q12NumList.length);
     const q12num = q12NumList[q12Index];
     const q12HappyCakePrice = 3; 
     const q12SpecialCakePrice = 4 + (4 / 2); 
@@ -389,12 +430,11 @@ const pineappleCakeQuestions = (questions, recipe, randomGenerator) => {
 
 const carrotJuiceQuestions = (questions, recipe, randomGenerator) => {
     const q1Arr = [3, 4, 6, 12];
-    const q1Index = randomGenerator.randomInt(0, q1Arr.length - 1)
+    const q1Index = randomGenerator.randomInt(0, q1Arr.length)
 
     const q1ServingsList = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30];
-    const q1ServingsNeeded = q1ServingsList[randomGenerator.randomInt(0, q1ServingsList.length - 1)];
-
-    const q1CarrotsPerServing = recipe / recipe.servings;
+    const q1ServingsNeeded = q1ServingsList[randomGenerator.randomInt(0, q1ServingsList.length)];
+    const q1CarrotsPerServing = 4;
     const q1TotalCarrots = q1CarrotsPerServing * q1ServingsNeeded;
     const q1NumBags = Math.ceil(q1TotalCarrots / q1Arr[q1Index]);
 
@@ -410,8 +450,8 @@ const carrotJuiceQuestions = (questions, recipe, randomGenerator) => {
                 es: 'Zanahorias por 1 porción = zanahorias en la receta / porciones de la receta \n Zanahorias totales = zanahorias por 1 porción * porciones necesarias \n Bolsas totales = zanahorias totales / zanahorias por 1 bolsa'
             },
             {
-                en: `Solution: Carrots per 1 serving = ${recipe} / ${recipe.servings} = ${q1CarrotsPerServing} carrots \n Total carrots = ${q1CarrotsPerServing} * ${q1ServingsNeeded} = ${q1TotalCarrots} \n Total bags = ${q1TotalCarrots} / ${q1Arr[randomGenerator.randomInt(0, q1Arr.length - 1)]} = ${q1NumBags} bags`,
-                es: `Solución: Zanahorias por 1 porción = ${recipe} / ${recipe.servings} = ${q1CarrotsPerServing} zanahorias \n Zanahorias totales = ${q1CarrotsPerServing} * ${q1ServingsNeeded} = ${q1TotalCarrots} \n Total bolsas = ${q1TotalCarrots} / ${q1Arr[randomGenerator.randomInt(0, q1Arr.length - 1)]} = ${q1NumBags} bolsas`
+                en: `Solution: Carrots per 1 serving = 12 /3 = ${q1CarrotsPerServing} carrots \n Total carrots = ${q1CarrotsPerServing} * ${q1ServingsNeeded} = ${q1TotalCarrots} \n Total bags = ${q1TotalCarrots} / ${q1Arr[randomGenerator.randomInt(0, q1Arr.length)]} = ${q1NumBags} bags`,
+                es: `Solución: Zanahorias por 1 porción = 12 / 3 = ${q1CarrotsPerServing} zanahorias \n Zanahorias totales = ${q1CarrotsPerServing} * ${q1ServingsNeeded} = ${q1TotalCarrots} \n Total bolsas = ${q1TotalCarrots} / ${q1Arr[randomGenerator.randomInt(0, q1Arr.length)]} = ${q1NumBags} bolsas`
             },
         ],
         'wholeNumber',
@@ -427,7 +467,7 @@ const carrotJuiceQuestions = (questions, recipe, randomGenerator) => {
         Fall: 3.75
     };
 
-    const q14Season = q14Seasons[randomGenerator.randomInt(0, q14Seasons.length - 1)];
+    const q14Season = q14Seasons[randomGenerator.randomInt(0, q14Seasons.length)];
     const q14PricePerPound = q14Prices[q14Season];
     const q14BagPrice = 2 * q14PricePerPound;
 
@@ -488,7 +528,7 @@ const fruitSaladQuestions = (questions, recipe, randomGenerator) => {
     const q16KiwiPerContainer = 5;
     const q16Price = 4;
     const q16BudgetList = [8, 16, 24, 32, 40, 48];
-    const q16Budget = q16BudgetList[randomGenerator.randomInt(0, 5)];
+    const q16Budget = q16BudgetList[randomGenerator.randomInt(0, q16BudgetList.length)];
     const q16TotalContainers = q16Budget / q16Price;
     const q16TotalKiwis = q16TotalContainers * q16KiwiPerContainer;
     const q16TotalFruitSalads = q16TotalKiwis / 0.5;
@@ -516,10 +556,10 @@ const fruitSaladQuestions = (questions, recipe, randomGenerator) => {
 
     const q17PriceList = [22, 25, 30, 32, 35];
     const q17PoundsList = [5, 6, 7, 8, 9];
-    const q17Price = q17PriceList[randomGenerator.randomInt(0, 4)];
-    const q17Pounds = q17PoundsList[randomGenerator.randomInt(0, 4)];
-    const q17Answer = q17Price / q17Pounds;
-
+    const q17Price = q17PriceList[randomGenerator.randomInt(0, q17PriceList.length)];
+    const q17Pounds = q17PoundsList[randomGenerator.randomInt(0, q17PoundsList.length)];
+    let q17Answer = Math.round((q17Price / q17Pounds + Number.EPSILON) * 100) / 100;
+    q17Answer = parseFloat(q17Answer.toFixed(2));
     questions.push(createGameQuestion(
         {
             en: `If you spend $${q17Price} on ${q17Pounds} pounds (lbs) of fruit today, how much did you spend per pound (lb) on fruit?`,
@@ -547,26 +587,30 @@ const fruitSaladQuestions = (questions, recipe, randomGenerator) => {
 const chocolateBananaCakeQuestions = (questions, recipe, randomGenerator) => {
 
     const q18QWords = ["Happy Farm Flour", "Special Farm Flour", "Fancy Farm Organic Flour"]
-    const q18Index = randomGenerator.randomInt(0, 2)
+    const q18Index = randomGenerator.randomInt(0, 3)
     const q18Word = q18QWords[q18Index]
 
     const q18NumList = [2, 4, 6, 8, 10, 12];
-    const q18Num1 = q18NumList[randomGenerator.randomInt(0, q18NumList.length - 1)]
+    let q18Num1 = q18NumList[randomGenerator.randomInt(0, q18NumList.length)]
 
-
+    q18Num1/=2;
     const q18Answer = [q18Num1 * 3.69, q18Num1 * 4.29, q18Num1 * 5.49]
 
 
     questions.push(createGameQuestion(
         {
-            en: `Today the grocery store has a buy-one-get-one-free sale for ${q18Word}. How much money do you save with this sale if you buy ${q18Num1} bags of flour?`,
+            en: `Today the grocery store has a buy-one-get-one-free sale for ${q18Word}. How much money do you save with this sale if you buy ${q18Num1} bags of flour?\n
+            Happy Farm Flour: $3.69 per bag\n
+            Special Farm Flour: $4.29 per bag\n
+            Fancy Farm Organic Flour: $5.49 per bag
+            `,
             es: `Hoy el supermercado tiene una promoción de compra uno y lleva uno gratis para ${q18Word}. ¿Cuánto dinero ahorras con esta promoción si compras ${q18Num1} bolsas de harina?\n
             Happy Farm Flour: $3.69 por bolsa\n
             Special Farm Flour: $4.29 por bolsa\n
             Fancy Farm Organic Flour: $5.49 por bolsa
             `
         },
-        q18Answer[q18Index],
+        parseFloat(q18Answer[q18Index].toFixed(2)),
         [
             {
                 en: 'Try again! Hint: Buy-one-get-one-free sales mean that you can buy 2 items for the price of 1.',
@@ -589,14 +633,14 @@ const chocolateBananaCakeQuestions = (questions, recipe, randomGenerator) => {
     ));
 
     const q19ContainerPriceList = [6, 7, 8, 9]
-    const q19PricePerContainer = q19ContainerPriceList[randomGenerator.randomInt(0, 3)];
+    const q19PricePerContainer = q19ContainerPriceList[randomGenerator.randomInt(0, q19ContainerPriceList.length)];
 
     const q19CupsPerRecipe = 12;
     const q19NumOfRecipes = randomGenerator.randomInt(2, 16);
     const q19Y = q19CupsPerRecipe * q19NumOfRecipes;
     const q19Containers = Math.ceil(q19Y / 16);
     const q19TotalCups = q19Y;
-    const q19Answer = (q19Containers * q19PricePerContainer).toFixed(2);
+    const q19Answer =parseFloat((q19Containers * q19PricePerContainer).toFixed(2));
 
     questions.push(createGameQuestion(
         {
@@ -645,7 +689,6 @@ const chocolateBananaCakeQuestions = (questions, recipe, randomGenerator) => {
         null,
         "level2GroceryStoreq20"
     ));
-
 }
 
 

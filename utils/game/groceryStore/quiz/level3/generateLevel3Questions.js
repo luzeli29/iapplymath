@@ -130,8 +130,8 @@ const strawberryLimeadeQuestions = (questions,recipe,randomGenerator) => {
 
     const q3Season = q3Seasons[randomGenerator.randomInt(0, q3Seasons.length - 1)];
     const q3PricePerPound = q3Prices[q3Season].price / q3Prices[q3Season].amount;
-    const q3BagPrice = 3 * q3PricePerPound;
-
+    let q3BagPrice = 3 * q3PricePerPound;
+    q3BagPrice = parseFloat(q3BagPrice.toFixed(2));
     questions.push(createGameQuestion(
         {
             en: `You need a 3 pound (lb) bag of apples for this recipe. The price of apples is different every season. How much does a 3 lb bag of apples cost in the ${q3Season.toLowerCase()}? Round to the nearest hundredth.`,
