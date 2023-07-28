@@ -43,7 +43,6 @@ const SportSelect = ({user,settings,sports}) => {
         return (
             <ClickableIcon selected={selectedSport == key} onClick={() => setSelectedSport(key)}> 
                 <div className='mx-auto px-2' style={{position:'relative'}}>
-            
                     <Image className='h-1 w-1'
                             priority={true}
                             width={60}
