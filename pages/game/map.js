@@ -78,7 +78,7 @@ const Map = ({user,settings}) => {
       router.push('/game/groceryStore/basic/levelSelect');
     }
     const handleStadium = () => {
-      router.push('/dialog/stadiumIntro');
+      router.push('/game/stadium');
     }
     
     

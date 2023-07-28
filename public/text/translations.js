@@ -28,10 +28,17 @@ const translations = {
 
     // -------- Stadium Translations ------
     stadium_welcome: {
-        en: "Welcome to the stadium! Choose the recipe you’d like to try making.",
-        es: "¡Bienvenidos a el estadio! Elige la receta que te gustaría intentar hacer.",
+        en: "Welcome to the stadium! Choose the sport you’d like to play.",
+        es: "¡Bienvenidos al estadio! Elige el deporte que te gustaría jugar.",
     },
-    
+    play: {
+        en: "Play!",
+        es: "¡Jugar!",
+    },
+    play_again: {
+        en: "Play Again",
+        es: "Jugar de Nuevo",
+    },
     // ----- Aunt House Translations -----
     recipe_select: {
         en: "Recipe Select",
@@ -125,7 +132,10 @@ const translations = {
         en: "Please select a question topic.",
         es: "Por favor seleccione un tema de pregunta.",
     },
-
+    stadium: {
+        en: "Stadium",
+        es: "Estadio"
+    },  
     type_select: {
         en: "Study Again",
         es: "Estudia Otra Vez"
