@@ -79,9 +79,9 @@ const mangoPineappleJuiceQuestions = (questions, recipe, randomGenerator) => {
   );
 
   const q2Arr1 = [6, 8, 10];
-  const q2Arr2 = [6, 8, 10];
-  const q2num1 = q2Arr1[randomGenerator.randomInt(0, q2Arr1.length - 1)];
-  const q2num2 = q2Arr2[randomGenerator.randomInt(0, q2Arr2.length - 1)];
+  const q2Arr2 = [4, 6, 8]; // 4,6,8
+  const q2num1 = q2Arr1[randomGenerator.randomInt(0, q2Arr1.length)];
+  const q2num2 = q2Arr2[randomGenerator.randomInt(0, q2Arr2.length)];
   const q2Answer = Math.round((q2num1 / q2num2 + Number.EPSILON) * 100) / 100;
   //Unit price question
   questions.push(
@@ -120,8 +120,8 @@ const mangoPineappleJuiceQuestions = (questions, recipe, randomGenerator) => {
   //Friend Container Cost question
   const q3Arr1 = [2, 5];
   const q3Arr2 = [6, 12, 16];
-  const q3num1 = q3Arr1[randomGenerator.randomInt(0, q3Arr1.length - 1)];
-  const q3num2 = q3Arr2[randomGenerator.randomInt(0, q3Arr2.length - 1)];
+  const q3num1 = q3Arr1[randomGenerator.randomInt(0, q3Arr1.length)];
+  const q3num2 = q3Arr2[randomGenerator.randomInt(0, q3Arr2.length)];
   const q3Answer = Math.ceil((16 * q3num1) / q3num2);
 
   questions.push(
@@ -173,10 +173,10 @@ const mangoPineappleJuiceQuestions = (questions, recipe, randomGenerator) => {
   const q4Arr3 = [4, 8, 10];
   const q4Arr4 = [6, 12, 16];
 
-  const q4num1 = q4Arr1[randomGenerator.randomInt(0, q4Arr1.length - 1)];
-  const q4num2 = q4Arr2[randomGenerator.randomInt(0, q4Arr2.length - 1)];
-  const q4num3 = q4Arr3[randomGenerator.randomInt(0, q4Arr3.length - 1)];
-  const q4num4 = q4Arr4[randomGenerator.randomInt(0, q4Arr4.length - 1)];
+  const q4num2 = q4Arr2[randomGenerator.randomInt(0, q4Arr2.length)];
+  const q4num3 = q4Arr3[randomGenerator.randomInt(0, q4Arr3.length)];
+  const q4num1 = q4Arr1[randomGenerator.randomInt(0, q4Arr1.length)];
+  const q4num4 = q4Arr4[randomGenerator.randomInt(0, q4Arr4.length)];
   const q4Answer =
     Math.round(
       (Math.min(q4num2 / q4num1, q4num4 / q4num3) + Number.EPSILON) * 100
@@ -247,7 +247,7 @@ const mangoPineappleJuiceQuestions = (questions, recipe, randomGenerator) => {
 const hamAndCheeseArepasQuestions = (questions, recipe, randomGenerator) => {
   //Unit price question
   const q1Arr1 = [6, 8, 10];
-  const q1num1 = q1Arr1[randomGenerator.randomInt(0, q1Arr1.length - 1)];
+  const q1num1 = q1Arr1[randomGenerator.randomInt(0, q1Arr1.length)];
   const q1Answer = 1.5 * q1num1;
   //Unit price question
   questions.push(
@@ -288,7 +288,7 @@ const hamAndCheeseArepasQuestions = (questions, recipe, randomGenerator) => {
   );
   //Unit price question
   const q2Arr1 = [6, 9, 12, 15, 18];
-  const q2num1 = q2Arr1[randomGenerator.randomInt(0, q2Arr1.length - 1)];
+  const q2num1 = q2Arr1[randomGenerator.randomInt(0, q2Arr1.length)];
   const q2Answer = Math.ceil(q2num1 / 10);
   //Unit price question
   questions.push(
@@ -329,7 +329,7 @@ const hamAndCheeseArepasQuestions = (questions, recipe, randomGenerator) => {
   );
   //Cheapest Brand Question
   const q3Arr1 = [10, 12, 15, 18, 25];
-  const q3num1 = q3Arr1[randomGenerator.randomInt(0, q3Arr1.length - 1)];
+  const q3num1 = q3Arr1[randomGenerator.randomInt(0, q3Arr1.length)];
   const q3Answer = Math.round((4.5 / q3num1 + Number.EPSILON) * 100) / 100;
   questions.push(
     createGameQuestion(
@@ -362,8 +362,8 @@ const hamAndCheeseArepasQuestions = (questions, recipe, randomGenerator) => {
 
   const q4Arr1 = [6, 10, 12, 15];
   const q4Arr2 = [10, 12, 15, 18, 25];
-  const q4num1 = q4Arr1[randomGenerator.randomInt(0, q4Arr1.length - 1)];
-  const q4num2 = q4Arr2[randomGenerator.randomInt(0, q4Arr2.length - 1)];
+  const q4num2 = q4Arr2[randomGenerator.randomInt(0, q4Arr2.length)];
+  const q4num1 = q4Arr1[randomGenerator.randomInt(0, q4Arr1.length)];
   const q4Answer =
     Math.round((Math.min(3 / q4num1, 4.5 / q4num2) + Number.EPSILON) * 100) /
     100;
@@ -439,7 +439,7 @@ const vanillaMilkShakeQuestions = (questions, recipe, randomGenerator) => {
   );
 
   const q2Arr1 = [3, 5, 7];
-  const q2num1 = q2Arr1[randomGenerator.randomInt(0, q2Arr1.length - 1)];
+  const q2num1 = q2Arr1[randomGenerator.randomInt(0, q2Arr1.length)];
   const q2Answer = Math.ceil((q2num1 + 1) / 2);
   questions.push(
     createGameQuestion(
@@ -508,7 +508,7 @@ const vanillaMilkShakeQuestions = (questions, recipe, randomGenerator) => {
 
 const caesarSaladQuestions = (questions, recipe, randomGenerator) => {
   const q1Arr1 = [2, 5, 11];
-  const q1num1 = q1Arr1[randomGenerator.randomInt(0, q1Arr1.length - 1)];
+  const q1num1 = q1Arr1[randomGenerator.randomInt(0, q1Arr1.length)];
   const q1Answer = Math.ceil(((q1num1 + 1) * 2) / 6);
   //Unit price question
   questions.push(
@@ -549,9 +549,9 @@ const caesarSaladQuestions = (questions, recipe, randomGenerator) => {
   );
 
   const q2Arr1 = [2, 4, 6];
-  const q2num1 = q2Arr1[randomGenerator.randomInt(0, q2Arr1.length - 1)];
+  const q2num1 = q2Arr1[randomGenerator.randomInt(0, q2Arr1.length)];
   const q2Arr2 = [3, 6];
-  const q2num2 = q2Arr2[randomGenerator.randomInt(0, q2Arr2.length - 1)];
+  const q2num2 = q2Arr2[randomGenerator.randomInt(0, q2Arr2.length)];
   const q2Answer =
     Math.round((Math.min(q2num1 / 10, q2num2 / 12) + Number.EPSILON) * 100) /
     100;
@@ -602,7 +602,7 @@ const caesarSaladQuestions = (questions, recipe, randomGenerator) => {
   );
 
   const q3Arr1 = [2, 4, 6, 8, 10];
-  const q3num1 = q3Arr1[randomGenerator.randomInt(0, q3Arr1.length - 1)];
+  const q3num1 = q3Arr1[randomGenerator.randomInt(0, q3Arr1.length)];
   const q3Answer = q3num1 * 3;
   //Unit price question
   questions.push(
@@ -645,7 +645,7 @@ const caesarSaladQuestions = (questions, recipe, randomGenerator) => {
 const churrosQuestions = (questions, recipe, randomGenerator) => {
   //Friend unit conversion question
   const q1Arr1 = [7, 15, 23];
-  const q1num1 = q1Arr1[randomGenerator.randomInt(0, q1Arr1.length - 1)];
+  const q1num1 = q1Arr1[randomGenerator.randomInt(0, q1Arr1.length)];
   const q1Answer = Math.ceil(((q1num1 + 1) * 2) / 16);
   //Unit price question
   questions.push(
@@ -686,9 +686,9 @@ const churrosQuestions = (questions, recipe, randomGenerator) => {
   );
   //Cheapest Brand Question
   const q2Arr1 = [8, 12];
-  const q2num1 = q2Arr1[randomGenerator.randomInt(0, q2Arr1.length - 1)];
+  const q2num1 = q2Arr1[randomGenerator.randomInt(0, q2Arr1.length)];
   const q2Arr2 = [2, 4, 5, 6];
-  const q2num2 = q2Arr2[randomGenerator.randomInt(0, q2Arr2.length - 1)];
+  const q2num2 = q2Arr2[randomGenerator.randomInt(0, q2Arr2.length)];
   const q2Answer =
     Math.round((Math.min(q2num1 / 16, q2num2 / 2) + Number.EPSILON) * 100) /
     100;
@@ -773,7 +773,7 @@ const churrosQuestions = (questions, recipe, randomGenerator) => {
 
 const flanQuestions = (questions, recipe, randomGenerator) => {
   const q1Arr1 = [4, 16, 24];
-  const q1num1 = q1Arr1[randomGenerator.randomInt(0, q1Arr1.length - 1)];
+  const q1num1 = q1Arr1[randomGenerator.randomInt(0, q1Arr1.length)];
   const q1Answer = q1num1 / 4;
   questions.push(
     createGameQuestion(
@@ -813,7 +813,7 @@ const flanQuestions = (questions, recipe, randomGenerator) => {
   );
   //friend unit convertion question
   const q2Arr1 = [2, 4, 8, 16];
-  const q2num1 = q2Arr1[randomGenerator.randomInt(0, q2Arr1.length - 1)];
+  const q2num1 = q2Arr1[randomGenerator.randomInt(0, q2Arr1.length)];
 
   const q2Answer = Math.ceil((3 / 8) * q2num1 * 16);
   questions.push(
