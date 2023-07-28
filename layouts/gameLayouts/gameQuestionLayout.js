@@ -48,7 +48,7 @@ const GameQuestionLayout = ({
 
   if (!quizData.questions) {
     DevErr('"questions" field in "quizData" is required for "Quiz" Screen');
-    return <Error error={getText("quiz_dataquestions_not_found", lang)} />;
+    return <Error error={getText("dataquestions_not_found", lang)} />;
   }
 
   const { createQuizCookie } = useQuizCookies();
