@@ -7,7 +7,7 @@ export default function Finished() {
     return (
         <GameFinishLayout
             gameName={"stadium"}
-            restart_text={"recipe_select"}
+            restart_text={"play_again"}
             handleRestart={() => router.push('/game/stadium')}/>
     );
 }

@@ -63,7 +63,7 @@ const StadiumQuestions = ({user,settings}) => {
     }
 
     const handleFinish = () => {
-        router.push('/dialog/stadiumOutro')
+        router.push('/game/stadium/finished')
         setLoading(true)
     }
 
