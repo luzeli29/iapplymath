@@ -16,10 +16,6 @@ const SoccorL3Questions = (questions,randomGenerator) => {
         answerQ1,
         [
             {
-                en:"Try again!",
-                es:"¡Inténtalo de nuevo!",
-            },
-            {
                 en:"Total points = (points per win * total wins) + (points per tie * total ties)",
                 es:"Puntos totales = (puntos por victoria * victorias totales) + (puntos por empate * empates totales)",
             },
@@ -46,10 +42,6 @@ const SoccorL3Questions = (questions,randomGenerator) => {
         },
         answerQ2,
         [
-            {
-                en:"Try again!",
-                es:"¡Inténtalo de nuevo!",
-            },
             {
                 en:"Goals per 100 games = (goals scored/games played) * 100",
                 es:"Goles por 100 partidos = (goles anotados / partidos jugados) * 100",
@@ -83,10 +75,6 @@ const SoccorL3Questions = (questions,randomGenerator) => {
         answerQ3,
         [
             {
-                en:"Try again!",
-                es:"¡Inténtalo de nuevo!",
-            },
-            {
                 en:"Salary difference = first player salary - second player salary",
                 es:"Diferencia salarial = salario del primer jugador - salario del segundo jugador",
             },
@@ -118,10 +106,6 @@ const SoccorL3Questions = (questions,randomGenerator) => {
         },
         answerQ4,
         [
-            {
-                en:"Try again!",
-                es:"¡Inténtalo de nuevo!",
-            },
             {
                 en:"Salary difference = (first player salary - second player salary) * weeks worked",
                 es:"Diferencia salarial = (salario del primer jugador - salario del segundo jugador) * semanas trabajadas",
@@ -156,10 +140,6 @@ const SoccorL3Questions = (questions,randomGenerator) => {
         },
         answerQ5,
         [
-            {
-                en:"Try again!",
-                es:"¡Inténtalo de nuevo!",
-            },
             {
                 en:'de Jong monthly salary =  weekly salary * weeks per 1 month',
                 es:'Salario mensual de de Jong = salario semanal * semanas por 1 mes',
@@ -215,10 +195,6 @@ const SoccorL3Questions = (questions,randomGenerator) => {
         answerQ7,
         [
             {
-                en:"Try again!",
-                es:"¡Inténtalo de nuevo!",
-            },
-            {
                 en:"Expected goals = (goals scored/games played) * total games",
                 es:"Goles esperados = (goles anotados/partidos jugados) * partidos totales",
             },
@@ -245,10 +221,6 @@ const SoccorL3Questions = (questions,randomGenerator) => {
         },
         answerQ8,
         [
-            {
-                en:"Try again!",
-                es:"¡Inténtalo de nuevo!",
-            },
             {
                 en:"Volume = height * length * width",
                 es:"Volumen = altura * largo * ancho",
@@ -303,10 +275,7 @@ const SoccorL3Questions = (questions,randomGenerator) => {
     },
     answerQ9,
     [
-        {
-            en:"Try again!",
-            es:"¡Inténtalo de nuevo!",
-        },
+        
         {
             en:vals[selectedContinentQ9].hint.en,
             es:vals[selectedContinentQ9].hint.es,
@@ -351,10 +320,7 @@ const SoccorL3Questions = (questions,randomGenerator) => {
     },
     resultsQ10[selectedOptionQ10].toLowerCase(),
     [
-        {
-            en:"Try again!",
-            es:"¡Inténtalo de nuevo!",
-        },
+       
         {
             en:"Match the x and y coordinates of the given point to the corresponding point on the graph to identify the correct player.",
             es:"Empareja las coordenadas x e y del punto dado con el punto correspondiente en el gráfico para identificar al jugador correcto.",
@@ -404,10 +370,7 @@ const SoccorL3Questions = (questions,randomGenerator) => {
     },
     answerQ11,
     [
-        {
-            en:"Try again!",
-            es:"¡Inténtalo de nuevo!",
-        },
+        
         {
             en:hints[selectedAge].en,
             es:hints[selectedAge].es,
@@ -456,10 +419,7 @@ const SoccorL3Questions = (questions,randomGenerator) => {
     },
     answerQ12,
     [
-        {
-            en:"Try again!",
-            es:"¡Inténtalo de nuevo!",
-        },
+        
         {
             en:hintsQ12[selectedAgeQ12].en,
             es:hintsQ12[selectedAgeQ12].es,
