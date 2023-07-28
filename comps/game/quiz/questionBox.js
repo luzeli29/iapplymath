@@ -22,7 +22,10 @@ export default function QuestionBox({ questionData, incorrectNum }) {
   const lang = settings.lang;
 
   let hintText = "";
-
+  const clickToOpenText ={
+    en:"Click to open the image",
+    es:"Haga click para abrir la imagen"
+  }
   if (incorrectNum > 0) {
     if (incorrectNum > questionData.hints.length) {
       hintText = questionData.hints.at(-1)[lang];
@@ -62,14 +65,16 @@ export default function QuestionBox({ questionData, incorrectNum }) {
                   src="/img/other/image.png"
                   alt="calculator"
                 />
-                <p>Click to open the image</p>
+                <p>{
+                  clickToOpenText[lang]
+                  }</p>
             </div>
             }
             content={
               <Image
                 priority={true}
-                width={180}
-                height={180}
+                width={250}
+                height={250}
                 src={path}
                 alt={"example image"}
               />
