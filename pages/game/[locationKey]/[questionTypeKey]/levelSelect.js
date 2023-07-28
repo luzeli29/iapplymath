@@ -12,6 +12,7 @@ import Login from 'pages/user/login'
 import React, { useState } from 'react'
 import getText from '@utils/text/getText'
 import RetrieveUserContext from '@hooks/HOF/retrieveUserContext'
+import Image from 'next/image'
 
 export async function getStaticPaths() {
     const locationsObj = await loadLocations()
@@ -50,7 +51,8 @@ const LevelSelect = ({user,settings,location,levels}) => {
     const [loading, setLoading] = useState(false)
     const lang = settings.lang
     const routerQuery = router.query
-    
+    const locationKey = routerQuery.locationKey
+
     function getLevelIcon(key,value) {
         return (
             <div className='m-2'>
@@ -77,9 +79,21 @@ const LevelSelect = ({user,settings,location,levels}) => {
             setLoading(true)
         }
     }
+    console.log('location',location)
 
     const render = () => {
         return (
+            <>
+            {/*
+            <Image 
+                        width={1024}
+                        height={512}
+                        quality={100}
+                        priority={true}
+                        src={"/img/" + locationKey + "/" + locationKey + "_bg.png"}
+                        alt={'background image'}
+                        className='position-absolute top-50 start-50 translate-middle z-n1'/>
+        */}
             <div>
                 <div>
                     <h1 className='text-center pb-3'>
@@ -95,11 +109,12 @@ const LevelSelect = ({user,settings,location,levels}) => {
                         width={3}
                         height={1}/>
                 <div className='row pt-5'>
-                    <button className='basic_button mx-auto' onClick={() => handleLevelSelect()} disabled={!selectedLevel}>
+                    <button className='basic_button mx-auto z-3' onClick={() => handleLevelSelect()} disabled={!selectedLevel}>
                         {getText('start',lang)}
                     </button>
                 </div>
             </div>
+            </>
         )
     }
 

@@ -140,21 +140,12 @@ const GroceryStoreQuiz = ({user,settings,questions,recipes}) => {
     const renderRecipe = (key,value) => {
         const ingredients = value?.ingredients
         const recipeTitle = generateRecipeTitleText(value,lang)
-        const recipeServingText = generateRecipeServingText(value,lang)
-        const prepTime = value?.prepTime > 0 ? getText('preptime', lang) + ' : ' +  value?.prepTime + ' ' + getText('minutes', lang) : ''
-        const cookTime = value?.cookTime > 0 ? getText('cooktime', lang) + ' : ' +  value?.cookTime + ' ' + getText('minutes', lang) : ''
 
         return (
                 <div>
-                    <p className='text-center'>{recipeTitle}</p>
-                    <p className='text-center'>{recipeServingText}</p>
+                    <p className='text-center'>{value.name[lang]}</p>
+                    <p className='text-center'>{getText('serves',lang) + ': ' + value.servingSize}</p>
                     <div className='row mx-auto'>
-                        <div className='col-6 text-center'>
-                            <p className=''>{prepTime}</p>
-                        </div>
-                        <div className='col-6 text-center'>
-                            <p className=''>{cookTime}</p>
-                        </div>
                     </div>
                     <IngredientList ingredients={ingredients} lang={lang}/>
                 </div>        
