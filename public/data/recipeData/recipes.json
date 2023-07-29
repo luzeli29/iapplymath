@@ -453,9 +453,9 @@
             "prepTime": 5,
             "cookTime": 5,
             "imgSrc" : "orange_carrot_juice",
-            "servingSize" : 1,
-            "recipeMakesAmount" : 6,
-            "servingType" : "cup",
+            "servingSize" : 6,
+            "recipeMakesAmount" : 1,
+            "servingType" : "self",
             "ingredients" : {
                 "mangoChunk" :{
                     "ingredient" : "mangoChunk",
