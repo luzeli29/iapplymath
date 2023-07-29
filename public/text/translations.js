@@ -123,6 +123,10 @@ const translations = {
     },
 
     // ----- General Translations -----
+    serves: {
+        en: "Serves",
+        es: "Sirve",
+    },
     replay: {
         en: "Replay",
         es: "Repetir",
