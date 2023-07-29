@@ -77,6 +77,9 @@ const Map = ({user,settings}) => {
     const handleGroceryStoreClick = () => {
       router.push('/game/groceryStore/basic/levelSelect');
     }
+    const handleStadium = () => {
+      router.push('/game/stadium');
+    }
     
     
   
@@ -117,9 +120,11 @@ const Map = ({user,settings}) => {
                            
                 />
             
-                /<p className={style.aunt_house_text}>{translations.aunt_house[lang]}</p> 
+                <p className={style.aunt_house_text}>{translations.aunt_house[lang]}</p> 
 
                 <p className={style.restaurant_text}>{translations.restaurant[lang]}</p> 
+
+                <p className={style.stadium_text}>{translations.stadium[lang]}</p> 
                 
                 <button onClick={() => handleAuntsHouse()}
                         className={style.icon_button_small} id={style.aunt_house}> 
@@ -140,6 +145,18 @@ const Map = ({user,settings}) => {
                 <img className={style.icon_small} 
                     id={style.house_2}
                     src={"/img/map/aunt_house.png"}/>
+
+                <button onClick={() => handleStadium()}
+                        className={style.icon2} id={style.stadium}> 
+                    <Image 
+                        layout={"fill"}
+                        quality={100}
+                        priority={true}
+                        src={"/img/map/soccer_stadium.png"}
+                        alt={"stadium"}/> 
+
+                </button>
+                
 
                 <button onClick={() => handleRestaurant()}
                         className={style.icon_button} 

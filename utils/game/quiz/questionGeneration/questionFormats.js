@@ -1,5 +1,4 @@
 import simplifyFraction from "../simplifyFraction"
-
 const QuestionFormats = {
     'error' : {
         validationRegex : /^-?(?:0|[1-9]\d*)$/,
@@ -132,6 +131,18 @@ const QuestionFormats = {
         answerBoxType: 'textInput',
         answerBoxMessage: 'kilograms_only',
         calculatorType: 'basic'
+    },
+
+    'text': {
+        answerBoxType: 'textInput',
+        calculatorType: 'basic',
+        validationRegex: /^.*$/,
+        simplifyAnswer: (text) => {
+            // remove all extra whitespaces
+            text = text.replace(/\s+/g, ' ').trim()
+            text = text.toLowerCase()
+            return text
+        },
     },
 }
 

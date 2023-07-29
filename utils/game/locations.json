@@ -49,6 +49,16 @@
                     }
                }
             }
+        }, 
+        "stadium" : {
+            "questionTypes": {
+               "basic" : {
+                    "questionParams": {
+                        "level" : "int",
+                        "sportKey" : "string"
+                    }
+               }
+            }
         }
     }
 }
