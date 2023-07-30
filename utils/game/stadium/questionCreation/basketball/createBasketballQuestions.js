@@ -1,7 +1,7 @@
 import DevErr from "@utils/debug/devErr";
-import SoccorL1Questions from "./soccorL1Questions"
-import SoccorL2Questions from "./soccorL2Questions"
-import SoccorL3Questions from "./soccorL3Questions";
+import BasketballL1Questions from "./BasketballL1Questions"
+import BasketballL2Questions from "./BasketballL2Questions"
+import BasketballL3Questions from "./BasketballL3Questions";
 
 import { ErrorQuestion } from "@utils/game/quiz/questionGeneration/createGameQuestion";
 const GenerateBasketballQuestions = (level,questions, randomGenerator) => {

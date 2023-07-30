@@ -34,7 +34,7 @@ const CourtQuestions = ({user,settings}) => {
         if(!seed) return null
         DevLog('---Generating questions w/ Seed ' + seed + '---')
         try {
-            const questions = GenerateStadiumQuestions('soccor',level,randomGenerator)
+            const questions = GenerateStadiumQuestions('basketball',level,randomGenerator)
             DevLog(questions)
             return questions
         } catch(e) {

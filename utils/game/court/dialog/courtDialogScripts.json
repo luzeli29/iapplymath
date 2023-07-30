@@ -1,0 +1,26 @@
+{
+    "dialogScript" : {
+
+        "courtIntro" : {
+            "stage" : "court",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/game/court/basic/levelSelect?sportKey=basketball"
+            },
+            "lines" : [
+                {
+                    "text" : {
+                        "en":"Welcome to the I Apply Math Basketball Court! Let’s solve some math questions and learn about the great game of basketball!",
+                        "es": "¡Bienvenido a la cancha de baloncesto I Apply Math! ¡Resolvamos algunas preguntas de matemáticas y aprendamos más sobre el gran juego de baloncesto!"
+                    }
+                },{
+                    "text" : {
+                        "en" : "But first, here’s a fun fact: basketball was invented by Canadian physical education instructor James Naismith in December 1891!",
+                        "es":"Pero primero, aquí hay un dato curioso: ¡el baloncesto fue inventado por el instructor de educación física canadiense James Naismith en diciembre de 1891!"
+                    }
+                }
+            ]
+        }
+
+    }
+}
