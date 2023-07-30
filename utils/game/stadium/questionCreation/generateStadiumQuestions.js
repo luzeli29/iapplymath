@@ -9,6 +9,8 @@ const GenerateStadiumQuestions = (sport,level,randomGenerator) => {
         case 'soccor':
             GenerateSoccorQuestions(level,questions,randomGenerator)
             break
+        case 'basketball':
+            break
         default:
             DevErr("Invalid sport")
             questions.push(ErrorQuestion)
