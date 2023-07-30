@@ -8,6 +8,6 @@ export default function Finished() {
         <GameFinishLayout
             gameName={"stadium"}
             restart_text={"play_again"}
-            handleRestart={() => router.push('/game/stadium')}/>
+            handleRestart={() => router.push('/game/stadium/basic/levelSelect?sportKey=soccor')}/>
     );
 }
