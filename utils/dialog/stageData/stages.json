@@ -42,8 +42,7 @@
         },
         "stadium" : {
             "dialogType" : "speakerAndPlayer",
-            "speakerSrc" : "/img/aunt_house/aunt_house_speaker.png",
-            "backgroundSrc" : "/img/stadium/soccer_in_game.png",
+            "backgroundSrc" : "/img/stadium/stadium_bg.png",
             "isLogginRequired" : true,
             "isAvatarRequired" : true
         }
