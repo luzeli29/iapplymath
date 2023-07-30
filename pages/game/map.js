@@ -80,6 +80,10 @@ const Map = ({user,settings}) => {
     const handleStadium = () => {
       router.push('/dialog/stadiumIntro');
     }
+
+    const handleCourt = () => {
+      router.push('/dialog/courtIntro');
+    }
     
     
   
@@ -171,14 +175,14 @@ const Map = ({user,settings}) => {
 
                 </button> 
 
-                <p className={style.home_text}>{translations.coming_soon[lang]}</p>
-                <div
+                <p className={style.home_text}>{getText('court',lang)}</p>
+                <button onClick={() => handleCourt()}
                     className={style.icon} 
                     id={style.home}>
-                        <img className={style.icon} 
+                        <img className={style.icon_button} 
                             id={style.home}
-                            src={"/img/map/my_house.png"}/>
-                </div>
+                            src={"/img/map/court.png"}/>
+                </button>
 
                 <p className={style.school_text}>{translations.school[lang]}</p>
                 <button onClick={() => handleSchoolClick()}>
