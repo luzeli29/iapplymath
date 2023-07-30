@@ -1,9 +1,10 @@
 import DevErr from "@utils/debug/devErr";
-import BasketballL1Questions from "./BasketballL1Questions"
 import BasketballL2Questions from "./BasketballL2Questions"
 import BasketballL3Questions from "./BasketballL3Questions";
 
 import { ErrorQuestion } from "@utils/game/quiz/questionGeneration/createGameQuestion";
+import BasketballL1Questions from "./basketballL1Questions";
+
 const GenerateBasketballQuestions = (level,questions, randomGenerator) => {
     switch(level){
         case "1":
