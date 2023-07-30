@@ -34,7 +34,7 @@ const StadiumQuestions = ({user,settings}) => {
         if(!seed) return null
         DevLog('---Generating questions w/ Seed ' + seed + '---')
         try {
-            const questions = GenerateStadiumQuestions(sportKey,level,randomGenerator)
+            const questions = GenerateStadiumQuestions('soccor',level,randomGenerator)
             DevLog(questions)
             return questions
         } catch(e) {
@@ -52,7 +52,8 @@ const StadiumQuestions = ({user,settings}) => {
             initQnNum ? quizDataBuilderSetters.setQuestionNum(initQnNum) 
                 : quizDataBuilderSetters.setQuestionNum(0)
             quizDataBuilderSetters.setParams({
-                sportKey: sportKey,
+                level: level,
+                sportKey: "soccor",
             })
             quizDataBuilderSetters.setQuestionTypeKey(questionTypeKey)
             quizDataBuilderSetters.setOnFinish(() => () => handleFinish())
