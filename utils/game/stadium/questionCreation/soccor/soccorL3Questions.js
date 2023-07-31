@@ -1,5 +1,6 @@
 import { ErrorQuestion } from "@utils/game/quiz/questionGeneration/createGameQuestion";
 import createGameQuestion from "@utils/game/quiz/questionGeneration/createGameQuestion";
+import simplifyFraction from "@utils/game/quiz/simplifyFraction";
 const SoccorL3Questions = (questions,randomGenerator) => {
     const { randomInt } = randomGenerator;
     
@@ -245,6 +246,7 @@ const SoccorL3Questions = (questions,randomGenerator) => {
     const selectedContinentQ9 = continentsQ9[indexQ9]
     const amountOfWorldCupsOfSaidContinent = worldCups[indexQ9]
     const amountOfWorldCupsQ9 = 22
+    simplifyFraction(amountOfWorldCupsOfSaidContinent,amountOfWorldCupsQ9)
     const answerQ9 = `${amountOfWorldCupsOfSaidContinent}/${amountOfWorldCupsQ9}`
     const vals ={
         "South American":
@@ -285,7 +287,7 @@ const SoccorL3Questions = (questions,randomGenerator) => {
             es:vals[selectedContinentQ9].solution,
         }
     ],
-    "fraction",
+    "fractionExact",
     null,
     "level3StadiumQ9",
     ))
@@ -387,7 +389,7 @@ const SoccorL3Questions = (questions,randomGenerator) => {
 
     // **********************************************************
     // Question 12
-    // The following chart shows the age of each World Cup Golden Ball winner and the year when they won the award. Christian Pulisic is the top American soccer player today. If he were to win the Golden Ball at the 2026 World Cup, he would be 28 years old. Out of the last 7 Golden Ball winners, how many would Christian be [younger/older] than in 2026? Hint: Lionel Messi was 27 when he won the Golden Ball in 2014.
+    // The following chart shows the age of each World Cup Golden Ball winner and the year when they won the award. Christian Pulisic is the top American soccer player today. If he were to win the Golden Ball at the 2026 World Cup, he would be 28 years old. Out of the last 7 Golden Ball winners, how many would Christian be [younger/older] than in 2026?
 
     const optionsQ12 = ["younger","older"]
     const resultsQ12 = {
@@ -414,8 +416,8 @@ const SoccorL3Questions = (questions,randomGenerator) => {
     }
 
     questions.push(createGameQuestion({
-        en:`The following chart shows the age of each World Cup Golden Ball winner and the year when they won the award. Christian Pulisic is the top American soccer player today. If he were to win the Golden Ball at the 2026 World Cup, he would be 28 years old. Out of the last 7 Golden Ball winners, how many would Christian be ${selectedAgeQ12} than in 2026? Hint: Lionel Messi was 27 when he won the Golden Ball in 2014.`,
-        es:`El siguiente gráfico muestra la edad de cada ganador del Balón de Oro de la Copa Mundial y el año en que ganaron el premio. Christian Pulisic es el mejor jugador de fútbol americano hoy en día. Si ganara el Balón de Oro en la Copa Mundial de 2026, tendría 28 años. De los últimos 7 ganadores del Balón de Oro, ¿cuántos serían ${translationsQ12[selectedAgeQ12]} que Christian en 2026? Pista: Lionel Messi tenía 27 años cuando ganó el Balón de Oro en 2014.`,
+        en:`The following chart shows the age of each World Cup Golden Ball winner and the year when they won the award. Christian Pulisic is the top American soccer player today. If he were to win the Golden Ball at the 2026 World Cup, he would be 28 years old. Out of the last 7 Golden Ball winners, how many would Christian be ${selectedAgeQ12} than in 2026?`,
+        es:`El siguiente gráfico muestra la edad de cada ganador del Balón de Oro de la Copa Mundial y el año en que ganaron el premio. Christian Pulisic es el mejor jugador de fútbol americano hoy en día. Si ganara el Balón de Oro en la Copa Mundial de 2026, tendría 28 años. De los últimos 7 ganadores del Balón de Oro, ¿cuántos serían ${translationsQ12[selectedAgeQ12]} que Christian en 2026?`,
     },
     answerQ12,
     [
