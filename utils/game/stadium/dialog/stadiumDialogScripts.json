@@ -1,0 +1,61 @@
+{
+    "dialogScript" : {
+
+        "stadiumIntro" : {
+            "stage" : "stadium",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/game/stadium/basic/levelSelect?sportKey=soccor"
+            },
+            "lines" : [
+                {
+                    "text" : {
+                        "en":"Welcome to I Apply Math Stadium! Let’s solve some math questions and learn about the beautiful game of soccer!",
+                        "es":"¡Bienvenidos al estadio I Apply Math! ¡Resolvamos algunas preguntas de matemáticas y aprendamos más sobre el hermoso juego de fútbol! "
+                    }
+                },{
+                    "text" : {
+                        "en" : "But first, here’s a fun fact: women have been playing soccer ever since the game was invented!",
+                        "es":"Pero primero, aquí hay un dato curioso: ¡las mujeres han estado jugando fútbol desde que se inventó el juego!"
+                    }
+                }
+            ]
+        },
+
+        "stadiumOutro" : {
+            "stage" : "stadium",
+            "onEnd" : {
+                "type" : "route",
+                "route" : "/game/stadium/finished"
+            },
+            "lines" : [
+                {
+                    "text" : {
+                        "en": "We had so much fun in the stadium today!",
+                        "es": "¡Nos divertimos mucho en la cocina hoy!"
+                    },
+                    "speaker" : "aunt"
+                },{
+                    "text" : {
+                        "en": "All this food looks delicious, thank you for helping me in the kitchen today!",
+                        "es": "Toda esta comida se ve deliciosa, ¡gracias por ayudarme en la cocina hoy!"
+                    },
+                    "speaker" : "aunt"
+                },{
+                    "text" : {
+                        "en": "Please come back anytime.",
+                        "es": "Por favor regresa cuando quieras."
+                    },
+                    "speaker" : "aunt"
+                },{
+                    "text" : {
+                        "en": "Thanks, Tia Maria. I’ll see you later!",
+                        "es": "Gracias, Tía María. ¡Te veo luego!"
+                    },
+                    "speaker" : "player"
+                }
+            ]
+        }
+
+    }
+}

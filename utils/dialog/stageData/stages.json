@@ -39,6 +39,12 @@
             "speakerSrc" : "/img/school/groceryStoreClerk.png",
             "isLogginRequired" : true,
             "isAvatarRequired" : true
+        },
+        "stadium" : {
+            "dialogType" : "speakerAndPlayer",
+            "backgroundSrc" : "/img/stadium/stadium_bg.png",
+            "isLogginRequired" : true,
+            "isAvatarRequired" : true
         }
     }
 }

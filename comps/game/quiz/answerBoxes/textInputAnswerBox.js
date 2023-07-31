@@ -47,7 +47,7 @@ const TextInputAnswerBox = ({questionFormat,lang,handleSubmitAnswer}) => {
         if(questionFormat.simplifyAnswer) {
             try{
             simplifiedAnswer = questionFormat.simplifyAnswer(simplifiedAnswer)
-            }   catch(e) {
+        }   catch(e) {
                 DevErr('Error simplifying answer: ' + userAnswer + ' with simplifyAnswer()')
             }
         }
