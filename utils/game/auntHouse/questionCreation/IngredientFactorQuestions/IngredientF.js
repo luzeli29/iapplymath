@@ -515,7 +515,7 @@ function generateLevel1AuntQuestions(recipe, randomInt){
       let minutes = minute-newMin
       let finalTimeMin = minutes.toString().padStart(2, '0');
       let original = hour+":"+minute
-      let answer  = hour + ":" + finalTimeMin + "PM" ;
+      let answer  = hour + ":" + finalTimeMin + "pm" ;
      
          // create question
          generatedQuestions.push(createGameQuestion(
