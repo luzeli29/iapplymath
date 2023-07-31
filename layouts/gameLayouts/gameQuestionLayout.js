@@ -155,6 +155,8 @@ const GameQuestionLayout = ({
         }
         break;
       default:
+        console.log(answer)
+        console.log(questions[questionNum].answer)
         if (answer == questions[questionNum].answer) {
           //Answer is correct
           questions[questionNum].incorrectNum = incorrectNum;
