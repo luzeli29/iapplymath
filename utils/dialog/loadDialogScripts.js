@@ -46,6 +46,14 @@ export default async function loadDialogScripts() {
     } else {
         DevErr('No grocery store dialog scripts loaded...')
     }
+
+
+    let stadiumDS = await loadJSONFromUrl('utils/game/stadium/dialog/stadiumDialogScripts.json')
+    if(stadiumDS) {
+        stadiumDS = stadiumDS.dialogScript
+    } else {
+        DevErr('No stadium dialog scripts loaded...')
+    }
     
     //Make sure to add dialog after loading it...
     const dialogScripts = { ...generalDS,
@@ -53,7 +61,8 @@ export default async function loadDialogScripts() {
                             ...auntHouseDS,
                             ...restaurantDS,
                             ...schoolDS,
-                            ...groceryStoreDS
+                            ...groceryStoreDS,
+                            ...stadiumDS
                         }
 
 

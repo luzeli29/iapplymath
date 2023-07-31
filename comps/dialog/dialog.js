@@ -109,7 +109,6 @@ const Dialog = ({dialogScript,lang,avatarId}) => {
             case 'friend':
                 return 'end'
             default:
-                DevErr('Invalid "speaker" in getTriangleLocation()')
                 return 'center'
         }
     }
