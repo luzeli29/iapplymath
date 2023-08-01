@@ -1,5 +1,6 @@
 import { ErrorQuestion } from "@utils/game/quiz/questionGeneration/createGameQuestion";
 import createGameQuestion from "@utils/game/quiz/questionGeneration/createGameQuestion";
+import simplifyFraction from "@utils/game/quiz/simplifyFraction";
 const SoccorL3Questions = (questions,randomGenerator) => {
     const { randomInt } = randomGenerator;
     
@@ -245,7 +246,8 @@ const SoccorL3Questions = (questions,randomGenerator) => {
     const selectedContinentQ9 = continentsQ9[indexQ9]
     const amountOfWorldCupsOfSaidContinent = worldCups[indexQ9]
     const amountOfWorldCupsQ9 = 22
-    const answerQ9 = `${amountOfWorldCupsOfSaidContinent}/${amountOfWorldCupsQ9}`
+    let answerQ9 = simplifyFraction(amountOfWorldCupsOfSaidContinent,amountOfWorldCupsQ9)
+
     const vals ={
         "South American":
         {
