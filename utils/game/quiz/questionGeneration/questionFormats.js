@@ -84,7 +84,7 @@ const QuestionFormats = {
         calculatorType: 'basic'
     }, 
     'money': {
-        validationRegex : /^-?(?:0|[1-9]\d*)(?:\.\d+)?$/,
+        validationRegex : /^[+-]?(\d*\.)?\d+$/,
         validationFailMessage : 'invalid_money',
         answerBoxType: 'textInput',
         answerBoxMessage: 'money_only',
