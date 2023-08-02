@@ -808,7 +808,7 @@ function generateLevel1AuntQuestions(recipe, randomInt){
       let third_step = (cookTime+prepTime)*second_step
       let newMins = originalMin-third_step 
       let finalTimeMin = newMins.toString().padStart(2, '0');
-      let answer = originalHr + ":" + finalTimeMin + "PM" ;
+      let answer = originalHr + ":" + finalTimeMin + "pm" ;
      
      
          // create question
@@ -856,7 +856,7 @@ function generateLevel1AuntQuestions(recipe, randomInt){
       const randomFraction = fractions[randomIndex];
       let originalHr = 2
       let originalMin = 0
-      let original = originalHr+":"+originalMin+"PM"
+      let original = originalHr+":"+originalMin+"pm"
       let people = 3
       let serving_size = recipe.recipeMakesAmount
       let first_step = randomFraction/serving_size
@@ -893,7 +893,7 @@ function generateLevel1AuntQuestions(recipe, randomInt){
         // Add leading zeros if finalTimeMin is 9 or less
         finalTimeMin = finalTimeMin.toString().padStart(2, '0');
 
-        let answer = finalTimeHr + ":" + finalTimeMin+ "PM";
+        let answer = finalTimeHr + ":" + finalTimeMin+ "pm";
 ;
   
      
@@ -1225,7 +1225,7 @@ function generateLevel1AuntQuestions(recipe, randomInt){
       let newMins = min+first_step
       min = min.toString().padStart(2, '0');
       let original = hrs+":"+min+"PM"
-      let answer = hrs+":"+newMins+"PM"
+      let answer = hrs+":"+newMins+"pm"
       let serving_size = recipe.recipeMakesAmount
 
      
