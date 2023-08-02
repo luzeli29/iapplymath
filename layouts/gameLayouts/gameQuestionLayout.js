@@ -155,9 +155,11 @@ const GameQuestionLayout = ({
         }
         break;
       default:
-        console.log(answer)
-        console.log(questions[questionNum].answer)
-        if (answer == questions[questionNum].answer) {
+        let correctAnswer = questions[questionNum].answer;
+        if(isNaN(correctAnswer)) {
+          correctAnswer = correctAnswer.toLowerCase()
+        }
+        if (answer == correctAnswer) {
           //Answer is correct
           questions[questionNum].incorrectNum = incorrectNum;
           handleCorrectAnswer();
