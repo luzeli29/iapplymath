@@ -54,6 +54,13 @@ export default async function loadDialogScripts() {
     } else {
         DevErr('No stadium dialog scripts loaded...')
     }
+
+    let courtDS = await loadJSONFromUrl('utils/game/court/dialog/courtDialogScripts.json')
+    if(courtDS) {
+        courtDS = courtDS.dialogScript
+    } else {
+        DevErr('No court dialog scripts loaded...')
+    }
     
     //Make sure to add dialog after loading it...
     const dialogScripts = { ...generalDS,
@@ -62,7 +69,8 @@ export default async function loadDialogScripts() {
                             ...restaurantDS,
                             ...schoolDS,
                             ...groceryStoreDS,
-                            ...stadiumDS
+                            ...stadiumDS,
+                            ...courtDS
                         }
 
 

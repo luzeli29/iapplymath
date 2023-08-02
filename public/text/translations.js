@@ -31,6 +31,10 @@ const translations = {
         en: "Welcome to the stadium! Choose the sport you’d like to play.",
         es: "¡Bienvenidos al estadio! Elige el deporte que te gustaría jugar.",
     },
+    court : {
+        en: "Basketball Court",
+        es: "Cancha de Baloncesto", 
+    },
     play: {
         en: "Play!",
         es: "¡Jugar!",
