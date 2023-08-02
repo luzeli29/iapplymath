@@ -45,6 +45,11 @@
             "backgroundSrc" : "/img/stadium/stadium_bg.png",
             "isLogginRequired" : true,
             "isAvatarRequired" : true
+        },"court" : {
+            "dialogType" : "speakerAndPlayer",
+            "backgroundSrc" : "/img/court/court_bg.png",
+            "isLogginRequired" : true,
+            "isAvatarRequired" : true
         }
     }
 }

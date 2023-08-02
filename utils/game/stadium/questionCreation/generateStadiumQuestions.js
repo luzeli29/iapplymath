@@ -1,6 +1,7 @@
 import DevErr from "@utils/debug/devErr";
 import GenerateSoccorQuestions from "./soccor/generateSoccorQuestions"
 import { ErrorQuestion } from "@utils/game/quiz/questionGeneration/createGameQuestion";
+import GenerateBasketballQuestions from "./basketball/createBasketballQuestions";
 
 const GenerateStadiumQuestions = (sport,level,randomGenerator) => {
     let questions = []
@@ -8,6 +9,9 @@ const GenerateStadiumQuestions = (sport,level,randomGenerator) => {
     switch(sport){
         case 'soccor':
             GenerateSoccorQuestions(level,questions,randomGenerator)
+            break
+        case 'basketball':
+            GenerateBasketballQuestions(level,questions,randomGenerator)
             break
         default:
             DevErr("Invalid sport")
