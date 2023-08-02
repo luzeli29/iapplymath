@@ -96,6 +96,11 @@ const useSeededRandom = (initSeed) => {
         }
     }
 
+    const randomChoice = (array) => {
+        const rand = Math.floor(getRandom() * array.length)
+        return array[rand]
+    }
+
     const randomGenerator = {
         seed: seed,
         randomInt: randomInt,
@@ -103,6 +108,7 @@ const useSeededRandom = (initSeed) => {
         randomDishType: randomDishType,
         randomSchoolTopic: randomSchoolTopic,
         randomFloat: randomFloat,
+        randomChoice: randomChoice
     }
 
     return {
