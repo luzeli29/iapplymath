@@ -1,3 +1,4 @@
+import DevLog from "@utils/debug/devLog";
 import { ErrorQuestion } from "@utils/game/quiz/questionGeneration/createGameQuestion"
 import createGameQuestion from "@utils/game/quiz/questionGeneration/createGameQuestion";
 
@@ -595,6 +596,130 @@ const BasketballL3Questions = (questions,randomGenerator) => {
         answerQ9.types,
         null,
         "BasketLevel3_9"
+    ));
+
+      // Question 10
+    // The following graph shows the height in inches of multiple NBA Most Valuable Players (MVP) and the year in which they won the award. Which player does the point [ (1960,85) or (1970,82) or (1980,86) or (1990,81) or (2000,85) or (2010,80) or (2020,83) ] represent? Type the first name of the correct player in the answer box. 
+
+    const player10 = ["(1960,85)", "(1970,82)", "(1980,86)", "(1990,81)", "(2000,85)", "(2010,80)", "(2020,83)"];
+    const randomColorIndex10 = Math.floor(Math.random() * player10.length);
+    const randomColor10 = player10[randomColorIndex10];
+   
+
+    let text10 ;
+    if (randomColor10 === "(1960,85)") {
+        text10 = "wilt"
+      } else if (randomColor10 ===  "(1970,82)") {
+          text10 = "willis"
+      }else if (randomColor10 === "(1980,86)"){
+          text10 = "kareem"
+      } else if (randomColor10 ===  "(1990,81)") {
+            text10 = "magic"
+      }else if (randomColor10 === "(2000,85)"){
+         text10 = "shaquille"
+      }else if (randomColor10 === "(2010,80)"){
+            text10 = "lebron"
+    }else if (randomColor10 === "(2020,83)"){
+      text10 = "giannis"
+}
+
+
+    const answerQ10 = text10
+    questions.push(createGameQuestion(
+        {
+            en:`The following graph shows the height in inches of multiple NBA Most Valuable Players (MVP) and the year in which they won the award. Which player does the point ${randomColor10} represent? Type the first name of the correct player in the answer box. `,
+            es:`Este gráfico muestra la altura en pulgadas de varios Jugadores Más Valiosos (MVP) de la NBA y el año en que ganaron el premio. ¿Qué jugador representa el punto ${randomColor10}? Escriba el primer nombre del jugador correcto en el cuadro de respuesta. `,
+        },
+        answerQ10,
+        [
+            {
+                en:`Match the x and y coordinates of the given point to the corresponding point on the graph to identify the correct player.`,
+                es:`Empareje las coordenadas x e y del punto dado con el punto correspondiente en el gráfico para identificar al jugador correcto.`,
+
+            },
+            {
+                en:`Player first name corresponding to the point chosen by the game. ${randomColor10} - ${text10}`,
+                es:`Primer nombre del jugador correspondiente al punto elegido por el juego.${randomColor10} - ${text10}`,
+            }
+        ],
+        "text",
+        null,
+        "BasketLevel3_10"
+    ));
+
+    // Question 11
+    // This graph shows the height in inches of multiple NBA Most Valuable Players (MVP) and the year in which they won the award. Who is the [shortest, tallest] player in this graph of MVPs? Type the first name of the correct player in the answer box. 
+
+    const player11 = ["shortest", "tallest"];
+    const randomColorIndex11 = Math.floor(Math.random() * player11.length);
+    const randomColor11 = player11[randomColorIndex11];
+   
+
+    let text11 ;
+    let randomColor111;
+    if (randomColor11 === "shortest") {
+        text11 = "lebron"
+        randomColor111 = "más bajo"
+      } else if (randomColor11 ===  "tallest") {
+          text11 = "kareem"
+          randomColor111 = "más alto"
+      }
+
+
+
+    const answerQ11 = text11
+    questions.push(createGameQuestion(
+        {
+            en:`This graph shows the height in inches of multiple NBA Most Valuable Players (MVP) and the year in which they won the award. Who is the ${randomColor11} player in this graph of MVPs? Type the first name of the correct player in the answer box. `,
+            es:`Este gráfico muestra la altura en pulgadas de varios Jugadores Más Valiosos (MVP) de la NBA y el año en que ganaron el premio. ¿Quién es el jugador ${randomColor111} en este gráfico de MVP? Escriba el primer nombre del jugador correcto en el cuadro de respuesta.`,
+        },
+        answerQ11,
+        [
+            {
+                en:`IF shortest: identify the point with the smallest y-coordinate (height)
+                IF tallest: identify the point with the largest y-coordinate (height)`,
+                es:`SI más bajo: identifique el punto con la coordenada y más pequeña (altura)
+                SI más alto: identifique el punto con la coordenada y más grande (altura)`,
+
+            },
+            {
+                en:` ${randomColor11} - ${text11}`,
+                es:` ${randomColor11} - ${text11}`,
+            }
+        ],
+        "text",
+        null,
+        "BasketLevel3_10"
+    ));
+
+    // Question 12
+    // This graph shows the height in inches of multiple NBA Most Valuable Players (MVP) and the year they won the award. The first pick in the 2023 NBA Draft was Victor Wembanyama who is 7 ft. 4 in. or 88 inches tall. If Wembanyama wins the MVP award in 2030, what would be the x and y coordinates to represent him on the graph? Type your answer in point format (x,y) 
+
+    const answerQ12 = "(2030,88)"
+    questions.push(createGameQuestion(
+        {
+            en:`This graph shows the height in inches of multiple NBA Most Valuable Players (MVP) and the year they won the award. The first pick in the 2023 NBA Draft was Victor Wembanyama who is 7 ft. 4 in. or 88 inches tall. If Wembanyama wins the MVP award in 2030, what would be the x and y coordinates to represent him on the graph? Type your answer in point format (x,y)`,
+            es:`Este gráfico muestra la altura en pulgadas de varios Jugadores Más Valiosos (MVP) de la NBA y el año en que ganaron el premio. La primera selección en el Draft de la NBA de 2023 fue Victor Wembanyama, que mide 7 pies y 4 pulgadas o 88 pulgadas de altura. Si Wembanyama gana el premio MVP en 2030, ¿cuáles serían las coordenadas x e y para representarlo en el gráfico? Escriba su respuesta en formato de punto (x,y).`,
+        },
+        answerQ12,
+        [
+            {
+                en:`1) Hint: if x coordinate is 2023 and y coordinate is 80 your answer would be (2023,80)
+                2) The x coordinate represents the year and the y coordinate represents the player’s height. Type the given year and Victor’s height in point format. 
+                `,
+                es:`1) Pista: si la coordenada x es 2023 y la coordenada y es 80, tu respuesta sería (2023,80)
+                2) La coordenada x representa el año y la coordenada y representa la altura del jugador. Escriba el año dado y la altura de Víctor en formato de puntos.
+                `,
+
+            },
+            {
+                en:`Year = 2030; Height = 88 → Answer = ${answerQ12}`,
+                es:`Año = 2030; Altura = 88 → Respuesta =  ${answerQ12}`,
+            }
+        ],
+        "text",
+        null,
+        "BasketLevel3_10"
     ));
 }
 
