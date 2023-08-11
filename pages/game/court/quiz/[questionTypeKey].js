@@ -17,7 +17,8 @@ import GameQuestionLayout from '@layouts/gameLayouts/gameQuestionLayout'
 import getText from '@utils/text/getText'
 import loadSports from '@utils/game/stadium/sportData/loadSports'
 import GenerateStadiumQuestions from '@utils/game/stadium/questionCreation/generateStadiumQuestions'
-
+import stadiumImg from '@public/img/court/court_bg.png'
+import Image from 'next/image'
 
 const CourtQuestions = ({user,settings}) => {
     const router = useRouter()
@@ -84,6 +85,15 @@ const CourtQuestions = ({user,settings}) => {
                 settings={settings}
                 quizData={buildQuizData()}
                 initQuestionNum={initQnNum}> 
+                <div>
+                    <Image 
+                    priority={true}
+                    layout={"fill"}
+                    objectFit = {'contain'}
+                    quality={100}
+                    src={stadiumImg}
+                    alt={"stadium"} />
+                </div>   
             </GameQuestionLayout>
         )
     }
