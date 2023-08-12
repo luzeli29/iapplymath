@@ -3,10 +3,10 @@ import { ErrorQuestion } from "@utils/game/quiz/questionGeneration/createGameQue
 
 const SoccorL2Questions = (questions, randomGenerator) => {
     
-    const { randomInt, randomFloat } = randomGenerator;
+    const { randomInt } = randomGenerator;
 
     const q2Friends = randomInt(2, 6);
-    const q2TicketPrice = randomFloat(125, 350);
+    const q2TicketPrice = randomInt(125, 350)
     const q2Answer = q2TicketPrice * (q2Friends + 1);
 
     questions.push(createGameQuestion(

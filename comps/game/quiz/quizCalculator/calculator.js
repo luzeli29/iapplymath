@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Calculator = () => {
+const Calculator = ({notepad}) => {
 
   const [displayValue, setDisplayValue] = useState('0');
   const [mode, setMode] = useState('decimal');
@@ -122,7 +122,7 @@ const Calculator = () => {
             )}
         <button className="equal-button" onClick={handleEqualClick}>=</button>
         </div>
-        
+
       </div>
     </div>
   );

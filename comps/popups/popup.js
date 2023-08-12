@@ -4,7 +4,7 @@ import getText from '@utils/text/getText';
 import { FaTimes } from 'react-icons/fa';
 import { ResizableBox } from 'react-resizable';
 
-const Popup = ({ icon, content, lang }) => {
+const Popup = ({ icon, content, lang, notepad }) => {
   lang = lang ? lang : 'en'
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -59,9 +59,9 @@ const Popup = ({ icon, content, lang }) => {
             </div>
             <div className="app">{content}</div>
             
-            <div style={{ marginLeft: size.width, position: 'absolute'}}>
+            {notepad && <div style={{ marginLeft: size.width, position: 'absolute'}}>
               <textarea style={{ height: size.height + 40, width: parseInt(size?.width ?? 370) }}/>
-            </div>
+            </div> }
 
           </ResizableBox>
         </Draggable>
