@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Popup from '@comps/popups/popup';
 
 
-export const BasicCalculator = ({lang}) => {
+export const BasicCalculator = ({lang, notepad}) => {
   lang = lang ? lang : 'en'
 
   return (
@@ -12,6 +12,7 @@ export const BasicCalculator = ({lang}) => {
       icon={<Image width={30} height={50} src="/img/other/calcicon.png" alt="calculator" />}
       content={<Calculator/>}
       lang={lang}
+      notepad={notepad}
     />
   );
 };

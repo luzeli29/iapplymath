@@ -45,7 +45,7 @@ export default function AnswerBox({correctAnswer,questionFormatKey,handleSubmitA
         <div className=''> 
             <div className='row px-2'>
                 <div className='col-4'>
-                    {questionFormat?.calculatorType && <QuizCalculator calculatorType={questionFormat.calculatorType} lang={lang}/>}
+                    {questionFormat?.calculatorType && <QuizCalculator calculatorType={questionFormat.calculatorType} lang={lang} notepad={true}/>}
                 </div>
                 <div className='col-8'>
                 </div>
