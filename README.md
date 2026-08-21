@@ -18,11 +18,12 @@ The work supported Dr. Luz Elizabeth Robinson's dissertation at UNC Chapel Hill,
 
 ## Tech Stack
 
-- **Frontend:** React, Redux (Redux Toolkit), Next.js
+- **Frontend:** React, Redux, Next.js
 - **Backend:** MongoDB, Next.js API routes
 - **Other:** SWR, Framer Motion, Sass
 
 ## Getting Started
+> This project is no longer under active development. The instructions below are for exploring or running the code locally.
 
 1. Clone the repo:
    ```
@@ -41,18 +42,16 @@ The work supported Dr. Luz Elizabeth Robinson's dissertation at UNC Chapel Hill,
    npm run build
    ```
 
-> This project is no longer under active development. The instructions above are for exploring or running the code locally.
-
 ## Contributors
 
 This project was built by an awesome 6-person development team:
 
 - [John Le Houillier](https://github.com/johnleh)
-- [Santos Lopez-Lucas](https://github.com/slopezlucas)
-- [Karen Gonzalez-Palomo](https://github.com/karengpalomo)
-- [Pablo Escobar](https://github.com/esc20936)
-- [Kristen Brandt](https://github.com/KristenBrandt)
 - [Angel Higueros](https://github.com/angelhigueros)
+- [Karen Gonzalez-Palomo](https://github.com/karengpalomo)
+- [Kristen Brandt](https://github.com/KristenBrandt)
+- [Pablo Escobar](https://github.com/esc20936)
+- [Santos Lopez-Lucas](https://github.com/slopezlucas)
 
 ## Contact
 
